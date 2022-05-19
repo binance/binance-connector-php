@@ -1,0 +1,43 @@
+{
+    "name": "binance/binance-connector-php",
+    "description": "A thin layer for Binance API in PHP",
+    "homepage": "https://github.com/binance/binance-connector-php",
+    "type": "library",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Binance",
+            "email": "contact@binance.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4.0",
+        "psr/log": "^1.1",
+        "guzzlehttp/guzzle": "^7.4",
+        "ratchet/pawl": "^0.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "2pd/guzzle-http-mock": "^4.0",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phan/phan": "5.x"
+    },
+    "autoload": {
+        "psr-4": {
+            "Binance\\": "src/Binance/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Binance\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test-coverage": "XDEBUG_MODE=coverage phpunit --coverage-html=build/artifacts/coverage",
+        "lint-fix": "php-cs-fixer fix --using-cache=no src/",
+        "analyze": "phan --allow-polyfill-parser"
+    }
+
+}
