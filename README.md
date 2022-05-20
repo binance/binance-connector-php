@@ -22,7 +22,7 @@ $response = $client->time();
 echo json_encode($response);
 
 
-$client = new \Binance\Spot($key, $secret);
+$client = new \Binance\Spot(['key' => $key, 'secret' => $secret]);
 $response = $client->account();
 echo json_encode($response);
 ```
@@ -46,7 +46,7 @@ From Binance API, recvWindow is available for all endpoints require signature. B
 
 ```php
 
-$client = new \Binance\Spot($key, $secret);
+$client = new \Binance\Spot(['key' => $key, 'secret' => $secret]);
 $response = $client->getOrder('BNBUSDT', [
         'orderId'    => '11',
         'recvWindow' => 10000
