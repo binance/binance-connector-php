@@ -114,7 +114,9 @@ trait Margin
             throw new MissingArgumentException('asset');
         }
 
-        return $this->publicRequest('GET', '/sapi/v1/margin/asset',
+        return $this->publicRequest(
+            'GET',
+            '/sapi/v1/margin/asset',
             [
                 'asset' => $asset
             ]
@@ -136,7 +138,9 @@ trait Margin
             throw new MissingArgumentException('symbol');
         }
 
-        return $this->publicRequest('GET', '/sapi/v1/margin/pair',
+        return $this->publicRequest(
+            'GET',
+            '/sapi/v1/margin/pair',
             [
                 'symbol' => $symbol
             ]
@@ -182,7 +186,9 @@ trait Margin
             throw new MissingArgumentException('symbol');
         }
 
-        return $this->publicRequest('GET', '/sapi/v1/margin/priceIndex',
+        return $this->publicRequest(
+            'GET',
+            '/sapi/v1/margin/priceIndex',
             [
                 'symbol' => $symbol
             ]
