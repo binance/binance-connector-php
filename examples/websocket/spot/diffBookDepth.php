@@ -19,13 +19,13 @@ $callbacks = [
     'message' => function ($conn, $msg) {
         echo "received message > {$msg}".PHP_EOL;
     },
-    'pong' => function ($conn) {
+    'pong' => function ($conn, $msg) {
         echo "received pong from server".PHP_EOL;
     },
-    'ping' => function ($conn) {
+    'ping' => function ($conn, $msg) {
         echo "received ping from server".PHP_EOL;
     },
-    'close' => function ($conn) {
+    'close' => function ($conn, $msg) {
         echo "receive closed.".PHP_EOL;
     }
 ];

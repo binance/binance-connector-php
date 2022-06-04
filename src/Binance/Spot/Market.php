@@ -213,7 +213,9 @@ trait Market
             throw new MissingArgumentException('symbol');
         }
 
-        return $this->publicRequest('GET', '/api/v3/avgPrice',
+        return $this->publicRequest(
+            'GET',
+            '/api/v3/avgPrice',
             [
                 'symbol' => $symbol
             ]

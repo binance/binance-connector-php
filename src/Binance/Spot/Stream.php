@@ -39,7 +39,9 @@ trait Stream
             throw new MissingArgumentException('listenKey');
         }
 
-        return $this->publicRequest('PUT', '/api/v3/userDataStream',
+        return $this->publicRequest(
+            'PUT',
+            '/api/v3/userDataStream',
             [
                 'listenKey' => $listenKey
             ]
@@ -63,7 +65,9 @@ trait Stream
             throw new MissingArgumentException('listenKey');
         }
 
-        return $this->publicRequest('DELETE', '/api/v3/userDataStream',
+        return $this->publicRequest(
+            'DELETE',
+            '/api/v3/userDataStream',
             [
                 'listenKey' => $listenKey
             ]

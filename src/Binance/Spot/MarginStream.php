@@ -39,7 +39,9 @@ trait MarginStream
             throw new MissingArgumentException('listenKey');
         }
 
-        return $this->publicRequest('PUT', '/sapi/v1/userDataStream',
+        return $this->publicRequest(
+            'PUT',
+            '/sapi/v1/userDataStream',
             [
                 'listenKey' => $listenKey
             ]
@@ -63,7 +65,9 @@ trait MarginStream
             throw new MissingArgumentException('listenKey');
         }
 
-        return $this->publicRequest('DELETE', '/sapi/v1/userDataStream',
+        return $this->publicRequest(
+            'DELETE',
+            '/sapi/v1/userDataStream',
             [
                 'listenKey' => $listenKey
             ]

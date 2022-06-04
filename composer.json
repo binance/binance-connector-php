@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": ">=7.4.0",
-        "psr/log": "^1.1",
+        "psr/log": "^1|^2|^3",
         "guzzlehttp/guzzle": "^7.4",
         "ratchet/pawl": "^0.4"
     },

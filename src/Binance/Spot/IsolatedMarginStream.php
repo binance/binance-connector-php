@@ -25,7 +25,9 @@ trait IsolatedMarginStream
             throw new MissingArgumentException('symbol');
         }
 
-        return $this->publicRequest('POST', '/sapi/v1/userDataStream/isolated',
+        return $this->publicRequest(
+            'POST',
+            '/sapi/v1/userDataStream/isolated',
             [
                 'symbol' => $symbol
             ]
@@ -53,7 +55,9 @@ trait IsolatedMarginStream
             throw new MissingArgumentException('listenKey');
         }
 
-        return $this->publicRequest('PUT', '/sapi/v1/userDataStream/isolated',
+        return $this->publicRequest(
+            'PUT',
+            '/sapi/v1/userDataStream/isolated',
             [
                 'symbol' => $symbol,
                 'listenKey' => $listenKey
@@ -82,7 +86,9 @@ trait IsolatedMarginStream
             throw new MissingArgumentException('listenKey');
         }
 
-        return $this->publicRequest('DELETE', '/sapi/v1/userDataStream/isolated',
+        return $this->publicRequest(
+            'DELETE',
+            '/sapi/v1/userDataStream/isolated',
             [
                 'symbol' => $symbol,
                 'listenKey' => $listenKey

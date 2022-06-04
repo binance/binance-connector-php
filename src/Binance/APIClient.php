@@ -115,7 +115,7 @@ abstract class APIClient
             foreach ($response->getHeaders() as $name => $value) {
                 $name = strtolower($name);
                 if (strpos($name, 'x-mbx-used-weight') === 0 ||
-                    strpos($name, 'x-mbx-order-count') === 0 || 
+                    strpos($name, 'x-mbx-order-count') === 0 ||
                     strpos($name, 'x-sapi-used') === 0) {
                     $weights[$name] = $value;
                 }
