@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->fiatPaymentsHistory(0,
+$response = $client->fiatPaymentsHistory(
+    0,
     [
         'beginTime' => 1626144956000,
         'endTime' => 1640995200000,

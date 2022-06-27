@@ -10,7 +10,11 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->subAccountUniversalTransfer('SPOT', 'COIN_FUTURE', 'BTC', 1.01,
+$response = $client->subAccountUniversalTransfer(
+    'SPOT',
+    'COIN_FUTURE',
+    'BTC',
+    1.01,
     [
         'recvWindow' => 5000
     ]

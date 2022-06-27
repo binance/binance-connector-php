@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->blvtSubscribe('BTCDOWN', 1.01,
+$response = $client->blvtSubscribe(
+    'BTCDOWN',
+    1.01,
     [
         'recvWindow' => 5000
     ]

@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->savingsChangeDailyPosition('1234', 1,
+$response = $client->savingsChangeDailyPosition(
+    '1234',
+    1,
     [
         'positionId' => 100,
         'recvWindow' => 5000

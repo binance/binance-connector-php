@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->blvtRedeem('BTCDOWN', 1.01,
+$response = $client->blvtRedeem(
+    'BTCDOWN',
+    1.01,
     [
         'recvWindow' => 5000
     ]

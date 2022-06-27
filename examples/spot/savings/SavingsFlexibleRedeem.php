@@ -10,7 +10,10 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->savingsFlexibleRedeem('1234', 1.01, 'FAST',
+$response = $client->savingsFlexibleRedeem(
+    '1234',
+    1.01,
+    'FAST',
     [
         'recvWindow' => 5000
     ]

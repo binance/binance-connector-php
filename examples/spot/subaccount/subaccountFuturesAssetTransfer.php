@@ -10,7 +10,12 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->subAccountFuturesAssetTransfer('testaccount@email.com', 'testaccount2@email.com', 2, 'BTC', 1.01,
+$response = $client->subAccountFuturesAssetTransfer(
+    'testaccount@email.com',
+    'testaccount2@email.com',
+    2,
+    'BTC',
+    1.01,
     [
         'recvWindow' => 5000
     ]

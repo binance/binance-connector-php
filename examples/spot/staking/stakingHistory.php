@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->stakingHistory('STAKING', 'SUBSCRIPTION',
+$response = $client->stakingHistory(
+    'STAKING',
+    'SUBSCRIPTION',
     [
         'recvWindow' => 5000
     ]

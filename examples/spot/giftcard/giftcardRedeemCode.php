@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->giftCardRedeemCode('000000',
+$response = $client->giftCardRedeemCode(
+    '000000',
     [
         'recvWindow' => 5000
     ]

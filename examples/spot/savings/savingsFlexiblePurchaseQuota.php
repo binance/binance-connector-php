@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->savingsFlexiblePurchaseQuota('1234',
+$response = $client->savingsFlexiblePurchaseQuota(
+    '1234',
     [
         'recvWindow' => 5000
     ]

@@ -10,7 +10,10 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->universalTransfer('MAIN_UMFUTURE', 'BTC', 1.01,
+$response = $client->universalTransfer(
+    'MAIN_UMFUTURE',
+    'BTC',
+    1.01,
     [
         'fromSymbol' => 'BNBUSDT',
         'toSymbol' => 'BNBUSDT',

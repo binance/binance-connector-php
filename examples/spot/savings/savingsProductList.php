@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->savingsProductList('ACTIVITY',
+$response = $client->savingsProductList(
+    'ACTIVITY',
     [
         'asset' => 'BNB',
         'current' => 1,

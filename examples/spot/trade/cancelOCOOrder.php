@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->cancelOcoOrder('BNBUSDT',
+$response = $client->cancelOcoOrder(
+    'BNBUSDT',
     [
         'orderListId' => 12,
         'recvWindow' => 5000

@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->marginAllOrders('BNBUSDT',
+$response = $client->marginAllOrders(
+    'BNBUSDT',
     [
         'limit' => 500,
         'recvWindow' => 5000

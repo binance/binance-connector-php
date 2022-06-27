@@ -17,7 +17,10 @@ $client = new \Binance\Spot([
  * https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md#new-order--trade
  *
  */
-$response = $client->newOrder('BNBUSDT', 'BUY', 'LIMIT',
+$response = $client->newOrder(
+    'BNBUSDT',
+    'BUY',
+    'LIMIT',
     [
         'quantity' => 1,
         'price' => 200,
@@ -42,5 +45,3 @@ $response = $client->newOrder('BNBUSDT', 'BUY', 'LIMIT',
  */
 
 echo json_encode($response);
-
-

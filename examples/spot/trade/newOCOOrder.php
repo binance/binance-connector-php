@@ -10,7 +10,12 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->newOcoOrder('BNBUSDT', 'SELL', 0.1, 400.15, 390.3,
+$response = $client->newOcoOrder(
+    'BNBUSDT',
+    'SELL',
+    0.1,
+    400.15,
+    390.3,
     [
         'stopLimitPrice' => 380.3,
         'stopLimitTimeInForce' => 'GTC',

@@ -10,7 +10,11 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->cancelAndReplace('BNBUSDT', 'SELL', 'LIMIT', 'STOP_ON_FAILURE', 
+$response = $client->cancelAndReplace(
+    'BNBUSDT',
+    'SELL',
+    'LIMIT',
+    'STOP_ON_FAILURE',
     [
         'timeInForce' => 'GTC',
         'quantity' => 10.1,

@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->marginMaxTransferable('BTC',
+$response = $client->marginMaxTransferable(
+    'BTC',
     [
         'recvWindow' => 5000
     ]

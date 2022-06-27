@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->marginOrder('BNBUSDT',
+$response = $client->marginOrder(
+    'BNBUSDT',
     [
         'orderId' => 213205622,
         'recvWindow' => 5000

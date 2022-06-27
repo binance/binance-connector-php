@@ -6,7 +6,7 @@
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
-use \React\EventLoop\Loop;
+use React\EventLoop\Loop;
 
 $loop = Loop::get();
 $reactConnector = new \React\Socket\Connector($loop);
@@ -40,4 +40,3 @@ $loop->addPeriodicTimer(2, function () use ($client) {
 });
 
 $loop->run();
-
