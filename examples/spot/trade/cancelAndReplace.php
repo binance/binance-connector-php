@@ -10,11 +10,13 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->payTradeHistory(
+$response = $client->cancelAndReplace('BNBUSDT', 'SELL', 'LIMIT', 'STOP_ON_FAILURE', 
     [
-        'startTime' => 1640995200000,
-        'endTime' => 1640995200000,
-        'limit' => 100,
+        'timeInForce' => 'GTC',
+        'quantity' => 10.1,
+        'price' => 295.92,
+        'cancelOrderId' => 12,
+        'stopPrice' => 20.01,
         'recvWindow' => 5000
     ]
 );
