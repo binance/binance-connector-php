@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.1.0 - TBA
+- Add endpoint `GET /api/v3/ticker`
+- Add endpoint `POST /api/v3/order/cancelReplace`
+- Pump `guzzlehttp/guzzle` to latest version
+
 ## 1.0.2 - 2022-06-14
 - Pump `guzzlehttp/guzzle` to latest version
 

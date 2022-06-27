@@ -281,4 +281,26 @@ trait Market
     {
         return $this->publicRequest('GET', '/api/v3/ticker/bookTicker', $options);
     }
+
+    /**
+     * Rolling window price change statistics
+     *
+     * GET /api/v3/ticker
+     *
+     * The window used to compute statistics is typically slightly wider than requested windowSize.
+     *
+     * openTime for /api/v3/ticker always starts on a minute, while the closeTime is the current time of the request. As such, the effective window might be up to 1 minute wider than requested.
+     *
+     * E.g. If the closeTime is 1641287867099 (January 04, 2022 09:17:47:099 UTC) , and the windowSize is 1d. the openTime will be: 1641201420000 (January 3, 2022, 09:17:00 UTC)
+     *
+     * Weight(IP): 2 for each requested symbol regardless of windowSize.
+     *
+     * The weight for this request will cap at 100 once the number of symbols in the request is more than 50.
+     *
+     * @param array $options
+     */
+    public function rollingWindowTicker(array $options = [])
+    {
+        return $this->publicRequest('GET', '/api/v3/ticker', $options);
+    }
 }
