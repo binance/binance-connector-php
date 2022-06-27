@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->managedSubAccountSnapshot('testaccount@email.com', 'SPOT',
+$response = $client->managedSubAccountSnapshot(
+    'testaccount@email.com',
+    'SPOT',
     [
         'startTime' => 1640995200000,
         'endTime' => 1640995200000,

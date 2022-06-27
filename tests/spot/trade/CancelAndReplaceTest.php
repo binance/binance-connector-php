@@ -10,25 +10,25 @@ class CancelAndReplaceTest extends BaseTestCase
     {
         parent::setUp();
     }
-    
+
     public function testCancelAndReplaceThrowsExceptionWithoutSymbol()
     {
         $this->expectException(MissingArgumentException::class);
         $response = $this->spotClient->cancelAndReplace('', 'SELL', 'LIMIT', 'STOP_ON_FAILURE');
     }
-    
+
     public function testCancelAndReplaceThrowsExceptionWithoutSide()
     {
         $this->expectException(MissingArgumentException::class);
         $response = $this->spotClient->cancelAndReplace('BNBUSDT', '', 'LIMIT', 'STOP_ON_FAILURE');
     }
-    
+
     public function testCancelAndReplaceThrowsExceptionWithoutType()
     {
         $this->expectException(MissingArgumentException::class);
         $response = $this->spotClient->cancelAndReplace('BNBUSDT', 'SELL', '', 'STOP_ON_FAILURE');
     }
-    
+
     public function testCancelAndReplaceThrowsExceptionWithoutCancelReplaceMode()
     {
         $this->expectException(MissingArgumentException::class);

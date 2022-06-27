@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->universalTransferHistory('MAIN_UMFUTURE',
+$response = $client->universalTransferHistory(
+    'MAIN_UMFUTURE',
     [
         'startTime' => 1640995200000,
         'endTime' => 1640995200000,

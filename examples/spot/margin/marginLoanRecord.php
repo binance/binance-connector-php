@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->marginLoanRecord('BTC',
+$response = $client->marginLoanRecord(
+    'BTC',
     [
         'txId' => 123456789,
         'current' => 1,

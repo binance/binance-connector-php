@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->stakingProductPosition('STAKING',
+$response = $client->stakingProductPosition(
+    'STAKING',
     [
         'recvWindow' => 5000
     ]

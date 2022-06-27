@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->marginMaxBorrowable('BTC',
+$response = $client->marginMaxBorrowable(
+    'BTC',
     [
         'recvWindow' => 5000
     ]

@@ -8,7 +8,8 @@ $client = new \Binance\Spot([
     'key'  => $key
 ]);
 
-$response = $client->historicalTrades('BNBUSDT',
+$response = $client->historicalTrades(
+    'BNBUSDT',
     [
         'limit' => 500,
         'fromId' => 123

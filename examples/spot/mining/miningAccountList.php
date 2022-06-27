@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->miningAccountList('sha256', 'username',
+$response = $client->miningAccountList(
+    'sha256',
+    'username',
     [
         'recvWindow' => 5000
     ]

@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->subAccountDepositHistory('testaccount@email.com',
+$response = $client->subAccountDepositHistory(
+    'testaccount@email.com',
     [
         'coin' => 'BNB',
         'recvWindow' => 5000

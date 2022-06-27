@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->giftCardCreateCode('BTC', 1.01,
+$response = $client->giftCardCreateCode(
+    'BTC',
+    1.01,
     [
         'recvWindow' => 5000
     ]

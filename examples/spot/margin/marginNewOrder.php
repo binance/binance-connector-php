@@ -10,7 +10,10 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->marginNewOrder('BNBUSDT', 'SELL', 'MARKET',
+$response = $client->marginNewOrder(
+    'BNBUSDT',
+    'SELL',
+    'MARKET',
     [
         'quantity' => 1.01,
         'price' => 10,

@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->depositAddress('BNB',
+$response = $client->depositAddress(
+    'BNB',
     [
         'network' => 'ETH',
         'recvWindow' => 5000

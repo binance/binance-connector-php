@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->subAccountAssets('testaccount@email.com',
+$response = $client->subAccountAssets(
+    'testaccount@email.com',
     [
         'recvWindow' => 5000
     ]

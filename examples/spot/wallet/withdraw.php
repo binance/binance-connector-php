@@ -10,7 +10,10 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->withdraw('BNB', 'address', 1.01,
+$response = $client->withdraw(
+    'BNB',
+    'address',
+    1.01,
     [
         'recvWindow' => 5000
     ]

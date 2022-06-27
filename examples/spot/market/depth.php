@@ -8,7 +8,8 @@ $client = new \Binance\Spot(
     ]
 );
 
-$response = $client->depth('BNBUSDT',
+$response = $client->depth(
+    'BNBUSDT',
     [
         'limit' => 100
     ]

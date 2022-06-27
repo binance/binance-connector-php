@@ -10,7 +10,10 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->swapAddLiquidity(2, 'BTC', 12415.2,
+$response = $client->swapAddLiquidity(
+    2,
+    'BTC',
+    12415.2,
     [
         'type' => 'Single',
         'recvWindow' => 5000

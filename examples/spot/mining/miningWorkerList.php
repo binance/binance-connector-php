@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->miningWorkerList('sha256', 'username',
+$response = $client->miningWorkerList(
+    'sha256',
+    'username',
     [
         'pageIndex' => 2,
         'sort' => 0,

@@ -10,7 +10,11 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->miningHashrateResaleRequest('username', 'sha256', 'username', 100000000,
+$response = $client->miningHashrateResaleRequest(
+    'username',
+    'sha256',
+    'username',
+    100000000,
     [
         'startDate' => 1640995200000,
         'endDate' => 1640995200000,

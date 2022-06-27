@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->isolatedMarginEnableAccount('BNBUSDT',
+$response = $client->isolatedMarginEnableAccount(
+    'BNBUSDT',
     [
         'recvWindow' => 5000
     ]

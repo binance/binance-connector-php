@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->savingsPurchaseRecord('DAILY',
+$response = $client->savingsPurchaseRecord(
+    'DAILY',
     [
         'asset' => 'BNB',
         'current' => 1,

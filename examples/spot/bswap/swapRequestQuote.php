@@ -10,7 +10,10 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->swapRequestQuote('USDT', 'BUSD', 12415.2,
+$response = $client->swapRequestQuote(
+    'USDT',
+    'BUSD',
+    12415.2,
     [
         'recvWindow' => 5000
     ]

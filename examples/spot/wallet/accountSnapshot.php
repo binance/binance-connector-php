@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->accountSnapshot('SPOT',
+$response = $client->accountSnapshot(
+    'SPOT',
     [
         'recvWindow' => 5000
     ]

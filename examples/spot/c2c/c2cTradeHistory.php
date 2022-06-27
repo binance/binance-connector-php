@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->c2cTradeHistory('BUY',
+$response = $client->c2cTradeHistory(
+    'BUY',
     [
         'page' => 1,
         'rows' => 100,

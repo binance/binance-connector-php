@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->subAccountDepositAddress('testaccount@email.com', 'BNB',
+$response = $client->subAccountDepositAddress(
+    'testaccount@email.com',
+    'BNB',
     [
         'network' => 'BNB',
         'recvWindow' => 5000

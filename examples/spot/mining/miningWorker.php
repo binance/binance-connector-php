@@ -10,7 +10,10 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->miningWorker('sha256', 'username', 'workername',
+$response = $client->miningWorker(
+    'sha256',
+    'username',
+    'workername',
     [
         'recvWindow' => 5000
     ]

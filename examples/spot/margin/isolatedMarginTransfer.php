@@ -10,7 +10,12 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->isolatedMarginTransfer('BTC', 'BNBUSDT', 'SPOT', 'ISOLATED_MARGIN', 1.01,
+$response = $client->isolatedMarginTransfer(
+    'BTC',
+    'BNBUSDT',
+    'SPOT',
+    'ISOLATED_MARGIN',
+    1.01,
     [
         'recvWindow' => 5000
     ]

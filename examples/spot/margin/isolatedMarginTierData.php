@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->isolatedMarginTierData('BNBUSDT',
+$response = $client->isolatedMarginTierData(
+    'BNBUSDT',
     [
         'tier' => '1',
         'recvWindow' => 5000
