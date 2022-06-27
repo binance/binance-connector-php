@@ -24,6 +24,6 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --ignore-platform-req=php
     - name: php lint
-      run: vendor/bin/php-cs-fixer fix --dry-run --stop-on-violation --using-cache=no --rules=-constant_case -v .
+      run: vendor/bin/php-cs-fixer fix --dry-run --stop-on-violation --using-cache=no --config=.php-cs-fixer.php -v
     - name: php unit test
       run: vendor/bin/phpunit
