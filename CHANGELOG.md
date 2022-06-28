@@ -1,8 +1,16 @@
 # CHANGELOG
 
 ## 1.1.0 - TBA
-- Add endpoint `GET /api/v3/ticker`
-- Add endpoint `POST /api/v3/order/cancelReplace`
+
+### Add
+
+- New endpoint `GET /api/v3/ticker`
+- New endpoint `POST /api/v3/order/cancelReplace`
+- New websocket stream `<symbol>@ticker_<window_size>`
+- New websocket stream `!ticker_<window-size>@arr`
+
+### Update
+
 - Pump `guzzlehttp/guzzle` to latest version
 - Apply lint fix
 
