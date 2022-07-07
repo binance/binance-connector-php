@@ -14,4 +14,3 @@ $callbacks = [
 ];
 
 $client->rollingWindowTickerAllSymbols('1h', $callbacks);
-

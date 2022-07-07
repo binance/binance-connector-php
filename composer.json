@@ -36,7 +36,8 @@
     "scripts": {
         "test": "phpunit",
         "test-coverage": "XDEBUG_MODE=coverage phpunit --coverage-html=build/artifacts/coverage",
-        "lint-fix": "php-cs-fixer fix --using-cache=no --rules=-constant_case -v .",
+        "lint-check": "php-cs-fixer fix --using-cache=no --stop-on-violation --config=.php-cs-fixer.php -v .",
+        "lint-fix": "php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.php -v .",
         "analyze": "phan --allow-polyfill-parser"
     }
 
