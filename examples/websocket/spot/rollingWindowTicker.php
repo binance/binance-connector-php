@@ -14,4 +14,3 @@ $callbacks = [
 ];
 
 $client->rollingWindowTicker('bnbusdt', '1h', $callbacks);
-
