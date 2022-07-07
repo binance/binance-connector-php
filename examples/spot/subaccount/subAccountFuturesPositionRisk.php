@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->subAccountFuturesPositionRisk('testaccount@email.com',
+$response = $client->subAccountFuturesPositionRisk(
+    'testaccount@email.com',
     [
         'recvWindow' => 5000
     ]

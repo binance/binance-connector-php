@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->miningEarning('sha256',
+$response = $client->miningEarning(
+    'sha256',
     [
         'recvWindow' => 5000
     ]

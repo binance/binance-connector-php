@@ -406,4 +406,49 @@ trait Trade
     {
         return $this->signRequest('GET', '/api/v3/rateLimit/order', $options);
     }
+
+    /**
+     * Cancel an Existing Order and Send a New Order (TRADE)
+     *
+     * POST /api/v3/order/cancelReplace
+     *
+     * Cancels an existing order and places a new order on the same symbol.
+     *
+     * Filters are evaluated before the cancel order is placed.
+     *
+     * If the new order placement is successfully sent to the engine, the order count will increase by 1.
+     *
+     * Weight(IP): 1
+     *
+     * @param string $symbol
+     * @param string $side
+     * @param string $type
+     * @param string $cancelReplaceMode
+     * @param array $options
+     */
+    public function cancelAndReplace(string $symbol, string $side, string $type, string $cancelReplaceMode, array $options = [])
+    {
+        if (Strings::isEmpty($symbol)) {
+            throw new MissingArgumentException('symbol');
+        }
+        if (Strings::isEmpty($side)) {
+            throw new MissingArgumentException('side');
+        }
+        if (Strings::isEmpty($type)) {
+            throw new MissingArgumentException('type');
+        }
+        if (Strings::isEmpty($cancelReplaceMode)) {
+            throw new MissingArgumentException('cancelReplaceMode');
+        }
+
+        return $this->signRequest('POST', '/api/v3/order/cancelReplace', array_merge(
+            $options,
+            [
+                'symbol' => $symbol,
+                'side' => $side,
+                'type' => $type,
+                'cancelReplaceMode' => $cancelReplaceMode
+            ]
+        ));
+    }
 }

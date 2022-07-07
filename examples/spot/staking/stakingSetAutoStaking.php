@@ -10,7 +10,10 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->stakingSetAutoStaking('STAKING', '1234', 'true',
+$response = $client->stakingSetAutoStaking(
+    'STAKING',
+    '1234',
+    'true',
     [
         'recvWindow' => 5000
     ]

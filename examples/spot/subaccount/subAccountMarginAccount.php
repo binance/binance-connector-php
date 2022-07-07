@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->subAccountMarginAccount('testaccount@email.com',
+$response = $client->subAccountMarginAccount(
+    'testaccount@email.com',
     [
         'recvWindow' => 5000
     ]

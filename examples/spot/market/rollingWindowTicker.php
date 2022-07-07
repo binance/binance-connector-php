@@ -4,10 +4,10 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 
 $client = new \Binance\Spot();
 
-$response = $client->trades(
-    'BNBUSDT',
+$response = $client->rollingWindowTicker(
     [
-        'limit' => 500
+        'symbol' => 'BNBUSDT',
+        'windowSize' => '1d'
     ]
 );
 

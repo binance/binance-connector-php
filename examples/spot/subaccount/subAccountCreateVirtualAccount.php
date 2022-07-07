@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->subAccountCreateVirtualAccount('testaccount',
+$response = $client->subAccountCreateVirtualAccount(
+    'testaccount',
     [
         'recvWindow' => 5000
     ]

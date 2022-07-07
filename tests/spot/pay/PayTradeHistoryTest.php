@@ -17,16 +17,16 @@ class PayTradeHistoryTest extends BaseTestCase
             ->withUrl(new Expect\Equals('/sapi/v1/pay/transactions'))
             ->withMethod('GET')
             ->withQueryParams(new Expect\ArrayEquals([
-                'startTimestamp' => '1640995200000',
-                'endTimestamp' => '1640995200000',
+                'startTime' => '1640995200000',
+                'endTime' => '1640995200000',
                 'limit' => '100',
                 'recvWindow' => '5000'
             ]), ['timestamp', 'signature'])
             ->andRespondWithJson($this->data, $statusCode = 200);
 
         $response = $this->spotClient->payTradeHistory([
-            'startTimestamp' => 1640995200000,
-            'endTimestamp' => 1640995200000,
+            'startTime' => 1640995200000,
+            'endTime' => 1640995200000,
             'limit' => 100,
             'recvWindow' => 5000
         ]);

@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->savingsInterestHistory('DAILY',
+$response = $client->savingsInterestHistory(
+    'DAILY',
     [
         'asset' => 'BNB',
         'current' => 1,

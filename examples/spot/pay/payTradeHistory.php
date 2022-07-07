@@ -12,8 +12,8 @@ $client = new \Binance\Spot([
 
 $response = $client->payTradeHistory(
     [
-        'startTimestamp' => 1640995200000,
-        'endTimestamp' => 1640995200000,
+        'startTime' => 1640995200000,
+        'endTime' => 1640995200000,
         'limit' => 100,
         'recvWindow' => 5000
     ]

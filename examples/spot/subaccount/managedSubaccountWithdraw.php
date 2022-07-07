@@ -10,7 +10,10 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->managedSubAccountWithdraw('testaccount@email.com', 'BTC', 1.01,
+$response = $client->managedSubAccountWithdraw(
+    'testaccount@email.com',
+    'BTC',
+    1.01,
     [
         'transferDate' => 1640995200000,
         'recvWindow' => 5000

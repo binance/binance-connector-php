@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->savingsRedemptionRecord('DAILY',
+$response = $client->savingsRedemptionRecord(
+    'DAILY',
     [
         'asset' => 'BNB',
         'current' => 1,

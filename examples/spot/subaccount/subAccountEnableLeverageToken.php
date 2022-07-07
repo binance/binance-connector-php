@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->subAccountEnableLeverageToken('testaccount@email.com', true,
+$response = $client->subAccountEnableLeverageToken(
+    'testaccount@email.com',
+    true,
     [
         'recvWindow' => 5000
     ]

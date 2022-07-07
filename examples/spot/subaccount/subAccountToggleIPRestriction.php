@@ -10,7 +10,10 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->subAccountToggleIpRestriction('testaccount@email.com', 'subAccountApiKey', true,
+$response = $client->subAccountToggleIpRestriction(
+    'testaccount@email.com',
+    'subAccountApiKey',
+    true,
     [
         'recvWindow' => 5000
     ]

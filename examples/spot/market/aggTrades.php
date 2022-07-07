@@ -4,7 +4,8 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 
 $client = new \Binance\Spot();
 
-$response = $client->aggTrades('BNBUSDT',
+$response = $client->aggTrades(
+    'BNBUSDT',
     [
         'fromId' => 123,
         'startTime' => 1640995200000,

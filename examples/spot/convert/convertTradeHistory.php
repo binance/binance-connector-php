@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->convertTradeHistory(1563189166000, 1563282766000,
+$response = $client->convertTradeHistory(
+    1563189166000,
+    1563282766000,
     [
         'limit' => 100,
         'recvWindow' => 5000

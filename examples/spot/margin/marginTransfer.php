@@ -10,7 +10,10 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->marginTransfer('BTC', 1.01, 1,
+$response = $client->marginTransfer(
+    'BTC',
+    1.01,
+    1,
     [
         'recvWindow' => 5000
     ]

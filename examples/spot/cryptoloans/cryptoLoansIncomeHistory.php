@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->cryptoLoansIncomeHistory('BTC',
+$response = $client->cryptoLoansIncomeHistory(
+    'BTC',
     [
         'type' => 'borrowIn',
         'startTime' => 1640995200000,

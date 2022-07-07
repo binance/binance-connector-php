@@ -10,7 +10,10 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->swapSend('USDT', 'BUSD', 12415.2,
+$response = $client->swapSend(
+    'USDT',
+    'BUSD',
+    12415.2,
     [
         'recvWindow' => 5000
     ]

@@ -13,5 +13,4 @@ $callbacks = [
     }
 ];
 
-# replace with your own listen key
-$client->userData('<listen_key>', $callbacks);
+$client->rollingWindowTickerAllSymbols('1h', $callbacks);

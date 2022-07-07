@@ -10,7 +10,11 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->swapAddLiquidityPreview(2, 'SINGLE', 'USDT', 12415.2,
+$response = $client->swapAddLiquidityPreview(
+    2,
+    'SINGLE',
+    'USDT',
+    12415.2,
     [
         'recvWindow' => 5000
     ]

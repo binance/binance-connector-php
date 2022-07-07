@@ -14,7 +14,7 @@ trait Fiat
      *
      * - If beginTime and endTime are not sent, the recent 30-day data will be returned.
      *
-     * Weight(IP): 1
+     * Weight(UID): 90000
      *
      * @param string $transactionType
      * @param array $options

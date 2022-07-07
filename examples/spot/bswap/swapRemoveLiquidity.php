@@ -10,7 +10,10 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->swapRemoveLiquidity(2, 'SINGLE', 12415.2,
+$response = $client->swapRemoveLiquidity(
+    2,
+    'SINGLE',
+    12415.2,
     [
         'asset' => ['BNB'],
         'recvWindow' => 5000

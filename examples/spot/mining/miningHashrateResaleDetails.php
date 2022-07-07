@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->miningHashrateResaleDetails('168', 'username',
+$response = $client->miningHashrateResaleDetails(
+    '168',
+    'username',
     [
         'pageIndex' => 2,
         'pageSize' => 20,

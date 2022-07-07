@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->marginInterestRateHistory('BTC',
+$response = $client->marginInterestRateHistory(
+    'BTC',
     [
         'recvWindow' => 5000
     ]

@@ -140,6 +140,36 @@ class Spot extends Websocket
     }
 
     /*
+     * Individual Symbol Rolling Window Statistics Streams
+     *
+     * Rolling window ticker statistics for a single symbol, computed over multiple windows.
+     *
+     * Stream Name: <symbol>@ticker_<window_size>
+     * Window Sizes: 1h, 4h
+     * Update Speed: 1000ms
+     */
+    public function rollingWindowTicker($symbol, $windowSize, $callback)
+    {
+        $url = "{$this->baseURL}/ws/".strtolower($symbol)."@ticker_".$windowSize;
+        $this->handleCallBack($url, $callback);
+    }
+
+    /*
+     * All Market Rolling Window Statistics Streams
+     *
+     * Rolling window ticker statistics for all market symbols, computed over multiple windows. Note that only tickers that have changed will be present in the array.
+     *
+     * Stream Name: !ticker_<window-size>@arr
+     * Window Sizes: 1h, 4h
+     * Update Speed: 1000ms
+     */
+    public function rollingWindowTickerAllSymbols($windowSize, $callback)
+    {
+        $url = "{$this->baseURL}/ws/!ticker_".$windowSize."@arr";
+        $this->handleCallBack($url, $callback);
+    }
+
+    /*
      * Partial Book Depth Streams
      *
      * Top bids and asks, Valid are 5, 10, or 20.
