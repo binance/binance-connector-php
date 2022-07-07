@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->marginCancelOpenOrders('BNBUSDT',
+$response = $client->marginCancelOpenOrders(
+    'BNBUSDT',
     [
         'recvWindow' => 5000
     ]

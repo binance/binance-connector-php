@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->dustTransfer(['BTC', 'USDT'],
+$response = $client->dustTransfer(
+    ['BTC', 'USDT'],
     [
         'recvWindow' => 5000
     ]

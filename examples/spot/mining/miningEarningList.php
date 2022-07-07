@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->miningEarningList('sha256', 'username',
+$response = $client->miningEarningList(
+    'sha256',
+    'username',
     [
         'coin' => 'BNB',
         'startDate' => 1640995200000,

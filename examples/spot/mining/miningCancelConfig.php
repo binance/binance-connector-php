@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->miningCancelConfig(168, 'username',
+$response = $client->miningCancelConfig(
+    168,
+    'username',
     [
         'recvWindow' => 5000
     ]

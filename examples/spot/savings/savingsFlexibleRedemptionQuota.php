@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->savingsFlexibleRedemptionQuota('1234', 'FAST',
+$response = $client->savingsFlexibleRedemptionQuota(
+    '1234',
+    'FAST',
     [
         'recvWindow' => 5000
     ]

@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->marginBorrow('BTC', 1.01,
+$response = $client->marginBorrow(
+    'BTC',
+    1.01,
     [
         'symbol' => 'BNBUSDT',
         'recvWindow' => 5000

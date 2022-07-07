@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->savingsPurchaseCustomizedProject('1234', 1,
+$response = $client->savingsPurchaseCustomizedProject(
+    '1234',
+    1,
     [
         'recvWindow' => 5000
     ]

@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->savingsFlexibleProductPosition('BTC',
+$response = $client->savingsFlexibleProductPosition(
+    'BTC',
     [
         'recvWindow' => 5000
     ]

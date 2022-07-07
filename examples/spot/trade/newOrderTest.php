@@ -10,7 +10,10 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->newOrderTest('BNBUSDT', 'SELL', 'MARKET',
+$response = $client->newOrderTest(
+    'BNBUSDT',
+    'SELL',
+    'MARKET',
     [
         'stopPrice' => 20.01,
         'recvWindow' => 5000

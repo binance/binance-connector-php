@@ -10,7 +10,10 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->subAccountDeleteIpList('testaccount@email.com', 'subAccountApiKey', '000.000.000.000',
+$response = $client->subAccountDeleteIpList(
+    'testaccount@email.com',
+    'subAccountApiKey',
+    '000.000.000.000',
     [
         'recvWindow' => 5000
     ]

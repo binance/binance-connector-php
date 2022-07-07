@@ -10,7 +10,10 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->managedSubAccountDeposit('testaccount@email.com', 'BTC', 1.01,
+$response = $client->managedSubAccountDeposit(
+    'testaccount@email.com',
+    'BTC',
+    1.01,
     [
         'recvWindow' => 5000
     ]

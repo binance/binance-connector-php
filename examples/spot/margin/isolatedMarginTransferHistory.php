@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->isolatedMarginTransferHistory('BNBUSDT',
+$response = $client->isolatedMarginTransferHistory(
+    'BNBUSDT',
     [
         'asset' => 'BNB',
         'transFrom' => 'SPOT',

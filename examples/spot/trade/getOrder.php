@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->getOrder('BNBUSDT',
+$response = $client->getOrder(
+    'BNBUSDT',
     [
         'orderId' => 11,
         'recvWindow' => 5000

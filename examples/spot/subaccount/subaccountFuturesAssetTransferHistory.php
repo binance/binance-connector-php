@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->subAccountFuturesAssetTransferHistory('testaccount@email.com', 2,
+$response = $client->subAccountFuturesAssetTransferHistory(
+    'testaccount@email.com',
+    2,
     [
         'startTime' => 1640995200000,
         'endTime' => 1640995200000,

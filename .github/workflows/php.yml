@@ -22,8 +22,8 @@ jobs:
       with:
         php-version: ${{ matrix.php-versions }}
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+      run: composer install --prefer-dist --no-progress --ignore-platform-req=php
     - name: php lint
-      run: vendor/bin/php-cs-fixer fix --stop-on-violation .
+      run: composer lint-check
     - name: php unit test
       run: vendor/bin/phpunit

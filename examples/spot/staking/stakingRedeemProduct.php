@@ -10,7 +10,9 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->stakingRedeemProduct('STAKING', 'Axs*90',
+$response = $client->stakingRedeemProduct(
+    'STAKING',
+    'Axs*90',
     [
         'recvWindow' => 5000
     ]

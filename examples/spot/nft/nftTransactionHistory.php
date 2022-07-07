@@ -10,7 +10,8 @@ $client = new \Binance\Spot([
     'secret'  => $secret
 ]);
 
-$response = $client->nftTransactionHistory(1,
+$response = $client->nftTransactionHistory(
+    1,
     [
         'startTime' => 1640995200000,
         'endTime' => 1640995200000,
