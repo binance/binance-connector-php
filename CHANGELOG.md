@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 1.2.0 - 2022-07-19
+
+### Added
+
+- New endpoint `POST /sapi/v3/asset/getUserAsset`
+- New endpoint `GET /sapi/v1/margin/dribblet`
+
+### Update
+
+- Updated endpoint `GET /sapi/v1/convert/tradeFlow` weight
+
 ## 1.1.0 - 2022-07-07
 
 ### Add
