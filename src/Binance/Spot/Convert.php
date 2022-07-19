@@ -11,7 +11,7 @@ trait Convert
      *
      * - The max interval between startTime and endTime is 30 days.
      *
-     * Weight(UID): 3000
+     * Weight(UID): 100
      *
      * @param int $startTime
      * @param int $endTime
