@@ -1009,4 +1009,20 @@ trait Margin
     {
         return $this->signRequest('GET', '/sapi/v1/margin/rateLimit/order', $options);
     }
+
+    /**
+     * Margin Dustlog (USER_DATA)
+     *
+     * GET /sapi/v1/margin/dribblet
+     *
+     * Query the historical information of user's margin account small-value asset conversion BNB.
+     *
+     * Weight(IP): 1
+     *
+     * @param array $options
+     */
+    public function marginDustLog(array $options = [])
+    {
+        return $this->signRequest('GET', '/sapi/v1/margin/dribblet', $options);
+    }
 }

@@ -428,6 +428,22 @@ trait Wallet
     }
 
     /**
+     * User Asset (USER_DATA)
+     *
+     * POST /sapi/v3/asset/getUserAsset
+     *
+     * Get user assets, just for positive data.
+     *
+     * Weight(IP): 5
+     *
+     * @param array $options
+     */
+    public function userAsset(array $options = [])
+    {
+        return $this->signRequest('POST', '/sapi/v3/asset/getUserAsset', $options);
+    }
+
+    /**
      * Funding Wallet (USER_DATA)
      *
      * POST /sapi/v1/asset/get-funding-asset
