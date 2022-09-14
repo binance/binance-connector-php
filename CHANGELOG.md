@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 1.3.0 - 2022-09-14
+
+### Added
+
+- New endpoints for Portfolio Margin:
+  - `GET /sapi/v1/portfolio/pmLoan` to query Portfolio Margin Bankruptcy Loan Record.
+  - `POST /sapi/v1/portfolio/repay` to repay Portfolio Margin Bankruptcy Loan.
+  - `GET /sapi/v1/portfolio/collateralRate` to get Portfolio Margin Collateral Rate.
+
 ## 1.2.0 - 2022-07-19
 
 ### Added
