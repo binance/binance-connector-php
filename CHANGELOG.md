@@ -1,5 +1,11 @@
 # CHANGELOG
 
+
+## 1.4.0 - 2022-12-20
+
+### Added
+- Support RSA signature
+
 ## 1.3.0 - 2022-09-14
 
 ### Added

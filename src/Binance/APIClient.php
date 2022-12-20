@@ -35,6 +35,13 @@ abstract class APIClient
     private $secret;
 
     /**
+     * RSA private key
+     *
+     * @var string|OpenSSLAsymmetricKey
+     */
+    private $privateKey;
+
+    /**
      * The logger instance
      */
     private $logger;
@@ -74,6 +81,7 @@ abstract class APIClient
         $this->timeout         = $args['timeout'] ?? 0;
         $this->showWeightUsage = $args['showWeightUsage'] ?? false;
         $this->showHeader      = $args['showHeader'] ?? false;
+        $this->privateKey      = $args['privateKey'] ?? null;
         $this->buildClient($args['httpClient'] ?? null);
     }
 
@@ -93,8 +101,13 @@ abstract class APIClient
     {
         $params['timestamp'] = round(microtime(true) * 1000);
         $query = Url::buildQuery($params);
-        $params['signature'] = hash_hmac('sha256', $query, $this->secret);
 
+        if ($this->privateKey) {
+            openssl_sign($query, $binary_signature, $this->privateKey, OPENSSL_ALGO_SHA256);
+            $params['signature']= base64_encode($binary_signature);
+        } else {
+            $params['signature'] = hash_hmac('sha256', $query, $this->secret);
+        }
         return $this->processRequest($method, $path, $params);
     }
 
