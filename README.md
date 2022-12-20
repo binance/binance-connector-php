@@ -29,6 +29,35 @@ echo json_encode($response);
 
 Please find `examples` folder for more endpoints
 
+### RSA Signature
+RSA signature is supported.
+
+```php
+
+# RSA Key(Unencrypted) Authentication
+$key = ''; # api key is also required
+$privateKey = 'file:///path/to/rsa/private/key.pem';
+
+$client = new \Binance\Spot([
+    'key'  => $key,
+    'privateKey'  => $privateKey, # pass the key file directly
+    'baseURL' => 'https://testnet.binance.vision'
+]);
+
+# RSA key(Encrypted) Authentication
+$key = '';
+$encryptedPrivateKey = 'file:///path/to/rsa/private/key.pem';
+$privateKey = openssl_pkey_get_private($encryptedPrivateKey, 'password');
+
+$client = new \Binance\Spot([
+    'key'  => $key,
+    'privateKey'  => $privateKey,
+    'baseURL' => 'https://testnet.binance.vision'
+]);
+
+```
+
+
 ### Testnet
 
 The [spot testnet](https://testnet.binance.vision/) is available. In order to test on testnet:
