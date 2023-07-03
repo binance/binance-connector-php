@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.4.1 - 2023-07-03
+
+### Update
+- Update `guzzlehttp/guzzle` to latest version
 
 ## 1.4.0 - 2022-12-20
 
