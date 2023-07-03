@@ -4,6 +4,7 @@
 
 ### Update
 - Update `guzzlehttp/guzzle` to latest version
+- Drop support of PHP 7.* or 8.0
 
 ## 1.4.0 - 2022-12-20
 
