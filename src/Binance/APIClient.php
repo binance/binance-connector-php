@@ -184,7 +184,8 @@ abstract class APIClient
                 'X-MBX-APIKEY' => $this->key,
                 'User-Agent'   => 'binance-connect-php'
             ],
-            'timeout' => $this->timeout
+            'timeout' => $this->timeout,
+            'http_errors' => false,
         ]);
     }
 }
