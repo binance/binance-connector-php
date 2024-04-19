@@ -472,4 +472,30 @@ trait Wallet
     {
         return $this->signRequest('GET', '/sapi/v1/account/apiRestrictions', $options);
     }
+
+    /**
+     * Fetch deposit address list with network(USER_DATA)
+     *
+     * GET /sapi/v1/capital/deposit/address/list
+     *
+     * Fetch deposit address list with network.
+     *
+     * Weight(IP): 10
+     *
+     * @param string $coin
+     * @param array $options
+     */
+    public function fetchDepositAddressListNetwork(string $coin, array $options = [])
+    {
+        if (Strings::isEmpty($coin)) {
+            throw new MissingArgumentException('coin');
+        }
+
+        return $this->signRequest('GET', '/sapi/v1/capital/deposit/address/list', array_merge(
+            $options,
+            [
+                'coin' => $coin
+            ]
+        ));
+    }
 }
