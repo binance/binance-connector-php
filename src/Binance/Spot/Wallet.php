@@ -472,4 +472,22 @@ trait Wallet
     {
         return $this->signRequest('GET', '/sapi/v1/account/apiRestrictions', $options);
     }
+
+    /**
+     * Query User Wallet Balance (USER_DATA)
+     *
+     * GET /sapi/v1/asset/wallet/balance
+     *
+     * - Query User Wallet Balance
+     *
+     * Weight(IP): 60
+     *
+     * @param array $options
+     */
+
+    public function queryUserWalletBalance(array $options = [])
+    {
+        return $this->signRequest('GET', '/sapi/v1/asset/wallet/balance', $options);
+    }
+
 }
