@@ -472,4 +472,20 @@ trait Wallet
     {
         return $this->signRequest('GET', '/sapi/v1/account/apiRestrictions', $options);
     }
+
+    /**
+     * One click arrival deposit apply (for expired address deposit) (USER_DATA)
+     *
+     * POST /sapi/v1/capital/deposit/credit-apply
+     *
+     * - Apply deposit credit for expired address (One click arrival)
+     *
+     * Weight(UID): 1
+     *
+     * @param array $options
+     */
+    public function depositCreditApply(array $options = [])
+    {
+        return $this->signRequest('POST', '/sapi/v1/capital/deposit/credit-apply', $options);
+    }
 }
