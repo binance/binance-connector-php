@@ -4,6 +4,7 @@ namespace Binance\Spot;
 
 use Binance\Util\Strings;
 use Binance\Exception\MissingArgumentException;
+use Binance\Exception\InvalidArgumentException;
 
 trait Trade
 {
@@ -160,7 +161,7 @@ trait Trade
      * - Either `orderId` or `origClientOrderId` must be sent.
      * - For some historical orders `cummulativeQuoteQty` will be < 0, meaning the data is not available at this time.
      *
-     * Weight(IP): 2
+     * Weight(IP): 4
      *
      * @param string $symbol
      * @param array $options
@@ -187,8 +188,8 @@ trait Trade
      * Get all open orders on a symbol. Careful when accessing this with no symbol.
      *
      * Weight(IP):
-     * - `3` for a single symbol;
-     * - `40` when the symbol parameter is omitted;
+     * - `6` for a single symbol;
+     * - `80` when the symbol parameter is omitted;
      *
      * @param array $options
      */
@@ -208,7 +209,7 @@ trait Trade
      * - For some historical orders `cummulativeQuoteQty` will be < 0, meaning the data is not available at this time.
      * - If `startTime` and/or `endTime` provided, `orderId` is not required
      *
-     * Weight(IP): 10
+     * Weight(IP): 20
      *
      * @param string $symbol
      * @param array $options
@@ -308,7 +309,7 @@ trait Trade
      *
      * Retrieves a specific OCO based on provided optional parameters
      *
-     * Weight(IP): 2
+     * Weight(IP): 4
      *
      * @param array $options
      */
@@ -324,7 +325,7 @@ trait Trade
      *
      * Retrieves all OCO based on provided optional parameters
      *
-     * Weight(IP): 10
+     * Weight(IP): 20
      *
      * @param array $options
      */
@@ -338,7 +339,7 @@ trait Trade
      *
      * GET /api/v3/openOrderList
      *
-     * Weight(IP): 3
+     * Weight(IP): 6
      *
      * @param array $options
      */
@@ -354,7 +355,7 @@ trait Trade
      *
      * Get current account information.
      *
-     * Weight(IP): 10
+     * Weight(IP): 20
      *
      * @param array $options
      */
@@ -372,7 +373,7 @@ trait Trade
      *
      * If `fromId` is set, it will get id >= that `fromId`. Otherwise most recent orders are returned.
      *
-     * Weight(IP): 10
+     * Weight(IP): 20
      *
      * @param string $symbol
      * @param array $options
@@ -398,13 +399,108 @@ trait Trade
      *
      * Displays the user's current order count usage for all intervals.
      *
-     * Weight(IP): 20
+     * Weight(IP): 40
      *
      * @param array $options
      */
     public function orderLimitUsage(array $options = [])
     {
         return $this->signRequest('GET', '/api/v3/rateLimit/order', $options);
+    }
+
+    /**
+     * Query Prevented Matches (USER_DATA)
+     *
+     * GET /api/v3/myPreventedMatches
+     *
+     * Displays the list of orders that were expired because of STP.
+     * These are the combinations supported:
+     *  - symbol + preventedMatchId
+     *  - symbol + orderId
+     *  - symbol + orderId + fromPreventedMatchId (limit will default to 500)
+     *  - symbol + orderId + fromPreventedMatchId + limit
+     *
+     * Weight(IP)
+     *  - If symbol is invalid 	         2
+     *  - Querying by preventedMatchId   2
+     *  - Querying by orderId 	        20
+     *
+     * @param string $symbol
+     * @param array $options
+     */
+    public function myPreventedMatches(string $symbol, array $options = [])
+    {
+        if (Strings::isEmpty($symbol)) {
+            throw new MissingArgumentException('symbol');
+        }
+
+        return $this->signRequest('GET', '/api/v3/myPreventedMatches', array_merge(
+            $options,
+            [
+                'symbol' => $symbol
+            ]
+        ));
+    }
+
+    /**
+     * Query Allocations (USER_DATA)
+     *
+     * GET /api/v3/myAllocations
+     *
+     * Retrieves allocations resulting from SOR order placement.
+     * Supported parameter combinations:
+     *   Parameters 	                       Response
+     *   symbol 	                           allocations from oldest to newest
+     *   symbol + startTime 	               oldest allocations since startTime
+     *   symbol + endTime 	                   newest allocations until endTime
+     *   symbol + startTime + endTime 	       allocations within the time range
+     *   symbol + fromAllocationId 	           allocations by allocation ID
+     *   symbol + orderId 	                   allocations related to an order starting with oldest
+     *   symbol + orderId + fromAllocationId   allocations related to an order by allocation ID
+     *
+     * Weight: 20
+     *
+     * @param string $symbol
+     * @param array $options
+     */
+    public function myAllocations(string $symbol, array $options = [])
+    {
+        if (Strings::isEmpty($symbol)) {
+            throw new MissingArgumentException('symbol');
+        }
+
+        return $this->signRequest('GET', '/api/v3/myAllocations', array_merge(
+            $options,
+            [
+                'symbol' => $symbol
+            ]
+        ));
+    }
+
+    /**
+     * Query Commission Rates (USER_DATA)
+     *
+     * GET /api/v3/account/commission
+     *
+     * Get current account commission rates.
+     *
+     * Weight: 20
+     *
+     * @param string $symbol
+     * @param array $options
+     */
+    public function commissionRates(string $symbol, array $options = [])
+    {
+        if (Strings::isEmpty($symbol)) {
+            throw new MissingArgumentException('symbol');
+        }
+
+        return $this->signRequest('GET', '/api/v3/account/commission', array_merge(
+            $options,
+            [
+                'symbol' => $symbol
+            ]
+        ));
     }
 
     /**
@@ -448,6 +544,90 @@ trait Trade
                 'side' => $side,
                 'type' => $type,
                 'cancelReplaceMode' => $cancelReplaceMode
+            ]
+        ));
+    }
+
+    /**
+     * New order using SOR (TRADE)
+     *
+     * POST /api/v3/sor/order
+     *
+     * Places an order using smart order routing (SOR).
+     *
+     * Weight: 1
+     *
+     * @param string $symbol
+     * @param string $side
+     * @param string $type
+     * @param float $quantity
+     * @param array $options
+     */
+    public function newOrderSor(string $symbol, string $side, string $type, float $quantity, array $options = [])
+    {
+        if (Strings::isEmpty($symbol)) {
+            throw new MissingArgumentException('symbol');
+        }
+        if (Strings::isEmpty($side)) {
+            throw new MissingArgumentException('side');
+        }
+        if (Strings::isEmpty($type)) {
+            throw new MissingArgumentException('type');
+        }
+        if ($quantity <= 0.0) {
+            throw new InvalidArgumentException('quantity', $quantity, 'greater than 0');
+        }
+
+        return $this->signRequest('POST', '/api/v3/sor/order', array_merge(
+            $options,
+            [
+                'symbol' => $symbol,
+                'side' => $side,
+                'type' => $type,
+                'quantity' => $quantity
+            ]
+        ));
+    }
+
+    /**
+     * Test new order using SOR (TRADE)
+     *
+     * POST /api/v3/sor/order/test
+     *
+     * Test new order creation and signature/recvWindow using smart order routing (SOR).
+     * Creates and validates a new order but does not send it into the matching engine.
+     *
+     * Without computeCommissionRates 	1
+     * With computeCommissionRates 	   20
+     *
+     * @param string $symbol
+     * @param string $side
+     * @param string $type
+     * @param float $quantity
+     * @param array $options
+     */
+    public function newOrderSorTest(string $symbol, string $side, string $type, float $quantity, array $options = [])
+    {
+        if (Strings::isEmpty($symbol)) {
+            throw new MissingArgumentException('symbol');
+        }
+        if (Strings::isEmpty($side)) {
+            throw new MissingArgumentException('side');
+        }
+        if (Strings::isEmpty($type)) {
+            throw new MissingArgumentException('type');
+        }
+        if ($quantity <= 0.0) {
+            throw new InvalidArgumentException('quantity', $quantity, 'greater than 0');
+        }
+
+        return $this->signRequest('POST', '/api/v3/sor/order/test', array_merge(
+            $options,
+            [
+                'symbol' => $symbol,
+                'side' => $side,
+                'type' => $type,
+                'quantity' => $quantity
             ]
         ));
     }
