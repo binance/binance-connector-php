@@ -164,8 +164,14 @@ trait Wallet
      * - `network` may not be in the response for old withdraw.
      * - Please notice the default `startTime` and `endTime` to make sure that time interval is within 0-90 days.
      * - If both `startTime` and `endTime` are sent, time between `startTime` and `endTime` must be less than 90 days
+     * - If withdrawOrderId is sent, time between startTime and endTime must be less than 7 days.
+     * - If withdrawOrderId is sent, startTime and endTime are not sent, will return last 7 days records by default.
+     * - This endpoint specifically uses per second UID rate limit, user's total second level UID rate limit is 180000/second.
+     *   Response from the endpoint contains header key X-SAPI-USED-UID-WEIGHT-1S, which defines weight used by the current UID.
      *
-     * Weight(IP): 1
+     * Weight(UID): 18000
+     *
+     * Request Limit: 10 requests per second
      *
      * @param array $options
      */
@@ -460,6 +466,22 @@ trait Wallet
     }
 
     /**
+     * Get symbols delist schedule for spot (MARKET_DATA)
+     *
+     * GET /sapi/v1/spot/delist-schedule
+     *
+     * - Get symbols delist schedule for spot
+     *
+     * Weight(IP): 100
+     *
+     * @param array $options
+     */
+    public function getSymbolsDelistScheduleForSpot(array $options = [])
+    {
+        return $this->publicRequest('GET', '/sapi/v1/spot/delist-schedule', $options);
+    }
+
+    /**
      * Get API Key Permission (USER_DATA)
      *
      * GET /sapi/v1/account/apiRestrictions
@@ -471,5 +493,151 @@ trait Wallet
     public function apiKeyPermission(array $options = [])
     {
         return $this->signRequest('GET', '/sapi/v1/account/apiRestrictions', $options);
+    }
+
+    /**
+     * One click arrival deposit apply (for expired address deposit) (USER_DATA)
+     *
+     * POST /sapi/v1/capital/deposit/credit-apply
+     *
+     * - Apply deposit credit for expired address (One click arrival)
+     *
+     * Weight(IP): 1
+     *
+     * @param array $options
+     */
+    public function depositCreditApply(array $options = [])
+    {
+        return $this->signRequest('POST', '/sapi/v1/capital/deposit/credit-apply', $options);
+    }
+
+    /**
+     * Query auto-converting stable coins (USER_DATA)
+     *
+     * GET /sapi/v1/capital/contract/convertible-coins
+     *
+     * - Get a user's auto-conversion settings in deposit/withdrawal
+     *
+     * Weight(UID): 600
+     *
+     * @param array $options
+     */
+    public function queryAutoConvertingStableCoin(array $options = [])
+    {
+        return $this->signRequest('GET', '/sapi/v1/capital/contract/convertible-coins', $options);
+    }
+
+    /**
+     * Query User Wallet Balance (USER_DATA)
+     *
+     * GET /sapi/v1/asset/wallet/balance
+     *
+     * - Query User Wallet Balance
+     *
+     * Weight(IP): 60
+     *
+     * @param array $options
+     */
+    public function queryUserWalletBalance(array $options = [])
+    {
+        return $this->signRequest('GET', '/sapi/v1/asset/wallet/balance', $options);
+    }
+
+    /**
+     * Fetch deposit address list with network (USER_DATA)
+     *
+     * GET /sapi/v1/capital/deposit/address/list
+     *
+     * Fetch deposit address list with network.
+     *
+     * Weight(IP): 10
+     *
+     * @param string $coin
+     * @param array $options
+     */
+    public function fetchDepositAddressListNetwork(string $coin, array $options = [])
+    {
+        if (Strings::isEmpty($coin)) {
+            throw new MissingArgumentException('coin');
+        }
+
+        return $this->signRequest('GET', '/sapi/v1/capital/deposit/address/list', array_merge(
+            $options,
+            [
+                'coin' => $coin
+            ]
+        ));
+    }
+
+    /**
+     * Switch on/off BUSD and stable coins conversion (USER_DATA)
+     *
+     * POST /sapi/v1/capital/contract/convertible-coins
+     *
+     * User can use it to turn on or turn off the BUSD auto-conversion from/to a specific stable coin.
+     *
+     * Weight(UID): 600
+     *
+     * @param string $coin
+     * @param bool $enable
+     * @param array $options
+     */
+    public function switchConvertCoin(string $coin, bool $enable, array $options = [])
+    {
+        if (Strings::isEmpty($coin)) {
+            throw new MissingArgumentException('coin');
+        }
+
+        return $this->signRequest('POST', '/sapi/v1/capital/contract/convertible-coins', array_merge(
+            $options,
+            [
+                'coin' => $coin,
+                'enable' => $enable
+            ]
+        ));
+    }
+
+    /**
+     * Query User Delegation History(For Master Account)(USER_DATA)
+     *
+     * GET /sapi/v1/asset/custody/transfer-history
+     *
+     * Query User Delegation History
+     *
+     * Weight(IP): 60
+     *
+     * @param string $email
+     * @param int $startTime
+     * @param int $endTime
+     * @param array $options
+     */
+    public function custodyTransferHistory(string $email, int $startTime, int $endTime, array $options = [])
+    {
+        if (Strings::isEmpty($email)) {
+            throw new MissingArgumentException('email');
+        }
+
+        return $this->signRequest('GET', '/sapi/v1/asset/custody/transfer-history', array_merge(
+            $options,
+            [
+                'email' => $email,
+                'startTime' => $startTime,
+                'endTime' => $endTime
+            ]
+        ));
+    }
+
+    /**
+     * Fetch withdraw address list (USER_DATA)
+     *
+     * GET /sapi/v1/capital/withdraw/address/list
+     *
+     * Fetch withdraw address list
+     *
+     * Weight(IP): 10
+     */
+    public function withdrawAddressList()
+    {
+        return $this->signRequest('GET', '/sapi/v1/capital/withdraw/address/list');
     }
 }
