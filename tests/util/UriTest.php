@@ -18,7 +18,7 @@ final class UriTest extends TestCase
         $this->assertEquals(Url::buildQuery(['foo' => FALSE]), 'foo=false');
         $this->assertEquals(Url::buildQuery(['foo' => 'bar', 'key' => 'value']), 'foo=bar&key=value');
         $this->assertEquals(Url::buildQuery(['foo' => ['bar', 'baz']]), 'foo=bar&foo=baz');
-        $this->assertEquals(Url::buildQuery(['foo' => ['bar', 'baz'], 'key'=>'value']), 'foo=bar&foo=baz&key=value');
+        $this->assertEquals(Url::buildQuery(['foo' => ['bar', 'baz'], 'key' => 'value']), 'foo=bar&foo=baz&key=value');
         $this->assertEquals(Url::buildQuery(['foo' => 'alice@email.com']), 'foo=alice%40email.com');
     }
 }

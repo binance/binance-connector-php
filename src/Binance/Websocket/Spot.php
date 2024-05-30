@@ -87,7 +87,7 @@ class Spot extends Websocket
     *
     * Update Speed: 1000ms
     */
-    public function miniTicker($callback, $symbol=null)
+    public function miniTicker($callback, $symbol = null)
     {
         if ($symbol) {
             $url = "{$this->baseURL}/ws/". strtolower($symbol) . "@miniTicker";
@@ -109,7 +109,7 @@ class Spot extends Websocket
     *
     * Update Speed: 1000ms
     */
-    public function ticker($callback, $symbol=null)
+    public function ticker($callback, $symbol = null)
     {
         if ($symbol) {
             $url = "{$this->baseURL}/ws/". strtolower($symbol) . "@ticker";
@@ -129,7 +129,7 @@ class Spot extends Websocket
      *
      * Update Speed: realtime
      */
-    public function bookTicker($callback, $symbol=null)
+    public function bookTicker($callback, $symbol = null)
     {
         if ($symbol) {
             $url = "{$this->baseURL}/ws/". strtolower($symbol) . "@bookTicker";
