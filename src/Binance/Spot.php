@@ -7,10 +7,10 @@ use Binance\APIClient;
 class Spot extends APIClient
 {
     use Spot\BLVT;
-    use Spot\BSwap;
     use Spot\C2C;
     use Spot\Convert;
     use Spot\CryptoLoans;
+    use Spot\DualInvestment;
     use Spot\Fiat;
     use Spot\GiftCard;
     use Spot\IsolatedMarginStream;
@@ -23,7 +23,6 @@ class Spot extends APIClient
     use Spot\PortfolioMargin;
     use Spot\Rebate;
     use Spot\Savings;
-    use Spot\Staking;
     use Spot\Stream;
     use Spot\SubAccount;
     use Spot\Trade;

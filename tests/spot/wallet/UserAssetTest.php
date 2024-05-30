@@ -2,7 +2,6 @@
 
 use Binance\Tests\BaseTestCase;
 use Aeris\GuzzleHttpMock\Expect;
-use Binance\Exception\MissingArgumentException;
 
 class UserAssetTest extends BaseTestCase
 {
