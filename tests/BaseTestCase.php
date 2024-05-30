@@ -17,7 +17,7 @@ abstract class BaseTestCase extends TestCase
     protected function setUp(): void
     {
         $this->httpMock = new \Aeris\GuzzleHttpMock\Mock();
-        $this->data = ['key'=> 'value', 'key2'=> 'value'];
+        $this->data = ['key' => 'value', 'key2' => 'value'];
         $guzzleClient = new \GuzzleHttp\Client([
             'handler' => $this->httpMock->getHandlerStackWithMiddleware()
         ]);
