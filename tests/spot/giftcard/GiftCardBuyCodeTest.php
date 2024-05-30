@@ -3,6 +3,7 @@
 use Binance\Tests\BaseTestCase;
 use Aeris\GuzzleHttpMock\Expect;
 use Binance\Exception\MissingArgumentException;
+use Binance\Exception\InvalidArgumentException;
 
 class GiftCardBuyCodeTest extends BaseTestCase
 {
@@ -11,10 +12,22 @@ class GiftCardBuyCodeTest extends BaseTestCase
         parent::setUp();
     }
 
-    public function testGiftCardBuyCodeThrowsExceptionWithoutReferenceNo()
+    public function testGiftCardBuyCodeThrowsExceptionWithoutBaseToken()
     {
         $this->expectException(MissingArgumentException::class);
-        $response = $this->spotClient->giftCardBuyCode('','',1.01);
+        $response = $this->spotClient->giftCardBuyCode('', 'BNB', 1.002);
+    }
+
+    public function testGiftCardBuyCodeThrowsExceptionWithoutFaceToken()
+    {
+        $this->expectException(MissingArgumentException::class);
+        $response = $this->spotClient->giftCardBuyCode('BUSD', '', 1.002);
+    }
+
+    public function testGiftCardBuyCodeThrowsExceptionWithoutBaseTokenAmount()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $response = $this->spotClient->giftCardBuyCode('BUSD', 'BNB', 0.0);
     }
 
     public function testGiftCardBuyCode()

@@ -18,11 +18,13 @@ class DepositCreditApplyTest extends BaseTestCase
             ->withMethod('POST')
             ->withQueryParams(new Expect\ArrayEquals([
                 'subUserId' => '500',
+                'recvWindow' => '5000'
             ]), ['timestamp', 'signature'])
             ->andRespondWithJson($this->data, $statusCode = 200);
 
         $response = $this->spotClient->depositCreditApply([
-            'subUserId' => '500'
+            'subUserId' => '500',
+            'recvWindow' => 5000
         ]);
 
         $this->assertEquals($response, $this->data);

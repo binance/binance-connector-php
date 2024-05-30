@@ -476,10 +476,9 @@ trait Wallet
      *
      * @param array $options
      */
-
     public function getSymbolsDelistScheduleForSpot(array $options = [])
     {
-        return $this->signRequest('GET', '/sapi/v1/spot/delist-schedule', $options);
+        return $this->publicRequest('GET', '/sapi/v1/spot/delist-schedule', $options);
     }
 
     /**
@@ -503,7 +502,7 @@ trait Wallet
      *
      * - Apply deposit credit for expired address (One click arrival)
      *
-     * Weight(UID): 1
+     * Weight(IP): 1
      *
      * @param array $options
      */
@@ -539,14 +538,13 @@ trait Wallet
      *
      * @param array $options
      */
-
     public function queryUserWalletBalance(array $options = [])
     {
         return $this->signRequest('GET', '/sapi/v1/asset/wallet/balance', $options);
     }
 
     /**
-     * Fetch deposit address list with network(USER_DATA)
+     * Fetch deposit address list with network (USER_DATA)
      *
      * GET /sapi/v1/capital/deposit/address/list
      *
@@ -570,7 +568,7 @@ trait Wallet
             ]
         ));
     }
-  
+
     /**
      * Switch on/off BUSD and stable coins conversion (USER_DATA)
      *

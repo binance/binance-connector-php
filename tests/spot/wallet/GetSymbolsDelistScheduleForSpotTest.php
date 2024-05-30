@@ -18,7 +18,7 @@ class GetSymbolsDelistScheduleForSpotTest extends BaseTestCase
             ->withMethod('GET')
             ->withQueryParams(new Expect\ArrayEquals([
                 'recvWindow' => '5000'
-            ]), ['timestamp', 'signature'])
+            ]))
             ->andRespondWithJson($this->data, $statusCode = 200);
 
         $response = $this->spotClient->getSymbolsDelistScheduleForSpot([

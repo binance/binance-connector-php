@@ -11,7 +11,7 @@ class GiftCardTokenLimitTest extends BaseTestCase
         parent::setUp();
     }
 
-    public function testGiftCardTokenLimitThrowsExceptionWithoutReferenceNo()
+    public function testGiftCardTokenLimitThrowsExceptionWithoutBaseToken()
     {
         $this->expectException(MissingArgumentException::class);
         $response = $this->spotClient->giftCardTokenLimit('');

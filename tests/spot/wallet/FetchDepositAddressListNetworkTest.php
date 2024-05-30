@@ -11,13 +11,13 @@ class FetchDepositAddressListNetworkTest extends BaseTestCase
         parent::setUp();
     }
 
-    public function testFetchDepositAddressThrowsExceptionWithoutCoin()
+    public function testFetchDepositAddressListNetworkThrowsExceptionWithoutCoin()
     {
         $this->expectException(MissingArgumentException::class);
         $response = $this->spotClient->fetchDepositAddressListNetwork('');
     }
 
-    public function testDepositAddress()
+    public function testFetchDepositAddressListNetwork()
     {
         $this->httpMock
             ->shouldReceiveRequest()
