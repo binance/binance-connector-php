@@ -4,6 +4,7 @@ namespace Binance\Spot;
 
 use Binance\Util\Strings;
 use Binance\Exception\MissingArgumentException;
+use Binance\Exception\InvalidArgumentException;
 
 trait GiftCard
 {
@@ -51,29 +52,32 @@ trait GiftCard
      * You may create a gift card using USDT as baseToken, that is redeemable to another designated token (faceToken).
      * For example, you can create a fixed-value BTC gift card and pay with 100 USDT plus 1 USDT fee.
      * This gift card can keep the value fixed at 100 USDT before redemption, and will be redeemable to BTC equivalent to 100 USDT upon redemption.
-     *
+     * Once successfully created, the amount of baseToken (e.g. USDT) in the fixed-value gift card along with the fee would be deducted from your funding wallet.
+     * To get started with, please make sure:
      * - You have a Binance account
      * - You have passed KYB
      * - You have a sufﬁcient balance(Gift Card amount and fee amount) in your Binance funding wallet
      * - You need Enable Withdrawals for the API Key which requests this endpoint.
      *
-     * Daily creation volume: 2 BTC / 24H Daily creation times: 200 Codes / 24H
-     *
      * Weight(IP): 1
+     * - Daily creation volume: 2 BTC / 24H / account
+     * - Daily creation quantity: 200 Gift Cards / 24H / account
      *
      * @param string $baseToken
      * @param string $faceToken
-     * @param mixed $baseTokenAmount
+     * @param float $baseTokenAmount
      * @param array $options
      */
-    public function giftCardBuyCode(string $baseToken, string $faceToken, $baseTokenAmount, array $options = [])
+    public function giftCardBuyCode(string $baseToken, string $faceToken, float $baseTokenAmount, array $options = [])
     {
         if (Strings::isEmpty($baseToken)) {
             throw new MissingArgumentException('baseToken');
         }
-
         if (Strings::isEmpty($faceToken)) {
             throw new MissingArgumentException('faceToken');
+        }
+        if ($baseTokenAmount <= 0) {
+            throw new InvalidArgumentException('baseTokenAmount', $baseTokenAmount, 'greater than 0');
         }
 
         return $this->signRequest('POST', '/sapi/v1/giftcard/buyCode', array_merge(
@@ -165,7 +169,7 @@ trait GiftCard
      *
      * GET /sapi/v1/giftcard/buyCode/token-limit
      *
-     * This API is to help you verify which tokens are available for you to create Stablecoin-Denominated gift cards as mentioned in section 2 and its’ limitation.
+     * This API is to help you verify which tokens are available for you to create Stablecoin-Denominated gift cards as mentioned in section 2 and its’ limitation
      *
      * Weight(IP): 1
      *
