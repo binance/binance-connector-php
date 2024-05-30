@@ -466,6 +466,23 @@ trait Wallet
     }
 
     /**
+     * Get symbols delist schedule for spot (MARKET_DATA)
+     *
+     * GET /sapi/v1/spot/delist-schedule
+     *
+     * - Get symbols delist schedule for spot
+     *
+     * Weight(IP): 100
+     *
+     * @param array $options
+     */
+
+    public function getSymbolsDelistScheduleForSpot(array $options = [])
+    {
+        return $this->signRequest('GET', '/sapi/v1/spot/delist-schedule', $options);
+    }
+
+    /**
      * Get API Key Permission (USER_DATA)
      *
      * GET /sapi/v1/account/apiRestrictions
