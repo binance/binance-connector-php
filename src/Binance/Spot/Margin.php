@@ -4,33 +4,50 @@ namespace Binance\Spot;
 
 use Binance\Util\Strings;
 use Binance\Exception\MissingArgumentException;
+use Binance\Exception\InvalidArgumentException;
 
 trait Margin
 {
     /**
-     * Cross Margin Account Transfer (MARGIN)
+     * Margin account borrow/repay(MARGIN)
      *
-     * POST /sapi/v1/margin/transfer
+     * POST /sapi/v1/margin/borrow-repay
      *
-     * Execute transfer between spot account and cross margin account.
+     * Margin account borrow/repay(MARGIN)
      *
-     * Weight(IP): 600
+     * Weight(UID): 3000
      *
      * @param string $asset
-     * @param mixed $amount
-     * @param int $type
+     * @param string $isIsolated
+     * @param string $symbol
+     * @param string $amount
+     * @param string $type
      * @param array $options
      */
-    public function marginTransfer(string $asset, $amount, int $type, array $options = [])
+    public function marginBorrowRepay(string $asset, string $isIsolated, string $symbol, string $amount, string $type, array $options = [])
     {
         if (Strings::isEmpty($asset)) {
             throw new MissingArgumentException('asset');
         }
+        if (Strings::isEmpty($isIsolated)) {
+            throw new MissingArgumentException('isIsolated');
+        }
+        if (Strings::isEmpty($symbol)) {
+            throw new MissingArgumentException('symbol');
+        }
+        if (Strings::isEmpty($amount)) {
+            throw new MissingArgumentException('amount');
+        }
+        if (Strings::isEmpty($type)) {
+            throw new MissingArgumentException('type');
+        }
 
-        return $this->signRequest('POST', '/sapi/v1/margin/transfer', array_merge(
+        return $this->signRequest('POST', '/sapi/v1/margin/borrow-repay', array_merge(
             $options,
             [
                 'asset' => $asset,
+                'isIsolated' => $isIsolated,
+                'symbol' => $symbol,
                 'amount' => $amount,
                 'type' => $type
             ]
@@ -38,113 +55,34 @@ trait Margin
     }
 
     /**
-     * Margin Account Borrow (MARGIN)
+     * Query borrow/repay records in Margin account(USER_DATA)
      *
-     * POST /sapi/v1/margin/loan
+     * GET /sapi/v1/margin/borrow-repay
      *
-     * Apply for a loan.
+     * Query borrow/repay records in Margin account
      *
-     * - If "isIsolated" = "TRUE", "symbol" must be sent
-     * - "isIsolated" = "FALSE" for crossed margin loan
-     *
-     * Weight(UID): 3000
-     *
-     * @param string $asset
-     * @param mixed $amount
-     * @param array $options
-     */
-    public function marginBorrow(string $asset, $amount, array $options = [])
-    {
-        if (Strings::isEmpty($asset)) {
-            throw new MissingArgumentException('asset');
-        }
-
-        return $this->signRequest('POST', '/sapi/v1/margin/loan', array_merge(
-            $options,
-            [
-                'asset' => $asset,
-                'amount' => $amount
-            ]
-        ));
-    }
-
-    /**
-     * Margin Account Repay (MARGIN)
-     *
-     * POST /sapi/v1/margin/repay
-     *
-     * Repay loan for margin account.
-     *
-     * - If "isIsolated" = "TRUE", "symbol" must be sent
-     * - "isIsolated" = "FALSE" for crossed margin repay
-     *
-     * Weight(IP): 3000
-     *
-     * @param string $asset
-     * @param mixed $amount
-     * @param array $options
-     */
-    public function marginRepay(string $asset, $amount, array $options = [])
-    {
-        if (Strings::isEmpty($asset)) {
-            throw new MissingArgumentException('asset');
-        }
-
-        return $this->signRequest('POST', '/sapi/v1/margin/repay', array_merge(
-            $options,
-            [
-                'asset' => $asset,
-                'amount' => $amount
-            ]
-        ));
-    }
-
-    /**
-     * Query Margin Asset (MARKET_DATA)
-     *
-     * GET /sapi/v1/margin/asset
+     * - `txId` or `startTime` must be sent. `txId` takes precedence. Response in descending order
+     * - If an asset is sent, data within 30 days before `endTime`; If an asset is not sent, data within 7 days before `endTime`
+     * - If neither `startTime` nor `endTime` is sent, the recent 7-day data will be returned.
+     * - `startTime` set as `endTime` - 7days by default, `endTime` set as current time by default
      *
      * Weight(IP): 10
      *
-     * @param string $asset
+     * @param string $type
+     * @param array $options
      */
-    public function marginAsset(string $asset)
+    public function marginBorrowRepayRecords(string $type, array $options = [])
     {
-        if (Strings::isEmpty($asset)) {
-            throw new MissingArgumentException('asset');
+        if (Strings::isEmpty($type)) {
+            throw new MissingArgumentException('type');
         }
 
-        return $this->publicRequest(
-            'GET',
-            '/sapi/v1/margin/asset',
+        return $this->signRequest('GET', '/sapi/v1/margin/borrow-repay', array_merge(
+            $options,
             [
-                'asset' => $asset
+                'type' => $type
             ]
-        );
-    }
-
-    /**
-     * Query Cross Margin Pair (MARKET_DATA)
-     *
-     * GET /sapi/v1/margin/pair
-     *
-     * Weight(IP): 10
-     *
-     * @param string $symbol
-     */
-    public function marginPair(string $symbol)
-    {
-        if (Strings::isEmpty($symbol)) {
-            throw new MissingArgumentException('symbol');
-        }
-
-        return $this->publicRequest(
-            'GET',
-            '/sapi/v1/margin/pair',
-            [
-                'symbol' => $symbol
-            ]
-        );
+        ));
     }
 
     /**
@@ -303,64 +241,6 @@ trait Margin
     public function marginTransferHistory(array $options = [])
     {
         return $this->signRequest('GET', '/sapi/v1/margin/transfer', $options);
-    }
-
-    /**
-     * Query Loan Record (USER_DATA)
-     *
-     * GET /sapi/v1/margin/loan
-     *
-     * - `txId` or `startTime` must be sent. `txId` takes precedence.
-     * - Response in descending order
-     * - If `isolatedSymbol` is not sent, crossed margin data will be returned
-     * - Set `archived` to `true` to query data from 6 months ago
-     *
-     * Weight(IP): 10
-     *
-     * @param string $asset
-     * @param array $options
-     */
-    public function marginLoanRecord(string $asset, array $options = [])
-    {
-        if (Strings::isEmpty($asset)) {
-            throw new MissingArgumentException('asset');
-        }
-
-        return $this->signRequest('GET', '/sapi/v1/margin/loan', array_merge(
-            $options,
-            [
-                'asset' => $asset
-            ]
-        ));
-    }
-
-    /**
-     * Query Repay Record (USER_DATA)
-     *
-     * GET /sapi/v1/margin/repay
-     *
-     * - `txId` or `startTime` must be sent. `txId` takes precedence.
-     * - Response in descending order
-     * - If `isolatedSymbol` is not sent, crossed margin data will be returned
-     * - Set `archived` to `true` to query data from 6 months ago
-     *
-     * Weight(IP): 10
-     *
-     * @param string $asset
-     * @param array $options
-     */
-    public function marginRepayRecord(string $asset, array $options = [])
-    {
-        if (Strings::isEmpty($asset)) {
-            throw new MissingArgumentException('asset');
-        }
-
-        return $this->signRequest('GET', '/sapi/v1/margin/repay', array_merge(
-            $options,
-            [
-                'asset' => $asset
-            ]
-        ));
     }
 
     /**
@@ -693,71 +573,6 @@ trait Margin
     }
 
     /**
-     * Isolated Margin Account Transfer (MARGIN)
-     *
-     * POST /sapi/v1/margin/isolated/transfer
-     *
-     * Weight(UID): 600
-     *
-     * @param string $asset
-     * @param string $symbol
-     * @param string $transFrom
-     * @param string $transTo
-     * @param mixed $amount
-     * @param array $options
-     */
-    public function isolatedMarginTransfer(string $asset, string $symbol, string $transFrom, string $transTo, $amount, array $options = [])
-    {
-        if (Strings::isEmpty($asset)) {
-            throw new MissingArgumentException('asset');
-        }
-        if (Strings::isEmpty($symbol)) {
-            throw new MissingArgumentException('symbol');
-        }
-        if (Strings::isEmpty($transFrom)) {
-            throw new MissingArgumentException('transFrom');
-        }
-        if (Strings::isEmpty($transTo)) {
-            throw new MissingArgumentException('transTo');
-        }
-
-        return $this->signRequest('POST', '/sapi/v1/margin/isolated/transfer', array_merge(
-            $options,
-            [
-                'asset' => $asset,
-                'symbol' => $symbol,
-                'transFrom' => $transFrom,
-                'transTo' => $transTo,
-                'amount' => $amount
-            ]
-        ));
-    }
-
-    /**
-     * Get Isolated Margin Transfer History (USER_DATA)
-     *
-     * GET /sapi/v1/margin/isolated/transfer
-     *
-     * Weight(IP): 1
-     *
-     * @param string $symbol
-     * @param array $options
-     */
-    public function isolatedMarginTransferHistory(string $symbol, array $options = [])
-    {
-        if (Strings::isEmpty($symbol)) {
-            throw new MissingArgumentException('symbol');
-        }
-
-        return $this->signRequest('GET', '/sapi/v1/margin/isolated/transfer', array_merge(
-            $options,
-            [
-                'symbol' => $symbol
-            ]
-        ));
-    }
-
-    /**
      * Disable Isolated Margin Account (TRADE)
      *
      * DELETE /sapi/v1/margin/isolated/account
@@ -823,30 +638,6 @@ trait Margin
     public function isolatedMarginAccountLimit(array $options = [])
     {
         return $this->signRequest('GET', '/sapi/v1/margin/isolated/accountLimit', $options);
-    }
-
-    /**
-     * Query Isolated Margin Symbol (USER_DATA)
-     *
-     * GET /sapi/v1/margin/isolated/pair
-     *
-     * Weight(IP): 10
-     *
-     * @param string $symbol
-     * @param array $options
-     */
-    public function isolatedMarginSymbol(string $symbol, array $options = [])
-    {
-        if (Strings::isEmpty($symbol)) {
-            throw new MissingArgumentException('symbol');
-        }
-
-        return $this->signRequest('GET', '/sapi/v1/margin/isolated/pair', array_merge(
-            $options,
-            [
-                'symbol' => $symbol
-            ]
-        ));
     }
 
     /**
@@ -1011,18 +802,219 @@ trait Margin
     }
 
     /**
-     * Margin Dustlog (USER_DATA)
+     * Cross margin collateral ratio (MARKET_DATA)
      *
-     * GET /sapi/v1/margin/dribblet
+     * GET /sapi/v1/margin/crossMarginCollateralRatio
      *
-     * Query the historical information of user's margin account small-value asset conversion BNB.
+     * Weight(IP): 100
+     */
+    public function crossMarginCollateralRatio()
+    {
+        return $this->publicRequest('GET', '/sapi/v1/margin/crossMarginCollateralRatio');
+    }
+
+    /**
+     * Get Small Liability Exchange Coin List (USER_DATA)
      *
-     * Weight(IP): 1
+     * GET /sapi/v1/margin/exchange-small-liability
+     *
+     * Query the coins which can be small liability exchange
+     *
+     * Weight(IP): 100
      *
      * @param array $options
      */
-    public function marginDustLog(array $options = [])
+    public function marginGetExchangeSmallLiability(array $options = [])
     {
-        return $this->signRequest('GET', '/sapi/v1/margin/dribblet', $options);
+        return $this->signRequest('GET', '/sapi/v1/margin/exchange-small-liability', $options);
+    }
+
+    /**
+     * Small Liability Exchange (MARGIN)
+     *
+     * POST /sapi/v1/margin/exchange-small-liability
+     *
+     * Cross Margin Small Liability Exchange
+     *
+     * - Only convert once within 6 hours
+     * - Only liability valuation less than 10 USDT are supported
+     * - The maximum number of coin is 10
+     *
+     * Weight(UID): 3000
+     *
+     * @param array $assetNames
+     * @param array $options
+     */
+    public function exchangeSmallLiability(array $assetNames, array $options = [])
+    {
+        if (empty($assetNames)) {
+            throw new MissingArgumentException('assetNames');
+        }
+
+        return $this->signRequest('POST', '/sapi/v1/margin/exchange-small-liability', array_merge(
+            $options,
+            [
+                'assetNames' => $assetNames
+            ]
+        ));
+    }
+
+    /**
+     * Get Small Liability Exchange History (USER_DATA)
+     *
+     * GET /sapi/v1/margin/exchange-small-liability-history
+     *
+     * Get Small liability Exchange History
+     *
+     * Weight(UID): 100
+     *
+     * @param int $current
+     * @param int $size
+     * @param array $options
+     */
+    public function exchangeSmallLiabilityHistory(int $current, int $size, array $options = [])
+    {
+        if ($current <= 0) {
+            throw new InvalidArgumentException('current', $current, 'greater than 0');
+        }
+        if ($size <= 0) {
+            throw new InvalidArgumentException('size', $size, 'greater than 0');
+        }
+
+        return $this->signRequest('GET', '/sapi/v1/margin/exchange-small-liability-history', array_merge(
+            $options,
+            [
+                'current' => $current,
+                'size' => $size
+            ]
+        ));
+    }
+
+    /**
+     * Get a future hourly interest rate (USER_DATA)
+     *
+     * GET /sapi/v1/margin/next-hourly-interest-rate
+     *
+     * Get user the next hourly estimate interest
+     *
+     * Weight(IP): 100
+     *
+     * @param string $assets
+     * @param bool $isIsolated
+     */
+    public function nextHourlyInterestRate(string $assets, bool $isIsolated)
+    {
+        if (Strings::isEmpty($assets)) {
+            throw new MissingArgumentException('assets');
+        }
+
+        return $this->signRequest('GET', '/sapi/v1/margin/next-hourly-interest-rate', [
+            'assets' => $assets,
+            'isIsolated' => $isIsolated
+        ]);
+    }
+
+    /**
+     * Get cross or isolated margin capital flow(USER_DATA)
+     *
+     * GET /sapi/v1/margin/capital-flow
+     *
+     * Get cross or isolated margin capital flow
+     *
+     * - Only supports querying the data of the last 90 days
+     * - If fromId is set, the data with id > fromId will be returned. Otherwise the latest data will be returned
+     * - To query isolated data, Symbol needs to be entered.
+     *
+     * Weight(IP): 100
+     *
+     * @param array $options
+     */
+    public function marginCapitalFlow(array $options = [])
+    {
+        return $this->signRequest('GET', '/sapi/v1/margin/capital-flow', $options);
+    }
+
+    /**
+     * Get tokens or symbols delist schedule for cross margin and isolated margin (MARKET_DATA)
+     *
+     * GET /sapi/v1/margin/delist-schedule
+     *
+     * Get tokens or symbols delist schedule for cross margin and isolated margin
+     *
+     * Weight(IP): 100
+     *
+     * @param array $options
+     */
+    public function marginDelistSchedule(array $options = [])
+    {
+        return $this->publicRequest('GET', '/sapi/v1/margin/delist-schedule', $options);
+    }
+
+    /**
+     * Query Margin Available Inventory (USER_DATA)
+     *
+     * GET /sapi/v1/margin/available-inventory
+     *
+     * Margin available Inventory query
+     *
+     * Weight(UID): 50
+     *
+     * @param string $type
+     * @param array $options
+     */
+    public function marginAvailableInventory(string $type, array $options = [])
+    {
+        if (Strings::isEmpty($type)) {
+            throw new MissingArgumentException('type');
+        }
+
+        return $this->signRequest('GET', '/sapi/v1/margin/available-inventory', array_merge(
+            $options,
+            [
+                'type' => $type
+            ]
+        ));
+    }
+
+    /**
+     * Margin manual liquidation(MARGIN)
+     *
+     * POST /sapi/v1/margin/manual-liquidation
+     *
+     * Margin manual liquidation
+     *
+     * - This SAPI can support Cross Margin and Margin Pro , cannot support Isolated Margin.
+     *
+     * Weight(UID): 3000
+     *
+     * @param string $type
+     * @param array $options
+     */
+    public function marginManualLiquidation(string $type, array $options = [])
+    {
+        if (Strings::isEmpty($type)) {
+            throw new MissingArgumentException('type');
+        }
+
+        return $this->signRequest('POST', '/sapi/v1/margin/manual-liquidation', array_merge(
+            $options,
+            [
+                'type' => $type
+            ]
+        ));
+    }
+
+    /**
+     * Query Liability Coin Leverage Bracket in Cross Margin Pro Mode(MARKET_DATA)
+     *
+     * GET /sapi/v1/margin/leverageBracket
+     *
+     * Liability Coin Leverage Bracket in Cross Margin Pro Mode
+     *
+     * Weight(IP): 1
+     */
+    public function marginLeverageBracket()
+    {
+        return $this->publicRequest('GET', '/sapi/v1/margin/leverageBracket');
     }
 }

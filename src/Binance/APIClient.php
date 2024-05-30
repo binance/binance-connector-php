@@ -104,7 +104,7 @@ abstract class APIClient
 
         if ($this->privateKey) {
             openssl_sign($query, $binary_signature, $this->privateKey, OPENSSL_ALGO_SHA256);
-            $params['signature']= base64_encode($binary_signature);
+            $params['signature'] = base64_encode($binary_signature);
         } else {
             $params['signature'] = hash_hmac('sha256', $query, $this->secret);
         }
