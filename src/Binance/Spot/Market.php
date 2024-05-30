@@ -44,7 +44,7 @@ trait Market
      *
      * - If any symbol provided in either symbol or symbols do not exist, the endpoint will throw an error.
      *
-     * Weight(IP): 10
+     * Weight(IP): 20
      *
      * @param array $options
      */
@@ -60,10 +60,10 @@ trait Market
      *
      * | Limit               | Weight(IP)  |
      * |---------------------|-------------|
-     * | 1-100               | 1           |
-     * | 101-500             | 5           |
-     * | 501-1000            | 10          |
-     * | 1001-5000           | 50          |
+     * | 1-100               | 5           |
+     * | 101-500             | 25          |
+     * | 501-1000            | 50          |
+     * | 1001-5000           | 250         |
      *
      * @param string $symbol
      * @param array $options
@@ -89,7 +89,7 @@ trait Market
      *
      * Get recent trades.
      *
-     * Weight(IP): 1
+     * Weight(IP): 10
      *
      * @param string $symbol
      * @param array $options
@@ -115,7 +115,7 @@ trait Market
      *
      * Get older market trades.
      *
-     * Weight(IP): 5
+     * Weight(IP): 10
      *
      * @param string $symbol
      * @param array $options
@@ -143,7 +143,7 @@ trait Market
      * - If `startTime` and `endTime` are sent, time between startTime and endTime must be less than 1 hour.
      * - If `fromId`, `startTime`, and `endTime` are not sent, the most recent aggregate trades will be returned.
      *
-     * Weight(IP): 1
+     * Weight(IP): 2
      *
      * @param string $symbol
      * @param array $options
@@ -172,7 +172,7 @@ trait Market
      *
      * - If `startTime` and `endTime` are not sent, the most recent klines are returned.
      *
-     * Weight(IP): 1
+     * Weight(IP): 2
      *
      * @param string $symbol
      * @param string $interval
@@ -197,13 +197,54 @@ trait Market
     }
 
     /**
+     * UIKlines
+     *
+     * GET /api/v3/uiKlines
+     *
+     * The request is similar to klines having the same parameters and response.
+     * uiKlines return modified kline data, optimized for presentation of candlestick charts.
+     *
+     * If startTime and endTime are not sent, the most recent klines are returned.
+     * Supported values for timeZone:
+     *  - Hours and minutes (e.g. -1:00, 05:45)
+     *  - Only hours (e.g. 0, 8, 4)
+     *  - Accepted range is strictly [-12:00 to +14:00] inclusive
+     * If timeZone provided, kline intervals are interpreted in that timezone instead of UTC.
+     * Note that startTime and endTime are always interpreted in UTC, regardless of timeZone.
+     *
+     * Weight: 2
+     *
+     * @param string $symbol
+     * @param string $interval
+     * @param array $options
+     */
+    public function uiKlines(string $symbol, string $interval, array $options = [])
+    {
+        if (Strings::isEmpty($symbol)) {
+            throw new MissingArgumentException('symbol');
+        }
+
+        if (Strings::isEmpty($interval)) {
+            throw new MissingArgumentException('interval');
+        }
+
+        return $this->publicRequest('GET', '/api/v3/uiKlines', array_merge(
+            $options,
+            [
+                'symbol' => $symbol,
+                'interval' => $interval
+            ]
+        ));
+    }
+
+    /**
      * Current Average Price
      *
      * GET /api/v3/avgPrice
      *
      * Current average price for a symbol.
      *
-     * Weight(IP): 1
+     * Weight(IP): 2
      *
      * @param string $symbol
      */
@@ -232,14 +273,35 @@ trait Market
      * - If the symbol is not sent, tickers for all symbols will be returned in an array.
      *
      * Weight(IP):
-     * - `1` for a single symbol;
-     * - `40` when the symbol parameter is omitted;
+     * - `2` for a single symbol;
+     * - `80` when the symbol parameter is omitted;
      *
      * @param array $options
      */
     public function ticker24hr(array $options = [])
     {
         return $this->publicRequest('GET', '/api/v3/ticker/24hr', $options);
+    }
+
+    /**
+     * Trading Day Ticker
+     *
+     * GET /api/v3/ticker/tradingDay
+     *
+     * Price change statistics for a trading day
+     * - Supported values for timeZone:
+     *    - Hours and minutes (e.g. -1:00, 05:45)
+     *    - Only hours (e.g. 0, 8, 4)
+     *
+     * Weight:
+     * - `4` for each requested symbol.
+     * - The weight for this request will cap at 200 once the number of symbols in the request is more than `50`.
+     *
+     * @param array $options
+     */
+    public function tickerTradingDay(array $options = [])
+    {
+        return $this->publicRequest('GET', '/api/v3/ticker/tradingDay', $options);
     }
 
     /**
@@ -252,8 +314,8 @@ trait Market
      * - If the symbol is not sent, prices for all symbols will be returned in an array.
      *
      * Weight(IP):
-     * - `1` for a single symbol;
-     * - `2` when the symbol parameter is omitted;
+     * - `2` for a single symbol;
+     * - `4` when the symbol parameter is omitted;
      *
      * @param array $options
      */
@@ -272,8 +334,8 @@ trait Market
      * - If the symbol is not sent, bookTickers for all symbols will be returned in an array.
      *
      * Weight(IP):
-     * - `1` for a single symbol;
-     * - `2` when the symbol parameter is omitted;
+     * - `2` for a single symbol;
+     * - `4` when the symbol parameter is omitted;
      *
      * @param array $options
      */
@@ -293,9 +355,9 @@ trait Market
      *
      * E.g. If the closeTime is 1641287867099 (January 04, 2022 09:17:47:099 UTC) , and the windowSize is 1d. the openTime will be: 1641201420000 (January 3, 2022, 09:17:00 UTC)
      *
-     * Weight(IP): 2 for each requested symbol regardless of windowSize.
+     * Weight(IP): 4 for each requested symbol regardless of windowSize.
      *
-     * The weight for this request will cap at 100 once the number of symbols in the request is more than 50.
+     * The weight for this request will cap at 200 once the number of symbols in the request is more than 50.
      *
      * @param array $options
      */
