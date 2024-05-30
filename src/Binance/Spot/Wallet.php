@@ -497,6 +497,23 @@ trait Wallet
     }
 
     /**
+
+     * Query auto-converting stable coins (USER_DATA)
+     *
+     * GET /sapi/v1/capital/contract/convertible-coins
+     *
+     * - Get a user's auto-conversion settings in deposit/withdrawal
+     *
+     * Weight(UID): 600
+     *
+     * @param array $options
+     */
+    public function queryAutoConvertingStableCoin(array $options = [])
+    {
+        return $this->signRequest('GET', '/sapi/v1/capital/contract/convertible-coins', $options);
+    }
+
+    /**
      * Query User Wallet Balance (USER_DATA)
      *
      * GET /sapi/v1/asset/wallet/balance
