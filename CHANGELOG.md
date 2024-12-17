@@ -1,5 +1,132 @@
 # CHANGELOG
 
+## 1.7.0 - 2024-12-17
+### Added
+- Auto Invest
+  - `GET /sapi/v1/lending/auto-invest/target-asset/list`
+  - `GET /sapi/v1/lending/auto-invest/target-asset/roi/list`
+  - `GET /sapi/v1/lending/auto-invest/all/asset`
+  - `GET /sapi/v1/lending/auto-invest/source-asset/list`
+  - `POST /sapi/v1/lending/auto-invest/plan/add`
+  - `POST /sapi/v1/lending/auto-invest/plan/edit`
+  - `POST /sapi/v1/lending/auto-invest/plan/edit-status`
+  - `GET /sapi/v1/lending/auto-invest/plan/list`
+  - `GET /sapi/v1/lending/auto-invest/plan/id`
+  - `GET /sapi/v1/lending/auto-invest/history/list`
+  - `GET /sapi/v1/lending/auto-invest/index/info`
+  - `GET /sapi/v1/lending/auto-invest/index/user-summary`
+  - `POST /sapi/v1/lending/auto-invest/one-off`
+  - `GET /sapi/v1/lending/auto-invest/one-off/status`
+  - `POST /sapi/v1/lending/auto-invest/redeem`
+  - `GET /sapi/v1/lending/auto-invest/redeem/history`
+  - `GET /sapi/v1/lending/auto-invest/rebalance/history`
+
+- CryptoLoans
+  - `POST /sapi/v2/loan/flexible/borrow`
+  - `GET /sapi/v2/loan/flexible/ongoing/orders`
+  - `GET /sapi/v2/loan/flexible/borrow/history`
+  - `POST /sapi/v2/loan/flexible/repay`
+  - `GET /sapi/v2/loan/flexible/repay/history`
+  - `POST /sapi/v2/loan/flexible/adjust/ltv`
+  - `GET /sapi/v2/loan/flexible/ltv/adjustment/history`
+  - `GET /sapi/v2/loan/flexible/loanable/data`
+  - `GET /sapi/v2/loan/flexible/collateral/data`
+
+- Margin
+  - `POST /sapi/v1/margin/order/oto`
+  - `POST /sapi/v1/margin/order/otoco`
+
+- PortfolioMargin
+  - `GET /sapi/v2/portfolio/account`
+  - `GET /sapi/v1/portfolio/balance`
+  - `GET /sapi/v2/portfolio/collateralRate`
+
+- SimpleEarns
+  - `GET /sapi/v1/simple-earn/flexible/list`
+  - `GET /sapi/v1/simple-earn/locked/list`
+  - `POST /sapi/v1/simple-earn/flexible/subscribe`
+  - `POST /sapi/v1/simple-earn/locked/subscribe`
+  - `POST /sapi/v1/simple-earn/flexible/redeem`
+  - `POST /sapi/v1/simple-earn/locked/redeem`
+  - `GET /sapi/v1/simple-earn/flexible/position`
+  - `GET /sapi/v1/simple-earn/locked/position`
+  - `GET /sapi/v1/simple-earn/account`
+  - `GET /sapi/v1/simple-earn/flexible/history/subscriptionRecord`
+  - `GET /sapi/v1/simple-earn/locked/history/subscriptionRecord`
+  - `GET /sapi/v1/simple-earn/flexible/history/redemptionRecord`
+  - `GET /sapi/v1/simple-earn/locked/history/redemptionRecord`
+  - `GET /sapi/v1/simple-earn/flexible/history/rewardsRecord`
+  - `GET /sapi/v1/simple-earn/locked/history/rewardsRecord`
+  - `POST /sapi/v1/simple-earn/flexible/setAutoSubscribe`
+  - `POST /sapi/v1/simple-earn/locked/setAutoSubscribe`
+  - `GET /sapi/v1/simple-earn/flexible/personalLeftQuota`
+  - `GET /sapi/v1/simple-earn/locked/personalLeftQuota`
+  - `GET /sapi/v1/simple-earn/flexible/subscriptionPreview`
+  - `GET /sapi/v1/simple-earn/locked/subscriptionPreview`
+  - `POST /sapi/v1/simple-earn/locked/setRedeemOption`
+  - `GET /sapi/v1/simple-earn/flexible/history/rateHistory`
+  - `GET /sapi/v1/simple-earn/flexible/history/collateralRecord`
+
+- SubAccount
+  - `GET /sapi/v1/managed-subaccount/queryTransLogForInvestor`
+  - `GET /sapi/v1/managed-subaccount/queryTransLogForTradeParent`
+  - `GET /sapi/v1/managed-subaccount/fetch-future-asset`
+  - `GET /sapi/v1/managed-subaccount/marginAsset`
+  - `GET /sapi/v1/managed-subaccount/info`
+  - `GET /sapi/v1/managed-subaccount/deposit/address`
+  - `GET /sapi/v1/managed-subaccount/query-trans-log`
+  - `GET /sapi/v1/sub-account/transaction-statistics`
+  - `POST /sapi/v1/sub-account/eoptions/enable`
+  - `POST /sapi/v2/sub-account/subAccountApi/ipRestriction`
+  - `GET /sapi/v4/sub-account/assets`
+  - `GET /sapi/v1/margin/crossMarginCollateralRatio`
+
+- Trade
+  - `POST /api/v3/orderList/oto`
+  - `POST /api/v3/orderList/otoco`
+
+- Wallet
+  - `GET /sapi/v1/account/info`
+
+### Updated
+- Upgrade dependencies
+- Update OCO endpoint from `POST /api/v3/order/oco` to `POST /api/v3/orderList/oco`
+
+### Removed
+- Blvt
+  - `GET /sapi/v1/blvt/tokenInfo`
+  - `POST /sapi/v1/blvt/subscribe`
+  - `GET /sapi/v1/blvt/subscribe/record`
+  - `POST /sapi/v1/blvt/redeem`
+  - `GET /sapi/v1/blvt/redeem/record`
+  - `GET /sapi/v1/blvt/userLimit`
+
+- CryptoLoans
+  - `GET /sapi/v1/loan/loanable/data`
+  - `GET /sapi/v1/loan/collateral/data`
+  - `POST /sapi/v1/loan/borrow`
+  - `POST /sapi/v1/loan/repay`
+  - `GET /sapi/v1/loan/repay/collateral/rate`
+  - `POST /sapi/v1/loan/adjust/ltv`
+  - `POST /sapi/v1/loan/customize/margin_call`
+  - `GET /sapi/v1/loan/ongoing/orders`
+
+- Savings
+  - `GET /sapi/v1/lending/daily/product/list`
+  - `GET /sapi/v1/lending/daily/userLeftQuota`
+  - `POST /sapi/v1/lending/daily/purchase`
+  - `GET /sapi/v1/lending/daily/userRedemptionQuota`
+  - `POST /sapi/v1/lending/daily/redeem`
+  - `GET /sapi/v1/lending/daily/token/position`
+  - `GET /sapi/v1/lending/union/account`
+  - `GET /sapi/v1/lending/union/purchaseRecord`
+  - `GET /sapi/v1/lending/union/redemptionRecord`
+  - `GET /sapi/v1/lending/union/interestHistory`
+  - `POST /sapi/v1/lending/positionChanged`
+  - `GET /sapi/v1/lending/project/list`
+  - `GET /sapi/v1/lending/project/position/list`
+  - `POST /sapi/v1/lending/customizedFixed/purchase`
+
 ## 1.6.0 - 2024-05-30
 ### Added
 - Convert

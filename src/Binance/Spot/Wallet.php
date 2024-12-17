@@ -466,22 +466,6 @@ trait Wallet
     }
 
     /**
-     * Get symbols delist schedule for spot (MARKET_DATA)
-     *
-     * GET /sapi/v1/spot/delist-schedule
-     *
-     * - Get symbols delist schedule for spot
-     *
-     * Weight(IP): 100
-     *
-     * @param array $options
-     */
-    public function getSymbolsDelistScheduleForSpot(array $options = [])
-    {
-        return $this->publicRequest('GET', '/sapi/v1/spot/delist-schedule', $options);
-    }
-
-    /**
      * Get API Key Permission (USER_DATA)
      *
      * GET /sapi/v1/account/apiRestrictions
@@ -493,22 +477,6 @@ trait Wallet
     public function apiKeyPermission(array $options = [])
     {
         return $this->signRequest('GET', '/sapi/v1/account/apiRestrictions', $options);
-    }
-
-    /**
-     * One click arrival deposit apply (for expired address deposit) (USER_DATA)
-     *
-     * POST /sapi/v1/capital/deposit/credit-apply
-     *
-     * - Apply deposit credit for expired address (One click arrival)
-     *
-     * Weight(IP): 1
-     *
-     * @param array $options
-     */
-    public function depositCreditApply(array $options = [])
-    {
-        return $this->signRequest('POST', '/sapi/v1/capital/deposit/credit-apply', $options);
     }
 
     /**
@@ -528,19 +496,47 @@ trait Wallet
     }
 
     /**
-     * Query User Wallet Balance (USER_DATA)
+     * Switch on/off BUSD and stable coins conversion (USER_DATA)
      *
-     * GET /sapi/v1/asset/wallet/balance
+     * POST /sapi/v1/capital/contract/convertible-coins
      *
-     * - Query User Wallet Balance
+     * User can use it to turn on or turn off the BUSD auto-conversion from/to a specific stable coin.
      *
-     * Weight(IP): 60
+     * Weight(UID): 600
+     *
+     * @param string $coin
+     * @param bool $enable
+     * @param array $options
+     */
+    public function switchConvertCoin(string $coin, bool $enable, array $options = [])
+    {
+        if (Strings::isEmpty($coin)) {
+            throw new MissingArgumentException('coin');
+        }
+
+        return $this->signRequest('POST', '/sapi/v1/capital/contract/convertible-coins', array_merge(
+            $options,
+            [
+                'coin' => $coin,
+                'enable' => $enable
+            ]
+        ));
+    }
+
+    /**
+     * One click arrival deposit apply (for expired address deposit) (USER_DATA)
+     *
+     * POST /sapi/v1/capital/deposit/credit-apply
+     *
+     * - Apply deposit credit for expired address (One click arrival)
+     *
+     * Weight(IP): 1
      *
      * @param array $options
      */
-    public function queryUserWalletBalance(array $options = [])
+    public function depositCreditApply(array $options = [])
     {
-        return $this->signRequest('GET', '/sapi/v1/asset/wallet/balance', $options);
+        return $this->signRequest('POST', '/sapi/v1/capital/deposit/credit-apply', $options);
     }
 
     /**
@@ -570,31 +566,19 @@ trait Wallet
     }
 
     /**
-     * Switch on/off BUSD and stable coins conversion (USER_DATA)
+     * Query User Wallet Balance (USER_DATA)
      *
-     * POST /sapi/v1/capital/contract/convertible-coins
+     * GET /sapi/v1/asset/wallet/balance
      *
-     * User can use it to turn on or turn off the BUSD auto-conversion from/to a specific stable coin.
+     * - Query User Wallet Balance
      *
-     * Weight(UID): 600
+     * Weight(IP): 60
      *
-     * @param string $coin
-     * @param bool $enable
      * @param array $options
      */
-    public function switchConvertCoin(string $coin, bool $enable, array $options = [])
+    public function queryUserWalletBalance(array $options = [])
     {
-        if (Strings::isEmpty($coin)) {
-            throw new MissingArgumentException('coin');
-        }
-
-        return $this->signRequest('POST', '/sapi/v1/capital/contract/convertible-coins', array_merge(
-            $options,
-            [
-                'coin' => $coin,
-                'enable' => $enable
-            ]
-        ));
+        return $this->signRequest('GET', '/sapi/v1/asset/wallet/balance', $options);
     }
 
     /**
@@ -628,6 +612,22 @@ trait Wallet
     }
 
     /**
+     * Get symbols delist schedule for spot (MARKET_DATA)
+     *
+     * GET /sapi/v1/spot/delist-schedule
+     *
+     * Get symbols delist schedule for spot
+     *
+     * Weight(IP): 100
+     *
+     * @param array $options
+     */
+    public function getSymbolsDelistScheduleForSpot(array $options = [])
+    {
+        return $this->publicRequest('GET', '/sapi/v1/spot/delist-schedule', $options);
+    }
+
+    /**
      * Fetch withdraw address list (USER_DATA)
      *
      * GET /sapi/v1/capital/withdraw/address/list
@@ -639,5 +639,21 @@ trait Wallet
     public function withdrawAddressList()
     {
         return $this->signRequest('GET', '/sapi/v1/capital/withdraw/address/list');
+    }
+
+    /**
+     * Account info (USER_DATA)
+     *
+     * GET /sapi/v1/account/info
+     *
+     * Fetch account info detail.
+     *
+     * Weight(IP): 1
+     *
+     * @param array $options
+     */
+    public function accountInfo(array $options = [])
+    {
+        return $this->signRequest('GET', '/sapi/v1/account/info', $options);
     }
 }
