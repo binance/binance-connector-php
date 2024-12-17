@@ -37,6 +37,22 @@ trait PortfolioMargin
     }
 
     /**
+     * Portfolio Margin Pro Tiered Collateral Rate (USER_DATA)
+     *
+     * GET /sapi/v2/portfolio/collateralRate
+     *
+     * Portfolio Margin PRO Tiered Collateral Rate
+     *
+     * Weight(IP): 50
+     *
+     * @param array $options
+     */
+    public function portfolioMarginProTieredCollateralRate(array $options = [])
+    {
+        return $this->signRequest('GET', '/sapi/v2/portfolio/collateralRate', $options);
+    }
+
+    /**
      * Query Portfolio Margin Bankruptcy Loan Amount (USER_DATA)
      *
      * GET /sapi/v1/portfolio/pmLoan
@@ -82,6 +98,38 @@ trait PortfolioMargin
     public function portfolioMarginInterestHistory(array $options = [])
     {
         return $this->signRequest('GET', '/sapi/v1/portfolio/interest-history', $options);
+    }
+
+    /**
+     * Get Portfolio Margin Pro SPAN Account Info (USER_DATA)
+     *
+     * GET /sapi/v2/portfolio/account
+     *
+     * Get Portfolio Margin Pro SPAN account info
+     *
+     * Weight(IP): 5
+     *
+     * @param array $options
+     */
+    public function portfolioMarginProSpanAccount(array $options = [])
+    {
+        return $this->signRequest('GET', '/sapi/v2/portfolio/account', $options);
+    }
+
+    /**
+     * Get Portfolio Margin Pro Account Balance (USER_DATA)
+     *
+     * GET /sapi/v1/portfolio/balance
+     *
+     * Query Portfolio Margin Pro account balance
+     *
+     * Weight(IP): 20
+     *
+     * @param array $options
+     */
+    public function portfolioMarginProBalance(array $options = [])
+    {
+        return $this->signRequest('GET', '/sapi/v1/portfolio/balance', $options);
     }
 
     /**

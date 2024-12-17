@@ -843,6 +843,173 @@ trait SubAccount
     }
 
     /**
+     * Query Managed Sub Account Transfer Log (For Investor Master Account)
+     *
+     * GET /sapi/v1/managed-subaccount/queryTransLogForInvestor
+     *
+     * Investor can use this api to query managed sub account transfer log. This endpoint is available for investor of Managed Sub-Account. A Managed Sub-Account is an account type for investors who value flexibility in asset allocation and account application, while delegating trades to a professional trading team.
+     *
+     * Weight(IP): 1
+     *
+     * @param string $email
+     * @param int $startTime
+     * @param int $endTime
+     * @param int $page
+     * @param int $limit
+     * @param array $options
+     */
+    public function subAccountManagedTransferLogInvestor(string $email, int $startTime, int $endTime, int $page, int $limit, array $options = [])
+    {
+        if (Strings::isEmpty($email)) {
+            throw new MissingArgumentException('email');
+        }
+
+        return $this->signRequest('GET', '/sapi/v1/managed-subaccount/queryTransLogForInvestor', array_merge(
+            $options,
+            [
+                'email' => $email,
+                'startTime' => $startTime,
+                'endTime' => $endTime,
+                'page' => $page,
+                'limit' => $limit
+            ]
+        ));
+    }
+
+    /**
+     * Query Managed Sub Account Transfer Log (For Trading Team Master Account)
+     *
+     * GET /sapi/v1/managed-subaccount/queryTransLogForTradeParent
+     *
+     * Trading team can use this api to query managed sub account transfer log. This endpoint is available for trading team of Managed Sub-Account. A Managed Sub-Account is an account type for investors who value flexibility in asset allocation and account application, while delegating trades to a professional trading team
+     *
+     * Weight(IP): 60
+     *
+     * @param string $email
+     * @param int $startTime
+     * @param int $endTime
+     * @param int $page
+     * @param int $limit
+     * @param array $options
+     */
+    public function subAccountManagedTransferLogTradeParent(string $email, int $startTime, int $endTime, int $page, int $limit, array $options = [])
+    {
+        if (Strings::isEmpty($email)) {
+            throw new MissingArgumentException('email');
+        }
+
+        return $this->signRequest('GET', '/sapi/v1/managed-subaccount/queryTransLogForTradeParent', array_merge(
+            $options,
+            [
+                'email' => $email,
+                'startTime' => $startTime,
+                'endTime' => $endTime,
+                'page' => $page,
+                'limit' => $limit
+            ]
+        ));
+    }
+
+    /**
+     * Query Managed Sub-account Futures Asset Details (For Investor Master Account)
+     *
+     * GET /sapi/v1/managed-subaccount/fetch-future-asset
+     *
+     * Investor can use this api to query managed sub account futures asset details
+     *
+     * Weight(UID): 60
+     *
+     * @param string $email
+     * @param array $options
+     */
+    public function subAccountManagedFuturesAssetDetails(string $email, array $options = [])
+    {
+        if (Strings::isEmpty($email)) {
+            throw new MissingArgumentException('email');
+        }
+
+        return $this->signRequest('GET', '/sapi/v1/managed-subaccount/fetch-future-asset', array_merge(
+            $options,
+            [
+                'email' => $email
+            ]
+        ));
+    }
+
+    /**
+     * Query Managed Sub-account Margin Asset Details (For Investor Master Account)
+     *
+     * GET /sapi/v1/managed-subaccount/marginAsset
+     *
+     * Investor can use this api to query managed sub account margin asset details
+     *
+     * Weight(IP): 1
+     *
+     * @param string $email
+     * @param array $options
+     */
+    public function subAccountManagedMarginAssetDetails(string $email, array $options = [])
+    {
+        if (Strings::isEmpty($email)) {
+            throw new MissingArgumentException('email');
+        }
+
+        return $this->signRequest('GET', '/sapi/v1/managed-subaccount/marginAsset', array_merge(
+            $options,
+            [
+                'email' => $email
+            ]
+        ));
+    }
+
+    /**
+     * Query Managed Sub-account List (For Investor)
+     *
+     * GET /sapi/v1/managed-subaccount/info
+     *
+     * Get investor's managed sub-account list.
+     *
+     * Weight(UID): 60
+     *
+     * @param array $options
+     */
+    public function subAccountManagedList(array $options = [])
+    {
+        return $this->signRequest('GET', '/sapi/v1/managed-subaccount/info', $options);
+    }
+
+    /**
+     * Get Managed Sub-account Deposit Address (For Investor Master Account)
+     *
+     * GET /sapi/v1/managed-subaccount/deposit/address
+     *
+     * Get investor's managed sub-account deposit address
+     *
+     * Weight(UID): 1
+     *
+     * @param string $email
+     * @param string $coin
+     * @param array $options
+     */
+    public function subAccountManagedDepositAddress(string $email, string $coin, array $options = [])
+    {
+        if (Strings::isEmpty($email)) {
+            throw new MissingArgumentException('email');
+        }
+        if (Strings::isEmpty($coin)) {
+            throw new MissingArgumentException('coin');
+        }
+
+        return $this->signRequest('GET', '/sapi/v1/managed-subaccount/deposit/address', array_merge(
+            $options,
+            [
+                'email' => $email,
+                'coin' => $coin
+            ]
+        ));
+    }
+
+    /**
      * Get IP Restriction for a Sub-account API Key (For Master Account)
      *
      * GET /sapi/v1/sub-account/subAccountApi/ipRestriction
@@ -937,6 +1104,94 @@ trait SubAccount
                 'email' => $email,
                 'subAccountApiKey' => $subAccountApiKey,
                 'ipAddress' => $ipAddress
+            ]
+        ));
+    }
+
+    /**
+     * Query Sub-account Transaction Statistics (For Master Account)
+     *
+     * GET /sapi/v1/sub-account/transaction-statistics
+     *
+     * Query Sub-account Transaction statistics (For Master Account).
+     *
+     * Weight(UID): 60
+     *
+     * @param string $email
+     * @param array $options
+     */
+    public function subAccountTransactionStatistics(string $email, array $options = [])
+    {
+        if (Strings::isEmpty($email)) {
+            throw new MissingArgumentException('email');
+        }
+
+        return $this->signRequest('GET', '/sapi/v1/sub-account/transaction-statistics', array_merge(
+            $options,
+            [
+                'email' => $email
+            ]
+        ));
+    }
+
+    /**
+     * Enable Options for Sub-account (For Master Account)
+     *
+     * POST /sapi/v1/sub-account/eoptions/enable
+     *
+     * Enable Options for Sub-account (For Master Account).
+     *
+     * Weight(IP): 1
+     *
+     * @param string $email
+     * @param array $options
+     */
+    public function subAccountEnableOptionsForSubaccount(string $email, array $options = [])
+    {
+        if (Strings::isEmpty($email)) {
+            throw new MissingArgumentException('email');
+        }
+
+        return $this->signRequest('POST', '/sapi/v1/sub-account/eoptions/enable', array_merge(
+            $options,
+            [
+                'email' => $email
+            ]
+        ));
+    }
+
+    /**
+     * Update IP Restriction for Sub-Account API key (For Master Account)
+     *
+     * POST /sapi/v2/sub-account/subAccountApi/ipRestriction
+     *
+     * Update IP Restriction for Sub-Account API key
+     *
+     * Weight(UID): 3000
+     *
+     * @param string $email
+     * @param string $subAccountApiKey
+     * @param string $status
+     * @param array $options
+     */
+    public function subAccountApiUpdateIpRestriction(string $email, string $subAccountApiKey, string $status, array $options = [])
+    {
+        if (Strings::isEmpty($email)) {
+            throw new MissingArgumentException('email');
+        }
+        if (Strings::isEmpty($subAccountApiKey)) {
+            throw new MissingArgumentException('subAccountApiKey');
+        }
+        if (Strings::isEmpty($status)) {
+            throw new MissingArgumentException('status');
+        }
+
+        return $this->signRequest('POST', '/sapi/v2/sub-account/subAccountApi/ipRestriction', array_merge(
+            $options,
+            [
+                'email' => $email,
+                'subAccountApiKey' => $subAccountApiKey,
+                'status' => $status
             ]
         ));
     }

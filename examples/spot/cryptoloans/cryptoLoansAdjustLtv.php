@@ -11,7 +11,8 @@ $client = new \Binance\Spot([
 ]);
 
 $response = $client->cryptoLoansAdjustLtv(
-    100000001,
+    'BUSD',
+    'BNB',
     1.01,
     'ADDITIONAL',
     [

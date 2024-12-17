@@ -11,7 +11,7 @@ $client = new \Binance\Spot([
 ]);
 
 $response = $client->fetchDepositAddressListNetwork(
-    'BTC',
+    'BNB',
     [
         'recvWindow' => 5000
     ]

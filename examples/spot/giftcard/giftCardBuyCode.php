@@ -13,7 +13,7 @@ $client = new \Binance\Spot([
 $response = $client->giftCardBuyCode(
     'BUSD',
     'BNB',
-    1.01,
+    1.002,
     [
         'recvWindow' => 5000
     ]

@@ -1005,6 +1005,111 @@ trait Margin
     }
 
     /**
+     * Margin Account New OTO (TRADE)
+     *
+     * POST /sapi/v1/margin/order/oto
+     *
+     * Post a new OTO order for margin account
+     *
+     * Weight(UID): 6
+     *
+     * @param string $symbol
+     * @param string $workingType
+     * @param string $workingSide
+     * @param mixed $workingPrice
+     * @param mixed $workingQuantity
+     * @param string $pendingType
+     * @param string $pendingSide
+     * @param mixed $pendingQuantity
+     * @param array $options
+     */
+    public function marginNewOtoOrder(string $symbol, string $workingType, string $workingSide, $workingPrice, $workingQuantity, string $pendingType, string $pendingSide, $pendingQuantity, array $options = [])
+    {
+        if (Strings::isEmpty($symbol)) {
+            throw new MissingArgumentException('symbol');
+        }
+        if (Strings::isEmpty($workingType)) {
+            throw new MissingArgumentException('workingType');
+        }
+        if (Strings::isEmpty($workingSide)) {
+            throw new MissingArgumentException('workingSide');
+        }
+        if (Strings::isEmpty($pendingType)) {
+            throw new MissingArgumentException('pendingType');
+        }
+        if (Strings::isEmpty($pendingSide)) {
+            throw new MissingArgumentException('pendingSide');
+        }
+
+        return $this->signRequest('POST', '/sapi/v1/margin/order/oto', array_merge(
+            $options,
+            [
+                'symbol' => $symbol,
+                'workingType' => $workingType,
+                'workingSide' => $workingSide,
+                'workingPrice' => $workingPrice,
+                'workingQuantity' => $workingQuantity,
+                'pendingType' => $pendingType,
+                'pendingSide' => $pendingSide,
+                'pendingQuantity' => $pendingQuantity
+            ]
+        ));
+    }
+
+
+    /**
+     * Margin Account New OTOCO (TRADE)
+     *
+     * POST /sapi/v1/margin/order/otoco
+     *
+     * Post a new OTOCO order for margin account
+     *
+     * Weight(UID): 6
+     *
+     * @param string $symbol
+     * @param string $workingType
+     * @param string $workingSide
+     * @param mixed $workingPrice
+     * @param mixed $workingQuantity
+     * @param string $pendingSide
+     * @param mixed $pendingQuantity
+     * @param string $pendingAboveType
+     * @param array $options
+     */
+    public function marginNewOtocoOrder(string $symbol, string $workingType, string $workingSide, $workingPrice, $workingQuantity, string $pendingSide, $pendingQuantity, string $pendingAboveType, array $options = [])
+    {
+        if (Strings::isEmpty($symbol)) {
+            throw new MissingArgumentException('symbol');
+        }
+        if (Strings::isEmpty($workingType)) {
+            throw new MissingArgumentException('workingType');
+        }
+        if (Strings::isEmpty($workingSide)) {
+            throw new MissingArgumentException('workingSide');
+        }
+        if (Strings::isEmpty($pendingAboveType)) {
+            throw new MissingArgumentException('pendingAboveType');
+        }
+        if (Strings::isEmpty($pendingSide)) {
+            throw new MissingArgumentException('pendingSide');
+        }
+
+        return $this->signRequest('POST', '/api/v3/orderList/otoco', array_merge(
+            $options,
+            [
+                'symbol' => $symbol,
+                'workingType' => $workingType,
+                'workingSide' => $workingSide,
+                'workingPrice' => $workingPrice,
+                'workingQuantity' => $workingQuantity,
+                'pendingSide' => $pendingSide,
+                'pendingQuantity' => $pendingQuantity,
+                'pendingAboveType' => $pendingAboveType
+            ]
+        ));
+    }
+
+    /**
      * Query Liability Coin Leverage Bracket in Cross Margin Pro Mode(MARKET_DATA)
      *
      * GET /sapi/v1/margin/leverageBracket
