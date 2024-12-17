@@ -229,31 +229,29 @@ trait Trade
     }
 
     /**
-     * New OCO (TRADE)
+     * New Order list - OCO (TRADE)
      *
-     * POST /api/v3/order/oco
+     * POST /api/v3/orderList/oco
      *
-     * Send in a new OCO
+     * Send in an one-cancels-the-other (OCO) pair, where activation of one order immediately cancels the other.
      *
-     * - Price Restrictions:
-     * - `SELL`: Limit Price > Last Price > Stop Price
-     * - `BUY`: Limit Price < Last Price < Stop Price
-     * - Quantity Restrictions:
-     * - Both legs must have the same quantity
-     * - `ICEBERG` quantities however do not have to be the same
-     * - Order Rate Limit
-     * - `OCO` counts as 2 orders against the order rate limit.
+     * - An `OCO` has 2 orders called the above order and below order.
+     * - One of the orders must be a `LIMIT_MAKER` order and the other must be `STOP_LOSS` or`STOP_LOSS_LIMIT` order.
+     * - Price restrictions:
+     * - If the `OCO` is on the `SELL` side: `LIMIT_MAKER` price > Last Traded Price > stopPrice
+     * - If the `OCO` is on the `BUY` side: `LIMIT_MAKER` price < Last Traded Price < stopPrice
+     * - OCOs add 2 orders to the unfilled order count, `EXCHANGE_MAX_ORDERS` filter, and the `MAX_NUM_ORDERS` filter.
      *
      * Weight(IP): 1
      *
      * @param string $symbol
      * @param string $side
      * @param mixed $quantity
-     * @param mixed $price
-     * @param mixed $stopPrice
+     * @param string $aboveType
+     * @param string $belowType
      * @param array $options
      */
-    public function newOcoOrder(string $symbol, string $side, $quantity, $price, $stopPrice, array $options = [])
+    public function newOrderListOco(string $symbol, string $side, $quantity, string $aboveType, string $belowType, array $options = [])
     {
         if (Strings::isEmpty($symbol)) {
             throw new MissingArgumentException('symbol');
@@ -261,15 +259,137 @@ trait Trade
         if (Strings::isEmpty($side)) {
             throw new MissingArgumentException('side');
         }
+        if (Strings::isEmpty($aboveType)) {
+            throw new MissingArgumentException('aboveType');
+        }
+        if (Strings::isEmpty($belowType)) {
+            throw new MissingArgumentException('belowType');
+        }
 
-        return $this->signRequest('POST', '/api/v3/order/oco', array_merge(
+        return $this->signRequest('POST', '/api/v3/orderList/oco', array_merge(
             $options,
             [
                 'symbol' => $symbol,
                 'side' => $side,
                 'quantity' => $quantity,
-                'price' => $price,
-                'stopPrice' => $stopPrice
+                'aboveType' => $aboveType,
+                'belowType' => $belowType
+            ]
+        ));
+    }
+
+    /**
+     * New Order List - OTO (TRADE)
+     *
+     * POST /api/v3/orderList/oto
+     *
+     * Places an `OTO`.
+     * - An `OTO` (One-Triggers-the-Other) is an order list comprised of 2 orders.
+     * - The first order is called the working order and must be `LIMIT` or `LIMIT_MAKER`. Initially, only the working order goes on the order book.
+     * - The second order is called the pending order. It can be any order type except for `MARKET` orders using parameter `quoteOrderQty`. The pending order is only placed on the order book when the working order gets fully filled.
+     * - If either the working order or the pending order is cancelled individually, the other order in the order list will also be canceled or expired.
+     * - When the order list is placed, if the working order gets immediately fully filled, the placement response will show the working order as `FILLED` but the pending order will still appear as `PENDING_NEW`. You need to query the status of the pending order again to see its updated status.
+     * - OTOs add 2 orders to the unfilled order count, `EXCHANGE_MAX_NUM_ORDERS` filter and `MAX_NUM_ORDERS` filter.
+     *
+     * Weight: 1
+     *
+     * @param string $symbol
+     * @param string $workingType
+     * @param string $workingSide
+     * @param mixed $workingPrice
+     * @param mixed $workingQuantity
+     * @param string $pendingType
+     * @param string $pendingSide
+     * @param mixed $pendingQuantity
+     * @param array $options
+     */
+    public function newOrderListOto(string $symbol, string $workingType, string $workingSide, $workingPrice, $workingQuantity, string $pendingType, string $pendingSide, $pendingQuantity, array $options = [])
+    {
+        if (Strings::isEmpty($symbol)) {
+            throw new MissingArgumentException('symbol');
+        }
+        if (Strings::isEmpty($workingType)) {
+            throw new MissingArgumentException('workingType');
+        }
+        if (Strings::isEmpty($workingSide)) {
+            throw new MissingArgumentException('workingSide');
+        }
+        if (Strings::isEmpty($pendingType)) {
+            throw new MissingArgumentException('pendingType');
+        }
+        if (Strings::isEmpty($pendingSide)) {
+            throw new MissingArgumentException('pendingSide');
+        }
+
+        return $this->signRequest('POST', '/api/v3/orderList/oto', array_merge(
+            $options,
+            [
+                'symbol' => $symbol,
+                'workingType' => $workingType,
+                'workingSide' => $workingSide,
+                'workingPrice' => $workingPrice,
+                'workingQuantity' => $workingQuantity,
+                'pendingType' => $pendingType,
+                'pendingSide' => $pendingSide,
+                'pendingQuantity' => $pendingQuantity
+            ]
+        ));
+    }
+
+    /**
+     * New Order List - OTOCO (TRADE)
+     *
+     * POST /api/v3/orderList/otoco
+     *
+     * Place an `OTOCO`.
+     * - An `OTOCO` (One-Triggers-One-Cancels-the-Other) is an order list comprised of 3 orders.
+     * - The first order is called the working order and must be `LIMIT` or `LIMIT_MAKER`. Initially, only the working order goes on the order book.
+     * - The behavior of the working order is the same as the `OTO`.
+     * - `OTOCO` has 2 pending orders (pending above and pending below), forming an `OCO` pair. The pending orders are only placed on the order book when the working order gets fully filled.
+     * - The rules of the pending above and pending below follow the same rules as the Order List `OCO`.
+     * - OTOCOs add 3 orders against the unfilled order count, `EXCHANGE_MAX_NUM_ORDERS` filter, and `MAX_NUM_ORDERS` filter.
+     *
+     * Weight: 1
+     *
+     * @param string $symbol
+     * @param string $workingType
+     * @param string $workingSide
+     * @param mixed $workingPrice
+     * @param mixed $workingQuantity
+     * @param string $pendingSide
+     * @param mixed $pendingQuantity
+     * @param string $pendingAboveType
+     * @param array $options
+     */
+    public function newOrderListOtoco(string $symbol, string $workingType, string $workingSide, $workingPrice, $workingQuantity, string $pendingSide, $pendingQuantity, string $pendingAboveType, array $options = [])
+    {
+        if (Strings::isEmpty($symbol)) {
+            throw new MissingArgumentException('symbol');
+        }
+        if (Strings::isEmpty($workingType)) {
+            throw new MissingArgumentException('workingType');
+        }
+        if (Strings::isEmpty($workingSide)) {
+            throw new MissingArgumentException('workingSide');
+        }
+        if (Strings::isEmpty($pendingAboveType)) {
+            throw new MissingArgumentException('pendingAboveType');
+        }
+        if (Strings::isEmpty($pendingSide)) {
+            throw new MissingArgumentException('pendingSide');
+        }
+
+        return $this->signRequest('POST', '/api/v3/orderList/otoco', array_merge(
+            $options,
+            [
+                'symbol' => $symbol,
+                'workingType' => $workingType,
+                'workingSide' => $workingSide,
+                'workingPrice' => $workingPrice,
+                'workingQuantity' => $workingQuantity,
+                'pendingSide' => $pendingSide,
+                'pendingQuantity' => $pendingQuantity,
+                'pendingAboveType' => $pendingAboveType
             ]
         ));
     }

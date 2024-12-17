@@ -89,7 +89,7 @@ trait Market
      *
      * Get recent trades.
      *
-     * Weight(IP): 10
+     * Weight(IP): 25
      *
      * @param string $symbol
      * @param array $options
@@ -115,7 +115,7 @@ trait Market
      *
      * Get older market trades.
      *
-     * Weight(IP): 10
+     * Weight(IP): 25
      *
      * @param string $symbol
      * @param array $options
