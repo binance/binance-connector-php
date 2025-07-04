@@ -1,0 +1,26 @@
+{
+    "name": "binance/pay-examples",
+    "description": "A thin layer for Binance API in PHP",
+    "homepage": "https://github.com/binance/binance-connector-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Binance",
+            "email": "contact@binance.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "binance/pay": "*"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../clients/pay"
+        },
+        {
+            "type": "path",
+            "url": "../../clients/common"
+        }
+    ]
+}
