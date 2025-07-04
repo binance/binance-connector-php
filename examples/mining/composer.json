@@ -1,0 +1,26 @@
+{
+    "name": "binance/mining-examples",
+    "description": "A thin layer for Binance API in PHP",
+    "homepage": "https://github.com/binance/binance-connector-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Binance",
+            "email": "contact@binance.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "binance/mining": "*"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../clients/mining"
+        },
+        {
+            "type": "path",
+            "url": "../../clients/common"
+        }
+    ]
+}
