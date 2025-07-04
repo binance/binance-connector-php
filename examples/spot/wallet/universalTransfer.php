@@ -1,0 +1,24 @@
+<?php
+
+require_once __DIR__ . '/../../../vendor/autoload.php';
+
+$key = '';
+$secret = '';
+
+$client = new \Binance\Spot([
+    'key'  => $key,
+    'secret'  => $secret
+]);
+
+$response = $client->universalTransfer(
+    'MAIN_UMFUTURE',
+    'BTC',
+    1.01,
+    [
+        'fromSymbol' => 'BNBUSDT',
+        'toSymbol' => 'BNBUSDT',
+        'recvWindow' => 5000
+    ]
+);
+
+echo json_encode($response);
