@@ -1,156 +1,239 @@
-# Binance PHP Connectors
+# Binance Connector PHP
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/binance/binance-connector-php/php.yml)](https://github.com/binance/binance-connector-php/actions)
-[![Open Issues](https://img.shields.io/github/issues/binance/binance-connector-php)](https://github.com/binance/binance-connector-php/issues)
-[![Code Style: PHP-CS-Fixer](https://img.shields.io/badge/code%20style-PHP--CS--Fixer-ff69b4)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)
-![PHP Version](https://img.shields.io/badge/PHP-%3E=8.4.0-brightgreen)
-[![Known Vulnerabilities](https://snyk.io/test/github/binance/binance-connector-php/badge.svg)](https://snyk.io/test/github/binance/binance-connector-php)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+This is a thin library that working as a connector to the Binance public API.
 
-Collection of auto-generated PHP connectors for Binance APIs.
-
-## Prerequisites
-
-Before using the connectors, ensure you have:
-
-- **PHP** (version >= 8.4.0)
-
-## Available Connectors
-- [binance-algo](clients/algo) - Algo Trading connector
-- [binance-c2c](clients/c2c) - C2C connector
-- [binance-convert](clients/convert) - Convert connector
-- [binance-copy-trading](clients/copy-trading) - Copy Trading connector
-- [binance-crypto-loan](clients/crypto-loan) - Crypto Loan connector
-- [binance-derivatives-trading-coin-futures](clients/derivatives-trading-coin-futures) - Derivatives Trading (COIN-M Futures) connector
-- [binance-derivatives-trading-options](clients/derivatives-trading-options) - Derivatives Trading (Options) connector
-- [binance-derivatives-trading-portfolio-margin](clients/derivatives-trading-portfolio-margin) - Derivatives Trading (Portfolio Margin) connector
-- [binance-derivatives-trading-portfolio-margin-pro](clients/derivatives-trading-portfolio-margin-pro) - Derivatives Trading (Portfolio Margin Pro) connector
-- [binance-derivatives-trading-usds-futures](clients/derivatives-trading-usds-futures) - Derivatives Trading (USDS-M Futures) connector
-- [binance-dual-investment](clients/dual-investment) - Dual Investment connector
-- [binance-fiat](clients/fiat) - Fiat connector
-- [binance-gift-card](clients/gift-card) - Gift Card connector
-- [binance-margin-trading](clients/margin-trading) - Margin Trading connector
-- [binance-mining](clients/mining) - Mining connector
-- [binance-nft](clients/nft) - NFT connector
-- [binance-pay](clients/pay) - Pay connector
-- [binance-rebate](clients/rebate) - Rebate connector
-- [binance-simple-earn](clients/simple-earn) - Simple Earn connector
-- [binance-spot](clients/spot) - Spot Trading connector
-- [binance-staking](clients/staking) - Staking connector
-- [binance-sub-account](clients/sub-account) - Sub Account connector
-- [binance-vip-loan](clients/vip-loan) - VIP Loan connector
-- [binance-wallet](clients/wallet) - Wallet connector
-
-## Documentation
-
-For detailed information, refer to the [Binance API Documentation](https://developers.binance.com).
 
 ## Installation
 
-Each connector is published as a separate maven dependency. For example:
+```php
+
+composer require binance/binance-connector-php
+
+```
+
+## How to use
+
+```php
+
+require_once 'vendor/autoload.php';
+
+$client = new \Binance\Spot();
+$response = $client->time();
+echo json_encode($response);
+
+
+$client = new \Binance\Spot(['key' => $key, 'secret' => $secret]);
+$response = $client->account();
+echo json_encode($response);
+```
+
+Please find `examples` folder for more endpoints
+
+### RSA Signature
+RSA signature is supported.
+
+```php
+
+# RSA Key(Unencrypted) Authentication
+$key = ''; # api key is also required
+$privateKey = 'file:///path/to/rsa/private/key.pem';
+
+$client = new \Binance\Spot([
+    'key'  => $key,
+    'privateKey'  => $privateKey, # pass the key file directly
+    'baseURL' => 'https://testnet.binance.vision'
+]);
+
+# RSA key(Encrypted) Authentication
+$key = '';
+$encryptedPrivateKey = 'file:///path/to/rsa/private/key.pem';
+$privateKey = openssl_pkey_get_private($encryptedPrivateKey, 'password');
+
+$client = new \Binance\Spot([
+    'key'  => $key,
+    'privateKey'  => $privateKey,
+    'baseURL' => 'https://testnet.binance.vision'
+]);
+
+```
+
+
+### Testnet
+
+The [spot testnet](https://testnet.binance.vision/) is available. In order to test on testnet:
+
+```php
+
+$client = new \Binance\Spot([
+    'baseURL' => 'https://testnet.binance.vision'
+]);
+```
+
+### RecvWindow
+
+From Binance API, recvWindow is available for all endpoints require signature. By default, it's 5000ms. You are allowed to set this parameter to any value less than 60000, number beyond this limit will receive error from Binance server.
+
+```php
+
+$client = new \Binance\Spot(['key' => $key, 'secret' => $secret]);
+$response = $client->getOrder('BNBUSDT', [
+        'orderId'    => '11',
+        'recvWindow' => 10000
+    ]
+);
+
+```
+
+### Optional parameters
+
+For the optional parameters in the endpoint, pass exactly the field name from API document into the optional parameter array. e.g
+
+```php
+
+$response = $client->cancelOCOOrder('BNBUSDT',
+    [
+        'orderListId' => '12'
+    ]
+);
+
+```
+
+The mandartory parameter is validated in the library level, missing required parameter will throw `Binance\Exception\MissingArgumentException`.
+
+### Timeout
+
+Time out in seconds.
+
+```php
+
+$client = new \Binance\Spot(['timeout' => 0.5]);
+
+$response = $client->time();
+
+echo json_encode($response);
+
+```
+
+### Display meta info
+
+Binance API server returns weight usage in the header of each response. This is very useful to indentify the current usage. To reveal this value, simpily intial the client with show_weight_usage=True as:
+
+```php
+
+$client = new \Binance\Spot(['showWeightUsage' => true]);
+$response = $client->time();
+echo json_encode($response);
+```
+
+this will returns:
 
 ```json
-{
-    "require": {
-        "binance/spot": "*"
-    }
-}
+{"data":{"serverTime":1590579807751},"weight_usage":{"x-mbx-used-weight":["2"],"x-mbx-used-weight-1m":["2"]}}
 ```
+
+It's also able to print out all headers, which may be very helpful for debug:
+
+```php
+
+$client = new \Binance\Spot(['showHeader' => true]);
+$response = $client->time();
+echo json_encode($response);
+```
+the returns will be like:
+
+```json
+
+{"data":{"serverTime":1590579942001},"header":{"Content-Type":["application/json;charset=utf-8"],"Transfer-Encoding":["chunked"],...}}
+```
+
+## Websocket
+
+```php
+
+$client = new \Binance\Websocket\Spot();
+
+$callbacks = [
+    'message' => function($conn, $msg){
+        echo $msg.PHP_EOL;
+    },
+    'ping' => function($conn, $msg) {
+        echo "received ping from server".PHP_EOL;
+    }
+];
+
+$client->aggTrade('btcusdt', $callbacks);
+
+```
+
+It's able to provide a customlized websocket connector.
+
+```php
+
+$loop = \React\EventLoop\Factory::create();
+$reactConnector = new \React\Socket\Connector($loop);
+$connector = new \Ratchet\Client\Connector($loop, $reactConnector);
+$client = new \Binance\Websocket\Spot(['wsConnector' => $connector]);
+
+$callbacks = [
+    'message' => function($conn, $msg){
+        echo "received message".PHP_EOL;
+    },
+    'pong' => function($conn) {
+        echo "received pong from server".PHP_EOL;
+    },
+    'ping' => function($conn) {
+        echo "received ping from server".PHP_EOL;
+    },
+    'close' => function($conn) {
+        echo "receive closed.".PHP_EOL;
+    }
+];
+
+$client->miniTicker('btcusdt', $callbacks);
+
+# send ping to server intervally
+$loop->addPeriodicTimer(2, function () use ($client) {
+    $client->ping();
+    echo "ping sent ".PHP_EOL;
+});
+
+$loop->run();
+
+```
+
+Listen to combined stream:
+```php
+
+$client->combined([
+    'btcusdt@miniTicker',
+    'ethusdt@miniTicker'
+], $callbacks);
+
+```
+
+## Test
+
+```shell
+
+# install the packages
+composer install
+
+vendor/bin/phpunit
+```
+
+## Limitation
+Futures and Vanilla Options APIs are not supported:
+
+- /fapi/*
+- /dapi/*
+- /vapi/*
+- Associated Websocket Market and User Data Streams
+
 
 ## Contributing
-
-Since this repository contains auto-generated code using OpenAPI Generator, we encourage you to:
-
-1. Open a GitHub issue to discuss your ideas or report bugs
-2. Allow maintainers to implement necessary changes through the code generation process
-
-### Types of Signature Generator
-When creating REST clients (such as SpotRestApi), you use one of the following types of Signature Generator to create signatures (for SIGNED endpoints) based on your security preference:
-
-- `HMAC` - Use of API Key and Secret Key.
-```php
-    $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
-    $configurationBuilder->apiKey('apiKey')->secretKey('mySecretKey');
-    $api = new SpotRestApi($configurationBuilder->build());
-```
-
-- `RSA` or `ED25519` - use of API Key and RSA/Ed25519 algorithm keys.
-```php
-    $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
-    $configurationBuilder
-    ->apiKey('apiKey')
-    ->privateKey('file:///path/to/private.key')
-    // if the private key is protected by a password
-    ->privateKeyPass("myPrivateKeyPass");
-    
-    $api = new SpotRestApi($configurationBuilder->build());
-```
-
-## How to use a proxy
-### Rest Api
-```php
-    // set up a client array
-    $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
-    // define the proxies
-    $proxies = [
-        'http'  => 'http://localhost:8080',
-        'https' => 'http://localhost:8080',
-    ];
-
-    $configurationBuilder->setProxy($proxies);
-
-    $api = new SpotRestApi($configurationBuilder->build());
-```
-
-## Examples
-**Algo**: [Rest API](clients/algo/example_rest.md)
-
-**C2c**: [Rest API](clients/c2c/example_rest.md)
-
-**Convert**: [Rest API](clients/convert/example_rest.md)
-
-**Copy Trading**: [Rest API](clients/copy-trading/example_rest.md)
-
-**Crypto Loan**: [Rest API](clients/crypto-loan/example_rest.md)
-
-**Derivatives Trading Coin Futures**: [Rest API](clients/derivatives-trading-coin-futures/example_rest.md)
-
-**Derivatives Trading Options**: [Rest API](clients/derivatives-trading-options/example_rest.md)
-
-**Derivatives Trading Portfolio Margin**: [Rest API](clients/derivatives-trading-portfolio-margin/example_rest.md)
-
-**Derivatives Trading Portfolio Margin Pro**: [Rest API](clients/derivatives-trading-portfolio-margin-pro/example_rest.md)
-
-**Derivatives Trading Usds Futures**: [Rest API](clients/derivatives-trading-usds-futures/example_rest.md)
-
-**Dual Investment**: [Rest API](clients/dual-investment/example_rest.md)
-
-**Fiat**: [Rest API](clients/fiat/example_rest.md)
-
-**Gift Card**: [Rest API](clients/gift-card/example_rest.md)
-
-**Margin Trading**: [Rest API](clients/margin-trading/example_rest.md)
-
-**Mining**: [Rest API](clients/mining/example_rest.md)
-
-**Nft**: [Rest API](clients/nft/example_rest.md)
-
-**Pay**: [Rest API](clients/pay/example_rest.md)
-
-**Rebate**: [Rest API](clients/rebate/example_rest.md)
-
-**Simple Earn**: [Rest API](clients/simple-earn/example_rest.md)
-
-**Spot**: [Rest API](clients/spot/example_rest.md)
-
-**Staking**: [Rest API](clients/staking/example_rest.md)
-
-**Sub Account**: [Rest API](clients/sub-account/example_rest.md)
-
-**Vip Loan**: [Rest API](clients/vip-loan/example_rest.md)
-
-**Wallet**: [Rest API](clients/wallet/example_rest.md)
+Contributions are welcome.
+If you've found a bug within this project, please open an issue to discuss what you would like to change.
+If it's an issue with the API, please open a topic at Binance Developer Community
 
 ## License
-
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+MIT
