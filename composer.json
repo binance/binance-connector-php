@@ -2,8 +2,6 @@
     "name": "binance/binance-connector-php",
     "description": "A thin layer for Binance API in PHP",
     "homepage": "https://github.com/binance/binance-connector-php",
-    "type": "library",
-    "minimum-stability": "stable",
     "license": "MIT",
     "authors": [
         {
@@ -12,33 +10,43 @@
         }
     ],
     "require": {
-        "php": ">=8.1.0",
-        "psr/log": "^1|^2|^3",
-        "guzzlehttp/guzzle": "^7.7",
-        "ratchet/pawl": "^0.4"
+        "php": "^8.1",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^7.3",
+        "guzzlehttp/psr7": "^1.7 || ^2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5",
-        "2pd/guzzle-http-mock": "^4.0",
-        "friendsofphp/php-cs-fixer": "^3.0",
-        "phan/phan": "^5.4"
+        "phpunit/phpunit": "^8.0 || ^9.0"
     },
     "autoload": {
         "psr-4": {
-            "Binance\\": "src/Binance/"
+            "Binance\\Client\\Algo\\" : "src/algo/lib/",
+            "Binance\\Client\\C2c\\" : "src/c2c/lib/",
+            "Binance\\Common\\" : "src/common/lib/" ,
+            "Binance\\Client\\Convert\\" : "src/convert/lib/",
+            "Binance\\Client\\CopyTrading\\" : "src/copy-trading/lib/",
+            "Binance\\Client\\CryptoLoan\\" : "src/crypto-loan/lib/",
+            "Binance\\Client\\DerivativesTradingCoinFutures\\" : "src/derivatives-trading-coin-futures/lib/",
+            "Binance\\Client\\DerivativesTradingOptions\\" : "src/derivatives-trading-options/lib/",
+            "Binance\\Client\\DerivativesTradingPortfolioMargin\\" : "src/derivatives-trading-portfolio-margin/lib/",
+            "Binance\\Client\\DerivativesTradingPortfolioMarginPro\\" : "src/derivatives-trading-portfolio-margin-pro/lib/",
+            "Binance\\Client\\DerivativesTradingUsdsFutures\\" : "src/derivatives-trading-usds-futures/lib/",
+            "Binance\\Client\\DualInvestment\\" : "src/dual-investment/lib/",
+            "Binance\\Client\\Fiat\\" : "src/fiat/lib/",
+            "Binance\\Client\\GiftCard\\" : "src/gift-card/lib/",
+            "Binance\\Client\\MarginTrading\\" : "src/margin-trading/lib/",
+            "Binance\\Client\\Mining\\" : "src/mining/lib/",
+            "Binance\\Client\\Nft\\" : "src/nft/lib/",
+            "Binance\\Client\\Pay\\" : "src/pay/lib/",
+            "Binance\\Client\\Rebate\\" : "src/rebate/lib/",
+            "Binance\\Client\\SimpleEarn\\" : "src/simple-earn/lib/",
+            "Binance\\Client\\Spot\\" : "src/spot/lib/",
+            "Binance\\Client\\Staking\\" : "src/staking/lib/",
+            "Binance\\Client\\SubAccount\\" : "src/sub-account/lib/",
+            "Binance\\Client\\VipLoan\\" : "src/vip-loan/lib/",
+            "Binance\\Client\\Wallet\\" : "src/wallet/lib/"
         }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Binance\\Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "test": "phpunit",
-        "test-coverage": "XDEBUG_MODE=coverage phpunit --coverage-html=build/artifacts/coverage",
-        "lint-check": "php-cs-fixer fix --using-cache=no --stop-on-violation --config=.php-cs-fixer.php -v .",
-        "lint-fix": "php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.php -v .",
-        "analyze": "phan --allow-polyfill-parser"
     }
-
 }

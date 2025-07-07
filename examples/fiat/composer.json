@@ -1,0 +1,16 @@
+{
+    "name": "binance/fiat-examples",
+    "description": "A thin layer for Binance API in PHP",
+    "homepage": "https://github.com/binance/binance-connector-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Binance",
+            "email": "contact@binance.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "binance/binance-connector-php": "*"
+    }
+}
