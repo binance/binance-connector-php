@@ -20,24 +20,24 @@ jobs:
       - name: Detect modified targets
         id: filter
         run: |
-          MODIFIED_TARGETS=()
+          MODIFIED_TARGETS=("spot")
 
-          # Determine base commit: use HEAD^ if it exists, otherwise use the first commit
-          if git rev-parse --verify HEAD^ >/dev/null 2>&1; then
-            BASE_COMMIT="HEAD^"
-          else
-            BASE_COMMIT=$(git rev-list --max-parents=0 HEAD)
-          fi
+          # # Determine base commit: use HEAD^ if it exists, otherwise use the first commit
+          # if git rev-parse --verify HEAD^ >/dev/null 2>&1; then
+          #   BASE_COMMIT="HEAD^"
+          # else
+          #   BASE_COMMIT=$(git rev-list --max-parents=0 HEAD)
+          # fi
 
-          # Loop through each client directory in "src/"
-          for client in src/*; do
-            CLIENT_NAME=$(basename "$client")
-            # Check for changes in the client directory between BASE_COMMIT and HEAD
-            if ! git diff --quiet "$BASE_COMMIT" HEAD -- "$client"; then
-              echo "Changes detected in $CLIENT_NAME"
-              MODIFIED_TARGETS+=("$CLIENT_NAME")
-            fi
-          done
+          # # Loop through each client directory in "src/"
+          # for client in src/*; do
+          #   CLIENT_NAME=$(basename "$client")
+          #   # Check for changes in the client directory between BASE_COMMIT and HEAD
+          #   if ! git diff --quiet "$BASE_COMMIT" HEAD -- "$client"; then
+          #     echo "Changes detected in $CLIENT_NAME"
+          #     MODIFIED_TARGETS+=("$CLIENT_NAME")
+          #   fi
+          # done
 
           # Convert the array of modified targets into a JSON array
           MODIFIED_TARGETS_JSON=$(printf '%s\n' "${MODIFIED_TARGETS[@]}" | jq -R -s -c 'split("\n") | map(select(. != ""))')
