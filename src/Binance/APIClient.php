@@ -72,6 +72,13 @@ abstract class APIClient
      */
     private $httpRequest = null;
 
+    /**
+     * HTTP request time offset
+     *
+     * @var int
+     */
+    private $timeOffset = 0;
+
     public function __construct($args = array())
     {
         $this->baseURL         = $args['baseURL'] ?? null;
@@ -83,6 +90,16 @@ abstract class APIClient
         $this->showHeader      = $args['showHeader'] ?? false;
         $this->privateKey      = $args['privateKey'] ?? null;
         $this->buildClient($args['httpClient'] ?? null);
+    }
+
+    /**
+     * Adds a time offset to the timestamp in the API request to avoid time errors.
+     */
+    public function useServerTime() {
+        $request = $this->publicRequest('GET', '/api/v3/time');
+        if (isset($request['serverTime'])) {
+            $this->timeOffset = $request['serverTime'] - round(microtime(true) * 1000);
+        }
     }
 
     /**
@@ -99,7 +116,7 @@ abstract class APIClient
      */
     protected function signRequest($method, $path, array $params = [])
     {
-        $params['timestamp'] = round(microtime(true) * 1000);
+        $params['timestamp'] = round(microtime(true) * 1000) + $this->timeOffset;
         $query = Url::buildQuery($params);
 
         if ($this->privateKey) {
@@ -167,7 +184,8 @@ abstract class APIClient
                 'X-MBX-APIKEY' => $this->key,
                 'User-Agent'   => 'binance-connect-php'
             ],
-            'timeout' => $this->timeout
+            'timeout' => $this->timeout,
+            'http_errors' => false,
         ]);
     }
 }
