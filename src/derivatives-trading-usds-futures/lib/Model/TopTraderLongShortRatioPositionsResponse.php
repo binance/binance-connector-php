@@ -50,8 +50,13 @@ class TopTraderLongShortRatioPositionsResponse
 
     /**
      * Constructor.
+     *
+     * @param TopTraderLongShortRatioPositionsResponseInner[] items
      */
-    public function __construct() {}
+    public function __construct(array $items = [])
+    {
+        $this->items = $items;
+    }
 
     /**
      * Type of items in the array.
@@ -99,5 +104,17 @@ class TopTraderLongShortRatioPositionsResponse
     public function addItem(TopTraderLongShortRatioPositionsResponseInner $item): void
     {
         $this->items[] = $item;
+    }
+
+    /**
+     * @param TopTraderLongShortRatioPositionsResponseInner[] $items
+     */
+    public function addItems(array $items): void
+    {
+        if (empty($this->items)) {
+            $this->items = $items;
+        } else {
+            $this->items = array_merge($this->items, $items);
+        }
     }
 }

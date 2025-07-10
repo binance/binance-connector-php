@@ -45,20 +45,25 @@ class MarkPriceKlineCandlestickDataResponseItem
 {
     public const DISCRIMINATOR = null;
 
-    /** @var MarkPriceKlineCandlestickDataResponseItemInner[] */
+    /** @var string[] */
     protected array $items = [];
 
     /**
      * Constructor.
+     *
+     * @param string[] items
      */
-    public function __construct() {}
+    public function __construct(array $items = [])
+    {
+        $this->items = $items;
+    }
 
     /**
      * Type of items in the array.
      */
     public static function getItemType(): string
     {
-        return '\Binance\Client\DerivativesTradingUsdsFutures\Model\MarkPriceKlineCandlestickDataResponseItemInner';
+        return 'string';
     }
 
     /**
@@ -76,8 +81,7 @@ class MarkPriceKlineCandlestickDataResponseItem
      */
     public static function getComposedSchemas(): array
     {
-        return [
-        ];
+        return [];
     }
 
     /**
@@ -89,15 +93,27 @@ class MarkPriceKlineCandlestickDataResponseItem
     }
 
     /**
-     * @return MarkPriceKlineCandlestickDataResponseItemInner[]
+     * @return string[]
      */
     public function getItems(): array
     {
         return $this->items;
     }
 
-    public function addItem(MarkPriceKlineCandlestickDataResponseItemInner $item): void
+    public function addItem(string $item): void
     {
         $this->items[] = $item;
+    }
+
+    /**
+     * @param string[] $items
+     */
+    public function addItems(array $items): void
+    {
+        if (empty($this->items)) {
+            $this->items = $items;
+        } else {
+            $this->items = array_merge($this->items, $items);
+        }
     }
 }
