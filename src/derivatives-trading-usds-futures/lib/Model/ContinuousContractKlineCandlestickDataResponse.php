@@ -50,8 +50,13 @@ class ContinuousContractKlineCandlestickDataResponse
 
     /**
      * Constructor.
+     *
+     * @param ContinuousContractKlineCandlestickDataResponseItem[] items
      */
-    public function __construct() {}
+    public function __construct(array $items = [])
+    {
+        $this->items = $items;
+    }
 
     /**
      * Type of items in the array.
@@ -99,5 +104,17 @@ class ContinuousContractKlineCandlestickDataResponse
     public function addItem(ContinuousContractKlineCandlestickDataResponseItem $item): void
     {
         $this->items[] = $item;
+    }
+
+    /**
+     * @param ContinuousContractKlineCandlestickDataResponseItem[] $items
+     */
+    public function addItems(array $items): void
+    {
+        if (empty($this->items)) {
+            $this->items = $items;
+        } else {
+            $this->items = array_merge($this->items, $items);
+        }
     }
 }

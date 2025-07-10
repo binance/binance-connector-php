@@ -50,8 +50,13 @@ class QueryUmPositionInformationResponse
 
     /**
      * Constructor.
+     *
+     * @param QueryUmPositionInformationResponseInner[] items
      */
-    public function __construct() {}
+    public function __construct(array $items = [])
+    {
+        $this->items = $items;
+    }
 
     /**
      * Type of items in the array.
@@ -99,5 +104,17 @@ class QueryUmPositionInformationResponse
     public function addItem(QueryUmPositionInformationResponseInner $item): void
     {
         $this->items[] = $item;
+    }
+
+    /**
+     * @param QueryUmPositionInformationResponseInner[] $items
+     */
+    public function addItems(array $items): void
+    {
+        if (empty($this->items)) {
+            $this->items = $items;
+        } else {
+            $this->items = array_merge($this->items, $items);
+        }
     }
 }

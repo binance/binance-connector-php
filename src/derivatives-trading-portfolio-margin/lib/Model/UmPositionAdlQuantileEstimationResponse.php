@@ -50,8 +50,13 @@ class UmPositionAdlQuantileEstimationResponse
 
     /**
      * Constructor.
+     *
+     * @param UmPositionAdlQuantileEstimationResponseInner[] items
      */
-    public function __construct() {}
+    public function __construct(array $items = [])
+    {
+        $this->items = $items;
+    }
 
     /**
      * Type of items in the array.
@@ -99,5 +104,17 @@ class UmPositionAdlQuantileEstimationResponse
     public function addItem(UmPositionAdlQuantileEstimationResponseInner $item): void
     {
         $this->items[] = $item;
+    }
+
+    /**
+     * @param UmPositionAdlQuantileEstimationResponseInner[] $items
+     */
+    public function addItems(array $items): void
+    {
+        if (empty($this->items)) {
+            $this->items = $items;
+        } else {
+            $this->items = array_merge($this->items, $items);
+        }
     }
 }

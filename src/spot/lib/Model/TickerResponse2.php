@@ -50,8 +50,13 @@ class TickerResponse2
 
     /**
      * Constructor.
+     *
+     * @param TickerResponse2Inner[] items
      */
-    public function __construct() {}
+    public function __construct(array $items = [])
+    {
+        $this->items = $items;
+    }
 
     /**
      * Type of items in the array.
@@ -99,5 +104,17 @@ class TickerResponse2
     public function addItem(TickerResponse2Inner $item): void
     {
         $this->items[] = $item;
+    }
+
+    /**
+     * @param TickerResponse2Inner[] $items
+     */
+    public function addItems(array $items): void
+    {
+        if (empty($this->items)) {
+            $this->items = $items;
+        } else {
+            $this->items = array_merge($this->items, $items);
+        }
     }
 }

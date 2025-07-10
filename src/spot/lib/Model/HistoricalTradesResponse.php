@@ -50,8 +50,13 @@ class HistoricalTradesResponse
 
     /**
      * Constructor.
+     *
+     * @param HistoricalTradesResponseInner[] items
      */
-    public function __construct() {}
+    public function __construct(array $items = [])
+    {
+        $this->items = $items;
+    }
 
     /**
      * Type of items in the array.
@@ -99,5 +104,17 @@ class HistoricalTradesResponse
     public function addItem(HistoricalTradesResponseInner $item): void
     {
         $this->items[] = $item;
+    }
+
+    /**
+     * @param HistoricalTradesResponseInner[] $items
+     */
+    public function addItems(array $items): void
+    {
+        if (empty($this->items)) {
+            $this->items = $items;
+        } else {
+            $this->items = array_merge($this->items, $items);
+        }
     }
 }
