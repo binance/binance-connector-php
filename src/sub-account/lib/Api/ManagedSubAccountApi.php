@@ -129,7 +129,7 @@ class ManagedSubAccountApi
         if (!empty($clientConfig->getSignatureConfiguration())) {
             $this->signer = SignerFactory::getSigner($clientConfig->getSignatureConfiguration());
         }
-        $this->userAgent = sprintf('binance-sub-account/1.0.0 (PHP/%s; %s; %s)', phpversion(), PHP_OS_FAMILY, php_uname('m'));
+        $this->userAgent = CommonUtils::getUserAgent('sub-account');
     }
 
     /**

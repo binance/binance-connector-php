@@ -50,8 +50,13 @@ class MultiAssetsModeAssetIndexResponse2
 
     /**
      * Constructor.
+     *
+     * @param MultiAssetsModeAssetIndexResponse2Inner[] items
      */
-    public function __construct() {}
+    public function __construct(array $items = [])
+    {
+        $this->items = $items;
+    }
 
     /**
      * Type of items in the array.
@@ -99,5 +104,17 @@ class MultiAssetsModeAssetIndexResponse2
     public function addItem(MultiAssetsModeAssetIndexResponse2Inner $item): void
     {
         $this->items[] = $item;
+    }
+
+    /**
+     * @param MultiAssetsModeAssetIndexResponse2Inner[] $items
+     */
+    public function addItems(array $items): void
+    {
+        if (empty($this->items)) {
+            $this->items = $items;
+        } else {
+            $this->items = array_merge($this->items, $items);
+        }
     }
 }

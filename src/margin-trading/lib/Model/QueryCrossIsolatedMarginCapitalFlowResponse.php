@@ -50,8 +50,13 @@ class QueryCrossIsolatedMarginCapitalFlowResponse
 
     /**
      * Constructor.
+     *
+     * @param QueryCrossIsolatedMarginCapitalFlowResponseInner[] items
      */
-    public function __construct() {}
+    public function __construct(array $items = [])
+    {
+        $this->items = $items;
+    }
 
     /**
      * Type of items in the array.
@@ -99,5 +104,17 @@ class QueryCrossIsolatedMarginCapitalFlowResponse
     public function addItem(QueryCrossIsolatedMarginCapitalFlowResponseInner $item): void
     {
         $this->items[] = $item;
+    }
+
+    /**
+     * @param QueryCrossIsolatedMarginCapitalFlowResponseInner[] $items
+     */
+    public function addItems(array $items): void
+    {
+        if (empty($this->items)) {
+            $this->items = $items;
+        } else {
+            $this->items = array_merge($this->items, $items);
+        }
     }
 }
