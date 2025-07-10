@@ -50,8 +50,13 @@ class QuerySubAccountSpotAssetTransferHistoryResponse
 
     /**
      * Constructor.
+     *
+     * @param QuerySubAccountSpotAssetTransferHistoryResponseInner[] items
      */
-    public function __construct() {}
+    public function __construct(array $items = [])
+    {
+        $this->items = $items;
+    }
 
     /**
      * Type of items in the array.
@@ -99,5 +104,17 @@ class QuerySubAccountSpotAssetTransferHistoryResponse
     public function addItem(QuerySubAccountSpotAssetTransferHistoryResponseInner $item): void
     {
         $this->items[] = $item;
+    }
+
+    /**
+     * @param QuerySubAccountSpotAssetTransferHistoryResponseInner[] $items
+     */
+    public function addItems(array $items): void
+    {
+        if (empty($this->items)) {
+            $this->items = $items;
+        } else {
+            $this->items = array_merge($this->items, $items);
+        }
     }
 }

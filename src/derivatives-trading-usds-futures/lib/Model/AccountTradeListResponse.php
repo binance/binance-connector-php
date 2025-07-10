@@ -50,8 +50,13 @@ class AccountTradeListResponse
 
     /**
      * Constructor.
+     *
+     * @param AccountTradeListResponseInner[] items
      */
-    public function __construct() {}
+    public function __construct(array $items = [])
+    {
+        $this->items = $items;
+    }
 
     /**
      * Type of items in the array.
@@ -99,5 +104,17 @@ class AccountTradeListResponse
     public function addItem(AccountTradeListResponseInner $item): void
     {
         $this->items[] = $item;
+    }
+
+    /**
+     * @param AccountTradeListResponseInner[] $items
+     */
+    public function addItems(array $items): void
+    {
+        if (empty($this->items)) {
+            $this->items = $items;
+        } else {
+            $this->items = array_merge($this->items, $items);
+        }
     }
 }

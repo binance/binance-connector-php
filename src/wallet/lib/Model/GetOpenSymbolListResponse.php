@@ -50,8 +50,13 @@ class GetOpenSymbolListResponse
 
     /**
      * Constructor.
+     *
+     * @param GetOpenSymbolListResponseInner[] items
      */
-    public function __construct() {}
+    public function __construct(array $items = [])
+    {
+        $this->items = $items;
+    }
 
     /**
      * Type of items in the array.
@@ -99,5 +104,17 @@ class GetOpenSymbolListResponse
     public function addItem(GetOpenSymbolListResponseInner $item): void
     {
         $this->items[] = $item;
+    }
+
+    /**
+     * @param GetOpenSymbolListResponseInner[] $items
+     */
+    public function addItems(array $items): void
+    {
+        if (empty($this->items)) {
+            $this->items = $items;
+        } else {
+            $this->items = array_merge($this->items, $items);
+        }
     }
 }

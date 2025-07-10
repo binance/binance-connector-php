@@ -5,11 +5,37 @@ namespace Binance\Common;
 use Binance\Common\Dtos\RateLimit;
 use Binance\Common\Dtos\RateLimitInterval;
 use Binance\Common\Dtos\RateLimitType;
+use Composer\InstalledVersions;
 
 class CommonUtils
 {
     private const PATTERN_USED_WEIGHT = '/x-mbx-used-weight-([0-9]+)([shmd])/';
     private const PATTERN_ORDER_COUNT = '/x-mbx-order-count-([0-9]+)([smhd])/';
+    private const PACKAGE_NAME = 'binance/binance-connector-php';
+
+    public static function getUserAgent($product): string
+    {
+        $version = self::getPackageVersion();
+
+        return sprintf('binance-%s/%s (PHP/%s; %s; %s)', $product, $version, phpversion(), PHP_OS_FAMILY, php_uname('m'));
+    }
+
+    public static function getPackageVersion(): string
+    {
+        $version = '1.0.0';
+        if (class_exists(InstalledVersions::class)) {
+            if (InstalledVersions::isInstalled(packageName: self::PACKAGE_NAME)) {
+                $version = InstalledVersions::getVersion(self::PACKAGE_NAME);
+                $parts = explode('.', $version);
+                if (4 == count($parts)) {
+                    array_pop($parts);
+                    $version = implode('.', $parts);
+                }
+            }
+        }
+
+        return $version;
+    }
 
     /**
      * Summary of getRateLimits.

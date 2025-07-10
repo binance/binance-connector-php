@@ -2,3 +2,4 @@ vendor/
 *.cache
 build/
 composer.lock
+composer.phar

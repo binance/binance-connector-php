@@ -107,7 +107,7 @@ class UserDataStreamsApi
         if (!empty($clientConfig->getSignatureConfiguration())) {
             $this->signer = SignerFactory::getSigner($clientConfig->getSignatureConfiguration());
         }
-        $this->userAgent = sprintf('binance-derivatives-trading-coin-futures/1.0.0 (PHP/%s; %s; %s)', phpversion(), PHP_OS_FAMILY, php_uname('m'));
+        $this->userAgent = CommonUtils::getUserAgent('derivatives-trading-coin-futures');
     }
 
     /**

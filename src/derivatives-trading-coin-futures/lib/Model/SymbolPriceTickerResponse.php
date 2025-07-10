@@ -50,8 +50,13 @@ class SymbolPriceTickerResponse
 
     /**
      * Constructor.
+     *
+     * @param SymbolPriceTickerResponseInner[] items
      */
-    public function __construct() {}
+    public function __construct(array $items = [])
+    {
+        $this->items = $items;
+    }
 
     /**
      * Type of items in the array.
@@ -99,5 +104,17 @@ class SymbolPriceTickerResponse
     public function addItem(SymbolPriceTickerResponseInner $item): void
     {
         $this->items[] = $item;
+    }
+
+    /**
+     * @param SymbolPriceTickerResponseInner[] $items
+     */
+    public function addItems(array $items): void
+    {
+        if (empty($this->items)) {
+            $this->items = $items;
+        } else {
+            $this->items = array_merge($this->items, $items);
+        }
     }
 }
