@@ -31,13 +31,15 @@ namespace Binance\Client\Wallet\Api;
 
 use Binance\Client\Wallet\Model\BrokerWithdrawRequest;
 use Binance\Client\Wallet\Model\BrokerWithdrawResponse;
+use Binance\Client\Wallet\Model\CheckQuestionnaireRequirementsResponse;
 use Binance\Client\Wallet\Model\DepositHistoryTravelRuleResponse;
+use Binance\Client\Wallet\Model\DepositHistoryV2Response;
 use Binance\Client\Wallet\Model\FetchAddressVerificationListResponse;
-use Binance\Client\Wallet\Model\OnboardedVaspListResponse;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireRequest;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireResponse;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireTravelRuleRequest;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireTravelRuleResponse;
+use Binance\Client\Wallet\Model\VaspListResponse;
 use Binance\Client\Wallet\Model\WithdrawHistoryV1Response;
 use Binance\Client\Wallet\Model\WithdrawHistoryV2Response;
 use Binance\Client\Wallet\Model\WithdrawTravelRuleRequest;
@@ -75,11 +77,13 @@ class TravelRuleApi
     /** @var string[] */
     public const contentTypes = [
         'brokerWithdraw' => ['application/x-www-form-urlencoded'],
+        'checkQuestionnaireRequirements' => ['application/x-www-form-urlencoded'],
         'depositHistoryTravelRule' => ['application/x-www-form-urlencoded'],
+        'depositHistoryV2' => ['application/x-www-form-urlencoded'],
         'fetchAddressVerificationList' => ['application/x-www-form-urlencoded'],
-        'onboardedVaspList' => ['application/x-www-form-urlencoded'],
         'submitDepositQuestionnaire' => ['application/x-www-form-urlencoded'],
         'submitDepositQuestionnaireTravelRule' => ['application/x-www-form-urlencoded'],
+        'vaspList' => ['application/x-www-form-urlencoded'],
         'withdrawHistoryV1' => ['application/x-www-form-urlencoded'],
         'withdrawHistoryV2' => ['application/x-www-form-urlencoded'],
         'withdrawTravelRule' => ['application/x-www-form-urlencoded'],
@@ -325,6 +329,169 @@ class TravelRuleApi
 
         return new Request(
             'POST',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation checkQuestionnaireRequirements.
+     *
+     * Check Questionnaire Requirements (for local entities that require travel rule) (supporting network) (USER_DATA)
+     *
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<CheckQuestionnaireRequirementsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function checkQuestionnaireRequirements($recvWindow = null): ApiResponse
+    {
+        return $this->checkQuestionnaireRequirementsWithHttpInfo($recvWindow);
+    }
+
+    /**
+     * Operation checkQuestionnaireRequirementsWithHttpInfo.
+     *
+     * Check Questionnaire Requirements (for local entities that require travel rule) (supporting network) (USER_DATA)
+     *
+     * @param null|int $recvWindow (optional)
+     *
+     * @return ApiResponse<CheckQuestionnaireRequirementsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function checkQuestionnaireRequirementsWithHttpInfo($recvWindow = null): ApiResponse
+    {
+        $request = $this->checkQuestionnaireRequirementsRequest($recvWindow);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Wallet\Model\CheckQuestionnaireRequirementsResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Wallet\Model\CheckQuestionnaireRequirementsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Wallet\Model\CheckQuestionnaireRequirementsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'checkQuestionnaireRequirements'.
+     *
+     * @param null|int $recvWindow (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function checkQuestionnaireRequirementsRequest($recvWindow = null)
+    {
+        $contentType = self::contentTypes['checkQuestionnaireRequirements'][0];
+
+        $resourcePath = '/sapi/v1/localentity/questionnaire-requirements';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recvWindow,
+            'recvWindow', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
             $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -615,18 +782,279 @@ class TravelRuleApi
     }
 
     /**
+     * Operation depositHistoryV2.
+     *
+     * Deposit History V2 (for local entities that required travel rule) (supporting network) (USER_DATA)
+     *
+     * @param null|string $depositId             Comma(,) separated list of wallet tran Ids. (optional)
+     * @param null|string $txId                  txId (optional)
+     * @param null|string $network               network (optional)
+     * @param null|string $coin                  coin (optional)
+     * @param null|bool   $retrieveQuestionnaire true: return &#x60;questionnaire&#x60; within response. (optional)
+     * @param null|int    $startTime             startTime (optional)
+     * @param null|int    $endTime               endTime (optional)
+     * @param null|int    $offset                Default: 0 (optional)
+     * @param null|int    $limit                 min 7, max 30, default 7 (optional)
+     *
+     * @return ApiResponse<DepositHistoryV2Response>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function depositHistoryV2($depositId = null, $txId = null, $network = null, $coin = null, $retrieveQuestionnaire = null, $startTime = null, $endTime = null, $offset = null, $limit = null): ApiResponse
+    {
+        return $this->depositHistoryV2WithHttpInfo($depositId, $txId, $network, $coin, $retrieveQuestionnaire, $startTime, $endTime, $offset, $limit);
+    }
+
+    /**
+     * Operation depositHistoryV2WithHttpInfo.
+     *
+     * Deposit History V2 (for local entities that required travel rule) (supporting network) (USER_DATA)
+     *
+     * @param null|string $depositId             Comma(,) separated list of wallet tran Ids. (optional)
+     * @param null|string $txId                  (optional)
+     * @param null|string $network               (optional)
+     * @param null|string $coin                  (optional)
+     * @param null|bool   $retrieveQuestionnaire true: return &#x60;questionnaire&#x60; within response. (optional)
+     * @param null|int    $startTime             (optional)
+     * @param null|int    $endTime               (optional)
+     * @param null|int    $offset                Default: 0 (optional)
+     * @param null|int    $limit                 min 7, max 30, default 7 (optional)
+     *
+     * @return ApiResponse<DepositHistoryV2Response>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function depositHistoryV2WithHttpInfo($depositId = null, $txId = null, $network = null, $coin = null, $retrieveQuestionnaire = null, $startTime = null, $endTime = null, $offset = null, $limit = null): ApiResponse
+    {
+        $request = $this->depositHistoryV2Request($depositId, $txId, $network, $coin, $retrieveQuestionnaire, $startTime, $endTime, $offset, $limit);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Wallet\Model\DepositHistoryV2Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Wallet\Model\DepositHistoryV2Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Wallet\Model\DepositHistoryV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'depositHistoryV2'.
+     *
+     * @param null|string $depositId             Comma(,) separated list of wallet tran Ids. (optional)
+     * @param null|string $txId                  (optional)
+     * @param null|string $network               (optional)
+     * @param null|string $coin                  (optional)
+     * @param null|bool   $retrieveQuestionnaire true: return &#x60;questionnaire&#x60; within response. (optional)
+     * @param null|int    $startTime             (optional)
+     * @param null|int    $endTime               (optional)
+     * @param null|int    $offset                Default: 0 (optional)
+     * @param null|int    $limit                 min 7, max 30, default 7 (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function depositHistoryV2Request($depositId = null, $txId = null, $network = null, $coin = null, $retrieveQuestionnaire = null, $startTime = null, $endTime = null, $offset = null, $limit = null)
+    {
+        $contentType = self::contentTypes['depositHistoryV2'][0];
+
+        $resourcePath = '/sapi/v2/localentity/deposit/history';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $depositId,
+            'depositId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $txId,
+            'txId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $network,
+            'network', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $coin,
+            'coin', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $retrieveQuestionnaire,
+            'retrieveQuestionnaire', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $startTime,
+            'startTime', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $endTime,
+            'endTime', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation fetchAddressVerificationList.
      *
      * Fetch address verification list (USER_DATA)
+     *
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<FetchAddressVerificationListResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function fetchAddressVerificationList(): ApiResponse
+    public function fetchAddressVerificationList($recvWindow = null): ApiResponse
     {
-        return $this->fetchAddressVerificationListWithHttpInfo();
+        return $this->fetchAddressVerificationListWithHttpInfo($recvWindow);
     }
 
     /**
@@ -634,14 +1062,16 @@ class TravelRuleApi
      *
      * Fetch address verification list (USER_DATA)
      *
+     * @param null|int $recvWindow (optional)
+     *
      * @return ApiResponse<FetchAddressVerificationListResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function fetchAddressVerificationListWithHttpInfo(): ApiResponse
+    public function fetchAddressVerificationListWithHttpInfo($recvWindow = null): ApiResponse
     {
-        $request = $this->fetchAddressVerificationListRequest();
+        $request = $this->fetchAddressVerificationListRequest($recvWindow);
 
         try {
             try {
@@ -711,11 +1141,13 @@ class TravelRuleApi
     /**
      * Create request for operation 'fetchAddressVerificationList'.
      *
+     * @param null|int $recvWindow (optional)
+     *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function fetchAddressVerificationListRequest()
+    public function fetchAddressVerificationListRequest($recvWindow = null)
     {
         $contentType = self::contentTypes['fetchAddressVerificationList'][0];
 
@@ -726,152 +1158,15 @@ class TravelRuleApi
         $httpBody = '';
         $multipart = false;
 
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            $contentType,
-            $multipart
-        );
-
-        $defaultHeaders = [];
-        $defaultHeaders['User-Agent'] = $this->userAgent;
-
-        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
-            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->clientConfig->getUrl();
-
-        $queryParams['timestamp'] = $this->getTimestamp();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
-        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
-        $query = ObjectSerializer::buildQuery($queryParams);
-
-        return new Request(
-            'GET',
-            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation onboardedVaspList.
-     *
-     * Onboarded VASP list (for local entities that require travel rule) (supporting network) (USER_DATA)
-     *
-     * @return ApiResponse<OnboardedVaspListResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function onboardedVaspList(): ApiResponse
-    {
-        return $this->onboardedVaspListWithHttpInfo();
-    }
-
-    /**
-     * Operation onboardedVaspListWithHttpInfo.
-     *
-     * Onboarded VASP list (for local entities that require travel rule) (supporting network) (USER_DATA)
-     *
-     * @return ApiResponse<OnboardedVaspListResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function onboardedVaspListWithHttpInfo(): ApiResponse
-    {
-        $request = $this->onboardedVaspListRequest();
-
-        try {
-            try {
-                $response = $this->client->send($request, []);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch ($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Binance\Client\Wallet\Model\OnboardedVaspListResponse',
-                        $request,
-                        $response,
-                    );
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Binance\Client\Wallet\Model\OnboardedVaspListResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Binance\Client\Wallet\Model\OnboardedVaspListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    throw $e;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Create request for operation 'onboardedVaspList'.
-     *
-     * @return Request
-     *
-     * @throws \InvalidArgumentException
-     */
-    public function onboardedVaspListRequest()
-    {
-        $contentType = self::contentTypes['onboardedVaspList'][0];
-
-        $resourcePath = '/sapi/v1/localentity/vasp';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recvWindow,
+            'recvWindow', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
@@ -1302,6 +1597,169 @@ class TravelRuleApi
 
         return new Request(
             'PUT',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation vaspList.
+     *
+     * VASP list (for local entities that require travel rule) (supporting network) (USER_DATA)
+     *
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<VaspListResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function vaspList($recvWindow = null): ApiResponse
+    {
+        return $this->vaspListWithHttpInfo($recvWindow);
+    }
+
+    /**
+     * Operation vaspListWithHttpInfo.
+     *
+     * VASP list (for local entities that require travel rule) (supporting network) (USER_DATA)
+     *
+     * @param null|int $recvWindow (optional)
+     *
+     * @return ApiResponse<VaspListResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function vaspListWithHttpInfo($recvWindow = null): ApiResponse
+    {
+        $request = $this->vaspListRequest($recvWindow);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Wallet\Model\VaspListResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Wallet\Model\VaspListResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Wallet\Model\VaspListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'vaspList'.
+     *
+     * @param null|int $recvWindow (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function vaspListRequest($recvWindow = null)
+    {
+        $contentType = self::contentTypes['vaspList'][0];
+
+        $resourcePath = '/sapi/v1/localentity/vasp';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recvWindow,
+            'recvWindow', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
             $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody

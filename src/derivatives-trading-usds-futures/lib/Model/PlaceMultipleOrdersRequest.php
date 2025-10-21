@@ -61,7 +61,7 @@ class PlaceMultipleOrdersRequest implements ModelInterface, \ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $openAPITypes = [
-        'batchOrdersPlaceMultipleOrders' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\BatchOrdersPlaceMultipleOrders',
+        'batchOrders' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\BatchOrdersPlaceMultipleOrders',
         'recvWindow' => 'int',
     ];
 
@@ -75,7 +75,7 @@ class PlaceMultipleOrdersRequest implements ModelInterface, \ArrayAccess, \JsonS
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'batchOrdersPlaceMultipleOrders' => null,
+        'batchOrders' => null,
         'recvWindow' => 'int64',
     ];
 
@@ -85,7 +85,7 @@ class PlaceMultipleOrdersRequest implements ModelInterface, \ArrayAccess, \JsonS
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'batchOrdersPlaceMultipleOrders' => false,
+        'batchOrders' => false,
         'recvWindow' => false,
     ];
 
@@ -103,7 +103,7 @@ class PlaceMultipleOrdersRequest implements ModelInterface, \ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'batchOrdersPlaceMultipleOrders' => 'batchOrdersPlaceMultipleOrders',
+        'batchOrders' => 'batchOrders',
         'recvWindow' => 'recvWindow',
     ];
 
@@ -113,7 +113,7 @@ class PlaceMultipleOrdersRequest implements ModelInterface, \ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'batchOrdersPlaceMultipleOrders' => 'setBatchOrdersPlaceMultipleOrders',
+        'batchOrders' => 'setBatchOrders',
         'recvWindow' => 'setRecvWindow',
     ];
 
@@ -123,7 +123,7 @@ class PlaceMultipleOrdersRequest implements ModelInterface, \ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'batchOrdersPlaceMultipleOrders' => 'getBatchOrdersPlaceMultipleOrders',
+        'batchOrders' => 'getBatchOrders',
         'recvWindow' => 'getRecvWindow',
     ];
 
@@ -142,7 +142,7 @@ class PlaceMultipleOrdersRequest implements ModelInterface, \ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('batchOrdersPlaceMultipleOrders', $data ?? [], null);
+        $this->setIfExists('batchOrders', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }
 
@@ -260,7 +260,13 @@ class PlaceMultipleOrdersRequest implements ModelInterface, \ArrayAccess, \JsonS
      */
     public function listInvalidProperties()
     {
-        return [];
+        $invalidProperties = [];
+
+        if (null === $this->container['batchOrders']) {
+            $invalidProperties[] = "'batchOrders' can't be null";
+        }
+
+        return $invalidProperties;
     }
 
     /**
@@ -275,28 +281,28 @@ class PlaceMultipleOrdersRequest implements ModelInterface, \ArrayAccess, \JsonS
     }
 
     /**
-     * Gets batchOrdersPlaceMultipleOrders.
+     * Gets batchOrders.
      *
-     * @return null|BatchOrdersPlaceMultipleOrders
+     * @return BatchOrdersPlaceMultipleOrders
      */
-    public function getBatchOrdersPlaceMultipleOrders()
+    public function getBatchOrders()
     {
-        return $this->container['batchOrdersPlaceMultipleOrders'];
+        return $this->container['batchOrders'];
     }
 
     /**
-     * Sets batchOrdersPlaceMultipleOrders.
+     * Sets batchOrders.
      *
-     * @param null|BatchOrdersPlaceMultipleOrders $batchOrdersPlaceMultipleOrders batchOrdersPlaceMultipleOrders
+     * @param BatchOrdersPlaceMultipleOrders $batchOrders batchOrders
      *
      * @return self
      */
-    public function setBatchOrdersPlaceMultipleOrders($batchOrdersPlaceMultipleOrders)
+    public function setBatchOrders($batchOrders)
     {
-        if (is_null($batchOrdersPlaceMultipleOrders)) {
-            throw new \InvalidArgumentException('non-nullable batchOrdersPlaceMultipleOrders cannot be null');
+        if (is_null($batchOrders)) {
+            throw new \InvalidArgumentException('non-nullable batchOrders cannot be null');
         }
-        $this->container['batchOrdersPlaceMultipleOrders'] = $batchOrdersPlaceMultipleOrders;
+        $this->container['batchOrders'] = $batchOrders;
 
         return $this;
     }

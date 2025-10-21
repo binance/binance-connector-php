@@ -75,6 +75,7 @@ class DepositHistoryResponseInner implements ModelInterface, \ArrayAccess, \Json
         'confirmTimes' => 'string',
         'unlockConfirm' => 'int',
         'walletType' => 'int',
+        'travelRuleStatus' => 'int',
     ];
 
     /**
@@ -101,6 +102,7 @@ class DepositHistoryResponseInner implements ModelInterface, \ArrayAccess, \Json
         'confirmTimes' => null,
         'unlockConfirm' => 'int64',
         'walletType' => 'int64',
+        'travelRuleStatus' => 'int64',
     ];
 
     /**
@@ -123,6 +125,7 @@ class DepositHistoryResponseInner implements ModelInterface, \ArrayAccess, \Json
         'confirmTimes' => false,
         'unlockConfirm' => false,
         'walletType' => false,
+        'travelRuleStatus' => false,
     ];
 
     /**
@@ -153,6 +156,7 @@ class DepositHistoryResponseInner implements ModelInterface, \ArrayAccess, \Json
         'confirmTimes' => 'confirmTimes',
         'unlockConfirm' => 'unlockConfirm',
         'walletType' => 'walletType',
+        'travelRuleStatus' => 'travelRuleStatus',
     ];
 
     /**
@@ -175,6 +179,7 @@ class DepositHistoryResponseInner implements ModelInterface, \ArrayAccess, \Json
         'confirmTimes' => 'setConfirmTimes',
         'unlockConfirm' => 'setUnlockConfirm',
         'walletType' => 'setWalletType',
+        'travelRuleStatus' => 'setTravelRuleStatus',
     ];
 
     /**
@@ -197,6 +202,7 @@ class DepositHistoryResponseInner implements ModelInterface, \ArrayAccess, \Json
         'confirmTimes' => 'getConfirmTimes',
         'unlockConfirm' => 'getUnlockConfirm',
         'walletType' => 'getWalletType',
+        'travelRuleStatus' => 'getTravelRuleStatus',
     ];
 
     /**
@@ -228,6 +234,7 @@ class DepositHistoryResponseInner implements ModelInterface, \ArrayAccess, \Json
         $this->setIfExists('confirmTimes', $data ?? [], null);
         $this->setIfExists('unlockConfirm', $data ?? [], null);
         $this->setIfExists('walletType', $data ?? [], null);
+        $this->setIfExists('travelRuleStatus', $data ?? [], null);
     }
 
     /**
@@ -732,6 +739,33 @@ class DepositHistoryResponseInner implements ModelInterface, \ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable walletType cannot be null');
         }
         $this->container['walletType'] = $walletType;
+
+        return $this;
+    }
+
+    /**
+     * Gets travelRuleStatus.
+     *
+     * @return null|int
+     */
+    public function getTravelRuleStatus()
+    {
+        return $this->container['travelRuleStatus'];
+    }
+
+    /**
+     * Sets travelRuleStatus.
+     *
+     * @param null|int $travelRuleStatus travelRuleStatus
+     *
+     * @return self
+     */
+    public function setTravelRuleStatus($travelRuleStatus)
+    {
+        if (is_null($travelRuleStatus)) {
+            throw new \InvalidArgumentException('non-nullable travelRuleStatus cannot be null');
+        }
+        $this->container['travelRuleStatus'] = $travelRuleStatus;
 
         return $this;
     }

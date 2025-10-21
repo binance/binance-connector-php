@@ -11,7 +11,6 @@ use Binance\Client\Convert\Model\ListAllConvertPairsResponse;
 use Binance\Client\Convert\Model\OrderStatusResponse;
 use Binance\Client\Convert\Model\PlaceLimitOrderRequest;
 use Binance\Client\Convert\Model\PlaceLimitOrderResponse;
-use Binance\Client\Convert\Model\QueryLimitOpenOrdersRequest;
 use Binance\Client\Convert\Model\QueryLimitOpenOrdersResponse;
 use Binance\Client\Convert\Model\QueryOrderQuantityPrecisionPerAssetResponse;
 use Binance\Client\Convert\Model\SendQuoteRequestRequest;
@@ -168,16 +167,16 @@ class ConvertRestApi
      *
      * Query limit open orders (USER_DATA)
      *
-     * @param QueryLimitOpenOrdersRequest $queryLimitOpenOrdersRequest queryLimitOpenOrdersRequest (required)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<QueryLimitOpenOrdersResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function queryLimitOpenOrders($queryLimitOpenOrdersRequest): ApiResponse
+    public function queryLimitOpenOrders($recvWindow = null): ApiResponse
     {
-        return $this->tradeApi->queryLimitOpenOrders($queryLimitOpenOrdersRequest);
+        return $this->tradeApi->queryLimitOpenOrders($recvWindow);
     }
 
     /**

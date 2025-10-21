@@ -12,6 +12,7 @@ class CommonUtils
     private const PATTERN_USED_WEIGHT = '/x-mbx-used-weight-([0-9]+)([shmd])/';
     private const PATTERN_ORDER_COUNT = '/x-mbx-order-count-([0-9]+)([smhd])/';
     private const PACKAGE_NAME = 'binance/binance-connector-php';
+    private const FORBIDDEN_HEADERS = ["host", "authorization", "cookie", ":method", ":path"];
 
     public static function getUserAgent($product): string
     {
@@ -101,5 +102,23 @@ class CommonUtils
         }
 
         return null;
+    }
+
+    public static function validateHeaders($headers): bool {
+        foreach ($headers as $headerName => $headerValue) {
+            if (in_array(strtolower($headerName), self::FORBIDDEN_HEADERS)) {
+                throw new ApiException(
+                    "Invalid header $headerName, it is a forbidden name"
+                );
+            }
+
+            if (strpos($headerValue, "\n") !== false || strpos($headerValue, "\t") !== false) {
+                throw new ApiException(
+                    "Invalid header $headerName as it contains CR/LF"
+                );
+            }
+        }
+
+        return true;
     }
 }

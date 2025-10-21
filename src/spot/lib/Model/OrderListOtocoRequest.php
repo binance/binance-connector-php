@@ -74,6 +74,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'workingTimeInForce' => '\Binance\Client\Spot\Model\WorkingTimeInForce',
         'workingStrategyId' => 'int',
         'workingStrategyType' => 'int',
+        'workingPegPriceType' => '\Binance\Client\Spot\Model\WorkingPegPriceType',
+        'workingPegOffsetType' => '\Binance\Client\Spot\Model\WorkingPegOffsetType',
+        'workingPegOffsetValue' => 'int',
         'pendingSide' => '\Binance\Client\Spot\Model\PendingSide',
         'pendingQuantity' => 'float',
         'pendingAboveType' => '\Binance\Client\Spot\Model\PendingAboveType',
@@ -85,6 +88,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'pendingAboveTimeInForce' => '\Binance\Client\Spot\Model\PendingAboveTimeInForce',
         'pendingAboveStrategyId' => 'int',
         'pendingAboveStrategyType' => 'int',
+        'pendingAbovePegPriceType' => '\Binance\Client\Spot\Model\PendingAbovePegPriceType',
+        'pendingAbovePegOffsetType' => '\Binance\Client\Spot\Model\PendingAbovePegOffsetType',
+        'pendingAbovePegOffsetValue' => 'int',
         'pendingBelowType' => '\Binance\Client\Spot\Model\PendingBelowType',
         'pendingBelowClientOrderId' => 'string',
         'pendingBelowPrice' => 'float',
@@ -94,7 +100,10 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'pendingBelowTimeInForce' => '\Binance\Client\Spot\Model\PendingBelowTimeInForce',
         'pendingBelowStrategyId' => 'int',
         'pendingBelowStrategyType' => 'int',
-        'recvWindow' => 'int',
+        'pendingBelowPegPriceType' => '\Binance\Client\Spot\Model\PendingBelowPegPriceType',
+        'pendingBelowPegOffsetType' => '\Binance\Client\Spot\Model\PendingBelowPegOffsetType',
+        'pendingBelowPegOffsetValue' => 'int',
+        'recvWindow' => 'float',
     ];
 
     /**
@@ -120,6 +129,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'workingTimeInForce' => null,
         'workingStrategyId' => 'int64',
         'workingStrategyType' => null,
+        'workingPegPriceType' => null,
+        'workingPegOffsetType' => null,
+        'workingPegOffsetValue' => null,
         'pendingSide' => null,
         'pendingQuantity' => 'float',
         'pendingAboveType' => null,
@@ -131,6 +143,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'pendingAboveTimeInForce' => null,
         'pendingAboveStrategyId' => 'int64',
         'pendingAboveStrategyType' => null,
+        'pendingAbovePegPriceType' => null,
+        'pendingAbovePegOffsetType' => null,
+        'pendingAbovePegOffsetValue' => null,
         'pendingBelowType' => null,
         'pendingBelowClientOrderId' => null,
         'pendingBelowPrice' => 'float',
@@ -140,7 +155,10 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'pendingBelowTimeInForce' => null,
         'pendingBelowStrategyId' => 'int64',
         'pendingBelowStrategyType' => null,
-        'recvWindow' => 'int64',
+        'pendingBelowPegPriceType' => null,
+        'pendingBelowPegOffsetType' => null,
+        'pendingBelowPegOffsetValue' => null,
+        'recvWindow' => 'float',
     ];
 
     /**
@@ -162,6 +180,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'workingTimeInForce' => false,
         'workingStrategyId' => false,
         'workingStrategyType' => false,
+        'workingPegPriceType' => false,
+        'workingPegOffsetType' => false,
+        'workingPegOffsetValue' => false,
         'pendingSide' => false,
         'pendingQuantity' => false,
         'pendingAboveType' => false,
@@ -173,6 +194,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'pendingAboveTimeInForce' => false,
         'pendingAboveStrategyId' => false,
         'pendingAboveStrategyType' => false,
+        'pendingAbovePegPriceType' => false,
+        'pendingAbovePegOffsetType' => false,
+        'pendingAbovePegOffsetValue' => false,
         'pendingBelowType' => false,
         'pendingBelowClientOrderId' => false,
         'pendingBelowPrice' => false,
@@ -182,6 +206,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'pendingBelowTimeInForce' => false,
         'pendingBelowStrategyId' => false,
         'pendingBelowStrategyType' => false,
+        'pendingBelowPegPriceType' => false,
+        'pendingBelowPegOffsetType' => false,
+        'pendingBelowPegOffsetValue' => false,
         'recvWindow' => false,
     ];
 
@@ -212,6 +239,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'workingTimeInForce' => 'workingTimeInForce',
         'workingStrategyId' => 'workingStrategyId',
         'workingStrategyType' => 'workingStrategyType',
+        'workingPegPriceType' => 'workingPegPriceType',
+        'workingPegOffsetType' => 'workingPegOffsetType',
+        'workingPegOffsetValue' => 'workingPegOffsetValue',
         'pendingSide' => 'pendingSide',
         'pendingQuantity' => 'pendingQuantity',
         'pendingAboveType' => 'pendingAboveType',
@@ -223,6 +253,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'pendingAboveTimeInForce' => 'pendingAboveTimeInForce',
         'pendingAboveStrategyId' => 'pendingAboveStrategyId',
         'pendingAboveStrategyType' => 'pendingAboveStrategyType',
+        'pendingAbovePegPriceType' => 'pendingAbovePegPriceType',
+        'pendingAbovePegOffsetType' => 'pendingAbovePegOffsetType',
+        'pendingAbovePegOffsetValue' => 'pendingAbovePegOffsetValue',
         'pendingBelowType' => 'pendingBelowType',
         'pendingBelowClientOrderId' => 'pendingBelowClientOrderId',
         'pendingBelowPrice' => 'pendingBelowPrice',
@@ -232,6 +265,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'pendingBelowTimeInForce' => 'pendingBelowTimeInForce',
         'pendingBelowStrategyId' => 'pendingBelowStrategyId',
         'pendingBelowStrategyType' => 'pendingBelowStrategyType',
+        'pendingBelowPegPriceType' => 'pendingBelowPegPriceType',
+        'pendingBelowPegOffsetType' => 'pendingBelowPegOffsetType',
+        'pendingBelowPegOffsetValue' => 'pendingBelowPegOffsetValue',
         'recvWindow' => 'recvWindow',
     ];
 
@@ -254,6 +290,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'workingTimeInForce' => 'setWorkingTimeInForce',
         'workingStrategyId' => 'setWorkingStrategyId',
         'workingStrategyType' => 'setWorkingStrategyType',
+        'workingPegPriceType' => 'setWorkingPegPriceType',
+        'workingPegOffsetType' => 'setWorkingPegOffsetType',
+        'workingPegOffsetValue' => 'setWorkingPegOffsetValue',
         'pendingSide' => 'setPendingSide',
         'pendingQuantity' => 'setPendingQuantity',
         'pendingAboveType' => 'setPendingAboveType',
@@ -265,6 +304,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'pendingAboveTimeInForce' => 'setPendingAboveTimeInForce',
         'pendingAboveStrategyId' => 'setPendingAboveStrategyId',
         'pendingAboveStrategyType' => 'setPendingAboveStrategyType',
+        'pendingAbovePegPriceType' => 'setPendingAbovePegPriceType',
+        'pendingAbovePegOffsetType' => 'setPendingAbovePegOffsetType',
+        'pendingAbovePegOffsetValue' => 'setPendingAbovePegOffsetValue',
         'pendingBelowType' => 'setPendingBelowType',
         'pendingBelowClientOrderId' => 'setPendingBelowClientOrderId',
         'pendingBelowPrice' => 'setPendingBelowPrice',
@@ -274,6 +316,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'pendingBelowTimeInForce' => 'setPendingBelowTimeInForce',
         'pendingBelowStrategyId' => 'setPendingBelowStrategyId',
         'pendingBelowStrategyType' => 'setPendingBelowStrategyType',
+        'pendingBelowPegPriceType' => 'setPendingBelowPegPriceType',
+        'pendingBelowPegOffsetType' => 'setPendingBelowPegOffsetType',
+        'pendingBelowPegOffsetValue' => 'setPendingBelowPegOffsetValue',
         'recvWindow' => 'setRecvWindow',
     ];
 
@@ -296,6 +341,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'workingTimeInForce' => 'getWorkingTimeInForce',
         'workingStrategyId' => 'getWorkingStrategyId',
         'workingStrategyType' => 'getWorkingStrategyType',
+        'workingPegPriceType' => 'getWorkingPegPriceType',
+        'workingPegOffsetType' => 'getWorkingPegOffsetType',
+        'workingPegOffsetValue' => 'getWorkingPegOffsetValue',
         'pendingSide' => 'getPendingSide',
         'pendingQuantity' => 'getPendingQuantity',
         'pendingAboveType' => 'getPendingAboveType',
@@ -307,6 +355,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'pendingAboveTimeInForce' => 'getPendingAboveTimeInForce',
         'pendingAboveStrategyId' => 'getPendingAboveStrategyId',
         'pendingAboveStrategyType' => 'getPendingAboveStrategyType',
+        'pendingAbovePegPriceType' => 'getPendingAbovePegPriceType',
+        'pendingAbovePegOffsetType' => 'getPendingAbovePegOffsetType',
+        'pendingAbovePegOffsetValue' => 'getPendingAbovePegOffsetValue',
         'pendingBelowType' => 'getPendingBelowType',
         'pendingBelowClientOrderId' => 'getPendingBelowClientOrderId',
         'pendingBelowPrice' => 'getPendingBelowPrice',
@@ -316,6 +367,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'pendingBelowTimeInForce' => 'getPendingBelowTimeInForce',
         'pendingBelowStrategyId' => 'getPendingBelowStrategyId',
         'pendingBelowStrategyType' => 'getPendingBelowStrategyType',
+        'pendingBelowPegPriceType' => 'getPendingBelowPegPriceType',
+        'pendingBelowPegOffsetType' => 'getPendingBelowPegOffsetType',
+        'pendingBelowPegOffsetValue' => 'getPendingBelowPegOffsetValue',
         'recvWindow' => 'getRecvWindow',
     ];
 
@@ -347,6 +401,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         $this->setIfExists('workingTimeInForce', $data ?? [], null);
         $this->setIfExists('workingStrategyId', $data ?? [], null);
         $this->setIfExists('workingStrategyType', $data ?? [], null);
+        $this->setIfExists('workingPegPriceType', $data ?? [], null);
+        $this->setIfExists('workingPegOffsetType', $data ?? [], null);
+        $this->setIfExists('workingPegOffsetValue', $data ?? [], null);
         $this->setIfExists('pendingSide', $data ?? [], null);
         $this->setIfExists('pendingQuantity', $data ?? [], null);
         $this->setIfExists('pendingAboveType', $data ?? [], null);
@@ -358,6 +415,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         $this->setIfExists('pendingAboveTimeInForce', $data ?? [], null);
         $this->setIfExists('pendingAboveStrategyId', $data ?? [], null);
         $this->setIfExists('pendingAboveStrategyType', $data ?? [], null);
+        $this->setIfExists('pendingAbovePegPriceType', $data ?? [], null);
+        $this->setIfExists('pendingAbovePegOffsetType', $data ?? [], null);
+        $this->setIfExists('pendingAbovePegOffsetValue', $data ?? [], null);
         $this->setIfExists('pendingBelowType', $data ?? [], null);
         $this->setIfExists('pendingBelowClientOrderId', $data ?? [], null);
         $this->setIfExists('pendingBelowPrice', $data ?? [], null);
@@ -367,6 +427,9 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         $this->setIfExists('pendingBelowTimeInForce', $data ?? [], null);
         $this->setIfExists('pendingBelowStrategyId', $data ?? [], null);
         $this->setIfExists('pendingBelowStrategyType', $data ?? [], null);
+        $this->setIfExists('pendingBelowPegPriceType', $data ?? [], null);
+        $this->setIfExists('pendingBelowPegOffsetType', $data ?? [], null);
+        $this->setIfExists('pendingBelowPegOffsetValue', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }
 
@@ -877,6 +940,87 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets workingPegPriceType.
+     *
+     * @return null|WorkingPegPriceType
+     */
+    public function getWorkingPegPriceType()
+    {
+        return $this->container['workingPegPriceType'];
+    }
+
+    /**
+     * Sets workingPegPriceType.
+     *
+     * @param null|WorkingPegPriceType $workingPegPriceType workingPegPriceType
+     *
+     * @return self
+     */
+    public function setWorkingPegPriceType($workingPegPriceType)
+    {
+        if (is_null($workingPegPriceType)) {
+            throw new \InvalidArgumentException('non-nullable workingPegPriceType cannot be null');
+        }
+        $this->container['workingPegPriceType'] = $workingPegPriceType;
+
+        return $this;
+    }
+
+    /**
+     * Gets workingPegOffsetType.
+     *
+     * @return null|WorkingPegOffsetType
+     */
+    public function getWorkingPegOffsetType()
+    {
+        return $this->container['workingPegOffsetType'];
+    }
+
+    /**
+     * Sets workingPegOffsetType.
+     *
+     * @param null|WorkingPegOffsetType $workingPegOffsetType workingPegOffsetType
+     *
+     * @return self
+     */
+    public function setWorkingPegOffsetType($workingPegOffsetType)
+    {
+        if (is_null($workingPegOffsetType)) {
+            throw new \InvalidArgumentException('non-nullable workingPegOffsetType cannot be null');
+        }
+        $this->container['workingPegOffsetType'] = $workingPegOffsetType;
+
+        return $this;
+    }
+
+    /**
+     * Gets workingPegOffsetValue.
+     *
+     * @return null|int
+     */
+    public function getWorkingPegOffsetValue()
+    {
+        return $this->container['workingPegOffsetValue'];
+    }
+
+    /**
+     * Sets workingPegOffsetValue.
+     *
+     * @param null|int $workingPegOffsetValue workingPegOffsetValue
+     *
+     * @return self
+     */
+    public function setWorkingPegOffsetValue($workingPegOffsetValue)
+    {
+        if (is_null($workingPegOffsetValue)) {
+            throw new \InvalidArgumentException('non-nullable workingPegOffsetValue cannot be null');
+        }
+        $this->container['workingPegOffsetValue'] = $workingPegOffsetValue;
+
+        return $this;
+    }
+
+    /**
      * Gets pendingSide.
      *
      * @return PendingSide
@@ -1174,6 +1318,87 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets pendingAbovePegPriceType.
+     *
+     * @return null|PendingAbovePegPriceType
+     */
+    public function getPendingAbovePegPriceType()
+    {
+        return $this->container['pendingAbovePegPriceType'];
+    }
+
+    /**
+     * Sets pendingAbovePegPriceType.
+     *
+     * @param null|PendingAbovePegPriceType $pendingAbovePegPriceType pendingAbovePegPriceType
+     *
+     * @return self
+     */
+    public function setPendingAbovePegPriceType($pendingAbovePegPriceType)
+    {
+        if (is_null($pendingAbovePegPriceType)) {
+            throw new \InvalidArgumentException('non-nullable pendingAbovePegPriceType cannot be null');
+        }
+        $this->container['pendingAbovePegPriceType'] = $pendingAbovePegPriceType;
+
+        return $this;
+    }
+
+    /**
+     * Gets pendingAbovePegOffsetType.
+     *
+     * @return null|PendingAbovePegOffsetType
+     */
+    public function getPendingAbovePegOffsetType()
+    {
+        return $this->container['pendingAbovePegOffsetType'];
+    }
+
+    /**
+     * Sets pendingAbovePegOffsetType.
+     *
+     * @param null|PendingAbovePegOffsetType $pendingAbovePegOffsetType pendingAbovePegOffsetType
+     *
+     * @return self
+     */
+    public function setPendingAbovePegOffsetType($pendingAbovePegOffsetType)
+    {
+        if (is_null($pendingAbovePegOffsetType)) {
+            throw new \InvalidArgumentException('non-nullable pendingAbovePegOffsetType cannot be null');
+        }
+        $this->container['pendingAbovePegOffsetType'] = $pendingAbovePegOffsetType;
+
+        return $this;
+    }
+
+    /**
+     * Gets pendingAbovePegOffsetValue.
+     *
+     * @return null|int
+     */
+    public function getPendingAbovePegOffsetValue()
+    {
+        return $this->container['pendingAbovePegOffsetValue'];
+    }
+
+    /**
+     * Sets pendingAbovePegOffsetValue.
+     *
+     * @param null|int $pendingAbovePegOffsetValue pendingAbovePegOffsetValue
+     *
+     * @return self
+     */
+    public function setPendingAbovePegOffsetValue($pendingAbovePegOffsetValue)
+    {
+        if (is_null($pendingAbovePegOffsetValue)) {
+            throw new \InvalidArgumentException('non-nullable pendingAbovePegOffsetValue cannot be null');
+        }
+        $this->container['pendingAbovePegOffsetValue'] = $pendingAbovePegOffsetValue;
+
+        return $this;
+    }
+
+    /**
      * Gets pendingBelowType.
      *
      * @return null|PendingBelowType
@@ -1417,9 +1642,90 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets recvWindow.
+     * Gets pendingBelowPegPriceType.
+     *
+     * @return null|PendingBelowPegPriceType
+     */
+    public function getPendingBelowPegPriceType()
+    {
+        return $this->container['pendingBelowPegPriceType'];
+    }
+
+    /**
+     * Sets pendingBelowPegPriceType.
+     *
+     * @param null|PendingBelowPegPriceType $pendingBelowPegPriceType pendingBelowPegPriceType
+     *
+     * @return self
+     */
+    public function setPendingBelowPegPriceType($pendingBelowPegPriceType)
+    {
+        if (is_null($pendingBelowPegPriceType)) {
+            throw new \InvalidArgumentException('non-nullable pendingBelowPegPriceType cannot be null');
+        }
+        $this->container['pendingBelowPegPriceType'] = $pendingBelowPegPriceType;
+
+        return $this;
+    }
+
+    /**
+     * Gets pendingBelowPegOffsetType.
+     *
+     * @return null|PendingBelowPegOffsetType
+     */
+    public function getPendingBelowPegOffsetType()
+    {
+        return $this->container['pendingBelowPegOffsetType'];
+    }
+
+    /**
+     * Sets pendingBelowPegOffsetType.
+     *
+     * @param null|PendingBelowPegOffsetType $pendingBelowPegOffsetType pendingBelowPegOffsetType
+     *
+     * @return self
+     */
+    public function setPendingBelowPegOffsetType($pendingBelowPegOffsetType)
+    {
+        if (is_null($pendingBelowPegOffsetType)) {
+            throw new \InvalidArgumentException('non-nullable pendingBelowPegOffsetType cannot be null');
+        }
+        $this->container['pendingBelowPegOffsetType'] = $pendingBelowPegOffsetType;
+
+        return $this;
+    }
+
+    /**
+     * Gets pendingBelowPegOffsetValue.
      *
      * @return null|int
+     */
+    public function getPendingBelowPegOffsetValue()
+    {
+        return $this->container['pendingBelowPegOffsetValue'];
+    }
+
+    /**
+     * Sets pendingBelowPegOffsetValue.
+     *
+     * @param null|int $pendingBelowPegOffsetValue pendingBelowPegOffsetValue
+     *
+     * @return self
+     */
+    public function setPendingBelowPegOffsetValue($pendingBelowPegOffsetValue)
+    {
+        if (is_null($pendingBelowPegOffsetValue)) {
+            throw new \InvalidArgumentException('non-nullable pendingBelowPegOffsetValue cannot be null');
+        }
+        $this->container['pendingBelowPegOffsetValue'] = $pendingBelowPegOffsetValue;
+
+        return $this;
+    }
+
+    /**
+     * Gets recvWindow.
+     *
+     * @return null|float
      */
     public function getRecvWindow()
     {
@@ -1429,7 +1735,7 @@ class OrderListOtocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets recvWindow.
      *
-     * @param null|int $recvWindow recvWindow
+     * @param null|float $recvWindow recvWindow
      *
      * @return self
      */

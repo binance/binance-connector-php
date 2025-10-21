@@ -66,7 +66,7 @@ class OrderAmendKeepPriorityRequest implements ModelInterface, \ArrayAccess, \Js
         'origClientOrderId' => 'string',
         'newClientOrderId' => 'string',
         'newQty' => 'float',
-        'recvWindow' => 'int',
+        'recvWindow' => 'float',
     ];
 
     /**
@@ -84,7 +84,7 @@ class OrderAmendKeepPriorityRequest implements ModelInterface, \ArrayAccess, \Js
         'origClientOrderId' => null,
         'newClientOrderId' => null,
         'newQty' => 'float',
-        'recvWindow' => 'int64',
+        'recvWindow' => 'float',
     ];
 
     /**
@@ -449,7 +449,7 @@ class OrderAmendKeepPriorityRequest implements ModelInterface, \ArrayAccess, \Js
     /**
      * Gets recvWindow.
      *
-     * @return null|int
+     * @return null|float
      */
     public function getRecvWindow()
     {
@@ -459,7 +459,7 @@ class OrderAmendKeepPriorityRequest implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets recvWindow.
      *
-     * @param null|int $recvWindow recvWindow
+     * @param null|float $recvWindow recvWindow
      *
      * @return self
      */

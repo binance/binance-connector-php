@@ -25,7 +25,7 @@ function orderAmendmentsExample()
     $orderId = 1;
     $fromExecutionId = 1;
     $limit = 500;
-    $recvWindow = 5000;
+    $recvWindow = 5000.0;
     $response = $api->orderAmendments($symbol, $orderId, $fromExecutionId, $limit, $recvWindow);
     print_r($response);
 }

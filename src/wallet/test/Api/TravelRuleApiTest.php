@@ -166,22 +166,6 @@ class TravelRuleApiTest extends TestCase
     }
 
     /**
-     * Test case for onboardedVaspList.
-     *
-     * Onboarded VASP list (for local entities that require travel rule) (supporting network) (USER_DATA).
-     */
-    public function testOnboardedVaspList()
-    {
-        $response = $this->getApiMock($request)->onboardedVaspList();
-
-        parse_str($request->getUri(), $queryMap);
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/sapi/v1/localentity/vasp', $request->getUri()->getPath());
-        self::assertEquals('53668e00dc92eb93de0b253c301e9fc0c20042b13db384a0ad94b38688a5a84c', $queryMap['signature']);
-    }
-
-    /**
      * Test case for submitDepositQuestionnaire.
      *
      * Submit Deposit Questionnaire (For local entities that require travel rule) (supporting network) (USER_DATA).

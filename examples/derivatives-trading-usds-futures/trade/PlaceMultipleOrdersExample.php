@@ -23,6 +23,7 @@ function placeMultipleOrdersExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
     $placeMultipleOrdersRequest = new PlaceMultipleOrdersRequest();
+    $placeMultipleOrdersRequest->setBatchOrders(null);
     $response = $api->placeMultipleOrders($placeMultipleOrdersRequest);
     print_r($response);
 }

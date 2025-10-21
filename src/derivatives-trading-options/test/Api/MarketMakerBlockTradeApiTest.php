@@ -183,10 +183,6 @@ class MarketMakerBlockTradeApiTest extends TestCase
         $newBlockTradeOrderRequest = new NewBlockTradeOrderRequest();
         $newBlockTradeOrderRequest->setLiquidity('');
         $newBlockTradeOrderRequest->setLegs(new Legs());
-        $newBlockTradeOrderRequest->setSymbol('');
-        $newBlockTradeOrderRequest->setSide(Side::BUY);
-        $newBlockTradeOrderRequest->setPrice(1.0);
-        $newBlockTradeOrderRequest->setQuantity(1.0);
 
         $response = $this->getApiMock($request)->newBlockTradeOrder($newBlockTradeOrderRequest);
 
@@ -194,7 +190,7 @@ class MarketMakerBlockTradeApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/eapi/v1/block/order/create', $request->getUri()->getPath());
-        self::assertEquals('d0491b0f4fd8117ca78b9f2e321ad83ddc8f25c9e4eab78fa6956499db004506', $queryMap['signature']);
+        self::assertEquals('53668e00dc92eb93de0b253c301e9fc0c20042b13db384a0ad94b38688a5a84c', $queryMap['signature']);
     }
 
     /**

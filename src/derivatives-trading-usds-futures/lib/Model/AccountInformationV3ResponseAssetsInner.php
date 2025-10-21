@@ -74,7 +74,6 @@ class AccountInformationV3ResponseAssetsInner implements ModelInterface, \ArrayA
         'availableBalance' => 'string',
         'maxWithdrawAmount' => 'string',
         'updateTime' => 'int',
-        'marginAvailable' => 'bool',
     ];
 
     /**
@@ -100,7 +99,6 @@ class AccountInformationV3ResponseAssetsInner implements ModelInterface, \ArrayA
         'availableBalance' => null,
         'maxWithdrawAmount' => null,
         'updateTime' => 'int64',
-        'marginAvailable' => null,
     ];
 
     /**
@@ -122,7 +120,6 @@ class AccountInformationV3ResponseAssetsInner implements ModelInterface, \ArrayA
         'availableBalance' => false,
         'maxWithdrawAmount' => false,
         'updateTime' => false,
-        'marginAvailable' => false,
     ];
 
     /**
@@ -152,7 +149,6 @@ class AccountInformationV3ResponseAssetsInner implements ModelInterface, \ArrayA
         'availableBalance' => 'availableBalance',
         'maxWithdrawAmount' => 'maxWithdrawAmount',
         'updateTime' => 'updateTime',
-        'marginAvailable' => 'marginAvailable',
     ];
 
     /**
@@ -174,7 +170,6 @@ class AccountInformationV3ResponseAssetsInner implements ModelInterface, \ArrayA
         'availableBalance' => 'setAvailableBalance',
         'maxWithdrawAmount' => 'setMaxWithdrawAmount',
         'updateTime' => 'setUpdateTime',
-        'marginAvailable' => 'setMarginAvailable',
     ];
 
     /**
@@ -196,7 +191,6 @@ class AccountInformationV3ResponseAssetsInner implements ModelInterface, \ArrayA
         'availableBalance' => 'getAvailableBalance',
         'maxWithdrawAmount' => 'getMaxWithdrawAmount',
         'updateTime' => 'getUpdateTime',
-        'marginAvailable' => 'getMarginAvailable',
     ];
 
     /**
@@ -227,7 +221,6 @@ class AccountInformationV3ResponseAssetsInner implements ModelInterface, \ArrayA
         $this->setIfExists('availableBalance', $data ?? [], null);
         $this->setIfExists('maxWithdrawAmount', $data ?? [], null);
         $this->setIfExists('updateTime', $data ?? [], null);
-        $this->setIfExists('marginAvailable', $data ?? [], null);
     }
 
     /**
@@ -705,33 +698,6 @@ class AccountInformationV3ResponseAssetsInner implements ModelInterface, \ArrayA
             throw new \InvalidArgumentException('non-nullable updateTime cannot be null');
         }
         $this->container['updateTime'] = $updateTime;
-
-        return $this;
-    }
-
-    /**
-     * Gets marginAvailable.
-     *
-     * @return null|bool
-     */
-    public function getMarginAvailable()
-    {
-        return $this->container['marginAvailable'];
-    }
-
-    /**
-     * Sets marginAvailable.
-     *
-     * @param null|bool $marginAvailable marginAvailable
-     *
-     * @return self
-     */
-    public function setMarginAvailable($marginAvailable)
-    {
-        if (is_null($marginAvailable)) {
-            throw new \InvalidArgumentException('non-nullable marginAvailable cannot be null');
-        }
-        $this->container['marginAvailable'] = $marginAvailable;
 
         return $this;
     }

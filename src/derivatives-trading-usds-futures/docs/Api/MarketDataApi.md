@@ -28,7 +28,7 @@ All URIs are relative to https://fapi.binance.com, except if the operation defin
 | [**queryInsuranceFundBalanceSnapshot()**](MarketDataApi.md#queryInsuranceFundBalanceSnapshot) | **GET** /fapi/v1/insuranceBalance | Query Insurance Fund Balance Snapshot |
 | [**recentTradesList()**](MarketDataApi.md#recentTradesList) | **GET** /fapi/v1/trades | Recent Trades List |
 | [**symbolOrderBookTicker()**](MarketDataApi.md#symbolOrderBookTicker) | **GET** /fapi/v1/ticker/bookTicker | Symbol Order Book Ticker |
-| [**symbolPriceTicker()**](MarketDataApi.md#symbolPriceTicker) | **GET** /fapi/v1/ticker/price | Symbol Price Ticker |
+| [**symbolPriceTicker()**](MarketDataApi.md#symbolPriceTicker) | **GET** /fapi/v1/ticker/price | Symbol Price Ticker(Deprecated) |
 | [**symbolPriceTickerV2()**](MarketDataApi.md#symbolPriceTickerV2) | **GET** /fapi/v2/ticker/price | Symbol Price Ticker V2 |
 | [**takerBuySellVolume()**](MarketDataApi.md#takerBuySellVolume) | **GET** /futures/data/takerlongshortRatio | Taker Buy/Sell Volume |
 | [**testConnectivity()**](MarketDataApi.md#testConnectivity) | **GET** /fapi/v1/ping | Test Connectivity |
@@ -403,7 +403,7 @@ getFundingRateHistory($symbol, $startTime, $endTime, $limit): \Binance\Client\De
 
 Get Funding Rate History
 
-Get Funding Rate History   * If `startTime` and `endTime` are not sent, the most recent `limit` datas are returned. * If the number of data between `startTime` and `endTime` is larger than `limit`, return as `startTime` + `limit`. * In ascending order.  Weight: share 500/5min/IP rate limit with GET /fapi/v1/fundingInfo
+Get Funding Rate History   * If `startTime` and `endTime` are not sent, the most recent 200 records are returned. * If the number of data between `startTime` and `endTime` is larger than `limit`, return as `startTime` + `limit`. * In ascending order.  Weight: share 500/5min/IP rate limit with GET /fapi/v1/fundingInfo
 
 ### Example
 
@@ -1468,7 +1468,7 @@ No authorization required
 symbolPriceTicker($symbol): \Binance\Client\DerivativesTradingUsdsFutures\Model\SymbolPriceTickerResponse
 ```
 
-Symbol Price Ticker
+Symbol Price Ticker(Deprecated)
 
 Latest price for a symbol or symbols.  * If the symbol is not sent, prices for all symbols will be returned in an array.  Weight: 1 for a single symbol; 2 when the symbol parameter is omitted
 

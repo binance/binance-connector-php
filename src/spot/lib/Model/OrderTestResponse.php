@@ -62,6 +62,7 @@ class OrderTestResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
      */
     protected static $openAPITypes = [
         'standardCommissionForOrder' => '\Binance\Client\Spot\Model\OrderTestResponseStandardCommissionForOrder',
+        'specialCommissionForOrder' => '\Binance\Client\Spot\Model\OrderTestResponseSpecialCommissionForOrder',
         'taxCommissionForOrder' => '\Binance\Client\Spot\Model\OrderTestResponseStandardCommissionForOrder',
         'discount' => '\Binance\Client\Spot\Model\OrderTestResponseDiscount',
     ];
@@ -77,6 +78,7 @@ class OrderTestResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
      */
     protected static $openAPIFormats = [
         'standardCommissionForOrder' => null,
+        'specialCommissionForOrder' => null,
         'taxCommissionForOrder' => null,
         'discount' => null,
     ];
@@ -88,6 +90,7 @@ class OrderTestResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
      */
     protected static array $openAPINullables = [
         'standardCommissionForOrder' => false,
+        'specialCommissionForOrder' => false,
         'taxCommissionForOrder' => false,
         'discount' => false,
     ];
@@ -107,6 +110,7 @@ class OrderTestResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
      */
     protected static $attributeMap = [
         'standardCommissionForOrder' => 'standardCommissionForOrder',
+        'specialCommissionForOrder' => 'specialCommissionForOrder',
         'taxCommissionForOrder' => 'taxCommissionForOrder',
         'discount' => 'discount',
     ];
@@ -118,6 +122,7 @@ class OrderTestResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
      */
     protected static $setters = [
         'standardCommissionForOrder' => 'setStandardCommissionForOrder',
+        'specialCommissionForOrder' => 'setSpecialCommissionForOrder',
         'taxCommissionForOrder' => 'setTaxCommissionForOrder',
         'discount' => 'setDiscount',
     ];
@@ -129,6 +134,7 @@ class OrderTestResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
      */
     protected static $getters = [
         'standardCommissionForOrder' => 'getStandardCommissionForOrder',
+        'specialCommissionForOrder' => 'getSpecialCommissionForOrder',
         'taxCommissionForOrder' => 'getTaxCommissionForOrder',
         'discount' => 'getDiscount',
     ];
@@ -149,6 +155,7 @@ class OrderTestResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
     public function __construct(?array $data = null)
     {
         $this->setIfExists('standardCommissionForOrder', $data ?? [], null);
+        $this->setIfExists('specialCommissionForOrder', $data ?? [], null);
         $this->setIfExists('taxCommissionForOrder', $data ?? [], null);
         $this->setIfExists('discount', $data ?? [], null);
     }
@@ -304,6 +311,33 @@ class OrderTestResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable standardCommissionForOrder cannot be null');
         }
         $this->container['standardCommissionForOrder'] = $standardCommissionForOrder;
+
+        return $this;
+    }
+
+    /**
+     * Gets specialCommissionForOrder.
+     *
+     * @return null|OrderTestResponseSpecialCommissionForOrder
+     */
+    public function getSpecialCommissionForOrder()
+    {
+        return $this->container['specialCommissionForOrder'];
+    }
+
+    /**
+     * Sets specialCommissionForOrder.
+     *
+     * @param null|OrderTestResponseSpecialCommissionForOrder $specialCommissionForOrder specialCommissionForOrder
+     *
+     * @return self
+     */
+    public function setSpecialCommissionForOrder($specialCommissionForOrder)
+    {
+        if (is_null($specialCommissionForOrder)) {
+            throw new \InvalidArgumentException('non-nullable specialCommissionForOrder cannot be null');
+        }
+        $this->container['specialCommissionForOrder'] = $specialCommissionForOrder;
 
         return $this;
     }

@@ -63,6 +63,7 @@ class AccountCommissionResponse implements ModelInterface, \ArrayAccess, \JsonSe
     protected static $openAPITypes = [
         'symbol' => 'string',
         'standardCommission' => '\Binance\Client\Spot\Model\AccountCommissionResponseStandardCommission',
+        'specialCommission' => '\Binance\Client\Spot\Model\AccountCommissionResponseSpecialCommission',
         'taxCommission' => '\Binance\Client\Spot\Model\AccountCommissionResponseTaxCommission',
         'discount' => '\Binance\Client\Spot\Model\AccountCommissionResponseDiscount',
     ];
@@ -79,6 +80,7 @@ class AccountCommissionResponse implements ModelInterface, \ArrayAccess, \JsonSe
     protected static $openAPIFormats = [
         'symbol' => null,
         'standardCommission' => null,
+        'specialCommission' => null,
         'taxCommission' => null,
         'discount' => null,
     ];
@@ -91,6 +93,7 @@ class AccountCommissionResponse implements ModelInterface, \ArrayAccess, \JsonSe
     protected static array $openAPINullables = [
         'symbol' => false,
         'standardCommission' => false,
+        'specialCommission' => false,
         'taxCommission' => false,
         'discount' => false,
     ];
@@ -111,6 +114,7 @@ class AccountCommissionResponse implements ModelInterface, \ArrayAccess, \JsonSe
     protected static $attributeMap = [
         'symbol' => 'symbol',
         'standardCommission' => 'standardCommission',
+        'specialCommission' => 'specialCommission',
         'taxCommission' => 'taxCommission',
         'discount' => 'discount',
     ];
@@ -123,6 +127,7 @@ class AccountCommissionResponse implements ModelInterface, \ArrayAccess, \JsonSe
     protected static $setters = [
         'symbol' => 'setSymbol',
         'standardCommission' => 'setStandardCommission',
+        'specialCommission' => 'setSpecialCommission',
         'taxCommission' => 'setTaxCommission',
         'discount' => 'setDiscount',
     ];
@@ -135,6 +140,7 @@ class AccountCommissionResponse implements ModelInterface, \ArrayAccess, \JsonSe
     protected static $getters = [
         'symbol' => 'getSymbol',
         'standardCommission' => 'getStandardCommission',
+        'specialCommission' => 'getSpecialCommission',
         'taxCommission' => 'getTaxCommission',
         'discount' => 'getDiscount',
     ];
@@ -156,6 +162,7 @@ class AccountCommissionResponse implements ModelInterface, \ArrayAccess, \JsonSe
     {
         $this->setIfExists('symbol', $data ?? [], null);
         $this->setIfExists('standardCommission', $data ?? [], null);
+        $this->setIfExists('specialCommission', $data ?? [], null);
         $this->setIfExists('taxCommission', $data ?? [], null);
         $this->setIfExists('discount', $data ?? [], null);
     }
@@ -338,6 +345,33 @@ class AccountCommissionResponse implements ModelInterface, \ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable standardCommission cannot be null');
         }
         $this->container['standardCommission'] = $standardCommission;
+
+        return $this;
+    }
+
+    /**
+     * Gets specialCommission.
+     *
+     * @return null|AccountCommissionResponseSpecialCommission
+     */
+    public function getSpecialCommission()
+    {
+        return $this->container['specialCommission'];
+    }
+
+    /**
+     * Sets specialCommission.
+     *
+     * @param null|AccountCommissionResponseSpecialCommission $specialCommission specialCommission
+     *
+     * @return self
+     */
+    public function setSpecialCommission($specialCommission)
+    {
+        if (is_null($specialCommission)) {
+            throw new \InvalidArgumentException('non-nullable specialCommission cannot be null');
+        }
+        $this->container['specialCommission'] = $specialCommission;
 
         return $this;
     }

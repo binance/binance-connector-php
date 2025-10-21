@@ -71,6 +71,7 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
         'price' => 'string',
         'reduceOnly' => 'bool',
         'side' => 'string',
+        'positionSide' => 'string',
         'status' => 'string',
         'stopPrice' => 'string',
         'closePosition' => 'bool',
@@ -108,6 +109,7 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
         'price' => null,
         'reduceOnly' => null,
         'side' => null,
+        'positionSide' => null,
         'status' => null,
         'stopPrice' => null,
         'closePosition' => null,
@@ -141,6 +143,7 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
         'price' => false,
         'reduceOnly' => false,
         'side' => false,
+        'positionSide' => false,
         'status' => false,
         'stopPrice' => false,
         'closePosition' => false,
@@ -182,6 +185,7 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
         'price' => 'price',
         'reduceOnly' => 'reduceOnly',
         'side' => 'side',
+        'positionSide' => 'positionSide',
         'status' => 'status',
         'stopPrice' => 'stopPrice',
         'closePosition' => 'closePosition',
@@ -215,6 +219,7 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
         'price' => 'setPrice',
         'reduceOnly' => 'setReduceOnly',
         'side' => 'setSide',
+        'positionSide' => 'setPositionSide',
         'status' => 'setStatus',
         'stopPrice' => 'setStopPrice',
         'closePosition' => 'setClosePosition',
@@ -248,6 +253,7 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
         'price' => 'getPrice',
         'reduceOnly' => 'getReduceOnly',
         'side' => 'getSide',
+        'positionSide' => 'getPositionSide',
         'status' => 'getStatus',
         'stopPrice' => 'getStopPrice',
         'closePosition' => 'getClosePosition',
@@ -290,6 +296,7 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('reduceOnly', $data ?? [], null);
         $this->setIfExists('side', $data ?? [], null);
+        $this->setIfExists('positionSide', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('stopPrice', $data ?? [], null);
         $this->setIfExists('closePosition', $data ?? [], null);
@@ -701,6 +708,33 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable side cannot be null');
         }
         $this->container['side'] = $side;
+
+        return $this;
+    }
+
+    /**
+     * Gets positionSide.
+     *
+     * @return null|string
+     */
+    public function getPositionSide()
+    {
+        return $this->container['positionSide'];
+    }
+
+    /**
+     * Sets positionSide.
+     *
+     * @param null|string $positionSide positionSide
+     *
+     * @return self
+     */
+    public function setPositionSide($positionSide)
+    {
+        if (is_null($positionSide)) {
+            throw new \InvalidArgumentException('non-nullable positionSide cannot be null');
+        }
+        $this->container['positionSide'] = $positionSide;
 
         return $this;
     }

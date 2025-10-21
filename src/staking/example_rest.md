@@ -48,6 +48,14 @@
 
 [/sapi/v1/onchain-yields/locked/subscribe](https://developers.binance.com/docs/staking/on-chain-yields/earn/Subscribe-Onchain-Locked-Product) - subscribeOnChainYieldsLockedProduct - [SubscribeOnChainYieldsLockedProductExample.php:28](/examples/staking/onchainyields/SubscribeOnChainYieldsLockedProductExample.php#L28)
 
+## SoftStaking
+
+[/sapi/v1/soft-staking/list](https://developers.binance.com/docs/staking/soft-staking/) - getSoftStakingProductList - [GetSoftStakingProductListExample.php:28](/examples/staking/softstaking/GetSoftStakingProductListExample.php#L28)
+
+[/sapi/v1/soft-staking/history/rewardsRecord](https://developers.binance.com/docs/staking/soft-staking/Get-Soft-Staking-Rewards-History) - getSoftStakingRewardsHistory - [GetSoftStakingRewardsHistoryExample.php:30](/examples/staking/softstaking/GetSoftStakingRewardsHistoryExample.php#L30)
+
+[/sapi/v1/soft-staking/set](https://developers.binance.com/docs/staking/soft-staking/Set-Soft-Staking) - setSoftStaking - [SetSoftStakingExample.php:26](/examples/staking/softstaking/SetSoftStakingExample.php#L26)
+
 ## SolStaking
 
 [/sapi/v1/sol-staking/sol/claim](https://developers.binance.com/docs/staking/sol-staking/staking/Claim-Boost-Rewards) - claimBoostRewards - [ClaimBoostRewardsExample.php:26](/examples/staking/solstaking/ClaimBoostRewardsExample.php#L26)

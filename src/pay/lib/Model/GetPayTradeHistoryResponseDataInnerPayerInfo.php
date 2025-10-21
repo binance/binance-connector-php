@@ -64,7 +64,6 @@ class GetPayTradeHistoryResponseDataInnerPayerInfo implements ModelInterface, \A
         'name' => 'string',
         'type' => 'string',
         'binanceId' => 'string',
-        'accountId' => 'string',
     ];
 
     /**
@@ -80,7 +79,6 @@ class GetPayTradeHistoryResponseDataInnerPayerInfo implements ModelInterface, \A
         'name' => null,
         'type' => null,
         'binanceId' => null,
-        'accountId' => null,
     ];
 
     /**
@@ -92,7 +90,6 @@ class GetPayTradeHistoryResponseDataInnerPayerInfo implements ModelInterface, \A
         'name' => false,
         'type' => false,
         'binanceId' => false,
-        'accountId' => false,
     ];
 
     /**
@@ -112,7 +109,6 @@ class GetPayTradeHistoryResponseDataInnerPayerInfo implements ModelInterface, \A
         'name' => 'name',
         'type' => 'type',
         'binanceId' => 'binanceId',
-        'accountId' => 'accountId',
     ];
 
     /**
@@ -124,7 +120,6 @@ class GetPayTradeHistoryResponseDataInnerPayerInfo implements ModelInterface, \A
         'name' => 'setName',
         'type' => 'setType',
         'binanceId' => 'setBinanceId',
-        'accountId' => 'setAccountId',
     ];
 
     /**
@@ -136,7 +131,6 @@ class GetPayTradeHistoryResponseDataInnerPayerInfo implements ModelInterface, \A
         'name' => 'getName',
         'type' => 'getType',
         'binanceId' => 'getBinanceId',
-        'accountId' => 'getAccountId',
     ];
 
     /**
@@ -157,7 +151,6 @@ class GetPayTradeHistoryResponseDataInnerPayerInfo implements ModelInterface, \A
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('binanceId', $data ?? [], null);
-        $this->setIfExists('accountId', $data ?? [], null);
     }
 
     /**
@@ -365,33 +358,6 @@ class GetPayTradeHistoryResponseDataInnerPayerInfo implements ModelInterface, \A
             throw new \InvalidArgumentException('non-nullable binanceId cannot be null');
         }
         $this->container['binanceId'] = $binanceId;
-
-        return $this;
-    }
-
-    /**
-     * Gets accountId.
-     *
-     * @return null|string
-     */
-    public function getAccountId()
-    {
-        return $this->container['accountId'];
-    }
-
-    /**
-     * Sets accountId.
-     *
-     * @param null|string $accountId accountId
-     *
-     * @return self
-     */
-    public function setAccountId($accountId)
-    {
-        if (is_null($accountId)) {
-            throw new \InvalidArgumentException('non-nullable accountId cannot be null');
-        }
-        $this->container['accountId'] = $accountId;
 
         return $this;
     }

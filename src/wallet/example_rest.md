@@ -76,15 +76,19 @@
 
 [/sapi/v1/localentity/broker/withdraw/apply](https://developers.binance.com/docs/wallet/travel-rule/Broker-Withdraw) - brokerWithdraw - [BrokerWithdrawExample.php:33](/examples/wallet/travelrule/BrokerWithdrawExample.php#L33)
 
+[/sapi/v1/localentity/questionnaire-requirements](https://developers.binance.com/docs/wallet/travel-rule/questionnaire-requirements) - checkQuestionnaireRequirements - [CheckQuestionnaireRequirementsExample.php:25](/examples/wallet/travelrule/CheckQuestionnaireRequirementsExample.php#L25)
+
 [/sapi/v1/localentity/deposit/history](https://developers.binance.com/docs/wallet/travel-rule/Deposit-History) - depositHistoryTravelRule - [DepositHistoryTravelRuleExample.php:35](/examples/wallet/travelrule/DepositHistoryTravelRuleExample.php#L35)
 
-[/sapi/v1/addressVerify/list](https://developers.binance.com/docs/wallet/travel-rule/address-verification-list) - fetchAddressVerificationList - [FetchAddressVerificationListExample.php:24](/examples/wallet/travelrule/FetchAddressVerificationListExample.php#L24)
+[/sapi/v2/localentity/deposit/history](https://developers.binance.com/docs/wallet/travel-rule/Deposit-History-V2) - depositHistoryV2 - [DepositHistoryV2Example.php:33](/examples/wallet/travelrule/DepositHistoryV2Example.php#L33)
 
-[/sapi/v1/localentity/vasp](https://developers.binance.com/docs/wallet/travel-rule/Onboarded-VASP-list) - onboardedVaspList - [OnboardedVaspListExample.php:24](/examples/wallet/travelrule/OnboardedVaspListExample.php#L24)
+[/sapi/v1/addressVerify/list](https://developers.binance.com/docs/wallet/travel-rule/address-verification-list) - fetchAddressVerificationList - [FetchAddressVerificationListExample.php:25](/examples/wallet/travelrule/FetchAddressVerificationListExample.php#L25)
 
 [/sapi/v1/localentity/broker/deposit/provide-info](https://developers.binance.com/docs/wallet/travel-rule/deposit-provide-info) - submitDepositQuestionnaire - [SubmitDepositQuestionnaireExample.php:31](/examples/wallet/travelrule/SubmitDepositQuestionnaireExample.php#L31)
 
 [/sapi/v1/localentity/deposit/provide-info](https://developers.binance.com/docs/wallet/travel-rule/deposit-provide-info) - submitDepositQuestionnaireTravelRule - [SubmitDepositQuestionnaireTravelRuleExample.php:28](/examples/wallet/travelrule/SubmitDepositQuestionnaireTravelRuleExample.php#L28)
+
+[/sapi/v1/localentity/vasp](https://developers.binance.com/docs/wallet/travel-rule/onboarded-vasp-list) - vaspList - [VaspListExample.php:25](/examples/wallet/travelrule/VaspListExample.php#L25)
 
 [/sapi/v1/localentity/withdraw/history](https://developers.binance.com/docs/wallet/travel-rule/Withdraw-History) - withdrawHistoryV1 - [WithdrawHistoryV1Example.php:35](/examples/wallet/travelrule/WithdrawHistoryV1Example.php#L35)
 

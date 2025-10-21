@@ -63,18 +63,18 @@ class AllCoinsInformationResponseInner implements ModelInterface, \ArrayAccess, 
     protected static $openAPITypes = [
         'coin' => 'string',
         'depositAllEnable' => 'bool',
-        'free' => 'string',
-        'freeze' => 'string',
-        'ipoable' => 'string',
-        'ipoing' => 'string',
-        'isLegalMoney' => 'bool',
-        'locked' => 'string',
-        'name' => 'string',
-        'networkList' => '\Binance\Client\Wallet\Model\AllCoinsInformationResponseInnerNetworkListInner[]',
-        'storage' => 'string',
-        'trading' => 'bool',
         'withdrawAllEnable' => 'bool',
+        'name' => 'string',
+        'free' => 'string',
+        'locked' => 'string',
+        'freeze' => 'string',
         'withdrawing' => 'string',
+        'ipoing' => 'string',
+        'ipoable' => 'string',
+        'storage' => 'string',
+        'isLegalMoney' => 'bool',
+        'trading' => 'bool',
+        'networkList' => '\Binance\Client\Wallet\Model\AllCoinsInformationResponseInnerNetworkListInner[]',
     ];
 
     /**
@@ -89,18 +89,18 @@ class AllCoinsInformationResponseInner implements ModelInterface, \ArrayAccess, 
     protected static $openAPIFormats = [
         'coin' => null,
         'depositAllEnable' => null,
-        'free' => null,
-        'freeze' => null,
-        'ipoable' => null,
-        'ipoing' => null,
-        'isLegalMoney' => null,
-        'locked' => null,
-        'name' => null,
-        'networkList' => null,
-        'storage' => null,
-        'trading' => null,
         'withdrawAllEnable' => null,
+        'name' => null,
+        'free' => null,
+        'locked' => null,
+        'freeze' => null,
         'withdrawing' => null,
+        'ipoing' => null,
+        'ipoable' => null,
+        'storage' => null,
+        'isLegalMoney' => null,
+        'trading' => null,
+        'networkList' => null,
     ];
 
     /**
@@ -111,18 +111,18 @@ class AllCoinsInformationResponseInner implements ModelInterface, \ArrayAccess, 
     protected static array $openAPINullables = [
         'coin' => false,
         'depositAllEnable' => false,
-        'free' => false,
-        'freeze' => false,
-        'ipoable' => false,
-        'ipoing' => false,
-        'isLegalMoney' => false,
-        'locked' => false,
-        'name' => false,
-        'networkList' => false,
-        'storage' => false,
-        'trading' => false,
         'withdrawAllEnable' => false,
+        'name' => false,
+        'free' => false,
+        'locked' => false,
+        'freeze' => false,
         'withdrawing' => false,
+        'ipoing' => false,
+        'ipoable' => false,
+        'storage' => false,
+        'isLegalMoney' => false,
+        'trading' => false,
+        'networkList' => false,
     ];
 
     /**
@@ -141,18 +141,18 @@ class AllCoinsInformationResponseInner implements ModelInterface, \ArrayAccess, 
     protected static $attributeMap = [
         'coin' => 'coin',
         'depositAllEnable' => 'depositAllEnable',
-        'free' => 'free',
-        'freeze' => 'freeze',
-        'ipoable' => 'ipoable',
-        'ipoing' => 'ipoing',
-        'isLegalMoney' => 'isLegalMoney',
-        'locked' => 'locked',
-        'name' => 'name',
-        'networkList' => 'networkList',
-        'storage' => 'storage',
-        'trading' => 'trading',
         'withdrawAllEnable' => 'withdrawAllEnable',
+        'name' => 'name',
+        'free' => 'free',
+        'locked' => 'locked',
+        'freeze' => 'freeze',
         'withdrawing' => 'withdrawing',
+        'ipoing' => 'ipoing',
+        'ipoable' => 'ipoable',
+        'storage' => 'storage',
+        'isLegalMoney' => 'isLegalMoney',
+        'trading' => 'trading',
+        'networkList' => 'networkList',
     ];
 
     /**
@@ -163,18 +163,18 @@ class AllCoinsInformationResponseInner implements ModelInterface, \ArrayAccess, 
     protected static $setters = [
         'coin' => 'setCoin',
         'depositAllEnable' => 'setDepositAllEnable',
-        'free' => 'setFree',
-        'freeze' => 'setFreeze',
-        'ipoable' => 'setIpoable',
-        'ipoing' => 'setIpoing',
-        'isLegalMoney' => 'setIsLegalMoney',
-        'locked' => 'setLocked',
-        'name' => 'setName',
-        'networkList' => 'setNetworkList',
-        'storage' => 'setStorage',
-        'trading' => 'setTrading',
         'withdrawAllEnable' => 'setWithdrawAllEnable',
+        'name' => 'setName',
+        'free' => 'setFree',
+        'locked' => 'setLocked',
+        'freeze' => 'setFreeze',
         'withdrawing' => 'setWithdrawing',
+        'ipoing' => 'setIpoing',
+        'ipoable' => 'setIpoable',
+        'storage' => 'setStorage',
+        'isLegalMoney' => 'setIsLegalMoney',
+        'trading' => 'setTrading',
+        'networkList' => 'setNetworkList',
     ];
 
     /**
@@ -185,18 +185,18 @@ class AllCoinsInformationResponseInner implements ModelInterface, \ArrayAccess, 
     protected static $getters = [
         'coin' => 'getCoin',
         'depositAllEnable' => 'getDepositAllEnable',
-        'free' => 'getFree',
-        'freeze' => 'getFreeze',
-        'ipoable' => 'getIpoable',
-        'ipoing' => 'getIpoing',
-        'isLegalMoney' => 'getIsLegalMoney',
-        'locked' => 'getLocked',
-        'name' => 'getName',
-        'networkList' => 'getNetworkList',
-        'storage' => 'getStorage',
-        'trading' => 'getTrading',
         'withdrawAllEnable' => 'getWithdrawAllEnable',
+        'name' => 'getName',
+        'free' => 'getFree',
+        'locked' => 'getLocked',
+        'freeze' => 'getFreeze',
         'withdrawing' => 'getWithdrawing',
+        'ipoing' => 'getIpoing',
+        'ipoable' => 'getIpoable',
+        'storage' => 'getStorage',
+        'isLegalMoney' => 'getIsLegalMoney',
+        'trading' => 'getTrading',
+        'networkList' => 'getNetworkList',
     ];
 
     /**
@@ -216,18 +216,18 @@ class AllCoinsInformationResponseInner implements ModelInterface, \ArrayAccess, 
     {
         $this->setIfExists('coin', $data ?? [], null);
         $this->setIfExists('depositAllEnable', $data ?? [], null);
-        $this->setIfExists('free', $data ?? [], null);
-        $this->setIfExists('freeze', $data ?? [], null);
-        $this->setIfExists('ipoable', $data ?? [], null);
-        $this->setIfExists('ipoing', $data ?? [], null);
-        $this->setIfExists('isLegalMoney', $data ?? [], null);
-        $this->setIfExists('locked', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('networkList', $data ?? [], null);
-        $this->setIfExists('storage', $data ?? [], null);
-        $this->setIfExists('trading', $data ?? [], null);
         $this->setIfExists('withdrawAllEnable', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('free', $data ?? [], null);
+        $this->setIfExists('locked', $data ?? [], null);
+        $this->setIfExists('freeze', $data ?? [], null);
         $this->setIfExists('withdrawing', $data ?? [], null);
+        $this->setIfExists('ipoing', $data ?? [], null);
+        $this->setIfExists('ipoable', $data ?? [], null);
+        $this->setIfExists('storage', $data ?? [], null);
+        $this->setIfExists('isLegalMoney', $data ?? [], null);
+        $this->setIfExists('trading', $data ?? [], null);
+        $this->setIfExists('networkList', $data ?? [], null);
     }
 
     /**
@@ -413,163 +413,28 @@ class AllCoinsInformationResponseInner implements ModelInterface, \ArrayAccess, 
     }
 
     /**
-     * Gets free.
-     *
-     * @return null|string
-     */
-    public function getFree()
-    {
-        return $this->container['free'];
-    }
-
-    /**
-     * Sets free.
-     *
-     * @param null|string $free free
-     *
-     * @return self
-     */
-    public function setFree($free)
-    {
-        if (is_null($free)) {
-            throw new \InvalidArgumentException('non-nullable free cannot be null');
-        }
-        $this->container['free'] = $free;
-
-        return $this;
-    }
-
-    /**
-     * Gets freeze.
-     *
-     * @return null|string
-     */
-    public function getFreeze()
-    {
-        return $this->container['freeze'];
-    }
-
-    /**
-     * Sets freeze.
-     *
-     * @param null|string $freeze freeze
-     *
-     * @return self
-     */
-    public function setFreeze($freeze)
-    {
-        if (is_null($freeze)) {
-            throw new \InvalidArgumentException('non-nullable freeze cannot be null');
-        }
-        $this->container['freeze'] = $freeze;
-
-        return $this;
-    }
-
-    /**
-     * Gets ipoable.
-     *
-     * @return null|string
-     */
-    public function getIpoable()
-    {
-        return $this->container['ipoable'];
-    }
-
-    /**
-     * Sets ipoable.
-     *
-     * @param null|string $ipoable ipoable
-     *
-     * @return self
-     */
-    public function setIpoable($ipoable)
-    {
-        if (is_null($ipoable)) {
-            throw new \InvalidArgumentException('non-nullable ipoable cannot be null');
-        }
-        $this->container['ipoable'] = $ipoable;
-
-        return $this;
-    }
-
-    /**
-     * Gets ipoing.
-     *
-     * @return null|string
-     */
-    public function getIpoing()
-    {
-        return $this->container['ipoing'];
-    }
-
-    /**
-     * Sets ipoing.
-     *
-     * @param null|string $ipoing ipoing
-     *
-     * @return self
-     */
-    public function setIpoing($ipoing)
-    {
-        if (is_null($ipoing)) {
-            throw new \InvalidArgumentException('non-nullable ipoing cannot be null');
-        }
-        $this->container['ipoing'] = $ipoing;
-
-        return $this;
-    }
-
-    /**
-     * Gets isLegalMoney.
+     * Gets withdrawAllEnable.
      *
      * @return null|bool
      */
-    public function getIsLegalMoney()
+    public function getWithdrawAllEnable()
     {
-        return $this->container['isLegalMoney'];
+        return $this->container['withdrawAllEnable'];
     }
 
     /**
-     * Sets isLegalMoney.
+     * Sets withdrawAllEnable.
      *
-     * @param null|bool $isLegalMoney isLegalMoney
+     * @param null|bool $withdrawAllEnable withdrawAllEnable
      *
      * @return self
      */
-    public function setIsLegalMoney($isLegalMoney)
+    public function setWithdrawAllEnable($withdrawAllEnable)
     {
-        if (is_null($isLegalMoney)) {
-            throw new \InvalidArgumentException('non-nullable isLegalMoney cannot be null');
+        if (is_null($withdrawAllEnable)) {
+            throw new \InvalidArgumentException('non-nullable withdrawAllEnable cannot be null');
         }
-        $this->container['isLegalMoney'] = $isLegalMoney;
-
-        return $this;
-    }
-
-    /**
-     * Gets locked.
-     *
-     * @return null|string
-     */
-    public function getLocked()
-    {
-        return $this->container['locked'];
-    }
-
-    /**
-     * Sets locked.
-     *
-     * @param null|string $locked locked
-     *
-     * @return self
-     */
-    public function setLocked($locked)
-    {
-        if (is_null($locked)) {
-            throw new \InvalidArgumentException('non-nullable locked cannot be null');
-        }
-        $this->container['locked'] = $locked;
+        $this->container['withdrawAllEnable'] = $withdrawAllEnable;
 
         return $this;
     }
@@ -602,28 +467,163 @@ class AllCoinsInformationResponseInner implements ModelInterface, \ArrayAccess, 
     }
 
     /**
-     * Gets networkList.
+     * Gets free.
      *
-     * @return null|AllCoinsInformationResponseInnerNetworkListInner[]
+     * @return null|string
      */
-    public function getNetworkList()
+    public function getFree()
     {
-        return $this->container['networkList'];
+        return $this->container['free'];
     }
 
     /**
-     * Sets networkList.
+     * Sets free.
      *
-     * @param null|AllCoinsInformationResponseInnerNetworkListInner[] $networkList networkList
+     * @param null|string $free free
      *
      * @return self
      */
-    public function setNetworkList($networkList)
+    public function setFree($free)
     {
-        if (is_null($networkList)) {
-            throw new \InvalidArgumentException('non-nullable networkList cannot be null');
+        if (is_null($free)) {
+            throw new \InvalidArgumentException('non-nullable free cannot be null');
         }
-        $this->container['networkList'] = $networkList;
+        $this->container['free'] = $free;
+
+        return $this;
+    }
+
+    /**
+     * Gets locked.
+     *
+     * @return null|string
+     */
+    public function getLocked()
+    {
+        return $this->container['locked'];
+    }
+
+    /**
+     * Sets locked.
+     *
+     * @param null|string $locked locked
+     *
+     * @return self
+     */
+    public function setLocked($locked)
+    {
+        if (is_null($locked)) {
+            throw new \InvalidArgumentException('non-nullable locked cannot be null');
+        }
+        $this->container['locked'] = $locked;
+
+        return $this;
+    }
+
+    /**
+     * Gets freeze.
+     *
+     * @return null|string
+     */
+    public function getFreeze()
+    {
+        return $this->container['freeze'];
+    }
+
+    /**
+     * Sets freeze.
+     *
+     * @param null|string $freeze freeze
+     *
+     * @return self
+     */
+    public function setFreeze($freeze)
+    {
+        if (is_null($freeze)) {
+            throw new \InvalidArgumentException('non-nullable freeze cannot be null');
+        }
+        $this->container['freeze'] = $freeze;
+
+        return $this;
+    }
+
+    /**
+     * Gets withdrawing.
+     *
+     * @return null|string
+     */
+    public function getWithdrawing()
+    {
+        return $this->container['withdrawing'];
+    }
+
+    /**
+     * Sets withdrawing.
+     *
+     * @param null|string $withdrawing withdrawing
+     *
+     * @return self
+     */
+    public function setWithdrawing($withdrawing)
+    {
+        if (is_null($withdrawing)) {
+            throw new \InvalidArgumentException('non-nullable withdrawing cannot be null');
+        }
+        $this->container['withdrawing'] = $withdrawing;
+
+        return $this;
+    }
+
+    /**
+     * Gets ipoing.
+     *
+     * @return null|string
+     */
+    public function getIpoing()
+    {
+        return $this->container['ipoing'];
+    }
+
+    /**
+     * Sets ipoing.
+     *
+     * @param null|string $ipoing ipoing
+     *
+     * @return self
+     */
+    public function setIpoing($ipoing)
+    {
+        if (is_null($ipoing)) {
+            throw new \InvalidArgumentException('non-nullable ipoing cannot be null');
+        }
+        $this->container['ipoing'] = $ipoing;
+
+        return $this;
+    }
+
+    /**
+     * Gets ipoable.
+     *
+     * @return null|string
+     */
+    public function getIpoable()
+    {
+        return $this->container['ipoable'];
+    }
+
+    /**
+     * Sets ipoable.
+     *
+     * @param null|string $ipoable ipoable
+     *
+     * @return self
+     */
+    public function setIpoable($ipoable)
+    {
+        if (is_null($ipoable)) {
+            throw new \InvalidArgumentException('non-nullable ipoable cannot be null');
+        }
+        $this->container['ipoable'] = $ipoable;
 
         return $this;
     }
@@ -656,6 +656,33 @@ class AllCoinsInformationResponseInner implements ModelInterface, \ArrayAccess, 
     }
 
     /**
+     * Gets isLegalMoney.
+     *
+     * @return null|bool
+     */
+    public function getIsLegalMoney()
+    {
+        return $this->container['isLegalMoney'];
+    }
+
+    /**
+     * Sets isLegalMoney.
+     *
+     * @param null|bool $isLegalMoney isLegalMoney
+     *
+     * @return self
+     */
+    public function setIsLegalMoney($isLegalMoney)
+    {
+        if (is_null($isLegalMoney)) {
+            throw new \InvalidArgumentException('non-nullable isLegalMoney cannot be null');
+        }
+        $this->container['isLegalMoney'] = $isLegalMoney;
+
+        return $this;
+    }
+
+    /**
      * Gets trading.
      *
      * @return null|bool
@@ -683,55 +710,28 @@ class AllCoinsInformationResponseInner implements ModelInterface, \ArrayAccess, 
     }
 
     /**
-     * Gets withdrawAllEnable.
+     * Gets networkList.
      *
-     * @return null|bool
+     * @return null|AllCoinsInformationResponseInnerNetworkListInner[]
      */
-    public function getWithdrawAllEnable()
+    public function getNetworkList()
     {
-        return $this->container['withdrawAllEnable'];
+        return $this->container['networkList'];
     }
 
     /**
-     * Sets withdrawAllEnable.
+     * Sets networkList.
      *
-     * @param null|bool $withdrawAllEnable withdrawAllEnable
+     * @param null|AllCoinsInformationResponseInnerNetworkListInner[] $networkList networkList
      *
      * @return self
      */
-    public function setWithdrawAllEnable($withdrawAllEnable)
+    public function setNetworkList($networkList)
     {
-        if (is_null($withdrawAllEnable)) {
-            throw new \InvalidArgumentException('non-nullable withdrawAllEnable cannot be null');
+        if (is_null($networkList)) {
+            throw new \InvalidArgumentException('non-nullable networkList cannot be null');
         }
-        $this->container['withdrawAllEnable'] = $withdrawAllEnable;
-
-        return $this;
-    }
-
-    /**
-     * Gets withdrawing.
-     *
-     * @return null|string
-     */
-    public function getWithdrawing()
-    {
-        return $this->container['withdrawing'];
-    }
-
-    /**
-     * Sets withdrawing.
-     *
-     * @param null|string $withdrawing withdrawing
-     *
-     * @return self
-     */
-    public function setWithdrawing($withdrawing)
-    {
-        if (is_null($withdrawing)) {
-            throw new \InvalidArgumentException('non-nullable withdrawing cannot be null');
-        }
-        $this->container['withdrawing'] = $withdrawing;
+        $this->container['networkList'] = $networkList;
 
         return $this;
     }

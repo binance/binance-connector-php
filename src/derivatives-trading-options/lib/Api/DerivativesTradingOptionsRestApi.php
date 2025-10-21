@@ -179,6 +179,23 @@ class DerivativesTradingOptionsRestApi
     }
 
     /**
+     * Operation optionMarginAccountInformation.
+     *
+     * Option Margin Account Information (USER_DATA)
+     *
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<OptionMarginAccountInformationResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function optionMarginAccountInformation($recvWindow = null): ApiResponse
+    {
+        return $this->accountApi->optionMarginAccountInformation($recvWindow);
+    }
+
+    /**
      * Operation checkServerTime.
      *
      * Check Server Time
@@ -584,23 +601,6 @@ class DerivativesTradingOptionsRestApi
     }
 
     /**
-     * Operation optionMarginAccountInformation.
-     *
-     * Option Margin Account Information (USER_DATA)
-     *
-     * @param null|int $recvWindow recvWindow (optional)
-     *
-     * @return ApiResponse<OptionMarginAccountInformationResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function optionMarginAccountInformation($recvWindow = null): ApiResponse
-    {
-        return $this->marketMakerEndpointsApi->optionMarginAccountInformation($recvWindow);
-    }
-
-    /**
      * Operation resetMarketMakerProtectionConfig.
      *
      * Reset Market Maker Protection Config (TRADE)
@@ -810,7 +810,6 @@ class DerivativesTradingOptionsRestApi
      * @param null|int    $orderId    Order ID, e.g 4611875134427365377 (optional)
      * @param null|int    $startTime  Start Time, e.g 1593511200000 (optional)
      * @param null|int    $endTime    End Time, e.g 1593512200000 (optional)
-     * @param null|int    $limit      Number of result sets returned Default:100 Max:1000 (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryCurrentOpenOptionOrdersResponse>
@@ -818,9 +817,9 @@ class DerivativesTradingOptionsRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function queryCurrentOpenOptionOrders($symbol = null, $orderId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
+    public function queryCurrentOpenOptionOrders($symbol = null, $orderId = null, $startTime = null, $endTime = null, $recvWindow = null): ApiResponse
     {
-        return $this->tradeApi->queryCurrentOpenOptionOrders($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
+        return $this->tradeApi->queryCurrentOpenOptionOrders($symbol, $orderId, $startTime, $endTime, $recvWindow);
     }
 
     /**

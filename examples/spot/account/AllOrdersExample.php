@@ -26,7 +26,7 @@ function allOrdersExample()
     $startTime = 1735693200000;
     $endTime = 1735693200000;
     $limit = 500;
-    $recvWindow = 5000;
+    $recvWindow = 5000.0;
     $response = $api->allOrders($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
     print_r($response);
 }

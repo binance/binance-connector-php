@@ -268,13 +268,13 @@ class TradeApiTest extends TestCase
         $endTime = 1641782889000;
         $limit = 100;
         $recvWindow = 5000;
-        $response = $this->getApiMock($request)->queryCurrentOpenOptionOrders($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
+        $response = $this->getApiMock($request)->queryCurrentOpenOptionOrders($symbol, $orderId, $startTime, $endTime, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/eapi/v1/openOrders', $request->getUri()->getPath());
-        self::assertEquals('55af0bd73b4d687e474ef8be964b80431b1dc08d9d4927c2e6c815a79bca3d5a', $queryMap['signature']);
+        self::assertEquals('ad8a31e339cbb50fd50ff65861a2ab1ac1e6ea688c19b6a6f7b159cb5c3bfa8a', $queryMap['signature']);
     }
 
     /**

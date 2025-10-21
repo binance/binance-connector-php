@@ -37,6 +37,7 @@ use Binance\Client\Spot\Model\GetOpenOrdersResponse;
 use Binance\Client\Spot\Model\GetOrderListResponse;
 use Binance\Client\Spot\Model\GetOrderResponse;
 use Binance\Client\Spot\Model\MyAllocationsResponse;
+use Binance\Client\Spot\Model\MyFiltersResponse;
 use Binance\Client\Spot\Model\MyPreventedMatchesResponse;
 use Binance\Client\Spot\Model\MyTradesResponse;
 use Binance\Client\Spot\Model\OpenOrderListResponse;
@@ -79,6 +80,7 @@ class AccountApi
         'getOrder' => ['application/x-www-form-urlencoded'],
         'getOrderList' => ['application/x-www-form-urlencoded'],
         'myAllocations' => ['application/x-www-form-urlencoded'],
+        'myFilters' => ['application/x-www-form-urlencoded'],
         'myPreventedMatches' => ['application/x-www-form-urlencoded'],
         'myTrades' => ['application/x-www-form-urlencoded'],
         'openOrderList' => ['application/x-www-form-urlencoded'],
@@ -307,11 +309,11 @@ class AccountApi
      *
      * Query all Order lists
      *
-     * @param null|int $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $limit      Default: 500; Maximum: 1000. (optional)
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|int   $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $limit      Default: 500; Maximum: 1000. (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<AllOrderListResponse>
      *
@@ -328,11 +330,11 @@ class AccountApi
      *
      * Query all Order lists
      *
-     * @param null|int $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $limit      Default: 500; Maximum: 1000. (optional)
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|int   $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $limit      Default: 500; Maximum: 1000. (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<AllOrderListResponse>
      *
@@ -411,11 +413,11 @@ class AccountApi
     /**
      * Create request for operation 'allOrderList'.
      *
-     * @param null|int $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $limit      Default: 500; Maximum: 1000. (optional)
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|int   $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $limit      Default: 500; Maximum: 1000. (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return Request
      *
@@ -472,7 +474,7 @@ class AccountApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,
             'recvWindow', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -518,12 +520,12 @@ class AccountApi
      *
      * All orders
      *
-     * @param string   $symbol     symbol (required)
-     * @param null|int $orderId    orderId (optional)
-     * @param null|int $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $limit      Default: 500; Maximum: 1000. (optional)
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol     symbol (required)
+     * @param null|int   $orderId    orderId (optional)
+     * @param null|int   $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $limit      Default: 500; Maximum: 1000. (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<AllOrdersResponse>
      *
@@ -540,12 +542,12 @@ class AccountApi
      *
      * All orders
      *
-     * @param string   $symbol     (required)
-     * @param null|int $orderId    (optional)
-     * @param null|int $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $limit      Default: 500; Maximum: 1000. (optional)
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol     (required)
+     * @param null|int   $orderId    (optional)
+     * @param null|int   $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $limit      Default: 500; Maximum: 1000. (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<AllOrdersResponse>
      *
@@ -624,12 +626,12 @@ class AccountApi
     /**
      * Create request for operation 'allOrders'.
      *
-     * @param string   $symbol     (required)
-     * @param null|int $orderId    (optional)
-     * @param null|int $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $limit      Default: 500; Maximum: 1000. (optional)
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol     (required)
+     * @param null|int   $orderId    (optional)
+     * @param null|int   $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $limit      Default: 500; Maximum: 1000. (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return Request
      *
@@ -702,7 +704,7 @@ class AccountApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,
             'recvWindow', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -748,8 +750,8 @@ class AccountApi
      *
      * Account information
      *
-     * @param null|bool $omitZeroBalances When set to &#x60;true&#x60;, emits only the non-zero balances of an account. &lt;br&gt;Default value: &#x60;false&#x60; (optional)
-     * @param null|int  $recvWindow       The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|bool  $omitZeroBalances When set to &#x60;true&#x60;, emits only the non-zero balances of an account. &lt;br&gt;Default value: &#x60;false&#x60; (optional)
+     * @param null|float $recvWindow       The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<GetAccountResponse>
      *
@@ -766,8 +768,8 @@ class AccountApi
      *
      * Account information
      *
-     * @param null|bool $omitZeroBalances When set to &#x60;true&#x60;, emits only the non-zero balances of an account. &lt;br&gt;Default value: &#x60;false&#x60; (optional)
-     * @param null|int  $recvWindow       The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|bool  $omitZeroBalances When set to &#x60;true&#x60;, emits only the non-zero balances of an account. &lt;br&gt;Default value: &#x60;false&#x60; (optional)
+     * @param null|float $recvWindow       The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<GetAccountResponse>
      *
@@ -846,8 +848,8 @@ class AccountApi
     /**
      * Create request for operation 'getAccount'.
      *
-     * @param null|bool $omitZeroBalances When set to &#x60;true&#x60;, emits only the non-zero balances of an account. &lt;br&gt;Default value: &#x60;false&#x60; (optional)
-     * @param null|int  $recvWindow       The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|bool  $omitZeroBalances When set to &#x60;true&#x60;, emits only the non-zero balances of an account. &lt;br&gt;Default value: &#x60;false&#x60; (optional)
+     * @param null|float $recvWindow       The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return Request
      *
@@ -877,7 +879,7 @@ class AccountApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,
             'recvWindow', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -924,7 +926,7 @@ class AccountApi
      * Current open orders
      *
      * @param null|string $symbol     Symbol to query (optional)
-     * @param null|int    $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float  $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<GetOpenOrdersResponse>
      *
@@ -942,7 +944,7 @@ class AccountApi
      * Current open orders
      *
      * @param null|string $symbol     Symbol to query (optional)
-     * @param null|int    $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float  $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<GetOpenOrdersResponse>
      *
@@ -1022,7 +1024,7 @@ class AccountApi
      * Create request for operation 'getOpenOrders'.
      *
      * @param null|string $symbol     Symbol to query (optional)
-     * @param null|int    $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float  $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return Request
      *
@@ -1052,7 +1054,7 @@ class AccountApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,
             'recvWindow', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1101,7 +1103,7 @@ class AccountApi
      * @param string      $symbol            symbol (required)
      * @param null|int    $orderId           orderId (optional)
      * @param null|string $origClientOrderId origClientOrderId (optional)
-     * @param null|int    $recvWindow        The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float  $recvWindow        The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<GetOrderResponse>
      *
@@ -1121,7 +1123,7 @@ class AccountApi
      * @param string      $symbol            (required)
      * @param null|int    $orderId           (optional)
      * @param null|string $origClientOrderId (optional)
-     * @param null|int    $recvWindow        The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float  $recvWindow        The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<GetOrderResponse>
      *
@@ -1203,7 +1205,7 @@ class AccountApi
      * @param string      $symbol            (required)
      * @param null|int    $orderId           (optional)
      * @param null|string $origClientOrderId (optional)
-     * @param null|int    $recvWindow        The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float  $recvWindow        The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return Request
      *
@@ -1258,7 +1260,7 @@ class AccountApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,
             'recvWindow', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1306,7 +1308,7 @@ class AccountApi
      *
      * @param null|int    $orderListId       Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
      * @param null|string $origClientOrderId origClientOrderId (optional)
-     * @param null|int    $recvWindow        The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float  $recvWindow        The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<GetOrderListResponse>
      *
@@ -1325,7 +1327,7 @@ class AccountApi
      *
      * @param null|int    $orderListId       Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
      * @param null|string $origClientOrderId (optional)
-     * @param null|int    $recvWindow        The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float  $recvWindow        The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<GetOrderListResponse>
      *
@@ -1406,7 +1408,7 @@ class AccountApi
      *
      * @param null|int    $orderListId       Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
      * @param null|string $origClientOrderId (optional)
-     * @param null|int    $recvWindow        The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float  $recvWindow        The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return Request
      *
@@ -1445,7 +1447,7 @@ class AccountApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,
             'recvWindow', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1491,13 +1493,13 @@ class AccountApi
      *
      * Query Allocations
      *
-     * @param string   $symbol           symbol (required)
-     * @param null|int $startTime        Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $endTime          Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $fromAllocationId fromAllocationId (optional)
-     * @param null|int $limit            Default: 500; Maximum: 1000. (optional)
-     * @param null|int $orderId          orderId (optional)
-     * @param null|int $recvWindow       The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol           symbol (required)
+     * @param null|int   $startTime        Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $endTime          Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $fromAllocationId fromAllocationId (optional)
+     * @param null|int   $limit            Default: 500; Maximum: 1000. (optional)
+     * @param null|int   $orderId          orderId (optional)
+     * @param null|float $recvWindow       The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<MyAllocationsResponse>
      *
@@ -1514,13 +1516,13 @@ class AccountApi
      *
      * Query Allocations
      *
-     * @param string   $symbol           (required)
-     * @param null|int $startTime        Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $endTime          Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $fromAllocationId (optional)
-     * @param null|int $limit            Default: 500; Maximum: 1000. (optional)
-     * @param null|int $orderId          (optional)
-     * @param null|int $recvWindow       The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol           (required)
+     * @param null|int   $startTime        Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $endTime          Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $fromAllocationId (optional)
+     * @param null|int   $limit            Default: 500; Maximum: 1000. (optional)
+     * @param null|int   $orderId          (optional)
+     * @param null|float $recvWindow       The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<MyAllocationsResponse>
      *
@@ -1599,13 +1601,13 @@ class AccountApi
     /**
      * Create request for operation 'myAllocations'.
      *
-     * @param string   $symbol           (required)
-     * @param null|int $startTime        Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $endTime          Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $fromAllocationId (optional)
-     * @param null|int $limit            Default: 500; Maximum: 1000. (optional)
-     * @param null|int $orderId          (optional)
-     * @param null|int $recvWindow       The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol           (required)
+     * @param null|int   $startTime        Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $endTime          Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $fromAllocationId (optional)
+     * @param null|int   $limit            Default: 500; Maximum: 1000. (optional)
+     * @param null|int   $orderId          (optional)
+     * @param null|float $recvWindow       The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return Request
      *
@@ -1687,7 +1689,189 @@ class AccountApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,
             'recvWindow', // param base name
-            'integer', // openApiType
+            'number', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation myFilters.
+     *
+     * Query relevant filters
+     *
+     * @param string     $symbol     symbol (required)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     *
+     * @return ApiResponse<MyFiltersResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function myFilters($symbol, $recvWindow = null): ApiResponse
+    {
+        return $this->myFiltersWithHttpInfo($symbol, $recvWindow);
+    }
+
+    /**
+     * Operation myFiltersWithHttpInfo.
+     *
+     * Query relevant filters
+     *
+     * @param string     $symbol     (required)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     *
+     * @return ApiResponse<MyFiltersResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function myFiltersWithHttpInfo($symbol, $recvWindow = null): ApiResponse
+    {
+        $request = $this->myFiltersRequest($symbol, $recvWindow);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Spot\Model\MyFiltersResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Spot\Model\MyFiltersResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Spot\Model\MyFiltersResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'myFilters'.
+     *
+     * @param string     $symbol     (required)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function myFiltersRequest($symbol, $recvWindow = null)
+    {
+        $contentType = self::contentTypes['myFilters'][0];
+
+        // verify the required parameter 'symbol' is set
+        if (null === $symbol || (is_array($symbol) && 0 === count($symbol))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $symbol when calling myFilters'
+            );
+        }
+
+        $resourcePath = '/api/v3/myFilters';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbol,
+            'symbol', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recvWindow,
+            'recvWindow', // param base name
+            'number', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1733,12 +1917,12 @@ class AccountApi
      *
      * Query Prevented Matches
      *
-     * @param string   $symbol               symbol (required)
-     * @param null|int $preventedMatchId     preventedMatchId (optional)
-     * @param null|int $orderId              orderId (optional)
-     * @param null|int $fromPreventedMatchId fromPreventedMatchId (optional)
-     * @param null|int $limit                Default: 500; Maximum: 1000. (optional)
-     * @param null|int $recvWindow           The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol               symbol (required)
+     * @param null|int   $preventedMatchId     preventedMatchId (optional)
+     * @param null|int   $orderId              orderId (optional)
+     * @param null|int   $fromPreventedMatchId fromPreventedMatchId (optional)
+     * @param null|int   $limit                Default: 500; Maximum: 1000. (optional)
+     * @param null|float $recvWindow           The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<MyPreventedMatchesResponse>
      *
@@ -1755,12 +1939,12 @@ class AccountApi
      *
      * Query Prevented Matches
      *
-     * @param string   $symbol               (required)
-     * @param null|int $preventedMatchId     (optional)
-     * @param null|int $orderId              (optional)
-     * @param null|int $fromPreventedMatchId (optional)
-     * @param null|int $limit                Default: 500; Maximum: 1000. (optional)
-     * @param null|int $recvWindow           The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol               (required)
+     * @param null|int   $preventedMatchId     (optional)
+     * @param null|int   $orderId              (optional)
+     * @param null|int   $fromPreventedMatchId (optional)
+     * @param null|int   $limit                Default: 500; Maximum: 1000. (optional)
+     * @param null|float $recvWindow           The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<MyPreventedMatchesResponse>
      *
@@ -1839,12 +2023,12 @@ class AccountApi
     /**
      * Create request for operation 'myPreventedMatches'.
      *
-     * @param string   $symbol               (required)
-     * @param null|int $preventedMatchId     (optional)
-     * @param null|int $orderId              (optional)
-     * @param null|int $fromPreventedMatchId (optional)
-     * @param null|int $limit                Default: 500; Maximum: 1000. (optional)
-     * @param null|int $recvWindow           The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol               (required)
+     * @param null|int   $preventedMatchId     (optional)
+     * @param null|int   $orderId              (optional)
+     * @param null|int   $fromPreventedMatchId (optional)
+     * @param null|int   $limit                Default: 500; Maximum: 1000. (optional)
+     * @param null|float $recvWindow           The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return Request
      *
@@ -1917,7 +2101,7 @@ class AccountApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,
             'recvWindow', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1963,13 +2147,13 @@ class AccountApi
      *
      * Account trade list
      *
-     * @param string   $symbol     symbol (required)
-     * @param null|int $orderId    orderId (optional)
-     * @param null|int $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $limit      Default: 500; Maximum: 1000. (optional)
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol     symbol (required)
+     * @param null|int   $orderId    orderId (optional)
+     * @param null|int   $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $limit      Default: 500; Maximum: 1000. (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<MyTradesResponse>
      *
@@ -1986,13 +2170,13 @@ class AccountApi
      *
      * Account trade list
      *
-     * @param string   $symbol     (required)
-     * @param null|int $orderId    (optional)
-     * @param null|int $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $limit      Default: 500; Maximum: 1000. (optional)
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol     (required)
+     * @param null|int   $orderId    (optional)
+     * @param null|int   $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $limit      Default: 500; Maximum: 1000. (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<MyTradesResponse>
      *
@@ -2071,13 +2255,13 @@ class AccountApi
     /**
      * Create request for operation 'myTrades'.
      *
-     * @param string   $symbol     (required)
-     * @param null|int $orderId    (optional)
-     * @param null|int $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $limit      Default: 500; Maximum: 1000. (optional)
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol     (required)
+     * @param null|int   $orderId    (optional)
+     * @param null|int   $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $limit      Default: 500; Maximum: 1000. (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return Request
      *
@@ -2159,7 +2343,7 @@ class AccountApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,
             'recvWindow', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2205,7 +2389,7 @@ class AccountApi
      *
      * Query Open Order lists
      *
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<OpenOrderListResponse>
      *
@@ -2222,7 +2406,7 @@ class AccountApi
      *
      * Query Open Order lists
      *
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<OpenOrderListResponse>
      *
@@ -2301,7 +2485,7 @@ class AccountApi
     /**
      * Create request for operation 'openOrderList'.
      *
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return Request
      *
@@ -2322,7 +2506,7 @@ class AccountApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,
             'recvWindow', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2368,11 +2552,11 @@ class AccountApi
      *
      * Query Order Amendments
      *
-     * @param string   $symbol          symbol (required)
-     * @param int      $orderId         orderId (required)
-     * @param null|int $fromExecutionId fromExecutionId (optional)
-     * @param null|int $limit           Default:500; Maximum: 1000 (optional)
-     * @param null|int $recvWindow      The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol          symbol (required)
+     * @param int        $orderId         orderId (required)
+     * @param null|int   $fromExecutionId fromExecutionId (optional)
+     * @param null|int   $limit           Default:500; Maximum: 1000 (optional)
+     * @param null|float $recvWindow      The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<OrderAmendmentsResponse>
      *
@@ -2389,11 +2573,11 @@ class AccountApi
      *
      * Query Order Amendments
      *
-     * @param string   $symbol          (required)
-     * @param int      $orderId         (required)
-     * @param null|int $fromExecutionId (optional)
-     * @param null|int $limit           Default:500; Maximum: 1000 (optional)
-     * @param null|int $recvWindow      The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol          (required)
+     * @param int        $orderId         (required)
+     * @param null|int   $fromExecutionId (optional)
+     * @param null|int   $limit           Default:500; Maximum: 1000 (optional)
+     * @param null|float $recvWindow      The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<OrderAmendmentsResponse>
      *
@@ -2472,11 +2656,11 @@ class AccountApi
     /**
      * Create request for operation 'orderAmendments'.
      *
-     * @param string   $symbol          (required)
-     * @param int      $orderId         (required)
-     * @param null|int $fromExecutionId (optional)
-     * @param null|int $limit           Default:500; Maximum: 1000 (optional)
-     * @param null|int $recvWindow      The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol          (required)
+     * @param int        $orderId         (required)
+     * @param null|int   $fromExecutionId (optional)
+     * @param null|int   $limit           Default:500; Maximum: 1000 (optional)
+     * @param null|float $recvWindow      The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return Request
      *
@@ -2547,7 +2731,7 @@ class AccountApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,
             'recvWindow', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2593,7 +2777,7 @@ class AccountApi
      *
      * Query Unfilled Order Count
      *
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<RateLimitOrderResponse>
      *
@@ -2610,7 +2794,7 @@ class AccountApi
      *
      * Query Unfilled Order Count
      *
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<RateLimitOrderResponse>
      *
@@ -2689,7 +2873,7 @@ class AccountApi
     /**
      * Create request for operation 'rateLimitOrder'.
      *
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return Request
      *
@@ -2710,7 +2894,7 @@ class AccountApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,
             'recvWindow', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             'form', // style
             true, // explode
             false // required

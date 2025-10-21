@@ -23,7 +23,7 @@ function changeAutoRepayFuturesStatusExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginProRestApi($configurationBuilder->build());
     $changeAutoRepayFuturesStatusRequest = new ChangeAutoRepayFuturesStatusRequest();
-    $changeAutoRepayFuturesStatusRequest->setAutoRepay('');
+    $changeAutoRepayFuturesStatusRequest->setAutoRepay('true');
     $response = $api->changeAutoRepayFuturesStatus($changeAutoRepayFuturesStatusRequest);
     print_r($response);
 }

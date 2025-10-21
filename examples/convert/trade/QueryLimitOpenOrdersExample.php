@@ -15,15 +15,14 @@ require_once __DIR__.'/../vendor/autoload.php';
  */
 use Binance\Client\Convert\Api\ConvertRestApi;
 use Binance\Client\Convert\ConvertRestApiUtil;
-use Binance\Client\Convert\Model\QueryLimitOpenOrdersRequest;
 
 function queryLimitOpenOrdersExample()
 {
     $configurationBuilder = ConvertRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new ConvertRestApi($configurationBuilder->build());
-    $queryLimitOpenOrdersRequest = new QueryLimitOpenOrdersRequest();
-    $response = $api->queryLimitOpenOrders($queryLimitOpenOrdersRequest);
+    $recvWindow = 5000;
+    $response = $api->queryLimitOpenOrders($recvWindow);
     print_r($response);
 }
 

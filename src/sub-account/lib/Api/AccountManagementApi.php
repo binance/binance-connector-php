@@ -1501,15 +1501,15 @@ class AccountManagementApi
      *
      * Query Sub-account Transaction Statistics (For Master Account) (USER_DATA)
      *
-     * @param string   $email      [Sub-account email](#email-address) (required)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|string $email      Managed sub-account email (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QuerySubAccountTransactionStatisticsResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function querySubAccountTransactionStatistics($email, $recvWindow = null): ApiResponse
+    public function querySubAccountTransactionStatistics($email = null, $recvWindow = null): ApiResponse
     {
         return $this->querySubAccountTransactionStatisticsWithHttpInfo($email, $recvWindow);
     }
@@ -1519,15 +1519,15 @@ class AccountManagementApi
      *
      * Query Sub-account Transaction Statistics (For Master Account) (USER_DATA)
      *
-     * @param string   $email      [Sub-account email](#email-address) (required)
-     * @param null|int $recvWindow (optional)
+     * @param null|string $email      Managed sub-account email (optional)
+     * @param null|int    $recvWindow (optional)
      *
      * @return ApiResponse<QuerySubAccountTransactionStatisticsResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function querySubAccountTransactionStatisticsWithHttpInfo($email, $recvWindow = null): ApiResponse
+    public function querySubAccountTransactionStatisticsWithHttpInfo($email = null, $recvWindow = null): ApiResponse
     {
         $request = $this->querySubAccountTransactionStatisticsRequest($email, $recvWindow);
 
@@ -1599,23 +1599,16 @@ class AccountManagementApi
     /**
      * Create request for operation 'querySubAccountTransactionStatistics'.
      *
-     * @param string   $email      [Sub-account email](#email-address) (required)
-     * @param null|int $recvWindow (optional)
+     * @param null|string $email      Managed sub-account email (optional)
+     * @param null|int    $recvWindow (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function querySubAccountTransactionStatisticsRequest($email, $recvWindow = null)
+    public function querySubAccountTransactionStatisticsRequest($email = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['querySubAccountTransactionStatistics'][0];
-
-        // verify the required parameter 'email' is set
-        if (null === $email || (is_array($email) && 0 === count($email))) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $email when calling querySubAccountTransactionStatistics'
-            );
-        }
 
         $resourcePath = '/sapi/v1/sub-account/transaction-statistics';
         $formParams = [];
@@ -1631,7 +1624,7 @@ class AccountManagementApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

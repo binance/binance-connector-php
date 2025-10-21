@@ -63,7 +63,7 @@ class NotionalAndLeverageBracketsResponse2 implements ModelInterface, \ArrayAcce
     protected static $openAPITypes = [
         'symbol' => 'string',
         'notionalCoef' => 'float',
-        'brackets' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\NotionalAndLeverageBracketsResponse1InnerBracketsInner[]',
+        'brackets' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\NotionalAndLeverageBracketsResponse2BracketsInner[]',
     ];
 
     /**
@@ -338,7 +338,7 @@ class NotionalAndLeverageBracketsResponse2 implements ModelInterface, \ArrayAcce
     /**
      * Gets brackets.
      *
-     * @return null|NotionalAndLeverageBracketsResponse1InnerBracketsInner[]
+     * @return null|NotionalAndLeverageBracketsResponse2BracketsInner[]
      */
     public function getBrackets()
     {
@@ -348,7 +348,7 @@ class NotionalAndLeverageBracketsResponse2 implements ModelInterface, \ArrayAcce
     /**
      * Sets brackets.
      *
-     * @param null|NotionalAndLeverageBracketsResponse1InnerBracketsInner[] $brackets brackets
+     * @param null|NotionalAndLeverageBracketsResponse2BracketsInner[] $brackets brackets
      *
      * @return self
      */

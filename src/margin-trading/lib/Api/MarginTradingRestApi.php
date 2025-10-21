@@ -20,6 +20,7 @@ use Binance\Client\MarginTrading\Model\GetDelistScheduleResponse;
 use Binance\Client\MarginTrading\Model\GetForceLiquidationRecordResponse;
 use Binance\Client\MarginTrading\Model\GetFutureHourlyInterestRateResponse;
 use Binance\Client\MarginTrading\Model\GetInterestHistoryResponse;
+use Binance\Client\MarginTrading\Model\GetLimitPricePairsResponse;
 use Binance\Client\MarginTrading\Model\GetListScheduleResponse;
 use Binance\Client\MarginTrading\Model\GetSmallLiabilityExchangeCoinListResponse;
 use Binance\Client\MarginTrading\Model\GetSmallLiabilityExchangeHistoryResponse;
@@ -529,6 +530,21 @@ class MarginTradingRestApi
     public function getDelistSchedule($recvWindow = null): ApiResponse
     {
         return $this->marketDataApi->getDelistSchedule($recvWindow);
+    }
+
+    /**
+     * Operation getLimitPricePairs.
+     *
+     * Get Limit Price Pairs(MARKET_DATA)
+     *
+     * @return ApiResponse<GetLimitPricePairsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getLimitPricePairs(): ApiResponse
+    {
+        return $this->marketDataApi->getLimitPricePairs();
     }
 
     /**

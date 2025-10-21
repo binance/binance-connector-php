@@ -21,7 +21,7 @@ function querySubAccountTransactionStatisticsExample()
     $configurationBuilder = SubAccountRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
-    $email = 'sub-account-email@email.com';
+    $email = '';
     $recvWindow = 5000;
     $response = $api->querySubAccountTransactionStatistics($email, $recvWindow);
     print_r($response);

@@ -68,12 +68,12 @@ class GetSimpleEarnLockedProductListResponseRowsInnerDetail implements ModelInte
         'isSoldOut' => 'bool',
         'apr' => 'string',
         'status' => 'string',
-        'subscriptionStartTime' => 'string',
+        'subscriptionStartTime' => 'int',
         'extraRewardAsset' => 'string',
         'extraRewardAPR' => 'string',
         'boostRewardAsset' => 'string',
         'boostApr' => 'string',
-        'boostEndTime' => 'string',
+        'boostEndTime' => 'int',
     ];
 
     /**
@@ -93,12 +93,12 @@ class GetSimpleEarnLockedProductListResponseRowsInnerDetail implements ModelInte
         'isSoldOut' => null,
         'apr' => null,
         'status' => null,
-        'subscriptionStartTime' => null,
+        'subscriptionStartTime' => 'int64',
         'extraRewardAsset' => null,
         'extraRewardAPR' => null,
         'boostRewardAsset' => null,
         'boostApr' => null,
-        'boostEndTime' => null,
+        'boostEndTime' => 'int64',
     ];
 
     /**
@@ -543,7 +543,7 @@ class GetSimpleEarnLockedProductListResponseRowsInnerDetail implements ModelInte
     /**
      * Gets subscriptionStartTime.
      *
-     * @return null|string
+     * @return null|int
      */
     public function getSubscriptionStartTime()
     {
@@ -553,7 +553,7 @@ class GetSimpleEarnLockedProductListResponseRowsInnerDetail implements ModelInte
     /**
      * Sets subscriptionStartTime.
      *
-     * @param null|string $subscriptionStartTime subscriptionStartTime
+     * @param null|int $subscriptionStartTime subscriptionStartTime
      *
      * @return self
      */
@@ -678,7 +678,7 @@ class GetSimpleEarnLockedProductListResponseRowsInnerDetail implements ModelInte
     /**
      * Gets boostEndTime.
      *
-     * @return null|string
+     * @return null|int
      */
     public function getBoostEndTime()
     {
@@ -688,7 +688,7 @@ class GetSimpleEarnLockedProductListResponseRowsInnerDetail implements ModelInte
     /**
      * Sets boostEndTime.
      *
-     * @param null|string $boostEndTime boostEndTime
+     * @param null|int $boostEndTime boostEndTime
      *
      * @return self
      */

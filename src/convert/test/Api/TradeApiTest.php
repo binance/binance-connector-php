@@ -204,15 +204,13 @@ class TradeApiTest extends TestCase
      */
     public function testQueryLimitOpenOrders()
     {
-        $queryLimitOpenOrdersRequest = new QueryLimitOpenOrdersRequest();
-
-        $response = $this->getApiMock($request)->queryLimitOpenOrders($queryLimitOpenOrdersRequest);
+        $response = $this->getApiMock($request)->queryLimitOpenOrders();
 
         parse_str($request->getUri(), $queryMap);
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/convert/limit/queryOpenOrders', $request->getUri()->getPath());
-        self::assertEquals('dc0def720e795be0f84b02a8fa211ecc3a27dd06ffdbd287a679f1321807f820', $queryMap['signature']);
+        self::assertEquals('53668e00dc92eb93de0b253c301e9fc0c20042b13db384a0ad94b38688a5a84c', $queryMap['signature']);
     }
 
     /**

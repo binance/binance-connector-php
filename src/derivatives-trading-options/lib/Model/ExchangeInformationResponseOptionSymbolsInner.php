@@ -70,6 +70,7 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'unit' => 'int',
         'makerFeeRate' => 'string',
         'takerFeeRate' => 'string',
+        'liquidationFeeRate' => 'string',
         'minQty' => 'string',
         'maxQty' => 'string',
         'initialMargin' => 'string',
@@ -100,6 +101,7 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'unit' => 'int64',
         'makerFeeRate' => null,
         'takerFeeRate' => null,
+        'liquidationFeeRate' => null,
         'minQty' => null,
         'maxQty' => null,
         'initialMargin' => null,
@@ -126,6 +128,7 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'unit' => false,
         'makerFeeRate' => false,
         'takerFeeRate' => false,
+        'liquidationFeeRate' => false,
         'minQty' => false,
         'maxQty' => false,
         'initialMargin' => false,
@@ -160,6 +163,7 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'unit' => 'unit',
         'makerFeeRate' => 'makerFeeRate',
         'takerFeeRate' => 'takerFeeRate',
+        'liquidationFeeRate' => 'liquidationFeeRate',
         'minQty' => 'minQty',
         'maxQty' => 'maxQty',
         'initialMargin' => 'initialMargin',
@@ -186,6 +190,7 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'unit' => 'setUnit',
         'makerFeeRate' => 'setMakerFeeRate',
         'takerFeeRate' => 'setTakerFeeRate',
+        'liquidationFeeRate' => 'setLiquidationFeeRate',
         'minQty' => 'setMinQty',
         'maxQty' => 'setMaxQty',
         'initialMargin' => 'setInitialMargin',
@@ -212,6 +217,7 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'unit' => 'getUnit',
         'makerFeeRate' => 'getMakerFeeRate',
         'takerFeeRate' => 'getTakerFeeRate',
+        'liquidationFeeRate' => 'getLiquidationFeeRate',
         'minQty' => 'getMinQty',
         'maxQty' => 'getMaxQty',
         'initialMargin' => 'getInitialMargin',
@@ -247,6 +253,7 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         $this->setIfExists('unit', $data ?? [], null);
         $this->setIfExists('makerFeeRate', $data ?? [], null);
         $this->setIfExists('takerFeeRate', $data ?? [], null);
+        $this->setIfExists('liquidationFeeRate', $data ?? [], null);
         $this->setIfExists('minQty', $data ?? [], null);
         $this->setIfExists('maxQty', $data ?? [], null);
         $this->setIfExists('initialMargin', $data ?? [], null);
@@ -625,6 +632,33 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
             throw new \InvalidArgumentException('non-nullable takerFeeRate cannot be null');
         }
         $this->container['takerFeeRate'] = $takerFeeRate;
+
+        return $this;
+    }
+
+    /**
+     * Gets liquidationFeeRate.
+     *
+     * @return null|string
+     */
+    public function getLiquidationFeeRate()
+    {
+        return $this->container['liquidationFeeRate'];
+    }
+
+    /**
+     * Sets liquidationFeeRate.
+     *
+     * @param null|string $liquidationFeeRate liquidationFeeRate
+     *
+     * @return self
+     */
+    public function setLiquidationFeeRate($liquidationFeeRate)
+    {
+        if (is_null($liquidationFeeRate)) {
+            throw new \InvalidArgumentException('non-nullable liquidationFeeRate cannot be null');
+        }
+        $this->container['liquidationFeeRate'] = $liquidationFeeRate;
 
         return $this;
     }

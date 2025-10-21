@@ -30,6 +30,7 @@
 namespace Binance\Client\SimpleEarn\Test\Api;
 
 use Binance\Client\SimpleEarn\Api\EarnApi;
+use Binance\Client\SimpleEarn\Api\FlexibleLockedApi;
 use Binance\Client\SimpleEarn\Model\RedeemFlexibleProductRequest;
 use Binance\Client\SimpleEarn\Model\RedeemLockedProductRequest;
 use Binance\Client\SimpleEarn\Model\SetFlexibleAutoSubscribeRequest;
@@ -89,7 +90,7 @@ class EarnApiTest extends TestCase
             }))
         ;
 
-        $apiMock = $this->getMockBuilder(EarnApi::class)
+        $apiMock = $this->getMockBuilder(FlexibleLockedApi::class)
             ->setConstructorArgs([$clientConfig, $clientMock])
             ->onlyMethods(['getTimestamp'])
             ->getMock()

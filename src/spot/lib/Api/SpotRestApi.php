@@ -22,6 +22,7 @@ use Binance\Client\Spot\Model\HistoricalTradesResponse;
 use Binance\Client\Spot\Model\Interval;
 use Binance\Client\Spot\Model\KlinesResponse;
 use Binance\Client\Spot\Model\MyAllocationsResponse;
+use Binance\Client\Spot\Model\MyFiltersResponse;
 use Binance\Client\Spot\Model\MyPreventedMatchesResponse;
 use Binance\Client\Spot\Model\MyTradesResponse;
 use Binance\Client\Spot\Model\NewOrderRequest;
@@ -124,11 +125,11 @@ class SpotRestApi
      *
      * Query all Order lists
      *
-     * @param null|int $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $limit      Default: 500; Maximum: 1000. (optional)
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|int   $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $limit      Default: 500; Maximum: 1000. (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<AllOrderListResponse>
      *
@@ -145,12 +146,12 @@ class SpotRestApi
      *
      * All orders
      *
-     * @param string   $symbol     symbol (required)
-     * @param null|int $orderId    orderId (optional)
-     * @param null|int $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $limit      Default: 500; Maximum: 1000. (optional)
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol     symbol (required)
+     * @param null|int   $orderId    orderId (optional)
+     * @param null|int   $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $limit      Default: 500; Maximum: 1000. (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<AllOrdersResponse>
      *
@@ -167,8 +168,8 @@ class SpotRestApi
      *
      * Account information
      *
-     * @param null|bool $omitZeroBalances When set to &#x60;true&#x60;, emits only the non-zero balances of an account. &lt;br&gt;Default value: &#x60;false&#x60; (optional)
-     * @param null|int  $recvWindow       The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|bool  $omitZeroBalances When set to &#x60;true&#x60;, emits only the non-zero balances of an account. &lt;br&gt;Default value: &#x60;false&#x60; (optional)
+     * @param null|float $recvWindow       The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<GetAccountResponse>
      *
@@ -186,7 +187,7 @@ class SpotRestApi
      * Current open orders
      *
      * @param null|string $symbol     Symbol to query (optional)
-     * @param null|int    $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float  $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<GetOpenOrdersResponse>
      *
@@ -206,7 +207,7 @@ class SpotRestApi
      * @param string      $symbol            symbol (required)
      * @param null|int    $orderId           orderId (optional)
      * @param null|string $origClientOrderId origClientOrderId (optional)
-     * @param null|int    $recvWindow        The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float  $recvWindow        The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<GetOrderResponse>
      *
@@ -225,7 +226,7 @@ class SpotRestApi
      *
      * @param null|int    $orderListId       Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
      * @param null|string $origClientOrderId origClientOrderId (optional)
-     * @param null|int    $recvWindow        The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float  $recvWindow        The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<GetOrderListResponse>
      *
@@ -242,13 +243,13 @@ class SpotRestApi
      *
      * Query Allocations
      *
-     * @param string   $symbol           symbol (required)
-     * @param null|int $startTime        Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $endTime          Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $fromAllocationId fromAllocationId (optional)
-     * @param null|int $limit            Default: 500; Maximum: 1000. (optional)
-     * @param null|int $orderId          orderId (optional)
-     * @param null|int $recvWindow       The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol           symbol (required)
+     * @param null|int   $startTime        Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $endTime          Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $fromAllocationId fromAllocationId (optional)
+     * @param null|int   $limit            Default: 500; Maximum: 1000. (optional)
+     * @param null|int   $orderId          orderId (optional)
+     * @param null|float $recvWindow       The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<MyAllocationsResponse>
      *
@@ -261,16 +262,34 @@ class SpotRestApi
     }
 
     /**
+     * Operation myFilters.
+     *
+     * Query relevant filters
+     *
+     * @param string     $symbol     symbol (required)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     *
+     * @return ApiResponse<MyFiltersResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function myFilters($symbol, $recvWindow = null): ApiResponse
+    {
+        return $this->accountApi->myFilters($symbol, $recvWindow);
+    }
+
+    /**
      * Operation myPreventedMatches.
      *
      * Query Prevented Matches
      *
-     * @param string   $symbol               symbol (required)
-     * @param null|int $preventedMatchId     preventedMatchId (optional)
-     * @param null|int $orderId              orderId (optional)
-     * @param null|int $fromPreventedMatchId fromPreventedMatchId (optional)
-     * @param null|int $limit                Default: 500; Maximum: 1000. (optional)
-     * @param null|int $recvWindow           The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol               symbol (required)
+     * @param null|int   $preventedMatchId     preventedMatchId (optional)
+     * @param null|int   $orderId              orderId (optional)
+     * @param null|int   $fromPreventedMatchId fromPreventedMatchId (optional)
+     * @param null|int   $limit                Default: 500; Maximum: 1000. (optional)
+     * @param null|float $recvWindow           The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<MyPreventedMatchesResponse>
      *
@@ -287,13 +306,13 @@ class SpotRestApi
      *
      * Account trade list
      *
-     * @param string   $symbol     symbol (required)
-     * @param null|int $orderId    orderId (optional)
-     * @param null|int $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $limit      Default: 500; Maximum: 1000. (optional)
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol     symbol (required)
+     * @param null|int   $orderId    orderId (optional)
+     * @param null|int   $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int   $limit      Default: 500; Maximum: 1000. (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<MyTradesResponse>
      *
@@ -310,7 +329,7 @@ class SpotRestApi
      *
      * Query Open Order lists
      *
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<OpenOrderListResponse>
      *
@@ -327,11 +346,11 @@ class SpotRestApi
      *
      * Query Order Amendments
      *
-     * @param string   $symbol          symbol (required)
-     * @param int      $orderId         orderId (required)
-     * @param null|int $fromExecutionId fromExecutionId (optional)
-     * @param null|int $limit           Default:500; Maximum: 1000 (optional)
-     * @param null|int $recvWindow      The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol          symbol (required)
+     * @param int        $orderId         orderId (required)
+     * @param null|int   $fromExecutionId fromExecutionId (optional)
+     * @param null|int   $limit           Default:500; Maximum: 1000 (optional)
+     * @param null|float $recvWindow      The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<OrderAmendmentsResponse>
      *
@@ -348,7 +367,7 @@ class SpotRestApi
      *
      * Query Unfilled Order Count
      *
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<RateLimitOrderResponse>
      *
@@ -646,8 +665,8 @@ class SpotRestApi
      *
      * Cancel All Open Orders on a Symbol
      *
-     * @param string   $symbol     symbol (required)
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol     symbol (required)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<DeleteOpenOrdersResponse>
      *
@@ -669,7 +688,7 @@ class SpotRestApi
      * @param null|string             $origClientOrderId  origClientOrderId (optional)
      * @param null|string             $newClientOrderId   A unique id among open orders. Automatically generated if not sent.&lt;br/&gt; Orders with the same &#x60;newClientOrderID&#x60; can be accepted only when the previous one is filled, otherwise the order will be rejected. (optional)
      * @param null|CancelRestrictions $cancelRestrictions cancelRestrictions (optional)
-     * @param null|int                $recvWindow         The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float              $recvWindow         The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<DeleteOrderResponse>
      *
@@ -690,7 +709,7 @@ class SpotRestApi
      * @param null|int    $orderListId       Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
      * @param null|string $listClientOrderId A unique Id for the entire orderList (optional)
      * @param null|string $newClientOrderId  A unique id among open orders. Automatically generated if not sent.&lt;br/&gt; Orders with the same &#x60;newClientOrderID&#x60; can be accepted only when the previous one is filled, otherwise the order will be rejected. (optional)
-     * @param null|int    $recvWindow        The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float  $recvWindow        The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<DeleteOrderListResponse>
      *

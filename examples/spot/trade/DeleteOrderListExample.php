@@ -25,7 +25,7 @@ function deleteOrderListExample()
     $orderListId = 1;
     $listClientOrderId = '';
     $newClientOrderId = '';
-    $recvWindow = 5000;
+    $recvWindow = 5000.0;
     $response = $api->deleteOrderList($symbol, $orderListId, $listClientOrderId, $newClientOrderId, $recvWindow);
     print_r($response);
 }

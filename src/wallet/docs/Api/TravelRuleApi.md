@@ -5,11 +5,13 @@ All URIs are relative to https://api.binance.com, except if the operation define
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**brokerWithdraw()**](TravelRuleApi.md#brokerWithdraw) | **POST** /sapi/v1/localentity/broker/withdraw/apply | Broker Withdraw (for brokers of local entities that require travel rule) (USER_DATA) |
+| [**checkQuestionnaireRequirements()**](TravelRuleApi.md#checkQuestionnaireRequirements) | **GET** /sapi/v1/localentity/questionnaire-requirements | Check Questionnaire Requirements (for local entities that require travel rule) (supporting network) (USER_DATA) |
 | [**depositHistoryTravelRule()**](TravelRuleApi.md#depositHistoryTravelRule) | **GET** /sapi/v1/localentity/deposit/history | Deposit History (for local entities that required travel rule) (supporting network) (USER_DATA) |
+| [**depositHistoryV2()**](TravelRuleApi.md#depositHistoryV2) | **GET** /sapi/v2/localentity/deposit/history | Deposit History V2 (for local entities that required travel rule) (supporting network) (USER_DATA) |
 | [**fetchAddressVerificationList()**](TravelRuleApi.md#fetchAddressVerificationList) | **GET** /sapi/v1/addressVerify/list | Fetch address verification list (USER_DATA) |
-| [**onboardedVaspList()**](TravelRuleApi.md#onboardedVaspList) | **GET** /sapi/v1/localentity/vasp | Onboarded VASP list (for local entities that require travel rule) (supporting network) (USER_DATA) |
 | [**submitDepositQuestionnaire()**](TravelRuleApi.md#submitDepositQuestionnaire) | **PUT** /sapi/v1/localentity/broker/deposit/provide-info | Submit Deposit Questionnaire (For local entities that require travel rule) (supporting network) (USER_DATA) |
 | [**submitDepositQuestionnaireTravelRule()**](TravelRuleApi.md#submitDepositQuestionnaireTravelRule) | **PUT** /sapi/v1/localentity/deposit/provide-info | Submit Deposit Questionnaire (For local entities that require travel rule) (supporting network) (USER_DATA) |
+| [**vaspList()**](TravelRuleApi.md#vaspList) | **GET** /sapi/v1/localentity/vasp | VASP list (for local entities that require travel rule) (supporting network) (USER_DATA) |
 | [**withdrawHistoryV1()**](TravelRuleApi.md#withdrawHistoryV1) | **GET** /sapi/v1/localentity/withdraw/history | Withdraw History (for local entities that require travel rule) (supporting network) (USER_DATA) |
 | [**withdrawHistoryV2()**](TravelRuleApi.md#withdrawHistoryV2) | **GET** /sapi/v2/localentity/withdraw/history | Withdraw History V2 (for local entities that require travel rule) (supporting network) (USER_DATA) |
 | [**withdrawTravelRule()**](TravelRuleApi.md#withdrawTravelRule) | **POST** /sapi/v1/localentity/withdraw/apply | Withdraw (for local entities that require travel rule) (USER_DATA) |
@@ -65,6 +67,62 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `checkQuestionnaireRequirements()`
+
+```php
+checkQuestionnaireRequirements($recvWindow): \Binance\Client\Wallet\Model\CheckQuestionnaireRequirementsResponse
+```
+
+Check Questionnaire Requirements (for local entities that require travel rule) (supporting network) (USER_DATA)
+
+This API will return user-specific Travel Rule questionnaire requirement information in reference to the current API key.  Weight: 1
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\Wallet\Api\TravelRuleApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$recvWindow = 56; // int
+
+try {
+    $result = $apiInstance->checkQuestionnaireRequirements($recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TravelRuleApi->checkQuestionnaireRequirements: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\Wallet\Model\CheckQuestionnaireRequirementsResponse**](../Model/CheckQuestionnaireRequirementsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -147,15 +205,15 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `fetchAddressVerificationList()`
+## `depositHistoryV2()`
 
 ```php
-fetchAddressVerificationList(): \Binance\Client\Wallet\Model\FetchAddressVerificationListResponse
+depositHistoryV2($depositId, $txId, $network, $coin, $retrieveQuestionnaire, $startTime, $endTime, $offset, $limit): \Binance\Client\Wallet\Model\DepositHistoryV2Response
 ```
 
-Fetch address verification list (USER_DATA)
+Deposit History V2 (for local entities that required travel rule) (supporting network) (USER_DATA)
 
-Fetch address verification list  Weight: 10
+Fetch deposit history for local entities that with required travel rule information.  * Please notice the default `startTime` and `endTime` to make sure that time interval is within * If both ``startTime`` and ``endTime`` are sent, time between ``startTime`` and ``endTime`` must  Weight: 1
 
 ### Example
 
@@ -170,22 +228,41 @@ $apiInstance = new Binance\Client\Wallet\Api\TravelRuleApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$depositId = 'depositId_example'; // string | Comma(,) separated list of wallet tran Ids.
+$txId = 'txId_example'; // string
+$network = 'network_example'; // string
+$coin = 'coin_example'; // string
+$retrieveQuestionnaire = True; // bool | true: return `questionnaire` within response.
+$startTime = 56; // int
+$endTime = 56; // int
+$offset = 56; // int | Default: 0
+$limit = 56; // int | min 7, max 30, default 7
 
 try {
-    $result = $apiInstance->fetchAddressVerificationList();
+    $result = $apiInstance->depositHistoryV2($depositId, $txId, $network, $coin, $retrieveQuestionnaire, $startTime, $endTime, $offset, $limit);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling TravelRuleApi->fetchAddressVerificationList: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TravelRuleApi->depositHistoryV2: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **depositId** | **string**| Comma(,) separated list of wallet tran Ids. | [optional] |
+| **txId** | **string**|  | [optional] |
+| **network** | **string**|  | [optional] |
+| **coin** | **string**|  | [optional] |
+| **retrieveQuestionnaire** | **bool**| true: return &#x60;questionnaire&#x60; within response. | [optional] |
+| **startTime** | **int**|  | [optional] |
+| **endTime** | **int**|  | [optional] |
+| **offset** | **int**| Default: 0 | [optional] |
+| **limit** | **int**| min 7, max 30, default 7 | [optional] |
 
 ### Return type
 
-[**\Binance\Client\Wallet\Model\FetchAddressVerificationListResponse**](../Model/FetchAddressVerificationListResponse.md)
+[**\Binance\Client\Wallet\Model\DepositHistoryV2Response**](../Model/DepositHistoryV2Response.md)
 
 ### Authorization
 
@@ -200,15 +277,15 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `onboardedVaspList()`
+## `fetchAddressVerificationList()`
 
 ```php
-onboardedVaspList(): \Binance\Client\Wallet\Model\OnboardedVaspListResponse
+fetchAddressVerificationList($recvWindow): \Binance\Client\Wallet\Model\FetchAddressVerificationListResponse
 ```
 
-Onboarded VASP list (for local entities that require travel rule) (supporting network) (USER_DATA)
+Fetch address verification list (USER_DATA)
 
-Fetch the onboarded VASP list for local entities that required travel rule.  * This endpoint specifically uses per second IP rate limit, user's total second level IP rate  Weight: 18000 Request limit: 10 requests per second > * This endpoint specifically uses per second IP rate limit, user's total second level IP rate limit is 180000/second. Response from the endpoint contains header key X-SAPI-USED-IP-WEIGHT-1S, which defines weight used by the current IP.
+Fetch address verification list for user to check on status and other details for the addresses stored in Address Book.  Weight: 1
 
 ### Example
 
@@ -223,22 +300,25 @@ $apiInstance = new Binance\Client\Wallet\Api\TravelRuleApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$recvWindow = 56; // int
 
 try {
-    $result = $apiInstance->onboardedVaspList();
+    $result = $apiInstance->fetchAddressVerificationList($recvWindow);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling TravelRuleApi->onboardedVaspList: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TravelRuleApi->fetchAddressVerificationList: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
-[**\Binance\Client\Wallet\Model\OnboardedVaspListResponse**](../Model/OnboardedVaspListResponse.md)
+[**\Binance\Client\Wallet\Model\FetchAddressVerificationListResponse**](../Model/FetchAddressVerificationListResponse.md)
 
 ### Authorization
 
@@ -365,6 +445,62 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `vaspList()`
+
+```php
+vaspList($recvWindow): \Binance\Client\Wallet\Model\VaspListResponse
+```
+
+VASP list (for local entities that require travel rule) (supporting network) (USER_DATA)
+
+Fetch the VASP list for local entities.  Weight: 1
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\Wallet\Api\TravelRuleApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$recvWindow = 56; // int
+
+try {
+    $result = $apiInstance->vaspList($recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TravelRuleApi->vaspList: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\Wallet\Model\VaspListResponse**](../Model/VaspListResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `withdrawHistoryV1()`
 
 ```php
@@ -373,7 +509,7 @@ withdrawHistoryV1($trId, $txId, $withdrawOrderId, $network, $coin, $travelRuleSt
 
 Withdraw History (for local entities that require travel rule) (supporting network) (USER_DATA)
 
-Fetch withdraw history for local entities that required travel rule.  * This endpoint specifically uses per second IP rate limit, user's total second level IP rate * `network` may not be in the response for old withdraw. * Please notice the default `startTime` and `endTime` to make sure that time interval is within * If both `startTime` and `endTime`are sent, time between `startTime`and `endTime`must be less  Weight: 18000 Request limit: 10 requests per second > * This endpoint specifically uses per second IP rate limit, user's total second level IP rate limit is 180000/second. Response from the endpoint contains header key X-SAPI-USED-IP-WEIGHT-1S, which defines weight used by the current IP.
+Fetch withdraw history for local entities that required travel rule.  * `network` may not be in the response for old withdraw. * Please notice the default `startTime` and `endTime` to make sure that time interval is within * If both `startTime` and `endTime`are sent, time between `startTime`and `endTime`must be less  Weight: 1
 
 ### Example
 
@@ -449,7 +585,7 @@ withdrawHistoryV2($trId, $txId, $withdrawOrderId, $network, $coin, $travelRuleSt
 
 Withdraw History V2 (for local entities that require travel rule) (supporting network) (USER_DATA)
 
-Fetch withdraw history for local entities that required travel rule.  * This endpoint specifically uses per second IP rate limit, user's total second level IP rate * `network` may not be in the response for old withdraw. * Withdrawal made through /sapi/v1/capital/withdraw/apply may not be in the response. * Please notice the default `startTime` and `endTime` to make sure that time interval is within * If both `startTime` and `endTime`are sent, time between `startTime`and `endTime`must be less * If withdrawOrderId is sent, time between startTime and endTime must be less than 7 days. * If withdrawOrderId is sent, startTime and endTime are not sent, will return last 7 days records by default. * Maximum support trId,txId number is 45. * WithdrawOrderId only support 1. * If responsible does not include withdrawalStatus, please input trId or txId retrieve the data.  Weight: 18000 Request limit: 10 requests per second > * This endpoint specifically uses per second IP rate limit, user's total second level IP rate limit is 180000/second. Response from the endpoint contains header key X-SAPI-USED-IP-WEIGHT-1S, which defines weight used by the current IP.
+Fetch withdraw history for local entities that required travel rule.  * `network` may not be in the response for old withdraw. * Withdrawal made through /sapi/v1/capital/withdraw/apply may not be in the response. * Please notice the default `startTime` and `endTime` to make sure that time interval is within * If both `startTime` and `endTime`are sent, time between `startTime`and `endTime`must be less * If withdrawOrderId is sent, time between startTime and endTime must be less than 7 days. * If withdrawOrderId is sent, startTime and endTime are not sent, will return last 7 days records by default. * Maximum support trId,txId number is 45. * WithdrawOrderId only support 1. * If responsible does not include withdrawalStatus, please input trId or txId retrieve the data.  Weight: 1
 
 ### Example
 

@@ -65,7 +65,7 @@ class MintBfusdForPortfolioMarginResponse implements ModelInterface, \ArrayAcces
         'targetAsset' => 'string',
         'fromAssetQty' => 'int',
         'targetAssetQty' => 'float',
-        'rate' => 'float',
+        'mintRate' => 'float',
     ];
 
     /**
@@ -82,7 +82,7 @@ class MintBfusdForPortfolioMarginResponse implements ModelInterface, \ArrayAcces
         'targetAsset' => null,
         'fromAssetQty' => 'int64',
         'targetAssetQty' => 'float',
-        'rate' => 'float',
+        'mintRate' => 'float',
     ];
 
     /**
@@ -95,7 +95,7 @@ class MintBfusdForPortfolioMarginResponse implements ModelInterface, \ArrayAcces
         'targetAsset' => false,
         'fromAssetQty' => false,
         'targetAssetQty' => false,
-        'rate' => false,
+        'mintRate' => false,
     ];
 
     /**
@@ -116,7 +116,7 @@ class MintBfusdForPortfolioMarginResponse implements ModelInterface, \ArrayAcces
         'targetAsset' => 'targetAsset',
         'fromAssetQty' => 'fromAssetQty',
         'targetAssetQty' => 'targetAssetQty',
-        'rate' => 'rate',
+        'mintRate' => 'mintRate',
     ];
 
     /**
@@ -129,7 +129,7 @@ class MintBfusdForPortfolioMarginResponse implements ModelInterface, \ArrayAcces
         'targetAsset' => 'setTargetAsset',
         'fromAssetQty' => 'setFromAssetQty',
         'targetAssetQty' => 'setTargetAssetQty',
-        'rate' => 'setRate',
+        'mintRate' => 'setMintRate',
     ];
 
     /**
@@ -142,7 +142,7 @@ class MintBfusdForPortfolioMarginResponse implements ModelInterface, \ArrayAcces
         'targetAsset' => 'getTargetAsset',
         'fromAssetQty' => 'getFromAssetQty',
         'targetAssetQty' => 'getTargetAssetQty',
-        'rate' => 'getRate',
+        'mintRate' => 'getMintRate',
     ];
 
     /**
@@ -164,7 +164,7 @@ class MintBfusdForPortfolioMarginResponse implements ModelInterface, \ArrayAcces
         $this->setIfExists('targetAsset', $data ?? [], null);
         $this->setIfExists('fromAssetQty', $data ?? [], null);
         $this->setIfExists('targetAssetQty', $data ?? [], null);
-        $this->setIfExists('rate', $data ?? [], null);
+        $this->setIfExists('mintRate', $data ?? [], null);
     }
 
     /**
@@ -404,28 +404,28 @@ class MintBfusdForPortfolioMarginResponse implements ModelInterface, \ArrayAcces
     }
 
     /**
-     * Gets rate.
+     * Gets mintRate.
      *
      * @return null|float
      */
-    public function getRate()
+    public function getMintRate()
     {
-        return $this->container['rate'];
+        return $this->container['mintRate'];
     }
 
     /**
-     * Sets rate.
+     * Sets mintRate.
      *
-     * @param null|float $rate rate
+     * @param null|float $mintRate mintRate
      *
      * @return self
      */
-    public function setRate($rate)
+    public function setMintRate($mintRate)
     {
-        if (is_null($rate)) {
-            throw new \InvalidArgumentException('non-nullable rate cannot be null');
+        if (is_null($mintRate)) {
+            throw new \InvalidArgumentException('non-nullable mintRate cannot be null');
         }
-        $this->container['rate'] = $rate;
+        $this->container['mintRate'] = $mintRate;
 
         return $this;
     }

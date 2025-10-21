@@ -30,6 +30,9 @@
 
 namespace Binance\Client\Spot\Model;
 
+use Binance\Common\Dtos\ModelInterface;
+use Binance\Common\ObjectSerializer;
+
 /**
  * ExchangeFilters Class Doc Comment.
  *
@@ -41,29 +44,151 @@ namespace Binance\Client\Spot\Model;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class ExchangeFilters
+class ExchangeFilters implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = 'filterType';
 
-    /** @var ExchangeFiltersInner[] */
-    protected array $items = [];
+    /**
+     * The original name of the model.
+     *
+     * @var string
+     */
+    protected static $openAPIModelName = 'exchangeFilters';
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
+    protected static $openAPITypes = [
+        'filterType' => 'string',
+        'maxNumOrders' => 'int',
+        'maxNumAlgoOrders' => 'int',
+        'maxNumIcebergOrders' => 'int',
+        'maxNumOrderLists' => 'int',
+    ];
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
+    protected static $openAPIFormats = [
+        'filterType' => null,
+        'maxNumOrders' => 'int64',
+        'maxNumAlgoOrders' => 'int64',
+        'maxNumIcebergOrders' => 'int64',
+        'maxNumOrderLists' => 'int64',
+    ];
+
+    /**
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
+    protected static array $openAPINullables = [
+        'filterType' => false,
+        'maxNumOrders' => false,
+        'maxNumAlgoOrders' => false,
+        'maxNumIcebergOrders' => false,
+        'maxNumOrderLists' => false,
+    ];
+
+    /**
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
+    protected array $openAPINullablesSetToNull = [];
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     *
+     * @var string[]
+     */
+    protected static $attributeMap = [
+        'filterType' => 'filterType',
+        'maxNumOrders' => 'maxNumOrders',
+        'maxNumAlgoOrders' => 'maxNumAlgoOrders',
+        'maxNumIcebergOrders' => 'maxNumIcebergOrders',
+        'maxNumOrderLists' => 'maxNumOrderLists',
+    ];
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     *
+     * @var string[]
+     */
+    protected static $setters = [
+        'filterType' => 'setFilterType',
+        'maxNumOrders' => 'setMaxNumOrders',
+        'maxNumAlgoOrders' => 'setMaxNumAlgoOrders',
+        'maxNumIcebergOrders' => 'setMaxNumIcebergOrders',
+        'maxNumOrderLists' => 'setMaxNumOrderLists',
+    ];
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     *
+     * @var string[]
+     */
+    protected static $getters = [
+        'filterType' => 'getFilterType',
+        'maxNumOrders' => 'getMaxNumOrders',
+        'maxNumAlgoOrders' => 'getMaxNumAlgoOrders',
+        'maxNumIcebergOrders' => 'getMaxNumIcebergOrders',
+        'maxNumOrderLists' => 'getMaxNumOrderLists',
+    ];
+
+    /**
+     * Associative array for storing property values.
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
+
+    private $exchangeMaxNumOrdersFilter;
+
+    private $exchangeMaxNumAlgoOrdersFilter;
+
+    private $exchangeMaxNumIcebergOrdersFilter;
+
+    private $exchangeMaxNumOrderListsFilter;
 
     /**
      * Constructor.
      *
-     * @param ExchangeFiltersInner[] items
+     * @param null|mixed[] $data Associated array of property values
+     *                           initializing the model
      */
-    public function __construct(array $items = [])
+    public function __construct(?array $data = null)
     {
-        $this->items = $items;
+        $this->setIfExists('filterType', $data ?? [], null);
+        $this->setIfExists('maxNumOrders', $data ?? [], null);
+        $this->setIfExists('maxNumAlgoOrders', $data ?? [], null);
+        $this->setIfExists('maxNumIcebergOrders', $data ?? [], null);
+        $this->setIfExists('maxNumOrderLists', $data ?? [], null);
+
+        // Initialize discriminator property with the model name.
+        $this->container['filterType'] = static::$openAPIModelName;
     }
 
     /**
-     * Type of items in the array.
+     * Gets the string presentation of the object.
+     *
+     * @return string
      */
-    public static function getItemType(): string
+    public function __toString()
     {
-        return '\Binance\Client\Spot\Model\ExchangeFiltersInner';
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
     }
 
     /**
@@ -73,7 +198,84 @@ class ExchangeFilters
      */
     public static function openAPITypes()
     {
-        return [];
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @return array
+     */
+    public static function openAPIFormats()
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Actual instance in case of oneOf schema.
+     *
+     * @return null|ExchangeMaxNumAlgoOrdersFilter|ExchangeMaxNumIcebergOrdersFilter|ExchangeMaxNumOrderListsFilter|ExchangeMaxNumOrdersFilter
+     */
+    public function getInstance()
+    {
+        $instance = $this->getExchangeMaxNumOrdersFilter();
+        if (!empty($instance)) {
+            return $instance;
+        }
+        $instance = $this->getExchangeMaxNumAlgoOrdersFilter();
+        if (!empty($instance)) {
+            return $instance;
+        }
+        $instance = $this->getExchangeMaxNumIcebergOrdersFilter();
+        if (!empty($instance)) {
+            return $instance;
+        }
+        $instance = $this->getExchangeMaxNumOrderListsFilter();
+        if (!empty($instance)) {
+            return $instance;
+        }
+
+        return null;
+    }
+
+    public function getExchangeMaxNumOrdersFilter(): ?ExchangeMaxNumOrdersFilter
+    {
+        return $this->exchangeMaxNumOrdersFilter;
+    }
+
+    public function setExchangeMaxNumOrdersFilter(ExchangeMaxNumOrdersFilter $exchangeMaxNumOrdersFilter): void
+    {
+        $this->exchangeMaxNumOrdersFilter = $exchangeMaxNumOrdersFilter;
+    }
+
+    public function getExchangeMaxNumAlgoOrdersFilter(): ?ExchangeMaxNumAlgoOrdersFilter
+    {
+        return $this->exchangeMaxNumAlgoOrdersFilter;
+    }
+
+    public function setExchangeMaxNumAlgoOrdersFilter(ExchangeMaxNumAlgoOrdersFilter $exchangeMaxNumAlgoOrdersFilter): void
+    {
+        $this->exchangeMaxNumAlgoOrdersFilter = $exchangeMaxNumAlgoOrdersFilter;
+    }
+
+    public function getExchangeMaxNumIcebergOrdersFilter(): ?ExchangeMaxNumIcebergOrdersFilter
+    {
+        return $this->exchangeMaxNumIcebergOrdersFilter;
+    }
+
+    public function setExchangeMaxNumIcebergOrdersFilter(ExchangeMaxNumIcebergOrdersFilter $exchangeMaxNumIcebergOrdersFilter): void
+    {
+        $this->exchangeMaxNumIcebergOrdersFilter = $exchangeMaxNumIcebergOrdersFilter;
+    }
+
+    public function getExchangeMaxNumOrderListsFilter(): ?ExchangeMaxNumOrderListsFilter
+    {
+        return $this->exchangeMaxNumOrderListsFilter;
+    }
+
+    public function setExchangeMaxNumOrderListsFilter(ExchangeMaxNumOrderListsFilter $exchangeMaxNumOrderListsFilter): void
+    {
+        $this->exchangeMaxNumOrderListsFilter = $exchangeMaxNumOrderListsFilter;
     }
 
     /**
@@ -82,6 +284,10 @@ class ExchangeFilters
     public static function getComposedSchemas(): array
     {
         return [
+            '\Binance\Client\Spot\Model\ExchangeMaxNumOrdersFilter' => 'setExchangeMaxNumOrdersFilter',
+            '\Binance\Client\Spot\Model\ExchangeMaxNumAlgoOrdersFilter' => 'setExchangeMaxNumAlgoOrdersFilter',
+            '\Binance\Client\Spot\Model\ExchangeMaxNumIcebergOrdersFilter' => 'setExchangeMaxNumIcebergOrdersFilter',
+            '\Binance\Client\Spot\Model\ExchangeMaxNumOrderListsFilter' => 'setExchangeMaxNumOrderListsFilter',
         ];
     }
 
@@ -90,31 +296,335 @@ class ExchangeFilters
      */
     public static function isArray(): bool
     {
-        return true;
+        return false;
     }
 
     /**
-     * @return ExchangeFiltersInner[]
+     * Checks if a property is nullable.
      */
-    public function getItems(): array
+    public static function isNullable(string $property): bool
     {
-        return $this->items;
-    }
-
-    public function addItem(ExchangeFiltersInner $item): void
-    {
-        $this->items[] = $item;
+        return self::openAPINullables()[$property] ?? false;
     }
 
     /**
-     * @param ExchangeFiltersInner[] $items
+     * Checks if a nullable property is set to null.
      */
-    public function addItems(array $items): void
+    public function isNullableSetToNull(string $property): bool
     {
-        if (empty($this->items)) {
-            $this->items = $items;
-        } else {
-            $this->items = array_merge($this->items, $items);
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     *
+     * @return array
+     */
+    public static function attributeMap()
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     *
+     * @return array
+     */
+    public static function setters()
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     *
+     * @return array
+     */
+    public static function getters()
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     *
+     * @return string
+     */
+    public function getModelName()
+    {
+        return self::$openAPIModelName;
+    }
+
+    /**
+     * Show all the invalid properties with reasons.
+     *
+     * @return array invalid properties with reasons
+     */
+    public function listInvalidProperties()
+    {
+        return [];
+    }
+
+    /**
+     * Validate all the properties in the model
+     * return true if all passed.
+     *
+     * @return bool True if all properties are valid
+     */
+    public function valid()
+    {
+        return 0 === count($this->listInvalidProperties());
+    }
+
+    /**
+     * Gets filterType.
+     *
+     * @return null|string
+     */
+    public function getFilterType()
+    {
+        return $this->container['filterType'];
+    }
+
+    /**
+     * Sets filterType.
+     *
+     * @param null|string $filterType filterType
+     *
+     * @return self
+     */
+    public function setFilterType($filterType)
+    {
+        if (is_null($filterType)) {
+            throw new \InvalidArgumentException('non-nullable filterType cannot be null');
         }
+        $this->container['filterType'] = $filterType;
+
+        return $this;
+    }
+
+    /**
+     * Gets maxNumOrders.
+     *
+     * @return null|int
+     */
+    public function getMaxNumOrders()
+    {
+        return $this->container['maxNumOrders'];
+    }
+
+    /**
+     * Sets maxNumOrders.
+     *
+     * @param null|int $maxNumOrders maxNumOrders
+     *
+     * @return self
+     */
+    public function setMaxNumOrders($maxNumOrders)
+    {
+        if (is_null($maxNumOrders)) {
+            throw new \InvalidArgumentException('non-nullable maxNumOrders cannot be null');
+        }
+        $this->container['maxNumOrders'] = $maxNumOrders;
+
+        return $this;
+    }
+
+    /**
+     * Gets maxNumAlgoOrders.
+     *
+     * @return null|int
+     */
+    public function getMaxNumAlgoOrders()
+    {
+        return $this->container['maxNumAlgoOrders'];
+    }
+
+    /**
+     * Sets maxNumAlgoOrders.
+     *
+     * @param null|int $maxNumAlgoOrders maxNumAlgoOrders
+     *
+     * @return self
+     */
+    public function setMaxNumAlgoOrders($maxNumAlgoOrders)
+    {
+        if (is_null($maxNumAlgoOrders)) {
+            throw new \InvalidArgumentException('non-nullable maxNumAlgoOrders cannot be null');
+        }
+        $this->container['maxNumAlgoOrders'] = $maxNumAlgoOrders;
+
+        return $this;
+    }
+
+    /**
+     * Gets maxNumIcebergOrders.
+     *
+     * @return null|int
+     */
+    public function getMaxNumIcebergOrders()
+    {
+        return $this->container['maxNumIcebergOrders'];
+    }
+
+    /**
+     * Sets maxNumIcebergOrders.
+     *
+     * @param null|int $maxNumIcebergOrders maxNumIcebergOrders
+     *
+     * @return self
+     */
+    public function setMaxNumIcebergOrders($maxNumIcebergOrders)
+    {
+        if (is_null($maxNumIcebergOrders)) {
+            throw new \InvalidArgumentException('non-nullable maxNumIcebergOrders cannot be null');
+        }
+        $this->container['maxNumIcebergOrders'] = $maxNumIcebergOrders;
+
+        return $this;
+    }
+
+    /**
+     * Gets maxNumOrderLists.
+     *
+     * @return null|int
+     */
+    public function getMaxNumOrderLists()
+    {
+        return $this->container['maxNumOrderLists'];
+    }
+
+    /**
+     * Sets maxNumOrderLists.
+     *
+     * @param null|int $maxNumOrderLists maxNumOrderLists
+     *
+     * @return self
+     */
+    public function setMaxNumOrderLists($maxNumOrderLists)
+    {
+        if (is_null($maxNumOrderLists)) {
+            throw new \InvalidArgumentException('non-nullable maxNumOrderLists cannot be null');
+        }
+        $this->container['maxNumOrderLists'] = $maxNumOrderLists;
+
+        return $this;
+    }
+
+    /**
+     * Returns true if offset exists. False otherwise.
+     *
+     * @param int $offset Offset
+     */
+    public function offsetExists($offset): bool
+    {
+        return isset($this->container[$offset]);
+    }
+
+    /**
+     * Gets offset.
+     *
+     * @param int $offset Offset
+     *
+     * @return null|mixed
+     */
+    #[\ReturnTypeWillChange]
+    public function offsetGet($offset)
+    {
+        return $this->container[$offset] ?? null;
+    }
+
+    /**
+     * Sets value based on offset.
+     *
+     * @param null|int $offset Offset
+     * @param mixed    $value  Value to be set
+     */
+    public function offsetSet($offset, $value): void
+    {
+        if (is_null($offset)) {
+            $this->container[] = $value;
+        } else {
+            $this->container[$offset] = $value;
+        }
+    }
+
+    /**
+     * Unsets offset.
+     *
+     * @param int $offset Offset
+     */
+    public function offsetUnset($offset): void
+    {
+        unset($this->container[$offset]);
+    }
+
+    /**
+     * Serializes the object to a value that can be serialized natively by json_encode().
+     *
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
+     */
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize()
+    {
+        return ObjectSerializer::sanitizeForSerialization($this);
+    }
+
+    /**
+     * Gets a header-safe presentation of the object.
+     *
+     * @return string
+     */
+    public function toHeaderValue()
+    {
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
+    }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
     }
 }

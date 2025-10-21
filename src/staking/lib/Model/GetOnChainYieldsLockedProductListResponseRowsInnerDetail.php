@@ -68,7 +68,7 @@ class GetOnChainYieldsLockedProductListResponseRowsInnerDetail implements ModelI
         'isSoldOut' => 'bool',
         'apr' => 'string',
         'status' => 'string',
-        'subscriptionStartTime' => 'string',
+        'subscriptionStartTime' => 'int',
         'canRedeemToFlex' => 'bool',
     ];
 
@@ -89,7 +89,7 @@ class GetOnChainYieldsLockedProductListResponseRowsInnerDetail implements ModelI
         'isSoldOut' => null,
         'apr' => null,
         'status' => null,
-        'subscriptionStartTime' => null,
+        'subscriptionStartTime' => 'int64',
         'canRedeemToFlex' => null,
     ];
 
@@ -515,7 +515,7 @@ class GetOnChainYieldsLockedProductListResponseRowsInnerDetail implements ModelI
     /**
      * Gets subscriptionStartTime.
      *
-     * @return null|string
+     * @return null|int
      */
     public function getSubscriptionStartTime()
     {
@@ -525,7 +525,7 @@ class GetOnChainYieldsLockedProductListResponseRowsInnerDetail implements ModelI
     /**
      * Sets subscriptionStartTime.
      *
-     * @param null|string $subscriptionStartTime subscriptionStartTime
+     * @param null|int $subscriptionStartTime subscriptionStartTime
      *
      * @return self
      */

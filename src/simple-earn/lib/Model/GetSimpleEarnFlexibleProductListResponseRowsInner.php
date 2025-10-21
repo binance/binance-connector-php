@@ -71,7 +71,7 @@ class GetSimpleEarnFlexibleProductListResponseRowsInner implements ModelInterfac
         'hot' => 'bool',
         'minPurchaseAmount' => 'string',
         'productId' => 'string',
-        'subscriptionStartTime' => 'string',
+        'subscriptionStartTime' => 'int',
         'status' => 'string',
     ];
 
@@ -95,7 +95,7 @@ class GetSimpleEarnFlexibleProductListResponseRowsInner implements ModelInterfac
         'hot' => null,
         'minPurchaseAmount' => null,
         'productId' => null,
-        'subscriptionStartTime' => null,
+        'subscriptionStartTime' => 'int64',
         'status' => null,
     ];
 
@@ -617,7 +617,7 @@ class GetSimpleEarnFlexibleProductListResponseRowsInner implements ModelInterfac
     /**
      * Gets subscriptionStartTime.
      *
-     * @return null|string
+     * @return null|int
      */
     public function getSubscriptionStartTime()
     {
@@ -627,7 +627,7 @@ class GetSimpleEarnFlexibleProductListResponseRowsInner implements ModelInterfac
     /**
      * Sets subscriptionStartTime.
      *
-     * @param null|string $subscriptionStartTime subscriptionStartTime
+     * @param null|int $subscriptionStartTime subscriptionStartTime
      *
      * @return self
      */

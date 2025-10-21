@@ -34,6 +34,9 @@ class ConfigurationBuilder
     /** timeunit to be returned by APIs, default MILLISECOND */
     private $timeUnit;
 
+    /** custom headers to be added to each request */
+    private $customHeaders;
+    
     private $apiKey;
     private $secretKey;
     private $privateKey;
@@ -105,6 +108,13 @@ class ConfigurationBuilder
     public function timeUnit($timeUnit)
     {
         $this->timeUnit = $timeUnit;
+
+        return $this;
+    }
+
+    public function customHeaders($customHeaders)
+    {
+        $this->customHeaders = $customHeaders;
 
         return $this;
     }
@@ -185,6 +195,11 @@ class ConfigurationBuilder
     public function getTimeUnit()
     {
         return $this->timeUnit;
+    }
+
+    public function getCustomHeaders()
+    {
+        return $this->customHeaders;
     }
 
     public function getApiKey()

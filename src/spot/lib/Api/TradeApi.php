@@ -150,8 +150,8 @@ class TradeApi
      *
      * Cancel All Open Orders on a Symbol
      *
-     * @param string   $symbol     symbol (required)
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol     symbol (required)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<DeleteOpenOrdersResponse>
      *
@@ -168,8 +168,8 @@ class TradeApi
      *
      * Cancel All Open Orders on a Symbol
      *
-     * @param string   $symbol     (required)
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol     (required)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<DeleteOpenOrdersResponse>
      *
@@ -248,8 +248,8 @@ class TradeApi
     /**
      * Create request for operation 'deleteOpenOrders'.
      *
-     * @param string   $symbol     (required)
-     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param string     $symbol     (required)
+     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return Request
      *
@@ -286,7 +286,7 @@ class TradeApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,
             'recvWindow', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -337,7 +337,7 @@ class TradeApi
      * @param null|string             $origClientOrderId  origClientOrderId (optional)
      * @param null|string             $newClientOrderId   A unique id among open orders. Automatically generated if not sent.&lt;br/&gt; Orders with the same &#x60;newClientOrderID&#x60; can be accepted only when the previous one is filled, otherwise the order will be rejected. (optional)
      * @param null|CancelRestrictions $cancelRestrictions cancelRestrictions (optional)
-     * @param null|int                $recvWindow         The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float              $recvWindow         The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<DeleteOrderResponse>
      *
@@ -359,7 +359,7 @@ class TradeApi
      * @param null|string             $origClientOrderId  (optional)
      * @param null|string             $newClientOrderId   A unique id among open orders. Automatically generated if not sent.&lt;br/&gt; Orders with the same &#x60;newClientOrderID&#x60; can be accepted only when the previous one is filled, otherwise the order will be rejected. (optional)
      * @param null|CancelRestrictions $cancelRestrictions (optional)
-     * @param null|int                $recvWindow         The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float              $recvWindow         The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<DeleteOrderResponse>
      *
@@ -443,7 +443,7 @@ class TradeApi
      * @param null|string             $origClientOrderId  (optional)
      * @param null|string             $newClientOrderId   A unique id among open orders. Automatically generated if not sent.&lt;br/&gt; Orders with the same &#x60;newClientOrderID&#x60; can be accepted only when the previous one is filled, otherwise the order will be rejected. (optional)
      * @param null|CancelRestrictions $cancelRestrictions (optional)
-     * @param null|int                $recvWindow         The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float              $recvWindow         The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return Request
      *
@@ -516,7 +516,7 @@ class TradeApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,
             'recvWindow', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -566,7 +566,7 @@ class TradeApi
      * @param null|int    $orderListId       Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
      * @param null|string $listClientOrderId A unique Id for the entire orderList (optional)
      * @param null|string $newClientOrderId  A unique id among open orders. Automatically generated if not sent.&lt;br/&gt; Orders with the same &#x60;newClientOrderID&#x60; can be accepted only when the previous one is filled, otherwise the order will be rejected. (optional)
-     * @param null|int    $recvWindow        The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float  $recvWindow        The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<DeleteOrderListResponse>
      *
@@ -587,7 +587,7 @@ class TradeApi
      * @param null|int    $orderListId       Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
      * @param null|string $listClientOrderId A unique Id for the entire orderList (optional)
      * @param null|string $newClientOrderId  A unique id among open orders. Automatically generated if not sent.&lt;br/&gt; Orders with the same &#x60;newClientOrderID&#x60; can be accepted only when the previous one is filled, otherwise the order will be rejected. (optional)
-     * @param null|int    $recvWindow        The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float  $recvWindow        The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<DeleteOrderListResponse>
      *
@@ -670,7 +670,7 @@ class TradeApi
      * @param null|int    $orderListId       Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
      * @param null|string $listClientOrderId A unique Id for the entire orderList (optional)
      * @param null|string $newClientOrderId  A unique id among open orders. Automatically generated if not sent.&lt;br/&gt; Orders with the same &#x60;newClientOrderID&#x60; can be accepted only when the previous one is filled, otherwise the order will be rejected. (optional)
-     * @param null|int    $recvWindow        The value cannot be greater than &#x60;60000&#x60; (optional)
+     * @param null|float  $recvWindow        The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return Request
      *
@@ -734,7 +734,7 @@ class TradeApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,
             'recvWindow', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             'form', // style
             true, // explode
             false // required

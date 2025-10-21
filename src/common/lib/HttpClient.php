@@ -34,6 +34,15 @@ class HttpClient extends Client
             $config['proxy'] = $clientConfig->getProxy();
         }
 
+        if (!empty($clientConfig->getCustomHeaders())) {
+            CommonUtils::validateHeaders($clientConfig->getCustomHeaders());
+            if (!empty($config['headers'])) {
+                $config['headers'] = array_merge($config['headers'], $clientConfig->getCustomHeaders());
+            } else {
+                $config['headers'] = $clientConfig->getCustomHeaders();
+            }
+        }
+
         $handler = HandlerStack::create();
         $backOff = $clientConfig->getBackOff();
         $retryMiddleware = Middleware::retry(

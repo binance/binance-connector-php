@@ -44,11 +44,11 @@ enum BelowTimeInForce: string
     /**
      * Possible values of this enum.
      */
-    case BELOW_TYPE = 'belowType';
+    case GTC = 'GTC';
 
-    case STOP_LOSS_LIMIT = 'STOP_LOSS_LIMIT';
+    case IOC = 'IOC';
 
-    case TAKE_PROFIT_LIMIT = 'TAKE_PROFIT_LIMIT';
+    case FOK = 'FOK';
 
     /**
      * Gets allowable values of the enum.
@@ -58,9 +58,9 @@ enum BelowTimeInForce: string
     public static function getAllowableEnumValues()
     {
         return [
-            self::BELOW_TYPE,
-            self::STOP_LOSS_LIMIT,
-            self::TAKE_PROFIT_LIMIT,
+            self::GTC,
+            self::IOC,
+            self::FOK,
         ];
     }
 }

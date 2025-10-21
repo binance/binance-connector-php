@@ -457,25 +457,6 @@ class TradeApiTest extends TestCase
     }
 
     /**
-     * Test case for placeMultipleOrders.
-     *
-     * Place Multiple Orders(TRADE).
-     */
-    public function testPlaceMultipleOrders()
-    {
-        $placeMultipleOrdersRequest = new PlaceMultipleOrdersRequest();
-        $placeMultipleOrdersRequest->setBatchOrdersPlaceMultipleOrders(new BatchOrdersPlaceMultipleOrders());
-
-        $response = $this->getApiMock($request)->placeMultipleOrders($placeMultipleOrdersRequest);
-
-        parse_str($request->getUri(), $queryMap);
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/fapi/v1/batchOrders', $request->getUri()->getPath());
-        self::assertEquals('53668e00dc92eb93de0b253c301e9fc0c20042b13db384a0ad94b38688a5a84c', $queryMap['signature']);
-    }
-
-    /**
      * Test case for positionAdlQuantileEstimation.
      *
      * Position ADL Quantile Estimation(USER_DATA).

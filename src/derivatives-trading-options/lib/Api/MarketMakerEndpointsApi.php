@@ -33,7 +33,6 @@ use Binance\Client\DerivativesTradingOptions\Model\AutoCancelAllOpenOrdersReques
 use Binance\Client\DerivativesTradingOptions\Model\AutoCancelAllOpenOrdersResponse;
 use Binance\Client\DerivativesTradingOptions\Model\GetAutoCancelAllOpenOrdersResponse;
 use Binance\Client\DerivativesTradingOptions\Model\GetMarketMakerProtectionConfigResponse;
-use Binance\Client\DerivativesTradingOptions\Model\OptionMarginAccountInformationResponse;
 use Binance\Client\DerivativesTradingOptions\Model\ResetMarketMakerProtectionConfigRequest;
 use Binance\Client\DerivativesTradingOptions\Model\ResetMarketMakerProtectionConfigResponse;
 use Binance\Client\DerivativesTradingOptions\Model\SetAutoCancelAllOpenOrdersRequest;
@@ -74,7 +73,6 @@ class MarketMakerEndpointsApi
         'autoCancelAllOpenOrders' => ['application/x-www-form-urlencoded'],
         'getAutoCancelAllOpenOrders' => ['application/x-www-form-urlencoded'],
         'getMarketMakerProtectionConfig' => ['application/x-www-form-urlencoded'],
-        'optionMarginAccountInformation' => ['application/x-www-form-urlencoded'],
         'resetMarketMakerProtectionConfig' => ['application/x-www-form-urlencoded'],
         'setAutoCancelAllOpenOrders' => ['application/x-www-form-urlencoded'],
         'setMarketMakerProtectionConfig' => ['application/x-www-form-urlencoded'],
@@ -631,169 +629,6 @@ class MarketMakerEndpointsApi
             true, // explode
             false // required
         ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $recvWindow,
-            'recvWindow', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            $contentType,
-            $multipart
-        );
-
-        $defaultHeaders = [];
-        $defaultHeaders['User-Agent'] = $this->userAgent;
-
-        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
-            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->clientConfig->getUrl();
-
-        $queryParams['timestamp'] = $this->getTimestamp();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
-        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
-        $query = ObjectSerializer::buildQuery($queryParams);
-
-        return new Request(
-            'GET',
-            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation optionMarginAccountInformation.
-     *
-     * Option Margin Account Information (USER_DATA)
-     *
-     * @param null|int $recvWindow recvWindow (optional)
-     *
-     * @return ApiResponse<OptionMarginAccountInformationResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function optionMarginAccountInformation($recvWindow = null): ApiResponse
-    {
-        return $this->optionMarginAccountInformationWithHttpInfo($recvWindow);
-    }
-
-    /**
-     * Operation optionMarginAccountInformationWithHttpInfo.
-     *
-     * Option Margin Account Information (USER_DATA)
-     *
-     * @param null|int $recvWindow (optional)
-     *
-     * @return ApiResponse<OptionMarginAccountInformationResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function optionMarginAccountInformationWithHttpInfo($recvWindow = null): ApiResponse
-    {
-        $request = $this->optionMarginAccountInformationRequest($recvWindow);
-
-        try {
-            try {
-                $response = $this->client->send($request, []);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch ($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Binance\Client\DerivativesTradingOptions\Model\OptionMarginAccountInformationResponse',
-                        $request,
-                        $response,
-                    );
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Binance\Client\DerivativesTradingOptions\Model\OptionMarginAccountInformationResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Binance\Client\DerivativesTradingOptions\Model\OptionMarginAccountInformationResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    throw $e;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Create request for operation 'optionMarginAccountInformation'.
-     *
-     * @param null|int $recvWindow (optional)
-     *
-     * @return Request
-     *
-     * @throws \InvalidArgumentException
-     */
-    public function optionMarginAccountInformationRequest($recvWindow = null)
-    {
-        $contentType = self::contentTypes['optionMarginAccountInformation'][0];
-
-        $resourcePath = '/eapi/v1/marginAccount';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,

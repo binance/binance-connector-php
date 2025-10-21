@@ -65,7 +65,7 @@ class RedeemBfusdForPortfolioMarginResponse implements ModelInterface, \ArrayAcc
         'targetAsset' => 'string',
         'fromAssetQty' => 'float',
         'targetAssetQty' => 'float',
-        'rate' => 'float',
+        'redeemRate' => 'float',
     ];
 
     /**
@@ -82,7 +82,7 @@ class RedeemBfusdForPortfolioMarginResponse implements ModelInterface, \ArrayAcc
         'targetAsset' => null,
         'fromAssetQty' => 'float',
         'targetAssetQty' => 'float',
-        'rate' => 'float',
+        'redeemRate' => 'float',
     ];
 
     /**
@@ -95,7 +95,7 @@ class RedeemBfusdForPortfolioMarginResponse implements ModelInterface, \ArrayAcc
         'targetAsset' => false,
         'fromAssetQty' => false,
         'targetAssetQty' => false,
-        'rate' => false,
+        'redeemRate' => false,
     ];
 
     /**
@@ -116,7 +116,7 @@ class RedeemBfusdForPortfolioMarginResponse implements ModelInterface, \ArrayAcc
         'targetAsset' => 'targetAsset',
         'fromAssetQty' => 'fromAssetQty',
         'targetAssetQty' => 'targetAssetQty',
-        'rate' => 'rate',
+        'redeemRate' => 'redeemRate',
     ];
 
     /**
@@ -129,7 +129,7 @@ class RedeemBfusdForPortfolioMarginResponse implements ModelInterface, \ArrayAcc
         'targetAsset' => 'setTargetAsset',
         'fromAssetQty' => 'setFromAssetQty',
         'targetAssetQty' => 'setTargetAssetQty',
-        'rate' => 'setRate',
+        'redeemRate' => 'setRedeemRate',
     ];
 
     /**
@@ -142,7 +142,7 @@ class RedeemBfusdForPortfolioMarginResponse implements ModelInterface, \ArrayAcc
         'targetAsset' => 'getTargetAsset',
         'fromAssetQty' => 'getFromAssetQty',
         'targetAssetQty' => 'getTargetAssetQty',
-        'rate' => 'getRate',
+        'redeemRate' => 'getRedeemRate',
     ];
 
     /**
@@ -164,7 +164,7 @@ class RedeemBfusdForPortfolioMarginResponse implements ModelInterface, \ArrayAcc
         $this->setIfExists('targetAsset', $data ?? [], null);
         $this->setIfExists('fromAssetQty', $data ?? [], null);
         $this->setIfExists('targetAssetQty', $data ?? [], null);
-        $this->setIfExists('rate', $data ?? [], null);
+        $this->setIfExists('redeemRate', $data ?? [], null);
     }
 
     /**
@@ -404,28 +404,28 @@ class RedeemBfusdForPortfolioMarginResponse implements ModelInterface, \ArrayAcc
     }
 
     /**
-     * Gets rate.
+     * Gets redeemRate.
      *
      * @return null|float
      */
-    public function getRate()
+    public function getRedeemRate()
     {
-        return $this->container['rate'];
+        return $this->container['redeemRate'];
     }
 
     /**
-     * Sets rate.
+     * Sets redeemRate.
      *
-     * @param null|float $rate rate
+     * @param null|float $redeemRate redeemRate
      *
      * @return self
      */
-    public function setRate($rate)
+    public function setRedeemRate($redeemRate)
     {
-        if (is_null($rate)) {
-            throw new \InvalidArgumentException('non-nullable rate cannot be null');
+        if (is_null($redeemRate)) {
+            throw new \InvalidArgumentException('non-nullable redeemRate cannot be null');
         }
-        $this->container['rate'] = $rate;
+        $this->container['redeemRate'] = $redeemRate;
 
         return $this;
     }

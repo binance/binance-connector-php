@@ -37,7 +37,6 @@ use Binance\Client\Convert\Model\GetConvertTradeHistoryResponse;
 use Binance\Client\Convert\Model\OrderStatusResponse;
 use Binance\Client\Convert\Model\PlaceLimitOrderRequest;
 use Binance\Client\Convert\Model\PlaceLimitOrderResponse;
-use Binance\Client\Convert\Model\QueryLimitOpenOrdersRequest;
 use Binance\Client\Convert\Model\QueryLimitOpenOrdersResponse;
 use Binance\Client\Convert\Model\SendQuoteRequestRequest;
 use Binance\Client\Convert\Model\SendQuoteRequestResponse;
@@ -1120,16 +1119,16 @@ class TradeApi
      *
      * Query limit open orders (USER_DATA)
      *
-     * @param QueryLimitOpenOrdersRequest $queryLimitOpenOrdersRequest queryLimitOpenOrdersRequest (required)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<QueryLimitOpenOrdersResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function queryLimitOpenOrders($queryLimitOpenOrdersRequest): ApiResponse
+    public function queryLimitOpenOrders($recvWindow = null): ApiResponse
     {
-        return $this->queryLimitOpenOrdersWithHttpInfo($queryLimitOpenOrdersRequest);
+        return $this->queryLimitOpenOrdersWithHttpInfo($recvWindow);
     }
 
     /**
@@ -1137,16 +1136,16 @@ class TradeApi
      *
      * Query limit open orders (USER_DATA)
      *
-     * @param QueryLimitOpenOrdersRequest $queryLimitOpenOrdersRequest (required)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<QueryLimitOpenOrdersResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function queryLimitOpenOrdersWithHttpInfo($queryLimitOpenOrdersRequest): ApiResponse
+    public function queryLimitOpenOrdersWithHttpInfo($recvWindow = null): ApiResponse
     {
-        $request = $this->queryLimitOpenOrdersRequest($queryLimitOpenOrdersRequest);
+        $request = $this->queryLimitOpenOrdersRequest($recvWindow);
 
         try {
             try {
@@ -1216,22 +1215,15 @@ class TradeApi
     /**
      * Create request for operation 'queryLimitOpenOrders'.
      *
-     * @param QueryLimitOpenOrdersRequest $queryLimitOpenOrdersRequest (required)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function queryLimitOpenOrdersRequest($queryLimitOpenOrdersRequest)
+    public function queryLimitOpenOrdersRequest($recvWindow = null)
     {
         $contentType = self::contentTypes['queryLimitOpenOrders'][0];
-
-        // verify the required parameter 'queryLimitOpenOrdersRequest' is set
-        if (null === $queryLimitOpenOrdersRequest || (is_array($queryLimitOpenOrdersRequest) && 0 === count($queryLimitOpenOrdersRequest))) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $queryLimitOpenOrdersRequest when calling queryLimitOpenOrders'
-            );
-        }
 
         $resourcePath = '/sapi/v1/convert/limit/queryOpenOrders';
         $formParams = [];
@@ -1240,51 +1232,21 @@ class TradeApi
         $httpBody = '';
         $multipart = false;
 
-        $getters = $queryLimitOpenOrdersRequest::getters();
-        $formParams = [];
-        foreach ($getters as $property => $getter) {
-            $value = $queryLimitOpenOrdersRequest->{$getter}();
-            if (!empty($value)) {
-                $formParams[$property] = $queryLimitOpenOrdersRequest->{$getter}();
-            }
-        }
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recvWindow,
+            'recvWindow', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
             $contentType,
             $multipart
         );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem,
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
-                // if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        } elseif (isset($queryLimitOpenOrdersRequest)) {
-            if (false !== stripos($headers['Content-Type'], 'application/json')) {
-                // if Content-Type contains "application/json", json_encode the body
-                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($queryLimitOpenOrdersRequest));
-            } else {
-                $httpBody = $queryLimitOpenOrdersRequest;
-            }
-        }
 
         $defaultHeaders = [];
         $defaultHeaders['User-Agent'] = $this->userAgent;
@@ -1308,7 +1270,7 @@ class TradeApi
         $query = ObjectSerializer::buildQuery($queryParams);
 
         return new Request(
-            'POST',
+            'GET',
             $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody

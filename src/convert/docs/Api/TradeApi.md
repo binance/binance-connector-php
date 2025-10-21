@@ -9,7 +9,7 @@ All URIs are relative to https://api.binance.com, except if the operation define
 | [**getConvertTradeHistory()**](TradeApi.md#getConvertTradeHistory) | **GET** /sapi/v1/convert/tradeFlow | Get Convert Trade History(USER_DATA) |
 | [**orderStatus()**](TradeApi.md#orderStatus) | **GET** /sapi/v1/convert/orderStatus | Order status(USER_DATA) |
 | [**placeLimitOrder()**](TradeApi.md#placeLimitOrder) | **POST** /sapi/v1/convert/limit/placeOrder | Place limit order (USER_DATA) |
-| [**queryLimitOpenOrders()**](TradeApi.md#queryLimitOpenOrders) | **POST** /sapi/v1/convert/limit/queryOpenOrders | Query limit open orders (USER_DATA) |
+| [**queryLimitOpenOrders()**](TradeApi.md#queryLimitOpenOrders) | **GET** /sapi/v1/convert/limit/queryOpenOrders | Query limit open orders (USER_DATA) |
 | [**sendQuoteRequest()**](TradeApi.md#sendQuoteRequest) | **POST** /sapi/v1/convert/getQuote | Send Quote Request(USER_DATA) |
 
 
@@ -304,7 +304,7 @@ No authorization required
 ## `queryLimitOpenOrders()`
 
 ```php
-queryLimitOpenOrders($queryLimitOpenOrdersRequest): \Binance\Client\Convert\Model\QueryLimitOpenOrdersResponse
+queryLimitOpenOrders($recvWindow): \Binance\Client\Convert\Model\QueryLimitOpenOrdersResponse
 ```
 
 Query limit open orders (USER_DATA)
@@ -324,10 +324,10 @@ $apiInstance = new Binance\Client\Convert\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$queryLimitOpenOrdersRequest = new \Binance\Client\Convert\Model\QueryLimitOpenOrdersRequest(); // \Binance\Client\Convert\Model\QueryLimitOpenOrdersRequest
+$recvWindow = 56; // int | The value cannot be greater than 60000
 
 try {
-    $result = $apiInstance->queryLimitOpenOrders($queryLimitOpenOrdersRequest);
+    $result = $apiInstance->queryLimitOpenOrders($recvWindow);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TradeApi->queryLimitOpenOrders: ', $e->getMessage(), PHP_EOL;
@@ -338,7 +338,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **queryLimitOpenOrdersRequest** | [**\Binance\Client\Convert\Model\QueryLimitOpenOrdersRequest**](../Model/QueryLimitOpenOrdersRequest.md)|  | |
+| **recvWindow** | **int**| The value cannot be greater than 60000 | [optional] |
 
 ### Return type
 
@@ -350,7 +350,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
