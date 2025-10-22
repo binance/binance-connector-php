@@ -71,9 +71,12 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'abovePrice' => 'float',
         'aboveStopPrice' => 'float',
         'aboveTrailingDelta' => 'int',
-        'aboveTimeInForce' => 'float',
+        'aboveTimeInForce' => '\Binance\Client\Spot\Model\AboveTimeInForce',
         'aboveStrategyId' => 'int',
         'aboveStrategyType' => 'int',
+        'abovePegPriceType' => '\Binance\Client\Spot\Model\AbovePegPriceType',
+        'abovePegOffsetType' => '\Binance\Client\Spot\Model\AbovePegOffsetType',
+        'abovePegOffsetValue' => 'int',
         'belowType' => '\Binance\Client\Spot\Model\BelowType',
         'belowClientOrderId' => 'string',
         'belowIcebergQty' => 'int',
@@ -83,9 +86,12 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'belowTimeInForce' => '\Binance\Client\Spot\Model\BelowTimeInForce',
         'belowStrategyId' => 'int',
         'belowStrategyType' => 'int',
+        'belowPegPriceType' => '\Binance\Client\Spot\Model\BelowPegPriceType',
+        'belowPegOffsetType' => '\Binance\Client\Spot\Model\BelowPegOffsetType',
+        'belowPegOffsetValue' => 'int',
         'newOrderRespType' => '\Binance\Client\Spot\Model\NewOrderRespType',
         'selfTradePreventionMode' => '\Binance\Client\Spot\Model\SelfTradePreventionMode',
-        'recvWindow' => 'int',
+        'recvWindow' => 'float',
     ];
 
     /**
@@ -108,9 +114,12 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'abovePrice' => 'float',
         'aboveStopPrice' => 'float',
         'aboveTrailingDelta' => 'int64',
-        'aboveTimeInForce' => 'float',
+        'aboveTimeInForce' => null,
         'aboveStrategyId' => 'int64',
         'aboveStrategyType' => null,
+        'abovePegPriceType' => null,
+        'abovePegOffsetType' => null,
+        'abovePegOffsetValue' => null,
         'belowType' => null,
         'belowClientOrderId' => null,
         'belowIcebergQty' => 'int64',
@@ -120,9 +129,12 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'belowTimeInForce' => null,
         'belowStrategyId' => 'int64',
         'belowStrategyType' => null,
+        'belowPegPriceType' => null,
+        'belowPegOffsetType' => null,
+        'belowPegOffsetValue' => null,
         'newOrderRespType' => null,
         'selfTradePreventionMode' => null,
-        'recvWindow' => 'int64',
+        'recvWindow' => 'float',
     ];
 
     /**
@@ -144,6 +156,9 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'aboveTimeInForce' => false,
         'aboveStrategyId' => false,
         'aboveStrategyType' => false,
+        'abovePegPriceType' => false,
+        'abovePegOffsetType' => false,
+        'abovePegOffsetValue' => false,
         'belowType' => false,
         'belowClientOrderId' => false,
         'belowIcebergQty' => false,
@@ -153,6 +168,9 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'belowTimeInForce' => false,
         'belowStrategyId' => false,
         'belowStrategyType' => false,
+        'belowPegPriceType' => false,
+        'belowPegOffsetType' => false,
+        'belowPegOffsetValue' => false,
         'newOrderRespType' => false,
         'selfTradePreventionMode' => false,
         'recvWindow' => false,
@@ -185,6 +203,9 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'aboveTimeInForce' => 'aboveTimeInForce',
         'aboveStrategyId' => 'aboveStrategyId',
         'aboveStrategyType' => 'aboveStrategyType',
+        'abovePegPriceType' => 'abovePegPriceType',
+        'abovePegOffsetType' => 'abovePegOffsetType',
+        'abovePegOffsetValue' => 'abovePegOffsetValue',
         'belowType' => 'belowType',
         'belowClientOrderId' => 'belowClientOrderId',
         'belowIcebergQty' => 'belowIcebergQty',
@@ -194,6 +215,9 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'belowTimeInForce' => 'belowTimeInForce',
         'belowStrategyId' => 'belowStrategyId',
         'belowStrategyType' => 'belowStrategyType',
+        'belowPegPriceType' => 'belowPegPriceType',
+        'belowPegOffsetType' => 'belowPegOffsetType',
+        'belowPegOffsetValue' => 'belowPegOffsetValue',
         'newOrderRespType' => 'newOrderRespType',
         'selfTradePreventionMode' => 'selfTradePreventionMode',
         'recvWindow' => 'recvWindow',
@@ -218,6 +242,9 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'aboveTimeInForce' => 'setAboveTimeInForce',
         'aboveStrategyId' => 'setAboveStrategyId',
         'aboveStrategyType' => 'setAboveStrategyType',
+        'abovePegPriceType' => 'setAbovePegPriceType',
+        'abovePegOffsetType' => 'setAbovePegOffsetType',
+        'abovePegOffsetValue' => 'setAbovePegOffsetValue',
         'belowType' => 'setBelowType',
         'belowClientOrderId' => 'setBelowClientOrderId',
         'belowIcebergQty' => 'setBelowIcebergQty',
@@ -227,6 +254,9 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'belowTimeInForce' => 'setBelowTimeInForce',
         'belowStrategyId' => 'setBelowStrategyId',
         'belowStrategyType' => 'setBelowStrategyType',
+        'belowPegPriceType' => 'setBelowPegPriceType',
+        'belowPegOffsetType' => 'setBelowPegOffsetType',
+        'belowPegOffsetValue' => 'setBelowPegOffsetValue',
         'newOrderRespType' => 'setNewOrderRespType',
         'selfTradePreventionMode' => 'setSelfTradePreventionMode',
         'recvWindow' => 'setRecvWindow',
@@ -251,6 +281,9 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'aboveTimeInForce' => 'getAboveTimeInForce',
         'aboveStrategyId' => 'getAboveStrategyId',
         'aboveStrategyType' => 'getAboveStrategyType',
+        'abovePegPriceType' => 'getAbovePegPriceType',
+        'abovePegOffsetType' => 'getAbovePegOffsetType',
+        'abovePegOffsetValue' => 'getAbovePegOffsetValue',
         'belowType' => 'getBelowType',
         'belowClientOrderId' => 'getBelowClientOrderId',
         'belowIcebergQty' => 'getBelowIcebergQty',
@@ -260,6 +293,9 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'belowTimeInForce' => 'getBelowTimeInForce',
         'belowStrategyId' => 'getBelowStrategyId',
         'belowStrategyType' => 'getBelowStrategyType',
+        'belowPegPriceType' => 'getBelowPegPriceType',
+        'belowPegOffsetType' => 'getBelowPegOffsetType',
+        'belowPegOffsetValue' => 'getBelowPegOffsetValue',
         'newOrderRespType' => 'getNewOrderRespType',
         'selfTradePreventionMode' => 'getSelfTradePreventionMode',
         'recvWindow' => 'getRecvWindow',
@@ -293,6 +329,9 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         $this->setIfExists('aboveTimeInForce', $data ?? [], null);
         $this->setIfExists('aboveStrategyId', $data ?? [], null);
         $this->setIfExists('aboveStrategyType', $data ?? [], null);
+        $this->setIfExists('abovePegPriceType', $data ?? [], null);
+        $this->setIfExists('abovePegOffsetType', $data ?? [], null);
+        $this->setIfExists('abovePegOffsetValue', $data ?? [], null);
         $this->setIfExists('belowType', $data ?? [], null);
         $this->setIfExists('belowClientOrderId', $data ?? [], null);
         $this->setIfExists('belowIcebergQty', $data ?? [], null);
@@ -302,6 +341,9 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         $this->setIfExists('belowTimeInForce', $data ?? [], null);
         $this->setIfExists('belowStrategyId', $data ?? [], null);
         $this->setIfExists('belowStrategyType', $data ?? [], null);
+        $this->setIfExists('belowPegPriceType', $data ?? [], null);
+        $this->setIfExists('belowPegOffsetType', $data ?? [], null);
+        $this->setIfExists('belowPegOffsetValue', $data ?? [], null);
         $this->setIfExists('newOrderRespType', $data ?? [], null);
         $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
@@ -726,7 +768,7 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Gets aboveTimeInForce.
      *
-     * @return null|float
+     * @return null|AboveTimeInForce
      */
     public function getAboveTimeInForce()
     {
@@ -736,7 +778,7 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Sets aboveTimeInForce.
      *
-     * @param null|float $aboveTimeInForce aboveTimeInForce
+     * @param null|AboveTimeInForce $aboveTimeInForce aboveTimeInForce
      *
      * @return self
      */
@@ -800,6 +842,87 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable aboveStrategyType cannot be null');
         }
         $this->container['aboveStrategyType'] = $aboveStrategyType;
+
+        return $this;
+    }
+
+    /**
+     * Gets abovePegPriceType.
+     *
+     * @return null|AbovePegPriceType
+     */
+    public function getAbovePegPriceType()
+    {
+        return $this->container['abovePegPriceType'];
+    }
+
+    /**
+     * Sets abovePegPriceType.
+     *
+     * @param null|AbovePegPriceType $abovePegPriceType abovePegPriceType
+     *
+     * @return self
+     */
+    public function setAbovePegPriceType($abovePegPriceType)
+    {
+        if (is_null($abovePegPriceType)) {
+            throw new \InvalidArgumentException('non-nullable abovePegPriceType cannot be null');
+        }
+        $this->container['abovePegPriceType'] = $abovePegPriceType;
+
+        return $this;
+    }
+
+    /**
+     * Gets abovePegOffsetType.
+     *
+     * @return null|AbovePegOffsetType
+     */
+    public function getAbovePegOffsetType()
+    {
+        return $this->container['abovePegOffsetType'];
+    }
+
+    /**
+     * Sets abovePegOffsetType.
+     *
+     * @param null|AbovePegOffsetType $abovePegOffsetType abovePegOffsetType
+     *
+     * @return self
+     */
+    public function setAbovePegOffsetType($abovePegOffsetType)
+    {
+        if (is_null($abovePegOffsetType)) {
+            throw new \InvalidArgumentException('non-nullable abovePegOffsetType cannot be null');
+        }
+        $this->container['abovePegOffsetType'] = $abovePegOffsetType;
+
+        return $this;
+    }
+
+    /**
+     * Gets abovePegOffsetValue.
+     *
+     * @return null|int
+     */
+    public function getAbovePegOffsetValue()
+    {
+        return $this->container['abovePegOffsetValue'];
+    }
+
+    /**
+     * Sets abovePegOffsetValue.
+     *
+     * @param null|int $abovePegOffsetValue abovePegOffsetValue
+     *
+     * @return self
+     */
+    public function setAbovePegOffsetValue($abovePegOffsetValue)
+    {
+        if (is_null($abovePegOffsetValue)) {
+            throw new \InvalidArgumentException('non-nullable abovePegOffsetValue cannot be null');
+        }
+        $this->container['abovePegOffsetValue'] = $abovePegOffsetValue;
 
         return $this;
     }
@@ -1048,6 +1171,87 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets belowPegPriceType.
+     *
+     * @return null|BelowPegPriceType
+     */
+    public function getBelowPegPriceType()
+    {
+        return $this->container['belowPegPriceType'];
+    }
+
+    /**
+     * Sets belowPegPriceType.
+     *
+     * @param null|BelowPegPriceType $belowPegPriceType belowPegPriceType
+     *
+     * @return self
+     */
+    public function setBelowPegPriceType($belowPegPriceType)
+    {
+        if (is_null($belowPegPriceType)) {
+            throw new \InvalidArgumentException('non-nullable belowPegPriceType cannot be null');
+        }
+        $this->container['belowPegPriceType'] = $belowPegPriceType;
+
+        return $this;
+    }
+
+    /**
+     * Gets belowPegOffsetType.
+     *
+     * @return null|BelowPegOffsetType
+     */
+    public function getBelowPegOffsetType()
+    {
+        return $this->container['belowPegOffsetType'];
+    }
+
+    /**
+     * Sets belowPegOffsetType.
+     *
+     * @param null|BelowPegOffsetType $belowPegOffsetType belowPegOffsetType
+     *
+     * @return self
+     */
+    public function setBelowPegOffsetType($belowPegOffsetType)
+    {
+        if (is_null($belowPegOffsetType)) {
+            throw new \InvalidArgumentException('non-nullable belowPegOffsetType cannot be null');
+        }
+        $this->container['belowPegOffsetType'] = $belowPegOffsetType;
+
+        return $this;
+    }
+
+    /**
+     * Gets belowPegOffsetValue.
+     *
+     * @return null|int
+     */
+    public function getBelowPegOffsetValue()
+    {
+        return $this->container['belowPegOffsetValue'];
+    }
+
+    /**
+     * Sets belowPegOffsetValue.
+     *
+     * @param null|int $belowPegOffsetValue belowPegOffsetValue
+     *
+     * @return self
+     */
+    public function setBelowPegOffsetValue($belowPegOffsetValue)
+    {
+        if (is_null($belowPegOffsetValue)) {
+            throw new \InvalidArgumentException('non-nullable belowPegOffsetValue cannot be null');
+        }
+        $this->container['belowPegOffsetValue'] = $belowPegOffsetValue;
+
+        return $this;
+    }
+
+    /**
      * Gets newOrderRespType.
      *
      * @return null|NewOrderRespType
@@ -1104,7 +1308,7 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Gets recvWindow.
      *
-     * @return null|int
+     * @return null|float
      */
     public function getRecvWindow()
     {
@@ -1114,7 +1318,7 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Sets recvWindow.
      *
-     * @param null|int $recvWindow recvWindow
+     * @param null|float $recvWindow recvWindow
      *
      * @return self
      */

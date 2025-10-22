@@ -24,7 +24,7 @@ function getOrderExample()
     $symbol = 'BNBUSDT';
     $orderId = 1;
     $origClientOrderId = '';
-    $recvWindow = 5000;
+    $recvWindow = 5000.0;
     $response = $api->getOrder($symbol, $orderId, $origClientOrderId, $recvWindow);
     print_r($response);
 }

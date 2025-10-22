@@ -27,7 +27,7 @@ function deleteOrderExample()
     $origClientOrderId = '';
     $newClientOrderId = '';
     $cancelRestrictions = CancelRestrictions::ONLY_NEW;
-    $recvWindow = 5000;
+    $recvWindow = 5000.0;
     $response = $api->deleteOrder($symbol, $orderId, $origClientOrderId, $newClientOrderId, $cancelRestrictions, $recvWindow);
     print_r($response);
 }

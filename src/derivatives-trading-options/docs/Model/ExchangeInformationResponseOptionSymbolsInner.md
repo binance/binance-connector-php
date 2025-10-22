@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **unit** | **int** |  | [optional]
 **makerFeeRate** | **string** |  | [optional]
 **takerFeeRate** | **string** |  | [optional]
+**liquidationFeeRate** | **string** |  | [optional]
 **minQty** | **string** |  | [optional]
 **maxQty** | **string** |  | [optional]
 **initialMargin** | **string** |  | [optional]

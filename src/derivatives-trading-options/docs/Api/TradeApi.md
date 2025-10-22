@@ -150,7 +150,7 @@ cancelAllOptionOrdersOnSpecificSymbol($symbol, $recvWindow): \Binance\Client\Der
 
 Cancel all Option orders on specific symbol (TRADE)
 
-Cancel all active order on a symbol.  Weight: 1
+Cancel all active order on a symbol.  Weight: 5
 
 ### Example
 
@@ -497,7 +497,7 @@ No authorization required
 ## `queryCurrentOpenOptionOrders()`
 
 ```php
-queryCurrentOpenOptionOrders($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow): \Binance\Client\DerivativesTradingOptions\Model\QueryCurrentOpenOptionOrdersResponse
+queryCurrentOpenOptionOrders($symbol, $orderId, $startTime, $endTime, $recvWindow): \Binance\Client\DerivativesTradingOptions\Model\QueryCurrentOpenOptionOrdersResponse
 ```
 
 Query Current Open Option Orders (USER_DATA)
@@ -521,11 +521,10 @@ $symbol = 'symbol_example'; // string | Option trading pair, e.g BTC-200730-9000
 $orderId = 56; // int | Order ID, e.g 4611875134427365377
 $startTime = 56; // int | Start Time, e.g 1593511200000
 $endTime = 56; // int | End Time, e.g 1593512200000
-$limit = 56; // int | Number of result sets returned Default:100 Max:1000
 $recvWindow = 56; // int
 
 try {
-    $result = $apiInstance->queryCurrentOpenOptionOrders($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
+    $result = $apiInstance->queryCurrentOpenOptionOrders($symbol, $orderId, $startTime, $endTime, $recvWindow);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TradeApi->queryCurrentOpenOptionOrders: ', $e->getMessage(), PHP_EOL;
@@ -540,7 +539,6 @@ try {
 | **orderId** | **int**| Order ID, e.g 4611875134427365377 | [optional] |
 | **startTime** | **int**| Start Time, e.g 1593511200000 | [optional] |
 | **endTime** | **int**| End Time, e.g 1593512200000 | [optional] |
-| **limit** | **int**| Number of result sets returned Default:100 Max:1000 | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type

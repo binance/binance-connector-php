@@ -45,13 +45,13 @@ class OrderArgs
 {
     public const DISCRIMINATOR = null;
 
-    /** @var [] */
+    /** @var OrderArgsInner[] */
     protected array $items = [];
 
     /**
      * Constructor.
      *
-     * @param [] items
+     * @param OrderArgsInner[] items
      */
     public function __construct(array $items = [])
     {
@@ -63,7 +63,7 @@ class OrderArgs
      */
     public static function getItemType(): string
     {
-        return 'object';
+        return '\Binance\Client\SubAccount\Model\OrderArgsInner';
     }
 
     /**
@@ -94,20 +94,20 @@ class OrderArgs
     }
 
     /**
-     * @return []
+     * @return OrderArgsInner[]
      */
     public function getItems(): array
     {
         return $this->items;
     }
 
-    public function addItem($item): void
+    public function addItem(OrderArgsInner $item): void
     {
         $this->items[] = $item;
     }
 
     /**
-     * @param [] $items
+     * @param OrderArgsInner[] $items
      */
     public function addItems(array $items): void
     {

@@ -67,6 +67,7 @@ class VipLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSeriali
         'collateralAccountId' => 'int',
         'collateralCoin' => 'string',
         'isFlexibleRate' => 'bool',
+        'loanTerm' => 'int',
         'recvWindow' => 'int',
     ];
 
@@ -86,6 +87,7 @@ class VipLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSeriali
         'collateralAccountId' => 'int64',
         'collateralCoin' => null,
         'isFlexibleRate' => null,
+        'loanTerm' => 'int64',
         'recvWindow' => 'int64',
     ];
 
@@ -101,6 +103,7 @@ class VipLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSeriali
         'collateralAccountId' => false,
         'collateralCoin' => false,
         'isFlexibleRate' => false,
+        'loanTerm' => false,
         'recvWindow' => false,
     ];
 
@@ -124,6 +127,7 @@ class VipLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSeriali
         'collateralAccountId' => 'collateralAccountId',
         'collateralCoin' => 'collateralCoin',
         'isFlexibleRate' => 'isFlexibleRate',
+        'loanTerm' => 'loanTerm',
         'recvWindow' => 'recvWindow',
     ];
 
@@ -139,6 +143,7 @@ class VipLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSeriali
         'collateralAccountId' => 'setCollateralAccountId',
         'collateralCoin' => 'setCollateralCoin',
         'isFlexibleRate' => 'setIsFlexibleRate',
+        'loanTerm' => 'setLoanTerm',
         'recvWindow' => 'setRecvWindow',
     ];
 
@@ -154,6 +159,7 @@ class VipLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSeriali
         'collateralAccountId' => 'getCollateralAccountId',
         'collateralCoin' => 'getCollateralCoin',
         'isFlexibleRate' => 'getIsFlexibleRate',
+        'loanTerm' => 'getLoanTerm',
         'recvWindow' => 'getRecvWindow',
     ];
 
@@ -178,6 +184,7 @@ class VipLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSeriali
         $this->setIfExists('collateralAccountId', $data ?? [], null);
         $this->setIfExists('collateralCoin', $data ?? [], null);
         $this->setIfExists('isFlexibleRate', $data ?? [], null);
+        $this->setIfExists('loanTerm', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }
 
@@ -488,6 +495,33 @@ class VipLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable isFlexibleRate cannot be null');
         }
         $this->container['isFlexibleRate'] = $isFlexibleRate;
+
+        return $this;
+    }
+
+    /**
+     * Gets loanTerm.
+     *
+     * @return null|int
+     */
+    public function getLoanTerm()
+    {
+        return $this->container['loanTerm'];
+    }
+
+    /**
+     * Sets loanTerm.
+     *
+     * @param null|int $loanTerm loanTerm
+     *
+     * @return self
+     */
+    public function setLoanTerm($loanTerm)
+    {
+        if (is_null($loanTerm)) {
+            throw new \InvalidArgumentException('non-nullable loanTerm cannot be null');
+        }
+        $this->container['loanTerm'] = $loanTerm;
 
         return $this;
     }

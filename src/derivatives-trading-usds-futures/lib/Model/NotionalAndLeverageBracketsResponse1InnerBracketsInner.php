@@ -66,7 +66,7 @@ class NotionalAndLeverageBracketsResponse1InnerBracketsInner implements ModelInt
         'notionalCap' => 'int',
         'notionalFloor' => 'int',
         'maintMarginRatio' => 'float',
-        'cum' => 'int',
+        'cum' => 'float',
     ];
 
     /**
@@ -84,7 +84,7 @@ class NotionalAndLeverageBracketsResponse1InnerBracketsInner implements ModelInt
         'notionalCap' => 'int64',
         'notionalFloor' => 'int64',
         'maintMarginRatio' => 'float',
-        'cum' => 'int64',
+        'cum' => 'float',
     ];
 
     /**
@@ -440,7 +440,7 @@ class NotionalAndLeverageBracketsResponse1InnerBracketsInner implements ModelInt
     /**
      * Gets cum.
      *
-     * @return null|int
+     * @return null|float
      */
     public function getCum()
     {
@@ -450,7 +450,7 @@ class NotionalAndLeverageBracketsResponse1InnerBracketsInner implements ModelInt
     /**
      * Sets cum.
      *
-     * @param null|int $cum cum
+     * @param null|float $cum cum
      *
      * @return self
      */

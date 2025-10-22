@@ -62,6 +62,25 @@ class OrderTestRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
      */
     protected static $openAPITypes = [
         'computeCommissionRates' => 'bool',
+        'symbol' => 'string',
+        'side' => '\Binance\Client\Spot\Model\Side',
+        'type' => '\Binance\Client\Spot\Model\OrderType',
+        'timeInForce' => '\Binance\Client\Spot\Model\TimeInForce',
+        'quantity' => 'float',
+        'quoteOrderQty' => 'float',
+        'price' => 'float',
+        'newClientOrderId' => 'string',
+        'strategyId' => 'int',
+        'strategyType' => 'int',
+        'stopPrice' => 'float',
+        'trailingDelta' => 'int',
+        'icebergQty' => 'float',
+        'newOrderRespType' => '\Binance\Client\Spot\Model\NewOrderRespType',
+        'selfTradePreventionMode' => '\Binance\Client\Spot\Model\SelfTradePreventionMode',
+        'pegPriceType' => '\Binance\Client\Spot\Model\PegPriceType',
+        'pegOffsetValue' => 'int',
+        'pegOffsetType' => '\Binance\Client\Spot\Model\PegOffsetType',
+        'recvWindow' => 'float',
     ];
 
     /**
@@ -75,6 +94,25 @@ class OrderTestRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
      */
     protected static $openAPIFormats = [
         'computeCommissionRates' => null,
+        'symbol' => null,
+        'side' => null,
+        'type' => null,
+        'timeInForce' => null,
+        'quantity' => 'float',
+        'quoteOrderQty' => 'float',
+        'price' => 'float',
+        'newClientOrderId' => null,
+        'strategyId' => 'int64',
+        'strategyType' => null,
+        'stopPrice' => 'float',
+        'trailingDelta' => 'int64',
+        'icebergQty' => 'float',
+        'newOrderRespType' => null,
+        'selfTradePreventionMode' => null,
+        'pegPriceType' => null,
+        'pegOffsetValue' => null,
+        'pegOffsetType' => null,
+        'recvWindow' => 'float',
     ];
 
     /**
@@ -84,6 +122,25 @@ class OrderTestRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
      */
     protected static array $openAPINullables = [
         'computeCommissionRates' => false,
+        'symbol' => false,
+        'side' => false,
+        'type' => false,
+        'timeInForce' => false,
+        'quantity' => false,
+        'quoteOrderQty' => false,
+        'price' => false,
+        'newClientOrderId' => false,
+        'strategyId' => false,
+        'strategyType' => false,
+        'stopPrice' => false,
+        'trailingDelta' => false,
+        'icebergQty' => false,
+        'newOrderRespType' => false,
+        'selfTradePreventionMode' => false,
+        'pegPriceType' => false,
+        'pegOffsetValue' => false,
+        'pegOffsetType' => false,
+        'recvWindow' => false,
     ];
 
     /**
@@ -101,6 +158,25 @@ class OrderTestRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
      */
     protected static $attributeMap = [
         'computeCommissionRates' => 'computeCommissionRates',
+        'symbol' => 'symbol',
+        'side' => 'side',
+        'type' => 'type',
+        'timeInForce' => 'timeInForce',
+        'quantity' => 'quantity',
+        'quoteOrderQty' => 'quoteOrderQty',
+        'price' => 'price',
+        'newClientOrderId' => 'newClientOrderId',
+        'strategyId' => 'strategyId',
+        'strategyType' => 'strategyType',
+        'stopPrice' => 'stopPrice',
+        'trailingDelta' => 'trailingDelta',
+        'icebergQty' => 'icebergQty',
+        'newOrderRespType' => 'newOrderRespType',
+        'selfTradePreventionMode' => 'selfTradePreventionMode',
+        'pegPriceType' => 'pegPriceType',
+        'pegOffsetValue' => 'pegOffsetValue',
+        'pegOffsetType' => 'pegOffsetType',
+        'recvWindow' => 'recvWindow',
     ];
 
     /**
@@ -110,6 +186,25 @@ class OrderTestRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
      */
     protected static $setters = [
         'computeCommissionRates' => 'setComputeCommissionRates',
+        'symbol' => 'setSymbol',
+        'side' => 'setSide',
+        'type' => 'setType',
+        'timeInForce' => 'setTimeInForce',
+        'quantity' => 'setQuantity',
+        'quoteOrderQty' => 'setQuoteOrderQty',
+        'price' => 'setPrice',
+        'newClientOrderId' => 'setNewClientOrderId',
+        'strategyId' => 'setStrategyId',
+        'strategyType' => 'setStrategyType',
+        'stopPrice' => 'setStopPrice',
+        'trailingDelta' => 'setTrailingDelta',
+        'icebergQty' => 'setIcebergQty',
+        'newOrderRespType' => 'setNewOrderRespType',
+        'selfTradePreventionMode' => 'setSelfTradePreventionMode',
+        'pegPriceType' => 'setPegPriceType',
+        'pegOffsetValue' => 'setPegOffsetValue',
+        'pegOffsetType' => 'setPegOffsetType',
+        'recvWindow' => 'setRecvWindow',
     ];
 
     /**
@@ -119,6 +214,25 @@ class OrderTestRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
      */
     protected static $getters = [
         'computeCommissionRates' => 'getComputeCommissionRates',
+        'symbol' => 'getSymbol',
+        'side' => 'getSide',
+        'type' => 'getType',
+        'timeInForce' => 'getTimeInForce',
+        'quantity' => 'getQuantity',
+        'quoteOrderQty' => 'getQuoteOrderQty',
+        'price' => 'getPrice',
+        'newClientOrderId' => 'getNewClientOrderId',
+        'strategyId' => 'getStrategyId',
+        'strategyType' => 'getStrategyType',
+        'stopPrice' => 'getStopPrice',
+        'trailingDelta' => 'getTrailingDelta',
+        'icebergQty' => 'getIcebergQty',
+        'newOrderRespType' => 'getNewOrderRespType',
+        'selfTradePreventionMode' => 'getSelfTradePreventionMode',
+        'pegPriceType' => 'getPegPriceType',
+        'pegOffsetValue' => 'getPegOffsetValue',
+        'pegOffsetType' => 'getPegOffsetType',
+        'recvWindow' => 'getRecvWindow',
     ];
 
     /**
@@ -137,6 +251,25 @@ class OrderTestRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
     public function __construct(?array $data = null)
     {
         $this->setIfExists('computeCommissionRates', $data ?? [], null);
+        $this->setIfExists('symbol', $data ?? [], null);
+        $this->setIfExists('side', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('timeInForce', $data ?? [], null);
+        $this->setIfExists('quantity', $data ?? [], null);
+        $this->setIfExists('quoteOrderQty', $data ?? [], null);
+        $this->setIfExists('price', $data ?? [], null);
+        $this->setIfExists('newClientOrderId', $data ?? [], null);
+        $this->setIfExists('strategyId', $data ?? [], null);
+        $this->setIfExists('strategyType', $data ?? [], null);
+        $this->setIfExists('stopPrice', $data ?? [], null);
+        $this->setIfExists('trailingDelta', $data ?? [], null);
+        $this->setIfExists('icebergQty', $data ?? [], null);
+        $this->setIfExists('newOrderRespType', $data ?? [], null);
+        $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
+        $this->setIfExists('pegPriceType', $data ?? [], null);
+        $this->setIfExists('pegOffsetValue', $data ?? [], null);
+        $this->setIfExists('pegOffsetType', $data ?? [], null);
+        $this->setIfExists('recvWindow', $data ?? [], null);
     }
 
     /**
@@ -253,7 +386,19 @@ class OrderTestRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
      */
     public function listInvalidProperties()
     {
-        return [];
+        $invalidProperties = [];
+
+        if (null === $this->container['symbol']) {
+            $invalidProperties[] = "'symbol' can't be null";
+        }
+        if (null === $this->container['side']) {
+            $invalidProperties[] = "'side' can't be null";
+        }
+        if (null === $this->container['type']) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+
+        return $invalidProperties;
     }
 
     /**
@@ -290,6 +435,519 @@ class OrderTestRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable computeCommissionRates cannot be null');
         }
         $this->container['computeCommissionRates'] = $computeCommissionRates;
+
+        return $this;
+    }
+
+    /**
+     * Gets symbol.
+     *
+     * @return string
+     */
+    public function getSymbol()
+    {
+        return $this->container['symbol'];
+    }
+
+    /**
+     * Sets symbol.
+     *
+     * @param string $symbol symbol
+     *
+     * @return self
+     */
+    public function setSymbol($symbol)
+    {
+        if (is_null($symbol)) {
+            throw new \InvalidArgumentException('non-nullable symbol cannot be null');
+        }
+        $this->container['symbol'] = $symbol;
+
+        return $this;
+    }
+
+    /**
+     * Gets side.
+     *
+     * @return Side
+     */
+    public function getSide()
+    {
+        return $this->container['side'];
+    }
+
+    /**
+     * Sets side.
+     *
+     * @param Side $side side
+     *
+     * @return self
+     */
+    public function setSide($side)
+    {
+        if (is_null($side)) {
+            throw new \InvalidArgumentException('non-nullable side cannot be null');
+        }
+        $this->container['side'] = $side;
+
+        return $this;
+    }
+
+    /**
+     * Gets type.
+     *
+     * @return OrderType
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type.
+     *
+     * @param OrderType $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets timeInForce.
+     *
+     * @return null|TimeInForce
+     */
+    public function getTimeInForce()
+    {
+        return $this->container['timeInForce'];
+    }
+
+    /**
+     * Sets timeInForce.
+     *
+     * @param null|TimeInForce $timeInForce timeInForce
+     *
+     * @return self
+     */
+    public function setTimeInForce($timeInForce)
+    {
+        if (is_null($timeInForce)) {
+            throw new \InvalidArgumentException('non-nullable timeInForce cannot be null');
+        }
+        $this->container['timeInForce'] = $timeInForce;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity.
+     *
+     * @return null|float
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity.
+     *
+     * @param null|float $quantity quantity
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        if (is_null($quantity)) {
+            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+        }
+        $this->container['quantity'] = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * Gets quoteOrderQty.
+     *
+     * @return null|float
+     */
+    public function getQuoteOrderQty()
+    {
+        return $this->container['quoteOrderQty'];
+    }
+
+    /**
+     * Sets quoteOrderQty.
+     *
+     * @param null|float $quoteOrderQty quoteOrderQty
+     *
+     * @return self
+     */
+    public function setQuoteOrderQty($quoteOrderQty)
+    {
+        if (is_null($quoteOrderQty)) {
+            throw new \InvalidArgumentException('non-nullable quoteOrderQty cannot be null');
+        }
+        $this->container['quoteOrderQty'] = $quoteOrderQty;
+
+        return $this;
+    }
+
+    /**
+     * Gets price.
+     *
+     * @return null|float
+     */
+    public function getPrice()
+    {
+        return $this->container['price'];
+    }
+
+    /**
+     * Sets price.
+     *
+     * @param null|float $price price
+     *
+     * @return self
+     */
+    public function setPrice($price)
+    {
+        if (is_null($price)) {
+            throw new \InvalidArgumentException('non-nullable price cannot be null');
+        }
+        $this->container['price'] = $price;
+
+        return $this;
+    }
+
+    /**
+     * Gets newClientOrderId.
+     *
+     * @return null|string
+     */
+    public function getNewClientOrderId()
+    {
+        return $this->container['newClientOrderId'];
+    }
+
+    /**
+     * Sets newClientOrderId.
+     *
+     * @param null|string $newClientOrderId newClientOrderId
+     *
+     * @return self
+     */
+    public function setNewClientOrderId($newClientOrderId)
+    {
+        if (is_null($newClientOrderId)) {
+            throw new \InvalidArgumentException('non-nullable newClientOrderId cannot be null');
+        }
+        $this->container['newClientOrderId'] = $newClientOrderId;
+
+        return $this;
+    }
+
+    /**
+     * Gets strategyId.
+     *
+     * @return null|int
+     */
+    public function getStrategyId()
+    {
+        return $this->container['strategyId'];
+    }
+
+    /**
+     * Sets strategyId.
+     *
+     * @param null|int $strategyId strategyId
+     *
+     * @return self
+     */
+    public function setStrategyId($strategyId)
+    {
+        if (is_null($strategyId)) {
+            throw new \InvalidArgumentException('non-nullable strategyId cannot be null');
+        }
+        $this->container['strategyId'] = $strategyId;
+
+        return $this;
+    }
+
+    /**
+     * Gets strategyType.
+     *
+     * @return null|int
+     */
+    public function getStrategyType()
+    {
+        return $this->container['strategyType'];
+    }
+
+    /**
+     * Sets strategyType.
+     *
+     * @param null|int $strategyType strategyType
+     *
+     * @return self
+     */
+    public function setStrategyType($strategyType)
+    {
+        if (is_null($strategyType)) {
+            throw new \InvalidArgumentException('non-nullable strategyType cannot be null');
+        }
+        $this->container['strategyType'] = $strategyType;
+
+        return $this;
+    }
+
+    /**
+     * Gets stopPrice.
+     *
+     * @return null|float
+     */
+    public function getStopPrice()
+    {
+        return $this->container['stopPrice'];
+    }
+
+    /**
+     * Sets stopPrice.
+     *
+     * @param null|float $stopPrice stopPrice
+     *
+     * @return self
+     */
+    public function setStopPrice($stopPrice)
+    {
+        if (is_null($stopPrice)) {
+            throw new \InvalidArgumentException('non-nullable stopPrice cannot be null');
+        }
+        $this->container['stopPrice'] = $stopPrice;
+
+        return $this;
+    }
+
+    /**
+     * Gets trailingDelta.
+     *
+     * @return null|int
+     */
+    public function getTrailingDelta()
+    {
+        return $this->container['trailingDelta'];
+    }
+
+    /**
+     * Sets trailingDelta.
+     *
+     * @param null|int $trailingDelta trailingDelta
+     *
+     * @return self
+     */
+    public function setTrailingDelta($trailingDelta)
+    {
+        if (is_null($trailingDelta)) {
+            throw new \InvalidArgumentException('non-nullable trailingDelta cannot be null');
+        }
+        $this->container['trailingDelta'] = $trailingDelta;
+
+        return $this;
+    }
+
+    /**
+     * Gets icebergQty.
+     *
+     * @return null|float
+     */
+    public function getIcebergQty()
+    {
+        return $this->container['icebergQty'];
+    }
+
+    /**
+     * Sets icebergQty.
+     *
+     * @param null|float $icebergQty icebergQty
+     *
+     * @return self
+     */
+    public function setIcebergQty($icebergQty)
+    {
+        if (is_null($icebergQty)) {
+            throw new \InvalidArgumentException('non-nullable icebergQty cannot be null');
+        }
+        $this->container['icebergQty'] = $icebergQty;
+
+        return $this;
+    }
+
+    /**
+     * Gets newOrderRespType.
+     *
+     * @return null|NewOrderRespType
+     */
+    public function getNewOrderRespType()
+    {
+        return $this->container['newOrderRespType'];
+    }
+
+    /**
+     * Sets newOrderRespType.
+     *
+     * @param null|NewOrderRespType $newOrderRespType newOrderRespType
+     *
+     * @return self
+     */
+    public function setNewOrderRespType($newOrderRespType)
+    {
+        if (is_null($newOrderRespType)) {
+            throw new \InvalidArgumentException('non-nullable newOrderRespType cannot be null');
+        }
+        $this->container['newOrderRespType'] = $newOrderRespType;
+
+        return $this;
+    }
+
+    /**
+     * Gets selfTradePreventionMode.
+     *
+     * @return null|SelfTradePreventionMode
+     */
+    public function getSelfTradePreventionMode()
+    {
+        return $this->container['selfTradePreventionMode'];
+    }
+
+    /**
+     * Sets selfTradePreventionMode.
+     *
+     * @param null|SelfTradePreventionMode $selfTradePreventionMode selfTradePreventionMode
+     *
+     * @return self
+     */
+    public function setSelfTradePreventionMode($selfTradePreventionMode)
+    {
+        if (is_null($selfTradePreventionMode)) {
+            throw new \InvalidArgumentException('non-nullable selfTradePreventionMode cannot be null');
+        }
+        $this->container['selfTradePreventionMode'] = $selfTradePreventionMode;
+
+        return $this;
+    }
+
+    /**
+     * Gets pegPriceType.
+     *
+     * @return null|PegPriceType
+     */
+    public function getPegPriceType()
+    {
+        return $this->container['pegPriceType'];
+    }
+
+    /**
+     * Sets pegPriceType.
+     *
+     * @param null|PegPriceType $pegPriceType pegPriceType
+     *
+     * @return self
+     */
+    public function setPegPriceType($pegPriceType)
+    {
+        if (is_null($pegPriceType)) {
+            throw new \InvalidArgumentException('non-nullable pegPriceType cannot be null');
+        }
+        $this->container['pegPriceType'] = $pegPriceType;
+
+        return $this;
+    }
+
+    /**
+     * Gets pegOffsetValue.
+     *
+     * @return null|int
+     */
+    public function getPegOffsetValue()
+    {
+        return $this->container['pegOffsetValue'];
+    }
+
+    /**
+     * Sets pegOffsetValue.
+     *
+     * @param null|int $pegOffsetValue pegOffsetValue
+     *
+     * @return self
+     */
+    public function setPegOffsetValue($pegOffsetValue)
+    {
+        if (is_null($pegOffsetValue)) {
+            throw new \InvalidArgumentException('non-nullable pegOffsetValue cannot be null');
+        }
+        $this->container['pegOffsetValue'] = $pegOffsetValue;
+
+        return $this;
+    }
+
+    /**
+     * Gets pegOffsetType.
+     *
+     * @return null|PegOffsetType
+     */
+    public function getPegOffsetType()
+    {
+        return $this->container['pegOffsetType'];
+    }
+
+    /**
+     * Sets pegOffsetType.
+     *
+     * @param null|PegOffsetType $pegOffsetType pegOffsetType
+     *
+     * @return self
+     */
+    public function setPegOffsetType($pegOffsetType)
+    {
+        if (is_null($pegOffsetType)) {
+            throw new \InvalidArgumentException('non-nullable pegOffsetType cannot be null');
+        }
+        $this->container['pegOffsetType'] = $pegOffsetType;
+
+        return $this;
+    }
+
+    /**
+     * Gets recvWindow.
+     *
+     * @return null|float
+     */
+    public function getRecvWindow()
+    {
+        return $this->container['recvWindow'];
+    }
+
+    /**
+     * Sets recvWindow.
+     *
+     * @param null|float $recvWindow recvWindow
+     *
+     * @return self
+     */
+    public function setRecvWindow($recvWindow)
+    {
+        if (is_null($recvWindow)) {
+            throw new \InvalidArgumentException('non-nullable recvWindow cannot be null');
+        }
+        $this->container['recvWindow'] = $recvWindow;
 
         return $this;
     }

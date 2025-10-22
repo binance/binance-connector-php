@@ -16,7 +16,7 @@
 
 [/sapi/v1/convert/limit/placeOrder](https://developers.binance.com/docs/convert/trade/Place-Order) - placeLimitOrder - [PlaceLimitOrderExample.php:31](/examples/convert/trade/PlaceLimitOrderExample.php#L31)
 
-[/sapi/v1/convert/limit/queryOpenOrders](https://developers.binance.com/docs/convert/trade/Query-Order) - queryLimitOpenOrders - [QueryLimitOpenOrdersExample.php:26](/examples/convert/trade/QueryLimitOpenOrdersExample.php#L26)
+[/sapi/v1/convert/limit/queryOpenOrders](https://developers.binance.com/docs/convert/trade/Query-Order) - queryLimitOpenOrders - [QueryLimitOpenOrdersExample.php:25](/examples/convert/trade/QueryLimitOpenOrdersExample.php#L25)
 
 [/sapi/v1/convert/getQuote](https://developers.binance.com/docs/convert/trade/Send-quote-request) - sendQuoteRequest - [SendQuoteRequestExample.php:28](/examples/convert/trade/SendQuoteRequestExample.php#L28)
 

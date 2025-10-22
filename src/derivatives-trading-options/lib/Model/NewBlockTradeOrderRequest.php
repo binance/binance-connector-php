@@ -63,10 +63,6 @@ class NewBlockTradeOrderRequest implements ModelInterface, \ArrayAccess, \JsonSe
     protected static $openAPITypes = [
         'liquidity' => 'string',
         'legs' => '\Binance\Client\DerivativesTradingOptions\Model\Legs',
-        'symbol' => 'string',
-        'side' => '\Binance\Client\DerivativesTradingOptions\Model\Side',
-        'price' => 'float',
-        'quantity' => 'float',
         'recvWindow' => 'int',
     ];
 
@@ -82,10 +78,6 @@ class NewBlockTradeOrderRequest implements ModelInterface, \ArrayAccess, \JsonSe
     protected static $openAPIFormats = [
         'liquidity' => null,
         'legs' => null,
-        'symbol' => null,
-        'side' => null,
-        'price' => 'float',
-        'quantity' => 'float',
         'recvWindow' => 'int64',
     ];
 
@@ -97,10 +89,6 @@ class NewBlockTradeOrderRequest implements ModelInterface, \ArrayAccess, \JsonSe
     protected static array $openAPINullables = [
         'liquidity' => false,
         'legs' => false,
-        'symbol' => false,
-        'side' => false,
-        'price' => false,
-        'quantity' => false,
         'recvWindow' => false,
     ];
 
@@ -120,10 +108,6 @@ class NewBlockTradeOrderRequest implements ModelInterface, \ArrayAccess, \JsonSe
     protected static $attributeMap = [
         'liquidity' => 'liquidity',
         'legs' => 'legs',
-        'symbol' => 'symbol',
-        'side' => 'side',
-        'price' => 'price',
-        'quantity' => 'quantity',
         'recvWindow' => 'recvWindow',
     ];
 
@@ -135,10 +119,6 @@ class NewBlockTradeOrderRequest implements ModelInterface, \ArrayAccess, \JsonSe
     protected static $setters = [
         'liquidity' => 'setLiquidity',
         'legs' => 'setLegs',
-        'symbol' => 'setSymbol',
-        'side' => 'setSide',
-        'price' => 'setPrice',
-        'quantity' => 'setQuantity',
         'recvWindow' => 'setRecvWindow',
     ];
 
@@ -150,10 +130,6 @@ class NewBlockTradeOrderRequest implements ModelInterface, \ArrayAccess, \JsonSe
     protected static $getters = [
         'liquidity' => 'getLiquidity',
         'legs' => 'getLegs',
-        'symbol' => 'getSymbol',
-        'side' => 'getSide',
-        'price' => 'getPrice',
-        'quantity' => 'getQuantity',
         'recvWindow' => 'getRecvWindow',
     ];
 
@@ -174,10 +150,6 @@ class NewBlockTradeOrderRequest implements ModelInterface, \ArrayAccess, \JsonSe
     {
         $this->setIfExists('liquidity', $data ?? [], null);
         $this->setIfExists('legs', $data ?? [], null);
-        $this->setIfExists('symbol', $data ?? [], null);
-        $this->setIfExists('side', $data ?? [], null);
-        $this->setIfExists('price', $data ?? [], null);
-        $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }
 
@@ -303,18 +275,6 @@ class NewBlockTradeOrderRequest implements ModelInterface, \ArrayAccess, \JsonSe
         if (null === $this->container['legs']) {
             $invalidProperties[] = "'legs' can't be null";
         }
-        if (null === $this->container['symbol']) {
-            $invalidProperties[] = "'symbol' can't be null";
-        }
-        if (null === $this->container['side']) {
-            $invalidProperties[] = "'side' can't be null";
-        }
-        if (null === $this->container['price']) {
-            $invalidProperties[] = "'price' can't be null";
-        }
-        if (null === $this->container['quantity']) {
-            $invalidProperties[] = "'quantity' can't be null";
-        }
 
         return $invalidProperties;
     }
@@ -380,114 +340,6 @@ class NewBlockTradeOrderRequest implements ModelInterface, \ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable legs cannot be null');
         }
         $this->container['legs'] = $legs;
-
-        return $this;
-    }
-
-    /**
-     * Gets symbol.
-     *
-     * @return string
-     */
-    public function getSymbol()
-    {
-        return $this->container['symbol'];
-    }
-
-    /**
-     * Sets symbol.
-     *
-     * @param string $symbol symbol
-     *
-     * @return self
-     */
-    public function setSymbol($symbol)
-    {
-        if (is_null($symbol)) {
-            throw new \InvalidArgumentException('non-nullable symbol cannot be null');
-        }
-        $this->container['symbol'] = $symbol;
-
-        return $this;
-    }
-
-    /**
-     * Gets side.
-     *
-     * @return Side
-     */
-    public function getSide()
-    {
-        return $this->container['side'];
-    }
-
-    /**
-     * Sets side.
-     *
-     * @param Side $side side
-     *
-     * @return self
-     */
-    public function setSide($side)
-    {
-        if (is_null($side)) {
-            throw new \InvalidArgumentException('non-nullable side cannot be null');
-        }
-        $this->container['side'] = $side;
-
-        return $this;
-    }
-
-    /**
-     * Gets price.
-     *
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->container['price'];
-    }
-
-    /**
-     * Sets price.
-     *
-     * @param float $price price
-     *
-     * @return self
-     */
-    public function setPrice($price)
-    {
-        if (is_null($price)) {
-            throw new \InvalidArgumentException('non-nullable price cannot be null');
-        }
-        $this->container['price'] = $price;
-
-        return $this;
-    }
-
-    /**
-     * Gets quantity.
-     *
-     * @return float
-     */
-    public function getQuantity()
-    {
-        return $this->container['quantity'];
-    }
-
-    /**
-     * Sets quantity.
-     *
-     * @param float $quantity quantity
-     *
-     * @return self
-     */
-    public function setQuantity($quantity)
-    {
-        if (is_null($quantity)) {
-            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
-        }
-        $this->container['quantity'] = $quantity;
 
         return $this;
     }

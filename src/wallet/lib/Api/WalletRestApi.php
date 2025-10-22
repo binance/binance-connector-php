@@ -10,10 +10,12 @@ use Binance\Client\Wallet\Model\AssetDetailResponse;
 use Binance\Client\Wallet\Model\AssetDividendRecordResponse;
 use Binance\Client\Wallet\Model\BrokerWithdrawRequest;
 use Binance\Client\Wallet\Model\BrokerWithdrawResponse;
+use Binance\Client\Wallet\Model\CheckQuestionnaireRequirementsResponse;
 use Binance\Client\Wallet\Model\DailyAccountSnapshotResponse;
 use Binance\Client\Wallet\Model\DepositAddressResponse;
 use Binance\Client\Wallet\Model\DepositHistoryResponse;
 use Binance\Client\Wallet\Model\DepositHistoryTravelRuleResponse;
+use Binance\Client\Wallet\Model\DepositHistoryV2Response;
 use Binance\Client\Wallet\Model\DisableFastWithdrawSwitchRequest;
 use Binance\Client\Wallet\Model\DustlogResponse;
 use Binance\Client\Wallet\Model\DustTransferRequest;
@@ -31,7 +33,6 @@ use Binance\Client\Wallet\Model\GetAssetsThatCanBeConvertedIntoBnbResponse;
 use Binance\Client\Wallet\Model\GetCloudMiningPaymentAndRefundHistoryResponse;
 use Binance\Client\Wallet\Model\GetOpenSymbolListResponse;
 use Binance\Client\Wallet\Model\GetSymbolsDelistScheduleForSpotResponse;
-use Binance\Client\Wallet\Model\OnboardedVaspListResponse;
 use Binance\Client\Wallet\Model\OneClickArrivalDepositApplyRequest;
 use Binance\Client\Wallet\Model\OneClickArrivalDepositApplyResponse;
 use Binance\Client\Wallet\Model\QueryUserDelegationHistoryResponse;
@@ -49,6 +50,7 @@ use Binance\Client\Wallet\Model\UserAssetRequest;
 use Binance\Client\Wallet\Model\UserAssetResponse;
 use Binance\Client\Wallet\Model\UserUniversalTransferRequest;
 use Binance\Client\Wallet\Model\UserUniversalTransferResponse;
+use Binance\Client\Wallet\Model\VaspListResponse;
 use Binance\Client\Wallet\Model\WithdrawHistoryResponse;
 use Binance\Client\Wallet\Model\WithdrawHistoryV1Response;
 use Binance\Client\Wallet\Model\WithdrawHistoryV2Response;
@@ -716,6 +718,23 @@ class WalletRestApi
     }
 
     /**
+     * Operation checkQuestionnaireRequirements.
+     *
+     * Check Questionnaire Requirements (for local entities that require travel rule) (supporting network) (USER_DATA)
+     *
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<CheckQuestionnaireRequirementsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function checkQuestionnaireRequirements($recvWindow = null): ApiResponse
+    {
+        return $this->travelRuleApi->checkQuestionnaireRequirements($recvWindow);
+    }
+
+    /**
      * Operation depositHistoryTravelRule.
      *
      * Deposit History (for local entities that required travel rule) (supporting network) (USER_DATA)
@@ -743,33 +762,45 @@ class WalletRestApi
     }
 
     /**
+     * Operation depositHistoryV2.
+     *
+     * Deposit History V2 (for local entities that required travel rule) (supporting network) (USER_DATA)
+     *
+     * @param null|string $depositId             Comma(,) separated list of wallet tran Ids. (optional)
+     * @param null|string $txId                  txId (optional)
+     * @param null|string $network               network (optional)
+     * @param null|string $coin                  coin (optional)
+     * @param null|bool   $retrieveQuestionnaire true: return &#x60;questionnaire&#x60; within response. (optional)
+     * @param null|int    $startTime             startTime (optional)
+     * @param null|int    $endTime               endTime (optional)
+     * @param null|int    $offset                Default: 0 (optional)
+     * @param null|int    $limit                 min 7, max 30, default 7 (optional)
+     *
+     * @return ApiResponse<DepositHistoryV2Response>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function depositHistoryV2($depositId = null, $txId = null, $network = null, $coin = null, $retrieveQuestionnaire = null, $startTime = null, $endTime = null, $offset = null, $limit = null): ApiResponse
+    {
+        return $this->travelRuleApi->depositHistoryV2($depositId, $txId, $network, $coin, $retrieveQuestionnaire, $startTime, $endTime, $offset, $limit);
+    }
+
+    /**
      * Operation fetchAddressVerificationList.
      *
      * Fetch address verification list (USER_DATA)
+     *
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<FetchAddressVerificationListResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function fetchAddressVerificationList(): ApiResponse
+    public function fetchAddressVerificationList($recvWindow = null): ApiResponse
     {
-        return $this->travelRuleApi->fetchAddressVerificationList();
-    }
-
-    /**
-     * Operation onboardedVaspList.
-     *
-     * Onboarded VASP list (for local entities that require travel rule) (supporting network) (USER_DATA)
-     *
-     * @return ApiResponse<OnboardedVaspListResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function onboardedVaspList(): ApiResponse
-    {
-        return $this->travelRuleApi->onboardedVaspList();
+        return $this->travelRuleApi->fetchAddressVerificationList($recvWindow);
     }
 
     /**
@@ -804,6 +835,23 @@ class WalletRestApi
     public function submitDepositQuestionnaireTravelRule($submitDepositQuestionnaireTravelRuleRequest): ApiResponse
     {
         return $this->travelRuleApi->submitDepositQuestionnaireTravelRule($submitDepositQuestionnaireTravelRuleRequest);
+    }
+
+    /**
+     * Operation vaspList.
+     *
+     * VASP list (for local entities that require travel rule) (supporting network) (USER_DATA)
+     *
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<VaspListResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function vaspList($recvWindow = null): ApiResponse
+    {
+        return $this->travelRuleApi->vaspList($recvWindow);
     }
 
     /**

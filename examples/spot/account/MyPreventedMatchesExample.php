@@ -26,7 +26,7 @@ function myPreventedMatchesExample()
     $orderId = 1;
     $fromPreventedMatchId = 1;
     $limit = 500;
-    $recvWindow = 5000;
+    $recvWindow = 5000.0;
     $response = $api->myPreventedMatches($symbol, $preventedMatchId, $orderId, $fromPreventedMatchId, $limit, $recvWindow);
     print_r($response);
 }

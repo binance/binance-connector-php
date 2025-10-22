@@ -46,9 +46,9 @@ enum StopLimitTimeInForce: string
      */
     case GTC = 'GTC';
 
-    case FOK = 'FOK';
-
     case IOC = 'IOC';
+
+    case FOK = 'FOK';
 
     /**
      * Gets allowable values of the enum.
@@ -59,8 +59,8 @@ enum StopLimitTimeInForce: string
     {
         return [
             self::GTC,
-            self::FOK,
             self::IOC,
+            self::FOK,
         ];
     }
 }

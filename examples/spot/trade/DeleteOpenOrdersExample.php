@@ -22,7 +22,7 @@ function deleteOpenOrdersExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SpotRestApi($configurationBuilder->build());
     $symbol = 'BNBUSDT';
-    $recvWindow = 5000;
+    $recvWindow = 5000.0;
     $response = $api->deleteOpenOrders($symbol, $recvWindow);
     print_r($response);
 }

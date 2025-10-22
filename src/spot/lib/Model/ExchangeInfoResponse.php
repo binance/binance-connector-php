@@ -63,8 +63,8 @@ class ExchangeInfoResponse implements ModelInterface, \ArrayAccess, \JsonSeriali
     protected static $openAPITypes = [
         'timezone' => 'string',
         'serverTime' => 'int',
-        'rateLimits' => '\Binance\Client\Spot\Model\RateLimits',
-        'exchangeFilters' => '\Binance\Client\Spot\Model\ExchangeFilters',
+        'rateLimits' => '\Binance\Client\Spot\Model\RateLimits[]',
+        'exchangeFilters' => '\Binance\Client\Spot\Model\ExchangeFilters[]',
         'symbols' => '\Binance\Client\Spot\Model\ExchangeInfoResponseSymbolsInner[]',
     ];
 
@@ -352,7 +352,7 @@ class ExchangeInfoResponse implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Gets rateLimits.
      *
-     * @return null|RateLimits
+     * @return null|RateLimits[]
      */
     public function getRateLimits()
     {
@@ -362,7 +362,7 @@ class ExchangeInfoResponse implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets rateLimits.
      *
-     * @param null|RateLimits $rateLimits rateLimits
+     * @param null|RateLimits[] $rateLimits rateLimits
      *
      * @return self
      */
@@ -379,7 +379,7 @@ class ExchangeInfoResponse implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Gets exchangeFilters.
      *
-     * @return null|ExchangeFilters
+     * @return null|ExchangeFilters[]
      */
     public function getExchangeFilters()
     {
@@ -389,7 +389,7 @@ class ExchangeInfoResponse implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets exchangeFilters.
      *
-     * @param null|ExchangeFilters $exchangeFilters exchangeFilters
+     * @param null|ExchangeFilters[] $exchangeFilters exchangeFilters
      *
      * @return self
      */

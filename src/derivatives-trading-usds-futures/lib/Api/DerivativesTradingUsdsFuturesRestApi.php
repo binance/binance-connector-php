@@ -1048,7 +1048,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation symbolPriceTicker.
      *
-     * Symbol Price Ticker
+     * Symbol Price Ticker(Deprecated)
      *
      * @param null|string $symbol symbol (optional)
      *

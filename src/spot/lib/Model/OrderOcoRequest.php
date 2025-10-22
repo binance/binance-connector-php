@@ -80,7 +80,7 @@ class OrderOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'stopLimitTimeInForce' => '\Binance\Client\Spot\Model\StopLimitTimeInForce',
         'newOrderRespType' => '\Binance\Client\Spot\Model\NewOrderRespType',
         'selfTradePreventionMode' => '\Binance\Client\Spot\Model\SelfTradePreventionMode',
-        'recvWindow' => 'int',
+        'recvWindow' => 'float',
     ];
 
     /**
@@ -112,7 +112,7 @@ class OrderOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'stopLimitTimeInForce' => null,
         'newOrderRespType' => null,
         'selfTradePreventionMode' => null,
-        'recvWindow' => 'int64',
+        'recvWindow' => 'float',
     ];
 
     /**
@@ -934,7 +934,7 @@ class OrderOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets recvWindow.
      *
-     * @return null|int
+     * @return null|float
      */
     public function getRecvWindow()
     {
@@ -944,7 +944,7 @@ class OrderOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets recvWindow.
      *
-     * @param null|int $recvWindow recvWindow
+     * @param null|float $recvWindow recvWindow
      *
      * @return self
      */

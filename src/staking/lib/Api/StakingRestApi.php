@@ -18,6 +18,8 @@ use Binance\Client\Staking\Model\GetOnChainYieldsLockedRedemptionRecordResponse;
 use Binance\Client\Staking\Model\GetOnChainYieldsLockedRewardsHistoryResponse;
 use Binance\Client\Staking\Model\GetOnChainYieldsLockedSubscriptionPreviewResponse;
 use Binance\Client\Staking\Model\GetOnChainYieldsLockedSubscriptionRecordResponse;
+use Binance\Client\Staking\Model\GetSoftStakingProductListResponse;
+use Binance\Client\Staking\Model\GetSoftStakingRewardsHistoryResponse;
 use Binance\Client\Staking\Model\GetSolRedemptionHistoryResponse;
 use Binance\Client\Staking\Model\GetSolStakingHistoryResponse;
 use Binance\Client\Staking\Model\GetSolStakingQuotaDetailsResponse;
@@ -37,6 +39,7 @@ use Binance\Client\Staking\Model\SetOnChainYieldsLockedAutoSubscribeRequest;
 use Binance\Client\Staking\Model\SetOnChainYieldsLockedAutoSubscribeResponse;
 use Binance\Client\Staking\Model\SetOnChainYieldsLockedProductRedeemOptionRequest;
 use Binance\Client\Staking\Model\SetOnChainYieldsLockedProductRedeemOptionResponse;
+use Binance\Client\Staking\Model\SetSoftStakingResponse;
 use Binance\Client\Staking\Model\SolStakingAccountResponse;
 use Binance\Client\Staking\Model\SubscribeEthStakingRequest;
 use Binance\Client\Staking\Model\SubscribeEthStakingResponse;
@@ -63,6 +66,11 @@ class StakingRestApi
     private $onChainYieldsApi;
 
     /**
+     * @var SoftStakingApi
+     */
+    private $softStakingApi;
+
+    /**
      * @var SolStakingApi
      */
     private $solStakingApi;
@@ -72,6 +80,7 @@ class StakingRestApi
     ) {
         $this->ethStakingApi = new EthStakingApi($clientConfig);
         $this->onChainYieldsApi = new OnChainYieldsApi($clientConfig);
+        $this->softStakingApi = new SoftStakingApi($clientConfig);
         $this->solStakingApi = new SolStakingApi($clientConfig);
     }
 
@@ -520,6 +529,66 @@ class StakingRestApi
     public function subscribeOnChainYieldsLockedProduct($subscribeOnChainYieldsLockedProductRequest): ApiResponse
     {
         return $this->onChainYieldsApi->subscribeOnChainYieldsLockedProduct($subscribeOnChainYieldsLockedProductRequest);
+    }
+
+    /**
+     * Operation getSoftStakingProductList.
+     *
+     * Get Soft Staking Product List (USER_DATA)
+     *
+     * @param null|string $asset      asset (optional)
+     * @param null|int    $current    Currently querying page. Start from 1. Default:1 (optional)
+     * @param null|int    $size       Default:10, Max:100 (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<GetSoftStakingProductListResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getSoftStakingProductList($asset = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    {
+        return $this->softStakingApi->getSoftStakingProductList($asset, $current, $size, $recvWindow);
+    }
+
+    /**
+     * Operation getSoftStakingRewardsHistory.
+     *
+     * Get Soft Staking Rewards History(USER_DATA)
+     *
+     * @param null|string $asset      asset (optional)
+     * @param null|int    $startTime  startTime (optional)
+     * @param null|int    $endTime    endTime (optional)
+     * @param null|int    $current    Currently querying page. Start from 1. Default:1 (optional)
+     * @param null|int    $size       Default:10, Max:100 (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<GetSoftStakingRewardsHistoryResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getSoftStakingRewardsHistory($asset = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    {
+        return $this->softStakingApi->getSoftStakingRewardsHistory($asset, $startTime, $endTime, $current, $size, $recvWindow);
+    }
+
+    /**
+     * Operation setSoftStaking.
+     *
+     * Set Soft Staking (USER_DATA)
+     *
+     * @param bool     $softStaking true or false (required)
+     * @param null|int $recvWindow  recvWindow (optional)
+     *
+     * @return ApiResponse<SetSoftStakingResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function setSoftStaking($softStaking, $recvWindow = null): ApiResponse
+    {
+        return $this->softStakingApi->setSoftStaking($softStaking, $recvWindow);
     }
 
     /**

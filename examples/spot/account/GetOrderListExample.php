@@ -23,7 +23,7 @@ function getOrderListExample()
     $api = new SpotRestApi($configurationBuilder->build());
     $orderListId = 1;
     $origClientOrderId = '';
-    $recvWindow = 5000;
+    $recvWindow = 5000.0;
     $response = $api->getOrderList($orderListId, $origClientOrderId, $recvWindow);
     print_r($response);
 }

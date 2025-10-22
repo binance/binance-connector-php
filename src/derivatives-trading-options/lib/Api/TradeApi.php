@@ -1719,7 +1719,6 @@ class TradeApi
      * @param null|int    $orderId    Order ID, e.g 4611875134427365377 (optional)
      * @param null|int    $startTime  Start Time, e.g 1593511200000 (optional)
      * @param null|int    $endTime    End Time, e.g 1593512200000 (optional)
-     * @param null|int    $limit      Number of result sets returned Default:100 Max:1000 (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryCurrentOpenOptionOrdersResponse>
@@ -1727,9 +1726,9 @@ class TradeApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function queryCurrentOpenOptionOrders($symbol = null, $orderId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
+    public function queryCurrentOpenOptionOrders($symbol = null, $orderId = null, $startTime = null, $endTime = null, $recvWindow = null): ApiResponse
     {
-        return $this->queryCurrentOpenOptionOrdersWithHttpInfo($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
+        return $this->queryCurrentOpenOptionOrdersWithHttpInfo($symbol, $orderId, $startTime, $endTime, $recvWindow);
     }
 
     /**
@@ -1741,7 +1740,6 @@ class TradeApi
      * @param null|int    $orderId    Order ID, e.g 4611875134427365377 (optional)
      * @param null|int    $startTime  Start Time, e.g 1593511200000 (optional)
      * @param null|int    $endTime    End Time, e.g 1593512200000 (optional)
-     * @param null|int    $limit      Number of result sets returned Default:100 Max:1000 (optional)
      * @param null|int    $recvWindow (optional)
      *
      * @return ApiResponse<QueryCurrentOpenOptionOrdersResponse>
@@ -1749,9 +1747,9 @@ class TradeApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function queryCurrentOpenOptionOrdersWithHttpInfo($symbol = null, $orderId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
+    public function queryCurrentOpenOptionOrdersWithHttpInfo($symbol = null, $orderId = null, $startTime = null, $endTime = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->queryCurrentOpenOptionOrdersRequest($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
+        $request = $this->queryCurrentOpenOptionOrdersRequest($symbol, $orderId, $startTime, $endTime, $recvWindow);
 
         try {
             try {
@@ -1825,14 +1823,13 @@ class TradeApi
      * @param null|int    $orderId    Order ID, e.g 4611875134427365377 (optional)
      * @param null|int    $startTime  Start Time, e.g 1593511200000 (optional)
      * @param null|int    $endTime    End Time, e.g 1593512200000 (optional)
-     * @param null|int    $limit      Number of result sets returned Default:100 Max:1000 (optional)
      * @param null|int    $recvWindow (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function queryCurrentOpenOptionOrdersRequest($symbol = null, $orderId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null)
+    public function queryCurrentOpenOptionOrdersRequest($symbol = null, $orderId = null, $startTime = null, $endTime = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['queryCurrentOpenOptionOrders'][0];
 
@@ -1874,15 +1871,6 @@ class TradeApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $endTime,
             'endTime', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode

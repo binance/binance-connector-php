@@ -61,41 +61,34 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
      * @var string[]
      */
     protected static $openAPITypes = [
-        'addressRegex' => 'string',
-        'coin' => 'string',
-        'depositDesc' => 'string',
-        'depositEnable' => 'bool',
-        'isDefault' => 'bool',
-        'memoRegex' => 'string',
-        'minConfirm' => 'int',
-        'name' => 'string',
         'network' => 'string',
-        'specialTips' => 'string',
-        'unLockConfirm' => 'int',
-        'withdrawDesc' => 'string',
-        'withdrawEnable' => 'bool',
-        'withdrawFee' => 'string',
+        'coin' => 'string',
         'withdrawIntegerMultiple' => 'string',
-        'withdrawMax' => 'string',
+        'isDefault' => 'bool',
+        'depositEnable' => 'bool',
+        'withdrawEnable' => 'bool',
+        'depositDesc' => 'string',
+        'withdrawDesc' => 'string',
+        'specialTips' => 'string',
+        'specialWithdrawTips' => 'string',
+        'name' => 'string',
+        'resetAddressStatus' => 'bool',
+        'addressRegex' => 'string',
+        'memoRegex' => 'string',
+        'withdrawFee' => 'string',
         'withdrawMin' => 'string',
+        'withdrawMax' => 'string',
         'withdrawInternalMin' => 'string',
+        'depositDust' => 'string',
+        'minConfirm' => 'int',
+        'unLockConfirm' => 'int',
         'sameAddress' => 'bool',
+        'withdrawTag' => 'bool',
         'estimatedArrivalTime' => 'int',
         'busy' => 'bool',
         'contractAddressUrl' => 'string',
         'contractAddress' => 'string',
-        'depositAllEnable' => 'bool',
-        'withdrawAllEnable' => 'bool',
-        'free' => 'string',
-        'locked' => 'string',
-        'freeze' => 'string',
-        'withdrawing' => 'string',
-        'ipoing' => 'string',
-        'ipoable' => 'string',
-        'storage' => 'string',
-        'isLegalMoney' => 'bool',
-        'trading' => 'bool',
-        'networkList' => '\Binance\Client\Wallet\Model\AllCoinsInformationResponseInnerNetworkListInnerNetworkListInner[]',
+        'denomination' => 'int',
     ];
 
     /**
@@ -108,41 +101,34 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'addressRegex' => null,
-        'coin' => null,
-        'depositDesc' => null,
-        'depositEnable' => null,
-        'isDefault' => null,
-        'memoRegex' => null,
-        'minConfirm' => 'int64',
-        'name' => null,
         'network' => null,
-        'specialTips' => null,
-        'unLockConfirm' => 'int64',
-        'withdrawDesc' => null,
-        'withdrawEnable' => null,
-        'withdrawFee' => null,
+        'coin' => null,
         'withdrawIntegerMultiple' => null,
-        'withdrawMax' => null,
+        'isDefault' => null,
+        'depositEnable' => null,
+        'withdrawEnable' => null,
+        'depositDesc' => null,
+        'withdrawDesc' => null,
+        'specialTips' => null,
+        'specialWithdrawTips' => null,
+        'name' => null,
+        'resetAddressStatus' => null,
+        'addressRegex' => null,
+        'memoRegex' => null,
+        'withdrawFee' => null,
         'withdrawMin' => null,
+        'withdrawMax' => null,
         'withdrawInternalMin' => null,
+        'depositDust' => null,
+        'minConfirm' => 'int64',
+        'unLockConfirm' => 'int64',
         'sameAddress' => null,
+        'withdrawTag' => null,
         'estimatedArrivalTime' => 'int64',
         'busy' => null,
         'contractAddressUrl' => null,
         'contractAddress' => null,
-        'depositAllEnable' => null,
-        'withdrawAllEnable' => null,
-        'free' => null,
-        'locked' => null,
-        'freeze' => null,
-        'withdrawing' => null,
-        'ipoing' => null,
-        'ipoable' => null,
-        'storage' => null,
-        'isLegalMoney' => null,
-        'trading' => null,
-        'networkList' => null,
+        'denomination' => 'int64',
     ];
 
     /**
@@ -151,41 +137,34 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'addressRegex' => false,
-        'coin' => false,
-        'depositDesc' => false,
-        'depositEnable' => false,
-        'isDefault' => false,
-        'memoRegex' => false,
-        'minConfirm' => false,
-        'name' => false,
         'network' => false,
-        'specialTips' => false,
-        'unLockConfirm' => false,
-        'withdrawDesc' => false,
-        'withdrawEnable' => false,
-        'withdrawFee' => false,
+        'coin' => false,
         'withdrawIntegerMultiple' => false,
-        'withdrawMax' => false,
+        'isDefault' => false,
+        'depositEnable' => false,
+        'withdrawEnable' => false,
+        'depositDesc' => false,
+        'withdrawDesc' => false,
+        'specialTips' => false,
+        'specialWithdrawTips' => false,
+        'name' => false,
+        'resetAddressStatus' => false,
+        'addressRegex' => false,
+        'memoRegex' => false,
+        'withdrawFee' => false,
         'withdrawMin' => false,
+        'withdrawMax' => false,
         'withdrawInternalMin' => false,
+        'depositDust' => false,
+        'minConfirm' => false,
+        'unLockConfirm' => false,
         'sameAddress' => false,
+        'withdrawTag' => false,
         'estimatedArrivalTime' => false,
         'busy' => false,
         'contractAddressUrl' => false,
         'contractAddress' => false,
-        'depositAllEnable' => false,
-        'withdrawAllEnable' => false,
-        'free' => false,
-        'locked' => false,
-        'freeze' => false,
-        'withdrawing' => false,
-        'ipoing' => false,
-        'ipoable' => false,
-        'storage' => false,
-        'isLegalMoney' => false,
-        'trading' => false,
-        'networkList' => false,
+        'denomination' => false,
     ];
 
     /**
@@ -202,41 +181,34 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
      * @var string[]
      */
     protected static $attributeMap = [
-        'addressRegex' => 'addressRegex',
-        'coin' => 'coin',
-        'depositDesc' => 'depositDesc',
-        'depositEnable' => 'depositEnable',
-        'isDefault' => 'isDefault',
-        'memoRegex' => 'memoRegex',
-        'minConfirm' => 'minConfirm',
-        'name' => 'name',
         'network' => 'network',
-        'specialTips' => 'specialTips',
-        'unLockConfirm' => 'unLockConfirm',
-        'withdrawDesc' => 'withdrawDesc',
-        'withdrawEnable' => 'withdrawEnable',
-        'withdrawFee' => 'withdrawFee',
+        'coin' => 'coin',
         'withdrawIntegerMultiple' => 'withdrawIntegerMultiple',
-        'withdrawMax' => 'withdrawMax',
+        'isDefault' => 'isDefault',
+        'depositEnable' => 'depositEnable',
+        'withdrawEnable' => 'withdrawEnable',
+        'depositDesc' => 'depositDesc',
+        'withdrawDesc' => 'withdrawDesc',
+        'specialTips' => 'specialTips',
+        'specialWithdrawTips' => 'specialWithdrawTips',
+        'name' => 'name',
+        'resetAddressStatus' => 'resetAddressStatus',
+        'addressRegex' => 'addressRegex',
+        'memoRegex' => 'memoRegex',
+        'withdrawFee' => 'withdrawFee',
         'withdrawMin' => 'withdrawMin',
+        'withdrawMax' => 'withdrawMax',
         'withdrawInternalMin' => 'withdrawInternalMin',
+        'depositDust' => 'depositDust',
+        'minConfirm' => 'minConfirm',
+        'unLockConfirm' => 'unLockConfirm',
         'sameAddress' => 'sameAddress',
+        'withdrawTag' => 'withdrawTag',
         'estimatedArrivalTime' => 'estimatedArrivalTime',
         'busy' => 'busy',
         'contractAddressUrl' => 'contractAddressUrl',
         'contractAddress' => 'contractAddress',
-        'depositAllEnable' => 'depositAllEnable',
-        'withdrawAllEnable' => 'withdrawAllEnable',
-        'free' => 'free',
-        'locked' => 'locked',
-        'freeze' => 'freeze',
-        'withdrawing' => 'withdrawing',
-        'ipoing' => 'ipoing',
-        'ipoable' => 'ipoable',
-        'storage' => 'storage',
-        'isLegalMoney' => 'isLegalMoney',
-        'trading' => 'trading',
-        'networkList' => 'networkList',
+        'denomination' => 'denomination',
     ];
 
     /**
@@ -245,41 +217,34 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
      * @var string[]
      */
     protected static $setters = [
-        'addressRegex' => 'setAddressRegex',
-        'coin' => 'setCoin',
-        'depositDesc' => 'setDepositDesc',
-        'depositEnable' => 'setDepositEnable',
-        'isDefault' => 'setIsDefault',
-        'memoRegex' => 'setMemoRegex',
-        'minConfirm' => 'setMinConfirm',
-        'name' => 'setName',
         'network' => 'setNetwork',
-        'specialTips' => 'setSpecialTips',
-        'unLockConfirm' => 'setUnLockConfirm',
-        'withdrawDesc' => 'setWithdrawDesc',
-        'withdrawEnable' => 'setWithdrawEnable',
-        'withdrawFee' => 'setWithdrawFee',
+        'coin' => 'setCoin',
         'withdrawIntegerMultiple' => 'setWithdrawIntegerMultiple',
-        'withdrawMax' => 'setWithdrawMax',
+        'isDefault' => 'setIsDefault',
+        'depositEnable' => 'setDepositEnable',
+        'withdrawEnable' => 'setWithdrawEnable',
+        'depositDesc' => 'setDepositDesc',
+        'withdrawDesc' => 'setWithdrawDesc',
+        'specialTips' => 'setSpecialTips',
+        'specialWithdrawTips' => 'setSpecialWithdrawTips',
+        'name' => 'setName',
+        'resetAddressStatus' => 'setResetAddressStatus',
+        'addressRegex' => 'setAddressRegex',
+        'memoRegex' => 'setMemoRegex',
+        'withdrawFee' => 'setWithdrawFee',
         'withdrawMin' => 'setWithdrawMin',
+        'withdrawMax' => 'setWithdrawMax',
         'withdrawInternalMin' => 'setWithdrawInternalMin',
+        'depositDust' => 'setDepositDust',
+        'minConfirm' => 'setMinConfirm',
+        'unLockConfirm' => 'setUnLockConfirm',
         'sameAddress' => 'setSameAddress',
+        'withdrawTag' => 'setWithdrawTag',
         'estimatedArrivalTime' => 'setEstimatedArrivalTime',
         'busy' => 'setBusy',
         'contractAddressUrl' => 'setContractAddressUrl',
         'contractAddress' => 'setContractAddress',
-        'depositAllEnable' => 'setDepositAllEnable',
-        'withdrawAllEnable' => 'setWithdrawAllEnable',
-        'free' => 'setFree',
-        'locked' => 'setLocked',
-        'freeze' => 'setFreeze',
-        'withdrawing' => 'setWithdrawing',
-        'ipoing' => 'setIpoing',
-        'ipoable' => 'setIpoable',
-        'storage' => 'setStorage',
-        'isLegalMoney' => 'setIsLegalMoney',
-        'trading' => 'setTrading',
-        'networkList' => 'setNetworkList',
+        'denomination' => 'setDenomination',
     ];
 
     /**
@@ -288,41 +253,34 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
      * @var string[]
      */
     protected static $getters = [
-        'addressRegex' => 'getAddressRegex',
-        'coin' => 'getCoin',
-        'depositDesc' => 'getDepositDesc',
-        'depositEnable' => 'getDepositEnable',
-        'isDefault' => 'getIsDefault',
-        'memoRegex' => 'getMemoRegex',
-        'minConfirm' => 'getMinConfirm',
-        'name' => 'getName',
         'network' => 'getNetwork',
-        'specialTips' => 'getSpecialTips',
-        'unLockConfirm' => 'getUnLockConfirm',
-        'withdrawDesc' => 'getWithdrawDesc',
-        'withdrawEnable' => 'getWithdrawEnable',
-        'withdrawFee' => 'getWithdrawFee',
+        'coin' => 'getCoin',
         'withdrawIntegerMultiple' => 'getWithdrawIntegerMultiple',
-        'withdrawMax' => 'getWithdrawMax',
+        'isDefault' => 'getIsDefault',
+        'depositEnable' => 'getDepositEnable',
+        'withdrawEnable' => 'getWithdrawEnable',
+        'depositDesc' => 'getDepositDesc',
+        'withdrawDesc' => 'getWithdrawDesc',
+        'specialTips' => 'getSpecialTips',
+        'specialWithdrawTips' => 'getSpecialWithdrawTips',
+        'name' => 'getName',
+        'resetAddressStatus' => 'getResetAddressStatus',
+        'addressRegex' => 'getAddressRegex',
+        'memoRegex' => 'getMemoRegex',
+        'withdrawFee' => 'getWithdrawFee',
         'withdrawMin' => 'getWithdrawMin',
+        'withdrawMax' => 'getWithdrawMax',
         'withdrawInternalMin' => 'getWithdrawInternalMin',
+        'depositDust' => 'getDepositDust',
+        'minConfirm' => 'getMinConfirm',
+        'unLockConfirm' => 'getUnLockConfirm',
         'sameAddress' => 'getSameAddress',
+        'withdrawTag' => 'getWithdrawTag',
         'estimatedArrivalTime' => 'getEstimatedArrivalTime',
         'busy' => 'getBusy',
         'contractAddressUrl' => 'getContractAddressUrl',
         'contractAddress' => 'getContractAddress',
-        'depositAllEnable' => 'getDepositAllEnable',
-        'withdrawAllEnable' => 'getWithdrawAllEnable',
-        'free' => 'getFree',
-        'locked' => 'getLocked',
-        'freeze' => 'getFreeze',
-        'withdrawing' => 'getWithdrawing',
-        'ipoing' => 'getIpoing',
-        'ipoable' => 'getIpoable',
-        'storage' => 'getStorage',
-        'isLegalMoney' => 'getIsLegalMoney',
-        'trading' => 'getTrading',
-        'networkList' => 'getNetworkList',
+        'denomination' => 'getDenomination',
     ];
 
     /**
@@ -340,41 +298,34 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('addressRegex', $data ?? [], null);
-        $this->setIfExists('coin', $data ?? [], null);
-        $this->setIfExists('depositDesc', $data ?? [], null);
-        $this->setIfExists('depositEnable', $data ?? [], null);
-        $this->setIfExists('isDefault', $data ?? [], null);
-        $this->setIfExists('memoRegex', $data ?? [], null);
-        $this->setIfExists('minConfirm', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('network', $data ?? [], null);
-        $this->setIfExists('specialTips', $data ?? [], null);
-        $this->setIfExists('unLockConfirm', $data ?? [], null);
-        $this->setIfExists('withdrawDesc', $data ?? [], null);
-        $this->setIfExists('withdrawEnable', $data ?? [], null);
-        $this->setIfExists('withdrawFee', $data ?? [], null);
+        $this->setIfExists('coin', $data ?? [], null);
         $this->setIfExists('withdrawIntegerMultiple', $data ?? [], null);
-        $this->setIfExists('withdrawMax', $data ?? [], null);
+        $this->setIfExists('isDefault', $data ?? [], null);
+        $this->setIfExists('depositEnable', $data ?? [], null);
+        $this->setIfExists('withdrawEnable', $data ?? [], null);
+        $this->setIfExists('depositDesc', $data ?? [], null);
+        $this->setIfExists('withdrawDesc', $data ?? [], null);
+        $this->setIfExists('specialTips', $data ?? [], null);
+        $this->setIfExists('specialWithdrawTips', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('resetAddressStatus', $data ?? [], null);
+        $this->setIfExists('addressRegex', $data ?? [], null);
+        $this->setIfExists('memoRegex', $data ?? [], null);
+        $this->setIfExists('withdrawFee', $data ?? [], null);
         $this->setIfExists('withdrawMin', $data ?? [], null);
+        $this->setIfExists('withdrawMax', $data ?? [], null);
         $this->setIfExists('withdrawInternalMin', $data ?? [], null);
+        $this->setIfExists('depositDust', $data ?? [], null);
+        $this->setIfExists('minConfirm', $data ?? [], null);
+        $this->setIfExists('unLockConfirm', $data ?? [], null);
         $this->setIfExists('sameAddress', $data ?? [], null);
+        $this->setIfExists('withdrawTag', $data ?? [], null);
         $this->setIfExists('estimatedArrivalTime', $data ?? [], null);
         $this->setIfExists('busy', $data ?? [], null);
         $this->setIfExists('contractAddressUrl', $data ?? [], null);
         $this->setIfExists('contractAddress', $data ?? [], null);
-        $this->setIfExists('depositAllEnable', $data ?? [], null);
-        $this->setIfExists('withdrawAllEnable', $data ?? [], null);
-        $this->setIfExists('free', $data ?? [], null);
-        $this->setIfExists('locked', $data ?? [], null);
-        $this->setIfExists('freeze', $data ?? [], null);
-        $this->setIfExists('withdrawing', $data ?? [], null);
-        $this->setIfExists('ipoing', $data ?? [], null);
-        $this->setIfExists('ipoable', $data ?? [], null);
-        $this->setIfExists('storage', $data ?? [], null);
-        $this->setIfExists('isLegalMoney', $data ?? [], null);
-        $this->setIfExists('trading', $data ?? [], null);
-        $this->setIfExists('networkList', $data ?? [], null);
+        $this->setIfExists('denomination', $data ?? [], null);
     }
 
     /**
@@ -506,28 +457,28 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
     }
 
     /**
-     * Gets addressRegex.
+     * Gets network.
      *
      * @return null|string
      */
-    public function getAddressRegex()
+    public function getNetwork()
     {
-        return $this->container['addressRegex'];
+        return $this->container['network'];
     }
 
     /**
-     * Sets addressRegex.
+     * Sets network.
      *
-     * @param null|string $addressRegex addressRegex
+     * @param null|string $network network
      *
      * @return self
      */
-    public function setAddressRegex($addressRegex)
+    public function setNetwork($network)
     {
-        if (is_null($addressRegex)) {
-            throw new \InvalidArgumentException('non-nullable addressRegex cannot be null');
+        if (is_null($network)) {
+            throw new \InvalidArgumentException('non-nullable network cannot be null');
         }
-        $this->container['addressRegex'] = $addressRegex;
+        $this->container['network'] = $network;
 
         return $this;
     }
@@ -560,55 +511,28 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
     }
 
     /**
-     * Gets depositDesc.
+     * Gets withdrawIntegerMultiple.
      *
      * @return null|string
      */
-    public function getDepositDesc()
+    public function getWithdrawIntegerMultiple()
     {
-        return $this->container['depositDesc'];
+        return $this->container['withdrawIntegerMultiple'];
     }
 
     /**
-     * Sets depositDesc.
+     * Sets withdrawIntegerMultiple.
      *
-     * @param null|string $depositDesc depositDesc
+     * @param null|string $withdrawIntegerMultiple withdrawIntegerMultiple
      *
      * @return self
      */
-    public function setDepositDesc($depositDesc)
+    public function setWithdrawIntegerMultiple($withdrawIntegerMultiple)
     {
-        if (is_null($depositDesc)) {
-            throw new \InvalidArgumentException('non-nullable depositDesc cannot be null');
+        if (is_null($withdrawIntegerMultiple)) {
+            throw new \InvalidArgumentException('non-nullable withdrawIntegerMultiple cannot be null');
         }
-        $this->container['depositDesc'] = $depositDesc;
-
-        return $this;
-    }
-
-    /**
-     * Gets depositEnable.
-     *
-     * @return null|bool
-     */
-    public function getDepositEnable()
-    {
-        return $this->container['depositEnable'];
-    }
-
-    /**
-     * Sets depositEnable.
-     *
-     * @param null|bool $depositEnable depositEnable
-     *
-     * @return self
-     */
-    public function setDepositEnable($depositEnable)
-    {
-        if (is_null($depositEnable)) {
-            throw new \InvalidArgumentException('non-nullable depositEnable cannot be null');
-        }
-        $this->container['depositEnable'] = $depositEnable;
+        $this->container['withdrawIntegerMultiple'] = $withdrawIntegerMultiple;
 
         return $this;
     }
@@ -641,190 +565,28 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
     }
 
     /**
-     * Gets memoRegex.
+     * Gets depositEnable.
      *
-     * @return null|string
+     * @return null|bool
      */
-    public function getMemoRegex()
+    public function getDepositEnable()
     {
-        return $this->container['memoRegex'];
+        return $this->container['depositEnable'];
     }
 
     /**
-     * Sets memoRegex.
+     * Sets depositEnable.
      *
-     * @param null|string $memoRegex memoRegex
+     * @param null|bool $depositEnable depositEnable
      *
      * @return self
      */
-    public function setMemoRegex($memoRegex)
+    public function setDepositEnable($depositEnable)
     {
-        if (is_null($memoRegex)) {
-            throw new \InvalidArgumentException('non-nullable memoRegex cannot be null');
+        if (is_null($depositEnable)) {
+            throw new \InvalidArgumentException('non-nullable depositEnable cannot be null');
         }
-        $this->container['memoRegex'] = $memoRegex;
-
-        return $this;
-    }
-
-    /**
-     * Gets minConfirm.
-     *
-     * @return null|int
-     */
-    public function getMinConfirm()
-    {
-        return $this->container['minConfirm'];
-    }
-
-    /**
-     * Sets minConfirm.
-     *
-     * @param null|int $minConfirm minConfirm
-     *
-     * @return self
-     */
-    public function setMinConfirm($minConfirm)
-    {
-        if (is_null($minConfirm)) {
-            throw new \InvalidArgumentException('non-nullable minConfirm cannot be null');
-        }
-        $this->container['minConfirm'] = $minConfirm;
-
-        return $this;
-    }
-
-    /**
-     * Gets name.
-     *
-     * @return null|string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name.
-     *
-     * @param null|string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets network.
-     *
-     * @return null|string
-     */
-    public function getNetwork()
-    {
-        return $this->container['network'];
-    }
-
-    /**
-     * Sets network.
-     *
-     * @param null|string $network network
-     *
-     * @return self
-     */
-    public function setNetwork($network)
-    {
-        if (is_null($network)) {
-            throw new \InvalidArgumentException('non-nullable network cannot be null');
-        }
-        $this->container['network'] = $network;
-
-        return $this;
-    }
-
-    /**
-     * Gets specialTips.
-     *
-     * @return null|string
-     */
-    public function getSpecialTips()
-    {
-        return $this->container['specialTips'];
-    }
-
-    /**
-     * Sets specialTips.
-     *
-     * @param null|string $specialTips specialTips
-     *
-     * @return self
-     */
-    public function setSpecialTips($specialTips)
-    {
-        if (is_null($specialTips)) {
-            throw new \InvalidArgumentException('non-nullable specialTips cannot be null');
-        }
-        $this->container['specialTips'] = $specialTips;
-
-        return $this;
-    }
-
-    /**
-     * Gets unLockConfirm.
-     *
-     * @return null|int
-     */
-    public function getUnLockConfirm()
-    {
-        return $this->container['unLockConfirm'];
-    }
-
-    /**
-     * Sets unLockConfirm.
-     *
-     * @param null|int $unLockConfirm unLockConfirm
-     *
-     * @return self
-     */
-    public function setUnLockConfirm($unLockConfirm)
-    {
-        if (is_null($unLockConfirm)) {
-            throw new \InvalidArgumentException('non-nullable unLockConfirm cannot be null');
-        }
-        $this->container['unLockConfirm'] = $unLockConfirm;
-
-        return $this;
-    }
-
-    /**
-     * Gets withdrawDesc.
-     *
-     * @return null|string
-     */
-    public function getWithdrawDesc()
-    {
-        return $this->container['withdrawDesc'];
-    }
-
-    /**
-     * Sets withdrawDesc.
-     *
-     * @param null|string $withdrawDesc withdrawDesc
-     *
-     * @return self
-     */
-    public function setWithdrawDesc($withdrawDesc)
-    {
-        if (is_null($withdrawDesc)) {
-            throw new \InvalidArgumentException('non-nullable withdrawDesc cannot be null');
-        }
-        $this->container['withdrawDesc'] = $withdrawDesc;
+        $this->container['depositEnable'] = $depositEnable;
 
         return $this;
     }
@@ -857,6 +619,222 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
     }
 
     /**
+     * Gets depositDesc.
+     *
+     * @return null|string
+     */
+    public function getDepositDesc()
+    {
+        return $this->container['depositDesc'];
+    }
+
+    /**
+     * Sets depositDesc.
+     *
+     * @param null|string $depositDesc depositDesc
+     *
+     * @return self
+     */
+    public function setDepositDesc($depositDesc)
+    {
+        if (is_null($depositDesc)) {
+            throw new \InvalidArgumentException('non-nullable depositDesc cannot be null');
+        }
+        $this->container['depositDesc'] = $depositDesc;
+
+        return $this;
+    }
+
+    /**
+     * Gets withdrawDesc.
+     *
+     * @return null|string
+     */
+    public function getWithdrawDesc()
+    {
+        return $this->container['withdrawDesc'];
+    }
+
+    /**
+     * Sets withdrawDesc.
+     *
+     * @param null|string $withdrawDesc withdrawDesc
+     *
+     * @return self
+     */
+    public function setWithdrawDesc($withdrawDesc)
+    {
+        if (is_null($withdrawDesc)) {
+            throw new \InvalidArgumentException('non-nullable withdrawDesc cannot be null');
+        }
+        $this->container['withdrawDesc'] = $withdrawDesc;
+
+        return $this;
+    }
+
+    /**
+     * Gets specialTips.
+     *
+     * @return null|string
+     */
+    public function getSpecialTips()
+    {
+        return $this->container['specialTips'];
+    }
+
+    /**
+     * Sets specialTips.
+     *
+     * @param null|string $specialTips specialTips
+     *
+     * @return self
+     */
+    public function setSpecialTips($specialTips)
+    {
+        if (is_null($specialTips)) {
+            throw new \InvalidArgumentException('non-nullable specialTips cannot be null');
+        }
+        $this->container['specialTips'] = $specialTips;
+
+        return $this;
+    }
+
+    /**
+     * Gets specialWithdrawTips.
+     *
+     * @return null|string
+     */
+    public function getSpecialWithdrawTips()
+    {
+        return $this->container['specialWithdrawTips'];
+    }
+
+    /**
+     * Sets specialWithdrawTips.
+     *
+     * @param null|string $specialWithdrawTips specialWithdrawTips
+     *
+     * @return self
+     */
+    public function setSpecialWithdrawTips($specialWithdrawTips)
+    {
+        if (is_null($specialWithdrawTips)) {
+            throw new \InvalidArgumentException('non-nullable specialWithdrawTips cannot be null');
+        }
+        $this->container['specialWithdrawTips'] = $specialWithdrawTips;
+
+        return $this;
+    }
+
+    /**
+     * Gets name.
+     *
+     * @return null|string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name.
+     *
+     * @param null|string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets resetAddressStatus.
+     *
+     * @return null|bool
+     */
+    public function getResetAddressStatus()
+    {
+        return $this->container['resetAddressStatus'];
+    }
+
+    /**
+     * Sets resetAddressStatus.
+     *
+     * @param null|bool $resetAddressStatus resetAddressStatus
+     *
+     * @return self
+     */
+    public function setResetAddressStatus($resetAddressStatus)
+    {
+        if (is_null($resetAddressStatus)) {
+            throw new \InvalidArgumentException('non-nullable resetAddressStatus cannot be null');
+        }
+        $this->container['resetAddressStatus'] = $resetAddressStatus;
+
+        return $this;
+    }
+
+    /**
+     * Gets addressRegex.
+     *
+     * @return null|string
+     */
+    public function getAddressRegex()
+    {
+        return $this->container['addressRegex'];
+    }
+
+    /**
+     * Sets addressRegex.
+     *
+     * @param null|string $addressRegex addressRegex
+     *
+     * @return self
+     */
+    public function setAddressRegex($addressRegex)
+    {
+        if (is_null($addressRegex)) {
+            throw new \InvalidArgumentException('non-nullable addressRegex cannot be null');
+        }
+        $this->container['addressRegex'] = $addressRegex;
+
+        return $this;
+    }
+
+    /**
+     * Gets memoRegex.
+     *
+     * @return null|string
+     */
+    public function getMemoRegex()
+    {
+        return $this->container['memoRegex'];
+    }
+
+    /**
+     * Sets memoRegex.
+     *
+     * @param null|string $memoRegex memoRegex
+     *
+     * @return self
+     */
+    public function setMemoRegex($memoRegex)
+    {
+        if (is_null($memoRegex)) {
+            throw new \InvalidArgumentException('non-nullable memoRegex cannot be null');
+        }
+        $this->container['memoRegex'] = $memoRegex;
+
+        return $this;
+    }
+
+    /**
      * Gets withdrawFee.
      *
      * @return null|string
@@ -879,60 +857,6 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
             throw new \InvalidArgumentException('non-nullable withdrawFee cannot be null');
         }
         $this->container['withdrawFee'] = $withdrawFee;
-
-        return $this;
-    }
-
-    /**
-     * Gets withdrawIntegerMultiple.
-     *
-     * @return null|string
-     */
-    public function getWithdrawIntegerMultiple()
-    {
-        return $this->container['withdrawIntegerMultiple'];
-    }
-
-    /**
-     * Sets withdrawIntegerMultiple.
-     *
-     * @param null|string $withdrawIntegerMultiple withdrawIntegerMultiple
-     *
-     * @return self
-     */
-    public function setWithdrawIntegerMultiple($withdrawIntegerMultiple)
-    {
-        if (is_null($withdrawIntegerMultiple)) {
-            throw new \InvalidArgumentException('non-nullable withdrawIntegerMultiple cannot be null');
-        }
-        $this->container['withdrawIntegerMultiple'] = $withdrawIntegerMultiple;
-
-        return $this;
-    }
-
-    /**
-     * Gets withdrawMax.
-     *
-     * @return null|string
-     */
-    public function getWithdrawMax()
-    {
-        return $this->container['withdrawMax'];
-    }
-
-    /**
-     * Sets withdrawMax.
-     *
-     * @param null|string $withdrawMax withdrawMax
-     *
-     * @return self
-     */
-    public function setWithdrawMax($withdrawMax)
-    {
-        if (is_null($withdrawMax)) {
-            throw new \InvalidArgumentException('non-nullable withdrawMax cannot be null');
-        }
-        $this->container['withdrawMax'] = $withdrawMax;
 
         return $this;
     }
@@ -965,6 +889,33 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
     }
 
     /**
+     * Gets withdrawMax.
+     *
+     * @return null|string
+     */
+    public function getWithdrawMax()
+    {
+        return $this->container['withdrawMax'];
+    }
+
+    /**
+     * Sets withdrawMax.
+     *
+     * @param null|string $withdrawMax withdrawMax
+     *
+     * @return self
+     */
+    public function setWithdrawMax($withdrawMax)
+    {
+        if (is_null($withdrawMax)) {
+            throw new \InvalidArgumentException('non-nullable withdrawMax cannot be null');
+        }
+        $this->container['withdrawMax'] = $withdrawMax;
+
+        return $this;
+    }
+
+    /**
      * Gets withdrawInternalMin.
      *
      * @return null|string
@@ -992,6 +943,87 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
     }
 
     /**
+     * Gets depositDust.
+     *
+     * @return null|string
+     */
+    public function getDepositDust()
+    {
+        return $this->container['depositDust'];
+    }
+
+    /**
+     * Sets depositDust.
+     *
+     * @param null|string $depositDust depositDust
+     *
+     * @return self
+     */
+    public function setDepositDust($depositDust)
+    {
+        if (is_null($depositDust)) {
+            throw new \InvalidArgumentException('non-nullable depositDust cannot be null');
+        }
+        $this->container['depositDust'] = $depositDust;
+
+        return $this;
+    }
+
+    /**
+     * Gets minConfirm.
+     *
+     * @return null|int
+     */
+    public function getMinConfirm()
+    {
+        return $this->container['minConfirm'];
+    }
+
+    /**
+     * Sets minConfirm.
+     *
+     * @param null|int $minConfirm minConfirm
+     *
+     * @return self
+     */
+    public function setMinConfirm($minConfirm)
+    {
+        if (is_null($minConfirm)) {
+            throw new \InvalidArgumentException('non-nullable minConfirm cannot be null');
+        }
+        $this->container['minConfirm'] = $minConfirm;
+
+        return $this;
+    }
+
+    /**
+     * Gets unLockConfirm.
+     *
+     * @return null|int
+     */
+    public function getUnLockConfirm()
+    {
+        return $this->container['unLockConfirm'];
+    }
+
+    /**
+     * Sets unLockConfirm.
+     *
+     * @param null|int $unLockConfirm unLockConfirm
+     *
+     * @return self
+     */
+    public function setUnLockConfirm($unLockConfirm)
+    {
+        if (is_null($unLockConfirm)) {
+            throw new \InvalidArgumentException('non-nullable unLockConfirm cannot be null');
+        }
+        $this->container['unLockConfirm'] = $unLockConfirm;
+
+        return $this;
+    }
+
+    /**
      * Gets sameAddress.
      *
      * @return null|bool
@@ -1014,6 +1046,33 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
             throw new \InvalidArgumentException('non-nullable sameAddress cannot be null');
         }
         $this->container['sameAddress'] = $sameAddress;
+
+        return $this;
+    }
+
+    /**
+     * Gets withdrawTag.
+     *
+     * @return null|bool
+     */
+    public function getWithdrawTag()
+    {
+        return $this->container['withdrawTag'];
+    }
+
+    /**
+     * Sets withdrawTag.
+     *
+     * @param null|bool $withdrawTag withdrawTag
+     *
+     * @return self
+     */
+    public function setWithdrawTag($withdrawTag)
+    {
+        if (is_null($withdrawTag)) {
+            throw new \InvalidArgumentException('non-nullable withdrawTag cannot be null');
+        }
+        $this->container['withdrawTag'] = $withdrawTag;
 
         return $this;
     }
@@ -1127,325 +1186,28 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
     }
 
     /**
-     * Gets depositAllEnable.
+     * Gets denomination.
      *
-     * @return null|bool
+     * @return null|int
      */
-    public function getDepositAllEnable()
+    public function getDenomination()
     {
-        return $this->container['depositAllEnable'];
+        return $this->container['denomination'];
     }
 
     /**
-     * Sets depositAllEnable.
+     * Sets denomination.
      *
-     * @param null|bool $depositAllEnable depositAllEnable
+     * @param null|int $denomination denomination
      *
      * @return self
      */
-    public function setDepositAllEnable($depositAllEnable)
+    public function setDenomination($denomination)
     {
-        if (is_null($depositAllEnable)) {
-            throw new \InvalidArgumentException('non-nullable depositAllEnable cannot be null');
+        if (is_null($denomination)) {
+            throw new \InvalidArgumentException('non-nullable denomination cannot be null');
         }
-        $this->container['depositAllEnable'] = $depositAllEnable;
-
-        return $this;
-    }
-
-    /**
-     * Gets withdrawAllEnable.
-     *
-     * @return null|bool
-     */
-    public function getWithdrawAllEnable()
-    {
-        return $this->container['withdrawAllEnable'];
-    }
-
-    /**
-     * Sets withdrawAllEnable.
-     *
-     * @param null|bool $withdrawAllEnable withdrawAllEnable
-     *
-     * @return self
-     */
-    public function setWithdrawAllEnable($withdrawAllEnable)
-    {
-        if (is_null($withdrawAllEnable)) {
-            throw new \InvalidArgumentException('non-nullable withdrawAllEnable cannot be null');
-        }
-        $this->container['withdrawAllEnable'] = $withdrawAllEnable;
-
-        return $this;
-    }
-
-    /**
-     * Gets free.
-     *
-     * @return null|string
-     */
-    public function getFree()
-    {
-        return $this->container['free'];
-    }
-
-    /**
-     * Sets free.
-     *
-     * @param null|string $free free
-     *
-     * @return self
-     */
-    public function setFree($free)
-    {
-        if (is_null($free)) {
-            throw new \InvalidArgumentException('non-nullable free cannot be null');
-        }
-        $this->container['free'] = $free;
-
-        return $this;
-    }
-
-    /**
-     * Gets locked.
-     *
-     * @return null|string
-     */
-    public function getLocked()
-    {
-        return $this->container['locked'];
-    }
-
-    /**
-     * Sets locked.
-     *
-     * @param null|string $locked locked
-     *
-     * @return self
-     */
-    public function setLocked($locked)
-    {
-        if (is_null($locked)) {
-            throw new \InvalidArgumentException('non-nullable locked cannot be null');
-        }
-        $this->container['locked'] = $locked;
-
-        return $this;
-    }
-
-    /**
-     * Gets freeze.
-     *
-     * @return null|string
-     */
-    public function getFreeze()
-    {
-        return $this->container['freeze'];
-    }
-
-    /**
-     * Sets freeze.
-     *
-     * @param null|string $freeze freeze
-     *
-     * @return self
-     */
-    public function setFreeze($freeze)
-    {
-        if (is_null($freeze)) {
-            throw new \InvalidArgumentException('non-nullable freeze cannot be null');
-        }
-        $this->container['freeze'] = $freeze;
-
-        return $this;
-    }
-
-    /**
-     * Gets withdrawing.
-     *
-     * @return null|string
-     */
-    public function getWithdrawing()
-    {
-        return $this->container['withdrawing'];
-    }
-
-    /**
-     * Sets withdrawing.
-     *
-     * @param null|string $withdrawing withdrawing
-     *
-     * @return self
-     */
-    public function setWithdrawing($withdrawing)
-    {
-        if (is_null($withdrawing)) {
-            throw new \InvalidArgumentException('non-nullable withdrawing cannot be null');
-        }
-        $this->container['withdrawing'] = $withdrawing;
-
-        return $this;
-    }
-
-    /**
-     * Gets ipoing.
-     *
-     * @return null|string
-     */
-    public function getIpoing()
-    {
-        return $this->container['ipoing'];
-    }
-
-    /**
-     * Sets ipoing.
-     *
-     * @param null|string $ipoing ipoing
-     *
-     * @return self
-     */
-    public function setIpoing($ipoing)
-    {
-        if (is_null($ipoing)) {
-            throw new \InvalidArgumentException('non-nullable ipoing cannot be null');
-        }
-        $this->container['ipoing'] = $ipoing;
-
-        return $this;
-    }
-
-    /**
-     * Gets ipoable.
-     *
-     * @return null|string
-     */
-    public function getIpoable()
-    {
-        return $this->container['ipoable'];
-    }
-
-    /**
-     * Sets ipoable.
-     *
-     * @param null|string $ipoable ipoable
-     *
-     * @return self
-     */
-    public function setIpoable($ipoable)
-    {
-        if (is_null($ipoable)) {
-            throw new \InvalidArgumentException('non-nullable ipoable cannot be null');
-        }
-        $this->container['ipoable'] = $ipoable;
-
-        return $this;
-    }
-
-    /**
-     * Gets storage.
-     *
-     * @return null|string
-     */
-    public function getStorage()
-    {
-        return $this->container['storage'];
-    }
-
-    /**
-     * Sets storage.
-     *
-     * @param null|string $storage storage
-     *
-     * @return self
-     */
-    public function setStorage($storage)
-    {
-        if (is_null($storage)) {
-            throw new \InvalidArgumentException('non-nullable storage cannot be null');
-        }
-        $this->container['storage'] = $storage;
-
-        return $this;
-    }
-
-    /**
-     * Gets isLegalMoney.
-     *
-     * @return null|bool
-     */
-    public function getIsLegalMoney()
-    {
-        return $this->container['isLegalMoney'];
-    }
-
-    /**
-     * Sets isLegalMoney.
-     *
-     * @param null|bool $isLegalMoney isLegalMoney
-     *
-     * @return self
-     */
-    public function setIsLegalMoney($isLegalMoney)
-    {
-        if (is_null($isLegalMoney)) {
-            throw new \InvalidArgumentException('non-nullable isLegalMoney cannot be null');
-        }
-        $this->container['isLegalMoney'] = $isLegalMoney;
-
-        return $this;
-    }
-
-    /**
-     * Gets trading.
-     *
-     * @return null|bool
-     */
-    public function getTrading()
-    {
-        return $this->container['trading'];
-    }
-
-    /**
-     * Sets trading.
-     *
-     * @param null|bool $trading trading
-     *
-     * @return self
-     */
-    public function setTrading($trading)
-    {
-        if (is_null($trading)) {
-            throw new \InvalidArgumentException('non-nullable trading cannot be null');
-        }
-        $this->container['trading'] = $trading;
-
-        return $this;
-    }
-
-    /**
-     * Gets networkList.
-     *
-     * @return null|AllCoinsInformationResponseInnerNetworkListInnerNetworkListInner[]
-     */
-    public function getNetworkList()
-    {
-        return $this->container['networkList'];
-    }
-
-    /**
-     * Sets networkList.
-     *
-     * @param null|AllCoinsInformationResponseInnerNetworkListInnerNetworkListInner[] $networkList networkList
-     *
-     * @return self
-     */
-    public function setNetworkList($networkList)
-    {
-        if (is_null($networkList)) {
-            throw new \InvalidArgumentException('non-nullable networkList cannot be null');
-        }
-        $this->container['networkList'] = $networkList;
+        $this->container['denomination'] = $denomination;
 
         return $this;
     }

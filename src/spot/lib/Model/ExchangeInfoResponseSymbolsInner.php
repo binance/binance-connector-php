@@ -78,9 +78,10 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
         'allowTrailingStop' => 'bool',
         'cancelReplaceAllowed' => 'bool',
         'amendAllowed' => 'bool',
+        'pegInstructionsAllowed' => 'bool',
         'isSpotTradingAllowed' => 'bool',
         'isMarginTradingAllowed' => 'bool',
-        'filters' => '\Binance\Client\Spot\Model\ExchangeFilters',
+        'filters' => '\Binance\Client\Spot\Model\SymbolFilters[]',
         'permissions' => 'string[]',
         'permissionSets' => 'string[][]',
         'defaultSelfTradePreventionMode' => 'string',
@@ -114,6 +115,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
         'allowTrailingStop' => null,
         'cancelReplaceAllowed' => null,
         'amendAllowed' => null,
+        'pegInstructionsAllowed' => null,
         'isSpotTradingAllowed' => null,
         'isMarginTradingAllowed' => null,
         'filters' => null,
@@ -146,6 +148,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
         'allowTrailingStop' => false,
         'cancelReplaceAllowed' => false,
         'amendAllowed' => false,
+        'pegInstructionsAllowed' => false,
         'isSpotTradingAllowed' => false,
         'isMarginTradingAllowed' => false,
         'filters' => false,
@@ -186,6 +189,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
         'allowTrailingStop' => 'allowTrailingStop',
         'cancelReplaceAllowed' => 'cancelReplaceAllowed',
         'amendAllowed' => 'amendAllowed',
+        'pegInstructionsAllowed' => 'pegInstructionsAllowed',
         'isSpotTradingAllowed' => 'isSpotTradingAllowed',
         'isMarginTradingAllowed' => 'isMarginTradingAllowed',
         'filters' => 'filters',
@@ -218,6 +222,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
         'allowTrailingStop' => 'setAllowTrailingStop',
         'cancelReplaceAllowed' => 'setCancelReplaceAllowed',
         'amendAllowed' => 'setAmendAllowed',
+        'pegInstructionsAllowed' => 'setPegInstructionsAllowed',
         'isSpotTradingAllowed' => 'setIsSpotTradingAllowed',
         'isMarginTradingAllowed' => 'setIsMarginTradingAllowed',
         'filters' => 'setFilters',
@@ -250,6 +255,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
         'allowTrailingStop' => 'getAllowTrailingStop',
         'cancelReplaceAllowed' => 'getCancelReplaceAllowed',
         'amendAllowed' => 'getAmendAllowed',
+        'pegInstructionsAllowed' => 'getPegInstructionsAllowed',
         'isSpotTradingAllowed' => 'getIsSpotTradingAllowed',
         'isMarginTradingAllowed' => 'getIsMarginTradingAllowed',
         'filters' => 'getFilters',
@@ -291,6 +297,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
         $this->setIfExists('allowTrailingStop', $data ?? [], null);
         $this->setIfExists('cancelReplaceAllowed', $data ?? [], null);
         $this->setIfExists('amendAllowed', $data ?? [], null);
+        $this->setIfExists('pegInstructionsAllowed', $data ?? [], null);
         $this->setIfExists('isSpotTradingAllowed', $data ?? [], null);
         $this->setIfExists('isMarginTradingAllowed', $data ?? [], null);
         $this->setIfExists('filters', $data ?? [], null);
@@ -888,6 +895,33 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
     }
 
     /**
+     * Gets pegInstructionsAllowed.
+     *
+     * @return null|bool
+     */
+    public function getPegInstructionsAllowed()
+    {
+        return $this->container['pegInstructionsAllowed'];
+    }
+
+    /**
+     * Sets pegInstructionsAllowed.
+     *
+     * @param null|bool $pegInstructionsAllowed pegInstructionsAllowed
+     *
+     * @return self
+     */
+    public function setPegInstructionsAllowed($pegInstructionsAllowed)
+    {
+        if (is_null($pegInstructionsAllowed)) {
+            throw new \InvalidArgumentException('non-nullable pegInstructionsAllowed cannot be null');
+        }
+        $this->container['pegInstructionsAllowed'] = $pegInstructionsAllowed;
+
+        return $this;
+    }
+
+    /**
      * Gets isSpotTradingAllowed.
      *
      * @return null|bool
@@ -944,7 +978,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
     /**
      * Gets filters.
      *
-     * @return null|ExchangeFilters
+     * @return null|SymbolFilters[]
      */
     public function getFilters()
     {
@@ -954,7 +988,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
     /**
      * Sets filters.
      *
-     * @param null|ExchangeFilters $filters filters
+     * @param null|SymbolFilters[] $filters filters
      *
      * @return self
      */

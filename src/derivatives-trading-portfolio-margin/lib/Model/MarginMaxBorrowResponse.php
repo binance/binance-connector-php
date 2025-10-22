@@ -61,8 +61,8 @@ class MarginMaxBorrowResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $openAPITypes = [
-        'amount' => 'float',
-        'borrowLimit' => 'int',
+        'amount' => 'string',
+        'borrowLimit' => 'string',
     ];
 
     /**
@@ -75,8 +75,8 @@ class MarginMaxBorrowResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'amount' => 'float',
-        'borrowLimit' => 'int64',
+        'amount' => null,
+        'borrowLimit' => null,
     ];
 
     /**
@@ -277,7 +277,7 @@ class MarginMaxBorrowResponse implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Gets amount.
      *
-     * @return null|float
+     * @return null|string
      */
     public function getAmount()
     {
@@ -287,7 +287,7 @@ class MarginMaxBorrowResponse implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Sets amount.
      *
-     * @param null|float $amount amount
+     * @param null|string $amount amount
      *
      * @return self
      */
@@ -304,7 +304,7 @@ class MarginMaxBorrowResponse implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Gets borrowLimit.
      *
-     * @return null|int
+     * @return null|string
      */
     public function getBorrowLimit()
     {
@@ -314,7 +314,7 @@ class MarginMaxBorrowResponse implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Sets borrowLimit.
      *
-     * @param null|int $borrowLimit borrowLimit
+     * @param null|string $borrowLimit borrowLimit
      *
      * @return self
      */

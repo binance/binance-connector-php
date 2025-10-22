@@ -156,7 +156,7 @@
 
 [/fapi/v1/order](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/New-Order) - newOrder - [NewOrderExample.php:30](/examples/derivatives-trading-usds-futures/trade/NewOrderExample.php#L30)
 
-[/fapi/v1/batchOrders](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Place-Multiple-Orders) - placeMultipleOrders - [PlaceMultipleOrdersExample.php:26](/examples/derivatives-trading-usds-futures/trade/PlaceMultipleOrdersExample.php#L26)
+[/fapi/v1/batchOrders](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Place-Multiple-Orders) - placeMultipleOrders - [PlaceMultipleOrdersExample.php:27](/examples/derivatives-trading-usds-futures/trade/PlaceMultipleOrdersExample.php#L27)
 
 [/fapi/v1/adlQuantile](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Position-ADL-Quantile-Estimation) - positionAdlQuantileEstimation - [PositionAdlQuantileEstimationExample.php:26](/examples/derivatives-trading-usds-futures/trade/PositionAdlQuantileEstimationExample.php#L26)
 

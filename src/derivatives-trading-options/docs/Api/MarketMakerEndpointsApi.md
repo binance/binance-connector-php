@@ -7,7 +7,6 @@ All URIs are relative to https://eapi.binance.com, except if the operation defin
 | [**autoCancelAllOpenOrders()**](MarketMakerEndpointsApi.md#autoCancelAllOpenOrders) | **POST** /eapi/v1/countdownCancelAllHeartBeat | Auto-Cancel All Open Orders (Kill-Switch) Heartbeat (TRADE) |
 | [**getAutoCancelAllOpenOrders()**](MarketMakerEndpointsApi.md#getAutoCancelAllOpenOrders) | **GET** /eapi/v1/countdownCancelAll | Get Auto-Cancel All Open Orders (Kill-Switch) Config (TRADE) |
 | [**getMarketMakerProtectionConfig()**](MarketMakerEndpointsApi.md#getMarketMakerProtectionConfig) | **GET** /eapi/v1/mmp | Get Market Maker Protection Config (TRADE) |
-| [**optionMarginAccountInformation()**](MarketMakerEndpointsApi.md#optionMarginAccountInformation) | **GET** /eapi/v1/marginAccount | Option Margin Account Information (USER_DATA) |
 | [**resetMarketMakerProtectionConfig()**](MarketMakerEndpointsApi.md#resetMarketMakerProtectionConfig) | **POST** /eapi/v1/mmpReset | Reset Market Maker Protection Config (TRADE) |
 | [**setAutoCancelAllOpenOrders()**](MarketMakerEndpointsApi.md#setAutoCancelAllOpenOrders) | **POST** /eapi/v1/countdownCancelAll | Set Auto-Cancel All Open Orders (Kill-Switch) Config (TRADE) |
 | [**setMarketMakerProtectionConfig()**](MarketMakerEndpointsApi.md#setMarketMakerProtectionConfig) | **POST** /eapi/v1/mmpSet | Set Market Maker Protection Config (TRADE) |
@@ -171,62 +170,6 @@ try {
 ### Return type
 
 [**\Binance\Client\DerivativesTradingOptions\Model\GetMarketMakerProtectionConfigResponse**](../Model/GetMarketMakerProtectionConfigResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `optionMarginAccountInformation()`
-
-```php
-optionMarginAccountInformation($recvWindow): \Binance\Client\DerivativesTradingOptions\Model\OptionMarginAccountInformationResponse
-```
-
-Option Margin Account Information (USER_DATA)
-
-Get current account information.  Weight: 3
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketMakerEndpointsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$recvWindow = 56; // int
-
-try {
-    $result = $apiInstance->optionMarginAccountInformation($recvWindow);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling MarketMakerEndpointsApi->optionMarginAccountInformation: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**|  | [optional] |
-
-### Return type
-
-[**\Binance\Client\DerivativesTradingOptions\Model\OptionMarginAccountInformationResponse**](../Model/OptionMarginAccountInformationResponse.md)
 
 ### Authorization
 

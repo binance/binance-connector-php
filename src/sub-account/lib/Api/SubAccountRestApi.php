@@ -227,15 +227,15 @@ class SubAccountRestApi
      *
      * Query Sub-account Transaction Statistics (For Master Account) (USER_DATA)
      *
-     * @param string   $email      [Sub-account email](#email-address) (required)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|string $email      Managed sub-account email (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QuerySubAccountTransactionStatisticsResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function querySubAccountTransactionStatistics($email, $recvWindow = null): ApiResponse
+    public function querySubAccountTransactionStatistics($email = null, $recvWindow = null): ApiResponse
     {
         return $this->accountManagementApi->querySubAccountTransactionStatistics($email, $recvWindow);
     }

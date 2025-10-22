@@ -16,7 +16,6 @@ require_once __DIR__.'/../vendor/autoload.php';
 use Binance\Client\DerivativesTradingOptions\Api\DerivativesTradingOptionsRestApi;
 use Binance\Client\DerivativesTradingOptions\DerivativesTradingOptionsRestApiUtil;
 use Binance\Client\DerivativesTradingOptions\Model\NewBlockTradeOrderRequest;
-use Binance\Client\DerivativesTradingOptions\Model\Side;
 
 function newBlockTradeOrderExample()
 {
@@ -26,10 +25,6 @@ function newBlockTradeOrderExample()
     $newBlockTradeOrderRequest = new NewBlockTradeOrderRequest();
     $newBlockTradeOrderRequest->setLiquidity('');
     $newBlockTradeOrderRequest->setLegs(null);
-    $newBlockTradeOrderRequest->setSymbol('');
-    $newBlockTradeOrderRequest->setSide(Side::BUY);
-    $newBlockTradeOrderRequest->setPrice(1.0);
-    $newBlockTradeOrderRequest->setQuantity(1.0);
     $response = $api->newBlockTradeOrder($newBlockTradeOrderRequest);
     print_r($response);
 }

@@ -30,6 +30,9 @@
 
 namespace Binance\Client\Spot\Model;
 
+use Binance\Common\Dtos\ModelInterface;
+use Binance\Common\ObjectSerializer;
+
 /**
  * RateLimits Class Doc Comment.
  *
@@ -41,29 +44,140 @@ namespace Binance\Client\Spot\Model;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class RateLimits
+class RateLimits implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
-    /** @var RateLimitsInner[] */
-    protected array $items = [];
+    /**
+     * The original name of the model.
+     *
+     * @var string
+     */
+    protected static $openAPIModelName = 'rateLimits';
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
+    protected static $openAPITypes = [
+        'rateLimitType' => 'string',
+        'interval' => 'string',
+        'intervalNum' => 'int',
+        'limit' => 'int',
+        'count' => 'int',
+    ];
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
+    protected static $openAPIFormats = [
+        'rateLimitType' => null,
+        'interval' => null,
+        'intervalNum' => 'int64',
+        'limit' => 'int64',
+        'count' => 'int64',
+    ];
+
+    /**
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
+    protected static array $openAPINullables = [
+        'rateLimitType' => false,
+        'interval' => false,
+        'intervalNum' => false,
+        'limit' => false,
+        'count' => false,
+    ];
+
+    /**
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
+    protected array $openAPINullablesSetToNull = [];
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     *
+     * @var string[]
+     */
+    protected static $attributeMap = [
+        'rateLimitType' => 'rateLimitType',
+        'interval' => 'interval',
+        'intervalNum' => 'intervalNum',
+        'limit' => 'limit',
+        'count' => 'count',
+    ];
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     *
+     * @var string[]
+     */
+    protected static $setters = [
+        'rateLimitType' => 'setRateLimitType',
+        'interval' => 'setInterval',
+        'intervalNum' => 'setIntervalNum',
+        'limit' => 'setLimit',
+        'count' => 'setCount',
+    ];
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     *
+     * @var string[]
+     */
+    protected static $getters = [
+        'rateLimitType' => 'getRateLimitType',
+        'interval' => 'getInterval',
+        'intervalNum' => 'getIntervalNum',
+        'limit' => 'getLimit',
+        'count' => 'getCount',
+    ];
+
+    /**
+     * Associative array for storing property values.
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /**
      * Constructor.
      *
-     * @param RateLimitsInner[] items
+     * @param null|mixed[] $data Associated array of property values
+     *                           initializing the model
      */
-    public function __construct(array $items = [])
+    public function __construct(?array $data = null)
     {
-        $this->items = $items;
+        $this->setIfExists('rateLimitType', $data ?? [], null);
+        $this->setIfExists('interval', $data ?? [], null);
+        $this->setIfExists('intervalNum', $data ?? [], null);
+        $this->setIfExists('limit', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
     }
 
     /**
-     * Type of items in the array.
+     * Gets the string presentation of the object.
+     *
+     * @return string
      */
-    public static function getItemType(): string
+    public function __toString()
     {
-        return '\Binance\Client\Spot\Model\RateLimitsInner';
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
     }
 
     /**
@@ -73,7 +187,17 @@ class RateLimits
      */
     public static function openAPITypes()
     {
-        return [];
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @return array
+     */
+    public static function openAPIFormats()
+    {
+        return self::$openAPIFormats;
     }
 
     /**
@@ -90,31 +214,335 @@ class RateLimits
      */
     public static function isArray(): bool
     {
-        return true;
+        return false;
     }
 
     /**
-     * @return RateLimitsInner[]
+     * Checks if a property is nullable.
      */
-    public function getItems(): array
+    public static function isNullable(string $property): bool
     {
-        return $this->items;
-    }
-
-    public function addItem(RateLimitsInner $item): void
-    {
-        $this->items[] = $item;
+        return self::openAPINullables()[$property] ?? false;
     }
 
     /**
-     * @param RateLimitsInner[] $items
+     * Checks if a nullable property is set to null.
      */
-    public function addItems(array $items): void
+    public function isNullableSetToNull(string $property): bool
     {
-        if (empty($this->items)) {
-            $this->items = $items;
-        } else {
-            $this->items = array_merge($this->items, $items);
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     *
+     * @return array
+     */
+    public static function attributeMap()
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     *
+     * @return array
+     */
+    public static function setters()
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     *
+     * @return array
+     */
+    public static function getters()
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     *
+     * @return string
+     */
+    public function getModelName()
+    {
+        return self::$openAPIModelName;
+    }
+
+    /**
+     * Show all the invalid properties with reasons.
+     *
+     * @return array invalid properties with reasons
+     */
+    public function listInvalidProperties()
+    {
+        return [];
+    }
+
+    /**
+     * Validate all the properties in the model
+     * return true if all passed.
+     *
+     * @return bool True if all properties are valid
+     */
+    public function valid()
+    {
+        return 0 === count($this->listInvalidProperties());
+    }
+
+    /**
+     * Gets rateLimitType.
+     *
+     * @return null|string
+     */
+    public function getRateLimitType()
+    {
+        return $this->container['rateLimitType'];
+    }
+
+    /**
+     * Sets rateLimitType.
+     *
+     * @param null|string $rateLimitType rateLimitType
+     *
+     * @return self
+     */
+    public function setRateLimitType($rateLimitType)
+    {
+        if (is_null($rateLimitType)) {
+            throw new \InvalidArgumentException('non-nullable rateLimitType cannot be null');
         }
+        $this->container['rateLimitType'] = $rateLimitType;
+
+        return $this;
+    }
+
+    /**
+     * Gets interval.
+     *
+     * @return null|string
+     */
+    public function getInterval()
+    {
+        return $this->container['interval'];
+    }
+
+    /**
+     * Sets interval.
+     *
+     * @param null|string $interval interval
+     *
+     * @return self
+     */
+    public function setInterval($interval)
+    {
+        if (is_null($interval)) {
+            throw new \InvalidArgumentException('non-nullable interval cannot be null');
+        }
+        $this->container['interval'] = $interval;
+
+        return $this;
+    }
+
+    /**
+     * Gets intervalNum.
+     *
+     * @return null|int
+     */
+    public function getIntervalNum()
+    {
+        return $this->container['intervalNum'];
+    }
+
+    /**
+     * Sets intervalNum.
+     *
+     * @param null|int $intervalNum intervalNum
+     *
+     * @return self
+     */
+    public function setIntervalNum($intervalNum)
+    {
+        if (is_null($intervalNum)) {
+            throw new \InvalidArgumentException('non-nullable intervalNum cannot be null');
+        }
+        $this->container['intervalNum'] = $intervalNum;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit.
+     *
+     * @return null|int
+     */
+    public function getLimit()
+    {
+        return $this->container['limit'];
+    }
+
+    /**
+     * Sets limit.
+     *
+     * @param null|int $limit limit
+     *
+     * @return self
+     */
+    public function setLimit($limit)
+    {
+        if (is_null($limit)) {
+            throw new \InvalidArgumentException('non-nullable limit cannot be null');
+        }
+        $this->container['limit'] = $limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets count.
+     *
+     * @return null|int
+     */
+    public function getCount()
+    {
+        return $this->container['count'];
+    }
+
+    /**
+     * Sets count.
+     *
+     * @param null|int $count count
+     *
+     * @return self
+     */
+    public function setCount($count)
+    {
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
+        }
+        $this->container['count'] = $count;
+
+        return $this;
+    }
+
+    /**
+     * Returns true if offset exists. False otherwise.
+     *
+     * @param int $offset Offset
+     */
+    public function offsetExists($offset): bool
+    {
+        return isset($this->container[$offset]);
+    }
+
+    /**
+     * Gets offset.
+     *
+     * @param int $offset Offset
+     *
+     * @return null|mixed
+     */
+    #[\ReturnTypeWillChange]
+    public function offsetGet($offset)
+    {
+        return $this->container[$offset] ?? null;
+    }
+
+    /**
+     * Sets value based on offset.
+     *
+     * @param null|int $offset Offset
+     * @param mixed    $value  Value to be set
+     */
+    public function offsetSet($offset, $value): void
+    {
+        if (is_null($offset)) {
+            $this->container[] = $value;
+        } else {
+            $this->container[$offset] = $value;
+        }
+    }
+
+    /**
+     * Unsets offset.
+     *
+     * @param int $offset Offset
+     */
+    public function offsetUnset($offset): void
+    {
+        unset($this->container[$offset]);
+    }
+
+    /**
+     * Serializes the object to a value that can be serialized natively by json_encode().
+     *
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
+     */
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize()
+    {
+        return ObjectSerializer::sanitizeForSerialization($this);
+    }
+
+    /**
+     * Gets a header-safe presentation of the object.
+     *
+     * @return string
+     */
+    public function toHeaderValue()
+    {
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
+    }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
     }
 }

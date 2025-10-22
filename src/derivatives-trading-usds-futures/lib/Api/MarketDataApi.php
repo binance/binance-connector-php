@@ -4663,7 +4663,7 @@ class MarketDataApi
     /**
      * Operation symbolPriceTicker.
      *
-     * Symbol Price Ticker
+     * Symbol Price Ticker(Deprecated)
      *
      * @param null|string $symbol symbol (optional)
      *
@@ -4680,7 +4680,7 @@ class MarketDataApi
     /**
      * Operation symbolPriceTickerWithHttpInfo.
      *
-     * Symbol Price Ticker
+     * Symbol Price Ticker(Deprecated)
      *
      * @param null|string $symbol (optional)
      *

@@ -76,7 +76,10 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'icebergQty' => 'float',
         'newOrderRespType' => '\Binance\Client\Spot\Model\NewOrderRespType',
         'selfTradePreventionMode' => '\Binance\Client\Spot\Model\SelfTradePreventionMode',
-        'recvWindow' => 'int',
+        'pegPriceType' => '\Binance\Client\Spot\Model\PegPriceType',
+        'pegOffsetValue' => 'int',
+        'pegOffsetType' => '\Binance\Client\Spot\Model\PegOffsetType',
+        'recvWindow' => 'float',
     ];
 
     /**
@@ -104,7 +107,10 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'icebergQty' => 'float',
         'newOrderRespType' => null,
         'selfTradePreventionMode' => null,
-        'recvWindow' => 'int64',
+        'pegPriceType' => null,
+        'pegOffsetValue' => null,
+        'pegOffsetType' => null,
+        'recvWindow' => 'float',
     ];
 
     /**
@@ -128,6 +134,9 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'icebergQty' => false,
         'newOrderRespType' => false,
         'selfTradePreventionMode' => false,
+        'pegPriceType' => false,
+        'pegOffsetValue' => false,
+        'pegOffsetType' => false,
         'recvWindow' => false,
     ];
 
@@ -160,6 +169,9 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'icebergQty' => 'icebergQty',
         'newOrderRespType' => 'newOrderRespType',
         'selfTradePreventionMode' => 'selfTradePreventionMode',
+        'pegPriceType' => 'pegPriceType',
+        'pegOffsetValue' => 'pegOffsetValue',
+        'pegOffsetType' => 'pegOffsetType',
         'recvWindow' => 'recvWindow',
     ];
 
@@ -184,6 +196,9 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'icebergQty' => 'setIcebergQty',
         'newOrderRespType' => 'setNewOrderRespType',
         'selfTradePreventionMode' => 'setSelfTradePreventionMode',
+        'pegPriceType' => 'setPegPriceType',
+        'pegOffsetValue' => 'setPegOffsetValue',
+        'pegOffsetType' => 'setPegOffsetType',
         'recvWindow' => 'setRecvWindow',
     ];
 
@@ -208,6 +223,9 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'icebergQty' => 'getIcebergQty',
         'newOrderRespType' => 'getNewOrderRespType',
         'selfTradePreventionMode' => 'getSelfTradePreventionMode',
+        'pegPriceType' => 'getPegPriceType',
+        'pegOffsetValue' => 'getPegOffsetValue',
+        'pegOffsetType' => 'getPegOffsetType',
         'recvWindow' => 'getRecvWindow',
     ];
 
@@ -241,6 +259,9 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('icebergQty', $data ?? [], null);
         $this->setIfExists('newOrderRespType', $data ?? [], null);
         $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
+        $this->setIfExists('pegPriceType', $data ?? [], null);
+        $this->setIfExists('pegOffsetValue', $data ?? [], null);
+        $this->setIfExists('pegOffsetType', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }
 
@@ -790,9 +811,90 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets recvWindow.
+     * Gets pegPriceType.
+     *
+     * @return null|PegPriceType
+     */
+    public function getPegPriceType()
+    {
+        return $this->container['pegPriceType'];
+    }
+
+    /**
+     * Sets pegPriceType.
+     *
+     * @param null|PegPriceType $pegPriceType pegPriceType
+     *
+     * @return self
+     */
+    public function setPegPriceType($pegPriceType)
+    {
+        if (is_null($pegPriceType)) {
+            throw new \InvalidArgumentException('non-nullable pegPriceType cannot be null');
+        }
+        $this->container['pegPriceType'] = $pegPriceType;
+
+        return $this;
+    }
+
+    /**
+     * Gets pegOffsetValue.
      *
      * @return null|int
+     */
+    public function getPegOffsetValue()
+    {
+        return $this->container['pegOffsetValue'];
+    }
+
+    /**
+     * Sets pegOffsetValue.
+     *
+     * @param null|int $pegOffsetValue pegOffsetValue
+     *
+     * @return self
+     */
+    public function setPegOffsetValue($pegOffsetValue)
+    {
+        if (is_null($pegOffsetValue)) {
+            throw new \InvalidArgumentException('non-nullable pegOffsetValue cannot be null');
+        }
+        $this->container['pegOffsetValue'] = $pegOffsetValue;
+
+        return $this;
+    }
+
+    /**
+     * Gets pegOffsetType.
+     *
+     * @return null|PegOffsetType
+     */
+    public function getPegOffsetType()
+    {
+        return $this->container['pegOffsetType'];
+    }
+
+    /**
+     * Sets pegOffsetType.
+     *
+     * @param null|PegOffsetType $pegOffsetType pegOffsetType
+     *
+     * @return self
+     */
+    public function setPegOffsetType($pegOffsetType)
+    {
+        if (is_null($pegOffsetType)) {
+            throw new \InvalidArgumentException('non-nullable pegOffsetType cannot be null');
+        }
+        $this->container['pegOffsetType'] = $pegOffsetType;
+
+        return $this;
+    }
+
+    /**
+     * Gets recvWindow.
+     *
+     * @return null|float
      */
     public function getRecvWindow()
     {
@@ -802,7 +904,7 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets recvWindow.
      *
-     * @param null|int $recvWindow recvWindow
+     * @param null|float $recvWindow recvWindow
      *
      * @return self
      */

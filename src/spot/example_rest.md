@@ -16,6 +16,8 @@
 
 [/api/v3/myAllocations](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/account-endpoints#query-allocations-user_data) - myAllocations - [MyAllocationsExample.php:31](/examples/spot/account/MyAllocationsExample.php#L31)
 
+[/api/v3/myFilters](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/account-endpoints#query-relevant-filters-user_data) - myFilters - [MyFiltersExample.php:26](/examples/spot/account/MyFiltersExample.php#L26)
+
 [/api/v3/myPreventedMatches](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/account-endpoints#query-prevented-matches-user_data) - myPreventedMatches - [MyPreventedMatchesExample.php:30](/examples/spot/account/MyPreventedMatchesExample.php#L30)
 
 [/api/v3/myTrades](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/account-endpoints#account-trade-list-user_data) - myTrades - [MyTradesExample.php:31](/examples/spot/account/MyTradesExample.php#L31)
@@ -82,11 +84,11 @@
 
 [/api/v3/order/oco](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#new-oco---deprecated-trade) - orderOco - [OrderOcoExample.php:32](/examples/spot/trade/OrderOcoExample.php#L32)
 
-[/api/v3/order/test](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#test-new-order-trade) - orderTest - [OrderTestExample.php:26](/examples/spot/trade/OrderTestExample.php#L26)
+[/api/v3/order/test](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#test-new-order-trade) - orderTest - [OrderTestExample.php:31](/examples/spot/trade/OrderTestExample.php#L31)
 
 [/api/v3/sor/order](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#new-order-using-sor-trade) - sorOrder - [SorOrderExample.php:32](/examples/spot/trade/SorOrderExample.php#L32)
 
-[/api/v3/sor/order/test](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#test-new-order-using-sor-trade) - sorOrderTest - [SorOrderTestExample.php:26](/examples/spot/trade/SorOrderTestExample.php#L26)
+[/api/v3/sor/order/test](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#test-new-order-using-sor-trade) - sorOrderTest - [SorOrderTestExample.php:32](/examples/spot/trade/SorOrderTestExample.php#L32)
 
 ## UserDataStream
 

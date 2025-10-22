@@ -71,7 +71,7 @@ class ExchangeInformationResponseSymbolsInnerFiltersInner implements ModelInterf
         'limit' => 'int',
         'multiplierUp' => 'string',
         'multiplierDown' => 'string',
-        'multiplierDecimal' => 'int',
+        'multiplierDecimal' => 'string',
     ];
 
     /**
@@ -94,7 +94,7 @@ class ExchangeInformationResponseSymbolsInnerFiltersInner implements ModelInterf
         'limit' => 'int64',
         'multiplierUp' => null,
         'multiplierDown' => null,
-        'multiplierDecimal' => 'int64',
+        'multiplierDecimal' => null,
     ];
 
     /**
@@ -610,7 +610,7 @@ class ExchangeInformationResponseSymbolsInnerFiltersInner implements ModelInterf
     /**
      * Gets multiplierDecimal.
      *
-     * @return null|int
+     * @return null|string
      */
     public function getMultiplierDecimal()
     {
@@ -620,7 +620,7 @@ class ExchangeInformationResponseSymbolsInnerFiltersInner implements ModelInterf
     /**
      * Sets multiplierDecimal.
      *
-     * @param null|int $multiplierDecimal multiplierDecimal
+     * @param null|string $multiplierDecimal multiplierDecimal
      *
      * @return self
      */

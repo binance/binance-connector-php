@@ -27,7 +27,7 @@ function myAllocationsExample()
     $fromAllocationId = 1;
     $limit = 500;
     $orderId = 1;
-    $recvWindow = 5000;
+    $recvWindow = 5000.0;
     $response = $api->myAllocations($symbol, $startTime, $endTime, $fromAllocationId, $limit, $orderId, $recvWindow);
     print_r($response);
 }

@@ -82,7 +82,10 @@ class OrderCancelReplaceRequest implements ModelInterface, \ArrayAccess, \JsonSe
         'selfTradePreventionMode' => '\Binance\Client\Spot\Model\SelfTradePreventionMode',
         'cancelRestrictions' => '\Binance\Client\Spot\Model\CancelRestrictions',
         'orderRateLimitExceededMode' => '\Binance\Client\Spot\Model\OrderRateLimitExceededMode',
-        'recvWindow' => 'int',
+        'pegPriceType' => '\Binance\Client\Spot\Model\PegPriceType',
+        'pegOffsetValue' => 'int',
+        'pegOffsetType' => '\Binance\Client\Spot\Model\PegOffsetType',
+        'recvWindow' => 'float',
     ];
 
     /**
@@ -116,7 +119,10 @@ class OrderCancelReplaceRequest implements ModelInterface, \ArrayAccess, \JsonSe
         'selfTradePreventionMode' => null,
         'cancelRestrictions' => null,
         'orderRateLimitExceededMode' => null,
-        'recvWindow' => 'int64',
+        'pegPriceType' => null,
+        'pegOffsetValue' => null,
+        'pegOffsetType' => null,
+        'recvWindow' => 'float',
     ];
 
     /**
@@ -146,6 +152,9 @@ class OrderCancelReplaceRequest implements ModelInterface, \ArrayAccess, \JsonSe
         'selfTradePreventionMode' => false,
         'cancelRestrictions' => false,
         'orderRateLimitExceededMode' => false,
+        'pegPriceType' => false,
+        'pegOffsetValue' => false,
+        'pegOffsetType' => false,
         'recvWindow' => false,
     ];
 
@@ -184,6 +193,9 @@ class OrderCancelReplaceRequest implements ModelInterface, \ArrayAccess, \JsonSe
         'selfTradePreventionMode' => 'selfTradePreventionMode',
         'cancelRestrictions' => 'cancelRestrictions',
         'orderRateLimitExceededMode' => 'orderRateLimitExceededMode',
+        'pegPriceType' => 'pegPriceType',
+        'pegOffsetValue' => 'pegOffsetValue',
+        'pegOffsetType' => 'pegOffsetType',
         'recvWindow' => 'recvWindow',
     ];
 
@@ -214,6 +226,9 @@ class OrderCancelReplaceRequest implements ModelInterface, \ArrayAccess, \JsonSe
         'selfTradePreventionMode' => 'setSelfTradePreventionMode',
         'cancelRestrictions' => 'setCancelRestrictions',
         'orderRateLimitExceededMode' => 'setOrderRateLimitExceededMode',
+        'pegPriceType' => 'setPegPriceType',
+        'pegOffsetValue' => 'setPegOffsetValue',
+        'pegOffsetType' => 'setPegOffsetType',
         'recvWindow' => 'setRecvWindow',
     ];
 
@@ -244,6 +259,9 @@ class OrderCancelReplaceRequest implements ModelInterface, \ArrayAccess, \JsonSe
         'selfTradePreventionMode' => 'getSelfTradePreventionMode',
         'cancelRestrictions' => 'getCancelRestrictions',
         'orderRateLimitExceededMode' => 'getOrderRateLimitExceededMode',
+        'pegPriceType' => 'getPegPriceType',
+        'pegOffsetValue' => 'getPegOffsetValue',
+        'pegOffsetType' => 'getPegOffsetType',
         'recvWindow' => 'getRecvWindow',
     ];
 
@@ -283,6 +301,9 @@ class OrderCancelReplaceRequest implements ModelInterface, \ArrayAccess, \JsonSe
         $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
         $this->setIfExists('cancelRestrictions', $data ?? [], null);
         $this->setIfExists('orderRateLimitExceededMode', $data ?? [], null);
+        $this->setIfExists('pegPriceType', $data ?? [], null);
+        $this->setIfExists('pegOffsetValue', $data ?? [], null);
+        $this->setIfExists('pegOffsetType', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }
 
@@ -997,9 +1018,90 @@ class OrderCancelReplaceRequest implements ModelInterface, \ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets recvWindow.
+     * Gets pegPriceType.
+     *
+     * @return null|PegPriceType
+     */
+    public function getPegPriceType()
+    {
+        return $this->container['pegPriceType'];
+    }
+
+    /**
+     * Sets pegPriceType.
+     *
+     * @param null|PegPriceType $pegPriceType pegPriceType
+     *
+     * @return self
+     */
+    public function setPegPriceType($pegPriceType)
+    {
+        if (is_null($pegPriceType)) {
+            throw new \InvalidArgumentException('non-nullable pegPriceType cannot be null');
+        }
+        $this->container['pegPriceType'] = $pegPriceType;
+
+        return $this;
+    }
+
+    /**
+     * Gets pegOffsetValue.
      *
      * @return null|int
+     */
+    public function getPegOffsetValue()
+    {
+        return $this->container['pegOffsetValue'];
+    }
+
+    /**
+     * Sets pegOffsetValue.
+     *
+     * @param null|int $pegOffsetValue pegOffsetValue
+     *
+     * @return self
+     */
+    public function setPegOffsetValue($pegOffsetValue)
+    {
+        if (is_null($pegOffsetValue)) {
+            throw new \InvalidArgumentException('non-nullable pegOffsetValue cannot be null');
+        }
+        $this->container['pegOffsetValue'] = $pegOffsetValue;
+
+        return $this;
+    }
+
+    /**
+     * Gets pegOffsetType.
+     *
+     * @return null|PegOffsetType
+     */
+    public function getPegOffsetType()
+    {
+        return $this->container['pegOffsetType'];
+    }
+
+    /**
+     * Sets pegOffsetType.
+     *
+     * @param null|PegOffsetType $pegOffsetType pegOffsetType
+     *
+     * @return self
+     */
+    public function setPegOffsetType($pegOffsetType)
+    {
+        if (is_null($pegOffsetType)) {
+            throw new \InvalidArgumentException('non-nullable pegOffsetType cannot be null');
+        }
+        $this->container['pegOffsetType'] = $pegOffsetType;
+
+        return $this;
+    }
+
+    /**
+     * Gets recvWindow.
+     *
+     * @return null|float
      */
     public function getRecvWindow()
     {
@@ -1009,7 +1111,7 @@ class OrderCancelReplaceRequest implements ModelInterface, \ArrayAccess, \JsonSe
     /**
      * Sets recvWindow.
      *
-     * @param null|int $recvWindow recvWindow
+     * @param null|float $recvWindow recvWindow
      *
      * @return self
      */

@@ -37,6 +37,9 @@ class ClientConfiguration
     /** timeunit to be returned by APIs, default MILLISECOND */
     private $timeUnit;
 
+    /** custom headers to be added to each request */
+    private $customHeaders;
+
     public function __construct(?ConfigurationBuilder $configurationBuilder = null)
     {
         if (!empty($configurationBuilder)) {
@@ -50,6 +53,7 @@ class ClientConfiguration
             $this->connectTimeout = $configurationBuilder->getConnectTimeout();
             $this->readTimeout = $configurationBuilder->getReadTimeout();
             $this->timeUnit = $configurationBuilder->getTimeUnit();
+            $this->customHeaders = $configurationBuilder->getCustomHeaders();
 
             $this->signatureConfiguration = new SignatureConfiguration($configurationBuilder);
         }
@@ -143,6 +147,16 @@ class ClientConfiguration
     public function setTimeUnit($timeUnit): void
     {
         $this->timeUnit = $timeUnit;
+    }
+
+    public function getCustomHeaders(): mixed
+    {
+        return $this->customHeaders;
+    }
+
+    public function setCustomHeaders($customHeaders): void
+    {
+        $this->customHeaders = $customHeaders;
     }
 
     public function getConnectTimeout(): int

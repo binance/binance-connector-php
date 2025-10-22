@@ -73,7 +73,7 @@ class NewMarginOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeria
         'timeInForce' => 'string',
         'type' => 'string',
         'side' => 'string',
-        'marginBuyBorrowAmount' => 'int',
+        'marginBuyBorrowAmount' => 'string',
         'marginBuyBorrowAsset' => 'string',
         'fills' => '\Binance\Client\DerivativesTradingPortfolioMargin\Model\NewMarginOrderResponseFillsInner[]',
     ];
@@ -100,7 +100,7 @@ class NewMarginOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeria
         'timeInForce' => null,
         'type' => null,
         'side' => null,
-        'marginBuyBorrowAmount' => 'int64',
+        'marginBuyBorrowAmount' => null,
         'marginBuyBorrowAsset' => null,
         'fills' => null,
     ];
@@ -692,7 +692,7 @@ class NewMarginOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Gets marginBuyBorrowAmount.
      *
-     * @return null|int
+     * @return null|string
      */
     public function getMarginBuyBorrowAmount()
     {
@@ -702,7 +702,7 @@ class NewMarginOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets marginBuyBorrowAmount.
      *
-     * @param null|int $marginBuyBorrowAmount marginBuyBorrowAmount
+     * @param null|string $marginBuyBorrowAmount marginBuyBorrowAmount
      *
      * @return self
      */

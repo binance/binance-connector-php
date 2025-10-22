@@ -48,6 +48,8 @@
 
 [/sapi/v1/margin/delist-schedule](https://developers.binance.com/docs/margin_trading/market-data/Get-Delist-Schedule) - getDelistSchedule - [GetDelistScheduleExample.php:24](/examples/margin-trading/marketdata/GetDelistScheduleExample.php#L24)
 
+[/sapi/v1/margin/limit-price-pairs](https://developers.binance.com/docs/margin_trading/market-data/Get-Limit-Price-Pairs) - getLimitPricePairs - [GetLimitPricePairsExample.php:23](/examples/margin-trading/marketdata/GetLimitPricePairsExample.php#L23)
+
 [/sapi/v1/margin/list-schedule](https://developers.binance.com/docs/margin_trading/market-data/Get-list-Schedule) - getListSchedule - [GetListScheduleExample.php:24](/examples/margin-trading/marketdata/GetListScheduleExample.php#L24)
 
 [/sapi/v1/margin/isolatedMarginTier](https://developers.binance.com/docs/margin_trading/market-data/Query-Isolated-Margin-Tier-Data) - queryIsolatedMarginTierData - [QueryIsolatedMarginTierDataExample.php:27](/examples/margin-trading/marketdata/QueryIsolatedMarginTierDataExample.php#L27)

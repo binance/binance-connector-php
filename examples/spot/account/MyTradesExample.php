@@ -27,7 +27,7 @@ function myTradesExample()
     $endTime = 1735693200000;
     $fromId = 1;
     $limit = 500;
-    $recvWindow = 5000;
+    $recvWindow = 5000.0;
     $response = $api->myTrades($symbol, $orderId, $startTime, $endTime, $fromId, $limit, $recvWindow);
     print_r($response);
 }

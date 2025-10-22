@@ -68,7 +68,7 @@ class OptionMarginAccountInformationResponseAssetInner implements ModelInterface
         'initialMargin' => 'string',
         'maintMargin' => 'string',
         'unrealizedPNL' => 'string',
-        'lpProfit' => 'string',
+        'adjustedEquity' => 'string',
     ];
 
     /**
@@ -88,7 +88,7 @@ class OptionMarginAccountInformationResponseAssetInner implements ModelInterface
         'initialMargin' => null,
         'maintMargin' => null,
         'unrealizedPNL' => null,
-        'lpProfit' => null,
+        'adjustedEquity' => null,
     ];
 
     /**
@@ -104,7 +104,7 @@ class OptionMarginAccountInformationResponseAssetInner implements ModelInterface
         'initialMargin' => false,
         'maintMargin' => false,
         'unrealizedPNL' => false,
-        'lpProfit' => false,
+        'adjustedEquity' => false,
     ];
 
     /**
@@ -128,7 +128,7 @@ class OptionMarginAccountInformationResponseAssetInner implements ModelInterface
         'initialMargin' => 'initialMargin',
         'maintMargin' => 'maintMargin',
         'unrealizedPNL' => 'unrealizedPNL',
-        'lpProfit' => 'lpProfit',
+        'adjustedEquity' => 'adjustedEquity',
     ];
 
     /**
@@ -144,7 +144,7 @@ class OptionMarginAccountInformationResponseAssetInner implements ModelInterface
         'initialMargin' => 'setInitialMargin',
         'maintMargin' => 'setMaintMargin',
         'unrealizedPNL' => 'setUnrealizedPNL',
-        'lpProfit' => 'setLpProfit',
+        'adjustedEquity' => 'setAdjustedEquity',
     ];
 
     /**
@@ -160,7 +160,7 @@ class OptionMarginAccountInformationResponseAssetInner implements ModelInterface
         'initialMargin' => 'getInitialMargin',
         'maintMargin' => 'getMaintMargin',
         'unrealizedPNL' => 'getUnrealizedPNL',
-        'lpProfit' => 'getLpProfit',
+        'adjustedEquity' => 'getAdjustedEquity',
     ];
 
     /**
@@ -185,7 +185,7 @@ class OptionMarginAccountInformationResponseAssetInner implements ModelInterface
         $this->setIfExists('initialMargin', $data ?? [], null);
         $this->setIfExists('maintMargin', $data ?? [], null);
         $this->setIfExists('unrealizedPNL', $data ?? [], null);
-        $this->setIfExists('lpProfit', $data ?? [], null);
+        $this->setIfExists('adjustedEquity', $data ?? [], null);
     }
 
     /**
@@ -506,28 +506,28 @@ class OptionMarginAccountInformationResponseAssetInner implements ModelInterface
     }
 
     /**
-     * Gets lpProfit.
+     * Gets adjustedEquity.
      *
      * @return null|string
      */
-    public function getLpProfit()
+    public function getAdjustedEquity()
     {
-        return $this->container['lpProfit'];
+        return $this->container['adjustedEquity'];
     }
 
     /**
-     * Sets lpProfit.
+     * Sets adjustedEquity.
      *
-     * @param null|string $lpProfit lpProfit
+     * @param null|string $adjustedEquity adjustedEquity
      *
      * @return self
      */
-    public function setLpProfit($lpProfit)
+    public function setAdjustedEquity($adjustedEquity)
     {
-        if (is_null($lpProfit)) {
-            throw new \InvalidArgumentException('non-nullable lpProfit cannot be null');
+        if (is_null($adjustedEquity)) {
+            throw new \InvalidArgumentException('non-nullable adjustedEquity cannot be null');
         }
-        $this->container['lpProfit'] = $lpProfit;
+        $this->container['adjustedEquity'] = $adjustedEquity;
 
         return $this;
     }

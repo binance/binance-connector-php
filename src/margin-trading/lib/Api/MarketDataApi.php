@@ -34,6 +34,7 @@ use Binance\Client\MarginTrading\Model\GetAllCrossMarginPairsResponse;
 use Binance\Client\MarginTrading\Model\GetAllIsolatedMarginSymbolResponse;
 use Binance\Client\MarginTrading\Model\GetAllMarginAssetsResponse;
 use Binance\Client\MarginTrading\Model\GetDelistScheduleResponse;
+use Binance\Client\MarginTrading\Model\GetLimitPricePairsResponse;
 use Binance\Client\MarginTrading\Model\GetListScheduleResponse;
 use Binance\Client\MarginTrading\Model\QueryIsolatedMarginTierDataResponse;
 use Binance\Client\MarginTrading\Model\QueryLiabilityCoinLeverageBracketInCrossMarginProModeResponse;
@@ -73,6 +74,7 @@ class MarketDataApi
         'getAllIsolatedMarginSymbol' => ['application/x-www-form-urlencoded'],
         'getAllMarginAssets' => ['application/x-www-form-urlencoded'],
         'getDelistSchedule' => ['application/x-www-form-urlencoded'],
+        'getLimitPricePairs' => ['application/x-www-form-urlencoded'],
         'getListSchedule' => ['application/x-www-form-urlencoded'],
         'queryIsolatedMarginTierData' => ['application/x-www-form-urlencoded'],
         'queryLiabilityCoinLeverageBracketInCrossMarginProMode' => ['application/x-www-form-urlencoded'],
@@ -885,6 +887,149 @@ class MarketDataApi
             true, // explode
             false // required
         ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getLimitPricePairs.
+     *
+     * Get Limit Price Pairs(MARKET_DATA)
+     *
+     * @return ApiResponse<GetLimitPricePairsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getLimitPricePairs(): ApiResponse
+    {
+        return $this->getLimitPricePairsWithHttpInfo();
+    }
+
+    /**
+     * Operation getLimitPricePairsWithHttpInfo.
+     *
+     * Get Limit Price Pairs(MARKET_DATA)
+     *
+     * @return ApiResponse<GetLimitPricePairsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getLimitPricePairsWithHttpInfo(): ApiResponse
+    {
+        $request = $this->getLimitPricePairsRequest();
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\MarginTrading\Model\GetLimitPricePairsResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\MarginTrading\Model\GetLimitPricePairsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\MarginTrading\Model\GetLimitPricePairsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'getLimitPricePairs'.
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getLimitPricePairsRequest()
+    {
+        $contentType = self::contentTypes['getLimitPricePairs'][0];
+
+        $resourcePath = '/sapi/v1/margin/limit-price-pairs';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],

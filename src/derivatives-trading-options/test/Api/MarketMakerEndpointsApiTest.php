@@ -153,23 +153,6 @@ class MarketMakerEndpointsApiTest extends TestCase
     }
 
     /**
-     * Test case for optionMarginAccountInformation.
-     *
-     * Option Margin Account Information (USER_DATA).
-     */
-    public function testOptionMarginAccountInformation()
-    {
-        $recvWindow = 5000;
-        $response = $this->getApiMock($request)->optionMarginAccountInformation($recvWindow);
-
-        parse_str($request->getUri(), $queryMap);
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/eapi/v1/marginAccount', $request->getUri()->getPath());
-        self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
-    }
-
-    /**
      * Test case for resetMarketMakerProtectionConfig.
      *
      * Reset Market Maker Protection Config (TRADE).

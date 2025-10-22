@@ -18,5 +18,6 @@ Name | Type | Description | Notes
 **confirmTimes** | **string** |  | [optional]
 **unlockConfirm** | **int** |  | [optional]
 **walletType** | **int** |  | [optional]
+**travelRuleStatus** | **int** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

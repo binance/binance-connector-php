@@ -62,7 +62,9 @@ class FlexibleLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSe
      */
     protected static $openAPITypes = [
         'loanCoin' => 'string',
+        'loanAmount' => 'float',
         'collateralCoin' => 'string',
+        'collateralAmount' => 'float',
         'recvWindow' => 'int',
     ];
 
@@ -77,7 +79,9 @@ class FlexibleLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSe
      */
     protected static $openAPIFormats = [
         'loanCoin' => null,
+        'loanAmount' => 'float',
         'collateralCoin' => null,
+        'collateralAmount' => 'float',
         'recvWindow' => 'int64',
     ];
 
@@ -88,7 +92,9 @@ class FlexibleLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSe
      */
     protected static array $openAPINullables = [
         'loanCoin' => false,
+        'loanAmount' => false,
         'collateralCoin' => false,
+        'collateralAmount' => false,
         'recvWindow' => false,
     ];
 
@@ -107,7 +113,9 @@ class FlexibleLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'loanCoin' => 'loanCoin',
+        'loanAmount' => 'loanAmount',
         'collateralCoin' => 'collateralCoin',
+        'collateralAmount' => 'collateralAmount',
         'recvWindow' => 'recvWindow',
     ];
 
@@ -118,7 +126,9 @@ class FlexibleLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'loanCoin' => 'setLoanCoin',
+        'loanAmount' => 'setLoanAmount',
         'collateralCoin' => 'setCollateralCoin',
+        'collateralAmount' => 'setCollateralAmount',
         'recvWindow' => 'setRecvWindow',
     ];
 
@@ -129,7 +139,9 @@ class FlexibleLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'loanCoin' => 'getLoanCoin',
+        'loanAmount' => 'getLoanAmount',
         'collateralCoin' => 'getCollateralCoin',
+        'collateralAmount' => 'getCollateralAmount',
         'recvWindow' => 'getRecvWindow',
     ];
 
@@ -149,7 +161,9 @@ class FlexibleLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSe
     public function __construct(?array $data = null)
     {
         $this->setIfExists('loanCoin', $data ?? [], null);
+        $this->setIfExists('loanAmount', $data ?? [], null);
         $this->setIfExists('collateralCoin', $data ?? [], null);
+        $this->setIfExists('collateralAmount', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }
 
@@ -318,6 +332,33 @@ class FlexibleLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSe
     }
 
     /**
+     * Gets loanAmount.
+     *
+     * @return null|float
+     */
+    public function getLoanAmount()
+    {
+        return $this->container['loanAmount'];
+    }
+
+    /**
+     * Sets loanAmount.
+     *
+     * @param null|float $loanAmount loanAmount
+     *
+     * @return self
+     */
+    public function setLoanAmount($loanAmount)
+    {
+        if (is_null($loanAmount)) {
+            throw new \InvalidArgumentException('non-nullable loanAmount cannot be null');
+        }
+        $this->container['loanAmount'] = $loanAmount;
+
+        return $this;
+    }
+
+    /**
      * Gets collateralCoin.
      *
      * @return string
@@ -340,6 +381,33 @@ class FlexibleLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable collateralCoin cannot be null');
         }
         $this->container['collateralCoin'] = $collateralCoin;
+
+        return $this;
+    }
+
+    /**
+     * Gets collateralAmount.
+     *
+     * @return null|float
+     */
+    public function getCollateralAmount()
+    {
+        return $this->container['collateralAmount'];
+    }
+
+    /**
+     * Sets collateralAmount.
+     *
+     * @param null|float $collateralAmount collateralAmount
+     *
+     * @return self
+     */
+    public function setCollateralAmount($collateralAmount)
+    {
+        if (is_null($collateralAmount)) {
+            throw new \InvalidArgumentException('non-nullable collateralAmount cannot be null');
+        }
+        $this->container['collateralAmount'] = $collateralAmount;
 
         return $this;
     }

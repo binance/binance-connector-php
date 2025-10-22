@@ -8,6 +8,7 @@ All URIs are relative to https://eapi.binance.com, except if the operation defin
 | [**getDownloadIdForOptionTransactionHistory()**](AccountApi.md#getDownloadIdForOptionTransactionHistory) | **GET** /eapi/v1/income/asyn | Get Download Id For Option Transaction History (USER_DATA) |
 | [**getOptionTransactionHistoryDownloadLinkById()**](AccountApi.md#getOptionTransactionHistoryDownloadLinkById) | **GET** /eapi/v1/income/asyn/id | Get Option Transaction History Download Link by Id (USER_DATA) |
 | [**optionAccountInformation()**](AccountApi.md#optionAccountInformation) | **GET** /eapi/v1/account | Option Account Information(TRADE) |
+| [**optionMarginAccountInformation()**](AccountApi.md#optionMarginAccountInformation) | **GET** /eapi/v1/marginAccount | Option Margin Account Information (USER_DATA) |
 
 
 ## `accountFundingFlow()`
@@ -236,6 +237,62 @@ try {
 ### Return type
 
 [**\Binance\Client\DerivativesTradingOptions\Model\OptionAccountInformationResponse**](../Model/OptionAccountInformationResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `optionMarginAccountInformation()`
+
+```php
+optionMarginAccountInformation($recvWindow): \Binance\Client\DerivativesTradingOptions\Model\OptionMarginAccountInformationResponse
+```
+
+Option Margin Account Information (USER_DATA)
+
+Get current account information.  Weight: 3
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingOptions\Api\AccountApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$recvWindow = 56; // int
+
+try {
+    $result = $apiInstance->optionMarginAccountInformation($recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountApi->optionMarginAccountInformation: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingOptions\Model\OptionMarginAccountInformationResponse**](../Model/OptionMarginAccountInformationResponse.md)
 
 ### Authorization
 

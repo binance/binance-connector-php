@@ -29,6 +29,7 @@
 
 namespace Binance\Client\SimpleEarn\Test\Api;
 
+use Binance\Client\SimpleEarn\Api\FlexibleLockedApi;
 use Binance\Client\SimpleEarn\Api\HistoryApi;
 use Binance\Common\Configuration\ClientConfiguration;
 use Binance\Common\Configuration\SignatureConfiguration;
@@ -52,7 +53,7 @@ use Psr\Http\Message\ResponseInterface;
  */
 class HistoryApiTest extends TestCase
 {
-    public function getApiMock(&$request)
+    public function getApiMock(&$request): FlexibleLockedApi|MockObject
     {
         $clientMock = $this->createMock(HttpClient::class);
         $signatureConfig = new SignatureConfiguration();
@@ -82,7 +83,7 @@ class HistoryApiTest extends TestCase
             }))
         ;
 
-        $apiMock = $this->getMockBuilder(HistoryApi::class)
+        $apiMock = $this->getMockBuilder(FlexibleLockedApi::class)
             ->setConstructorArgs([$clientConfig, $clientMock])
             ->onlyMethods(['getTimestamp'])
             ->getMock()

@@ -8,6 +8,8 @@
 
 [/eapi/v1/account](https://developers.binance.com/docs/derivatives/option/account/Option-Account-Information) - optionAccountInformation - [OptionAccountInformationExample.php:25](/examples/derivatives-trading-options/account/OptionAccountInformationExample.php#L25)
 
+[/eapi/v1/marginAccount](https://developers.binance.com/docs/derivatives/option/account/Option-Margin-Account-Information) - optionMarginAccountInformation - [OptionMarginAccountInformationExample.php:25](/examples/derivatives-trading-options/account/OptionMarginAccountInformationExample.php#L25)
+
 ## MarketData
 
 [/eapi/v1/time](https://developers.binance.com/docs/derivatives/option/market-data/Check-Server-Time) - checkServerTime - [CheckServerTimeExample.php:23](/examples/derivatives-trading-options/marketdata/CheckServerTimeExample.php#L23)
@@ -46,7 +48,7 @@
 
 [/eapi/v1/block/order/create](https://developers.binance.com/docs/derivatives/option/market-maker-block-trade/Extend-Block-Trade-Order) - extendBlockTradeOrder - [ExtendBlockTradeOrderExample.php:27](/examples/derivatives-trading-options/marketmakerblocktrade/ExtendBlockTradeOrderExample.php#L27)
 
-[/eapi/v1/block/order/create](https://developers.binance.com/docs/derivatives/option/market-maker-block-trade/New-Block-Trade-Order) - newBlockTradeOrder - [NewBlockTradeOrderExample.php:33](/examples/derivatives-trading-options/marketmakerblocktrade/NewBlockTradeOrderExample.php#L33)
+[/eapi/v1/block/order/create](https://developers.binance.com/docs/derivatives/option/market-maker-block-trade/New-Block-Trade-Order) - newBlockTradeOrder - [NewBlockTradeOrderExample.php:28](/examples/derivatives-trading-options/marketmakerblocktrade/NewBlockTradeOrderExample.php#L28)
 
 [/eapi/v1/block/order/execute](https://developers.binance.com/docs/derivatives/option/market-maker-block-trade/Query-Block-Trade-Detail) - queryBlockTradeDetails - [QueryBlockTradeDetailsExample.php:26](/examples/derivatives-trading-options/marketmakerblocktrade/QueryBlockTradeDetailsExample.php#L26)
 
@@ -59,8 +61,6 @@
 [/eapi/v1/countdownCancelAll](https://developers.binance.com/docs/derivatives/option/market-maker-endpoints/Get-Auto-Cancel-All-Open-Orders-Config) - getAutoCancelAllOpenOrders - [GetAutoCancelAllOpenOrdersExample.php:26](/examples/derivatives-trading-options/marketmakerendpoints/GetAutoCancelAllOpenOrdersExample.php#L26)
 
 [/eapi/v1/mmp](https://developers.binance.com/docs/derivatives/option/market-maker-endpoints/Get-Market-Maker-Protection-Config) - getMarketMakerProtectionConfig - [GetMarketMakerProtectionConfigExample.php:26](/examples/derivatives-trading-options/marketmakerendpoints/GetMarketMakerProtectionConfigExample.php#L26)
-
-[/eapi/v1/marginAccount](https://developers.binance.com/docs/derivatives/option/market-maker-endpoints/Option-Margin-Account-Information) - optionMarginAccountInformation - [OptionMarginAccountInformationExample.php:25](/examples/derivatives-trading-options/marketmakerendpoints/OptionMarginAccountInformationExample.php#L25)
 
 [/eapi/v1/mmpReset](https://developers.binance.com/docs/derivatives/option/market-maker-endpoints/Reset-Market-Maker-Protection-Config) - resetMarketMakerProtectionConfig - [ResetMarketMakerProtectionConfigExample.php:26](/examples/derivatives-trading-options/marketmakerendpoints/ResetMarketMakerProtectionConfigExample.php#L26)
 
@@ -86,7 +86,7 @@
 
 [/eapi/v1/batchOrders](https://developers.binance.com/docs/derivatives/option/trade/Place-Multiple-Orders) - placeMultipleOrders - [PlaceMultipleOrdersExample.php:27](/examples/derivatives-trading-options/trade/PlaceMultipleOrdersExample.php#L27)
 
-[/eapi/v1/openOrders](https://developers.binance.com/docs/derivatives/option/trade/Query-Current-Open-Option-Orders) - queryCurrentOpenOptionOrders - [QueryCurrentOpenOptionOrdersExample.php:30](/examples/derivatives-trading-options/trade/QueryCurrentOpenOptionOrdersExample.php#L30)
+[/eapi/v1/openOrders](https://developers.binance.com/docs/derivatives/option/trade/Query-Current-Open-Option-Orders) - queryCurrentOpenOptionOrders - [QueryCurrentOpenOptionOrdersExample.php:29](/examples/derivatives-trading-options/trade/QueryCurrentOpenOptionOrdersExample.php#L29)
 
 [/eapi/v1/historyOrders](https://developers.binance.com/docs/derivatives/option/trade/Query-Option-Order-History) - queryOptionOrderHistory - [QueryOptionOrderHistoryExample.php:30](/examples/derivatives-trading-options/trade/QueryOptionOrderHistoryExample.php#L30)
 

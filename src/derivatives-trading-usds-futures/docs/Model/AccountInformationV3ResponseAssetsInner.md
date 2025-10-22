@@ -17,6 +17,5 @@ Name | Type | Description | Notes
 **availableBalance** | **string** |  | [optional]
 **maxWithdrawAmount** | **string** |  | [optional]
 **updateTime** | **int** |  | [optional]
-**marginAvailable** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
