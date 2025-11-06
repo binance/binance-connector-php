@@ -445,7 +445,7 @@ $apiInstance = new Binance\Client\SubAccount\Api\AccountManagementApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$email = 'email_example'; // string | [Sub-account email](#email-address)
+$email = 'email_example'; // string | Managed sub-account email
 $recvWindow = 56; // int
 
 try {
@@ -460,7 +460,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| [Sub-account email](#email-address) | |
+| **email** | **string**| Managed sub-account email | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type

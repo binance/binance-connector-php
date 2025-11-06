@@ -14,6 +14,7 @@ require_once __DIR__.'/../vendor/autoload.php';
  * Do not edit the class manually.
  */
 use Binance\Client\Spot\Api\SpotRestApi;
+use Binance\Client\Spot\Model\SymbolStatus;
 use Binance\Client\Spot\SpotRestApiUtil;
 
 function depthExample()
@@ -22,7 +23,8 @@ function depthExample()
     $api = new SpotRestApi($configurationBuilder->build());
     $symbol = 'BNBUSDT';
     $limit = 500;
-    $response = $api->depth($symbol, $limit);
+    $symbolStatus = SymbolStatus::TRADING;
+    $response = $api->depth($symbol, $limit, $symbolStatus);
     print_r($response);
 }
 

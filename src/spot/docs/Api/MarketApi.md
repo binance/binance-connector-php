@@ -141,7 +141,7 @@ No authorization required
 ## `depth()`
 
 ```php
-depth($symbol, $limit): \Binance\Client\Spot\Model\DepthResponse
+depth($symbol, $limit, $symbolStatus): \Binance\Client\Spot\Model\DepthResponse
 ```
 
 Order book
@@ -163,9 +163,10 @@ $apiInstance = new Binance\Client\Spot\Api\MarketApi(
 );
 $symbol = 'symbol_example'; // string
 $limit = 56; // int | Default: 500; Maximum: 1000.
+$symbolStatus = new \Binance\Client\Spot\Model\\Binance\Client\Spot\Model\SymbolStatus(); // \Binance\Client\Spot\Model\SymbolStatus
 
 try {
-    $result = $apiInstance->depth($symbol, $limit);
+    $result = $apiInstance->depth($symbol, $limit, $symbolStatus);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MarketApi->depth: ', $e->getMessage(), PHP_EOL;
@@ -178,6 +179,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
 | **limit** | **int**| Default: 500; Maximum: 1000. | [optional] |
+| **symbolStatus** | [**\Binance\Client\Spot\Model\SymbolStatus**](../Model/.md)|  | [optional] |
 
 ### Return type
 
@@ -383,7 +385,7 @@ No authorization required
 ## `ticker()`
 
 ```php
-ticker($symbol, $symbols, $windowSize, $type): \Binance\Client\Spot\Model\TickerResponse
+ticker($symbol, $symbols, $windowSize, $type, $symbolStatus): \Binance\Client\Spot\Model\TickerResponse
 ```
 
 Rolling window price change statistics
@@ -407,9 +409,10 @@ $symbol = 'symbol_example'; // string | Symbol to query
 $symbols = array('symbols_example'); // \Binance\Client\Spot\Model\Symbols | List of symbols to query
 $windowSize = new \Binance\Client\Spot\Model\\Binance\Client\Spot\Model\WindowSize(); // \Binance\Client\Spot\Model\WindowSize
 $type = new \Binance\Client\Spot\Model\\Binance\Client\Spot\Model\TickerType(); // \Binance\Client\Spot\Model\TickerType
+$symbolStatus = new \Binance\Client\Spot\Model\\Binance\Client\Spot\Model\SymbolStatus(); // \Binance\Client\Spot\Model\SymbolStatus
 
 try {
-    $result = $apiInstance->ticker($symbol, $symbols, $windowSize, $type);
+    $result = $apiInstance->ticker($symbol, $symbols, $windowSize, $type, $symbolStatus);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MarketApi->ticker: ', $e->getMessage(), PHP_EOL;
@@ -424,6 +427,7 @@ try {
 | **symbols** | [**\Binance\Client\Spot\Model\Symbols**](../Model/string.md)| List of symbols to query | [optional] |
 | **windowSize** | [**\Binance\Client\Spot\Model\WindowSize**](../Model/.md)|  | [optional] |
 | **type** | [**\Binance\Client\Spot\Model\TickerType**](../Model/.md)|  | [optional] |
+| **symbolStatus** | [**\Binance\Client\Spot\Model\SymbolStatus**](../Model/.md)|  | [optional] |
 
 ### Return type
 
@@ -445,7 +449,7 @@ No authorization required
 ## `ticker24hr()`
 
 ```php
-ticker24hr($symbol, $symbols, $type): \Binance\Client\Spot\Model\Ticker24hrResponse
+ticker24hr($symbol, $symbols, $type, $symbolStatus): \Binance\Client\Spot\Model\Ticker24hrResponse
 ```
 
 24hr ticker price change statistics
@@ -468,9 +472,10 @@ $apiInstance = new Binance\Client\Spot\Api\MarketApi(
 $symbol = 'symbol_example'; // string | Symbol to query
 $symbols = array('symbols_example'); // \Binance\Client\Spot\Model\Symbols | List of symbols to query
 $type = new \Binance\Client\Spot\Model\\Binance\Client\Spot\Model\TickerType(); // \Binance\Client\Spot\Model\TickerType
+$symbolStatus = new \Binance\Client\Spot\Model\\Binance\Client\Spot\Model\SymbolStatus(); // \Binance\Client\Spot\Model\SymbolStatus
 
 try {
-    $result = $apiInstance->ticker24hr($symbol, $symbols, $type);
+    $result = $apiInstance->ticker24hr($symbol, $symbols, $type, $symbolStatus);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MarketApi->ticker24hr: ', $e->getMessage(), PHP_EOL;
@@ -484,6 +489,7 @@ try {
 | **symbol** | **string**| Symbol to query | [optional] |
 | **symbols** | [**\Binance\Client\Spot\Model\Symbols**](../Model/string.md)| List of symbols to query | [optional] |
 | **type** | [**\Binance\Client\Spot\Model\TickerType**](../Model/.md)|  | [optional] |
+| **symbolStatus** | [**\Binance\Client\Spot\Model\SymbolStatus**](../Model/.md)|  | [optional] |
 
 ### Return type
 
@@ -505,7 +511,7 @@ No authorization required
 ## `tickerBookTicker()`
 
 ```php
-tickerBookTicker($symbol, $symbols): \Binance\Client\Spot\Model\TickerBookTickerResponse
+tickerBookTicker($symbol, $symbols, $symbolStatus): \Binance\Client\Spot\Model\TickerBookTickerResponse
 ```
 
 Symbol order book ticker
@@ -527,9 +533,10 @@ $apiInstance = new Binance\Client\Spot\Api\MarketApi(
 );
 $symbol = 'symbol_example'; // string | Symbol to query
 $symbols = array('symbols_example'); // \Binance\Client\Spot\Model\Symbols | List of symbols to query
+$symbolStatus = new \Binance\Client\Spot\Model\\Binance\Client\Spot\Model\SymbolStatus(); // \Binance\Client\Spot\Model\SymbolStatus
 
 try {
-    $result = $apiInstance->tickerBookTicker($symbol, $symbols);
+    $result = $apiInstance->tickerBookTicker($symbol, $symbols, $symbolStatus);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MarketApi->tickerBookTicker: ', $e->getMessage(), PHP_EOL;
@@ -542,6 +549,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**| Symbol to query | [optional] |
 | **symbols** | [**\Binance\Client\Spot\Model\Symbols**](../Model/string.md)| List of symbols to query | [optional] |
+| **symbolStatus** | [**\Binance\Client\Spot\Model\SymbolStatus**](../Model/.md)|  | [optional] |
 
 ### Return type
 
@@ -563,7 +571,7 @@ No authorization required
 ## `tickerPrice()`
 
 ```php
-tickerPrice($symbol, $symbols): \Binance\Client\Spot\Model\TickerPriceResponse
+tickerPrice($symbol, $symbols, $symbolStatus): \Binance\Client\Spot\Model\TickerPriceResponse
 ```
 
 Symbol price ticker
@@ -585,9 +593,10 @@ $apiInstance = new Binance\Client\Spot\Api\MarketApi(
 );
 $symbol = 'symbol_example'; // string | Symbol to query
 $symbols = array('symbols_example'); // \Binance\Client\Spot\Model\Symbols | List of symbols to query
+$symbolStatus = new \Binance\Client\Spot\Model\\Binance\Client\Spot\Model\SymbolStatus(); // \Binance\Client\Spot\Model\SymbolStatus
 
 try {
-    $result = $apiInstance->tickerPrice($symbol, $symbols);
+    $result = $apiInstance->tickerPrice($symbol, $symbols, $symbolStatus);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MarketApi->tickerPrice: ', $e->getMessage(), PHP_EOL;
@@ -600,6 +609,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**| Symbol to query | [optional] |
 | **symbols** | [**\Binance\Client\Spot\Model\Symbols**](../Model/string.md)| List of symbols to query | [optional] |
+| **symbolStatus** | [**\Binance\Client\Spot\Model\SymbolStatus**](../Model/.md)|  | [optional] |
 
 ### Return type
 
@@ -621,7 +631,7 @@ No authorization required
 ## `tickerTradingDay()`
 
 ```php
-tickerTradingDay($symbol, $symbols, $timeZone, $type): \Binance\Client\Spot\Model\TickerTradingDayResponse
+tickerTradingDay($symbol, $symbols, $timeZone, $type, $symbolStatus): \Binance\Client\Spot\Model\TickerTradingDayResponse
 ```
 
 Trading Day Ticker
@@ -645,9 +655,10 @@ $symbol = 'symbol_example'; // string | Symbol to query
 $symbols = array('symbols_example'); // \Binance\Client\Spot\Model\Symbols | List of symbols to query
 $timeZone = 'timeZone_example'; // string | Default: 0 (UTC)
 $type = new \Binance\Client\Spot\Model\\Binance\Client\Spot\Model\TickerType(); // \Binance\Client\Spot\Model\TickerType
+$symbolStatus = new \Binance\Client\Spot\Model\\Binance\Client\Spot\Model\SymbolStatus(); // \Binance\Client\Spot\Model\SymbolStatus
 
 try {
-    $result = $apiInstance->tickerTradingDay($symbol, $symbols, $timeZone, $type);
+    $result = $apiInstance->tickerTradingDay($symbol, $symbols, $timeZone, $type, $symbolStatus);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MarketApi->tickerTradingDay: ', $e->getMessage(), PHP_EOL;
@@ -662,6 +673,7 @@ try {
 | **symbols** | [**\Binance\Client\Spot\Model\Symbols**](../Model/string.md)| List of symbols to query | [optional] |
 | **timeZone** | **string**| Default: 0 (UTC) | [optional] |
 | **type** | [**\Binance\Client\Spot\Model\TickerType**](../Model/.md)|  | [optional] |
+| **symbolStatus** | [**\Binance\Client\Spot\Model\SymbolStatus**](../Model/.md)|  | [optional] |
 
 ### Return type
 

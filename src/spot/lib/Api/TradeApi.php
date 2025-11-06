@@ -1986,6 +1986,8 @@ class TradeApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function orderOco($orderOcoRequest): ApiResponse
     {
@@ -2003,6 +2005,8 @@ class TradeApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function orderOcoWithHttpInfo($orderOcoRequest): ApiResponse
     {
@@ -2081,6 +2085,8 @@ class TradeApi
      * @return Request
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function orderOcoRequest($orderOcoRequest)
     {

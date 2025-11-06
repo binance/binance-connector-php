@@ -37,7 +37,7 @@ $apiInstance = new Binance\Client\SimpleEarn\Api\RwusdApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getRwusdAccount($recvWindow);
@@ -51,7 +51,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -93,7 +93,7 @@ $apiInstance = new Binance\Client\SimpleEarn\Api\RwusdApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getRwusdQuotaDetails($recvWindow);
@@ -107,7 +107,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -151,9 +151,9 @@ $apiInstance = new Binance\Client\SimpleEarn\Api\RwusdApi(
 );
 $startTime = 56; // int
 $endTime = 56; // int
-$current = 56; // int | Currently querying the page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$current = 56; // int | Currently querying page. Starts from 1. Default: 1
+$size = 56; // int | Number of results per page. Default: 10, Max: 100
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getRwusdRateHistory($startTime, $endTime, $current, $size, $recvWindow);
@@ -169,9 +169,9 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying the page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page. Starts from 1. Default: 1 | [optional] |
+| **size** | **int**| Number of results per page. Default: 10, Max: 100 | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -215,9 +215,9 @@ $apiInstance = new Binance\Client\SimpleEarn\Api\RwusdApi(
 );
 $startTime = 56; // int
 $endTime = 56; // int
-$current = 56; // int | Currently querying the page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$current = 56; // int | Currently querying page. Starts from 1. Default: 1
+$size = 56; // int | Number of results per page. Default: 10, Max: 100
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getRwusdRedemptionHistory($startTime, $endTime, $current, $size, $recvWindow);
@@ -233,9 +233,9 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying the page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page. Starts from 1. Default: 1 | [optional] |
+| **size** | **int**| Number of results per page. Default: 10, Max: 100 | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -279,9 +279,9 @@ $apiInstance = new Binance\Client\SimpleEarn\Api\RwusdApi(
 );
 $startTime = 56; // int
 $endTime = 56; // int
-$current = 56; // int | Currently querying the page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$current = 56; // int | Currently querying page. Starts from 1. Default: 1
+$size = 56; // int | Number of results per page. Default: 10, Max: 100
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getRwusdRewardsHistory($startTime, $endTime, $current, $size, $recvWindow);
@@ -297,9 +297,9 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying the page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page. Starts from 1. Default: 1 | [optional] |
+| **size** | **int**| Number of results per page. Default: 10, Max: 100 | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -344,9 +344,9 @@ $apiInstance = new Binance\Client\SimpleEarn\Api\RwusdApi(
 $asset = 'asset_example'; // string | USDC or USDT
 $startTime = 56; // int
 $endTime = 56; // int
-$current = 56; // int | Currently querying the page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$current = 56; // int | Currently querying page. Starts from 1. Default: 1
+$size = 56; // int | Number of results per page. Default: 10, Max: 100
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getRwusdSubscriptionHistory($asset, $startTime, $endTime, $current, $size, $recvWindow);
@@ -363,9 +363,9 @@ try {
 | **asset** | **string**| USDC or USDT | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying the page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page. Starts from 1. Default: 1 | [optional] |
+| **size** | **int**| Number of results per page. Default: 10, Max: 100 | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 

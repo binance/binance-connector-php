@@ -4663,7 +4663,7 @@ class MarketDataApi
     /**
      * Operation symbolPriceTicker.
      *
-     * Symbol Price Ticker(Deprecated)
+     * Symbol Price Ticker
      *
      * @param null|string $symbol symbol (optional)
      *
@@ -4671,6 +4671,8 @@ class MarketDataApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function symbolPriceTicker($symbol = null): ApiResponse
     {
@@ -4680,7 +4682,7 @@ class MarketDataApi
     /**
      * Operation symbolPriceTickerWithHttpInfo.
      *
-     * Symbol Price Ticker(Deprecated)
+     * Symbol Price Ticker
      *
      * @param null|string $symbol (optional)
      *
@@ -4688,6 +4690,8 @@ class MarketDataApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function symbolPriceTickerWithHttpInfo($symbol = null): ApiResponse
     {
@@ -4766,6 +4770,8 @@ class MarketDataApi
      * @return Request
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function symbolPriceTickerRequest($symbol = null)
     {

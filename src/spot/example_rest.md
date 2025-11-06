@@ -42,7 +42,7 @@
 
 [/api/v3/avgPrice](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#current-average-price) - avgPrice - [AvgPriceExample.php:24](/examples/spot/market/AvgPriceExample.php#L24)
 
-[/api/v3/depth](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#order-book) - depth - [DepthExample.php:25](/examples/spot/market/DepthExample.php#L25)
+[/api/v3/depth](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#order-book) - depth - [DepthExample.php:27](/examples/spot/market/DepthExample.php#L27)
 
 [/api/v3/trades](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#recent-trades-list) - getTrades - [GetTradesExample.php:25](/examples/spot/market/GetTradesExample.php#L25)
 
@@ -50,15 +50,15 @@
 
 [/api/v3/klines](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#klinecandlestick-data) - klines - [KlinesExample.php:30](/examples/spot/market/KlinesExample.php#L30)
 
-[/api/v3/ticker](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#rolling-window-price-change-statistics) - ticker - [TickerExample.php:29](/examples/spot/market/TickerExample.php#L29)
+[/api/v3/ticker](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#rolling-window-price-change-statistics) - ticker - [TickerExample.php:31](/examples/spot/market/TickerExample.php#L31)
 
-[/api/v3/ticker/24hr](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#24hr-ticker-price-change-statistics) - ticker24hr - [Ticker24hrExample.php:27](/examples/spot/market/Ticker24hrExample.php#L27)
+[/api/v3/ticker/24hr](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#24hr-ticker-price-change-statistics) - ticker24hr - [Ticker24hrExample.php:29](/examples/spot/market/Ticker24hrExample.php#L29)
 
-[/api/v3/ticker/bookTicker](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#symbol-order-book-ticker) - tickerBookTicker - [TickerBookTickerExample.php:25](/examples/spot/market/TickerBookTickerExample.php#L25)
+[/api/v3/ticker/bookTicker](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#symbol-order-book-ticker) - tickerBookTicker - [TickerBookTickerExample.php:27](/examples/spot/market/TickerBookTickerExample.php#L27)
 
-[/api/v3/ticker/price](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#symbol-price-ticker) - tickerPrice - [TickerPriceExample.php:25](/examples/spot/market/TickerPriceExample.php#L25)
+[/api/v3/ticker/price](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#symbol-price-ticker) - tickerPrice - [TickerPriceExample.php:27](/examples/spot/market/TickerPriceExample.php#L27)
 
-[/api/v3/ticker/tradingDay](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#trading-day-ticker) - tickerTradingDay - [TickerTradingDayExample.php:28](/examples/spot/market/TickerTradingDayExample.php#L28)
+[/api/v3/ticker/tradingDay](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#trading-day-ticker) - tickerTradingDay - [TickerTradingDayExample.php:30](/examples/spot/market/TickerTradingDayExample.php#L30)
 
 [/api/v3/uiKlines](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#uiklines) - uiKlines - [UiKlinesExample.php:30](/examples/spot/market/UiKlinesExample.php#L30)
 
@@ -89,12 +89,4 @@
 [/api/v3/sor/order](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#new-order-using-sor-trade) - sorOrder - [SorOrderExample.php:32](/examples/spot/trade/SorOrderExample.php#L32)
 
 [/api/v3/sor/order/test](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#test-new-order-using-sor-trade) - sorOrderTest - [SorOrderTestExample.php:32](/examples/spot/trade/SorOrderTestExample.php#L32)
-
-## UserDataStream
-
-[/api/v3/userDataStream](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/user-data-stream-endpoints---deprecated#close-user-data-stream-user_stream) - deleteUserDataStream - [DeleteUserDataStreamExample.php:24](/examples/spot/userdatastream/DeleteUserDataStreamExample.php#L24)
-
-[/api/v3/userDataStream](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/user-data-stream-endpoints---deprecated#start-user-data-stream-user_stream) - newUserDataStream - [NewUserDataStreamExample.php:23](/examples/spot/userdatastream/NewUserDataStreamExample.php#L23)
-
-[/api/v3/userDataStream](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/user-data-stream-endpoints---deprecated#keepalive-user-data-stream-user_stream) - putUserDataStream - [PutUserDataStreamExample.php:26](/examples/spot/userdatastream/PutUserDataStreamExample.php#L26)
 

@@ -14,9 +14,12 @@ Name | Type | Description | Notes
 **abovePrice** | **float** |  | [optional]
 **aboveStopPrice** | **float** |  | [optional]
 **aboveTrailingDelta** | **int** |  | [optional]
-**aboveTimeInForce** | **float** |  | [optional]
+**aboveTimeInForce** | [**\Binance\Client\Spot\Model\AboveTimeInForce**](AboveTimeInForce.md) |  | [optional]
 **aboveStrategyId** | **int** |  | [optional]
 **aboveStrategyType** | **int** |  | [optional]
+**abovePegPriceType** | [**\Binance\Client\Spot\Model\AbovePegPriceType**](AbovePegPriceType.md) |  | [optional]
+**abovePegOffsetType** | [**\Binance\Client\Spot\Model\AbovePegOffsetType**](AbovePegOffsetType.md) |  | [optional]
+**abovePegOffsetValue** | **int** |  | [optional]
 **belowType** | [**\Binance\Client\Spot\Model\BelowType**](BelowType.md) |  |
 **belowClientOrderId** | **string** |  | [optional]
 **belowIcebergQty** | **int** |  | [optional]
@@ -26,8 +29,11 @@ Name | Type | Description | Notes
 **belowTimeInForce** | [**\Binance\Client\Spot\Model\BelowTimeInForce**](BelowTimeInForce.md) |  | [optional]
 **belowStrategyId** | **int** |  | [optional]
 **belowStrategyType** | **int** |  | [optional]
+**belowPegPriceType** | [**\Binance\Client\Spot\Model\BelowPegPriceType**](BelowPegPriceType.md) |  | [optional]
+**belowPegOffsetType** | [**\Binance\Client\Spot\Model\BelowPegOffsetType**](BelowPegOffsetType.md) |  | [optional]
+**belowPegOffsetValue** | **int** |  | [optional]
 **newOrderRespType** | [**\Binance\Client\Spot\Model\NewOrderRespType**](NewOrderRespType.md) |  | [optional]
 **selfTradePreventionMode** | [**\Binance\Client\Spot\Model\SelfTradePreventionMode**](SelfTradePreventionMode.md) |  | [optional]
-**recvWindow** | **int** |  | [optional]
+**recvWindow** | **float** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

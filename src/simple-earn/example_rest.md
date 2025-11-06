@@ -1,3 +1,21 @@
+## Bfusd
+
+[/sapi/v1/bfusd/account](https://developers.binance.com/docs/simple_earn/bfusd/account/) - getBfusdAccount - [GetBfusdAccountExample.php:25](/examples/simple-earn/bfusd/GetBfusdAccountExample.php#L25)
+
+[/sapi/v1/bfusd/quota](https://developers.binance.com/docs/simple_earn/bfusd/account/Get-BFUSD-Quota-Details) - getBfusdQuotaDetails - [GetBfusdQuotaDetailsExample.php:25](/examples/simple-earn/bfusd/GetBfusdQuotaDetailsExample.php#L25)
+
+[/sapi/v1/bfusd/history/rateHistory](https://developers.binance.com/docs/simple_earn/bfusd/history/Get-BFUSD-Rate-History) - getBfusdRateHistory - [GetBfusdRateHistoryExample.php:29](/examples/simple-earn/bfusd/GetBfusdRateHistoryExample.php#L29)
+
+[/sapi/v1/bfusd/history/redemptionHistory](https://developers.binance.com/docs/simple_earn/bfusd/history/Get-BFUSD-Redemption-History) - getBfusdRedemptionHistory - [GetBfusdRedemptionHistoryExample.php:29](/examples/simple-earn/bfusd/GetBfusdRedemptionHistoryExample.php#L29)
+
+[/sapi/v1/bfusd/history/rewardsHistory](https://developers.binance.com/docs/simple_earn/bfusd/history/Get-BFUSD-Rewards-History) - getBfusdRewardsHistory - [GetBfusdRewardsHistoryExample.php:29](/examples/simple-earn/bfusd/GetBfusdRewardsHistoryExample.php#L29)
+
+[/sapi/v1/bfusd/history/subscriptionHistory](https://developers.binance.com/docs/simple_earn/bfusd/history/Get-BFUSD-subscription-history) - getBfusdSubscriptionHistory - [GetBfusdSubscriptionHistoryExample.php:30](/examples/simple-earn/bfusd/GetBfusdSubscriptionHistoryExample.php#L30)
+
+[/sapi/v1/bfusd/redeem](https://developers.binance.com/docs/simple_earn/bfusd/earn/Redeem-BFUSD) - redeemBfusd - [RedeemBfusdExample.php:28](/examples/simple-earn/bfusd/RedeemBfusdExample.php#L28)
+
+[/sapi/v1/bfusd/subscribe](https://developers.binance.com/docs/simple_earn/bfusd/earn/Subscribe-BFUSD) - subscribeBfusd - [SubscribeBfusdExample.php:28](/examples/simple-earn/bfusd/SubscribeBfusdExample.php#L28)
+
 ## FlexibleLocked
 
 [/sapi/v1/simple-earn/flexible/history/collateralRecord](https://developers.binance.com/docs/simple_earn/flexible-locked/history/Get-Collateral-Record) - getCollateralRecord - [GetCollateralRecordExample.php:30](/examples/simple-earn/flexiblelocked/GetCollateralRecordExample.php#L30)

@@ -14,6 +14,7 @@ require_once __DIR__.'/../vendor/autoload.php';
  * Do not edit the class manually.
  */
 use Binance\Client\Spot\Api\SpotRestApi;
+use Binance\Client\Spot\Model\SymbolStatus;
 use Binance\Client\Spot\SpotRestApiUtil;
 
 function tickerPriceExample()
@@ -22,7 +23,8 @@ function tickerPriceExample()
     $api = new SpotRestApi($configurationBuilder->build());
     $symbol = 'BNBUSDT';
     $symbols = null;
-    $response = $api->tickerPrice($symbol, $symbols);
+    $symbolStatus = SymbolStatus::TRADING;
+    $response = $api->tickerPrice($symbol, $symbols, $symbolStatus);
     print_r($response);
 }
 

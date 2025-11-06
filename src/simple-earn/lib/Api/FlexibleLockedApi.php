@@ -171,9 +171,9 @@ class FlexibleLockedApi
      * @param null|string $productId  productId (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetCollateralRecordResponse>
      *
@@ -193,9 +193,9 @@ class FlexibleLockedApi
      * @param null|string $productId  (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetCollateralRecordResponse>
      *
@@ -277,9 +277,9 @@ class FlexibleLockedApi
      * @param null|string $productId  (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -392,7 +392,7 @@ class FlexibleLockedApi
      * Get Flexible Personal Left Quota(USER_DATA)
      *
      * @param string   $productId  productId (required)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetFlexiblePersonalLeftQuotaResponse>
      *
@@ -410,7 +410,7 @@ class FlexibleLockedApi
      * Get Flexible Personal Left Quota(USER_DATA)
      *
      * @param string   $productId  (required)
-     * @param null|int $recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetFlexiblePersonalLeftQuotaResponse>
      *
@@ -490,7 +490,7 @@ class FlexibleLockedApi
      * Create request for operation 'getFlexiblePersonalLeftQuota'.
      *
      * @param string   $productId  (required)
-     * @param null|int $recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -575,9 +575,9 @@ class FlexibleLockedApi
      *
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|string $productId  productId (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetFlexibleProductPositionResponse>
      *
@@ -596,9 +596,9 @@ class FlexibleLockedApi
      *
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|string $productId  (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetFlexibleProductPositionResponse>
      *
@@ -679,9 +679,9 @@ class FlexibleLockedApi
      *
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|string $productId  (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -789,9 +789,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetFlexibleRedemptionRecordResponse>
      *
@@ -813,9 +813,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetFlexibleRedemptionRecordResponse>
      *
@@ -899,9 +899,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -1036,9 +1036,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetFlexibleRewardsHistoryResponse>
      *
@@ -1060,9 +1060,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetFlexibleRewardsHistoryResponse>
      *
@@ -1146,9 +1146,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -1287,7 +1287,7 @@ class FlexibleLockedApi
      *
      * @param string   $productId  productId (required)
      * @param float    $amount     amount (required)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetFlexibleSubscriptionPreviewResponse>
      *
@@ -1306,7 +1306,7 @@ class FlexibleLockedApi
      *
      * @param string   $productId  (required)
      * @param float    $amount     (required)
-     * @param null|int $recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetFlexibleSubscriptionPreviewResponse>
      *
@@ -1387,7 +1387,7 @@ class FlexibleLockedApi
      *
      * @param string   $productId  (required)
      * @param float    $amount     (required)
-     * @param null|int $recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -1491,9 +1491,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetFlexibleSubscriptionRecordResponse>
      *
@@ -1515,9 +1515,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetFlexibleSubscriptionRecordResponse>
      *
@@ -1601,9 +1601,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -1734,7 +1734,7 @@ class FlexibleLockedApi
      * Get Locked Personal Left Quota(USER_DATA)
      *
      * @param string   $projectId  projectId (required)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedPersonalLeftQuotaResponse>
      *
@@ -1752,7 +1752,7 @@ class FlexibleLockedApi
      * Get Locked Personal Left Quota(USER_DATA)
      *
      * @param string   $projectId  (required)
-     * @param null|int $recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedPersonalLeftQuotaResponse>
      *
@@ -1832,7 +1832,7 @@ class FlexibleLockedApi
      * Create request for operation 'getLockedPersonalLeftQuota'.
      *
      * @param string   $projectId  (required)
-     * @param null|int $recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -1918,9 +1918,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|string $positionId positionId (optional)
      * @param null|string $projectId  projectId (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedProductPositionResponse>
      *
@@ -1940,9 +1940,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|string $positionId (optional)
      * @param null|string $projectId  (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedProductPositionResponse>
      *
@@ -2024,9 +2024,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|string $positionId (optional)
      * @param null|string $projectId  (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -2143,9 +2143,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedRedemptionRecordResponse>
      *
@@ -2167,9 +2167,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedRedemptionRecordResponse>
      *
@@ -2253,9 +2253,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -2389,9 +2389,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedRewardsHistoryResponse>
      *
@@ -2412,9 +2412,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedRewardsHistoryResponse>
      *
@@ -2497,9 +2497,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -2623,7 +2623,7 @@ class FlexibleLockedApi
      * @param string    $projectId     projectId (required)
      * @param float     $amount        amount (required)
      * @param null|bool $autoSubscribe true or false, default true. (optional)
-     * @param null|int  $recvWindow    recvWindow (optional)
+     * @param null|int  $recvWindow    The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedSubscriptionPreviewResponse>
      *
@@ -2643,7 +2643,7 @@ class FlexibleLockedApi
      * @param string    $projectId     (required)
      * @param float     $amount        (required)
      * @param null|bool $autoSubscribe true or false, default true. (optional)
-     * @param null|int  $recvWindow    (optional)
+     * @param null|int  $recvWindow    The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedSubscriptionPreviewResponse>
      *
@@ -2725,7 +2725,7 @@ class FlexibleLockedApi
      * @param string    $projectId     (required)
      * @param float     $amount        (required)
      * @param null|bool $autoSubscribe true or false, default true. (optional)
-     * @param null|int  $recvWindow    (optional)
+     * @param null|int  $recvWindow    The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -2837,9 +2837,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedSubscriptionRecordResponse>
      *
@@ -2860,9 +2860,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedSubscriptionRecordResponse>
      *
@@ -2945,9 +2945,9 @@ class FlexibleLockedApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -3072,9 +3072,9 @@ class FlexibleLockedApi
      * @param null|string $aprPeriod  \&quot;DAY\&quot;,\&quot;YEAR\&quot;,default\&quot;DAY\&quot; (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRateHistoryResponse>
      *
@@ -3095,9 +3095,9 @@ class FlexibleLockedApi
      * @param null|string $aprPeriod  \&quot;DAY\&quot;,\&quot;YEAR\&quot;,default\&quot;DAY\&quot; (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRateHistoryResponse>
      *
@@ -3180,9 +3180,9 @@ class FlexibleLockedApi
      * @param null|string $aprPeriod  \&quot;DAY\&quot;,\&quot;YEAR\&quot;,default\&quot;DAY\&quot; (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -3311,9 +3311,9 @@ class FlexibleLockedApi
      * Get Simple Earn Flexible Product List(USER_DATA)
      *
      * @param null|string $asset      USDC or USDT (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetSimpleEarnFlexibleProductListResponse>
      *
@@ -3331,9 +3331,9 @@ class FlexibleLockedApi
      * Get Simple Earn Flexible Product List(USER_DATA)
      *
      * @param null|string $asset      USDC or USDT (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetSimpleEarnFlexibleProductListResponse>
      *
@@ -3413,9 +3413,9 @@ class FlexibleLockedApi
      * Create request for operation 'getSimpleEarnFlexibleProductList'.
      *
      * @param null|string $asset      USDC or USDT (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -3510,9 +3510,9 @@ class FlexibleLockedApi
      * Get Simple Earn Locked Product List(USER_DATA)
      *
      * @param null|string $asset      USDC or USDT (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetSimpleEarnLockedProductListResponse>
      *
@@ -3530,9 +3530,9 @@ class FlexibleLockedApi
      * Get Simple Earn Locked Product List(USER_DATA)
      *
      * @param null|string $asset      USDC or USDT (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetSimpleEarnLockedProductListResponse>
      *
@@ -3612,9 +3612,9 @@ class FlexibleLockedApi
      * Create request for operation 'getSimpleEarnLockedProductList'.
      *
      * @param null|string $asset      USDC or USDT (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -4708,7 +4708,7 @@ class FlexibleLockedApi
      *
      * Simple Account(USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<SimpleAccountResponse>
      *
@@ -4725,7 +4725,7 @@ class FlexibleLockedApi
      *
      * Simple Account(USER_DATA)
      *
-     * @param null|int $recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<SimpleAccountResponse>
      *
@@ -4804,7 +4804,7 @@ class FlexibleLockedApi
     /**
      * Create request for operation 'simpleAccount'.
      *
-     * @param null|int $recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *

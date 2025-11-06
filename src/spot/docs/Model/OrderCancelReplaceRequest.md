@@ -25,6 +25,9 @@ Name | Type | Description | Notes
 **selfTradePreventionMode** | [**\Binance\Client\Spot\Model\SelfTradePreventionMode**](SelfTradePreventionMode.md) |  | [optional]
 **cancelRestrictions** | [**\Binance\Client\Spot\Model\CancelRestrictions**](CancelRestrictions.md) |  | [optional]
 **orderRateLimitExceededMode** | [**\Binance\Client\Spot\Model\OrderRateLimitExceededMode**](OrderRateLimitExceededMode.md) |  | [optional]
-**recvWindow** | **int** |  | [optional]
+**pegPriceType** | [**\Binance\Client\Spot\Model\PegPriceType**](PegPriceType.md) |  | [optional]
+**pegOffsetValue** | **int** |  | [optional]
+**pegOffsetType** | [**\Binance\Client\Spot\Model\PegOffsetType**](PegOffsetType.md) |  | [optional]
+**recvWindow** | **float** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

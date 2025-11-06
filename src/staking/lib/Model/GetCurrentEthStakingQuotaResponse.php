@@ -63,6 +63,13 @@ class GetCurrentEthStakingQuotaResponse implements ModelInterface, \ArrayAccess,
     protected static $openAPITypes = [
         'leftStakingPersonalQuota' => 'string',
         'leftRedemptionPersonalQuota' => 'string',
+        'minStakeAmount' => 'string',
+        'minRedeemAmount' => 'string',
+        'redeemPeriod' => 'int',
+        'stakeable' => 'bool',
+        'redeemable' => 'bool',
+        'commissionFee' => 'string',
+        'calculating' => 'bool',
     ];
 
     /**
@@ -77,6 +84,13 @@ class GetCurrentEthStakingQuotaResponse implements ModelInterface, \ArrayAccess,
     protected static $openAPIFormats = [
         'leftStakingPersonalQuota' => null,
         'leftRedemptionPersonalQuota' => null,
+        'minStakeAmount' => null,
+        'minRedeemAmount' => null,
+        'redeemPeriod' => 'int64',
+        'stakeable' => null,
+        'redeemable' => null,
+        'commissionFee' => null,
+        'calculating' => null,
     ];
 
     /**
@@ -87,6 +101,13 @@ class GetCurrentEthStakingQuotaResponse implements ModelInterface, \ArrayAccess,
     protected static array $openAPINullables = [
         'leftStakingPersonalQuota' => false,
         'leftRedemptionPersonalQuota' => false,
+        'minStakeAmount' => false,
+        'minRedeemAmount' => false,
+        'redeemPeriod' => false,
+        'stakeable' => false,
+        'redeemable' => false,
+        'commissionFee' => false,
+        'calculating' => false,
     ];
 
     /**
@@ -105,6 +126,13 @@ class GetCurrentEthStakingQuotaResponse implements ModelInterface, \ArrayAccess,
     protected static $attributeMap = [
         'leftStakingPersonalQuota' => 'leftStakingPersonalQuota',
         'leftRedemptionPersonalQuota' => 'leftRedemptionPersonalQuota',
+        'minStakeAmount' => 'minStakeAmount',
+        'minRedeemAmount' => 'minRedeemAmount',
+        'redeemPeriod' => 'redeemPeriod',
+        'stakeable' => 'stakeable',
+        'redeemable' => 'redeemable',
+        'commissionFee' => 'commissionFee',
+        'calculating' => 'calculating',
     ];
 
     /**
@@ -115,6 +143,13 @@ class GetCurrentEthStakingQuotaResponse implements ModelInterface, \ArrayAccess,
     protected static $setters = [
         'leftStakingPersonalQuota' => 'setLeftStakingPersonalQuota',
         'leftRedemptionPersonalQuota' => 'setLeftRedemptionPersonalQuota',
+        'minStakeAmount' => 'setMinStakeAmount',
+        'minRedeemAmount' => 'setMinRedeemAmount',
+        'redeemPeriod' => 'setRedeemPeriod',
+        'stakeable' => 'setStakeable',
+        'redeemable' => 'setRedeemable',
+        'commissionFee' => 'setCommissionFee',
+        'calculating' => 'setCalculating',
     ];
 
     /**
@@ -125,6 +160,13 @@ class GetCurrentEthStakingQuotaResponse implements ModelInterface, \ArrayAccess,
     protected static $getters = [
         'leftStakingPersonalQuota' => 'getLeftStakingPersonalQuota',
         'leftRedemptionPersonalQuota' => 'getLeftRedemptionPersonalQuota',
+        'minStakeAmount' => 'getMinStakeAmount',
+        'minRedeemAmount' => 'getMinRedeemAmount',
+        'redeemPeriod' => 'getRedeemPeriod',
+        'stakeable' => 'getStakeable',
+        'redeemable' => 'getRedeemable',
+        'commissionFee' => 'getCommissionFee',
+        'calculating' => 'getCalculating',
     ];
 
     /**
@@ -144,6 +186,13 @@ class GetCurrentEthStakingQuotaResponse implements ModelInterface, \ArrayAccess,
     {
         $this->setIfExists('leftStakingPersonalQuota', $data ?? [], null);
         $this->setIfExists('leftRedemptionPersonalQuota', $data ?? [], null);
+        $this->setIfExists('minStakeAmount', $data ?? [], null);
+        $this->setIfExists('minRedeemAmount', $data ?? [], null);
+        $this->setIfExists('redeemPeriod', $data ?? [], null);
+        $this->setIfExists('stakeable', $data ?? [], null);
+        $this->setIfExists('redeemable', $data ?? [], null);
+        $this->setIfExists('commissionFee', $data ?? [], null);
+        $this->setIfExists('calculating', $data ?? [], null);
     }
 
     /**
@@ -324,6 +373,195 @@ class GetCurrentEthStakingQuotaResponse implements ModelInterface, \ArrayAccess,
             throw new \InvalidArgumentException('non-nullable leftRedemptionPersonalQuota cannot be null');
         }
         $this->container['leftRedemptionPersonalQuota'] = $leftRedemptionPersonalQuota;
+
+        return $this;
+    }
+
+    /**
+     * Gets minStakeAmount.
+     *
+     * @return null|string
+     */
+    public function getMinStakeAmount()
+    {
+        return $this->container['minStakeAmount'];
+    }
+
+    /**
+     * Sets minStakeAmount.
+     *
+     * @param null|string $minStakeAmount minStakeAmount
+     *
+     * @return self
+     */
+    public function setMinStakeAmount($minStakeAmount)
+    {
+        if (is_null($minStakeAmount)) {
+            throw new \InvalidArgumentException('non-nullable minStakeAmount cannot be null');
+        }
+        $this->container['minStakeAmount'] = $minStakeAmount;
+
+        return $this;
+    }
+
+    /**
+     * Gets minRedeemAmount.
+     *
+     * @return null|string
+     */
+    public function getMinRedeemAmount()
+    {
+        return $this->container['minRedeemAmount'];
+    }
+
+    /**
+     * Sets minRedeemAmount.
+     *
+     * @param null|string $minRedeemAmount minRedeemAmount
+     *
+     * @return self
+     */
+    public function setMinRedeemAmount($minRedeemAmount)
+    {
+        if (is_null($minRedeemAmount)) {
+            throw new \InvalidArgumentException('non-nullable minRedeemAmount cannot be null');
+        }
+        $this->container['minRedeemAmount'] = $minRedeemAmount;
+
+        return $this;
+    }
+
+    /**
+     * Gets redeemPeriod.
+     *
+     * @return null|int
+     */
+    public function getRedeemPeriod()
+    {
+        return $this->container['redeemPeriod'];
+    }
+
+    /**
+     * Sets redeemPeriod.
+     *
+     * @param null|int $redeemPeriod redeemPeriod
+     *
+     * @return self
+     */
+    public function setRedeemPeriod($redeemPeriod)
+    {
+        if (is_null($redeemPeriod)) {
+            throw new \InvalidArgumentException('non-nullable redeemPeriod cannot be null');
+        }
+        $this->container['redeemPeriod'] = $redeemPeriod;
+
+        return $this;
+    }
+
+    /**
+     * Gets stakeable.
+     *
+     * @return null|bool
+     */
+    public function getStakeable()
+    {
+        return $this->container['stakeable'];
+    }
+
+    /**
+     * Sets stakeable.
+     *
+     * @param null|bool $stakeable stakeable
+     *
+     * @return self
+     */
+    public function setStakeable($stakeable)
+    {
+        if (is_null($stakeable)) {
+            throw new \InvalidArgumentException('non-nullable stakeable cannot be null');
+        }
+        $this->container['stakeable'] = $stakeable;
+
+        return $this;
+    }
+
+    /**
+     * Gets redeemable.
+     *
+     * @return null|bool
+     */
+    public function getRedeemable()
+    {
+        return $this->container['redeemable'];
+    }
+
+    /**
+     * Sets redeemable.
+     *
+     * @param null|bool $redeemable redeemable
+     *
+     * @return self
+     */
+    public function setRedeemable($redeemable)
+    {
+        if (is_null($redeemable)) {
+            throw new \InvalidArgumentException('non-nullable redeemable cannot be null');
+        }
+        $this->container['redeemable'] = $redeemable;
+
+        return $this;
+    }
+
+    /**
+     * Gets commissionFee.
+     *
+     * @return null|string
+     */
+    public function getCommissionFee()
+    {
+        return $this->container['commissionFee'];
+    }
+
+    /**
+     * Sets commissionFee.
+     *
+     * @param null|string $commissionFee commissionFee
+     *
+     * @return self
+     */
+    public function setCommissionFee($commissionFee)
+    {
+        if (is_null($commissionFee)) {
+            throw new \InvalidArgumentException('non-nullable commissionFee cannot be null');
+        }
+        $this->container['commissionFee'] = $commissionFee;
+
+        return $this;
+    }
+
+    /**
+     * Gets calculating.
+     *
+     * @return null|bool
+     */
+    public function getCalculating()
+    {
+        return $this->container['calculating'];
+    }
+
+    /**
+     * Sets calculating.
+     *
+     * @param null|bool $calculating calculating
+     *
+     * @return self
+     */
+    public function setCalculating($calculating)
+    {
+        if (is_null($calculating)) {
+            throw new \InvalidArgumentException('non-nullable calculating cannot be null');
+        }
+        $this->container['calculating'] = $calculating;
 
         return $this;
     }

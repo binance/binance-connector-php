@@ -19,6 +19,9 @@ Name | Type | Description | Notes
 **icebergQty** | **float** |  | [optional]
 **newOrderRespType** | [**\Binance\Client\Spot\Model\NewOrderRespType**](NewOrderRespType.md) |  | [optional]
 **selfTradePreventionMode** | [**\Binance\Client\Spot\Model\SelfTradePreventionMode**](SelfTradePreventionMode.md) |  | [optional]
-**recvWindow** | **int** |  | [optional]
+**pegPriceType** | [**\Binance\Client\Spot\Model\PegPriceType**](PegPriceType.md) |  | [optional]
+**pegOffsetValue** | **int** |  | [optional]
+**pegOffsetType** | [**\Binance\Client\Spot\Model\PegOffsetType**](PegOffsetType.md) |  | [optional]
+**recvWindow** | **float** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

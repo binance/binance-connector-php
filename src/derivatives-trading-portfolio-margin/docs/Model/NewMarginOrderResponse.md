@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **timeInForce** | **string** |  | [optional]
 **type** | **string** |  | [optional]
 **side** | **string** |  | [optional]
-**marginBuyBorrowAmount** | **int** |  | [optional]
+**marginBuyBorrowAmount** | **string** |  | [optional]
 **marginBuyBorrowAsset** | **string** |  | [optional]
 **fills** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\NewMarginOrderResponseFillsInner[]**](NewMarginOrderResponseFillsInner.md) |  | [optional]
 
