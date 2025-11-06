@@ -16,7 +16,7 @@ getFiatDepositWithdrawHistory($transactionType, $beginTime, $endTime, $page, $ro
 
 Get Fiat Deposit/Withdraw History (USER_DATA)
 
-Get Fiat Deposit/Withdraw History  * If beginTime and endTime are not sent, the recent 30-day data will be returned.  Weight: 90000
+Get Fiat Deposit/Withdraw History  * If beginTime and endTime are not sent, the recent 30-day data will be returned.  Weight: 45000
 
 ### Example
 

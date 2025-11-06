@@ -363,13 +363,24 @@ class ObjectSerializer
         if (class_exists($class)) {
             $composedSchemas = call_user_func($class.'::getComposedSchemas');
             if (!empty($composedSchemas)) {
+                // If a discriminator is defined and points to a valid subclass, use it.
+                $discriminator = $class::DISCRIMINATOR;
                 $instance = new $class();
-                foreach ($composedSchemas as $schema => $setter) {
-                    $result = self::deserialize($data, $schema, $httpHeaders);
-                    if (!empty($result)) {
-                        $instance->{$setter}($result);
+                if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
+                    $discriminatorType = $class::openAPIMAppings()[$data->{$discriminator}];
+                    $subclass = $discriminatorType;
+                    $result = self::deserialize($data, $subclass, $httpHeaders);
+                    $discriminatorSetter = $composedSchemas[$subclass];
+                    $instance->$discriminatorSetter($result);
+                    return $instance;
+                } else {
+                    foreach ($composedSchemas as $schema => $setter) {
+                        $result = self::deserialize($data, $schema, $httpHeaders);
+                        if (!empty($result)) {
+                            $instance->{$setter}($result);
 
-                        return $instance;
+                            return $instance;
+                        }
                     }
                 }
             }
@@ -501,15 +512,6 @@ class ObjectSerializer
             $data = (object) $data;
         }
 
-        // If a discriminator is defined and points to a valid subclass, use it.
-        $discriminator = $class::DISCRIMINATOR;
-        if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
-            $subclass = '\Binance\Common\Model\\'.$data->{$discriminator};
-            if (is_subclass_of($subclass, $class)) {
-                $class = $subclass;
-            }
-        }
-
         /** @var ModelInterface $instance */
         $instance = new $class();
         foreach ($instance::openAPITypes() as $property => $type) {
@@ -583,6 +585,8 @@ class ObjectSerializer
                 if ($v instanceof \BackedEnum) {
                     $v = $v->value;
                 }
+                $v = is_float($v) ? rtrim(rtrim(sprintf('%.10f', $v), '0'), '.') : $v;
+
                 if (null !== $v) {
                     $qs .= '='.$encoder((string) $v);
                 }

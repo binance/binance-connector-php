@@ -28,7 +28,7 @@ All URIs are relative to https://fapi.binance.com, except if the operation defin
 | [**queryInsuranceFundBalanceSnapshot()**](MarketDataApi.md#queryInsuranceFundBalanceSnapshot) | **GET** /fapi/v1/insuranceBalance | Query Insurance Fund Balance Snapshot |
 | [**recentTradesList()**](MarketDataApi.md#recentTradesList) | **GET** /fapi/v1/trades | Recent Trades List |
 | [**symbolOrderBookTicker()**](MarketDataApi.md#symbolOrderBookTicker) | **GET** /fapi/v1/ticker/bookTicker | Symbol Order Book Ticker |
-| [**symbolPriceTicker()**](MarketDataApi.md#symbolPriceTicker) | **GET** /fapi/v1/ticker/price | Symbol Price Ticker(Deprecated) |
+| [**symbolPriceTicker()**](MarketDataApi.md#symbolPriceTicker) | **GET** /fapi/v1/ticker/price | Symbol Price Ticker |
 | [**symbolPriceTickerV2()**](MarketDataApi.md#symbolPriceTickerV2) | **GET** /fapi/v2/ticker/price | Symbol Price Ticker V2 |
 | [**takerBuySellVolume()**](MarketDataApi.md#takerBuySellVolume) | **GET** /futures/data/takerlongshortRatio | Taker Buy/Sell Volume |
 | [**testConnectivity()**](MarketDataApi.md#testConnectivity) | **GET** /fapi/v1/ping | Test Connectivity |
@@ -1468,7 +1468,7 @@ No authorization required
 symbolPriceTicker($symbol): \Binance\Client\DerivativesTradingUsdsFutures\Model\SymbolPriceTickerResponse
 ```
 
-Symbol Price Ticker(Deprecated)
+Symbol Price Ticker
 
 Latest price for a symbol or symbols.  * If the symbol is not sent, prices for all symbols will be returned in an array.  Weight: 1 for a single symbol; 2 when the symbol parameter is omitted
 

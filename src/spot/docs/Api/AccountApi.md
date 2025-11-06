@@ -12,6 +12,7 @@ All URIs are relative to https://api.binance.com, except if the operation define
 | [**getOrder()**](AccountApi.md#getOrder) | **GET** /api/v3/order | Query order |
 | [**getOrderList()**](AccountApi.md#getOrderList) | **GET** /api/v3/orderList | Query Order list |
 | [**myAllocations()**](AccountApi.md#myAllocations) | **GET** /api/v3/myAllocations | Query Allocations |
+| [**myFilters()**](AccountApi.md#myFilters) | **GET** /api/v3/myFilters | Query relevant filters |
 | [**myPreventedMatches()**](AccountApi.md#myPreventedMatches) | **GET** /api/v3/myPreventedMatches | Query Prevented Matches |
 | [**myTrades()**](AccountApi.md#myTrades) | **GET** /api/v3/myTrades | Account trade list |
 | [**openOrderList()**](AccountApi.md#openOrderList) | **GET** /api/v3/openOrderList | Query Open Order lists |
@@ -102,7 +103,7 @@ $fromId = 56; // int | ID to get aggregate trades from INCLUSIVE.
 $startTime = 56; // int | Timestamp in ms to get aggregate trades from INCLUSIVE.
 $endTime = 56; // int | Timestamp in ms to get aggregate trades until INCLUSIVE.
 $limit = 56; // int | Default: 500; Maximum: 1000.
-$recvWindow = 56; // int | The value cannot be greater than `60000`
+$recvWindow = 3.4; // float | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
 
 try {
     $result = $apiInstance->allOrderList($fromId, $startTime, $endTime, $limit, $recvWindow);
@@ -120,7 +121,7 @@ try {
 | **startTime** | **int**| Timestamp in ms to get aggregate trades from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get aggregate trades until INCLUSIVE. | [optional] |
 | **limit** | **int**| Default: 500; Maximum: 1000. | [optional] |
-| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
+| **recvWindow** | **float**| The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. | [optional] |
 
 ### Return type
 
@@ -167,7 +168,7 @@ $orderId = 56; // int
 $startTime = 56; // int | Timestamp in ms to get aggregate trades from INCLUSIVE.
 $endTime = 56; // int | Timestamp in ms to get aggregate trades until INCLUSIVE.
 $limit = 56; // int | Default: 500; Maximum: 1000.
-$recvWindow = 56; // int | The value cannot be greater than `60000`
+$recvWindow = 3.4; // float | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
 
 try {
     $result = $apiInstance->allOrders($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
@@ -186,7 +187,7 @@ try {
 | **startTime** | **int**| Timestamp in ms to get aggregate trades from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get aggregate trades until INCLUSIVE. | [optional] |
 | **limit** | **int**| Default: 500; Maximum: 1000. | [optional] |
-| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
+| **recvWindow** | **float**| The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. | [optional] |
 
 ### Return type
 
@@ -229,7 +230,7 @@ $apiInstance = new Binance\Client\Spot\Api\AccountApi(
     new GuzzleHttp\Client()
 );
 $omitZeroBalances = True; // bool | When set to `true`, emits only the non-zero balances of an account. <br>Default value: `false`
-$recvWindow = 56; // int | The value cannot be greater than `60000`
+$recvWindow = 3.4; // float | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
 
 try {
     $result = $apiInstance->getAccount($omitZeroBalances, $recvWindow);
@@ -244,7 +245,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **omitZeroBalances** | **bool**| When set to &#x60;true&#x60;, emits only the non-zero balances of an account. &lt;br&gt;Default value: &#x60;false&#x60; | [optional] |
-| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
+| **recvWindow** | **float**| The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. | [optional] |
 
 ### Return type
 
@@ -287,7 +288,7 @@ $apiInstance = new Binance\Client\Spot\Api\AccountApi(
     new GuzzleHttp\Client()
 );
 $symbol = 'symbol_example'; // string | Symbol to query
-$recvWindow = 56; // int | The value cannot be greater than `60000`
+$recvWindow = 3.4; // float | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
 
 try {
     $result = $apiInstance->getOpenOrders($symbol, $recvWindow);
@@ -302,7 +303,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**| Symbol to query | [optional] |
-| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
+| **recvWindow** | **float**| The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. | [optional] |
 
 ### Return type
 
@@ -347,7 +348,7 @@ $apiInstance = new Binance\Client\Spot\Api\AccountApi(
 $symbol = 'symbol_example'; // string
 $orderId = 56; // int
 $origClientOrderId = 'origClientOrderId_example'; // string
-$recvWindow = 56; // int | The value cannot be greater than `60000`
+$recvWindow = 3.4; // float | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
 
 try {
     $result = $apiInstance->getOrder($symbol, $orderId, $origClientOrderId, $recvWindow);
@@ -364,7 +365,7 @@ try {
 | **symbol** | **string**|  | |
 | **orderId** | **int**|  | [optional] |
 | **origClientOrderId** | **string**|  | [optional] |
-| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
+| **recvWindow** | **float**| The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. | [optional] |
 
 ### Return type
 
@@ -408,7 +409,7 @@ $apiInstance = new Binance\Client\Spot\Api\AccountApi(
 );
 $orderListId = 56; // int | Either `orderListId` or `listClientOrderId` must be provided
 $origClientOrderId = 'origClientOrderId_example'; // string
-$recvWindow = 56; // int | The value cannot be greater than `60000`
+$recvWindow = 3.4; // float | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
 
 try {
     $result = $apiInstance->getOrderList($orderListId, $origClientOrderId, $recvWindow);
@@ -424,7 +425,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **orderListId** | **int**| Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided | [optional] |
 | **origClientOrderId** | **string**|  | [optional] |
-| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
+| **recvWindow** | **float**| The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. | [optional] |
 
 ### Return type
 
@@ -472,7 +473,7 @@ $endTime = 56; // int | Timestamp in ms to get aggregate trades until INCLUSIVE.
 $fromAllocationId = 56; // int
 $limit = 56; // int | Default: 500; Maximum: 1000.
 $orderId = 56; // int
-$recvWindow = 56; // int | The value cannot be greater than `60000`
+$recvWindow = 3.4; // float | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
 
 try {
     $result = $apiInstance->myAllocations($symbol, $startTime, $endTime, $fromAllocationId, $limit, $orderId, $recvWindow);
@@ -492,11 +493,69 @@ try {
 | **fromAllocationId** | **int**|  | [optional] |
 | **limit** | **int**| Default: 500; Maximum: 1000. | [optional] |
 | **orderId** | **int**|  | [optional] |
-| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
+| **recvWindow** | **float**| The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. | [optional] |
 
 ### Return type
 
 [**\Binance\Client\Spot\Model\MyAllocationsResponse**](../Model/MyAllocationsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `myFilters()`
+
+```php
+myFilters($symbol, $recvWindow): \Binance\Client\Spot\Model\MyFiltersResponse
+```
+
+Query relevant filters
+
+Retrieves the list of [filters](filters.md) relevant to an account on a given symbol. This is the only endpoint that shows if an account has `MAX_ASSET` filters applied to it. Weight: 40
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\Spot\Api\AccountApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$symbol = 'symbol_example'; // string
+$recvWindow = 3.4; // float | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
+
+try {
+    $result = $apiInstance->myFilters($symbol, $recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountApi->myFilters: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **symbol** | **string**|  | |
+| **recvWindow** | **float**| The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. | [optional] |
+
+### Return type
+
+[**\Binance\Client\Spot\Model\MyFiltersResponse**](../Model/MyFiltersResponse.md)
 
 ### Authorization
 
@@ -539,7 +598,7 @@ $preventedMatchId = 56; // int
 $orderId = 56; // int
 $fromPreventedMatchId = 56; // int
 $limit = 56; // int | Default: 500; Maximum: 1000.
-$recvWindow = 56; // int | The value cannot be greater than `60000`
+$recvWindow = 3.4; // float | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
 
 try {
     $result = $apiInstance->myPreventedMatches($symbol, $preventedMatchId, $orderId, $fromPreventedMatchId, $limit, $recvWindow);
@@ -558,7 +617,7 @@ try {
 | **orderId** | **int**|  | [optional] |
 | **fromPreventedMatchId** | **int**|  | [optional] |
 | **limit** | **int**| Default: 500; Maximum: 1000. | [optional] |
-| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
+| **recvWindow** | **float**| The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. | [optional] |
 
 ### Return type
 
@@ -606,7 +665,7 @@ $startTime = 56; // int | Timestamp in ms to get aggregate trades from INCLUSIVE
 $endTime = 56; // int | Timestamp in ms to get aggregate trades until INCLUSIVE.
 $fromId = 56; // int | ID to get aggregate trades from INCLUSIVE.
 $limit = 56; // int | Default: 500; Maximum: 1000.
-$recvWindow = 56; // int | The value cannot be greater than `60000`
+$recvWindow = 3.4; // float | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
 
 try {
     $result = $apiInstance->myTrades($symbol, $orderId, $startTime, $endTime, $fromId, $limit, $recvWindow);
@@ -626,7 +685,7 @@ try {
 | **endTime** | **int**| Timestamp in ms to get aggregate trades until INCLUSIVE. | [optional] |
 | **fromId** | **int**| ID to get aggregate trades from INCLUSIVE. | [optional] |
 | **limit** | **int**| Default: 500; Maximum: 1000. | [optional] |
-| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
+| **recvWindow** | **float**| The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. | [optional] |
 
 ### Return type
 
@@ -668,7 +727,7 @@ $apiInstance = new Binance\Client\Spot\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int | The value cannot be greater than `60000`
+$recvWindow = 3.4; // float | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
 
 try {
     $result = $apiInstance->openOrderList($recvWindow);
@@ -682,7 +741,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
+| **recvWindow** | **float**| The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. | [optional] |
 
 ### Return type
 
@@ -728,7 +787,7 @@ $symbol = 'symbol_example'; // string
 $orderId = 56; // int
 $fromExecutionId = 56; // int
 $limit = 56; // int | Default:500; Maximum: 1000
-$recvWindow = 56; // int | The value cannot be greater than `60000`
+$recvWindow = 3.4; // float | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
 
 try {
     $result = $apiInstance->orderAmendments($symbol, $orderId, $fromExecutionId, $limit, $recvWindow);
@@ -746,7 +805,7 @@ try {
 | **orderId** | **int**|  | |
 | **fromExecutionId** | **int**|  | [optional] |
 | **limit** | **int**| Default:500; Maximum: 1000 | [optional] |
-| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
+| **recvWindow** | **float**| The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. | [optional] |
 
 ### Return type
 
@@ -788,7 +847,7 @@ $apiInstance = new Binance\Client\Spot\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int | The value cannot be greater than `60000`
+$recvWindow = 3.4; // float | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
 
 try {
     $result = $apiInstance->rateLimitOrder($recvWindow);
@@ -802,7 +861,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
+| **recvWindow** | **float**| The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. | [optional] |
 
 ### Return type
 

@@ -14,6 +14,7 @@ require_once __DIR__.'/../vendor/autoload.php';
  * Do not edit the class manually.
  */
 use Binance\Client\Spot\Api\SpotRestApi;
+use Binance\Client\Spot\Model\SymbolStatus;
 use Binance\Client\Spot\Model\TickerType;
 use Binance\Client\Spot\SpotRestApiUtil;
 
@@ -24,7 +25,8 @@ function ticker24hrExample()
     $symbol = 'BNBUSDT';
     $symbols = null;
     $type = TickerType::FULL;
-    $response = $api->ticker24hr($symbol, $symbols, $type);
+    $symbolStatus = SymbolStatus::TRADING;
+    $response = $api->ticker24hr($symbol, $symbols, $type, $symbolStatus);
     print_r($response);
 }
 

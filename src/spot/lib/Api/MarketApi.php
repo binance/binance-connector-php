@@ -37,6 +37,7 @@ use Binance\Client\Spot\Model\HistoricalTradesResponse;
 use Binance\Client\Spot\Model\Interval;
 use Binance\Client\Spot\Model\KlinesResponse;
 use Binance\Client\Spot\Model\Symbols;
+use Binance\Client\Spot\Model\SymbolStatus;
 use Binance\Client\Spot\Model\Ticker24hrResponse;
 use Binance\Client\Spot\Model\TickerBookTickerResponse;
 use Binance\Client\Spot\Model\TickerPriceResponse;
@@ -519,17 +520,18 @@ class MarketApi
      *
      * Order book
      *
-     * @param string   $symbol symbol (required)
-     * @param null|int $limit  Default: 500; Maximum: 1000. (optional)
+     * @param string            $symbol       symbol (required)
+     * @param null|int          $limit        Default: 500; Maximum: 1000. (optional)
+     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
      *
      * @return ApiResponse<DepthResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function depth($symbol, $limit = null): ApiResponse
+    public function depth($symbol, $limit = null, $symbolStatus = null): ApiResponse
     {
-        return $this->depthWithHttpInfo($symbol, $limit);
+        return $this->depthWithHttpInfo($symbol, $limit, $symbolStatus);
     }
 
     /**
@@ -537,17 +539,18 @@ class MarketApi
      *
      * Order book
      *
-     * @param string   $symbol (required)
-     * @param null|int $limit  Default: 500; Maximum: 1000. (optional)
+     * @param string            $symbol       (required)
+     * @param null|int          $limit        Default: 500; Maximum: 1000. (optional)
+     * @param null|SymbolStatus $symbolStatus (optional)
      *
      * @return ApiResponse<DepthResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function depthWithHttpInfo($symbol, $limit = null): ApiResponse
+    public function depthWithHttpInfo($symbol, $limit = null, $symbolStatus = null): ApiResponse
     {
-        $request = $this->depthRequest($symbol, $limit);
+        $request = $this->depthRequest($symbol, $limit, $symbolStatus);
 
         try {
             try {
@@ -617,14 +620,15 @@ class MarketApi
     /**
      * Create request for operation 'depth'.
      *
-     * @param string   $symbol (required)
-     * @param null|int $limit  Default: 500; Maximum: 1000. (optional)
+     * @param string            $symbol       (required)
+     * @param null|int          $limit        Default: 500; Maximum: 1000. (optional)
+     * @param null|SymbolStatus $symbolStatus (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function depthRequest($symbol, $limit = null)
+    public function depthRequest($symbol, $limit = null, $symbolStatus = null)
     {
         $contentType = self::contentTypes['depth'][0];
 
@@ -656,6 +660,15 @@ class MarketApi
             $limit,
             'limit', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbolStatus,
+            'symbolStatus', // param base name
+            'SymbolStatus', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1298,19 +1311,20 @@ class MarketApi
      *
      * Rolling window price change statistics
      *
-     * @param null|string     $symbol     Symbol to query (optional)
-     * @param null|Symbols    $symbols    List of symbols to query (optional)
-     * @param null|WindowSize $windowSize windowSize (optional)
-     * @param null|TickerType $type       type (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|WindowSize   $windowSize   windowSize (optional)
+     * @param null|TickerType   $type         type (optional)
+     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
      *
      * @return ApiResponse<TickerResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function ticker($symbol = null, $symbols = null, $windowSize = null, $type = null): ApiResponse
+    public function ticker($symbol = null, $symbols = null, $windowSize = null, $type = null, $symbolStatus = null): ApiResponse
     {
-        return $this->tickerWithHttpInfo($symbol, $symbols, $windowSize, $type);
+        return $this->tickerWithHttpInfo($symbol, $symbols, $windowSize, $type, $symbolStatus);
     }
 
     /**
@@ -1318,19 +1332,20 @@ class MarketApi
      *
      * Rolling window price change statistics
      *
-     * @param null|string     $symbol     Symbol to query (optional)
-     * @param null|Symbols    $symbols    List of symbols to query (optional)
-     * @param null|WindowSize $windowSize (optional)
-     * @param null|TickerType $type       (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|WindowSize   $windowSize   (optional)
+     * @param null|TickerType   $type         (optional)
+     * @param null|SymbolStatus $symbolStatus (optional)
      *
      * @return ApiResponse<TickerResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function tickerWithHttpInfo($symbol = null, $symbols = null, $windowSize = null, $type = null): ApiResponse
+    public function tickerWithHttpInfo($symbol = null, $symbols = null, $windowSize = null, $type = null, $symbolStatus = null): ApiResponse
     {
-        $request = $this->tickerRequest($symbol, $symbols, $windowSize, $type);
+        $request = $this->tickerRequest($symbol, $symbols, $windowSize, $type, $symbolStatus);
 
         try {
             try {
@@ -1400,16 +1415,17 @@ class MarketApi
     /**
      * Create request for operation 'ticker'.
      *
-     * @param null|string     $symbol     Symbol to query (optional)
-     * @param null|Symbols    $symbols    List of symbols to query (optional)
-     * @param null|WindowSize $windowSize (optional)
-     * @param null|TickerType $type       (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|WindowSize   $windowSize   (optional)
+     * @param null|TickerType   $type         (optional)
+     * @param null|SymbolStatus $symbolStatus (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function tickerRequest($symbol = null, $symbols = null, $windowSize = null, $type = null)
+    public function tickerRequest($symbol = null, $symbols = null, $windowSize = null, $type = null, $symbolStatus = null)
     {
         $contentType = self::contentTypes['ticker'][0];
 
@@ -1456,6 +1472,15 @@ class MarketApi
             true, // explode
             false // required
         ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbolStatus,
+            'symbolStatus', // param base name
+            'SymbolStatus', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
@@ -1493,18 +1518,19 @@ class MarketApi
      *
      * 24hr ticker price change statistics
      *
-     * @param null|string     $symbol  Symbol to query (optional)
-     * @param null|Symbols    $symbols List of symbols to query (optional)
-     * @param null|TickerType $type    type (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|TickerType   $type         type (optional)
+     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
      *
      * @return ApiResponse<Ticker24hrResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function ticker24hr($symbol = null, $symbols = null, $type = null): ApiResponse
+    public function ticker24hr($symbol = null, $symbols = null, $type = null, $symbolStatus = null): ApiResponse
     {
-        return $this->ticker24hrWithHttpInfo($symbol, $symbols, $type);
+        return $this->ticker24hrWithHttpInfo($symbol, $symbols, $type, $symbolStatus);
     }
 
     /**
@@ -1512,18 +1538,19 @@ class MarketApi
      *
      * 24hr ticker price change statistics
      *
-     * @param null|string     $symbol  Symbol to query (optional)
-     * @param null|Symbols    $symbols List of symbols to query (optional)
-     * @param null|TickerType $type    (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|TickerType   $type         (optional)
+     * @param null|SymbolStatus $symbolStatus (optional)
      *
      * @return ApiResponse<Ticker24hrResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function ticker24hrWithHttpInfo($symbol = null, $symbols = null, $type = null): ApiResponse
+    public function ticker24hrWithHttpInfo($symbol = null, $symbols = null, $type = null, $symbolStatus = null): ApiResponse
     {
-        $request = $this->ticker24hrRequest($symbol, $symbols, $type);
+        $request = $this->ticker24hrRequest($symbol, $symbols, $type, $symbolStatus);
 
         try {
             try {
@@ -1593,15 +1620,16 @@ class MarketApi
     /**
      * Create request for operation 'ticker24hr'.
      *
-     * @param null|string     $symbol  Symbol to query (optional)
-     * @param null|Symbols    $symbols List of symbols to query (optional)
-     * @param null|TickerType $type    (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|TickerType   $type         (optional)
+     * @param null|SymbolStatus $symbolStatus (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function ticker24hrRequest($symbol = null, $symbols = null, $type = null)
+    public function ticker24hrRequest($symbol = null, $symbols = null, $type = null, $symbolStatus = null)
     {
         $contentType = self::contentTypes['ticker24hr'][0];
 
@@ -1635,6 +1663,15 @@ class MarketApi
             $type,
             'type', // param base name
             'TickerType', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbolStatus,
+            'symbolStatus', // param base name
+            'SymbolStatus', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1676,17 +1713,18 @@ class MarketApi
      *
      * Symbol order book ticker
      *
-     * @param null|string  $symbol  Symbol to query (optional)
-     * @param null|Symbols $symbols List of symbols to query (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
      *
      * @return ApiResponse<TickerBookTickerResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function tickerBookTicker($symbol = null, $symbols = null): ApiResponse
+    public function tickerBookTicker($symbol = null, $symbols = null, $symbolStatus = null): ApiResponse
     {
-        return $this->tickerBookTickerWithHttpInfo($symbol, $symbols);
+        return $this->tickerBookTickerWithHttpInfo($symbol, $symbols, $symbolStatus);
     }
 
     /**
@@ -1694,17 +1732,18 @@ class MarketApi
      *
      * Symbol order book ticker
      *
-     * @param null|string  $symbol  Symbol to query (optional)
-     * @param null|Symbols $symbols List of symbols to query (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|SymbolStatus $symbolStatus (optional)
      *
      * @return ApiResponse<TickerBookTickerResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function tickerBookTickerWithHttpInfo($symbol = null, $symbols = null): ApiResponse
+    public function tickerBookTickerWithHttpInfo($symbol = null, $symbols = null, $symbolStatus = null): ApiResponse
     {
-        $request = $this->tickerBookTickerRequest($symbol, $symbols);
+        $request = $this->tickerBookTickerRequest($symbol, $symbols, $symbolStatus);
 
         try {
             try {
@@ -1774,14 +1813,15 @@ class MarketApi
     /**
      * Create request for operation 'tickerBookTicker'.
      *
-     * @param null|string  $symbol  Symbol to query (optional)
-     * @param null|Symbols $symbols List of symbols to query (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|SymbolStatus $symbolStatus (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function tickerBookTickerRequest($symbol = null, $symbols = null)
+    public function tickerBookTickerRequest($symbol = null, $symbols = null, $symbolStatus = null)
     {
         $contentType = self::contentTypes['tickerBookTicker'][0];
 
@@ -1806,6 +1846,15 @@ class MarketApi
             $symbols,
             'symbols', // param base name
             'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbolStatus,
+            'symbolStatus', // param base name
+            'SymbolStatus', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1847,17 +1896,18 @@ class MarketApi
      *
      * Symbol price ticker
      *
-     * @param null|string  $symbol  Symbol to query (optional)
-     * @param null|Symbols $symbols List of symbols to query (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
      *
      * @return ApiResponse<TickerPriceResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function tickerPrice($symbol = null, $symbols = null): ApiResponse
+    public function tickerPrice($symbol = null, $symbols = null, $symbolStatus = null): ApiResponse
     {
-        return $this->tickerPriceWithHttpInfo($symbol, $symbols);
+        return $this->tickerPriceWithHttpInfo($symbol, $symbols, $symbolStatus);
     }
 
     /**
@@ -1865,17 +1915,18 @@ class MarketApi
      *
      * Symbol price ticker
      *
-     * @param null|string  $symbol  Symbol to query (optional)
-     * @param null|Symbols $symbols List of symbols to query (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|SymbolStatus $symbolStatus (optional)
      *
      * @return ApiResponse<TickerPriceResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function tickerPriceWithHttpInfo($symbol = null, $symbols = null): ApiResponse
+    public function tickerPriceWithHttpInfo($symbol = null, $symbols = null, $symbolStatus = null): ApiResponse
     {
-        $request = $this->tickerPriceRequest($symbol, $symbols);
+        $request = $this->tickerPriceRequest($symbol, $symbols, $symbolStatus);
 
         try {
             try {
@@ -1945,14 +1996,15 @@ class MarketApi
     /**
      * Create request for operation 'tickerPrice'.
      *
-     * @param null|string  $symbol  Symbol to query (optional)
-     * @param null|Symbols $symbols List of symbols to query (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|SymbolStatus $symbolStatus (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function tickerPriceRequest($symbol = null, $symbols = null)
+    public function tickerPriceRequest($symbol = null, $symbols = null, $symbolStatus = null)
     {
         $contentType = self::contentTypes['tickerPrice'][0];
 
@@ -1977,6 +2029,15 @@ class MarketApi
             $symbols,
             'symbols', // param base name
             'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbolStatus,
+            'symbolStatus', // param base name
+            'SymbolStatus', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2018,19 +2079,20 @@ class MarketApi
      *
      * Trading Day Ticker
      *
-     * @param null|string     $symbol   Symbol to query (optional)
-     * @param null|Symbols    $symbols  List of symbols to query (optional)
-     * @param null|string     $timeZone Default: 0 (UTC) (optional)
-     * @param null|TickerType $type     type (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|string       $timeZone     Default: 0 (UTC) (optional)
+     * @param null|TickerType   $type         type (optional)
+     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
      *
      * @return ApiResponse<TickerTradingDayResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function tickerTradingDay($symbol = null, $symbols = null, $timeZone = null, $type = null): ApiResponse
+    public function tickerTradingDay($symbol = null, $symbols = null, $timeZone = null, $type = null, $symbolStatus = null): ApiResponse
     {
-        return $this->tickerTradingDayWithHttpInfo($symbol, $symbols, $timeZone, $type);
+        return $this->tickerTradingDayWithHttpInfo($symbol, $symbols, $timeZone, $type, $symbolStatus);
     }
 
     /**
@@ -2038,19 +2100,20 @@ class MarketApi
      *
      * Trading Day Ticker
      *
-     * @param null|string     $symbol   Symbol to query (optional)
-     * @param null|Symbols    $symbols  List of symbols to query (optional)
-     * @param null|string     $timeZone Default: 0 (UTC) (optional)
-     * @param null|TickerType $type     (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|string       $timeZone     Default: 0 (UTC) (optional)
+     * @param null|TickerType   $type         (optional)
+     * @param null|SymbolStatus $symbolStatus (optional)
      *
      * @return ApiResponse<TickerTradingDayResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function tickerTradingDayWithHttpInfo($symbol = null, $symbols = null, $timeZone = null, $type = null): ApiResponse
+    public function tickerTradingDayWithHttpInfo($symbol = null, $symbols = null, $timeZone = null, $type = null, $symbolStatus = null): ApiResponse
     {
-        $request = $this->tickerTradingDayRequest($symbol, $symbols, $timeZone, $type);
+        $request = $this->tickerTradingDayRequest($symbol, $symbols, $timeZone, $type, $symbolStatus);
 
         try {
             try {
@@ -2120,16 +2183,17 @@ class MarketApi
     /**
      * Create request for operation 'tickerTradingDay'.
      *
-     * @param null|string     $symbol   Symbol to query (optional)
-     * @param null|Symbols    $symbols  List of symbols to query (optional)
-     * @param null|string     $timeZone Default: 0 (UTC) (optional)
-     * @param null|TickerType $type     (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|string       $timeZone     Default: 0 (UTC) (optional)
+     * @param null|TickerType   $type         (optional)
+     * @param null|SymbolStatus $symbolStatus (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function tickerTradingDayRequest($symbol = null, $symbols = null, $timeZone = null, $type = null)
+    public function tickerTradingDayRequest($symbol = null, $symbols = null, $timeZone = null, $type = null, $symbolStatus = null)
     {
         $contentType = self::contentTypes['tickerTradingDay'][0];
 
@@ -2172,6 +2236,15 @@ class MarketApi
             $type,
             'type', // param base name
             'TickerType', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbolStatus,
+            'symbolStatus', // param base name
+            'SymbolStatus', // openApiType
             'form', // style
             true, // explode
             false // required

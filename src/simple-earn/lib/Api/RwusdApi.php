@@ -131,7 +131,7 @@ class RwusdApi
      *
      * Get RWUSD Account (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRwusdAccountResponse>
      *
@@ -148,7 +148,7 @@ class RwusdApi
      *
      * Get RWUSD Account (USER_DATA)
      *
-     * @param null|int $recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRwusdAccountResponse>
      *
@@ -227,7 +227,7 @@ class RwusdApi
     /**
      * Create request for operation 'getRwusdAccount'.
      *
-     * @param null|int $recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -294,7 +294,7 @@ class RwusdApi
      *
      * Get RWUSD Quota Details (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRwusdQuotaDetailsResponse>
      *
@@ -311,7 +311,7 @@ class RwusdApi
      *
      * Get RWUSD Quota Details (USER_DATA)
      *
-     * @param null|int $recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRwusdQuotaDetailsResponse>
      *
@@ -390,7 +390,7 @@ class RwusdApi
     /**
      * Create request for operation 'getRwusdQuotaDetails'.
      *
-     * @param null|int $recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -459,9 +459,9 @@ class RwusdApi
      *
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRwusdRateHistoryResponse>
      *
@@ -480,9 +480,9 @@ class RwusdApi
      *
      * @param null|int $startTime  (optional)
      * @param null|int $endTime    (optional)
-     * @param null|int $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow (optional)
+     * @param null|int $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRwusdRateHistoryResponse>
      *
@@ -563,9 +563,9 @@ class RwusdApi
      *
      * @param null|int $startTime  (optional)
      * @param null|int $endTime    (optional)
-     * @param null|int $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow (optional)
+     * @param null|int $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -670,9 +670,9 @@ class RwusdApi
      *
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRwusdRedemptionHistoryResponse>
      *
@@ -691,9 +691,9 @@ class RwusdApi
      *
      * @param null|int $startTime  (optional)
      * @param null|int $endTime    (optional)
-     * @param null|int $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow (optional)
+     * @param null|int $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRwusdRedemptionHistoryResponse>
      *
@@ -774,9 +774,9 @@ class RwusdApi
      *
      * @param null|int $startTime  (optional)
      * @param null|int $endTime    (optional)
-     * @param null|int $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow (optional)
+     * @param null|int $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -881,9 +881,9 @@ class RwusdApi
      *
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRwusdRewardsHistoryResponse>
      *
@@ -902,9 +902,9 @@ class RwusdApi
      *
      * @param null|int $startTime  (optional)
      * @param null|int $endTime    (optional)
-     * @param null|int $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow (optional)
+     * @param null|int $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRwusdRewardsHistoryResponse>
      *
@@ -985,9 +985,9 @@ class RwusdApi
      *
      * @param null|int $startTime  (optional)
      * @param null|int $endTime    (optional)
-     * @param null|int $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow (optional)
+     * @param null|int $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *
@@ -1093,9 +1093,9 @@ class RwusdApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRwusdSubscriptionHistoryResponse>
      *
@@ -1115,9 +1115,9 @@ class RwusdApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRwusdSubscriptionHistoryResponse>
      *
@@ -1199,9 +1199,9 @@ class RwusdApi
      * @param null|string $asset      USDC or USDT (optional)
      * @param null|int    $startTime  (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $current    Currently querying the page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
+     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return Request
      *

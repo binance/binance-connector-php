@@ -129,6 +129,8 @@ class TradeDataStreamApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function closeIsolatedMarginUserDataStream($symbol, $listenkey)
     {
@@ -145,6 +147,8 @@ class TradeDataStreamApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function closeIsolatedMarginUserDataStreamWithHttpInfo($symbol, $listenkey)
     {
@@ -189,6 +193,8 @@ class TradeDataStreamApi
      * @return Request
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function closeIsolatedMarginUserDataStreamRequest($symbol, $listenkey)
     {
@@ -274,6 +280,8 @@ class TradeDataStreamApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function closeMarginUserDataStream($listenkey)
     {
@@ -289,6 +297,8 @@ class TradeDataStreamApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function closeMarginUserDataStreamWithHttpInfo($listenkey)
     {
@@ -332,6 +342,8 @@ class TradeDataStreamApi
      * @return Request
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function closeMarginUserDataStreamRequest($listenkey)
     {
@@ -401,6 +413,8 @@ class TradeDataStreamApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function keepaliveIsolatedMarginUserDataStream($keepaliveIsolatedMarginUserDataStreamRequest)
     {
@@ -416,6 +430,8 @@ class TradeDataStreamApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function keepaliveIsolatedMarginUserDataStreamWithHttpInfo($keepaliveIsolatedMarginUserDataStreamRequest)
     {
@@ -459,6 +475,8 @@ class TradeDataStreamApi
      * @return Request
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function keepaliveIsolatedMarginUserDataStreamRequest($keepaliveIsolatedMarginUserDataStreamRequest)
     {
@@ -558,6 +576,8 @@ class TradeDataStreamApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function keepaliveMarginUserDataStream($keepaliveMarginUserDataStreamRequest)
     {
@@ -573,6 +593,8 @@ class TradeDataStreamApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function keepaliveMarginUserDataStreamWithHttpInfo($keepaliveMarginUserDataStreamRequest)
     {
@@ -616,6 +638,8 @@ class TradeDataStreamApi
      * @return Request
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function keepaliveMarginUserDataStreamRequest($keepaliveMarginUserDataStreamRequest)
     {
@@ -717,6 +741,8 @@ class TradeDataStreamApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function startIsolatedMarginUserDataStream($startIsolatedMarginUserDataStreamRequest): ApiResponse
     {
@@ -734,6 +760,8 @@ class TradeDataStreamApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function startIsolatedMarginUserDataStreamWithHttpInfo($startIsolatedMarginUserDataStreamRequest): ApiResponse
     {
@@ -812,6 +840,8 @@ class TradeDataStreamApi
      * @return Request
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function startIsolatedMarginUserDataStreamRequest($startIsolatedMarginUserDataStreamRequest)
     {
@@ -911,6 +941,8 @@ class TradeDataStreamApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function startMarginUserDataStream(): ApiResponse
     {
@@ -926,6 +958,8 @@ class TradeDataStreamApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function startMarginUserDataStreamWithHttpInfo(): ApiResponse
     {
@@ -1002,6 +1036,8 @@ class TradeDataStreamApi
      * @return Request
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function startMarginUserDataStreamRequest()
     {

@@ -23,6 +23,6 @@ Name | Type | Description | Notes
 **stopLimitTimeInForce** | [**\Binance\Client\Spot\Model\StopLimitTimeInForce**](StopLimitTimeInForce.md) |  | [optional]
 **newOrderRespType** | [**\Binance\Client\Spot\Model\NewOrderRespType**](NewOrderRespType.md) |  | [optional]
 **selfTradePreventionMode** | [**\Binance\Client\Spot\Model\SelfTradePreventionMode**](SelfTradePreventionMode.md) |  | [optional]
-**recvWindow** | **int** |  | [optional]
+**recvWindow** | **float** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

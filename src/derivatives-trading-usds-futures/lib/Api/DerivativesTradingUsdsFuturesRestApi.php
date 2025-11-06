@@ -1048,7 +1048,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation symbolPriceTicker.
      *
-     * Symbol Price Ticker(Deprecated)
+     * Symbol Price Ticker
      *
      * @param null|string $symbol symbol (optional)
      *
@@ -1056,6 +1056,8 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function symbolPriceTicker($symbol = null): ApiResponse
     {

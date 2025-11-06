@@ -8,8 +8,16 @@
 - `getSoftStakingRewardsHistory()` (`GET /sapi/v1/soft-staking/history/rewardsRecord`)
 - `setSoftStaking()` (`GET /sapi/v1/soft-staking/set`)
 
-### Changed (2)
+### Changed (3)
 
+- Modified response for `getCurrentEthStakingQuota()` (`GET /sapi/v1/eth-staking/eth/quota`):
+  - property `commissionFee` added
+  - property `stakeable` added
+  - property `calculating` added
+  - property `minRedeemAmount` added
+  - property `redeemable` added
+  - property `minStakeAmount` added
+  - property `redeemPeriod` added
 - Modified response for `getOnChainYieldsLockedProductList()` (`GET /sapi/v1/onchain-yields/locked/list`):
   - `rows`.`detail`.`subscriptionStartTime`: type `string` → `integer`
 

@@ -43,7 +43,7 @@ $apiInstance = new Binance\Client\Spot\Api\TradeApi(
     new GuzzleHttp\Client()
 );
 $symbol = 'symbol_example'; // string
-$recvWindow = 56; // int | The value cannot be greater than `60000`
+$recvWindow = 3.4; // float | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
 
 try {
     $result = $apiInstance->deleteOpenOrders($symbol, $recvWindow);
@@ -58,7 +58,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
+| **recvWindow** | **float**| The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. | [optional] |
 
 ### Return type
 
@@ -105,7 +105,7 @@ $orderId = 56; // int
 $origClientOrderId = 'origClientOrderId_example'; // string
 $newClientOrderId = 'newClientOrderId_example'; // string | A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.
 $cancelRestrictions = new \Binance\Client\Spot\Model\\Binance\Client\Spot\Model\CancelRestrictions(); // \Binance\Client\Spot\Model\CancelRestrictions
-$recvWindow = 56; // int | The value cannot be greater than `60000`
+$recvWindow = 3.4; // float | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
 
 try {
     $result = $apiInstance->deleteOrder($symbol, $orderId, $origClientOrderId, $newClientOrderId, $cancelRestrictions, $recvWindow);
@@ -124,7 +124,7 @@ try {
 | **origClientOrderId** | **string**|  | [optional] |
 | **newClientOrderId** | **string**| A unique id among open orders. Automatically generated if not sent.&lt;br/&gt; Orders with the same &#x60;newClientOrderID&#x60; can be accepted only when the previous one is filled, otherwise the order will be rejected. | [optional] |
 | **cancelRestrictions** | [**\Binance\Client\Spot\Model\CancelRestrictions**](../Model/.md)|  | [optional] |
-| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
+| **recvWindow** | **float**| The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. | [optional] |
 
 ### Return type
 
@@ -170,7 +170,7 @@ $symbol = 'symbol_example'; // string
 $orderListId = 56; // int | Either `orderListId` or `listClientOrderId` must be provided
 $listClientOrderId = 'listClientOrderId_example'; // string | A unique Id for the entire orderList
 $newClientOrderId = 'newClientOrderId_example'; // string | A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.
-$recvWindow = 56; // int | The value cannot be greater than `60000`
+$recvWindow = 3.4; // float | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
 
 try {
     $result = $apiInstance->deleteOrderList($symbol, $orderListId, $listClientOrderId, $newClientOrderId, $recvWindow);
@@ -188,7 +188,7 @@ try {
 | **orderListId** | **int**| Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided | [optional] |
 | **listClientOrderId** | **string**| A unique Id for the entire orderList | [optional] |
 | **newClientOrderId** | **string**| A unique id among open orders. Automatically generated if not sent.&lt;br/&gt; Orders with the same &#x60;newClientOrderID&#x60; can be accepted only when the previous one is filled, otherwise the order will be rejected. | [optional] |
-| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
+| **recvWindow** | **float**| The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. | [optional] |
 
 ### Return type
 

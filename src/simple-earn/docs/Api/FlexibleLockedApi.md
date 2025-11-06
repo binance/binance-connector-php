@@ -56,9 +56,9 @@ $apiInstance = new Binance\Client\SimpleEarn\Api\FlexibleLockedApi(
 $productId = 'productId_example'; // string
 $startTime = 56; // int
 $endTime = 56; // int
-$current = 56; // int | Currently querying the page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$current = 56; // int | Currently querying page. Starts from 1. Default: 1
+$size = 56; // int | Number of results per page. Default: 10, Max: 100
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getCollateralRecord($productId, $startTime, $endTime, $current, $size, $recvWindow);
@@ -75,9 +75,9 @@ try {
 | **productId** | **string**|  | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying the page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page. Starts from 1. Default: 1 | [optional] |
+| **size** | **int**| Number of results per page. Default: 10, Max: 100 | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -120,7 +120,7 @@ $apiInstance = new Binance\Client\SimpleEarn\Api\FlexibleLockedApi(
     new GuzzleHttp\Client()
 );
 $productId = 'productId_example'; // string
-$recvWindow = 56; // int
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getFlexiblePersonalLeftQuota($productId, $recvWindow);
@@ -135,7 +135,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **productId** | **string**|  | |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -179,9 +179,9 @@ $apiInstance = new Binance\Client\SimpleEarn\Api\FlexibleLockedApi(
 );
 $asset = 'asset_example'; // string | USDC or USDT
 $productId = 'productId_example'; // string
-$current = 56; // int | Currently querying the page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$current = 56; // int | Currently querying page. Starts from 1. Default: 1
+$size = 56; // int | Number of results per page. Default: 10, Max: 100
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getFlexibleProductPosition($asset, $productId, $current, $size, $recvWindow);
@@ -197,9 +197,9 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **asset** | **string**| USDC or USDT | [optional] |
 | **productId** | **string**|  | [optional] |
-| **current** | **int**| Currently querying the page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page. Starts from 1. Default: 1 | [optional] |
+| **size** | **int**| Number of results per page. Default: 10, Max: 100 | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -246,9 +246,9 @@ $redeemId = 'redeemId_example'; // string
 $asset = 'asset_example'; // string | USDC or USDT
 $startTime = 56; // int
 $endTime = 56; // int
-$current = 56; // int | Currently querying the page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$current = 56; // int | Currently querying page. Starts from 1. Default: 1
+$size = 56; // int | Number of results per page. Default: 10, Max: 100
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getFlexibleRedemptionRecord($productId, $redeemId, $asset, $startTime, $endTime, $current, $size, $recvWindow);
@@ -267,9 +267,9 @@ try {
 | **asset** | **string**| USDC or USDT | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying the page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page. Starts from 1. Default: 1 | [optional] |
+| **size** | **int**| Number of results per page. Default: 10, Max: 100 | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -316,9 +316,9 @@ $productId = 'productId_example'; // string
 $asset = 'asset_example'; // string | USDC or USDT
 $startTime = 56; // int
 $endTime = 56; // int
-$current = 56; // int | Currently querying the page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$current = 56; // int | Currently querying page. Starts from 1. Default: 1
+$size = 56; // int | Number of results per page. Default: 10, Max: 100
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getFlexibleRewardsHistory($type, $productId, $asset, $startTime, $endTime, $current, $size, $recvWindow);
@@ -337,9 +337,9 @@ try {
 | **asset** | **string**| USDC or USDT | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying the page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page. Starts from 1. Default: 1 | [optional] |
+| **size** | **int**| Number of results per page. Default: 10, Max: 100 | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -383,7 +383,7 @@ $apiInstance = new Binance\Client\SimpleEarn\Api\FlexibleLockedApi(
 );
 $productId = 'productId_example'; // string
 $amount = 3.4; // float
-$recvWindow = 56; // int
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getFlexibleSubscriptionPreview($productId, $amount, $recvWindow);
@@ -399,7 +399,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **productId** | **string**|  | |
 | **amount** | **float**|  | |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -446,9 +446,9 @@ $purchaseId = 'purchaseId_example'; // string
 $asset = 'asset_example'; // string | USDC or USDT
 $startTime = 56; // int
 $endTime = 56; // int
-$current = 56; // int | Currently querying the page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$current = 56; // int | Currently querying page. Starts from 1. Default: 1
+$size = 56; // int | Number of results per page. Default: 10, Max: 100
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getFlexibleSubscriptionRecord($productId, $purchaseId, $asset, $startTime, $endTime, $current, $size, $recvWindow);
@@ -467,9 +467,9 @@ try {
 | **asset** | **string**| USDC or USDT | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying the page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page. Starts from 1. Default: 1 | [optional] |
+| **size** | **int**| Number of results per page. Default: 10, Max: 100 | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -512,7 +512,7 @@ $apiInstance = new Binance\Client\SimpleEarn\Api\FlexibleLockedApi(
     new GuzzleHttp\Client()
 );
 $projectId = 'projectId_example'; // string
-$recvWindow = 56; // int
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getLockedPersonalLeftQuota($projectId, $recvWindow);
@@ -527,7 +527,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **projectId** | **string**|  | |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -572,9 +572,9 @@ $apiInstance = new Binance\Client\SimpleEarn\Api\FlexibleLockedApi(
 $asset = 'asset_example'; // string | USDC or USDT
 $positionId = 'positionId_example'; // string
 $projectId = 'projectId_example'; // string
-$current = 56; // int | Currently querying the page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$current = 56; // int | Currently querying page. Starts from 1. Default: 1
+$size = 56; // int | Number of results per page. Default: 10, Max: 100
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getLockedProductPosition($asset, $positionId, $projectId, $current, $size, $recvWindow);
@@ -591,9 +591,9 @@ try {
 | **asset** | **string**| USDC or USDT | [optional] |
 | **positionId** | **string**|  | [optional] |
 | **projectId** | **string**|  | [optional] |
-| **current** | **int**| Currently querying the page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page. Starts from 1. Default: 1 | [optional] |
+| **size** | **int**| Number of results per page. Default: 10, Max: 100 | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -640,9 +640,9 @@ $redeemId = 'redeemId_example'; // string
 $asset = 'asset_example'; // string | USDC or USDT
 $startTime = 56; // int
 $endTime = 56; // int
-$current = 56; // int | Currently querying the page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$current = 56; // int | Currently querying page. Starts from 1. Default: 1
+$size = 56; // int | Number of results per page. Default: 10, Max: 100
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getLockedRedemptionRecord($positionId, $redeemId, $asset, $startTime, $endTime, $current, $size, $recvWindow);
@@ -661,9 +661,9 @@ try {
 | **asset** | **string**| USDC or USDT | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying the page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page. Starts from 1. Default: 1 | [optional] |
+| **size** | **int**| Number of results per page. Default: 10, Max: 100 | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -709,9 +709,9 @@ $positionId = 'positionId_example'; // string
 $asset = 'asset_example'; // string | USDC or USDT
 $startTime = 56; // int
 $endTime = 56; // int
-$current = 56; // int | Currently querying the page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$current = 56; // int | Currently querying page. Starts from 1. Default: 1
+$size = 56; // int | Number of results per page. Default: 10, Max: 100
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getLockedRewardsHistory($positionId, $asset, $startTime, $endTime, $current, $size, $recvWindow);
@@ -729,9 +729,9 @@ try {
 | **asset** | **string**| USDC or USDT | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying the page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page. Starts from 1. Default: 1 | [optional] |
+| **size** | **int**| Number of results per page. Default: 10, Max: 100 | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -776,7 +776,7 @@ $apiInstance = new Binance\Client\SimpleEarn\Api\FlexibleLockedApi(
 $projectId = 'projectId_example'; // string
 $amount = 3.4; // float
 $autoSubscribe = True; // bool | true or false, default true.
-$recvWindow = 56; // int
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getLockedSubscriptionPreview($projectId, $amount, $autoSubscribe, $recvWindow);
@@ -793,7 +793,7 @@ try {
 | **projectId** | **string**|  | |
 | **amount** | **float**|  | |
 | **autoSubscribe** | **bool**| true or false, default true. | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -839,9 +839,9 @@ $purchaseId = 'purchaseId_example'; // string
 $asset = 'asset_example'; // string | USDC or USDT
 $startTime = 56; // int
 $endTime = 56; // int
-$current = 56; // int | Currently querying the page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$current = 56; // int | Currently querying page. Starts from 1. Default: 1
+$size = 56; // int | Number of results per page. Default: 10, Max: 100
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getLockedSubscriptionRecord($purchaseId, $asset, $startTime, $endTime, $current, $size, $recvWindow);
@@ -859,9 +859,9 @@ try {
 | **asset** | **string**| USDC or USDT | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying the page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page. Starts from 1. Default: 1 | [optional] |
+| **size** | **int**| Number of results per page. Default: 10, Max: 100 | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -907,9 +907,9 @@ $productId = 'productId_example'; // string
 $aprPeriod = 'aprPeriod_example'; // string | \"DAY\",\"YEAR\",default\"DAY\"
 $startTime = 56; // int
 $endTime = 56; // int
-$current = 56; // int | Currently querying the page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$current = 56; // int | Currently querying page. Starts from 1. Default: 1
+$size = 56; // int | Number of results per page. Default: 10, Max: 100
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getRateHistory($productId, $aprPeriod, $startTime, $endTime, $current, $size, $recvWindow);
@@ -927,9 +927,9 @@ try {
 | **aprPeriod** | **string**| \&quot;DAY\&quot;,\&quot;YEAR\&quot;,default\&quot;DAY\&quot; | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying the page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page. Starts from 1. Default: 1 | [optional] |
+| **size** | **int**| Number of results per page. Default: 10, Max: 100 | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -972,9 +972,9 @@ $apiInstance = new Binance\Client\SimpleEarn\Api\FlexibleLockedApi(
     new GuzzleHttp\Client()
 );
 $asset = 'asset_example'; // string | USDC or USDT
-$current = 56; // int | Currently querying the page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$current = 56; // int | Currently querying page. Starts from 1. Default: 1
+$size = 56; // int | Number of results per page. Default: 10, Max: 100
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getSimpleEarnFlexibleProductList($asset, $current, $size, $recvWindow);
@@ -989,9 +989,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **asset** | **string**| USDC or USDT | [optional] |
-| **current** | **int**| Currently querying the page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page. Starts from 1. Default: 1 | [optional] |
+| **size** | **int**| Number of results per page. Default: 10, Max: 100 | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -1034,9 +1034,9 @@ $apiInstance = new Binance\Client\SimpleEarn\Api\FlexibleLockedApi(
     new GuzzleHttp\Client()
 );
 $asset = 'asset_example'; // string | USDC or USDT
-$current = 56; // int | Currently querying the page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$current = 56; // int | Currently querying page. Starts from 1. Default: 1
+$size = 56; // int | Number of results per page. Default: 10, Max: 100
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->getSimpleEarnLockedProductList($asset, $current, $size, $recvWindow);
@@ -1051,9 +1051,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **asset** | **string**| USDC or USDT | [optional] |
-| **current** | **int**| Currently querying the page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page. Starts from 1. Default: 1 | [optional] |
+| **size** | **int**| Number of results per page. Default: 10, Max: 100 | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 
@@ -1375,7 +1375,7 @@ $apiInstance = new Binance\Client\SimpleEarn\Api\FlexibleLockedApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 56; // int | The value cannot be greater than 60000 (ms)
 
 try {
     $result = $apiInstance->simpleAccount($recvWindow);
@@ -1389,7 +1389,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 (ms) | [optional] |
 
 ### Return type
 

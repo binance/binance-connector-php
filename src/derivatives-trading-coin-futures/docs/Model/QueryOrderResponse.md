@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **price** | **string** |  | [optional]
 **reduceOnly** | **bool** |  | [optional]
 **side** | **string** |  | [optional]
+**positionSide** | **string** |  | [optional]
 **status** | **string** |  | [optional]
 **stopPrice** | **string** |  | [optional]
 **closePosition** | **bool** |  | [optional]

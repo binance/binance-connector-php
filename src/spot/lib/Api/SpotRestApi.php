@@ -27,7 +27,6 @@ use Binance\Client\Spot\Model\MyPreventedMatchesResponse;
 use Binance\Client\Spot\Model\MyTradesResponse;
 use Binance\Client\Spot\Model\NewOrderRequest;
 use Binance\Client\Spot\Model\NewOrderResponse;
-use Binance\Client\Spot\Model\NewUserDataStreamResponse;
 use Binance\Client\Spot\Model\OpenOrderListResponse;
 use Binance\Client\Spot\Model\OrderAmendKeepPriorityRequest;
 use Binance\Client\Spot\Model\OrderAmendKeepPriorityResponse;
@@ -45,7 +44,6 @@ use Binance\Client\Spot\Model\OrderOcoResponse;
 use Binance\Client\Spot\Model\OrderTestRequest;
 use Binance\Client\Spot\Model\OrderTestResponse;
 use Binance\Client\Spot\Model\Permissions;
-use Binance\Client\Spot\Model\PutUserDataStreamRequest;
 use Binance\Client\Spot\Model\RateLimitOrderResponse;
 use Binance\Client\Spot\Model\SorOrderRequest;
 use Binance\Client\Spot\Model\SorOrderResponse;
@@ -88,11 +86,6 @@ class SpotRestApi
      */
     private $tradeApi;
 
-    /**
-     * @var UserDataStreamApi
-     */
-    private $userDataStreamApi;
-
     public function __construct(
         ?ClientConfiguration $clientConfig = new ClientConfiguration(),
     ) {
@@ -100,7 +93,6 @@ class SpotRestApi
         $this->generalApi = new GeneralApi($clientConfig);
         $this->marketApi = new MarketApi($clientConfig);
         $this->tradeApi = new TradeApi($clientConfig);
-        $this->userDataStreamApi = new UserDataStreamApi($clientConfig);
     }
 
     /**
@@ -471,17 +463,18 @@ class SpotRestApi
      *
      * Order book
      *
-     * @param string   $symbol symbol (required)
-     * @param null|int $limit  Default: 500; Maximum: 1000. (optional)
+     * @param string            $symbol       symbol (required)
+     * @param null|int          $limit        Default: 500; Maximum: 1000. (optional)
+     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
      *
      * @return ApiResponse<DepthResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function depth($symbol, $limit = null): ApiResponse
+    public function depth($symbol, $limit = null, $symbolStatus = null): ApiResponse
     {
-        return $this->marketApi->depth($symbol, $limit);
+        return $this->marketApi->depth($symbol, $limit, $symbolStatus);
     }
 
     /**
@@ -548,19 +541,20 @@ class SpotRestApi
      *
      * Rolling window price change statistics
      *
-     * @param null|string     $symbol     Symbol to query (optional)
-     * @param null|Symbols    $symbols    List of symbols to query (optional)
-     * @param null|WindowSize $windowSize windowSize (optional)
-     * @param null|TickerType $type       type (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|WindowSize   $windowSize   windowSize (optional)
+     * @param null|TickerType   $type         type (optional)
+     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
      *
      * @return ApiResponse<TickerResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function ticker($symbol = null, $symbols = null, $windowSize = null, $type = null): ApiResponse
+    public function ticker($symbol = null, $symbols = null, $windowSize = null, $type = null, $symbolStatus = null): ApiResponse
     {
-        return $this->marketApi->ticker($symbol, $symbols, $windowSize, $type);
+        return $this->marketApi->ticker($symbol, $symbols, $windowSize, $type, $symbolStatus);
     }
 
     /**
@@ -568,18 +562,19 @@ class SpotRestApi
      *
      * 24hr ticker price change statistics
      *
-     * @param null|string     $symbol  Symbol to query (optional)
-     * @param null|Symbols    $symbols List of symbols to query (optional)
-     * @param null|TickerType $type    type (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|TickerType   $type         type (optional)
+     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
      *
      * @return ApiResponse<Ticker24hrResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function ticker24hr($symbol = null, $symbols = null, $type = null): ApiResponse
+    public function ticker24hr($symbol = null, $symbols = null, $type = null, $symbolStatus = null): ApiResponse
     {
-        return $this->marketApi->ticker24hr($symbol, $symbols, $type);
+        return $this->marketApi->ticker24hr($symbol, $symbols, $type, $symbolStatus);
     }
 
     /**
@@ -587,17 +582,18 @@ class SpotRestApi
      *
      * Symbol order book ticker
      *
-     * @param null|string  $symbol  Symbol to query (optional)
-     * @param null|Symbols $symbols List of symbols to query (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
      *
      * @return ApiResponse<TickerBookTickerResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function tickerBookTicker($symbol = null, $symbols = null): ApiResponse
+    public function tickerBookTicker($symbol = null, $symbols = null, $symbolStatus = null): ApiResponse
     {
-        return $this->marketApi->tickerBookTicker($symbol, $symbols);
+        return $this->marketApi->tickerBookTicker($symbol, $symbols, $symbolStatus);
     }
 
     /**
@@ -605,17 +601,18 @@ class SpotRestApi
      *
      * Symbol price ticker
      *
-     * @param null|string  $symbol  Symbol to query (optional)
-     * @param null|Symbols $symbols List of symbols to query (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
      *
      * @return ApiResponse<TickerPriceResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function tickerPrice($symbol = null, $symbols = null): ApiResponse
+    public function tickerPrice($symbol = null, $symbols = null, $symbolStatus = null): ApiResponse
     {
-        return $this->marketApi->tickerPrice($symbol, $symbols);
+        return $this->marketApi->tickerPrice($symbol, $symbols, $symbolStatus);
     }
 
     /**
@@ -623,19 +620,20 @@ class SpotRestApi
      *
      * Trading Day Ticker
      *
-     * @param null|string     $symbol   Symbol to query (optional)
-     * @param null|Symbols    $symbols  List of symbols to query (optional)
-     * @param null|string     $timeZone Default: 0 (UTC) (optional)
-     * @param null|TickerType $type     type (optional)
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|string       $timeZone     Default: 0 (UTC) (optional)
+     * @param null|TickerType   $type         type (optional)
+     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
      *
      * @return ApiResponse<TickerTradingDayResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function tickerTradingDay($symbol = null, $symbols = null, $timeZone = null, $type = null): ApiResponse
+    public function tickerTradingDay($symbol = null, $symbols = null, $timeZone = null, $type = null, $symbolStatus = null): ApiResponse
     {
-        return $this->marketApi->tickerTradingDay($symbol, $symbols, $timeZone, $type);
+        return $this->marketApi->tickerTradingDay($symbol, $symbols, $timeZone, $type, $symbolStatus);
     }
 
     /**
@@ -834,6 +832,8 @@ class SpotRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function orderOco($orderOcoRequest): ApiResponse
     {
@@ -889,50 +889,5 @@ class SpotRestApi
     public function sorOrderTest($sorOrderTestRequest): ApiResponse
     {
         return $this->tradeApi->sorOrderTest($sorOrderTestRequest);
-    }
-
-    /**
-     * Operation deleteUserDataStream.
-     *
-     * Close user data stream
-     *
-     * @param string $listenKey listenKey (required)
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function deleteUserDataStream($listenKey)
-    {
-        $this->userDataStreamApi->deleteUserDataStream($listenKey);
-    }
-
-    /**
-     * Operation newUserDataStream.
-     *
-     * Start user data stream
-     *
-     * @return ApiResponse<NewUserDataStreamResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function newUserDataStream(): ApiResponse
-    {
-        return $this->userDataStreamApi->newUserDataStream();
-    }
-
-    /**
-     * Operation putUserDataStream.
-     *
-     * Keepalive user data stream
-     *
-     * @param PutUserDataStreamRequest $putUserDataStreamRequest putUserDataStreamRequest (required)
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function putUserDataStream($putUserDataStreamRequest)
-    {
-        $this->userDataStreamApi->putUserDataStream($putUserDataStreamRequest);
     }
 }

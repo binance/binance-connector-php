@@ -1162,6 +1162,8 @@ class MarginTradingRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function closeIsolatedMarginUserDataStream($symbol, $listenkey)
     {
@@ -1177,6 +1179,8 @@ class MarginTradingRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function closeMarginUserDataStream($listenkey)
     {
@@ -1192,6 +1196,8 @@ class MarginTradingRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function keepaliveIsolatedMarginUserDataStream($keepaliveIsolatedMarginUserDataStreamRequest)
     {
@@ -1207,6 +1213,8 @@ class MarginTradingRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function keepaliveMarginUserDataStream($keepaliveMarginUserDataStreamRequest)
     {
@@ -1224,6 +1232,8 @@ class MarginTradingRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function startIsolatedMarginUserDataStream($startIsolatedMarginUserDataStreamRequest): ApiResponse
     {
@@ -1239,6 +1249,8 @@ class MarginTradingRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function startMarginUserDataStream(): ApiResponse
     {
