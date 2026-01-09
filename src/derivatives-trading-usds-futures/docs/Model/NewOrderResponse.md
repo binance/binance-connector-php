@@ -22,8 +22,6 @@ Name | Type | Description | Notes
 **timeInForce** | **string** |  | [optional]
 **type** | **string** |  | [optional]
 **origType** | **string** |  | [optional]
-**activatePrice** | **string** |  | [optional]
-**priceRate** | **string** |  | [optional]
 **updateTime** | **int** |  | [optional]
 **workingType** | **string** |  | [optional]
 **priceProtect** | **bool** |  | [optional]

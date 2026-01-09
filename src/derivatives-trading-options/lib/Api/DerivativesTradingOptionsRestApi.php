@@ -19,18 +19,15 @@ use Binance\Client\DerivativesTradingOptions\Model\ExchangeInformationResponse;
 use Binance\Client\DerivativesTradingOptions\Model\ExtendBlockTradeOrderRequest;
 use Binance\Client\DerivativesTradingOptions\Model\ExtendBlockTradeOrderResponse;
 use Binance\Client\DerivativesTradingOptions\Model\GetAutoCancelAllOpenOrdersResponse;
-use Binance\Client\DerivativesTradingOptions\Model\GetDownloadIdForOptionTransactionHistoryResponse;
 use Binance\Client\DerivativesTradingOptions\Model\GetMarketMakerProtectionConfigResponse;
-use Binance\Client\DerivativesTradingOptions\Model\GetOptionTransactionHistoryDownloadLinkByIdResponse;
 use Binance\Client\DerivativesTradingOptions\Model\HistoricalExerciseRecordsResponse;
+use Binance\Client\DerivativesTradingOptions\Model\IndexPriceResponse;
 use Binance\Client\DerivativesTradingOptions\Model\KlineCandlestickDataResponse;
 use Binance\Client\DerivativesTradingOptions\Model\NewBlockTradeOrderRequest;
 use Binance\Client\DerivativesTradingOptions\Model\NewBlockTradeOrderResponse;
 use Binance\Client\DerivativesTradingOptions\Model\NewOrderRequest;
 use Binance\Client\DerivativesTradingOptions\Model\NewOrderResponse;
-use Binance\Client\DerivativesTradingOptions\Model\OldTradesLookupResponse;
 use Binance\Client\DerivativesTradingOptions\Model\OpenInterestResponse;
-use Binance\Client\DerivativesTradingOptions\Model\OptionAccountInformationResponse;
 use Binance\Client\DerivativesTradingOptions\Model\OptionMarginAccountInformationResponse;
 use Binance\Client\DerivativesTradingOptions\Model\OptionMarkPriceResponse;
 use Binance\Client\DerivativesTradingOptions\Model\OptionPositionInformationResponse;
@@ -52,8 +49,8 @@ use Binance\Client\DerivativesTradingOptions\Model\SetAutoCancelAllOpenOrdersRes
 use Binance\Client\DerivativesTradingOptions\Model\SetMarketMakerProtectionConfigRequest;
 use Binance\Client\DerivativesTradingOptions\Model\SetMarketMakerProtectionConfigResponse;
 use Binance\Client\DerivativesTradingOptions\Model\StartUserDataStreamResponse;
-use Binance\Client\DerivativesTradingOptions\Model\SymbolPriceTickerResponse;
 use Binance\Client\DerivativesTradingOptions\Model\Ticker24hrPriceChangeStatisticsResponse;
+use Binance\Client\DerivativesTradingOptions\Model\UserCommissionResponse;
 use Binance\Client\DerivativesTradingOptions\Model\UserExerciseRecordResponse;
 use Binance\Common\ApiException;
 use Binance\Common\Configuration\ClientConfiguration;
@@ -125,60 +122,6 @@ class DerivativesTradingOptionsRestApi
     }
 
     /**
-     * Operation getDownloadIdForOptionTransactionHistory.
-     *
-     * Get Download Id For Option Transaction History (USER_DATA)
-     *
-     * @param int      $startTime  Timestamp in ms (required)
-     * @param int      $endTime    Timestamp in ms (required)
-     * @param null|int $recvWindow recvWindow (optional)
-     *
-     * @return ApiResponse<GetDownloadIdForOptionTransactionHistoryResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function getDownloadIdForOptionTransactionHistory($startTime, $endTime, $recvWindow = null): ApiResponse
-    {
-        return $this->accountApi->getDownloadIdForOptionTransactionHistory($startTime, $endTime, $recvWindow);
-    }
-
-    /**
-     * Operation getOptionTransactionHistoryDownloadLinkById.
-     *
-     * Get Option Transaction History Download Link by Id (USER_DATA)
-     *
-     * @param string   $downloadId get by download id api (required)
-     * @param null|int $recvWindow recvWindow (optional)
-     *
-     * @return ApiResponse<GetOptionTransactionHistoryDownloadLinkByIdResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function getOptionTransactionHistoryDownloadLinkById($downloadId, $recvWindow = null): ApiResponse
-    {
-        return $this->accountApi->getOptionTransactionHistoryDownloadLinkById($downloadId, $recvWindow);
-    }
-
-    /**
-     * Operation optionAccountInformation.
-     *
-     * Option Account Information(TRADE)
-     *
-     * @param null|int $recvWindow recvWindow (optional)
-     *
-     * @return ApiResponse<OptionAccountInformationResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function optionAccountInformation($recvWindow = null): ApiResponse
-    {
-        return $this->accountApi->optionAccountInformation($recvWindow);
-    }
-
-    /**
      * Operation optionMarginAccountInformation.
      *
      * Option Margin Account Information (USER_DATA)
@@ -246,6 +189,23 @@ class DerivativesTradingOptionsRestApi
     }
 
     /**
+     * Operation indexPrice.
+     *
+     * Index Price
+     *
+     * @param string $underlying Option underlying, e.g BTCUSDT (required)
+     *
+     * @return ApiResponse<IndexPriceResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function indexPrice($underlying): ApiResponse
+    {
+        return $this->marketDataApi->indexPrice($underlying);
+    }
+
+    /**
      * Operation klineCandlestickData.
      *
      * Kline/Candlestick Data
@@ -264,25 +224,6 @@ class DerivativesTradingOptionsRestApi
     public function klineCandlestickData($symbol, $interval, $startTime = null, $endTime = null, $limit = null): ApiResponse
     {
         return $this->marketDataApi->klineCandlestickData($symbol, $interval, $startTime, $endTime, $limit);
-    }
-
-    /**
-     * Operation oldTradesLookup.
-     *
-     * Old Trades Lookup (MARKET_DATA)
-     *
-     * @param string   $symbol Option trading pair, e.g BTC-200730-9000-C (required)
-     * @param null|int $fromId The UniqueId ID from which to return. The latest deal record is returned by default (optional)
-     * @param null|int $limit  Number of result sets returned Default:100 Max:1000 (optional)
-     *
-     * @return ApiResponse<OldTradesLookupResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function oldTradesLookup($symbol, $fromId = null, $limit = null): ApiResponse
-    {
-        return $this->marketDataApi->oldTradesLookup($symbol, $fromId, $limit);
     }
 
     /**
@@ -372,23 +313,6 @@ class DerivativesTradingOptionsRestApi
     public function recentTradesList($symbol, $limit = null): ApiResponse
     {
         return $this->marketDataApi->recentTradesList($symbol, $limit);
-    }
-
-    /**
-     * Operation symbolPriceTicker.
-     *
-     * Symbol Price Ticker
-     *
-     * @param string $underlying Option underlying, e.g BTCUSDT (required)
-     *
-     * @return ApiResponse<SymbolPriceTickerResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function symbolPriceTicker($underlying): ApiResponse
-    {
-        return $this->marketDataApi->symbolPriceTicker($underlying);
     }
 
     /**
@@ -657,7 +581,7 @@ class DerivativesTradingOptionsRestApi
      * Account Trade List (USER_DATA)
      *
      * @param null|string $symbol     Option trading pair, e.g BTC-200730-9000-C (optional)
-     * @param null|int    $fromId     The UniqueId ID from which to return. The latest deal record is returned by default (optional)
+     * @param null|int    $fromId     Trade id to fetch from. Default gets most recent trades, e.g 4611875134427365376 (optional)
      * @param null|int    $startTime  Start Time, e.g 1593511200000 (optional)
      * @param null|int    $endTime    End Time, e.g 1593512200000 (optional)
      * @param null|int    $limit      Number of result sets returned Default:100 Max:1000 (optional)
@@ -862,6 +786,23 @@ class DerivativesTradingOptionsRestApi
     public function querySingleOrder($symbol, $orderId = null, $clientOrderId = null, $recvWindow = null): ApiResponse
     {
         return $this->tradeApi->querySingleOrder($symbol, $orderId, $clientOrderId, $recvWindow);
+    }
+
+    /**
+     * Operation userCommission.
+     *
+     * User Commission (USER_DATA)
+     *
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<UserCommissionResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function userCommission($recvWindow = null): ApiResponse
+    {
+        return $this->tradeApi->userCommission($recvWindow);
     }
 
     /**

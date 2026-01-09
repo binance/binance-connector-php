@@ -31,6 +31,10 @@ namespace Binance\Client\Wallet\Api;
 
 use Binance\Client\Wallet\Model\AssetDetailResponse;
 use Binance\Client\Wallet\Model\AssetDividendRecordResponse;
+use Binance\Client\Wallet\Model\DustConvertibleAssetsRequest;
+use Binance\Client\Wallet\Model\DustConvertibleAssetsResponse;
+use Binance\Client\Wallet\Model\DustConvertRequest;
+use Binance\Client\Wallet\Model\DustConvertResponse;
 use Binance\Client\Wallet\Model\DustlogResponse;
 use Binance\Client\Wallet\Model\DustTransferRequest;
 use Binance\Client\Wallet\Model\DustTransferResponse;
@@ -83,6 +87,8 @@ class AssetApi
     public const contentTypes = [
         'assetDetail' => ['application/x-www-form-urlencoded'],
         'assetDividendRecord' => ['application/x-www-form-urlencoded'],
+        'dustConvert' => ['application/x-www-form-urlencoded'],
+        'dustConvertibleAssets' => ['application/x-www-form-urlencoded'],
         'dustTransfer' => ['application/x-www-form-urlencoded'],
         'dustlog' => ['application/x-www-form-urlencoded'],
         'fundingWallet' => ['application/x-www-form-urlencoded'],
@@ -512,6 +518,406 @@ class AssetApi
 
         return new Request(
             'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation dustConvert.
+     *
+     * Dust Convert (USER_DATA)
+     *
+     * @param DustConvertRequest $dustConvertRequest dustConvertRequest (required)
+     *
+     * @return ApiResponse<DustConvertResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function dustConvert($dustConvertRequest): ApiResponse
+    {
+        return $this->dustConvertWithHttpInfo($dustConvertRequest);
+    }
+
+    /**
+     * Operation dustConvertWithHttpInfo.
+     *
+     * Dust Convert (USER_DATA)
+     *
+     * @param DustConvertRequest $dustConvertRequest (required)
+     *
+     * @return ApiResponse<DustConvertResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function dustConvertWithHttpInfo($dustConvertRequest): ApiResponse
+    {
+        $request = $this->dustConvertRequest($dustConvertRequest);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Wallet\Model\DustConvertResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Wallet\Model\DustConvertResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Wallet\Model\DustConvertResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'dustConvert'.
+     *
+     * @param DustConvertRequest $dustConvertRequest (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function dustConvertRequest($dustConvertRequest)
+    {
+        $contentType = self::contentTypes['dustConvert'][0];
+
+        // verify the required parameter 'dustConvertRequest' is set
+        if (null === $dustConvertRequest || (is_array($dustConvertRequest) && 0 === count($dustConvertRequest))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $dustConvertRequest when calling dustConvert'
+            );
+        }
+
+        $resourcePath = '/sapi/v1/asset/dust-convert/convert';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $getters = $dustConvertRequest::getters();
+        $formParams = [];
+        foreach ($getters as $property => $getter) {
+            $value = $dustConvertRequest->{$getter}();
+            if (!empty($value)) {
+                $formParams[$property] = $dustConvertRequest->{$getter}();
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        } elseif (isset($dustConvertRequest)) {
+            if (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($dustConvertRequest));
+            } else {
+                $httpBody = $dustConvertRequest;
+            }
+        }
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'POST',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation dustConvertibleAssets.
+     *
+     * Dust Convertible Assets (USER_DATA)
+     *
+     * @param DustConvertibleAssetsRequest $dustConvertibleAssetsRequest dustConvertibleAssetsRequest (required)
+     *
+     * @return ApiResponse<DustConvertibleAssetsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function dustConvertibleAssets($dustConvertibleAssetsRequest): ApiResponse
+    {
+        return $this->dustConvertibleAssetsWithHttpInfo($dustConvertibleAssetsRequest);
+    }
+
+    /**
+     * Operation dustConvertibleAssetsWithHttpInfo.
+     *
+     * Dust Convertible Assets (USER_DATA)
+     *
+     * @param DustConvertibleAssetsRequest $dustConvertibleAssetsRequest (required)
+     *
+     * @return ApiResponse<DustConvertibleAssetsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function dustConvertibleAssetsWithHttpInfo($dustConvertibleAssetsRequest): ApiResponse
+    {
+        $request = $this->dustConvertibleAssetsRequest($dustConvertibleAssetsRequest);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Wallet\Model\DustConvertibleAssetsResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Wallet\Model\DustConvertibleAssetsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Wallet\Model\DustConvertibleAssetsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'dustConvertibleAssets'.
+     *
+     * @param DustConvertibleAssetsRequest $dustConvertibleAssetsRequest (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function dustConvertibleAssetsRequest($dustConvertibleAssetsRequest)
+    {
+        $contentType = self::contentTypes['dustConvertibleAssets'][0];
+
+        // verify the required parameter 'dustConvertibleAssetsRequest' is set
+        if (null === $dustConvertibleAssetsRequest || (is_array($dustConvertibleAssetsRequest) && 0 === count($dustConvertibleAssetsRequest))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $dustConvertibleAssetsRequest when calling dustConvertibleAssets'
+            );
+        }
+
+        $resourcePath = '/sapi/v1/asset/dust-convert/query-convertible-assets';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $getters = $dustConvertibleAssetsRequest::getters();
+        $formParams = [];
+        foreach ($getters as $property => $getter) {
+            $value = $dustConvertibleAssetsRequest->{$getter}();
+            if (!empty($value)) {
+                $formParams[$property] = $dustConvertibleAssetsRequest->{$getter}();
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        } elseif (isset($dustConvertibleAssetsRequest)) {
+            if (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($dustConvertibleAssetsRequest));
+            } else {
+                $httpBody = $dustConvertibleAssetsRequest;
+            }
+        }
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'POST',
             $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody

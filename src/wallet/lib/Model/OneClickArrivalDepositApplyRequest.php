@@ -61,7 +61,7 @@ class OneClickArrivalDepositApplyRequest implements ModelInterface, \ArrayAccess
      * @var string[]
      */
     protected static $openAPITypes = [
-        'depositId' => 'string',
+        'depositId' => 'int',
         'txId' => 'string',
         'subAccountId' => 'string',
         'subUserId' => 'int',
@@ -77,7 +77,7 @@ class OneClickArrivalDepositApplyRequest implements ModelInterface, \ArrayAccess
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'depositId' => null,
+        'depositId' => 'int64',
         'txId' => null,
         'subAccountId' => null,
         'subUserId' => 'int64',
@@ -291,7 +291,7 @@ class OneClickArrivalDepositApplyRequest implements ModelInterface, \ArrayAccess
     /**
      * Gets depositId.
      *
-     * @return null|string
+     * @return null|int
      */
     public function getDepositId()
     {
@@ -301,7 +301,7 @@ class OneClickArrivalDepositApplyRequest implements ModelInterface, \ArrayAccess
     /**
      * Sets depositId.
      *
-     * @param null|string $depositId depositId
+     * @param null|int $depositId depositId
      *
      * @return self
      */

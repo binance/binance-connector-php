@@ -6,6 +6,7 @@ use Binance\Client\DerivativesTradingCoinFutures\Model\AccountInformationRespons
 use Binance\Client\DerivativesTradingCoinFutures\Model\AccountTradeListResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\AllOrdersResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\AutoCancelAllOpenOrdersRequest;
+use Binance\Client\DerivativesTradingCoinFutures\Model\AutoCancelAllOpenOrdersResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\AutoCloseType;
 use Binance\Client\DerivativesTradingCoinFutures\Model\BasisResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\CancelAllOpenOrdersResponse;
@@ -40,6 +41,7 @@ use Binance\Client\DerivativesTradingCoinFutures\Model\GetPositionMarginChangeHi
 use Binance\Client\DerivativesTradingCoinFutures\Model\IndexPriceAndMarkPriceResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\IndexPriceKlineCandlestickDataResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\Interval;
+use Binance\Client\DerivativesTradingCoinFutures\Model\KeepaliveUserDataStreamResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\KlineCandlestickDataResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\LongShortRatioResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\MarkPriceKlineCandlestickDataResponse;
@@ -60,6 +62,8 @@ use Binance\Client\DerivativesTradingCoinFutures\Model\OrderBookResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\OrderIdList;
 use Binance\Client\DerivativesTradingCoinFutures\Model\OrigClientOrderIdList;
 use Binance\Client\DerivativesTradingCoinFutures\Model\Period;
+use Binance\Client\DerivativesTradingCoinFutures\Model\PlaceMultipleOrdersRequest;
+use Binance\Client\DerivativesTradingCoinFutures\Model\PlaceMultipleOrdersResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\PositionAdlQuantileEstimationResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\PositionInformationResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\PremiumIndexKlineDataResponse;
@@ -924,12 +928,14 @@ class DerivativesTradingCoinFuturesRestApi
      *
      * @param AutoCancelAllOpenOrdersRequest $autoCancelAllOpenOrdersRequest autoCancelAllOpenOrdersRequest (required)
      *
+     * @return ApiResponse<AutoCancelAllOpenOrdersResponse>
+     *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest)
+    public function autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest): ApiResponse
     {
-        $this->tradeApi->autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest);
+        return $this->tradeApi->autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest);
     }
 
     /**
@@ -1174,6 +1180,23 @@ class DerivativesTradingCoinFuturesRestApi
     }
 
     /**
+     * Operation placeMultipleOrders.
+     *
+     * Place Multiple Orders(TRADE)
+     *
+     * @param PlaceMultipleOrdersRequest $placeMultipleOrdersRequest placeMultipleOrdersRequest (required)
+     *
+     * @return ApiResponse<PlaceMultipleOrdersResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function placeMultipleOrders($placeMultipleOrdersRequest): ApiResponse
+    {
+        return $this->tradeApi->placeMultipleOrders($placeMultipleOrdersRequest);
+    }
+
+    /**
      * Operation positionAdlQuantileEstimation.
      *
      * Position ADL Quantile Estimation(USER_DATA)
@@ -1290,12 +1313,14 @@ class DerivativesTradingCoinFuturesRestApi
      *
      * Keepalive User Data Stream (USER_STREAM)
      *
+     * @return ApiResponse<KeepaliveUserDataStreamResponse>
+     *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function keepaliveUserDataStream()
+    public function keepaliveUserDataStream(): ApiResponse
     {
-        $this->userDataStreamsApi->keepaliveUserDataStream();
+        return $this->userDataStreamsApi->keepaliveUserDataStream();
     }
 
     /**

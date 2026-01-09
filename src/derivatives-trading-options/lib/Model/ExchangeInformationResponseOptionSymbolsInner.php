@@ -68,8 +68,6 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'strikePrice' => 'string',
         'underlying' => 'string',
         'unit' => 'int',
-        'makerFeeRate' => 'string',
-        'takerFeeRate' => 'string',
         'liquidationFeeRate' => 'string',
         'minQty' => 'string',
         'maxQty' => 'string',
@@ -80,6 +78,7 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'priceScale' => 'int',
         'quantityScale' => 'int',
         'quoteAsset' => 'string',
+        'status' => 'string',
     ];
 
     /**
@@ -99,8 +98,6 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'strikePrice' => null,
         'underlying' => null,
         'unit' => 'int64',
-        'makerFeeRate' => null,
-        'takerFeeRate' => null,
         'liquidationFeeRate' => null,
         'minQty' => null,
         'maxQty' => null,
@@ -111,6 +108,7 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'priceScale' => 'int64',
         'quantityScale' => 'int64',
         'quoteAsset' => null,
+        'status' => null,
     ];
 
     /**
@@ -126,8 +124,6 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'strikePrice' => false,
         'underlying' => false,
         'unit' => false,
-        'makerFeeRate' => false,
-        'takerFeeRate' => false,
         'liquidationFeeRate' => false,
         'minQty' => false,
         'maxQty' => false,
@@ -138,6 +134,7 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'priceScale' => false,
         'quantityScale' => false,
         'quoteAsset' => false,
+        'status' => false,
     ];
 
     /**
@@ -161,8 +158,6 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'strikePrice' => 'strikePrice',
         'underlying' => 'underlying',
         'unit' => 'unit',
-        'makerFeeRate' => 'makerFeeRate',
-        'takerFeeRate' => 'takerFeeRate',
         'liquidationFeeRate' => 'liquidationFeeRate',
         'minQty' => 'minQty',
         'maxQty' => 'maxQty',
@@ -173,6 +168,7 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'priceScale' => 'priceScale',
         'quantityScale' => 'quantityScale',
         'quoteAsset' => 'quoteAsset',
+        'status' => 'status',
     ];
 
     /**
@@ -188,8 +184,6 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'strikePrice' => 'setStrikePrice',
         'underlying' => 'setUnderlying',
         'unit' => 'setUnit',
-        'makerFeeRate' => 'setMakerFeeRate',
-        'takerFeeRate' => 'setTakerFeeRate',
         'liquidationFeeRate' => 'setLiquidationFeeRate',
         'minQty' => 'setMinQty',
         'maxQty' => 'setMaxQty',
@@ -200,6 +194,7 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'priceScale' => 'setPriceScale',
         'quantityScale' => 'setQuantityScale',
         'quoteAsset' => 'setQuoteAsset',
+        'status' => 'setStatus',
     ];
 
     /**
@@ -215,8 +210,6 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'strikePrice' => 'getStrikePrice',
         'underlying' => 'getUnderlying',
         'unit' => 'getUnit',
-        'makerFeeRate' => 'getMakerFeeRate',
-        'takerFeeRate' => 'getTakerFeeRate',
         'liquidationFeeRate' => 'getLiquidationFeeRate',
         'minQty' => 'getMinQty',
         'maxQty' => 'getMaxQty',
@@ -227,6 +220,7 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         'priceScale' => 'getPriceScale',
         'quantityScale' => 'getQuantityScale',
         'quoteAsset' => 'getQuoteAsset',
+        'status' => 'getStatus',
     ];
 
     /**
@@ -251,8 +245,6 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         $this->setIfExists('strikePrice', $data ?? [], null);
         $this->setIfExists('underlying', $data ?? [], null);
         $this->setIfExists('unit', $data ?? [], null);
-        $this->setIfExists('makerFeeRate', $data ?? [], null);
-        $this->setIfExists('takerFeeRate', $data ?? [], null);
         $this->setIfExists('liquidationFeeRate', $data ?? [], null);
         $this->setIfExists('minQty', $data ?? [], null);
         $this->setIfExists('maxQty', $data ?? [], null);
@@ -263,6 +255,7 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
         $this->setIfExists('priceScale', $data ?? [], null);
         $this->setIfExists('quantityScale', $data ?? [], null);
         $this->setIfExists('quoteAsset', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -583,60 +576,6 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
     }
 
     /**
-     * Gets makerFeeRate.
-     *
-     * @return null|string
-     */
-    public function getMakerFeeRate()
-    {
-        return $this->container['makerFeeRate'];
-    }
-
-    /**
-     * Sets makerFeeRate.
-     *
-     * @param null|string $makerFeeRate makerFeeRate
-     *
-     * @return self
-     */
-    public function setMakerFeeRate($makerFeeRate)
-    {
-        if (is_null($makerFeeRate)) {
-            throw new \InvalidArgumentException('non-nullable makerFeeRate cannot be null');
-        }
-        $this->container['makerFeeRate'] = $makerFeeRate;
-
-        return $this;
-    }
-
-    /**
-     * Gets takerFeeRate.
-     *
-     * @return null|string
-     */
-    public function getTakerFeeRate()
-    {
-        return $this->container['takerFeeRate'];
-    }
-
-    /**
-     * Sets takerFeeRate.
-     *
-     * @param null|string $takerFeeRate takerFeeRate
-     *
-     * @return self
-     */
-    public function setTakerFeeRate($takerFeeRate)
-    {
-        if (is_null($takerFeeRate)) {
-            throw new \InvalidArgumentException('non-nullable takerFeeRate cannot be null');
-        }
-        $this->container['takerFeeRate'] = $takerFeeRate;
-
-        return $this;
-    }
-
-    /**
      * Gets liquidationFeeRate.
      *
      * @return null|string
@@ -902,6 +841,33 @@ class ExchangeInformationResponseOptionSymbolsInner implements ModelInterface, \
             throw new \InvalidArgumentException('non-nullable quoteAsset cannot be null');
         }
         $this->container['quoteAsset'] = $quoteAsset;
+
+        return $this;
+    }
+
+    /**
+     * Gets status.
+     *
+     * @return null|string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status.
+     *
+     * @param null|string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

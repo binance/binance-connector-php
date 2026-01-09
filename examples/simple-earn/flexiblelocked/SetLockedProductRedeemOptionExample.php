@@ -24,7 +24,7 @@ function setLockedProductRedeemOptionExample()
     $api = new SimpleEarnRestApi($configurationBuilder->build());
     $setLockedProductRedeemOptionRequest = new SetLockedProductRedeemOptionRequest();
     $setLockedProductRedeemOptionRequest->setPositionId('1');
-    $setLockedProductRedeemOptionRequest->setRedeemTo('');
+    $setLockedProductRedeemOptionRequest->setRedeemTo('SPOT');
     $response = $api->setLockedProductRedeemOption($setLockedProductRedeemOptionRequest);
     print_r($response);
 }

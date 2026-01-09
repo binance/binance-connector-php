@@ -14,6 +14,8 @@
 
 [/sapi/v2/loan/flexible/collateral/data](https://developers.binance.com/docs/crypto_loan/flexible-rate/market-data/Get-Flexible-Loan-Collateral-Assets-Data) - getFlexibleLoanCollateralAssetsData - [GetFlexibleLoanCollateralAssetsDataExample.php:26](/examples/crypto-loan/flexiblerate/GetFlexibleLoanCollateralAssetsDataExample.php#L26)
 
+[/sapi/v2/loan/interestRateHistory](https://developers.binance.com/docs/crypto_loan/flexible-rate/market-data/Get-Flexible-Loan-Interest-Rate-History) - getFlexibleLoanInterestRateHistory - [GetFlexibleLoanInterestRateHistoryExample.php:30](/examples/crypto-loan/flexiblerate/GetFlexibleLoanInterestRateHistoryExample.php#L30)
+
 [/sapi/v2/loan/flexible/liquidation/history](https://developers.binance.com/docs/crypto_loan/flexible-rate/user-information/Get-Flexible-Loan-Liquidation-History) - getFlexibleLoanLiquidationHistory - [GetFlexibleLoanLiquidationHistoryExample.php:31](/examples/crypto-loan/flexiblerate/GetFlexibleLoanLiquidationHistoryExample.php#L31)
 
 [/sapi/v2/loan/flexible/ltv/adjustment/history](https://developers.binance.com/docs/crypto_loan/flexible-rate/user-information/Get-Flexible-Loan-LTV-Adjustment-History) - getFlexibleLoanLtvAdjustmentHistory - [GetFlexibleLoanLtvAdjustmentHistoryExample.php:31](/examples/crypto-loan/flexiblerate/GetFlexibleLoanLtvAdjustmentHistoryExample.php#L31)

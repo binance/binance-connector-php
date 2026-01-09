@@ -116,56 +116,19 @@ class AccountApiTest extends TestCase
     }
 
     /**
-     * Test case for getDownloadIdForOptionTransactionHistory.
+     * Test case for optionMarginAccountInformation.
      *
-     * Get Download Id For Option Transaction History (USER_DATA).
+     * Option Margin Account Information (USER_DATA).
      */
-    public function testGetDownloadIdForOptionTransactionHistory()
+    public function testOptionMarginAccountInformation()
     {
-        $startTime = 1623319461670;
-        $endTime = 1641782889000;
         $recvWindow = 5000;
-        $response = $this->getApiMock($request)->getDownloadIdForOptionTransactionHistory($startTime, $endTime, $recvWindow);
+        $response = $this->getApiMock($request)->optionMarginAccountInformation($recvWindow);
 
         parse_str($request->getUri(), $queryMap);
 
         self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/eapi/v1/income/asyn', $request->getUri()->getPath());
-        self::assertEquals('812caedbe8f349196a4532c2050ff706ed2569fed185039c7b60a78cd84bc718', $queryMap['signature']);
-    }
-
-    /**
-     * Test case for getOptionTransactionHistoryDownloadLinkById.
-     *
-     * Get Option Transaction History Download Link by Id (USER_DATA).
-     */
-    public function testGetOptionTransactionHistoryDownloadLinkById()
-    {
-        $downloadId = '1';
-        $recvWindow = 5000;
-        $response = $this->getApiMock($request)->getOptionTransactionHistoryDownloadLinkById($downloadId, $recvWindow);
-
-        parse_str($request->getUri(), $queryMap);
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/eapi/v1/income/asyn/id', $request->getUri()->getPath());
-        self::assertEquals('4947fe463a17e3ec0b50fc22b21afc2aafddf3da892fa0c8dfd1b9c50af87349', $queryMap['signature']);
-    }
-
-    /**
-     * Test case for optionAccountInformation.
-     *
-     * Option Account Information(TRADE).
-     */
-    public function testOptionAccountInformation()
-    {
-        $recvWindow = 5000;
-        $response = $this->getApiMock($request)->optionAccountInformation($recvWindow);
-
-        parse_str($request->getUri(), $queryMap);
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/eapi/v1/account', $request->getUri()->getPath());
+        self::assertEquals('/eapi/v1/marginAccount', $request->getUri()->getPath());
         self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
     }
 }

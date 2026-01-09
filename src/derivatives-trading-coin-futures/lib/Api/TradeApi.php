@@ -32,6 +32,7 @@ namespace Binance\Client\DerivativesTradingCoinFutures\Api;
 use Binance\Client\DerivativesTradingCoinFutures\Model\AccountTradeListResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\AllOrdersResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\AutoCancelAllOpenOrdersRequest;
+use Binance\Client\DerivativesTradingCoinFutures\Model\AutoCancelAllOpenOrdersResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\AutoCloseType;
 use Binance\Client\DerivativesTradingCoinFutures\Model\CancelAllOpenOrdersResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\CancelMultipleOrdersResponse;
@@ -55,6 +56,8 @@ use Binance\Client\DerivativesTradingCoinFutures\Model\NewOrderRequest;
 use Binance\Client\DerivativesTradingCoinFutures\Model\NewOrderResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\OrderIdList;
 use Binance\Client\DerivativesTradingCoinFutures\Model\OrigClientOrderIdList;
+use Binance\Client\DerivativesTradingCoinFutures\Model\PlaceMultipleOrdersRequest;
+use Binance\Client\DerivativesTradingCoinFutures\Model\PlaceMultipleOrdersResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\PositionAdlQuantileEstimationResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\PositionInformationResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\QueryCurrentOpenOrderResponse;
@@ -108,6 +111,7 @@ class TradeApi
         'modifyMultipleOrders' => ['application/x-www-form-urlencoded'],
         'modifyOrder' => ['application/x-www-form-urlencoded'],
         'newOrder' => ['application/x-www-form-urlencoded'],
+        'placeMultipleOrders' => ['application/x-www-form-urlencoded'],
         'positionAdlQuantileEstimation' => ['application/x-www-form-urlencoded'],
         'positionInformation' => ['application/x-www-form-urlencoded'],
         'queryCurrentOpenOrder' => ['application/x-www-form-urlencoded'],
@@ -650,12 +654,14 @@ class TradeApi
      *
      * @param AutoCancelAllOpenOrdersRequest $autoCancelAllOpenOrdersRequest autoCancelAllOpenOrdersRequest (required)
      *
+     * @return ApiResponse<AutoCancelAllOpenOrdersResponse>
+     *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest)
+    public function autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest): ApiResponse
     {
-        $this->autoCancelAllOpenOrdersWithHttpInfo($autoCancelAllOpenOrdersRequest);
+        return $this->autoCancelAllOpenOrdersWithHttpInfo($autoCancelAllOpenOrdersRequest);
     }
 
     /**
@@ -665,10 +671,12 @@ class TradeApi
      *
      * @param AutoCancelAllOpenOrdersRequest $autoCancelAllOpenOrdersRequest (required)
      *
+     * @return ApiResponse<AutoCancelAllOpenOrdersResponse>
+     *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function autoCancelAllOpenOrdersWithHttpInfo($autoCancelAllOpenOrdersRequest)
+    public function autoCancelAllOpenOrdersWithHttpInfo($autoCancelAllOpenOrdersRequest): ApiResponse
     {
         $request = $this->autoCancelAllOpenOrdersRequest($autoCancelAllOpenOrdersRequest);
 
@@ -693,9 +701,44 @@ class TradeApi
 
             $statusCode = $response->getStatusCode();
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingCoinFutures\Model\AutoCancelAllOpenOrdersResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingCoinFutures\Model\AutoCancelAllOpenOrdersResponse',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingCoinFutures\Model\AutoCancelAllOpenOrdersResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
             }
 
             throw $e;
@@ -739,7 +782,7 @@ class TradeApi
         }
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json'],
             $contentType,
             $multipart
         );
@@ -3425,6 +3468,206 @@ class TradeApi
                 $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($newOrderRequest));
             } else {
                 $httpBody = $newOrderRequest;
+            }
+        }
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'POST',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation placeMultipleOrders.
+     *
+     * Place Multiple Orders(TRADE)
+     *
+     * @param PlaceMultipleOrdersRequest $placeMultipleOrdersRequest placeMultipleOrdersRequest (required)
+     *
+     * @return ApiResponse<PlaceMultipleOrdersResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function placeMultipleOrders($placeMultipleOrdersRequest): ApiResponse
+    {
+        return $this->placeMultipleOrdersWithHttpInfo($placeMultipleOrdersRequest);
+    }
+
+    /**
+     * Operation placeMultipleOrdersWithHttpInfo.
+     *
+     * Place Multiple Orders(TRADE)
+     *
+     * @param PlaceMultipleOrdersRequest $placeMultipleOrdersRequest (required)
+     *
+     * @return ApiResponse<PlaceMultipleOrdersResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function placeMultipleOrdersWithHttpInfo($placeMultipleOrdersRequest): ApiResponse
+    {
+        $request = $this->placeMultipleOrdersRequest($placeMultipleOrdersRequest);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingCoinFutures\Model\PlaceMultipleOrdersResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingCoinFutures\Model\PlaceMultipleOrdersResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingCoinFutures\Model\PlaceMultipleOrdersResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'placeMultipleOrders'.
+     *
+     * @param PlaceMultipleOrdersRequest $placeMultipleOrdersRequest (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function placeMultipleOrdersRequest($placeMultipleOrdersRequest)
+    {
+        $contentType = self::contentTypes['placeMultipleOrders'][0];
+
+        // verify the required parameter 'placeMultipleOrdersRequest' is set
+        if (null === $placeMultipleOrdersRequest || (is_array($placeMultipleOrdersRequest) && 0 === count($placeMultipleOrdersRequest))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $placeMultipleOrdersRequest when calling placeMultipleOrders'
+            );
+        }
+
+        $resourcePath = '/dapi/v1/batchOrders';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $getters = $placeMultipleOrdersRequest::getters();
+        $formParams = [];
+        foreach ($getters as $property => $getter) {
+            $value = $placeMultipleOrdersRequest->{$getter}();
+            if (!empty($value)) {
+                $formParams[$property] = $placeMultipleOrdersRequest->{$getter}();
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        } elseif (isset($placeMultipleOrdersRequest)) {
+            if (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($placeMultipleOrdersRequest));
+            } else {
+                $httpBody = $placeMultipleOrdersRequest;
             }
         }
 

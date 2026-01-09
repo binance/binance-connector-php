@@ -15,6 +15,7 @@ All URIs are relative to https://eapi.binance.com, except if the operation defin
 | [**queryCurrentOpenOptionOrders()**](TradeApi.md#queryCurrentOpenOptionOrders) | **GET** /eapi/v1/openOrders | Query Current Open Option Orders (USER_DATA) |
 | [**queryOptionOrderHistory()**](TradeApi.md#queryOptionOrderHistory) | **GET** /eapi/v1/historyOrders | Query Option Order History (TRADE) |
 | [**querySingleOrder()**](TradeApi.md#querySingleOrder) | **GET** /eapi/v1/order | Query Single Order (TRADE) |
+| [**userCommission()**](TradeApi.md#userCommission) | **GET** /eapi/v1/commission | User Commission (USER_DATA) |
 | [**userExerciseRecord()**](TradeApi.md#userExerciseRecord) | **GET** /eapi/v1/exerciseRecord | User Exercise Record (USER_DATA) |
 
 
@@ -42,7 +43,7 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\TradeApi(
     new GuzzleHttp\Client()
 );
 $symbol = 'symbol_example'; // string | Option trading pair, e.g BTC-200730-9000-C
-$fromId = 56; // int | The UniqueId ID from which to return. The latest deal record is returned by default
+$fromId = 56; // int | Trade id to fetch from. Default gets most recent trades, e.g 4611875134427365376
 $startTime = 56; // int | Start Time, e.g 1593511200000
 $endTime = 56; // int | End Time, e.g 1593512200000
 $limit = 56; // int | Number of result sets returned Default:100 Max:1000
@@ -61,7 +62,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**| Option trading pair, e.g BTC-200730-9000-C | [optional] |
-| **fromId** | **int**| The UniqueId ID from which to return. The latest deal record is returned by default | [optional] |
+| **fromId** | **int**| Trade id to fetch from. Default gets most recent trades, e.g 4611875134427365376 | [optional] |
 | **startTime** | **int**| Start Time, e.g 1593511200000 | [optional] |
 | **endTime** | **int**| End Time, e.g 1593512200000 | [optional] |
 | **limit** | **int**| Number of result sets returned Default:100 Max:1000 | [optional] |
@@ -672,6 +673,62 @@ try {
 ### Return type
 
 [**\Binance\Client\DerivativesTradingOptions\Model\QuerySingleOrderResponse**](../Model/QuerySingleOrderResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `userCommission()`
+
+```php
+userCommission($recvWindow): \Binance\Client\DerivativesTradingOptions\Model\UserCommissionResponse
+```
+
+User Commission (USER_DATA)
+
+Get account commission.  Weight: 5
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingOptions\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$recvWindow = 56; // int
+
+try {
+    $result = $apiInstance->userCommission($recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->userCommission: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingOptions\Model\UserCommissionResponse**](../Model/UserCommissionResponse.md)
 
 ### Authorization
 

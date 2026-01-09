@@ -7,11 +7,14 @@ use Binance\Client\DerivativesTradingUsdsFutures\Model\AcceptTheOfferedQuoteResp
 use Binance\Client\DerivativesTradingUsdsFutures\Model\AccountInformationV2Response;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\AccountInformationV3Response;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\AccountTradeListResponse;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\AdlRiskResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\AllOrdersResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\AutoCancelAllOpenOrdersRequest;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\AutoCancelAllOpenOrdersResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\AutoCloseType;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\BasisResponse;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\CancelAlgoOrderResponse;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\CancelAllAlgoOpenOrdersResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\CancelAllOpenOrdersResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\CancelMultipleOrdersResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\CancelOrderResponse;
@@ -29,11 +32,14 @@ use Binance\Client\DerivativesTradingUsdsFutures\Model\CompositeIndexSymbolInfor
 use Binance\Client\DerivativesTradingUsdsFutures\Model\CompressedAggregateTradesListResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\ContinuousContractKlineCandlestickDataResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\ContractType;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\CurrentAllAlgoOpenOrdersResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\CurrentAllOpenOrdersResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\ExchangeInformationResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesAccountBalanceV2Response;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesAccountBalanceV3Response;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesAccountConfigurationResponse;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractRequest;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradingQuantitativeRulesIndicatorsResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\GetBnbBurnStatusResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\GetCurrentMultiAssetsModeResponse;
@@ -64,6 +70,8 @@ use Binance\Client\DerivativesTradingUsdsFutures\Model\ModifyMultipleOrdersRespo
 use Binance\Client\DerivativesTradingUsdsFutures\Model\ModifyOrderRequest;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\ModifyOrderResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\MultiAssetsModeAssetIndexResponse;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\NewAlgoOrderRequest;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\NewAlgoOrderResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\NewOrderRequest;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\NewOrderResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\NotionalAndLeverageBracketsResponse;
@@ -82,12 +90,15 @@ use Binance\Client\DerivativesTradingUsdsFutures\Model\PositionInformationV2Resp
 use Binance\Client\DerivativesTradingUsdsFutures\Model\PositionInformationV3Response;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\PremiumIndexKlineDataResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\QuarterlyContractSettlementPriceResponse;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\QueryAlgoOrderResponse;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\QueryAllAlgoOrdersResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\QueryCurrentOpenOrderResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\QueryIndexPriceConstituentsResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\QueryInsuranceFundBalanceSnapshotResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\QueryOrderResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\QueryUserRateLimitResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\RecentTradesListResponse;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\RpiOrderBookResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\SendQuoteRequestRequest;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\SendQuoteRequestResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\StartUserDataStreamResponse;
@@ -103,6 +114,7 @@ use Binance\Client\DerivativesTradingUsdsFutures\Model\ToggleBnbBurnOnFuturesTra
 use Binance\Client\DerivativesTradingUsdsFutures\Model\ToggleBnbBurnOnFuturesTradeResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\TopTraderLongShortRatioAccountsResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\TopTraderLongShortRatioPositionsResponse;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\TradingScheduleResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\UserCommissionRateResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\UsersForceOrdersResponse;
 use Binance\Common\ApiException;
@@ -599,6 +611,23 @@ class DerivativesTradingUsdsFuturesRestApi
     }
 
     /**
+     * Operation adlRisk.
+     *
+     * ADL Risk
+     *
+     * @param null|string $symbol symbol (optional)
+     *
+     * @return ApiResponse<AdlRiskResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function adlRisk($symbol = null): ApiResponse
+    {
+        return $this->marketDataApi->adlRisk($symbol);
+    }
+
+    /**
      * Operation basis.
      *
      * Basis
@@ -1029,6 +1058,24 @@ class DerivativesTradingUsdsFuturesRestApi
     }
 
     /**
+     * Operation rpiOrderBook.
+     *
+     * RPI Order Book
+     *
+     * @param string   $symbol symbol (required)
+     * @param null|int $limit  Default 100; max 1000 (optional)
+     *
+     * @return ApiResponse<RpiOrderBookResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function rpiOrderBook($symbol, $limit = null): ApiResponse
+    {
+        return $this->marketDataApi->rpiOrderBook($symbol, $limit);
+    }
+
+    /**
      * Operation symbolOrderBookTicker.
      *
      * Symbol Order Book Ticker
@@ -1175,6 +1222,21 @@ class DerivativesTradingUsdsFuturesRestApi
     }
 
     /**
+     * Operation tradingSchedule.
+     *
+     * Trading Schedule
+     *
+     * @return ApiResponse<TradingScheduleResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function tradingSchedule(): ApiResponse
+    {
+        return $this->marketDataApi->tradingSchedule();
+    }
+
+    /**
      * Operation classicPortfolioMarginAccountInformation.
      *
      * Classic Portfolio Margin Account Information (USER_DATA)
@@ -1252,6 +1314,43 @@ class DerivativesTradingUsdsFuturesRestApi
     public function autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest): ApiResponse
     {
         return $this->tradeApi->autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest);
+    }
+
+    /**
+     * Operation cancelAlgoOrder.
+     *
+     * Cancel Algo Order (TRADE)
+     *
+     * @param null|int    $algoid       algoid (optional)
+     * @param null|string $clientalgoid clientalgoid (optional)
+     * @param null|int    $recvWindow   recvWindow (optional)
+     *
+     * @return ApiResponse<CancelAlgoOrderResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function cancelAlgoOrder($algoid = null, $clientalgoid = null, $recvWindow = null): ApiResponse
+    {
+        return $this->tradeApi->cancelAlgoOrder($algoid, $clientalgoid, $recvWindow);
+    }
+
+    /**
+     * Operation cancelAllAlgoOpenOrders.
+     *
+     * Cancel All Algo Open Orders (TRADE)
+     *
+     * @param string   $symbol     symbol (required)
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<CancelAllAlgoOpenOrdersResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function cancelAllAlgoOpenOrders($symbol, $recvWindow = null): ApiResponse
+    {
+        return $this->tradeApi->cancelAllAlgoOpenOrders($symbol, $recvWindow);
     }
 
     /**
@@ -1381,6 +1480,26 @@ class DerivativesTradingUsdsFuturesRestApi
     }
 
     /**
+     * Operation currentAllAlgoOpenOrders.
+     *
+     * Current All Algo Open Orders (USER_DATA)
+     *
+     * @param null|string $algoType   algoType (optional)
+     * @param null|string $symbol     symbol (optional)
+     * @param null|int    $algoId     algoId (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<CurrentAllAlgoOpenOrdersResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function currentAllAlgoOpenOrders($algoType = null, $symbol = null, $algoId = null, $recvWindow = null): ApiResponse
+    {
+        return $this->tradeApi->currentAllAlgoOpenOrders($algoType, $symbol, $algoId, $recvWindow);
+    }
+
+    /**
      * Operation currentAllOpenOrders.
      *
      * Current All Open Orders (USER_DATA)
@@ -1396,6 +1515,23 @@ class DerivativesTradingUsdsFuturesRestApi
     public function currentAllOpenOrders($symbol = null, $recvWindow = null): ApiResponse
     {
         return $this->tradeApi->currentAllOpenOrders($symbol, $recvWindow);
+    }
+
+    /**
+     * Operation futuresTradfiPerpsContract.
+     *
+     * Futures TradFi Perps Contract(USER_DATA)
+     *
+     * @param FuturesTradfiPerpsContractRequest $futuresTradfiPerpsContractRequest futuresTradfiPerpsContractRequest (required)
+     *
+     * @return ApiResponse<FuturesTradfiPerpsContractResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest): ApiResponse
+    {
+        return $this->tradeApi->futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest);
     }
 
     /**
@@ -1495,6 +1631,23 @@ class DerivativesTradingUsdsFuturesRestApi
     }
 
     /**
+     * Operation newAlgoOrder.
+     *
+     * New Algo Order(TRADE)
+     *
+     * @param NewAlgoOrderRequest $newAlgoOrderRequest newAlgoOrderRequest (required)
+     *
+     * @return ApiResponse<NewAlgoOrderResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function newAlgoOrder($newAlgoOrderRequest): ApiResponse
+    {
+        return $this->tradeApi->newAlgoOrder($newAlgoOrderRequest);
+    }
+
+    /**
      * Operation newOrder.
      *
      * New Order(TRADE)
@@ -1580,6 +1733,48 @@ class DerivativesTradingUsdsFuturesRestApi
     public function positionInformationV3($symbol = null, $recvWindow = null): ApiResponse
     {
         return $this->tradeApi->positionInformationV3($symbol, $recvWindow);
+    }
+
+    /**
+     * Operation queryAlgoOrder.
+     *
+     * Query Algo Order (USER_DATA)
+     *
+     * @param null|int    $algoId       algoId (optional)
+     * @param null|string $clientAlgoId clientAlgoId (optional)
+     * @param null|int    $recvWindow   recvWindow (optional)
+     *
+     * @return ApiResponse<QueryAlgoOrderResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function queryAlgoOrder($algoId = null, $clientAlgoId = null, $recvWindow = null): ApiResponse
+    {
+        return $this->tradeApi->queryAlgoOrder($algoId, $clientAlgoId, $recvWindow);
+    }
+
+    /**
+     * Operation queryAllAlgoOrders.
+     *
+     * Query All Algo Orders (USER_DATA)
+     *
+     * @param string   $symbol     symbol (required)
+     * @param null|int $algoId     algoId (optional)
+     * @param null|int $startTime  startTime (optional)
+     * @param null|int $endTime    endTime (optional)
+     * @param null|int $page       page (optional)
+     * @param null|int $limit      Default 100; max 1000 (optional)
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<QueryAllAlgoOrdersResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function queryAllAlgoOrders($symbol, $algoId = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null): ApiResponse
+    {
+        return $this->tradeApi->queryAllAlgoOrders($symbol, $algoId, $startTime, $endTime, $page, $limit, $recvWindow);
     }
 
     /**

@@ -63,7 +63,6 @@ class CancelAllOptionOrdersByUnderlyingResponse implements ModelInterface, \Arra
     protected static $openAPITypes = [
         'code' => 'int',
         'msg' => 'string',
-        'data' => 'int',
     ];
 
     /**
@@ -78,7 +77,6 @@ class CancelAllOptionOrdersByUnderlyingResponse implements ModelInterface, \Arra
     protected static $openAPIFormats = [
         'code' => 'int64',
         'msg' => null,
-        'data' => 'int64',
     ];
 
     /**
@@ -89,7 +87,6 @@ class CancelAllOptionOrdersByUnderlyingResponse implements ModelInterface, \Arra
     protected static array $openAPINullables = [
         'code' => false,
         'msg' => false,
-        'data' => false,
     ];
 
     /**
@@ -108,7 +105,6 @@ class CancelAllOptionOrdersByUnderlyingResponse implements ModelInterface, \Arra
     protected static $attributeMap = [
         'code' => 'code',
         'msg' => 'msg',
-        'data' => 'data',
     ];
 
     /**
@@ -119,7 +115,6 @@ class CancelAllOptionOrdersByUnderlyingResponse implements ModelInterface, \Arra
     protected static $setters = [
         'code' => 'setCode',
         'msg' => 'setMsg',
-        'data' => 'setData',
     ];
 
     /**
@@ -130,7 +125,6 @@ class CancelAllOptionOrdersByUnderlyingResponse implements ModelInterface, \Arra
     protected static $getters = [
         'code' => 'getCode',
         'msg' => 'getMsg',
-        'data' => 'getData',
     ];
 
     /**
@@ -150,7 +144,6 @@ class CancelAllOptionOrdersByUnderlyingResponse implements ModelInterface, \Arra
     {
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('msg', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -331,33 +324,6 @@ class CancelAllOptionOrdersByUnderlyingResponse implements ModelInterface, \Arra
             throw new \InvalidArgumentException('non-nullable msg cannot be null');
         }
         $this->container['msg'] = $msg;
-
-        return $this;
-    }
-
-    /**
-     * Gets data.
-     *
-     * @return null|int
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data.
-     *
-     * @param null|int $data data
-     *
-     * @return self
-     */
-    public function setData($data)
-    {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
-        }
-        $this->container['data'] = $data;
 
         return $this;
     }

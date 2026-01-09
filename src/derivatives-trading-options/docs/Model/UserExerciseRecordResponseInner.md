@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **currency** | **string** |  | [optional]
 **symbol** | **string** |  | [optional]
 **exercisePrice** | **string** |  | [optional]
-**markPrice** | **string** |  | [optional]
 **quantity** | **string** |  | [optional]
 **amount** | **string** |  | [optional]
 **fee** | **string** |  | [optional]

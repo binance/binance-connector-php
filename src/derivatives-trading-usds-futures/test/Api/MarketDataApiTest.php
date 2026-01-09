@@ -97,6 +97,23 @@ class MarketDataApiTest extends TestCase
     }
 
     /**
+     * Test case for adlRisk.
+     *
+     * ADL Risk.
+     */
+    public function testAdlRisk()
+    {
+        $symbol = '';
+        $response = $this->getApiMock($request)->adlRisk($symbol);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/fapi/v1/symbolAdlRisk', $request->getUri()->getPath());
+        self::assertTrue(!isset($queryMap['signature']));
+    }
+
+    /**
      * Test case for basis.
      *
      * Basis.
@@ -530,6 +547,24 @@ class MarketDataApiTest extends TestCase
     }
 
     /**
+     * Test case for rpiOrderBook.
+     *
+     * RPI Order Book.
+     */
+    public function testRpiOrderBook()
+    {
+        $symbol = '';
+        $limit = 100;
+        $response = $this->getApiMock($request)->rpiOrderBook($symbol, $limit);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/fapi/v1/rpiDepth', $request->getUri()->getPath());
+        self::assertTrue(!isset($queryMap['signature']));
+    }
+
+    /**
      * Test case for symbolOrderBookTicker.
      *
      * Symbol Order Book Ticker.
@@ -672,6 +707,22 @@ class MarketDataApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/futures/data/topLongShortPositionRatio', $request->getUri()->getPath());
+        self::assertTrue(!isset($queryMap['signature']));
+    }
+
+    /**
+     * Test case for tradingSchedule.
+     *
+     * Trading Schedule.
+     */
+    public function testTradingSchedule()
+    {
+        $response = $this->getApiMock($request)->tradingSchedule();
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/fapi/v1/tradingSchedule', $request->getUri()->getPath());
         self::assertTrue(!isset($queryMap['signature']));
     }
 }

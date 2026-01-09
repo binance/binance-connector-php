@@ -11,6 +11,7 @@ All URIs are relative to https://api.binance.com, except if the operation define
 | [**getFlexibleLoanAssetsData()**](FlexibleRateApi.md#getFlexibleLoanAssetsData) | **GET** /sapi/v2/loan/flexible/loanable/data | Get Flexible Loan Assets Data(USER_DATA) |
 | [**getFlexibleLoanBorrowHistory()**](FlexibleRateApi.md#getFlexibleLoanBorrowHistory) | **GET** /sapi/v2/loan/flexible/borrow/history | Get Flexible Loan Borrow History(USER_DATA) |
 | [**getFlexibleLoanCollateralAssetsData()**](FlexibleRateApi.md#getFlexibleLoanCollateralAssetsData) | **GET** /sapi/v2/loan/flexible/collateral/data | Get Flexible Loan Collateral Assets Data(USER_DATA) |
+| [**getFlexibleLoanInterestRateHistory()**](FlexibleRateApi.md#getFlexibleLoanInterestRateHistory) | **GET** /sapi/v2/loan/interestRateHistory | Get Flexible Loan Interest Rate History (USER_DATA) |
 | [**getFlexibleLoanLiquidationHistory()**](FlexibleRateApi.md#getFlexibleLoanLiquidationHistory) | **GET** /sapi/v2/loan/flexible/liquidation/history | Get Flexible Loan Liquidation History (USER_DATA) |
 | [**getFlexibleLoanLtvAdjustmentHistory()**](FlexibleRateApi.md#getFlexibleLoanLtvAdjustmentHistory) | **GET** /sapi/v2/loan/flexible/ltv/adjustment/history | Get Flexible Loan LTV Adjustment History(USER_DATA) |
 | [**getFlexibleLoanOngoingOrders()**](FlexibleRateApi.md#getFlexibleLoanOngoingOrders) | **GET** /sapi/v2/loan/flexible/ongoing/orders | Get Flexible Loan Ongoing Orders(USER_DATA) |
@@ -415,6 +416,72 @@ try {
 ### Return type
 
 [**\Binance\Client\CryptoLoan\Model\GetFlexibleLoanCollateralAssetsDataResponse**](../Model/GetFlexibleLoanCollateralAssetsDataResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getFlexibleLoanInterestRateHistory()`
+
+```php
+getFlexibleLoanInterestRateHistory($coin, $recvWindow, $startTime, $endTime, $current, $limit): \Binance\Client\CryptoLoan\Model\GetFlexibleLoanInterestRateHistoryResponse
+```
+
+Get Flexible Loan Interest Rate History (USER_DATA)
+
+Check Flexible Loan interest rate history  * If startTime and endTime are not sent, the recent 90-day data will be returned * The max interval between startTime and endTime is 90 days. * Time based on UTC+0.  Weight: 400
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\CryptoLoan\Api\FlexibleRateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$coin = 'coin_example'; // string
+$recvWindow = 56; // int
+$startTime = 56; // int
+$endTime = 56; // int
+$current = 56; // int | Current querying page. Start from 1; default: 1; max: 1000
+$limit = 56; // int | Default: 10; max: 100
+
+try {
+    $result = $apiInstance->getFlexibleLoanInterestRateHistory($coin, $recvWindow, $startTime, $endTime, $current, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FlexibleRateApi->getFlexibleLoanInterestRateHistory: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **coin** | **string**|  | |
+| **recvWindow** | **int**|  | |
+| **startTime** | **int**|  | [optional] |
+| **endTime** | **int**|  | [optional] |
+| **current** | **int**| Current querying page. Start from 1; default: 1; max: 1000 | [optional] |
+| **limit** | **int**| Default: 10; max: 100 | [optional] |
+
+### Return type
+
+[**\Binance\Client\CryptoLoan\Model\GetFlexibleLoanInterestRateHistoryResponse**](../Model/GetFlexibleLoanInterestRateHistoryResponse.md)
 
 ### Authorization
 

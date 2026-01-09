@@ -50,6 +50,8 @@ enum TimeInForce: string
 
     case FOK = 'FOK';
 
+    case GTX = 'GTX';
+
     /**
      * Gets allowable values of the enum.
      *
@@ -61,6 +63,7 @@ enum TimeInForce: string
             self::GTC,
             self::IOC,
             self::FOK,
+            self::GTX,
         ];
     }
 }

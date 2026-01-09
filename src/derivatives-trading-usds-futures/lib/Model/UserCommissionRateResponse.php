@@ -64,6 +64,7 @@ class UserCommissionRateResponse implements ModelInterface, \ArrayAccess, \JsonS
         'symbol' => 'string',
         'makerCommissionRate' => 'string',
         'takerCommissionRate' => 'string',
+        'rpiCommissionRate' => 'string',
     ];
 
     /**
@@ -79,6 +80,7 @@ class UserCommissionRateResponse implements ModelInterface, \ArrayAccess, \JsonS
         'symbol' => null,
         'makerCommissionRate' => null,
         'takerCommissionRate' => null,
+        'rpiCommissionRate' => null,
     ];
 
     /**
@@ -90,6 +92,7 @@ class UserCommissionRateResponse implements ModelInterface, \ArrayAccess, \JsonS
         'symbol' => false,
         'makerCommissionRate' => false,
         'takerCommissionRate' => false,
+        'rpiCommissionRate' => false,
     ];
 
     /**
@@ -109,6 +112,7 @@ class UserCommissionRateResponse implements ModelInterface, \ArrayAccess, \JsonS
         'symbol' => 'symbol',
         'makerCommissionRate' => 'makerCommissionRate',
         'takerCommissionRate' => 'takerCommissionRate',
+        'rpiCommissionRate' => 'rpiCommissionRate',
     ];
 
     /**
@@ -120,6 +124,7 @@ class UserCommissionRateResponse implements ModelInterface, \ArrayAccess, \JsonS
         'symbol' => 'setSymbol',
         'makerCommissionRate' => 'setMakerCommissionRate',
         'takerCommissionRate' => 'setTakerCommissionRate',
+        'rpiCommissionRate' => 'setRpiCommissionRate',
     ];
 
     /**
@@ -131,6 +136,7 @@ class UserCommissionRateResponse implements ModelInterface, \ArrayAccess, \JsonS
         'symbol' => 'getSymbol',
         'makerCommissionRate' => 'getMakerCommissionRate',
         'takerCommissionRate' => 'getTakerCommissionRate',
+        'rpiCommissionRate' => 'getRpiCommissionRate',
     ];
 
     /**
@@ -151,6 +157,7 @@ class UserCommissionRateResponse implements ModelInterface, \ArrayAccess, \JsonS
         $this->setIfExists('symbol', $data ?? [], null);
         $this->setIfExists('makerCommissionRate', $data ?? [], null);
         $this->setIfExists('takerCommissionRate', $data ?? [], null);
+        $this->setIfExists('rpiCommissionRate', $data ?? [], null);
     }
 
     /**
@@ -358,6 +365,33 @@ class UserCommissionRateResponse implements ModelInterface, \ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable takerCommissionRate cannot be null');
         }
         $this->container['takerCommissionRate'] = $takerCommissionRate;
+
+        return $this;
+    }
+
+    /**
+     * Gets rpiCommissionRate.
+     *
+     * @return null|string
+     */
+    public function getRpiCommissionRate()
+    {
+        return $this->container['rpiCommissionRate'];
+    }
+
+    /**
+     * Sets rpiCommissionRate.
+     *
+     * @param null|string $rpiCommissionRate rpiCommissionRate
+     *
+     * @return self
+     */
+    public function setRpiCommissionRate($rpiCommissionRate)
+    {
+        if (is_null($rpiCommissionRate)) {
+            throw new \InvalidArgumentException('non-nullable rpiCommissionRate cannot be null');
+        }
+        $this->container['rpiCommissionRate'] = $rpiCommissionRate;
 
         return $this;
     }

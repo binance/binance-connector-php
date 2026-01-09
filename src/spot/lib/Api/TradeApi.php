@@ -41,6 +41,10 @@ use Binance\Client\Spot\Model\OrderCancelReplaceRequest;
 use Binance\Client\Spot\Model\OrderCancelReplaceResponse;
 use Binance\Client\Spot\Model\OrderListOcoRequest;
 use Binance\Client\Spot\Model\OrderListOcoResponse;
+use Binance\Client\Spot\Model\OrderListOpocoRequest;
+use Binance\Client\Spot\Model\OrderListOpocoResponse;
+use Binance\Client\Spot\Model\OrderListOpoRequest;
+use Binance\Client\Spot\Model\OrderListOpoResponse;
 use Binance\Client\Spot\Model\OrderListOtocoRequest;
 use Binance\Client\Spot\Model\OrderListOtocoResponse;
 use Binance\Client\Spot\Model\OrderListOtoRequest;
@@ -91,6 +95,8 @@ class TradeApi
         'orderAmendKeepPriority' => ['application/x-www-form-urlencoded'],
         'orderCancelReplace' => ['application/x-www-form-urlencoded'],
         'orderListOco' => ['application/x-www-form-urlencoded'],
+        'orderListOpo' => ['application/x-www-form-urlencoded'],
+        'orderListOpoco' => ['application/x-www-form-urlencoded'],
         'orderListOto' => ['application/x-www-form-urlencoded'],
         'orderListOtoco' => ['application/x-www-form-urlencoded'],
         'orderOco' => ['application/x-www-form-urlencoded'],
@@ -1543,6 +1549,406 @@ class TradeApi
                 $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($orderListOcoRequest));
             } else {
                 $httpBody = $orderListOcoRequest;
+            }
+        }
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'POST',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation orderListOpo.
+     *
+     * New Order List - OPO
+     *
+     * @param OrderListOpoRequest $orderListOpoRequest orderListOpoRequest (required)
+     *
+     * @return ApiResponse<OrderListOpoResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function orderListOpo($orderListOpoRequest): ApiResponse
+    {
+        return $this->orderListOpoWithHttpInfo($orderListOpoRequest);
+    }
+
+    /**
+     * Operation orderListOpoWithHttpInfo.
+     *
+     * New Order List - OPO
+     *
+     * @param OrderListOpoRequest $orderListOpoRequest (required)
+     *
+     * @return ApiResponse<OrderListOpoResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function orderListOpoWithHttpInfo($orderListOpoRequest): ApiResponse
+    {
+        $request = $this->orderListOpoRequest($orderListOpoRequest);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Spot\Model\OrderListOpoResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Spot\Model\OrderListOpoResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Spot\Model\OrderListOpoResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'orderListOpo'.
+     *
+     * @param OrderListOpoRequest $orderListOpoRequest (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function orderListOpoRequest($orderListOpoRequest)
+    {
+        $contentType = self::contentTypes['orderListOpo'][0];
+
+        // verify the required parameter 'orderListOpoRequest' is set
+        if (null === $orderListOpoRequest || (is_array($orderListOpoRequest) && 0 === count($orderListOpoRequest))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $orderListOpoRequest when calling orderListOpo'
+            );
+        }
+
+        $resourcePath = '/api/v3/orderList/opo';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $getters = $orderListOpoRequest::getters();
+        $formParams = [];
+        foreach ($getters as $property => $getter) {
+            $value = $orderListOpoRequest->{$getter}();
+            if (!empty($value)) {
+                $formParams[$property] = $orderListOpoRequest->{$getter}();
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        } elseif (isset($orderListOpoRequest)) {
+            if (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($orderListOpoRequest));
+            } else {
+                $httpBody = $orderListOpoRequest;
+            }
+        }
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'POST',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation orderListOpoco.
+     *
+     * New Order List - OPOCO
+     *
+     * @param OrderListOpocoRequest $orderListOpocoRequest orderListOpocoRequest (required)
+     *
+     * @return ApiResponse<OrderListOpocoResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function orderListOpoco($orderListOpocoRequest): ApiResponse
+    {
+        return $this->orderListOpocoWithHttpInfo($orderListOpocoRequest);
+    }
+
+    /**
+     * Operation orderListOpocoWithHttpInfo.
+     *
+     * New Order List - OPOCO
+     *
+     * @param OrderListOpocoRequest $orderListOpocoRequest (required)
+     *
+     * @return ApiResponse<OrderListOpocoResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function orderListOpocoWithHttpInfo($orderListOpocoRequest): ApiResponse
+    {
+        $request = $this->orderListOpocoRequest($orderListOpocoRequest);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Spot\Model\OrderListOpocoResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Spot\Model\OrderListOpocoResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Spot\Model\OrderListOpocoResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'orderListOpoco'.
+     *
+     * @param OrderListOpocoRequest $orderListOpocoRequest (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function orderListOpocoRequest($orderListOpocoRequest)
+    {
+        $contentType = self::contentTypes['orderListOpoco'][0];
+
+        // verify the required parameter 'orderListOpocoRequest' is set
+        if (null === $orderListOpocoRequest || (is_array($orderListOpocoRequest) && 0 === count($orderListOpocoRequest))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $orderListOpocoRequest when calling orderListOpoco'
+            );
+        }
+
+        $resourcePath = '/api/v3/orderList/opoco';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $getters = $orderListOpocoRequest::getters();
+        $formParams = [];
+        foreach ($getters as $property => $getter) {
+            $value = $orderListOpocoRequest->{$getter}();
+            if (!empty($value)) {
+                $formParams[$property] = $orderListOpocoRequest->{$getter}();
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        } elseif (isset($orderListOpocoRequest)) {
+            if (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($orderListOpocoRequest));
+            } else {
+                $httpBody = $orderListOpocoRequest;
             }
         }
 

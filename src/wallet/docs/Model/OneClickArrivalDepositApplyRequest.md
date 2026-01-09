@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**depositId** | **string** |  | [optional]
+**depositId** | **int** |  | [optional]
 **txId** | **string** |  | [optional]
 **subAccountId** | **string** |  | [optional]
 **subUserId** | **int** |  | [optional]

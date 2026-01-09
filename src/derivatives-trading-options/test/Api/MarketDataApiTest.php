@@ -146,6 +146,23 @@ class MarketDataApiTest extends TestCase
     }
 
     /**
+     * Test case for indexPrice.
+     *
+     * Index Price.
+     */
+    public function testIndexPrice()
+    {
+        $underlying = '';
+        $response = $this->getApiMock($request)->indexPrice($underlying);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/eapi/v1/index', $request->getUri()->getPath());
+        self::assertTrue(!isset($queryMap['signature']));
+    }
+
+    /**
      * Test case for klineCandlestickData.
      *
      * Kline/Candlestick Data.
@@ -163,25 +180,6 @@ class MarketDataApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/eapi/v1/klines', $request->getUri()->getPath());
-        self::assertTrue(!isset($queryMap['signature']));
-    }
-
-    /**
-     * Test case for oldTradesLookup.
-     *
-     * Old Trades Lookup (MARKET_DATA).
-     */
-    public function testOldTradesLookup()
-    {
-        $symbol = '';
-        $fromId = 1;
-        $limit = 100;
-        $response = $this->getApiMock($request)->oldTradesLookup($symbol, $fromId, $limit);
-
-        parse_str($request->getUri(), $queryMap);
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/eapi/v1/historicalTrades', $request->getUri()->getPath());
         self::assertTrue(!isset($queryMap['signature']));
     }
 
@@ -271,23 +269,6 @@ class MarketDataApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/eapi/v1/trades', $request->getUri()->getPath());
-        self::assertTrue(!isset($queryMap['signature']));
-    }
-
-    /**
-     * Test case for symbolPriceTicker.
-     *
-     * Symbol Price Ticker.
-     */
-    public function testSymbolPriceTicker()
-    {
-        $underlying = '';
-        $response = $this->getApiMock($request)->symbolPriceTicker($underlying);
-
-        parse_str($request->getUri(), $queryMap);
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/eapi/v1/index', $request->getUri()->getPath());
         self::assertTrue(!isset($queryMap['signature']));
     }
 

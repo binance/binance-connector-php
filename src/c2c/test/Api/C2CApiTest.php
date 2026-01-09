@@ -100,16 +100,18 @@ class C2CApiTest extends TestCase
      */
     public function testGetC2CTradeHistory()
     {
-        $startTime = 1623319461670;
-        $endTime = 1641782889000;
+        $tradeType = '';
+        $startTimestamp = null;
+        $endTimestamp = null;
         $page = 1;
+        $rows = 100;
         $recvWindow = 5000;
-        $response = $this->getApiMock($request)->getC2CTradeHistory($startTime, $endTime, $page, $recvWindow);
+        $response = $this->getApiMock($request)->getC2CTradeHistory($tradeType, $startTimestamp, $endTimestamp, $page, $rows, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/c2c/orderMatch/listUserOrderHistory', $request->getUri()->getPath());
-        self::assertEquals('d8669595398c3478db78736dbf4210642841e9920062e47dd9e504f877e947a8', $queryMap['signature']);
+        self::assertEquals('8bba938bf28f55f2d3a9f429170f85a892988a10ef672cf57195b93f701aa467', $queryMap['signature']);
     }
 }

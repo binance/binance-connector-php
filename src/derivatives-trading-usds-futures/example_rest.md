@@ -54,6 +54,8 @@
 
 ## MarketData
 
+[/fapi/v1/symbolAdlRisk](https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/ADL-Risk) - adlRisk - [AdlRiskExample.php:24](/examples/derivatives-trading-usds-futures/marketdata/AdlRiskExample.php#L24)
+
 [/futures/data/basis](https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Basis) - basis - [BasisExample.php:31](/examples/derivatives-trading-usds-futures/marketdata/BasisExample.php#L31)
 
 [/fapi/v1/time](https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Check-Server-Time) - checkServerTime - [CheckServerTimeExample.php:23](/examples/derivatives-trading-usds-futures/marketdata/CheckServerTimeExample.php#L23)
@@ -100,6 +102,8 @@
 
 [/fapi/v1/trades](https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Recent-Trades-List) - recentTradesList - [RecentTradesListExample.php:25](/examples/derivatives-trading-usds-futures/marketdata/RecentTradesListExample.php#L25)
 
+[/fapi/v1/rpiDepth](https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Order-Book-RPI) - rpiOrderBook - [RpiOrderBookExample.php:25](/examples/derivatives-trading-usds-futures/marketdata/RpiOrderBookExample.php#L25)
+
 [/fapi/v1/ticker/bookTicker](https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Symbol-Order-Book-Ticker) - symbolOrderBookTicker - [SymbolOrderBookTickerExample.php:24](/examples/derivatives-trading-usds-futures/marketdata/SymbolOrderBookTickerExample.php#L24)
 
 [/fapi/v1/ticker/price](https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Symbol-Price-Ticker) - symbolPriceTicker - [SymbolPriceTickerExample.php:24](/examples/derivatives-trading-usds-futures/marketdata/SymbolPriceTickerExample.php#L24)
@@ -116,6 +120,8 @@
 
 [/futures/data/topLongShortPositionRatio](https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Top-Trader-Long-Short-Ratio) - topTraderLongShortRatioPositions - [TopTraderLongShortRatioPositionsExample.php:29](/examples/derivatives-trading-usds-futures/marketdata/TopTraderLongShortRatioPositionsExample.php#L29)
 
+[/fapi/v1/tradingSchedule](https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Trading-Schedule) - tradingSchedule - [TradingScheduleExample.php:23](/examples/derivatives-trading-usds-futures/marketdata/TradingScheduleExample.php#L23)
+
 ## PortfolioMarginEndpoints
 
 [/fapi/v1/pmAccountInfo](https://developers.binance.com/docs/derivatives/usds-margined-futures/portfolio-margin-endpoints/Classic-Portfolio-Margin-Account-Information) - classicPortfolioMarginAccountInformation - [ClassicPortfolioMarginAccountInformationExample.php:26](/examples/derivatives-trading-usds-futures/portfoliomarginendpoints/ClassicPortfolioMarginAccountInformationExample.php#L26)
@@ -127,6 +133,10 @@
 [/fapi/v1/allOrders](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/All-Orders) - allOrders - [AllOrdersExample.php:30](/examples/derivatives-trading-usds-futures/trade/AllOrdersExample.php#L30)
 
 [/fapi/v1/countdownCancelAll](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Auto-Cancel-All-Open-Orders) - autoCancelAllOpenOrders - [AutoCancelAllOpenOrdersExample.php:28](/examples/derivatives-trading-usds-futures/trade/AutoCancelAllOpenOrdersExample.php#L28)
+
+[/fapi/v1/algoOrder](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Cancel-Algo-Order) - cancelAlgoOrder - [CancelAlgoOrderExample.php:27](/examples/derivatives-trading-usds-futures/trade/CancelAlgoOrderExample.php#L27)
+
+[/fapi/v1/algoOpenOrders](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Cancel-All-Algo-Open-Orders) - cancelAllAlgoOpenOrders - [CancelAllAlgoOpenOrdersExample.php:26](/examples/derivatives-trading-usds-futures/trade/CancelAllAlgoOpenOrdersExample.php#L26)
 
 [/fapi/v1/allOpenOrders](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Cancel-All-Open-Orders) - cancelAllOpenOrders - [CancelAllOpenOrdersExample.php:26](/examples/derivatives-trading-usds-futures/trade/CancelAllOpenOrdersExample.php#L26)
 
@@ -142,7 +152,11 @@
 
 [/fapi/v1/positionSide/dual](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Change-Position-Mode) - changePositionMode - [ChangePositionModeExample.php:27](/examples/derivatives-trading-usds-futures/trade/ChangePositionModeExample.php#L27)
 
+[/fapi/v1/openAlgoOrders](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Current-All-Algo-Open-Orders) - currentAllAlgoOpenOrders - [CurrentAllAlgoOpenOrdersExample.php:28](/examples/derivatives-trading-usds-futures/trade/CurrentAllAlgoOpenOrdersExample.php#L28)
+
 [/fapi/v1/openOrders](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Current-All-Open-Orders) - currentAllOpenOrders - [CurrentAllOpenOrdersExample.php:26](/examples/derivatives-trading-usds-futures/trade/CurrentAllOpenOrdersExample.php#L26)
+
+[/fapi/v1/stock/contract](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Futures-TradFi-Perps-Contract) - futuresTradfiPerpsContract - [FuturesTradfiPerpsContractExample.php:26](/examples/derivatives-trading-usds-futures/trade/FuturesTradfiPerpsContractExample.php#L26)
 
 [/fapi/v1/orderAmendment](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Get-Order-Modify-History) - getOrderModifyHistory - [GetOrderModifyHistoryExample.php:31](/examples/derivatives-trading-usds-futures/trade/GetOrderModifyHistoryExample.php#L31)
 
@@ -154,6 +168,8 @@
 
 [/fapi/v1/order](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Modify-Order) - modifyOrder - [ModifyOrderExample.php:31](/examples/derivatives-trading-usds-futures/trade/ModifyOrderExample.php#L31)
 
+[/fapi/v1/algoOrder](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/New-Algo-Order) - newAlgoOrder - [NewAlgoOrderExample.php:31](/examples/derivatives-trading-usds-futures/trade/NewAlgoOrderExample.php#L31)
+
 [/fapi/v1/order](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/New-Order) - newOrder - [NewOrderExample.php:30](/examples/derivatives-trading-usds-futures/trade/NewOrderExample.php#L30)
 
 [/fapi/v1/batchOrders](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Place-Multiple-Orders) - placeMultipleOrders - [PlaceMultipleOrdersExample.php:27](/examples/derivatives-trading-usds-futures/trade/PlaceMultipleOrdersExample.php#L27)
@@ -163,6 +179,10 @@
 [/fapi/v2/positionRisk](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Position-Information-V2) - positionInformationV2 - [PositionInformationV2Example.php:26](/examples/derivatives-trading-usds-futures/trade/PositionInformationV2Example.php#L26)
 
 [/fapi/v3/positionRisk](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Position-Information-V3) - positionInformationV3 - [PositionInformationV3Example.php:26](/examples/derivatives-trading-usds-futures/trade/PositionInformationV3Example.php#L26)
+
+[/fapi/v1/algoOrder](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Query-Algo-Order) - queryAlgoOrder - [QueryAlgoOrderExample.php:27](/examples/derivatives-trading-usds-futures/trade/QueryAlgoOrderExample.php#L27)
+
+[/fapi/v1/allAlgoOrders](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Query-All-Algo-Orders) - queryAllAlgoOrders - [QueryAllAlgoOrdersExample.php:31](/examples/derivatives-trading-usds-futures/trade/QueryAllAlgoOrdersExample.php#L31)
 
 [/fapi/v1/openOrder](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Query-Current-Open-Order) - queryCurrentOpenOrder - [QueryCurrentOpenOrderExample.php:28](/examples/derivatives-trading-usds-futures/trade/QueryCurrentOpenOrderExample.php#L28)
 

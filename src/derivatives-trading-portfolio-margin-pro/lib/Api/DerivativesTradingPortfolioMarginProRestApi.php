@@ -16,8 +16,6 @@ use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetPortfolioMargin
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetPortfolioMarginProAccountInfoResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetPortfolioMarginProSpanAccountInfoResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetTransferableEarnAssetBalanceForPortfolioMarginResponse;
-use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\MintBfusdForPortfolioMarginRequest;
-use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\MintBfusdForPortfolioMarginResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\PortfolioMarginCollateralRateResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\PortfolioMarginProBankruptcyLoanRepayRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\PortfolioMarginProBankruptcyLoanRepayResponse;
@@ -26,12 +24,10 @@ use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\QueryPortfolioMarg
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\QueryPortfolioMarginProBankruptcyLoanAmountResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\QueryPortfolioMarginProBankruptcyLoanRepayHistoryResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\QueryPortfolioMarginProNegativeBalanceInterestHistoryResponse;
-use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RedeemBfusdForPortfolioMarginRequest;
-use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RedeemBfusdForPortfolioMarginResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RepayFuturesNegativeBalanceRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RepayFuturesNegativeBalanceResponse;
-use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtForPortfolioMarginRequest;
-use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtForPortfolioMarginResponse;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginRequest;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginResponse;
 use Binance\Common\ApiException;
 use Binance\Common\Configuration\ClientConfiguration;
 use Binance\Common\Dtos\ApiResponse;
@@ -212,23 +208,6 @@ class DerivativesTradingPortfolioMarginProRestApi
     }
 
     /**
-     * Operation mintBfusdForPortfolioMargin.
-     *
-     * Mint BFUSD for Portfolio Margin(TRADE)
-     *
-     * @param MintBfusdForPortfolioMarginRequest $mintBfusdForPortfolioMarginRequest mintBfusdForPortfolioMarginRequest (required)
-     *
-     * @return ApiResponse<MintBfusdForPortfolioMarginResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function mintBfusdForPortfolioMargin($mintBfusdForPortfolioMarginRequest): ApiResponse
-    {
-        return $this->accountApi->mintBfusdForPortfolioMargin($mintBfusdForPortfolioMarginRequest);
-    }
-
-    /**
      * Operation portfolioMarginProBankruptcyLoanRepay.
      *
      * Portfolio Margin Pro Bankruptcy Loan Repay
@@ -305,23 +284,6 @@ class DerivativesTradingPortfolioMarginProRestApi
     }
 
     /**
-     * Operation redeemBfusdForPortfolioMargin.
-     *
-     * Redeem BFUSD for Portfolio Margin(TRADE)
-     *
-     * @param RedeemBfusdForPortfolioMarginRequest $redeemBfusdForPortfolioMarginRequest redeemBfusdForPortfolioMarginRequest (required)
-     *
-     * @return ApiResponse<RedeemBfusdForPortfolioMarginResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function redeemBfusdForPortfolioMargin($redeemBfusdForPortfolioMarginRequest): ApiResponse
-    {
-        return $this->accountApi->redeemBfusdForPortfolioMargin($redeemBfusdForPortfolioMarginRequest);
-    }
-
-    /**
      * Operation repayFuturesNegativeBalance.
      *
      * Repay futures Negative Balance(USER_DATA)
@@ -339,20 +301,20 @@ class DerivativesTradingPortfolioMarginProRestApi
     }
 
     /**
-     * Operation transferLdusdtForPortfolioMargin.
+     * Operation transferLdusdtRwusdForPortfolioMargin.
      *
-     * Transfer LDUSDT for Portfolio Margin(TRADE)
+     * Transfer LDUSDT/RWUSD for Portfolio Margin(TRADE)
      *
-     * @param TransferLdusdtForPortfolioMarginRequest $transferLdusdtForPortfolioMarginRequest transferLdusdtForPortfolioMarginRequest (required)
+     * @param TransferLdusdtRwusdForPortfolioMarginRequest $transferLdusdtRwusdForPortfolioMarginRequest transferLdusdtRwusdForPortfolioMarginRequest (required)
      *
-     * @return ApiResponse<TransferLdusdtForPortfolioMarginResponse>
+     * @return ApiResponse<TransferLdusdtRwusdForPortfolioMarginResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function transferLdusdtForPortfolioMargin($transferLdusdtForPortfolioMarginRequest): ApiResponse
+    public function transferLdusdtRwusdForPortfolioMargin($transferLdusdtRwusdForPortfolioMarginRequest): ApiResponse
     {
-        return $this->accountApi->transferLdusdtForPortfolioMargin($transferLdusdtForPortfolioMarginRequest);
+        return $this->accountApi->transferLdusdtRwusdForPortfolioMargin($transferLdusdtRwusdForPortfolioMarginRequest);
     }
 
     /**

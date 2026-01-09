@@ -66,16 +66,21 @@ class CancelMultipleOptionOrdersResponseInner implements ModelInterface, \ArrayA
         'price' => 'string',
         'quantity' => 'string',
         'executedQty' => 'string',
-        'fee' => 'int',
         'side' => 'string',
         'type' => 'string',
         'timeInForce' => 'string',
+        'reduceOnly' => 'bool',
         'createTime' => 'int',
+        'updateTime' => 'int',
         'status' => 'string',
         'avgPrice' => 'string',
-        'reduceOnly' => 'bool',
+        'source' => 'string',
         'clientOrderId' => 'string',
-        'updateTime' => 'int',
+        'priceScale' => 'int',
+        'quantityScale' => 'int',
+        'optionSide' => 'string',
+        'quoteAsset' => 'string',
+        'mmp' => 'bool',
     ];
 
     /**
@@ -93,16 +98,21 @@ class CancelMultipleOptionOrdersResponseInner implements ModelInterface, \ArrayA
         'price' => null,
         'quantity' => null,
         'executedQty' => null,
-        'fee' => 'int64',
         'side' => null,
         'type' => null,
         'timeInForce' => null,
+        'reduceOnly' => null,
         'createTime' => 'int64',
+        'updateTime' => 'int64',
         'status' => null,
         'avgPrice' => null,
-        'reduceOnly' => null,
+        'source' => null,
         'clientOrderId' => null,
-        'updateTime' => 'int64',
+        'priceScale' => 'int64',
+        'quantityScale' => 'int64',
+        'optionSide' => null,
+        'quoteAsset' => null,
+        'mmp' => null,
     ];
 
     /**
@@ -116,16 +126,21 @@ class CancelMultipleOptionOrdersResponseInner implements ModelInterface, \ArrayA
         'price' => false,
         'quantity' => false,
         'executedQty' => false,
-        'fee' => false,
         'side' => false,
         'type' => false,
         'timeInForce' => false,
+        'reduceOnly' => false,
         'createTime' => false,
+        'updateTime' => false,
         'status' => false,
         'avgPrice' => false,
-        'reduceOnly' => false,
+        'source' => false,
         'clientOrderId' => false,
-        'updateTime' => false,
+        'priceScale' => false,
+        'quantityScale' => false,
+        'optionSide' => false,
+        'quoteAsset' => false,
+        'mmp' => false,
     ];
 
     /**
@@ -147,16 +162,21 @@ class CancelMultipleOptionOrdersResponseInner implements ModelInterface, \ArrayA
         'price' => 'price',
         'quantity' => 'quantity',
         'executedQty' => 'executedQty',
-        'fee' => 'fee',
         'side' => 'side',
         'type' => 'type',
         'timeInForce' => 'timeInForce',
+        'reduceOnly' => 'reduceOnly',
         'createTime' => 'createTime',
+        'updateTime' => 'updateTime',
         'status' => 'status',
         'avgPrice' => 'avgPrice',
-        'reduceOnly' => 'reduceOnly',
+        'source' => 'source',
         'clientOrderId' => 'clientOrderId',
-        'updateTime' => 'updateTime',
+        'priceScale' => 'priceScale',
+        'quantityScale' => 'quantityScale',
+        'optionSide' => 'optionSide',
+        'quoteAsset' => 'quoteAsset',
+        'mmp' => 'mmp',
     ];
 
     /**
@@ -170,16 +190,21 @@ class CancelMultipleOptionOrdersResponseInner implements ModelInterface, \ArrayA
         'price' => 'setPrice',
         'quantity' => 'setQuantity',
         'executedQty' => 'setExecutedQty',
-        'fee' => 'setFee',
         'side' => 'setSide',
         'type' => 'setType',
         'timeInForce' => 'setTimeInForce',
+        'reduceOnly' => 'setReduceOnly',
         'createTime' => 'setCreateTime',
+        'updateTime' => 'setUpdateTime',
         'status' => 'setStatus',
         'avgPrice' => 'setAvgPrice',
-        'reduceOnly' => 'setReduceOnly',
+        'source' => 'setSource',
         'clientOrderId' => 'setClientOrderId',
-        'updateTime' => 'setUpdateTime',
+        'priceScale' => 'setPriceScale',
+        'quantityScale' => 'setQuantityScale',
+        'optionSide' => 'setOptionSide',
+        'quoteAsset' => 'setQuoteAsset',
+        'mmp' => 'setMmp',
     ];
 
     /**
@@ -193,16 +218,21 @@ class CancelMultipleOptionOrdersResponseInner implements ModelInterface, \ArrayA
         'price' => 'getPrice',
         'quantity' => 'getQuantity',
         'executedQty' => 'getExecutedQty',
-        'fee' => 'getFee',
         'side' => 'getSide',
         'type' => 'getType',
         'timeInForce' => 'getTimeInForce',
+        'reduceOnly' => 'getReduceOnly',
         'createTime' => 'getCreateTime',
+        'updateTime' => 'getUpdateTime',
         'status' => 'getStatus',
         'avgPrice' => 'getAvgPrice',
-        'reduceOnly' => 'getReduceOnly',
+        'source' => 'getSource',
         'clientOrderId' => 'getClientOrderId',
-        'updateTime' => 'getUpdateTime',
+        'priceScale' => 'getPriceScale',
+        'quantityScale' => 'getQuantityScale',
+        'optionSide' => 'getOptionSide',
+        'quoteAsset' => 'getQuoteAsset',
+        'mmp' => 'getMmp',
     ];
 
     /**
@@ -225,16 +255,21 @@ class CancelMultipleOptionOrdersResponseInner implements ModelInterface, \ArrayA
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('executedQty', $data ?? [], null);
-        $this->setIfExists('fee', $data ?? [], null);
         $this->setIfExists('side', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('timeInForce', $data ?? [], null);
+        $this->setIfExists('reduceOnly', $data ?? [], null);
         $this->setIfExists('createTime', $data ?? [], null);
+        $this->setIfExists('updateTime', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('avgPrice', $data ?? [], null);
-        $this->setIfExists('reduceOnly', $data ?? [], null);
+        $this->setIfExists('source', $data ?? [], null);
         $this->setIfExists('clientOrderId', $data ?? [], null);
-        $this->setIfExists('updateTime', $data ?? [], null);
+        $this->setIfExists('priceScale', $data ?? [], null);
+        $this->setIfExists('quantityScale', $data ?? [], null);
+        $this->setIfExists('optionSide', $data ?? [], null);
+        $this->setIfExists('quoteAsset', $data ?? [], null);
+        $this->setIfExists('mmp', $data ?? [], null);
     }
 
     /**
@@ -501,33 +536,6 @@ class CancelMultipleOptionOrdersResponseInner implements ModelInterface, \ArrayA
     }
 
     /**
-     * Gets fee.
-     *
-     * @return null|int
-     */
-    public function getFee()
-    {
-        return $this->container['fee'];
-    }
-
-    /**
-     * Sets fee.
-     *
-     * @param null|int $fee fee
-     *
-     * @return self
-     */
-    public function setFee($fee)
-    {
-        if (is_null($fee)) {
-            throw new \InvalidArgumentException('non-nullable fee cannot be null');
-        }
-        $this->container['fee'] = $fee;
-
-        return $this;
-    }
-
-    /**
      * Gets side.
      *
      * @return null|string
@@ -609,6 +617,33 @@ class CancelMultipleOptionOrdersResponseInner implements ModelInterface, \ArrayA
     }
 
     /**
+     * Gets reduceOnly.
+     *
+     * @return null|bool
+     */
+    public function getReduceOnly()
+    {
+        return $this->container['reduceOnly'];
+    }
+
+    /**
+     * Sets reduceOnly.
+     *
+     * @param null|bool $reduceOnly reduceOnly
+     *
+     * @return self
+     */
+    public function setReduceOnly($reduceOnly)
+    {
+        if (is_null($reduceOnly)) {
+            throw new \InvalidArgumentException('non-nullable reduceOnly cannot be null');
+        }
+        $this->container['reduceOnly'] = $reduceOnly;
+
+        return $this;
+    }
+
+    /**
      * Gets createTime.
      *
      * @return null|int
@@ -631,6 +666,33 @@ class CancelMultipleOptionOrdersResponseInner implements ModelInterface, \ArrayA
             throw new \InvalidArgumentException('non-nullable createTime cannot be null');
         }
         $this->container['createTime'] = $createTime;
+
+        return $this;
+    }
+
+    /**
+     * Gets updateTime.
+     *
+     * @return null|int
+     */
+    public function getUpdateTime()
+    {
+        return $this->container['updateTime'];
+    }
+
+    /**
+     * Sets updateTime.
+     *
+     * @param null|int $updateTime updateTime
+     *
+     * @return self
+     */
+    public function setUpdateTime($updateTime)
+    {
+        if (is_null($updateTime)) {
+            throw new \InvalidArgumentException('non-nullable updateTime cannot be null');
+        }
+        $this->container['updateTime'] = $updateTime;
 
         return $this;
     }
@@ -690,28 +752,28 @@ class CancelMultipleOptionOrdersResponseInner implements ModelInterface, \ArrayA
     }
 
     /**
-     * Gets reduceOnly.
+     * Gets source.
      *
-     * @return null|bool
+     * @return null|string
      */
-    public function getReduceOnly()
+    public function getSource()
     {
-        return $this->container['reduceOnly'];
+        return $this->container['source'];
     }
 
     /**
-     * Sets reduceOnly.
+     * Sets source.
      *
-     * @param null|bool $reduceOnly reduceOnly
+     * @param null|string $source source
      *
      * @return self
      */
-    public function setReduceOnly($reduceOnly)
+    public function setSource($source)
     {
-        if (is_null($reduceOnly)) {
-            throw new \InvalidArgumentException('non-nullable reduceOnly cannot be null');
+        if (is_null($source)) {
+            throw new \InvalidArgumentException('non-nullable source cannot be null');
         }
-        $this->container['reduceOnly'] = $reduceOnly;
+        $this->container['source'] = $source;
 
         return $this;
     }
@@ -744,28 +806,136 @@ class CancelMultipleOptionOrdersResponseInner implements ModelInterface, \ArrayA
     }
 
     /**
-     * Gets updateTime.
+     * Gets priceScale.
      *
      * @return null|int
      */
-    public function getUpdateTime()
+    public function getPriceScale()
     {
-        return $this->container['updateTime'];
+        return $this->container['priceScale'];
     }
 
     /**
-     * Sets updateTime.
+     * Sets priceScale.
      *
-     * @param null|int $updateTime updateTime
+     * @param null|int $priceScale priceScale
      *
      * @return self
      */
-    public function setUpdateTime($updateTime)
+    public function setPriceScale($priceScale)
     {
-        if (is_null($updateTime)) {
-            throw new \InvalidArgumentException('non-nullable updateTime cannot be null');
+        if (is_null($priceScale)) {
+            throw new \InvalidArgumentException('non-nullable priceScale cannot be null');
         }
-        $this->container['updateTime'] = $updateTime;
+        $this->container['priceScale'] = $priceScale;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantityScale.
+     *
+     * @return null|int
+     */
+    public function getQuantityScale()
+    {
+        return $this->container['quantityScale'];
+    }
+
+    /**
+     * Sets quantityScale.
+     *
+     * @param null|int $quantityScale quantityScale
+     *
+     * @return self
+     */
+    public function setQuantityScale($quantityScale)
+    {
+        if (is_null($quantityScale)) {
+            throw new \InvalidArgumentException('non-nullable quantityScale cannot be null');
+        }
+        $this->container['quantityScale'] = $quantityScale;
+
+        return $this;
+    }
+
+    /**
+     * Gets optionSide.
+     *
+     * @return null|string
+     */
+    public function getOptionSide()
+    {
+        return $this->container['optionSide'];
+    }
+
+    /**
+     * Sets optionSide.
+     *
+     * @param null|string $optionSide optionSide
+     *
+     * @return self
+     */
+    public function setOptionSide($optionSide)
+    {
+        if (is_null($optionSide)) {
+            throw new \InvalidArgumentException('non-nullable optionSide cannot be null');
+        }
+        $this->container['optionSide'] = $optionSide;
+
+        return $this;
+    }
+
+    /**
+     * Gets quoteAsset.
+     *
+     * @return null|string
+     */
+    public function getQuoteAsset()
+    {
+        return $this->container['quoteAsset'];
+    }
+
+    /**
+     * Sets quoteAsset.
+     *
+     * @param null|string $quoteAsset quoteAsset
+     *
+     * @return self
+     */
+    public function setQuoteAsset($quoteAsset)
+    {
+        if (is_null($quoteAsset)) {
+            throw new \InvalidArgumentException('non-nullable quoteAsset cannot be null');
+        }
+        $this->container['quoteAsset'] = $quoteAsset;
+
+        return $this;
+    }
+
+    /**
+     * Gets mmp.
+     *
+     * @return null|bool
+     */
+    public function getMmp()
+    {
+        return $this->container['mmp'];
+    }
+
+    /**
+     * Sets mmp.
+     *
+     * @param null|bool $mmp mmp
+     *
+     * @return self
+     */
+    public function setMmp($mmp)
+    {
+        if (is_null($mmp)) {
+            throw new \InvalidArgumentException('non-nullable mmp cannot be null');
+        }
+        $this->container['mmp'] = $mmp;
 
         return $this;
     }

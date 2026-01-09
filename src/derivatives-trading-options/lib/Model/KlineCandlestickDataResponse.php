@@ -45,13 +45,13 @@ class KlineCandlestickDataResponse
 {
     public const DISCRIMINATOR = null;
 
-    /** @var KlineCandlestickDataResponseInner[] */
+    /** @var KlineCandlestickDataResponseItem[] */
     protected array $items = [];
 
     /**
      * Constructor.
      *
-     * @param KlineCandlestickDataResponseInner[] items
+     * @param KlineCandlestickDataResponseItem[] items
      */
     public function __construct(array $items = [])
     {
@@ -63,7 +63,7 @@ class KlineCandlestickDataResponse
      */
     public static function getItemType(): string
     {
-        return '\Binance\Client\DerivativesTradingOptions\Model\KlineCandlestickDataResponseInner';
+        return '\Binance\Client\DerivativesTradingOptions\Model\KlineCandlestickDataResponseItem';
     }
 
     /**
@@ -94,20 +94,20 @@ class KlineCandlestickDataResponse
     }
 
     /**
-     * @return KlineCandlestickDataResponseInner[]
+     * @return KlineCandlestickDataResponseItem[]
      */
     public function getItems(): array
     {
         return $this->items;
     }
 
-    public function addItem(KlineCandlestickDataResponseInner $item): void
+    public function addItem(KlineCandlestickDataResponseItem $item): void
     {
         $this->items[] = $item;
     }
 
     /**
-     * @param KlineCandlestickDataResponseInner[] $items
+     * @param KlineCandlestickDataResponseItem[] $items
      */
     public function addItems(array $items): void
     {

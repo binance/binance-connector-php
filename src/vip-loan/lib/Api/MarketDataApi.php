@@ -32,6 +32,7 @@ namespace Binance\Client\VipLoan\Api;
 use Binance\Client\VipLoan\Model\GetBorrowInterestRateResponse;
 use Binance\Client\VipLoan\Model\GetCollateralAssetDataResponse;
 use Binance\Client\VipLoan\Model\GetLoanableAssetsDataResponse;
+use Binance\Client\VipLoan\Model\GetVIPLoanInterestRateHistoryResponse;
 use Binance\Common\ApiException;
 use Binance\Common\Auth\SignerFactory;
 use Binance\Common\Auth\SignerInterface;
@@ -64,6 +65,7 @@ class MarketDataApi
         'getBorrowInterestRate' => ['application/x-www-form-urlencoded'],
         'getCollateralAssetData' => ['application/x-www-form-urlencoded'],
         'getLoanableAssetsData' => ['application/x-www-form-urlencoded'],
+        'getVIPLoanInterestRateHistory' => ['application/x-www-form-urlencoded'],
     ];
     private const HAS_TIME_UNIT = false;
 
@@ -619,6 +621,243 @@ class MarketDataApi
             'form', // style
             true, // explode
             false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getVIPLoanInterestRateHistory.
+     *
+     * Get VIP Loan Interest Rate History (USER_DATA)
+     *
+     * @param string   $coin       coin (required)
+     * @param int      $recvWindow recvWindow (required)
+     * @param null|int $startTime  startTime (optional)
+     * @param null|int $endTime    endTime (optional)
+     * @param null|int $current    Current querying page. Start from 1; default: 1; max: 1000 (optional)
+     * @param null|int $limit      Default: 10; max: 100 (optional)
+     *
+     * @return ApiResponse<GetVIPLoanInterestRateHistoryResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getVIPLoanInterestRateHistory($coin, $recvWindow, $startTime = null, $endTime = null, $current = null, $limit = null): ApiResponse
+    {
+        return $this->getVIPLoanInterestRateHistoryWithHttpInfo($coin, $recvWindow, $startTime, $endTime, $current, $limit);
+    }
+
+    /**
+     * Operation getVIPLoanInterestRateHistoryWithHttpInfo.
+     *
+     * Get VIP Loan Interest Rate History (USER_DATA)
+     *
+     * @param string   $coin       (required)
+     * @param int      $recvWindow (required)
+     * @param null|int $startTime  (optional)
+     * @param null|int $endTime    (optional)
+     * @param null|int $current    Current querying page. Start from 1; default: 1; max: 1000 (optional)
+     * @param null|int $limit      Default: 10; max: 100 (optional)
+     *
+     * @return ApiResponse<GetVIPLoanInterestRateHistoryResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getVIPLoanInterestRateHistoryWithHttpInfo($coin, $recvWindow, $startTime = null, $endTime = null, $current = null, $limit = null): ApiResponse
+    {
+        $request = $this->getVIPLoanInterestRateHistoryRequest($coin, $recvWindow, $startTime, $endTime, $current, $limit);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\VipLoan\Model\GetVIPLoanInterestRateHistoryResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\VipLoan\Model\GetVIPLoanInterestRateHistoryResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\VipLoan\Model\GetVIPLoanInterestRateHistoryResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'getVIPLoanInterestRateHistory'.
+     *
+     * @param string   $coin       (required)
+     * @param int      $recvWindow (required)
+     * @param null|int $startTime  (optional)
+     * @param null|int $endTime    (optional)
+     * @param null|int $current    Current querying page. Start from 1; default: 1; max: 1000 (optional)
+     * @param null|int $limit      Default: 10; max: 100 (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getVIPLoanInterestRateHistoryRequest($coin, $recvWindow, $startTime = null, $endTime = null, $current = null, $limit = null)
+    {
+        $contentType = self::contentTypes['getVIPLoanInterestRateHistory'][0];
+
+        // verify the required parameter 'coin' is set
+        if (null === $coin || (is_array($coin) && 0 === count($coin))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $coin when calling getVIPLoanInterestRateHistory'
+            );
+        }
+
+        // verify the required parameter 'recvWindow' is set
+        if (null === $recvWindow || (is_array($recvWindow) && 0 === count($recvWindow))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $recvWindow when calling getVIPLoanInterestRateHistory'
+            );
+        }
+
+        $resourcePath = '/sapi/v1/loan/vip/interestRateHistory';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $coin,
+            'coin', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $startTime,
+            'startTime', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $endTime,
+            'endTime', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $current,
+            'current', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recvWindow,
+            'recvWindow', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            true // required
         ) ?? []);
 
         $headers = $this->headerSelector->selectHeaders(

@@ -113,19 +113,21 @@ class C2CApi
      *
      * Get C2C Trade History (USER_DATA)
      *
-     * @param null|int $startTime  startTime (optional)
-     * @param null|int $endTime    endTime (optional)
-     * @param null|int $page       Default 1 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|string $tradeType      BUY, SELL (optional)
+     * @param null|int    $startTimestamp startTimestamp (optional)
+     * @param null|int    $endTimestamp   endTimestamp (optional)
+     * @param null|int    $page           Default 1 (optional)
+     * @param null|int    $rows           default 100, max 100 (optional)
+     * @param null|int    $recvWindow     recvWindow (optional)
      *
      * @return ApiResponse<GetC2CTradeHistoryResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getC2CTradeHistory($startTime = null, $endTime = null, $page = null, $recvWindow = null): ApiResponse
+    public function getC2CTradeHistory($tradeType = null, $startTimestamp = null, $endTimestamp = null, $page = null, $rows = null, $recvWindow = null): ApiResponse
     {
-        return $this->getC2CTradeHistoryWithHttpInfo($startTime, $endTime, $page, $recvWindow);
+        return $this->getC2CTradeHistoryWithHttpInfo($tradeType, $startTimestamp, $endTimestamp, $page, $rows, $recvWindow);
     }
 
     /**
@@ -133,19 +135,21 @@ class C2CApi
      *
      * Get C2C Trade History (USER_DATA)
      *
-     * @param null|int $startTime  (optional)
-     * @param null|int $endTime    (optional)
-     * @param null|int $page       Default 1 (optional)
-     * @param null|int $recvWindow (optional)
+     * @param null|string $tradeType      BUY, SELL (optional)
+     * @param null|int    $startTimestamp (optional)
+     * @param null|int    $endTimestamp   (optional)
+     * @param null|int    $page           Default 1 (optional)
+     * @param null|int    $rows           default 100, max 100 (optional)
+     * @param null|int    $recvWindow     (optional)
      *
      * @return ApiResponse<GetC2CTradeHistoryResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getC2CTradeHistoryWithHttpInfo($startTime = null, $endTime = null, $page = null, $recvWindow = null): ApiResponse
+    public function getC2CTradeHistoryWithHttpInfo($tradeType = null, $startTimestamp = null, $endTimestamp = null, $page = null, $rows = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->getC2CTradeHistoryRequest($startTime, $endTime, $page, $recvWindow);
+        $request = $this->getC2CTradeHistoryRequest($tradeType, $startTimestamp, $endTimestamp, $page, $rows, $recvWindow);
 
         try {
             try {
@@ -215,16 +219,18 @@ class C2CApi
     /**
      * Create request for operation 'getC2CTradeHistory'.
      *
-     * @param null|int $startTime  (optional)
-     * @param null|int $endTime    (optional)
-     * @param null|int $page       Default 1 (optional)
-     * @param null|int $recvWindow (optional)
+     * @param null|string $tradeType      BUY, SELL (optional)
+     * @param null|int    $startTimestamp (optional)
+     * @param null|int    $endTimestamp   (optional)
+     * @param null|int    $page           Default 1 (optional)
+     * @param null|int    $rows           default 100, max 100 (optional)
+     * @param null|int    $recvWindow     (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function getC2CTradeHistoryRequest($startTime = null, $endTime = null, $page = null, $recvWindow = null)
+    public function getC2CTradeHistoryRequest($tradeType = null, $startTimestamp = null, $endTimestamp = null, $page = null, $rows = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['getC2CTradeHistory'][0];
 
@@ -237,8 +243,17 @@ class C2CApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $startTime,
-            'startTime', // param base name
+            $tradeType,
+            'tradeType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $startTimestamp,
+            'startTimestamp', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -246,8 +261,8 @@ class C2CApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $endTime,
-            'endTime', // param base name
+            $endTimestamp,
+            'endTimestamp', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -257,6 +272,15 @@ class C2CApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $page,
             'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $rows,
+            'rows', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode

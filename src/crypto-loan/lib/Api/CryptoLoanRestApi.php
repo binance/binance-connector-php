@@ -14,6 +14,7 @@ use Binance\Client\CryptoLoan\Model\GetCryptoLoansIncomeHistoryResponse;
 use Binance\Client\CryptoLoan\Model\GetFlexibleLoanAssetsDataResponse;
 use Binance\Client\CryptoLoan\Model\GetFlexibleLoanBorrowHistoryResponse;
 use Binance\Client\CryptoLoan\Model\GetFlexibleLoanCollateralAssetsDataResponse;
+use Binance\Client\CryptoLoan\Model\GetFlexibleLoanInterestRateHistoryResponse;
 use Binance\Client\CryptoLoan\Model\GetFlexibleLoanLiquidationHistoryResponse;
 use Binance\Client\CryptoLoan\Model\GetFlexibleLoanLtvAdjustmentHistoryResponse;
 use Binance\Client\CryptoLoan\Model\GetFlexibleLoanOngoingOrdersResponse;
@@ -171,6 +172,28 @@ class CryptoLoanRestApi
     public function getFlexibleLoanCollateralAssetsData($collateralCoin = null, $recvWindow = null): ApiResponse
     {
         return $this->flexibleRateApi->getFlexibleLoanCollateralAssetsData($collateralCoin, $recvWindow);
+    }
+
+    /**
+     * Operation getFlexibleLoanInterestRateHistory.
+     *
+     * Get Flexible Loan Interest Rate History (USER_DATA)
+     *
+     * @param string   $coin       coin (required)
+     * @param int      $recvWindow recvWindow (required)
+     * @param null|int $startTime  startTime (optional)
+     * @param null|int $endTime    endTime (optional)
+     * @param null|int $current    Current querying page. Start from 1; default: 1; max: 1000 (optional)
+     * @param null|int $limit      Default: 10; max: 100 (optional)
+     *
+     * @return ApiResponse<GetFlexibleLoanInterestRateHistoryResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getFlexibleLoanInterestRateHistory($coin, $recvWindow, $startTime = null, $endTime = null, $current = null, $limit = null): ApiResponse
+    {
+        return $this->flexibleRateApi->getFlexibleLoanInterestRateHistory($coin, $recvWindow, $startTime, $endTime, $current, $limit);
     }
 
     /**

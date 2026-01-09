@@ -115,10 +115,11 @@ class UserDataStreamsApiTest extends TestCase
      */
     public function testKeepaliveUserDataStream()
     {
-        $this->getApiMock($request)->keepaliveUserDataStream();
+        $response = $this->getApiMock($request)->keepaliveUserDataStream();
 
         parse_str($request->getUri(), $queryMap);
 
+        self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/dapi/v1/listenKey', $request->getUri()->getPath());
         self::assertTrue(!isset($queryMap['signature']));
     }

@@ -30,6 +30,9 @@
 namespace Binance\Client\Fiat\Test\Api;
 
 use Binance\Client\Fiat\Api\FiatApi;
+use Binance\Client\Fiat\Model\AccountInfo;
+use Binance\Client\Fiat\Model\DepositRequest;
+use Binance\Client\Fiat\Model\FiatWithdrawRequest;
 use Binance\Common\Configuration\ClientConfiguration;
 use Binance\Common\Configuration\SignatureConfiguration;
 use Binance\Common\HttpClient;
@@ -94,6 +97,49 @@ class FiatApiTest extends TestCase
     }
 
     /**
+     * Test case for deposit.
+     *
+     * Deposit(TRADE).
+     */
+    public function testDeposit()
+    {
+        $depositRequest = new DepositRequest();
+        $depositRequest->setCurrency('');
+        $depositRequest->setApiPaymentMethod('');
+        $depositRequest->setAmount(1);
+
+        $response = $this->getApiMock($request)->deposit($depositRequest);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/sapi/v1/fiat/deposit', $request->getUri()->getPath());
+        self::assertEquals('50d24733794b928836575c346769be26ee1fb5ffbf73f36933cd22c50116f74e', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for fiatWithdraw.
+     *
+     * Fiat Withdraw(WITHDRAW).
+     */
+    public function testFiatWithdraw()
+    {
+        $fiatWithdrawRequest = new FiatWithdrawRequest();
+        $fiatWithdrawRequest->setCurrency('');
+        $fiatWithdrawRequest->setApiPaymentMethod('');
+        $fiatWithdrawRequest->setAmount(1);
+        $fiatWithdrawRequest->setAccountInfo(new AccountInfo());
+
+        $response = $this->getApiMock($request)->fiatWithdraw($fiatWithdrawRequest);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/sapi/v2/fiat/withdraw', $request->getUri()->getPath());
+        self::assertEquals('81b06132041b0a2ee7c6518e68d1aded33ac3bb4d7d4d70bbe29cca7cb45bde6', $queryMap['signature']);
+    }
+
+    /**
      * Test case for getFiatDepositWithdrawHistory.
      *
      * Get Fiat Deposit/Withdraw History (USER_DATA).
@@ -135,5 +181,23 @@ class FiatApiTest extends TestCase
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/fiat/payments', $request->getUri()->getPath());
         self::assertEquals('ec6d1e50ad678b9632d2b2ccad1c4ccb1fe0d81517f69a944141cc72fff23f31', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for getOrderDetail.
+     *
+     * Get Order Detail(USER_DATA).
+     */
+    public function testGetOrderDetail()
+    {
+        $orderNo = '';
+        $recvWindow = 5000;
+        $response = $this->getApiMock($request)->getOrderDetail($orderNo, $recvWindow);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/sapi/v1/fiat/get-order-detail', $request->getUri()->getPath());
+        self::assertEquals('05ae23762639cb92c5de0594dc9b9849052a3e29888644451065f6c4ec6896f5', $queryMap['signature']);
     }
 }

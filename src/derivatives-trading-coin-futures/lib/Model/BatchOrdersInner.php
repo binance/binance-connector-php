@@ -64,13 +64,13 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $openAPITypes = [
-        'orderId' => 'int',
+        'orderId' => 'string',
         'origClientOrderId' => 'string',
         'symbol' => 'string',
         'side' => 'string',
-        'quantity' => 'float',
-        'price' => 'float',
-        'recvWindow' => 'int',
+        'quantity' => 'string',
+        'price' => 'string',
+        'recvWindow' => 'string',
     ];
 
     /**
@@ -83,13 +83,13 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'orderId' => 'int64',
+        'orderId' => null,
         'origClientOrderId' => null,
         'symbol' => null,
         'side' => null,
-        'quantity' => 'float',
-        'price' => 'float',
-        'recvWindow' => 'int64',
+        'quantity' => null,
+        'price' => null,
+        'recvWindow' => null,
     ];
 
     /**
@@ -339,7 +339,7 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Gets orderId.
      *
-     * @return null|int
+     * @return null|string
      */
     public function getOrderId()
     {
@@ -349,7 +349,7 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Sets orderId.
      *
-     * @param null|int $orderId orderId
+     * @param null|string $orderId orderId
      *
      * @return self
      */
@@ -457,7 +457,7 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Gets quantity.
      *
-     * @return null|float
+     * @return null|string
      */
     public function getQuantity()
     {
@@ -467,7 +467,7 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Sets quantity.
      *
-     * @param null|float $quantity quantity
+     * @param null|string $quantity quantity
      *
      * @return self
      */
@@ -484,7 +484,7 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Gets price.
      *
-     * @return null|float
+     * @return null|string
      */
     public function getPrice()
     {
@@ -494,7 +494,7 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Sets price.
      *
-     * @param null|float $price price
+     * @param null|string $price price
      *
      * @return self
      */
@@ -511,7 +511,7 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Gets recvWindow.
      *
-     * @return null|int
+     * @return null|string
      */
     public function getRecvWindow()
     {
@@ -521,7 +521,7 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Sets recvWindow.
      *
-     * @param null|int $recvWindow recvWindow
+     * @param null|string $recvWindow recvWindow
      *
      * @return self
      */

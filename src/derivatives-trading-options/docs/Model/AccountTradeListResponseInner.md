@@ -14,12 +14,11 @@ Name | Type | Description | Notes
 **realizedProfit** | **string** |  | [optional]
 **side** | **string** |  | [optional]
 **type** | **string** |  | [optional]
-**volatility** | **string** |  | [optional]
 **liquidity** | **string** |  | [optional]
-**quoteAsset** | **string** |  | [optional]
 **time** | **int** |  | [optional]
 **priceScale** | **int** |  | [optional]
 **quantityScale** | **int** |  | [optional]
 **optionSide** | **string** |  | [optional]
+**quoteAsset** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

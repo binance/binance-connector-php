@@ -100,8 +100,8 @@ class MarketDataApiTest extends TestCase
      */
     public function testListAllConvertPairs()
     {
-        $fromAsset = 'null';
-        $toAsset = 'null';
+        $fromAsset = '';
+        $toAsset = '';
         $response = $this->getApiMock($request)->listAllConvertPairs($fromAsset, $toAsset);
 
         parse_str($request->getUri(), $queryMap);

@@ -38,6 +38,8 @@ use Binance\Client\Spot\Model\NewOrderRequest;
 use Binance\Client\Spot\Model\OrderAmendKeepPriorityRequest;
 use Binance\Client\Spot\Model\OrderCancelReplaceRequest;
 use Binance\Client\Spot\Model\OrderListOcoRequest;
+use Binance\Client\Spot\Model\OrderListOpocoRequest;
+use Binance\Client\Spot\Model\OrderListOpoRequest;
 use Binance\Client\Spot\Model\OrderListOtocoRequest;
 use Binance\Client\Spot\Model\OrderListOtoRequest;
 use Binance\Client\Spot\Model\OrderOcoRequest;
@@ -122,7 +124,7 @@ class TradeApiTest extends TestCase
     public function testDeleteOpenOrders()
     {
         $symbol = 'BNBUSDT';
-        $recvWindow = 5000;
+        $recvWindow = 5000.0;
         $response = $this->getApiMock($request)->deleteOpenOrders($symbol, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
@@ -144,7 +146,7 @@ class TradeApiTest extends TestCase
         $origClientOrderId = '';
         $newClientOrderId = '';
         $cancelRestrictions = CancelRestrictions::ONLY_NEW;
-        $recvWindow = 5000;
+        $recvWindow = 5000.0;
         $response = $this->getApiMock($request)->deleteOrder($symbol, $orderId, $origClientOrderId, $newClientOrderId, $cancelRestrictions, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
@@ -165,7 +167,7 @@ class TradeApiTest extends TestCase
         $orderListId = 1;
         $listClientOrderId = '';
         $newClientOrderId = '';
-        $recvWindow = 5000;
+        $recvWindow = 5000.0;
         $response = $this->getApiMock($request)->deleteOrderList($symbol, $orderListId, $listClientOrderId, $newClientOrderId, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
@@ -262,6 +264,56 @@ class TradeApiTest extends TestCase
     }
 
     /**
+     * Test case for orderListOpo.
+     *
+     * New Order List - OPO.
+     */
+    public function testOrderListOpo()
+    {
+        $orderListOpoRequest = new OrderListOpoRequest();
+        $orderListOpoRequest->setSymbol('BNBUSDT');
+        $orderListOpoRequest->setWorkingType(WorkingType::LIMIT);
+        $orderListOpoRequest->setWorkingSide(WorkingSide::BUY);
+        $orderListOpoRequest->setWorkingPrice(1.0);
+        $orderListOpoRequest->setWorkingQuantity(1.0);
+        $orderListOpoRequest->setPendingType(PendingType::LIMIT);
+        $orderListOpoRequest->setPendingSide(PendingSide::BUY);
+
+        $response = $this->getApiMock($request)->orderListOpo($orderListOpoRequest);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/api/v3/orderList/opo', $request->getUri()->getPath());
+        self::assertEquals('5c4153da550f48f7a7c14f657f54c1026cf6ad9467a9713376426e86d4b55cb3', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for orderListOpoco.
+     *
+     * New Order List - OPOCO.
+     */
+    public function testOrderListOpoco()
+    {
+        $orderListOpocoRequest = new OrderListOpocoRequest();
+        $orderListOpocoRequest->setSymbol('BNBUSDT');
+        $orderListOpocoRequest->setWorkingType(WorkingType::LIMIT);
+        $orderListOpocoRequest->setWorkingSide(WorkingSide::BUY);
+        $orderListOpocoRequest->setWorkingPrice(1.0);
+        $orderListOpocoRequest->setWorkingQuantity(1.0);
+        $orderListOpocoRequest->setPendingSide(PendingSide::BUY);
+        $orderListOpocoRequest->setPendingAboveType(PendingAboveType::STOP_LOSS_LIMIT);
+
+        $response = $this->getApiMock($request)->orderListOpoco($orderListOpocoRequest);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/api/v3/orderList/opoco', $request->getUri()->getPath());
+        self::assertEquals('f3587f88bac5ae8a00935e57f24ae7988cf4125a3abac652637574c9e42533a6', $queryMap['signature']);
+    }
+
+    /**
      * Test case for orderListOto.
      *
      * New Order list - OTO.
@@ -344,6 +396,9 @@ class TradeApiTest extends TestCase
     public function testOrderTest()
     {
         $orderTestRequest = new OrderTestRequest();
+        $orderTestRequest->setSymbol('BNBUSDT');
+        $orderTestRequest->setSide(Side::BUY);
+        $orderTestRequest->setType(OrderType::MARKET);
 
         $response = $this->getApiMock($request)->orderTest($orderTestRequest);
 
@@ -351,7 +406,7 @@ class TradeApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/api/v3/order/test', $request->getUri()->getPath());
-        self::assertEquals('dc0def720e795be0f84b02a8fa211ecc3a27dd06ffdbd287a679f1321807f820', $queryMap['signature']);
+        self::assertEquals('6486465768232440fc305256c99d50fa366fe8e7f0e7be813f78507f50e0cb4c', $queryMap['signature']);
     }
 
     /**
@@ -384,6 +439,10 @@ class TradeApiTest extends TestCase
     public function testSorOrderTest()
     {
         $sorOrderTestRequest = new SorOrderTestRequest();
+        $sorOrderTestRequest->setSymbol('BNBUSDT');
+        $sorOrderTestRequest->setSide(Side::BUY);
+        $sorOrderTestRequest->setType(OrderType::MARKET);
+        $sorOrderTestRequest->setQuantity(1.0);
 
         $response = $this->getApiMock($request)->sorOrderTest($sorOrderTestRequest);
 
@@ -391,6 +450,6 @@ class TradeApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/api/v3/sor/order/test', $request->getUri()->getPath());
-        self::assertEquals('dc0def720e795be0f84b02a8fa211ecc3a27dd06ffdbd287a679f1321807f820', $queryMap['signature']);
+        self::assertEquals('e9289702563a0dc27ffd922ffbbc23ee67c71cb522fe89e3427948849d49b7d0', $queryMap['signature']);
     }
 }

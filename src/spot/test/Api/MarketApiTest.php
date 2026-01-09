@@ -31,6 +31,7 @@ namespace Binance\Client\Spot\Test\Api;
 
 use Binance\Client\Spot\Api\MarketApi;
 use Binance\Client\Spot\Model\Interval;
+use Binance\Client\Spot\Model\SymbolStatus;
 use Binance\Client\Spot\Model\TickerType;
 use Binance\Client\Spot\Model\WindowSize;
 use Binance\Common\Configuration\ClientConfiguration;
@@ -143,7 +144,8 @@ class MarketApiTest extends TestCase
     {
         $symbol = 'BNBUSDT';
         $limit = 500;
-        $response = $this->getApiMock($request)->depth($symbol, $limit);
+        $symbolStatus = SymbolStatus::TRADING;
+        $response = $this->getApiMock($request)->depth($symbol, $limit, $symbolStatus);
 
         parse_str($request->getUri(), $queryMap);
 
@@ -222,7 +224,8 @@ class MarketApiTest extends TestCase
         $symbols = null;
         $windowSize = WindowSize::WINDOW_SIZE_1M;
         $type = TickerType::FULL;
-        $response = $this->getApiMock($request)->ticker($symbol, $symbols, $windowSize, $type);
+        $symbolStatus = SymbolStatus::TRADING;
+        $response = $this->getApiMock($request)->ticker($symbol, $symbols, $windowSize, $type, $symbolStatus);
 
         parse_str($request->getUri(), $queryMap);
 
@@ -241,7 +244,8 @@ class MarketApiTest extends TestCase
         $symbol = 'BNBUSDT';
         $symbols = null;
         $type = TickerType::FULL;
-        $response = $this->getApiMock($request)->ticker24hr($symbol, $symbols, $type);
+        $symbolStatus = SymbolStatus::TRADING;
+        $response = $this->getApiMock($request)->ticker24hr($symbol, $symbols, $type, $symbolStatus);
 
         parse_str($request->getUri(), $queryMap);
 
@@ -259,7 +263,8 @@ class MarketApiTest extends TestCase
     {
         $symbol = 'BNBUSDT';
         $symbols = null;
-        $response = $this->getApiMock($request)->tickerBookTicker($symbol, $symbols);
+        $symbolStatus = SymbolStatus::TRADING;
+        $response = $this->getApiMock($request)->tickerBookTicker($symbol, $symbols, $symbolStatus);
 
         parse_str($request->getUri(), $queryMap);
 
@@ -277,7 +282,8 @@ class MarketApiTest extends TestCase
     {
         $symbol = 'BNBUSDT';
         $symbols = null;
-        $response = $this->getApiMock($request)->tickerPrice($symbol, $symbols);
+        $symbolStatus = SymbolStatus::TRADING;
+        $response = $this->getApiMock($request)->tickerPrice($symbol, $symbols, $symbolStatus);
 
         parse_str($request->getUri(), $queryMap);
 
@@ -297,7 +303,8 @@ class MarketApiTest extends TestCase
         $symbols = null;
         $timeZone = '';
         $type = TickerType::FULL;
-        $response = $this->getApiMock($request)->tickerTradingDay($symbol, $symbols, $timeZone, $type);
+        $symbolStatus = SymbolStatus::TRADING;
+        $response = $this->getApiMock($request)->tickerTradingDay($symbol, $symbols, $timeZone, $type, $symbolStatus);
 
         parse_str($request->getUri(), $queryMap);
 

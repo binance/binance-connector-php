@@ -78,6 +78,10 @@
 
 [/api/v3/orderList/oco](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#new-order-list---oco-trade) - orderListOco - [OrderListOcoExample.php:34](/examples/spot/trade/OrderListOcoExample.php#L34)
 
+[/api/v3/orderList/opo](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#new-order-list---opo-trade) - orderListOpo - [OrderListOpoExample.php:37](/examples/spot/trade/OrderListOpoExample.php#L37)
+
+[/api/v3/orderList/opoco](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#new-order-list---opoco-trade) - orderListOpoco - [OrderListOpocoExample.php:37](/examples/spot/trade/OrderListOpocoExample.php#L37)
+
 [/api/v3/orderList/oto](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#new-order-list---oto-trade) - orderListOto - [OrderListOtoExample.php:38](/examples/spot/trade/OrderListOtoExample.php#L38)
 
 [/api/v3/orderList/otoco](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#new-order-list---otoco-trade) - orderListOtoco - [OrderListOtocoExample.php:38](/examples/spot/trade/OrderListOtocoExample.php#L38)

@@ -61,7 +61,8 @@ class RecentTradesListResponseInner implements ModelInterface, \ArrayAccess, \Js
      * @var string[]
      */
     protected static $openAPITypes = [
-        'id' => 'string',
+        'id' => 'int',
+        'tradeId' => 'int',
         'symbol' => 'string',
         'price' => 'string',
         'qty' => 'string',
@@ -80,7 +81,8 @@ class RecentTradesListResponseInner implements ModelInterface, \ArrayAccess, \Js
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'id' => null,
+        'id' => 'int64',
+        'tradeId' => 'int64',
         'symbol' => null,
         'price' => null,
         'qty' => null,
@@ -96,6 +98,7 @@ class RecentTradesListResponseInner implements ModelInterface, \ArrayAccess, \Js
      */
     protected static array $openAPINullables = [
         'id' => false,
+        'tradeId' => false,
         'symbol' => false,
         'price' => false,
         'qty' => false,
@@ -119,6 +122,7 @@ class RecentTradesListResponseInner implements ModelInterface, \ArrayAccess, \Js
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'tradeId' => 'tradeId',
         'symbol' => 'symbol',
         'price' => 'price',
         'qty' => 'qty',
@@ -134,6 +138,7 @@ class RecentTradesListResponseInner implements ModelInterface, \ArrayAccess, \Js
      */
     protected static $setters = [
         'id' => 'setId',
+        'tradeId' => 'setTradeId',
         'symbol' => 'setSymbol',
         'price' => 'setPrice',
         'qty' => 'setQty',
@@ -149,6 +154,7 @@ class RecentTradesListResponseInner implements ModelInterface, \ArrayAccess, \Js
      */
     protected static $getters = [
         'id' => 'getId',
+        'tradeId' => 'getTradeId',
         'symbol' => 'getSymbol',
         'price' => 'getPrice',
         'qty' => 'getQty',
@@ -173,6 +179,7 @@ class RecentTradesListResponseInner implements ModelInterface, \ArrayAccess, \Js
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('tradeId', $data ?? [], null);
         $this->setIfExists('symbol', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('qty', $data ?? [], null);
@@ -312,7 +319,7 @@ class RecentTradesListResponseInner implements ModelInterface, \ArrayAccess, \Js
     /**
      * Gets id.
      *
-     * @return null|string
+     * @return null|int
      */
     public function getId()
     {
@@ -322,7 +329,7 @@ class RecentTradesListResponseInner implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets id.
      *
-     * @param null|string $id id
+     * @param null|int $id id
      *
      * @return self
      */
@@ -332,6 +339,33 @@ class RecentTradesListResponseInner implements ModelInterface, \ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets tradeId.
+     *
+     * @return null|int
+     */
+    public function getTradeId()
+    {
+        return $this->container['tradeId'];
+    }
+
+    /**
+     * Sets tradeId.
+     *
+     * @param null|int $tradeId tradeId
+     *
+     * @return self
+     */
+    public function setTradeId($tradeId)
+    {
+        if (is_null($tradeId)) {
+            throw new \InvalidArgumentException('non-nullable tradeId cannot be null');
+        }
+        $this->container['tradeId'] = $tradeId;
 
         return $this;
     }

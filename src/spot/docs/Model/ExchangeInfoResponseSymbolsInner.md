@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **icebergAllowed** | **bool** |  | [optional]
 **ocoAllowed** | **bool** |  | [optional]
 **otoAllowed** | **bool** |  | [optional]
+**opoAllowed** | **bool** |  | [optional]
 **quoteOrderQtyMarketAllowed** | **bool** |  | [optional]
 **allowTrailingStop** | **bool** |  | [optional]
 **cancelReplaceAllowed** | **bool** |  | [optional]

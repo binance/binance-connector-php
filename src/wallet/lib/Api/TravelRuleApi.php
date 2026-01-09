@@ -39,6 +39,8 @@ use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireRequest;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireResponse;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireTravelRuleRequest;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireTravelRuleResponse;
+use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireV2Request;
+use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireV2Response;
 use Binance\Client\Wallet\Model\VaspListResponse;
 use Binance\Client\Wallet\Model\WithdrawHistoryV1Response;
 use Binance\Client\Wallet\Model\WithdrawHistoryV2Response;
@@ -83,6 +85,7 @@ class TravelRuleApi
         'fetchAddressVerificationList' => ['application/x-www-form-urlencoded'],
         'submitDepositQuestionnaire' => ['application/x-www-form-urlencoded'],
         'submitDepositQuestionnaireTravelRule' => ['application/x-www-form-urlencoded'],
+        'submitDepositQuestionnaireV2' => ['application/x-www-form-urlencoded'],
         'vaspList' => ['application/x-www-form-urlencoded'],
         'withdrawHistoryV1' => ['application/x-www-form-urlencoded'],
         'withdrawHistoryV2' => ['application/x-www-form-urlencoded'],
@@ -786,7 +789,7 @@ class TravelRuleApi
      *
      * Deposit History V2 (for local entities that required travel rule) (supporting network) (USER_DATA)
      *
-     * @param null|string $depositId             Comma(,) separated list of wallet tran Ids. (optional)
+     * @param null|int    $depositId             Comma(,) separated list of wallet tran Ids. (optional)
      * @param null|string $txId                  txId (optional)
      * @param null|string $network               network (optional)
      * @param null|string $coin                  coin (optional)
@@ -811,7 +814,7 @@ class TravelRuleApi
      *
      * Deposit History V2 (for local entities that required travel rule) (supporting network) (USER_DATA)
      *
-     * @param null|string $depositId             Comma(,) separated list of wallet tran Ids. (optional)
+     * @param null|int    $depositId             Comma(,) separated list of wallet tran Ids. (optional)
      * @param null|string $txId                  (optional)
      * @param null|string $network               (optional)
      * @param null|string $coin                  (optional)
@@ -898,7 +901,7 @@ class TravelRuleApi
     /**
      * Create request for operation 'depositHistoryV2'.
      *
-     * @param null|string $depositId             Comma(,) separated list of wallet tran Ids. (optional)
+     * @param null|int    $depositId             Comma(,) separated list of wallet tran Ids. (optional)
      * @param null|string $txId                  (optional)
      * @param null|string $network               (optional)
      * @param null|string $coin                  (optional)
@@ -927,7 +930,7 @@ class TravelRuleApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $depositId,
             'depositId', // param base name
-            'string', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1571,6 +1574,206 @@ class TravelRuleApi
                 $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($submitDepositQuestionnaireTravelRuleRequest));
             } else {
                 $httpBody = $submitDepositQuestionnaireTravelRuleRequest;
+            }
+        }
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'PUT',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation submitDepositQuestionnaireV2.
+     *
+     * Submit Deposit Questionnaire V2 (For local entities that require travel rule) (supporting network) (USER_DATA)
+     *
+     * @param SubmitDepositQuestionnaireV2Request $submitDepositQuestionnaireV2Request submitDepositQuestionnaireV2Request (required)
+     *
+     * @return ApiResponse<SubmitDepositQuestionnaireV2Response>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function submitDepositQuestionnaireV2($submitDepositQuestionnaireV2Request): ApiResponse
+    {
+        return $this->submitDepositQuestionnaireV2WithHttpInfo($submitDepositQuestionnaireV2Request);
+    }
+
+    /**
+     * Operation submitDepositQuestionnaireV2WithHttpInfo.
+     *
+     * Submit Deposit Questionnaire V2 (For local entities that require travel rule) (supporting network) (USER_DATA)
+     *
+     * @param SubmitDepositQuestionnaireV2Request $submitDepositQuestionnaireV2Request (required)
+     *
+     * @return ApiResponse<SubmitDepositQuestionnaireV2Response>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function submitDepositQuestionnaireV2WithHttpInfo($submitDepositQuestionnaireV2Request): ApiResponse
+    {
+        $request = $this->submitDepositQuestionnaireV2Request($submitDepositQuestionnaireV2Request);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Wallet\Model\SubmitDepositQuestionnaireV2Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Wallet\Model\SubmitDepositQuestionnaireV2Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Wallet\Model\SubmitDepositQuestionnaireV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'submitDepositQuestionnaireV2'.
+     *
+     * @param SubmitDepositQuestionnaireV2Request $submitDepositQuestionnaireV2Request (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function submitDepositQuestionnaireV2Request($submitDepositQuestionnaireV2Request)
+    {
+        $contentType = self::contentTypes['submitDepositQuestionnaireV2'][0];
+
+        // verify the required parameter 'submitDepositQuestionnaireV2Request' is set
+        if (null === $submitDepositQuestionnaireV2Request || (is_array($submitDepositQuestionnaireV2Request) && 0 === count($submitDepositQuestionnaireV2Request))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $submitDepositQuestionnaireV2Request when calling submitDepositQuestionnaireV2'
+            );
+        }
+
+        $resourcePath = '/sapi/v2/localentity/deposit/provide-info';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $getters = $submitDepositQuestionnaireV2Request::getters();
+        $formParams = [];
+        foreach ($getters as $property => $getter) {
+            $value = $submitDepositQuestionnaireV2Request->{$getter}();
+            if (!empty($value)) {
+                $formParams[$property] = $submitDepositQuestionnaireV2Request->{$getter}();
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        } elseif (isset($submitDepositQuestionnaireV2Request)) {
+            if (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($submitDepositQuestionnaireV2Request));
+            } else {
+                $httpBody = $submitDepositQuestionnaireV2Request;
             }
         }
 

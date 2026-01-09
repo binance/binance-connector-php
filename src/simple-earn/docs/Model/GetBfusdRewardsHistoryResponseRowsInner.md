@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **time** | **int** |  | [optional]
+**rewardAsset** | **string** |  | [optional]
 **rewardsAmount** | **string** |  | [optional]
 **bFUSDPosition** | **string** |  | [optional]
 **annualPercentageRate** | **string** |  | [optional]

@@ -44,6 +44,7 @@ use Binance\Client\DerivativesTradingOptions\Model\PlaceMultipleOrdersResponse;
 use Binance\Client\DerivativesTradingOptions\Model\QueryCurrentOpenOptionOrdersResponse;
 use Binance\Client\DerivativesTradingOptions\Model\QueryOptionOrderHistoryResponse;
 use Binance\Client\DerivativesTradingOptions\Model\QuerySingleOrderResponse;
+use Binance\Client\DerivativesTradingOptions\Model\UserCommissionResponse;
 use Binance\Client\DerivativesTradingOptions\Model\UserExerciseRecordResponse;
 use Binance\Common\ApiException;
 use Binance\Common\Auth\SignerFactory;
@@ -87,6 +88,7 @@ class TradeApi
         'queryCurrentOpenOptionOrders' => ['application/x-www-form-urlencoded'],
         'queryOptionOrderHistory' => ['application/x-www-form-urlencoded'],
         'querySingleOrder' => ['application/x-www-form-urlencoded'],
+        'userCommission' => ['application/x-www-form-urlencoded'],
         'userExerciseRecord' => ['application/x-www-form-urlencoded'],
     ];
     private const HAS_TIME_UNIT = false;
@@ -142,7 +144,7 @@ class TradeApi
      * Account Trade List (USER_DATA)
      *
      * @param null|string $symbol     Option trading pair, e.g BTC-200730-9000-C (optional)
-     * @param null|int    $fromId     The UniqueId ID from which to return. The latest deal record is returned by default (optional)
+     * @param null|int    $fromId     Trade id to fetch from. Default gets most recent trades, e.g 4611875134427365376 (optional)
      * @param null|int    $startTime  Start Time, e.g 1593511200000 (optional)
      * @param null|int    $endTime    End Time, e.g 1593512200000 (optional)
      * @param null|int    $limit      Number of result sets returned Default:100 Max:1000 (optional)
@@ -164,7 +166,7 @@ class TradeApi
      * Account Trade List (USER_DATA)
      *
      * @param null|string $symbol     Option trading pair, e.g BTC-200730-9000-C (optional)
-     * @param null|int    $fromId     The UniqueId ID from which to return. The latest deal record is returned by default (optional)
+     * @param null|int    $fromId     Trade id to fetch from. Default gets most recent trades, e.g 4611875134427365376 (optional)
      * @param null|int    $startTime  Start Time, e.g 1593511200000 (optional)
      * @param null|int    $endTime    End Time, e.g 1593512200000 (optional)
      * @param null|int    $limit      Number of result sets returned Default:100 Max:1000 (optional)
@@ -248,7 +250,7 @@ class TradeApi
      * Create request for operation 'accountTradeList'.
      *
      * @param null|string $symbol     Option trading pair, e.g BTC-200730-9000-C (optional)
-     * @param null|int    $fromId     The UniqueId ID from which to return. The latest deal record is returned by default (optional)
+     * @param null|int    $fromId     Trade id to fetch from. Default gets most recent trades, e.g 4611875134427365376 (optional)
      * @param null|int    $startTime  Start Time, e.g 1593511200000 (optional)
      * @param null|int    $endTime    End Time, e.g 1593512200000 (optional)
      * @param null|int    $limit      Number of result sets returned Default:100 Max:1000 (optional)
@@ -2312,6 +2314,169 @@ class TradeApi
             true, // explode
             false // required
         ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recvWindow,
+            'recvWindow', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation userCommission.
+     *
+     * User Commission (USER_DATA)
+     *
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<UserCommissionResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function userCommission($recvWindow = null): ApiResponse
+    {
+        return $this->userCommissionWithHttpInfo($recvWindow);
+    }
+
+    /**
+     * Operation userCommissionWithHttpInfo.
+     *
+     * User Commission (USER_DATA)
+     *
+     * @param null|int $recvWindow (optional)
+     *
+     * @return ApiResponse<UserCommissionResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function userCommissionWithHttpInfo($recvWindow = null): ApiResponse
+    {
+        $request = $this->userCommissionRequest($recvWindow);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingOptions\Model\UserCommissionResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingOptions\Model\UserCommissionResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingOptions\Model\UserCommissionResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'userCommission'.
+     *
+     * @param null|int $recvWindow (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function userCommissionRequest($recvWindow = null)
+    {
+        $contentType = self::contentTypes['userCommission'][0];
+
+        $resourcePath = '/eapi/v1/commission';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,

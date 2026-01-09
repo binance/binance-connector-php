@@ -66,12 +66,10 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
         'price' => 'string',
         'quantity' => 'string',
         'executedQty' => 'string',
-        'fee' => 'string',
         'side' => 'string',
         'type' => 'string',
         'timeInForce' => 'string',
         'reduceOnly' => 'bool',
-        'postOnly' => 'bool',
         'createTime' => 'int',
         'updateTime' => 'int',
         'status' => 'string',
@@ -99,12 +97,10 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
         'price' => null,
         'quantity' => null,
         'executedQty' => null,
-        'fee' => null,
         'side' => null,
         'type' => null,
         'timeInForce' => null,
         'reduceOnly' => null,
-        'postOnly' => null,
         'createTime' => 'int64',
         'updateTime' => 'int64',
         'status' => null,
@@ -128,12 +124,10 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
         'price' => false,
         'quantity' => false,
         'executedQty' => false,
-        'fee' => false,
         'side' => false,
         'type' => false,
         'timeInForce' => false,
         'reduceOnly' => false,
-        'postOnly' => false,
         'createTime' => false,
         'updateTime' => false,
         'status' => false,
@@ -165,12 +159,10 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
         'price' => 'price',
         'quantity' => 'quantity',
         'executedQty' => 'executedQty',
-        'fee' => 'fee',
         'side' => 'side',
         'type' => 'type',
         'timeInForce' => 'timeInForce',
         'reduceOnly' => 'reduceOnly',
-        'postOnly' => 'postOnly',
         'createTime' => 'createTime',
         'updateTime' => 'updateTime',
         'status' => 'status',
@@ -194,12 +186,10 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
         'price' => 'setPrice',
         'quantity' => 'setQuantity',
         'executedQty' => 'setExecutedQty',
-        'fee' => 'setFee',
         'side' => 'setSide',
         'type' => 'setType',
         'timeInForce' => 'setTimeInForce',
         'reduceOnly' => 'setReduceOnly',
-        'postOnly' => 'setPostOnly',
         'createTime' => 'setCreateTime',
         'updateTime' => 'setUpdateTime',
         'status' => 'setStatus',
@@ -223,12 +213,10 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
         'price' => 'getPrice',
         'quantity' => 'getQuantity',
         'executedQty' => 'getExecutedQty',
-        'fee' => 'getFee',
         'side' => 'getSide',
         'type' => 'getType',
         'timeInForce' => 'getTimeInForce',
         'reduceOnly' => 'getReduceOnly',
-        'postOnly' => 'getPostOnly',
         'createTime' => 'getCreateTime',
         'updateTime' => 'getUpdateTime',
         'status' => 'getStatus',
@@ -261,12 +249,10 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('executedQty', $data ?? [], null);
-        $this->setIfExists('fee', $data ?? [], null);
         $this->setIfExists('side', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('timeInForce', $data ?? [], null);
         $this->setIfExists('reduceOnly', $data ?? [], null);
-        $this->setIfExists('postOnly', $data ?? [], null);
         $this->setIfExists('createTime', $data ?? [], null);
         $this->setIfExists('updateTime', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
@@ -543,33 +529,6 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
     }
 
     /**
-     * Gets fee.
-     *
-     * @return null|string
-     */
-    public function getFee()
-    {
-        return $this->container['fee'];
-    }
-
-    /**
-     * Sets fee.
-     *
-     * @param null|string $fee fee
-     *
-     * @return self
-     */
-    public function setFee($fee)
-    {
-        if (is_null($fee)) {
-            throw new \InvalidArgumentException('non-nullable fee cannot be null');
-        }
-        $this->container['fee'] = $fee;
-
-        return $this;
-    }
-
-    /**
      * Gets side.
      *
      * @return null|string
@@ -673,33 +632,6 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
             throw new \InvalidArgumentException('non-nullable reduceOnly cannot be null');
         }
         $this->container['reduceOnly'] = $reduceOnly;
-
-        return $this;
-    }
-
-    /**
-     * Gets postOnly.
-     *
-     * @return null|bool
-     */
-    public function getPostOnly()
-    {
-        return $this->container['postOnly'];
-    }
-
-    /**
-     * Sets postOnly.
-     *
-     * @param null|bool $postOnly postOnly
-     *
-     * @return self
-     */
-    public function setPostOnly($postOnly)
-    {
-        if (is_null($postOnly)) {
-            throw new \InvalidArgumentException('non-nullable postOnly cannot be null');
-        }
-        $this->container['postOnly'] = $postOnly;
 
         return $this;
     }

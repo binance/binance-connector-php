@@ -65,18 +65,18 @@ class OptionPositionInformationResponseInner implements ModelInterface, \ArrayAc
         'symbol' => 'string',
         'side' => 'string',
         'quantity' => 'string',
-        'reducibleQty' => 'string',
         'markValue' => 'string',
-        'ror' => 'string',
         'unrealizedPNL' => 'string',
         'markPrice' => 'string',
         'strikePrice' => 'string',
-        'positionCost' => 'string',
         'expiryDate' => 'int',
         'priceScale' => 'int',
         'quantityScale' => 'int',
         'optionSide' => 'string',
         'quoteAsset' => 'string',
+        'time' => 'int',
+        'bidQuantity' => 'string',
+        'askQuantity' => 'string',
     ];
 
     /**
@@ -93,18 +93,18 @@ class OptionPositionInformationResponseInner implements ModelInterface, \ArrayAc
         'symbol' => null,
         'side' => null,
         'quantity' => null,
-        'reducibleQty' => null,
         'markValue' => null,
-        'ror' => null,
         'unrealizedPNL' => null,
         'markPrice' => null,
         'strikePrice' => null,
-        'positionCost' => null,
         'expiryDate' => 'int64',
         'priceScale' => 'int64',
         'quantityScale' => 'int64',
         'optionSide' => null,
         'quoteAsset' => null,
+        'time' => 'int64',
+        'bidQuantity' => null,
+        'askQuantity' => null,
     ];
 
     /**
@@ -117,18 +117,18 @@ class OptionPositionInformationResponseInner implements ModelInterface, \ArrayAc
         'symbol' => false,
         'side' => false,
         'quantity' => false,
-        'reducibleQty' => false,
         'markValue' => false,
-        'ror' => false,
         'unrealizedPNL' => false,
         'markPrice' => false,
         'strikePrice' => false,
-        'positionCost' => false,
         'expiryDate' => false,
         'priceScale' => false,
         'quantityScale' => false,
         'optionSide' => false,
         'quoteAsset' => false,
+        'time' => false,
+        'bidQuantity' => false,
+        'askQuantity' => false,
     ];
 
     /**
@@ -149,18 +149,18 @@ class OptionPositionInformationResponseInner implements ModelInterface, \ArrayAc
         'symbol' => 'symbol',
         'side' => 'side',
         'quantity' => 'quantity',
-        'reducibleQty' => 'reducibleQty',
         'markValue' => 'markValue',
-        'ror' => 'ror',
         'unrealizedPNL' => 'unrealizedPNL',
         'markPrice' => 'markPrice',
         'strikePrice' => 'strikePrice',
-        'positionCost' => 'positionCost',
         'expiryDate' => 'expiryDate',
         'priceScale' => 'priceScale',
         'quantityScale' => 'quantityScale',
         'optionSide' => 'optionSide',
         'quoteAsset' => 'quoteAsset',
+        'time' => 'time',
+        'bidQuantity' => 'bidQuantity',
+        'askQuantity' => 'askQuantity',
     ];
 
     /**
@@ -173,18 +173,18 @@ class OptionPositionInformationResponseInner implements ModelInterface, \ArrayAc
         'symbol' => 'setSymbol',
         'side' => 'setSide',
         'quantity' => 'setQuantity',
-        'reducibleQty' => 'setReducibleQty',
         'markValue' => 'setMarkValue',
-        'ror' => 'setRor',
         'unrealizedPNL' => 'setUnrealizedPNL',
         'markPrice' => 'setMarkPrice',
         'strikePrice' => 'setStrikePrice',
-        'positionCost' => 'setPositionCost',
         'expiryDate' => 'setExpiryDate',
         'priceScale' => 'setPriceScale',
         'quantityScale' => 'setQuantityScale',
         'optionSide' => 'setOptionSide',
         'quoteAsset' => 'setQuoteAsset',
+        'time' => 'setTime',
+        'bidQuantity' => 'setBidQuantity',
+        'askQuantity' => 'setAskQuantity',
     ];
 
     /**
@@ -197,18 +197,18 @@ class OptionPositionInformationResponseInner implements ModelInterface, \ArrayAc
         'symbol' => 'getSymbol',
         'side' => 'getSide',
         'quantity' => 'getQuantity',
-        'reducibleQty' => 'getReducibleQty',
         'markValue' => 'getMarkValue',
-        'ror' => 'getRor',
         'unrealizedPNL' => 'getUnrealizedPNL',
         'markPrice' => 'getMarkPrice',
         'strikePrice' => 'getStrikePrice',
-        'positionCost' => 'getPositionCost',
         'expiryDate' => 'getExpiryDate',
         'priceScale' => 'getPriceScale',
         'quantityScale' => 'getQuantityScale',
         'optionSide' => 'getOptionSide',
         'quoteAsset' => 'getQuoteAsset',
+        'time' => 'getTime',
+        'bidQuantity' => 'getBidQuantity',
+        'askQuantity' => 'getAskQuantity',
     ];
 
     /**
@@ -230,18 +230,18 @@ class OptionPositionInformationResponseInner implements ModelInterface, \ArrayAc
         $this->setIfExists('symbol', $data ?? [], null);
         $this->setIfExists('side', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
-        $this->setIfExists('reducibleQty', $data ?? [], null);
         $this->setIfExists('markValue', $data ?? [], null);
-        $this->setIfExists('ror', $data ?? [], null);
         $this->setIfExists('unrealizedPNL', $data ?? [], null);
         $this->setIfExists('markPrice', $data ?? [], null);
         $this->setIfExists('strikePrice', $data ?? [], null);
-        $this->setIfExists('positionCost', $data ?? [], null);
         $this->setIfExists('expiryDate', $data ?? [], null);
         $this->setIfExists('priceScale', $data ?? [], null);
         $this->setIfExists('quantityScale', $data ?? [], null);
         $this->setIfExists('optionSide', $data ?? [], null);
         $this->setIfExists('quoteAsset', $data ?? [], null);
+        $this->setIfExists('time', $data ?? [], null);
+        $this->setIfExists('bidQuantity', $data ?? [], null);
+        $this->setIfExists('askQuantity', $data ?? [], null);
     }
 
     /**
@@ -481,33 +481,6 @@ class OptionPositionInformationResponseInner implements ModelInterface, \ArrayAc
     }
 
     /**
-     * Gets reducibleQty.
-     *
-     * @return null|string
-     */
-    public function getReducibleQty()
-    {
-        return $this->container['reducibleQty'];
-    }
-
-    /**
-     * Sets reducibleQty.
-     *
-     * @param null|string $reducibleQty reducibleQty
-     *
-     * @return self
-     */
-    public function setReducibleQty($reducibleQty)
-    {
-        if (is_null($reducibleQty)) {
-            throw new \InvalidArgumentException('non-nullable reducibleQty cannot be null');
-        }
-        $this->container['reducibleQty'] = $reducibleQty;
-
-        return $this;
-    }
-
-    /**
      * Gets markValue.
      *
      * @return null|string
@@ -530,33 +503,6 @@ class OptionPositionInformationResponseInner implements ModelInterface, \ArrayAc
             throw new \InvalidArgumentException('non-nullable markValue cannot be null');
         }
         $this->container['markValue'] = $markValue;
-
-        return $this;
-    }
-
-    /**
-     * Gets ror.
-     *
-     * @return null|string
-     */
-    public function getRor()
-    {
-        return $this->container['ror'];
-    }
-
-    /**
-     * Sets ror.
-     *
-     * @param null|string $ror ror
-     *
-     * @return self
-     */
-    public function setRor($ror)
-    {
-        if (is_null($ror)) {
-            throw new \InvalidArgumentException('non-nullable ror cannot be null');
-        }
-        $this->container['ror'] = $ror;
 
         return $this;
     }
@@ -638,33 +584,6 @@ class OptionPositionInformationResponseInner implements ModelInterface, \ArrayAc
             throw new \InvalidArgumentException('non-nullable strikePrice cannot be null');
         }
         $this->container['strikePrice'] = $strikePrice;
-
-        return $this;
-    }
-
-    /**
-     * Gets positionCost.
-     *
-     * @return null|string
-     */
-    public function getPositionCost()
-    {
-        return $this->container['positionCost'];
-    }
-
-    /**
-     * Sets positionCost.
-     *
-     * @param null|string $positionCost positionCost
-     *
-     * @return self
-     */
-    public function setPositionCost($positionCost)
-    {
-        if (is_null($positionCost)) {
-            throw new \InvalidArgumentException('non-nullable positionCost cannot be null');
-        }
-        $this->container['positionCost'] = $positionCost;
 
         return $this;
     }
@@ -800,6 +719,87 @@ class OptionPositionInformationResponseInner implements ModelInterface, \ArrayAc
             throw new \InvalidArgumentException('non-nullable quoteAsset cannot be null');
         }
         $this->container['quoteAsset'] = $quoteAsset;
+
+        return $this;
+    }
+
+    /**
+     * Gets time.
+     *
+     * @return null|int
+     */
+    public function getTime()
+    {
+        return $this->container['time'];
+    }
+
+    /**
+     * Sets time.
+     *
+     * @param null|int $time time
+     *
+     * @return self
+     */
+    public function setTime($time)
+    {
+        if (is_null($time)) {
+            throw new \InvalidArgumentException('non-nullable time cannot be null');
+        }
+        $this->container['time'] = $time;
+
+        return $this;
+    }
+
+    /**
+     * Gets bidQuantity.
+     *
+     * @return null|string
+     */
+    public function getBidQuantity()
+    {
+        return $this->container['bidQuantity'];
+    }
+
+    /**
+     * Sets bidQuantity.
+     *
+     * @param null|string $bidQuantity bidQuantity
+     *
+     * @return self
+     */
+    public function setBidQuantity($bidQuantity)
+    {
+        if (is_null($bidQuantity)) {
+            throw new \InvalidArgumentException('non-nullable bidQuantity cannot be null');
+        }
+        $this->container['bidQuantity'] = $bidQuantity;
+
+        return $this;
+    }
+
+    /**
+     * Gets askQuantity.
+     *
+     * @return null|string
+     */
+    public function getAskQuantity()
+    {
+        return $this->container['askQuantity'];
+    }
+
+    /**
+     * Sets askQuantity.
+     *
+     * @param null|string $askQuantity askQuantity
+     *
+     * @return self
+     */
+    public function setAskQuantity($askQuantity)
+    {
+        if (is_null($askQuantity)) {
+            throw new \InvalidArgumentException('non-nullable askQuantity cannot be null');
+        }
+        $this->container['askQuantity'] = $askQuantity;
 
         return $this;
     }

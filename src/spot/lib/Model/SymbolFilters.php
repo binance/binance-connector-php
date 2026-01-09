@@ -98,30 +98,6 @@ class SymbolFilters implements ModelInterface, \ArrayAccess, \JsonSerializable
     ];
 
     /**
-     * Array of mapping. Used for (de)serialization.
-     *
-     * @var string[]
-     */
-    protected static $openAPIMappings = [
-        'ICEBERG_PARTS' => '\Binance\Client\Spot\Model\IcebergPartsFilter',
-        'LOT_SIZE' => '\Binance\Client\Spot\Model\LotSizeFilter',
-        'MARKET_LOT_SIZE' => '\Binance\Client\Spot\Model\MarketLotSizeFilter',
-        'MAX_NUM_ALGO_ORDERS' => '\Binance\Client\Spot\Model\MaxNumAlgoOrdersFilter',
-        'MAX_NUM_ICEBERG_ORDERS' => '\Binance\Client\Spot\Model\MaxNumIcebergOrdersFilter',
-        'MAX_NUM_ORDERS' => '\Binance\Client\Spot\Model\MaxNumOrdersFilter',
-        'MAX_NUM_ORDER_AMENDS' => '\Binance\Client\Spot\Model\MaxNumOrderAmendsFilter',
-        'MAX_NUM_ORDER_LISTS' => '\Binance\Client\Spot\Model\MaxNumOrderListsFilter',
-        'MAX_POSITION' => '\Binance\Client\Spot\Model\MaxPositionFilter',
-        'MIN_NOTIONAL' => '\Binance\Client\Spot\Model\MinNotionalFilter',
-        'NOTIONAL' => '\Binance\Client\Spot\Model\NotionalFilter',
-        'PERCENT_PRICE' => '\Binance\Client\Spot\Model\PercentPriceFilter',
-        'PERCENT_PRICE_BY_SIDE' => '\Binance\Client\Spot\Model\PercentPriceBySideFilter',
-        'PRICE_FILTER' => '\Binance\Client\Spot\Model\PriceFilter',
-        'TRAILING_DELTA' => '\Binance\Client\Spot\Model\TrailingDeltaFilter',
-        'T_PLUS_SELL' => '\Binance\Client\Spot\Model\TPlusSellFilter',
-    ];
-
-    /**
      * Array of property to format mappings. Used for (de)serialization.
      *
      * @var string[]
@@ -460,16 +436,6 @@ class SymbolFilters implements ModelInterface, \ArrayAccess, \JsonSerializable
     public static function openAPIFormats()
     {
         return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of discriminator mappings. Used for (de)serialization.
-     *
-     * @return array
-     */
-    public static function openAPIMappings()
-    {
-        return self::$openAPIMappings;
     }
 
     /**

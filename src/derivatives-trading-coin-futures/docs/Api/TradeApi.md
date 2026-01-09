@@ -20,6 +20,7 @@ All URIs are relative to https://dapi.binance.com, except if the operation defin
 | [**modifyMultipleOrders()**](TradeApi.md#modifyMultipleOrders) | **PUT** /dapi/v1/batchOrders | Modify Multiple Orders(TRADE) |
 | [**modifyOrder()**](TradeApi.md#modifyOrder) | **PUT** /dapi/v1/order | Modify Order (TRADE) |
 | [**newOrder()**](TradeApi.md#newOrder) | **POST** /dapi/v1/order | New Order (TRADE) |
+| [**placeMultipleOrders()**](TradeApi.md#placeMultipleOrders) | **POST** /dapi/v1/batchOrders | Place Multiple Orders(TRADE) |
 | [**positionAdlQuantileEstimation()**](TradeApi.md#positionAdlQuantileEstimation) | **GET** /dapi/v1/adlQuantile | Position ADL Quantile Estimation(USER_DATA) |
 | [**positionInformation()**](TradeApi.md#positionInformation) | **GET** /dapi/v1/positionRisk | Position Information(USER_DATA) |
 | [**queryCurrentOpenOrder()**](TradeApi.md#queryCurrentOpenOrder) | **GET** /dapi/v1/openOrder | Query Current Open Order(USER_DATA) |
@@ -168,7 +169,7 @@ No authorization required
 ## `autoCancelAllOpenOrders()`
 
 ```php
-autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest)
+autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest): \Binance\Client\DerivativesTradingCoinFutures\Model\AutoCancelAllOpenOrdersResponse
 ```
 
 Auto-Cancel All Open Orders (TRADE)
@@ -191,7 +192,8 @@ $apiInstance = new Binance\Client\DerivativesTradingCoinFutures\Api\TradeApi(
 $autoCancelAllOpenOrdersRequest = new \Binance\Client\DerivativesTradingCoinFutures\Model\AutoCancelAllOpenOrdersRequest(); // \Binance\Client\DerivativesTradingCoinFutures\Model\AutoCancelAllOpenOrdersRequest
 
 try {
-    $apiInstance->autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest);
+    $result = $apiInstance->autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TradeApi->autoCancelAllOpenOrders: ', $e->getMessage(), PHP_EOL;
 }
@@ -205,7 +207,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Binance\Client\DerivativesTradingCoinFutures\Model\AutoCancelAllOpenOrdersResponse**](../Model/AutoCancelAllOpenOrdersResponse.md)
 
 ### Authorization
 
@@ -214,7 +216,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -974,6 +976,62 @@ try {
 ### Return type
 
 [**\Binance\Client\DerivativesTradingCoinFutures\Model\NewOrderResponse**](../Model/NewOrderResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `placeMultipleOrders()`
+
+```php
+placeMultipleOrders($placeMultipleOrdersRequest): \Binance\Client\DerivativesTradingCoinFutures\Model\PlaceMultipleOrdersResponse
+```
+
+Place Multiple Orders(TRADE)
+
+Place multiple orders  * Parameter rules are same with `New Order` * Batch orders are processed concurrently, and the order of matching is not guaranteed. * The order of returned contents for batch orders is the same as the order of the order list.  Weight: 5
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingCoinFutures\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$placeMultipleOrdersRequest = new \Binance\Client\DerivativesTradingCoinFutures\Model\PlaceMultipleOrdersRequest(); // \Binance\Client\DerivativesTradingCoinFutures\Model\PlaceMultipleOrdersRequest
+
+try {
+    $result = $apiInstance->placeMultipleOrders($placeMultipleOrdersRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->placeMultipleOrders: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **placeMultipleOrdersRequest** | [**\Binance\Client\DerivativesTradingCoinFutures\Model\PlaceMultipleOrdersRequest**](../Model/PlaceMultipleOrdersRequest.md)|  | |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingCoinFutures\Model\PlaceMultipleOrdersResponse**](../Model/PlaceMultipleOrdersResponse.md)
 
 ### Authorization
 

@@ -65,24 +65,22 @@ class NewOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'symbol' => 'string',
         'price' => 'string',
         'quantity' => 'string',
+        'executedQty' => 'string',
         'side' => 'string',
         'type' => 'string',
-        'createDate' => 'int',
-        'reduceOnly' => 'bool',
-        'postOnly' => 'bool',
-        'mmp' => 'bool',
-        'executedQty' => 'string',
-        'fee' => 'string',
         'timeInForce' => 'string',
+        'reduceOnly' => 'bool',
         'createTime' => 'int',
         'updateTime' => 'int',
         'status' => 'string',
         'avgPrice' => 'string',
+        'source' => 'string',
         'clientOrderId' => 'string',
         'priceScale' => 'int',
         'quantityScale' => 'int',
         'optionSide' => 'string',
         'quoteAsset' => 'string',
+        'mmp' => 'bool',
     ];
 
     /**
@@ -99,24 +97,22 @@ class NewOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'symbol' => null,
         'price' => null,
         'quantity' => null,
+        'executedQty' => null,
         'side' => null,
         'type' => null,
-        'createDate' => 'int64',
-        'reduceOnly' => null,
-        'postOnly' => null,
-        'mmp' => null,
-        'executedQty' => null,
-        'fee' => null,
         'timeInForce' => null,
+        'reduceOnly' => null,
         'createTime' => 'int64',
         'updateTime' => 'int64',
         'status' => null,
         'avgPrice' => null,
+        'source' => null,
         'clientOrderId' => null,
         'priceScale' => 'int64',
         'quantityScale' => 'int64',
         'optionSide' => null,
         'quoteAsset' => null,
+        'mmp' => null,
     ];
 
     /**
@@ -129,24 +125,22 @@ class NewOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'symbol' => false,
         'price' => false,
         'quantity' => false,
+        'executedQty' => false,
         'side' => false,
         'type' => false,
-        'createDate' => false,
-        'reduceOnly' => false,
-        'postOnly' => false,
-        'mmp' => false,
-        'executedQty' => false,
-        'fee' => false,
         'timeInForce' => false,
+        'reduceOnly' => false,
         'createTime' => false,
         'updateTime' => false,
         'status' => false,
         'avgPrice' => false,
+        'source' => false,
         'clientOrderId' => false,
         'priceScale' => false,
         'quantityScale' => false,
         'optionSide' => false,
         'quoteAsset' => false,
+        'mmp' => false,
     ];
 
     /**
@@ -167,24 +161,22 @@ class NewOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'symbol' => 'symbol',
         'price' => 'price',
         'quantity' => 'quantity',
+        'executedQty' => 'executedQty',
         'side' => 'side',
         'type' => 'type',
-        'createDate' => 'createDate',
-        'reduceOnly' => 'reduceOnly',
-        'postOnly' => 'postOnly',
-        'mmp' => 'mmp',
-        'executedQty' => 'executedQty',
-        'fee' => 'fee',
         'timeInForce' => 'timeInForce',
+        'reduceOnly' => 'reduceOnly',
         'createTime' => 'createTime',
         'updateTime' => 'updateTime',
         'status' => 'status',
         'avgPrice' => 'avgPrice',
+        'source' => 'source',
         'clientOrderId' => 'clientOrderId',
         'priceScale' => 'priceScale',
         'quantityScale' => 'quantityScale',
         'optionSide' => 'optionSide',
         'quoteAsset' => 'quoteAsset',
+        'mmp' => 'mmp',
     ];
 
     /**
@@ -197,24 +189,22 @@ class NewOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'symbol' => 'setSymbol',
         'price' => 'setPrice',
         'quantity' => 'setQuantity',
+        'executedQty' => 'setExecutedQty',
         'side' => 'setSide',
         'type' => 'setType',
-        'createDate' => 'setCreateDate',
-        'reduceOnly' => 'setReduceOnly',
-        'postOnly' => 'setPostOnly',
-        'mmp' => 'setMmp',
-        'executedQty' => 'setExecutedQty',
-        'fee' => 'setFee',
         'timeInForce' => 'setTimeInForce',
+        'reduceOnly' => 'setReduceOnly',
         'createTime' => 'setCreateTime',
         'updateTime' => 'setUpdateTime',
         'status' => 'setStatus',
         'avgPrice' => 'setAvgPrice',
+        'source' => 'setSource',
         'clientOrderId' => 'setClientOrderId',
         'priceScale' => 'setPriceScale',
         'quantityScale' => 'setQuantityScale',
         'optionSide' => 'setOptionSide',
         'quoteAsset' => 'setQuoteAsset',
+        'mmp' => 'setMmp',
     ];
 
     /**
@@ -227,24 +217,22 @@ class NewOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'symbol' => 'getSymbol',
         'price' => 'getPrice',
         'quantity' => 'getQuantity',
+        'executedQty' => 'getExecutedQty',
         'side' => 'getSide',
         'type' => 'getType',
-        'createDate' => 'getCreateDate',
-        'reduceOnly' => 'getReduceOnly',
-        'postOnly' => 'getPostOnly',
-        'mmp' => 'getMmp',
-        'executedQty' => 'getExecutedQty',
-        'fee' => 'getFee',
         'timeInForce' => 'getTimeInForce',
+        'reduceOnly' => 'getReduceOnly',
         'createTime' => 'getCreateTime',
         'updateTime' => 'getUpdateTime',
         'status' => 'getStatus',
         'avgPrice' => 'getAvgPrice',
+        'source' => 'getSource',
         'clientOrderId' => 'getClientOrderId',
         'priceScale' => 'getPriceScale',
         'quantityScale' => 'getQuantityScale',
         'optionSide' => 'getOptionSide',
         'quoteAsset' => 'getQuoteAsset',
+        'mmp' => 'getMmp',
     ];
 
     /**
@@ -266,24 +254,22 @@ class NewOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializabl
         $this->setIfExists('symbol', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
+        $this->setIfExists('executedQty', $data ?? [], null);
         $this->setIfExists('side', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('createDate', $data ?? [], null);
-        $this->setIfExists('reduceOnly', $data ?? [], null);
-        $this->setIfExists('postOnly', $data ?? [], null);
-        $this->setIfExists('mmp', $data ?? [], null);
-        $this->setIfExists('executedQty', $data ?? [], null);
-        $this->setIfExists('fee', $data ?? [], null);
         $this->setIfExists('timeInForce', $data ?? [], null);
+        $this->setIfExists('reduceOnly', $data ?? [], null);
         $this->setIfExists('createTime', $data ?? [], null);
         $this->setIfExists('updateTime', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('avgPrice', $data ?? [], null);
+        $this->setIfExists('source', $data ?? [], null);
         $this->setIfExists('clientOrderId', $data ?? [], null);
         $this->setIfExists('priceScale', $data ?? [], null);
         $this->setIfExists('quantityScale', $data ?? [], null);
         $this->setIfExists('optionSide', $data ?? [], null);
         $this->setIfExists('quoteAsset', $data ?? [], null);
+        $this->setIfExists('mmp', $data ?? [], null);
     }
 
     /**
@@ -523,6 +509,33 @@ class NewOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializabl
     }
 
     /**
+     * Gets executedQty.
+     *
+     * @return null|string
+     */
+    public function getExecutedQty()
+    {
+        return $this->container['executedQty'];
+    }
+
+    /**
+     * Sets executedQty.
+     *
+     * @param null|string $executedQty executedQty
+     *
+     * @return self
+     */
+    public function setExecutedQty($executedQty)
+    {
+        if (is_null($executedQty)) {
+            throw new \InvalidArgumentException('non-nullable executedQty cannot be null');
+        }
+        $this->container['executedQty'] = $executedQty;
+
+        return $this;
+    }
+
+    /**
      * Gets side.
      *
      * @return null|string
@@ -577,28 +590,28 @@ class NewOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets createDate.
+     * Gets timeInForce.
      *
-     * @return null|int
+     * @return null|string
      */
-    public function getCreateDate()
+    public function getTimeInForce()
     {
-        return $this->container['createDate'];
+        return $this->container['timeInForce'];
     }
 
     /**
-     * Sets createDate.
+     * Sets timeInForce.
      *
-     * @param null|int $createDate createDate
+     * @param null|string $timeInForce timeInForce
      *
      * @return self
      */
-    public function setCreateDate($createDate)
+    public function setTimeInForce($timeInForce)
     {
-        if (is_null($createDate)) {
-            throw new \InvalidArgumentException('non-nullable createDate cannot be null');
+        if (is_null($timeInForce)) {
+            throw new \InvalidArgumentException('non-nullable timeInForce cannot be null');
         }
-        $this->container['createDate'] = $createDate;
+        $this->container['timeInForce'] = $timeInForce;
 
         return $this;
     }
@@ -626,141 +639,6 @@ class NewOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable reduceOnly cannot be null');
         }
         $this->container['reduceOnly'] = $reduceOnly;
-
-        return $this;
-    }
-
-    /**
-     * Gets postOnly.
-     *
-     * @return null|bool
-     */
-    public function getPostOnly()
-    {
-        return $this->container['postOnly'];
-    }
-
-    /**
-     * Sets postOnly.
-     *
-     * @param null|bool $postOnly postOnly
-     *
-     * @return self
-     */
-    public function setPostOnly($postOnly)
-    {
-        if (is_null($postOnly)) {
-            throw new \InvalidArgumentException('non-nullable postOnly cannot be null');
-        }
-        $this->container['postOnly'] = $postOnly;
-
-        return $this;
-    }
-
-    /**
-     * Gets mmp.
-     *
-     * @return null|bool
-     */
-    public function getMmp()
-    {
-        return $this->container['mmp'];
-    }
-
-    /**
-     * Sets mmp.
-     *
-     * @param null|bool $mmp mmp
-     *
-     * @return self
-     */
-    public function setMmp($mmp)
-    {
-        if (is_null($mmp)) {
-            throw new \InvalidArgumentException('non-nullable mmp cannot be null');
-        }
-        $this->container['mmp'] = $mmp;
-
-        return $this;
-    }
-
-    /**
-     * Gets executedQty.
-     *
-     * @return null|string
-     */
-    public function getExecutedQty()
-    {
-        return $this->container['executedQty'];
-    }
-
-    /**
-     * Sets executedQty.
-     *
-     * @param null|string $executedQty executedQty
-     *
-     * @return self
-     */
-    public function setExecutedQty($executedQty)
-    {
-        if (is_null($executedQty)) {
-            throw new \InvalidArgumentException('non-nullable executedQty cannot be null');
-        }
-        $this->container['executedQty'] = $executedQty;
-
-        return $this;
-    }
-
-    /**
-     * Gets fee.
-     *
-     * @return null|string
-     */
-    public function getFee()
-    {
-        return $this->container['fee'];
-    }
-
-    /**
-     * Sets fee.
-     *
-     * @param null|string $fee fee
-     *
-     * @return self
-     */
-    public function setFee($fee)
-    {
-        if (is_null($fee)) {
-            throw new \InvalidArgumentException('non-nullable fee cannot be null');
-        }
-        $this->container['fee'] = $fee;
-
-        return $this;
-    }
-
-    /**
-     * Gets timeInForce.
-     *
-     * @return null|string
-     */
-    public function getTimeInForce()
-    {
-        return $this->container['timeInForce'];
-    }
-
-    /**
-     * Sets timeInForce.
-     *
-     * @param null|string $timeInForce timeInForce
-     *
-     * @return self
-     */
-    public function setTimeInForce($timeInForce)
-    {
-        if (is_null($timeInForce)) {
-            throw new \InvalidArgumentException('non-nullable timeInForce cannot be null');
-        }
-        $this->container['timeInForce'] = $timeInForce;
 
         return $this;
     }
@@ -869,6 +747,33 @@ class NewOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable avgPrice cannot be null');
         }
         $this->container['avgPrice'] = $avgPrice;
+
+        return $this;
+    }
+
+    /**
+     * Gets source.
+     *
+     * @return null|string
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source.
+     *
+     * @param null|string $source source
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        if (is_null($source)) {
+            throw new \InvalidArgumentException('non-nullable source cannot be null');
+        }
+        $this->container['source'] = $source;
 
         return $this;
     }
@@ -1004,6 +909,33 @@ class NewOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable quoteAsset cannot be null');
         }
         $this->container['quoteAsset'] = $quoteAsset;
+
+        return $this;
+    }
+
+    /**
+     * Gets mmp.
+     *
+     * @return null|bool
+     */
+    public function getMmp()
+    {
+        return $this->container['mmp'];
+    }
+
+    /**
+     * Sets mmp.
+     *
+     * @param null|bool $mmp mmp
+     *
+     * @return self
+     */
+    public function setMmp($mmp)
+    {
+        if (is_null($mmp)) {
+            throw new \InvalidArgumentException('non-nullable mmp cannot be null');
+        }
+        $this->container['mmp'] = $mmp;
 
         return $this;
     }

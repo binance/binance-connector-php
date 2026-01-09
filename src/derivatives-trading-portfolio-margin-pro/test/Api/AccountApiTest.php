@@ -34,11 +34,9 @@ use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\BnbTransferRequest
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\ChangeAutoRepayFuturesStatusRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\FundAutoCollectionRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\FundCollectionByAssetRequest;
-use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\MintBfusdForPortfolioMarginRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\PortfolioMarginProBankruptcyLoanRepayRequest;
-use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RedeemBfusdForPortfolioMarginRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RepayFuturesNegativeBalanceRequest;
-use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtForPortfolioMarginRequest;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginRequest;
 use Binance\Common\Configuration\ClientConfiguration;
 use Binance\Common\Configuration\SignatureConfiguration;
 use Binance\Common\HttpClient;
@@ -130,7 +128,7 @@ class AccountApiTest extends TestCase
     public function testChangeAutoRepayFuturesStatus()
     {
         $changeAutoRepayFuturesStatusRequest = new ChangeAutoRepayFuturesStatusRequest();
-        $changeAutoRepayFuturesStatusRequest->setAutoRepay('');
+        $changeAutoRepayFuturesStatusRequest->setAutoRepay('true');
 
         $response = $this->getApiMock($request)->changeAutoRepayFuturesStatus($changeAutoRepayFuturesStatusRequest);
 
@@ -138,7 +136,7 @@ class AccountApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/portfolio/repay-futures-switch', $request->getUri()->getPath());
-        self::assertEquals('da82fc30a786fb2fea807a0c84e13082bdf837e1bcdd4ec170d79b99f48d8386', $queryMap['signature']);
+        self::assertEquals('fd3d4e144a7799fdb415fcd1c9a36a08e5600f7bb8a2019be6f141e3b0169ac9', $queryMap['signature']);
     }
 
     /**
@@ -267,27 +265,6 @@ class AccountApiTest extends TestCase
     }
 
     /**
-     * Test case for mintBfusdForPortfolioMargin.
-     *
-     * Mint BFUSD for Portfolio Margin(TRADE).
-     */
-    public function testMintBfusdForPortfolioMargin()
-    {
-        $mintBfusdForPortfolioMarginRequest = new MintBfusdForPortfolioMarginRequest();
-        $mintBfusdForPortfolioMarginRequest->setFromAsset('');
-        $mintBfusdForPortfolioMarginRequest->setTargetAsset('');
-        $mintBfusdForPortfolioMarginRequest->setAmount(1.0);
-
-        $response = $this->getApiMock($request)->mintBfusdForPortfolioMargin($mintBfusdForPortfolioMarginRequest);
-
-        parse_str($request->getUri(), $queryMap);
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/sapi/v1/portfolio/mint', $request->getUri()->getPath());
-        self::assertEquals('50d24733794b928836575c346769be26ee1fb5ffbf73f36933cd22c50116f74e', $queryMap['signature']);
-    }
-
-    /**
      * Test case for portfolioMarginProBankruptcyLoanRepay.
      *
      * Portfolio Margin Pro Bankruptcy Loan Repay.
@@ -365,27 +342,6 @@ class AccountApiTest extends TestCase
     }
 
     /**
-     * Test case for redeemBfusdForPortfolioMargin.
-     *
-     * Redeem BFUSD for Portfolio Margin(TRADE).
-     */
-    public function testRedeemBfusdForPortfolioMargin()
-    {
-        $redeemBfusdForPortfolioMarginRequest = new RedeemBfusdForPortfolioMarginRequest();
-        $redeemBfusdForPortfolioMarginRequest->setFromAsset('');
-        $redeemBfusdForPortfolioMarginRequest->setTargetAsset('');
-        $redeemBfusdForPortfolioMarginRequest->setAmount(1.0);
-
-        $response = $this->getApiMock($request)->redeemBfusdForPortfolioMargin($redeemBfusdForPortfolioMarginRequest);
-
-        parse_str($request->getUri(), $queryMap);
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/sapi/v1/portfolio/redeem', $request->getUri()->getPath());
-        self::assertEquals('50d24733794b928836575c346769be26ee1fb5ffbf73f36933cd22c50116f74e', $queryMap['signature']);
-    }
-
-    /**
      * Test case for repayFuturesNegativeBalance.
      *
      * Repay futures Negative Balance(USER_DATA).
@@ -404,18 +360,18 @@ class AccountApiTest extends TestCase
     }
 
     /**
-     * Test case for transferLdusdtForPortfolioMargin.
+     * Test case for transferLdusdtRwusdForPortfolioMargin.
      *
-     * Transfer LDUSDT for Portfolio Margin(TRADE).
+     * Transfer LDUSDT/RWUSD for Portfolio Margin(TRADE).
      */
-    public function testTransferLdusdtForPortfolioMargin()
+    public function testTransferLdusdtRwusdForPortfolioMargin()
     {
-        $transferLdusdtForPortfolioMarginRequest = new TransferLdusdtForPortfolioMarginRequest();
-        $transferLdusdtForPortfolioMarginRequest->setAsset('');
-        $transferLdusdtForPortfolioMarginRequest->setTransferType('');
-        $transferLdusdtForPortfolioMarginRequest->setAmount(1.0);
+        $transferLdusdtRwusdForPortfolioMarginRequest = new TransferLdusdtRwusdForPortfolioMarginRequest();
+        $transferLdusdtRwusdForPortfolioMarginRequest->setAsset('');
+        $transferLdusdtRwusdForPortfolioMarginRequest->setTransferType('');
+        $transferLdusdtRwusdForPortfolioMarginRequest->setAmount(1.0);
 
-        $response = $this->getApiMock($request)->transferLdusdtForPortfolioMargin($transferLdusdtForPortfolioMarginRequest);
+        $response = $this->getApiMock($request)->transferLdusdtRwusdForPortfolioMargin($transferLdusdtRwusdForPortfolioMarginRequest);
 
         parse_str($request->getUri(), $queryMap);
 

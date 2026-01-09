@@ -66,12 +66,10 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
         'price' => 'string',
         'quantity' => 'string',
         'executedQty' => 'string',
-        'fee' => 'string',
         'side' => 'string',
         'type' => 'string',
         'timeInForce' => 'string',
         'reduceOnly' => 'bool',
-        'postOnly' => 'bool',
         'createDate' => 'int',
         'updateTime' => 'int',
         'status' => 'string',
@@ -100,12 +98,10 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
         'price' => null,
         'quantity' => null,
         'executedQty' => null,
-        'fee' => null,
         'side' => null,
         'type' => null,
         'timeInForce' => null,
         'reduceOnly' => null,
-        'postOnly' => null,
         'createDate' => 'int64',
         'updateTime' => 'int64',
         'status' => null,
@@ -130,12 +126,10 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
         'price' => false,
         'quantity' => false,
         'executedQty' => false,
-        'fee' => false,
         'side' => false,
         'type' => false,
         'timeInForce' => false,
         'reduceOnly' => false,
-        'postOnly' => false,
         'createDate' => false,
         'updateTime' => false,
         'status' => false,
@@ -168,12 +162,10 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
         'price' => 'price',
         'quantity' => 'quantity',
         'executedQty' => 'executedQty',
-        'fee' => 'fee',
         'side' => 'side',
         'type' => 'type',
         'timeInForce' => 'timeInForce',
         'reduceOnly' => 'reduceOnly',
-        'postOnly' => 'postOnly',
         'createDate' => 'createDate',
         'updateTime' => 'updateTime',
         'status' => 'status',
@@ -198,12 +190,10 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
         'price' => 'setPrice',
         'quantity' => 'setQuantity',
         'executedQty' => 'setExecutedQty',
-        'fee' => 'setFee',
         'side' => 'setSide',
         'type' => 'setType',
         'timeInForce' => 'setTimeInForce',
         'reduceOnly' => 'setReduceOnly',
-        'postOnly' => 'setPostOnly',
         'createDate' => 'setCreateDate',
         'updateTime' => 'setUpdateTime',
         'status' => 'setStatus',
@@ -228,12 +218,10 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
         'price' => 'getPrice',
         'quantity' => 'getQuantity',
         'executedQty' => 'getExecutedQty',
-        'fee' => 'getFee',
         'side' => 'getSide',
         'type' => 'getType',
         'timeInForce' => 'getTimeInForce',
         'reduceOnly' => 'getReduceOnly',
-        'postOnly' => 'getPostOnly',
         'createDate' => 'getCreateDate',
         'updateTime' => 'getUpdateTime',
         'status' => 'getStatus',
@@ -267,12 +255,10 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('executedQty', $data ?? [], null);
-        $this->setIfExists('fee', $data ?? [], null);
         $this->setIfExists('side', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('timeInForce', $data ?? [], null);
         $this->setIfExists('reduceOnly', $data ?? [], null);
-        $this->setIfExists('postOnly', $data ?? [], null);
         $this->setIfExists('createDate', $data ?? [], null);
         $this->setIfExists('updateTime', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
@@ -550,33 +536,6 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets fee.
-     *
-     * @return null|string
-     */
-    public function getFee()
-    {
-        return $this->container['fee'];
-    }
-
-    /**
-     * Sets fee.
-     *
-     * @param null|string $fee fee
-     *
-     * @return self
-     */
-    public function setFee($fee)
-    {
-        if (is_null($fee)) {
-            throw new \InvalidArgumentException('non-nullable fee cannot be null');
-        }
-        $this->container['fee'] = $fee;
-
-        return $this;
-    }
-
-    /**
      * Gets side.
      *
      * @return null|string
@@ -680,33 +639,6 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable reduceOnly cannot be null');
         }
         $this->container['reduceOnly'] = $reduceOnly;
-
-        return $this;
-    }
-
-    /**
-     * Gets postOnly.
-     *
-     * @return null|bool
-     */
-    public function getPostOnly()
-    {
-        return $this->container['postOnly'];
-    }
-
-    /**
-     * Sets postOnly.
-     *
-     * @param null|bool $postOnly postOnly
-     *
-     * @return self
-     */
-    public function setPostOnly($postOnly)
-    {
-        if (is_null($postOnly)) {
-            throw new \InvalidArgumentException('non-nullable postOnly cannot be null');
-        }
-        $this->container['postOnly'] = $postOnly;
 
         return $this;
     }

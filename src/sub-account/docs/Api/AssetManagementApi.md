@@ -269,7 +269,7 @@ getMovePositionHistoryForSubAccount($symbol, $page, $row, $startTime, $endTime, 
 
 Get Move Position History for Sub-account (For Master Account) (USER_DATA)
 
-Query move position history  * If `startTime` and `endTime` not sent, return records of the last 90 days by default with 1000 maximum limits * If `startTime` is sent and `endTime` is not sent, return records of [max(startTime, now-90d), now]. * If `startTime` is not sent and `endTime` is sent, return records of [max(now,endTime-90d), endTime].  Weight: 150
+Query move position history  * If `startTime` and `endTime` not sent, return records of the last 90 days by default with 1000 maximum limits * If `startTime` is sent and `endTime` is not sent, return records of [max(startTime, now-90d), now]. * If `startTime` is not sent and `endTime` is sent, return records of [max(now,endTime-90d), endTime].  Weight: 1
 
 ### Example
 
@@ -701,7 +701,7 @@ movePositionForSubAccount($movePositionForSubAccountRequest): \Binance\Client\Su
 
 Move Position for Sub-account (For Master Account) (USER_DATA)
 
-Move position between sub-master, master-sub, or sub-sub accounts when necessary  * You need to Enable Trading permission for the API Key which requests this endpoint. * This function only support VIP level 7-9. * Only master account can use the function * Quantity should be positive number only * The function support normal account, PM PRO and PM PRO SPAN. * Only support for from account has positions * For all orders in the same orderArgs request, if any symbol’s total close position quantity is bigger than the symbol’s current position quantity, all batch orders in the same list will fail simultaneously. * Only support cross margin mode * The price for move position is MarkPrice only. * Not support for MSA. * Not support for the symbol under Reduce-Only.  Weight: 150
+Move position between sub-master, master-sub, or sub-sub accounts when necessary  * You need to Enable Trading permission for the API Key which requests this endpoint. * This function only support VIP level 7-9. * Only master account can use the function * Quantity should be positive number only * The function support normal account, PM PRO and PM PRO SPAN. * Only support for from account has positions * For all orders in the same orderArgs request, if any symbol’s total close position quantity is bigger than the symbol’s current position quantity, all batch orders in the same list will fail simultaneously. * Only support cross margin mode * The price for move position is MarkPrice only. * Not support for MSA. * Not support for the symbol under Reduce-Only.  Weight: 1
 
 ### Example
 

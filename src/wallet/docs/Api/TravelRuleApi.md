@@ -11,6 +11,7 @@ All URIs are relative to https://api.binance.com, except if the operation define
 | [**fetchAddressVerificationList()**](TravelRuleApi.md#fetchAddressVerificationList) | **GET** /sapi/v1/addressVerify/list | Fetch address verification list (USER_DATA) |
 | [**submitDepositQuestionnaire()**](TravelRuleApi.md#submitDepositQuestionnaire) | **PUT** /sapi/v1/localentity/broker/deposit/provide-info | Submit Deposit Questionnaire (For local entities that require travel rule) (supporting network) (USER_DATA) |
 | [**submitDepositQuestionnaireTravelRule()**](TravelRuleApi.md#submitDepositQuestionnaireTravelRule) | **PUT** /sapi/v1/localentity/deposit/provide-info | Submit Deposit Questionnaire (For local entities that require travel rule) (supporting network) (USER_DATA) |
+| [**submitDepositQuestionnaireV2()**](TravelRuleApi.md#submitDepositQuestionnaireV2) | **PUT** /sapi/v2/localentity/deposit/provide-info | Submit Deposit Questionnaire V2 (For local entities that require travel rule) (supporting network) (USER_DATA) |
 | [**vaspList()**](TravelRuleApi.md#vaspList) | **GET** /sapi/v1/localentity/vasp | VASP list (for local entities that require travel rule) (supporting network) (USER_DATA) |
 | [**withdrawHistoryV1()**](TravelRuleApi.md#withdrawHistoryV1) | **GET** /sapi/v1/localentity/withdraw/history | Withdraw History (for local entities that require travel rule) (supporting network) (USER_DATA) |
 | [**withdrawHistoryV2()**](TravelRuleApi.md#withdrawHistoryV2) | **GET** /sapi/v2/localentity/withdraw/history | Withdraw History V2 (for local entities that require travel rule) (supporting network) (USER_DATA) |
@@ -228,7 +229,7 @@ $apiInstance = new Binance\Client\Wallet\Api\TravelRuleApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$depositId = 'depositId_example'; // string | Comma(,) separated list of wallet tran Ids.
+$depositId = 56; // int | Comma(,) separated list of wallet tran Ids.
 $txId = 'txId_example'; // string
 $network = 'network_example'; // string
 $coin = 'coin_example'; // string
@@ -250,7 +251,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **depositId** | **string**| Comma(,) separated list of wallet tran Ids. | [optional] |
+| **depositId** | **int**| Comma(,) separated list of wallet tran Ids. | [optional] |
 | **txId** | **string**|  | [optional] |
 | **network** | **string**|  | [optional] |
 | **coin** | **string**|  | [optional] |
@@ -431,6 +432,62 @@ try {
 ### Return type
 
 [**\Binance\Client\Wallet\Model\SubmitDepositQuestionnaireTravelRuleResponse**](../Model/SubmitDepositQuestionnaireTravelRuleResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `submitDepositQuestionnaireV2()`
+
+```php
+submitDepositQuestionnaireV2($submitDepositQuestionnaireV2Request): \Binance\Client\Wallet\Model\SubmitDepositQuestionnaireV2Response
+```
+
+Submit Deposit Questionnaire V2 (For local entities that require travel rule) (supporting network) (USER_DATA)
+
+Submit questionnaire for local entities that require travel rule. The questionnaire is only applies to transactions from unhosted wallets or VASPs that are not yet onboarded with GTR.  * Questionnaire is different for each local entity, please refer * If getting error like `Questionnaire format not valid.` or `Questionnaire must not be blank`,  Weight: 600
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\Wallet\Api\TravelRuleApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$submitDepositQuestionnaireV2Request = new \Binance\Client\Wallet\Model\SubmitDepositQuestionnaireV2Request(); // \Binance\Client\Wallet\Model\SubmitDepositQuestionnaireV2Request
+
+try {
+    $result = $apiInstance->submitDepositQuestionnaireV2($submitDepositQuestionnaireV2Request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TravelRuleApi->submitDepositQuestionnaireV2: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **submitDepositQuestionnaireV2Request** | [**\Binance\Client\Wallet\Model\SubmitDepositQuestionnaireV2Request**](../Model/SubmitDepositQuestionnaireV2Request.md)|  | |
+
+### Return type
+
+[**\Binance\Client\Wallet\Model\SubmitDepositQuestionnaireV2Response**](../Model/SubmitDepositQuestionnaireV2Response.md)
 
 ### Authorization
 

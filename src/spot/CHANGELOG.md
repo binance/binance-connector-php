@@ -1,5 +1,69 @@
 # Changelog
 
+## 3.0.0 - 2026-01-08
+
+### Added (4)
+
+#### REST API
+
+- `orderListOpo()` (`POST /api/v3/orderList/opo`)
+- `orderListOpoco()` (`POST /api/v3/orderList/opoco`)
+
+#### WebSocket API
+
+- `orderListPlaceOpo()` (`orderList.place.opo` method)
+- `orderListPlaceOpoco()` (`orderList.place.opoco` method)
+
+### Changed (5)
+
+#### REST API
+
+- Added parameter `symbolStatus`
+  - affected methods:
+    - `depth()` (`GET /api/v3/depth`)
+    - `ticker()` (`GET /api/v3/ticker`)
+    - `ticker24hr()` (`GET /api/v3/ticker/24hr`)
+    - `tickerBookTicker()` (`GET /api/v3/ticker/bookTicker`)
+    - `tickerPrice()` (`GET /api/v3/ticker/price`)
+    - `tickerTradingDay()` (`GET /api/v3/ticker/tradingDay`)
+- Modified response for `exchangeInfo()` (`GET /api/v3/exchangeInfo`):
+  - `symbols`.items: property `opoAllowed` added
+  - `symbols`.items: item property `opoAllowed` added
+
+#### WebSocket API
+
+- Added parameter `symbolStatus`
+  - affected methods:
+    - `depth()` (`depth` method)
+    - `ticker()` (`ticker` method)
+    - `ticker24hr()` (`ticker.24hr` method)
+    - `tickerBook()` (`ticker.book` method)
+    - `tickerPrice()` (`ticker.price` method)
+    - `tickerTradingDay()` (`ticker.tradingDay` method)
+- Modified response for `exchangeInfo()` (`exchangeInfo` method):
+  - `result`.`symbols`.items: property `opoAllowed` added
+  - `result`.`symbols`.items: item property `opoAllowed` added
+
+- Modified response for `tradesAggregate()` (`trades.aggregate` method):
+  - `result`.items: property `f` added
+  - `result`.items: property `l` added
+  - `result`.items: property `P` deleted
+  - `result`.items: property `L` deleted
+  - `result`.items: property `F` deleted
+  - `result`.items: property `Q` deleted
+  - `result`.items: item property `f` added
+  - `result`.items: item property `l` added
+  - `result`.items: item property `P` deleted
+  - `result`.items: item property `L` deleted
+  - `result`.items: item property `F` deleted
+  - `result`.items: item property `Q` deleted
+
+### Removed (1)
+
+#### WebSocket Streams
+
+- `/!ticker@arr()` (`!ticker@arr` stream)
+
 ## 2.0.0 - 2025-10-21
 
 ### Added (3)

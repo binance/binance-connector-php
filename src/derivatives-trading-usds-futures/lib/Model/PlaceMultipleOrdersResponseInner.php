@@ -78,8 +78,6 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'timeInForce' => 'string',
         'type' => 'string',
         'origType' => 'string',
-        'activatePrice' => 'string',
-        'priceRate' => 'string',
         'updateTime' => 'int',
         'workingType' => 'string',
         'priceProtect' => 'bool',
@@ -117,8 +115,6 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'timeInForce' => null,
         'type' => null,
         'origType' => null,
-        'activatePrice' => null,
-        'priceRate' => null,
         'updateTime' => 'int64',
         'workingType' => null,
         'priceProtect' => null,
@@ -152,8 +148,6 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'timeInForce' => false,
         'type' => false,
         'origType' => false,
-        'activatePrice' => false,
-        'priceRate' => false,
         'updateTime' => false,
         'workingType' => false,
         'priceProtect' => false,
@@ -195,8 +189,6 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'timeInForce' => 'timeInForce',
         'type' => 'type',
         'origType' => 'origType',
-        'activatePrice' => 'activatePrice',
-        'priceRate' => 'priceRate',
         'updateTime' => 'updateTime',
         'workingType' => 'workingType',
         'priceProtect' => 'priceProtect',
@@ -230,8 +222,6 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'timeInForce' => 'setTimeInForce',
         'type' => 'setType',
         'origType' => 'setOrigType',
-        'activatePrice' => 'setActivatePrice',
-        'priceRate' => 'setPriceRate',
         'updateTime' => 'setUpdateTime',
         'workingType' => 'setWorkingType',
         'priceProtect' => 'setPriceProtect',
@@ -265,8 +255,6 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'timeInForce' => 'getTimeInForce',
         'type' => 'getType',
         'origType' => 'getOrigType',
-        'activatePrice' => 'getActivatePrice',
-        'priceRate' => 'getPriceRate',
         'updateTime' => 'getUpdateTime',
         'workingType' => 'getWorkingType',
         'priceProtect' => 'getPriceProtect',
@@ -309,8 +297,6 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         $this->setIfExists('timeInForce', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('origType', $data ?? [], null);
-        $this->setIfExists('activatePrice', $data ?? [], null);
-        $this->setIfExists('priceRate', $data ?? [], null);
         $this->setIfExists('updateTime', $data ?? [], null);
         $this->setIfExists('workingType', $data ?? [], null);
         $this->setIfExists('priceProtect', $data ?? [], null);
@@ -904,60 +890,6 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable origType cannot be null');
         }
         $this->container['origType'] = $origType;
-
-        return $this;
-    }
-
-    /**
-     * Gets activatePrice.
-     *
-     * @return null|string
-     */
-    public function getActivatePrice()
-    {
-        return $this->container['activatePrice'];
-    }
-
-    /**
-     * Sets activatePrice.
-     *
-     * @param null|string $activatePrice activatePrice
-     *
-     * @return self
-     */
-    public function setActivatePrice($activatePrice)
-    {
-        if (is_null($activatePrice)) {
-            throw new \InvalidArgumentException('non-nullable activatePrice cannot be null');
-        }
-        $this->container['activatePrice'] = $activatePrice;
-
-        return $this;
-    }
-
-    /**
-     * Gets priceRate.
-     *
-     * @return null|string
-     */
-    public function getPriceRate()
-    {
-        return $this->container['priceRate'];
-    }
-
-    /**
-     * Sets priceRate.
-     *
-     * @param null|string $priceRate priceRate
-     *
-     * @return self
-     */
-    public function setPriceRate($priceRate)
-    {
-        if (is_null($priceRate)) {
-            throw new \InvalidArgumentException('non-nullable priceRate cannot be null');
-        }
-        $this->container['priceRate'] = $priceRate;
 
         return $this;
     }

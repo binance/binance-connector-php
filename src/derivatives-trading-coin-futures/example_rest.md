@@ -118,6 +118,8 @@
 
 [/dapi/v1/order](https://developers.binance.com/docs/derivatives/coin-margined-futures/trade/rest-api/New-Order) - newOrder - [NewOrderExample.php:31](/examples/derivatives-trading-coin-futures/trade/NewOrderExample.php#L31)
 
+[/dapi/v1/batchOrders](https://developers.binance.com/docs/derivatives/coin-margined-futures/trade/rest-api/Place-Multiple-Orders) - placeMultipleOrders - [PlaceMultipleOrdersExample.php:27](/examples/derivatives-trading-coin-futures/trade/PlaceMultipleOrdersExample.php#L27)
+
 [/dapi/v1/adlQuantile](https://developers.binance.com/docs/derivatives/coin-margined-futures/trade/rest-api/Position-ADL-Quantile-Estimation) - positionAdlQuantileEstimation - [PositionAdlQuantileEstimationExample.php:26](/examples/derivatives-trading-coin-futures/trade/PositionAdlQuantileEstimationExample.php#L26)
 
 [/dapi/v1/positionRisk](https://developers.binance.com/docs/derivatives/coin-margined-futures/trade/rest-api/Position-Information) - positionInformation - [PositionInformationExample.php:27](/examples/derivatives-trading-coin-futures/trade/PositionInformationExample.php#L27)

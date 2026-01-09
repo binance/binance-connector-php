@@ -74,6 +74,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
         'icebergAllowed' => 'bool',
         'ocoAllowed' => 'bool',
         'otoAllowed' => 'bool',
+        'opoAllowed' => 'bool',
         'quoteOrderQtyMarketAllowed' => 'bool',
         'allowTrailingStop' => 'bool',
         'cancelReplaceAllowed' => 'bool',
@@ -111,6 +112,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
         'icebergAllowed' => null,
         'ocoAllowed' => null,
         'otoAllowed' => null,
+        'opoAllowed' => null,
         'quoteOrderQtyMarketAllowed' => null,
         'allowTrailingStop' => null,
         'cancelReplaceAllowed' => null,
@@ -144,6 +146,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
         'icebergAllowed' => false,
         'ocoAllowed' => false,
         'otoAllowed' => false,
+        'opoAllowed' => false,
         'quoteOrderQtyMarketAllowed' => false,
         'allowTrailingStop' => false,
         'cancelReplaceAllowed' => false,
@@ -185,6 +188,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
         'icebergAllowed' => 'icebergAllowed',
         'ocoAllowed' => 'ocoAllowed',
         'otoAllowed' => 'otoAllowed',
+        'opoAllowed' => 'opoAllowed',
         'quoteOrderQtyMarketAllowed' => 'quoteOrderQtyMarketAllowed',
         'allowTrailingStop' => 'allowTrailingStop',
         'cancelReplaceAllowed' => 'cancelReplaceAllowed',
@@ -218,6 +222,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
         'icebergAllowed' => 'setIcebergAllowed',
         'ocoAllowed' => 'setOcoAllowed',
         'otoAllowed' => 'setOtoAllowed',
+        'opoAllowed' => 'setOpoAllowed',
         'quoteOrderQtyMarketAllowed' => 'setQuoteOrderQtyMarketAllowed',
         'allowTrailingStop' => 'setAllowTrailingStop',
         'cancelReplaceAllowed' => 'setCancelReplaceAllowed',
@@ -251,6 +256,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
         'icebergAllowed' => 'getIcebergAllowed',
         'ocoAllowed' => 'getOcoAllowed',
         'otoAllowed' => 'getOtoAllowed',
+        'opoAllowed' => 'getOpoAllowed',
         'quoteOrderQtyMarketAllowed' => 'getQuoteOrderQtyMarketAllowed',
         'allowTrailingStop' => 'getAllowTrailingStop',
         'cancelReplaceAllowed' => 'getCancelReplaceAllowed',
@@ -293,6 +299,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
         $this->setIfExists('icebergAllowed', $data ?? [], null);
         $this->setIfExists('ocoAllowed', $data ?? [], null);
         $this->setIfExists('otoAllowed', $data ?? [], null);
+        $this->setIfExists('opoAllowed', $data ?? [], null);
         $this->setIfExists('quoteOrderQtyMarketAllowed', $data ?? [], null);
         $this->setIfExists('allowTrailingStop', $data ?? [], null);
         $this->setIfExists('cancelReplaceAllowed', $data ?? [], null);
@@ -782,6 +789,33 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable otoAllowed cannot be null');
         }
         $this->container['otoAllowed'] = $otoAllowed;
+
+        return $this;
+    }
+
+    /**
+     * Gets opoAllowed.
+     *
+     * @return null|bool
+     */
+    public function getOpoAllowed()
+    {
+        return $this->container['opoAllowed'];
+    }
+
+    /**
+     * Sets opoAllowed.
+     *
+     * @param null|bool $opoAllowed opoAllowed
+     *
+     * @return self
+     */
+    public function setOpoAllowed($opoAllowed)
+    {
+        if (is_null($opoAllowed)) {
+            throw new \InvalidArgumentException('non-nullable opoAllowed cannot be null');
+        }
+        $this->container['opoAllowed'] = $opoAllowed;
 
         return $this;
     }

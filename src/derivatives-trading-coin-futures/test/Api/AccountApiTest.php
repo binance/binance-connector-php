@@ -266,7 +266,7 @@ class AccountApiTest extends TestCase
         $incomeType = '';
         $startTime = 1623319461670;
         $endTime = 1641782889000;
-        $page = null;
+        $page = 1;
         $limit = 100;
         $recvWindow = 5000;
         $response = $this->getApiMock($request)->getIncomeHistory($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
@@ -275,7 +275,7 @@ class AccountApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/dapi/v1/income', $request->getUri()->getPath());
-        self::assertEquals('23689f3330f331d9db9c46c9dc87d2217486442f1746adfdda02c10e3dbde13e', $queryMap['signature']);
+        self::assertEquals('f4ba94b3eb6a4cfce12b5e0adaadfa8a0a23f5a78b32f9be4688ffe3fd1dee67', $queryMap['signature']);
     }
 
     /**

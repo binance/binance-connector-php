@@ -113,6 +113,29 @@ class UserInformationApiTest extends TestCase
     }
 
     /**
+     * Test case for getVIPLoanAccruedInterest.
+     *
+     * Get VIP Loan Accrued Interest (USER_DATA).
+     */
+    public function testGetVIPLoanAccruedInterest()
+    {
+        $orderId = 1;
+        $loanCoin = '';
+        $startTime = 1623319461670;
+        $endTime = 1641782889000;
+        $current = 1;
+        $limit = 10;
+        $recvWindow = 5000;
+        $response = $this->getApiMock($request)->getVIPLoanAccruedInterest($orderId, $loanCoin, $startTime, $endTime, $current, $limit, $recvWindow);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/sapi/v1/loan/vip/accruedInterest', $request->getUri()->getPath());
+        self::assertEquals('f932d0377d45b6ce9ae8466b74e503625c140279cf19caf5e8577a54bd1110bf', $queryMap['signature']);
+    }
+
+    /**
      * Test case for getVIPLoanOngoingOrders.
      *
      * Get VIP Loan Ongoing Orders(USER_DATA).

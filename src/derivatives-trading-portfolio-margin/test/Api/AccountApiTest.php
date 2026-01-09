@@ -166,7 +166,7 @@ class AccountApiTest extends TestCase
     public function testChangeAutoRepayFuturesStatus()
     {
         $changeAutoRepayFuturesStatusRequest = new ChangeAutoRepayFuturesStatusRequest();
-        $changeAutoRepayFuturesStatusRequest->setAutoRepay('');
+        $changeAutoRepayFuturesStatusRequest->setAutoRepay('true');
 
         $response = $this->getApiMock($request)->changeAutoRepayFuturesStatus($changeAutoRepayFuturesStatusRequest);
 
@@ -174,7 +174,7 @@ class AccountApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/papi/v1/repay-futures-switch', $request->getUri()->getPath());
-        self::assertEquals('da82fc30a786fb2fea807a0c84e13082bdf837e1bcdd4ec170d79b99f48d8386', $queryMap['signature']);
+        self::assertEquals('fd3d4e144a7799fdb415fcd1c9a36a08e5600f7bb8a2019be6f141e3b0169ac9', $queryMap['signature']);
     }
 
     /**
@@ -372,7 +372,7 @@ class AccountApiTest extends TestCase
         $incomeType = '';
         $startTime = 1623319461670;
         $endTime = 1641782889000;
-        $page = null;
+        $page = 1;
         $limit = 100;
         $recvWindow = 5000;
         $response = $this->getApiMock($request)->getCmIncomeHistory($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
@@ -381,7 +381,7 @@ class AccountApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/papi/v1/cm/income', $request->getUri()->getPath());
-        self::assertEquals('23689f3330f331d9db9c46c9dc87d2217486442f1746adfdda02c10e3dbde13e', $queryMap['signature']);
+        self::assertEquals('f4ba94b3eb6a4cfce12b5e0adaadfa8a0a23f5a78b32f9be4688ffe3fd1dee67', $queryMap['signature']);
     }
 
     /**
@@ -580,7 +580,7 @@ class AccountApiTest extends TestCase
         $incomeType = '';
         $startTime = 1623319461670;
         $endTime = 1641782889000;
-        $page = null;
+        $page = 1;
         $limit = 100;
         $recvWindow = 5000;
         $response = $this->getApiMock($request)->getUmIncomeHistory($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
@@ -589,7 +589,7 @@ class AccountApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/papi/v1/um/income', $request->getUri()->getPath());
-        self::assertEquals('23689f3330f331d9db9c46c9dc87d2217486442f1746adfdda02c10e3dbde13e', $queryMap['signature']);
+        self::assertEquals('f4ba94b3eb6a4cfce12b5e0adaadfa8a0a23f5a78b32f9be4688ffe3fd1dee67', $queryMap['signature']);
     }
 
     /**

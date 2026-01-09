@@ -13,14 +13,12 @@ All URIs are relative to https://api.binance.com, except if the operation define
 | [**getPortfolioMarginProAccountInfo()**](AccountApi.md#getPortfolioMarginProAccountInfo) | **GET** /sapi/v1/portfolio/account | Get Portfolio Margin Pro Account Info(USER_DATA) |
 | [**getPortfolioMarginProSpanAccountInfo()**](AccountApi.md#getPortfolioMarginProSpanAccountInfo) | **GET** /sapi/v2/portfolio/account | Get Portfolio Margin Pro SPAN Account Info(USER_DATA) |
 | [**getTransferableEarnAssetBalanceForPortfolioMargin()**](AccountApi.md#getTransferableEarnAssetBalanceForPortfolioMargin) | **GET** /sapi/v1/portfolio/earn-asset-balance | Get Transferable Earn Asset Balance for Portfolio Margin (USER_DATA) |
-| [**mintBfusdForPortfolioMargin()**](AccountApi.md#mintBfusdForPortfolioMargin) | **POST** /sapi/v1/portfolio/mint | Mint BFUSD for Portfolio Margin(TRADE) |
 | [**portfolioMarginProBankruptcyLoanRepay()**](AccountApi.md#portfolioMarginProBankruptcyLoanRepay) | **POST** /sapi/v1/portfolio/repay | Portfolio Margin Pro Bankruptcy Loan Repay |
 | [**queryPortfolioMarginProBankruptcyLoanAmount()**](AccountApi.md#queryPortfolioMarginProBankruptcyLoanAmount) | **GET** /sapi/v1/portfolio/pmLoan | Query Portfolio Margin Pro Bankruptcy Loan Amount(USER_DATA) |
 | [**queryPortfolioMarginProBankruptcyLoanRepayHistory()**](AccountApi.md#queryPortfolioMarginProBankruptcyLoanRepayHistory) | **GET** /sapi/v1/portfolio/pmloan-history | Query Portfolio Margin Pro Bankruptcy Loan Repay History(USER_DATA) |
 | [**queryPortfolioMarginProNegativeBalanceInterestHistory()**](AccountApi.md#queryPortfolioMarginProNegativeBalanceInterestHistory) | **GET** /sapi/v1/portfolio/interest-history | Query Portfolio Margin Pro Negative Balance Interest History(USER_DATA) |
-| [**redeemBfusdForPortfolioMargin()**](AccountApi.md#redeemBfusdForPortfolioMargin) | **POST** /sapi/v1/portfolio/redeem | Redeem BFUSD for Portfolio Margin(TRADE) |
 | [**repayFuturesNegativeBalance()**](AccountApi.md#repayFuturesNegativeBalance) | **POST** /sapi/v1/portfolio/repay-futures-negative-balance | Repay futures Negative Balance(USER_DATA) |
-| [**transferLdusdtForPortfolioMargin()**](AccountApi.md#transferLdusdtForPortfolioMargin) | **POST** /sapi/v1/portfolio/earn-asset-transfer | Transfer LDUSDT for Portfolio Margin(TRADE) |
+| [**transferLdusdtRwusdForPortfolioMargin()**](AccountApi.md#transferLdusdtRwusdForPortfolioMargin) | **POST** /sapi/v1/portfolio/earn-asset-transfer | Transfer LDUSDT/RWUSD for Portfolio Margin(TRADE) |
 
 
 ## `bnbTransfer()`
@@ -533,62 +531,6 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `mintBfusdForPortfolioMargin()`
-
-```php
-mintBfusdForPortfolioMargin($mintBfusdForPortfolioMarginRequest): \Binance\Client\DerivativesTradingPortfolioMarginPro\Model\MintBfusdForPortfolioMarginResponse
-```
-
-Mint BFUSD for Portfolio Margin(TRADE)
-
-Mint BFUSD for all types of Portfolio Margin account  Weight: 1500
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new Binance\Client\DerivativesTradingPortfolioMarginPro\Api\AccountApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$mintBfusdForPortfolioMarginRequest = new \Binance\Client\DerivativesTradingPortfolioMarginPro\Model\MintBfusdForPortfolioMarginRequest(); // \Binance\Client\DerivativesTradingPortfolioMarginPro\Model\MintBfusdForPortfolioMarginRequest
-
-try {
-    $result = $apiInstance->mintBfusdForPortfolioMargin($mintBfusdForPortfolioMarginRequest);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AccountApi->mintBfusdForPortfolioMargin: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **mintBfusdForPortfolioMarginRequest** | [**\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\MintBfusdForPortfolioMarginRequest**](../Model/MintBfusdForPortfolioMarginRequest.md)|  | |
-
-### Return type
-
-[**\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\MintBfusdForPortfolioMarginResponse**](../Model/MintBfusdForPortfolioMarginResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `portfolioMarginProBankruptcyLoanRepay()`
 
 ```php
@@ -829,62 +771,6 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `redeemBfusdForPortfolioMargin()`
-
-```php
-redeemBfusdForPortfolioMargin($redeemBfusdForPortfolioMarginRequest): \Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RedeemBfusdForPortfolioMarginResponse
-```
-
-Redeem BFUSD for Portfolio Margin(TRADE)
-
-Redeem BFUSD for all types of Portfolio Margin account  Weight: 1500
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new Binance\Client\DerivativesTradingPortfolioMarginPro\Api\AccountApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$redeemBfusdForPortfolioMarginRequest = new \Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RedeemBfusdForPortfolioMarginRequest(); // \Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RedeemBfusdForPortfolioMarginRequest
-
-try {
-    $result = $apiInstance->redeemBfusdForPortfolioMargin($redeemBfusdForPortfolioMarginRequest);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AccountApi->redeemBfusdForPortfolioMargin: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **redeemBfusdForPortfolioMarginRequest** | [**\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RedeemBfusdForPortfolioMarginRequest**](../Model/RedeemBfusdForPortfolioMarginRequest.md)|  | |
-
-### Return type
-
-[**\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RedeemBfusdForPortfolioMarginResponse**](../Model/RedeemBfusdForPortfolioMarginResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `repayFuturesNegativeBalance()`
 
 ```php
@@ -941,15 +827,15 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `transferLdusdtForPortfolioMargin()`
+## `transferLdusdtRwusdForPortfolioMargin()`
 
 ```php
-transferLdusdtForPortfolioMargin($transferLdusdtForPortfolioMarginRequest): \Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtForPortfolioMarginResponse
+transferLdusdtRwusdForPortfolioMargin($transferLdusdtRwusdForPortfolioMarginRequest): \Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginResponse
 ```
 
-Transfer LDUSDT for Portfolio Margin(TRADE)
+Transfer LDUSDT/RWUSD for Portfolio Margin(TRADE)
 
-Transfer LDUSDT as collateral for all types of Portfolio Margin account  Weight: 1500
+Transfer LDUSDT/RWUSD as collateral for all types of Portfolio Margin account  Weight: 1500
 
 ### Example
 
@@ -964,13 +850,13 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMarginPro\Api\Accou
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$transferLdusdtForPortfolioMarginRequest = new \Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtForPortfolioMarginRequest(); // \Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtForPortfolioMarginRequest
+$transferLdusdtRwusdForPortfolioMarginRequest = new \Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginRequest(); // \Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginRequest
 
 try {
-    $result = $apiInstance->transferLdusdtForPortfolioMargin($transferLdusdtForPortfolioMarginRequest);
+    $result = $apiInstance->transferLdusdtRwusdForPortfolioMargin($transferLdusdtRwusdForPortfolioMarginRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AccountApi->transferLdusdtForPortfolioMargin: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AccountApi->transferLdusdtRwusdForPortfolioMargin: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -978,11 +864,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **transferLdusdtForPortfolioMarginRequest** | [**\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtForPortfolioMarginRequest**](../Model/TransferLdusdtForPortfolioMarginRequest.md)|  | |
+| **transferLdusdtRwusdForPortfolioMarginRequest** | [**\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginRequest**](../Model/TransferLdusdtRwusdForPortfolioMarginRequest.md)|  | |
 
 ### Return type
 
-[**\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtForPortfolioMarginResponse**](../Model/TransferLdusdtForPortfolioMarginResponse.md)
+[**\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginResponse**](../Model/TransferLdusdtRwusdForPortfolioMarginResponse.md)
 
 ### Authorization
 
