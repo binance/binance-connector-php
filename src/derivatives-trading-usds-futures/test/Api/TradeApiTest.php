@@ -38,10 +38,12 @@ use Binance\Client\DerivativesTradingUsdsFutures\Model\ChangeInitialLeverageRequ
 use Binance\Client\DerivativesTradingUsdsFutures\Model\ChangeMarginTypeRequest;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\ChangeMultiAssetsModeRequest;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\ChangePositionModeRequest;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractRequest;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\MarginType;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\ModifyIsolatedPositionMarginRequest;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\ModifyMultipleOrdersRequest;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\ModifyOrderRequest;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\NewAlgoOrderRequest;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\NewOrderRequest;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\PlaceMultipleOrdersRequest;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\Side;
@@ -172,6 +174,43 @@ class TradeApiTest extends TestCase
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/fapi/v1/countdownCancelAll', $request->getUri()->getPath());
         self::assertEquals('ffeb79f9ed5e4cabe07e39725c15ed03fad830cb2a86d4aae1b7081c89aa7150', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for cancelAlgoOrder.
+     *
+     * Cancel Algo Order (TRADE).
+     */
+    public function testCancelAlgoOrder()
+    {
+        $algoid = null;
+        $clientalgoid = '';
+        $recvWindow = 5000;
+        $response = $this->getApiMock($request)->cancelAlgoOrder($algoid, $clientalgoid, $recvWindow);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/fapi/v1/algoOrder', $request->getUri()->getPath());
+        self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for cancelAllAlgoOpenOrders.
+     *
+     * Cancel All Algo Open Orders (TRADE).
+     */
+    public function testCancelAllAlgoOpenOrders()
+    {
+        $symbol = '';
+        $recvWindow = 5000;
+        $response = $this->getApiMock($request)->cancelAllAlgoOpenOrders($symbol, $recvWindow);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/fapi/v1/algoOpenOrders', $request->getUri()->getPath());
+        self::assertEquals('db1a455af0a2e82b4ec79595d994eb2e7f6b8a93c91a67a2aa59e2b2eae4bc68', $queryMap['signature']);
     }
 
     /**
@@ -311,6 +350,26 @@ class TradeApiTest extends TestCase
     }
 
     /**
+     * Test case for currentAllAlgoOpenOrders.
+     *
+     * Current All Algo Open Orders (USER_DATA).
+     */
+    public function testCurrentAllAlgoOpenOrders()
+    {
+        $algoType = '';
+        $symbol = '';
+        $algoId = 1;
+        $recvWindow = 5000;
+        $response = $this->getApiMock($request)->currentAllAlgoOpenOrders($algoType, $symbol, $algoId, $recvWindow);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/fapi/v1/openAlgoOrders', $request->getUri()->getPath());
+        self::assertEquals('4dcc675276dcc7a5eddf3f11f98e221dc22b447b227be14ec73a51c61602f2a5', $queryMap['signature']);
+    }
+
+    /**
      * Test case for currentAllOpenOrders.
      *
      * Current All Open Orders (USER_DATA).
@@ -326,6 +385,24 @@ class TradeApiTest extends TestCase
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/fapi/v1/openOrders', $request->getUri()->getPath());
         self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for futuresTradfiPerpsContract.
+     *
+     * Futures TradFi Perps Contract(USER_DATA).
+     */
+    public function testFuturesTradfiPerpsContract()
+    {
+        $futuresTradfiPerpsContractRequest = new FuturesTradfiPerpsContractRequest();
+
+        $response = $this->getApiMock($request)->futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/fapi/v1/stock/contract', $request->getUri()->getPath());
+        self::assertEquals('dc0def720e795be0f84b02a8fa211ecc3a27dd06ffdbd287a679f1321807f820', $queryMap['signature']);
     }
 
     /**
@@ -436,6 +513,28 @@ class TradeApiTest extends TestCase
     }
 
     /**
+     * Test case for newAlgoOrder.
+     *
+     * New Algo Order(TRADE).
+     */
+    public function testNewAlgoOrder()
+    {
+        $newAlgoOrderRequest = new NewAlgoOrderRequest();
+        $newAlgoOrderRequest->setAlgoType('');
+        $newAlgoOrderRequest->setSymbol('');
+        $newAlgoOrderRequest->setSide(Side::BUY);
+        $newAlgoOrderRequest->setType('');
+
+        $response = $this->getApiMock($request)->newAlgoOrder($newAlgoOrderRequest);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/fapi/v1/algoOrder', $request->getUri()->getPath());
+        self::assertEquals('2cb0badbb7aa9dcc202c9eb7a490346d9b1444ead428cc697587340c4ffefff0', $queryMap['signature']);
+    }
+
+    /**
      * Test case for newOrder.
      *
      * New Order(TRADE).
@@ -454,6 +553,25 @@ class TradeApiTest extends TestCase
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/fapi/v1/order', $request->getUri()->getPath());
         self::assertEquals('2cb0badbb7aa9dcc202c9eb7a490346d9b1444ead428cc697587340c4ffefff0', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for placeMultipleOrders.
+     *
+     * Place Multiple Orders(TRADE).
+     */
+    public function testPlaceMultipleOrders()
+    {
+        $placeMultipleOrdersRequest = new PlaceMultipleOrdersRequest();
+        $placeMultipleOrdersRequest->setBatchOrders(new BatchOrdersPlaceMultipleOrders());
+
+        $response = $this->getApiMock($request)->placeMultipleOrders($placeMultipleOrdersRequest);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/fapi/v1/batchOrders', $request->getUri()->getPath());
+        self::assertEquals('53668e00dc92eb93de0b253c301e9fc0c20042b13db384a0ad94b38688a5a84c', $queryMap['signature']);
     }
 
     /**
@@ -508,6 +626,48 @@ class TradeApiTest extends TestCase
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/fapi/v3/positionRisk', $request->getUri()->getPath());
         self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for queryAlgoOrder.
+     *
+     * Query Algo Order (USER_DATA).
+     */
+    public function testQueryAlgoOrder()
+    {
+        $algoId = 1;
+        $clientAlgoId = '1';
+        $recvWindow = 5000;
+        $response = $this->getApiMock($request)->queryAlgoOrder($algoId, $clientAlgoId, $recvWindow);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/fapi/v1/algoOrder', $request->getUri()->getPath());
+        self::assertEquals('45846156242c5b783dfbafe56f177eb51e9d45a16dcb15e667e825d16d7333a2', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for queryAllAlgoOrders.
+     *
+     * Query All Algo Orders (USER_DATA).
+     */
+    public function testQueryAllAlgoOrders()
+    {
+        $symbol = '';
+        $algoId = 1;
+        $startTime = 1623319461670;
+        $endTime = 1641782889000;
+        $page = 1;
+        $limit = 100;
+        $recvWindow = 5000;
+        $response = $this->getApiMock($request)->queryAllAlgoOrders($symbol, $algoId, $startTime, $endTime, $page, $limit, $recvWindow);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/fapi/v1/allAlgoOrders', $request->getUri()->getPath());
+        self::assertEquals('18e6c5ac747aa6e137469fc36cf46ee877229de205dc907b71238333651056ed', $queryMap['signature']);
     }
 
     /**

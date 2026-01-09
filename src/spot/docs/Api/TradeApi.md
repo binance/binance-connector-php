@@ -11,6 +11,8 @@ All URIs are relative to https://api.binance.com, except if the operation define
 | [**orderAmendKeepPriority()**](TradeApi.md#orderAmendKeepPriority) | **PUT** /api/v3/order/amend/keepPriority | Order Amend Keep Priority |
 | [**orderCancelReplace()**](TradeApi.md#orderCancelReplace) | **POST** /api/v3/order/cancelReplace | Cancel an Existing Order and Send a New Order |
 | [**orderListOco()**](TradeApi.md#orderListOco) | **POST** /api/v3/orderList/oco | New Order list - OCO |
+| [**orderListOpo()**](TradeApi.md#orderListOpo) | **POST** /api/v3/orderList/opo | New Order List - OPO |
+| [**orderListOpoco()**](TradeApi.md#orderListOpoco) | **POST** /api/v3/orderList/opoco | New Order List - OPOCO |
 | [**orderListOto()**](TradeApi.md#orderListOto) | **POST** /api/v3/orderList/oto | New Order list - OTO |
 | [**orderListOtoco()**](TradeApi.md#orderListOtoco) | **POST** /api/v3/orderList/otoco | New Order list - OTOCO |
 | [**orderOco()**](TradeApi.md#orderOco) | **POST** /api/v3/order/oco | New OCO - Deprecated |
@@ -417,6 +419,118 @@ try {
 ### Return type
 
 [**\Binance\Client\Spot\Model\OrderListOcoResponse**](../Model/OrderListOcoResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `orderListOpo()`
+
+```php
+orderListOpo($orderListOpoRequest): \Binance\Client\Spot\Model\OrderListOpoResponse
+```
+
+New Order List - OPO
+
+Place an [OPO](./faqs/opo.md).  * OPOs add 2 orders to the EXCHANGE_MAX_NUM_ORDERS filter and MAX_NUM_ORDERS filter. Weight: 1  Unfilled Order Count: 2
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\Spot\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$orderListOpoRequest = new \Binance\Client\Spot\Model\OrderListOpoRequest(); // \Binance\Client\Spot\Model\OrderListOpoRequest
+
+try {
+    $result = $apiInstance->orderListOpo($orderListOpoRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->orderListOpo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **orderListOpoRequest** | [**\Binance\Client\Spot\Model\OrderListOpoRequest**](../Model/OrderListOpoRequest.md)|  | |
+
+### Return type
+
+[**\Binance\Client\Spot\Model\OrderListOpoResponse**](../Model/OrderListOpoResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `orderListOpoco()`
+
+```php
+orderListOpoco($orderListOpocoRequest): \Binance\Client\Spot\Model\OrderListOpocoResponse
+```
+
+New Order List - OPOCO
+
+Place an [OPOCO](./faqs/opo.md). Weight: 1  Unfilled Order Count: 3
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\Spot\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$orderListOpocoRequest = new \Binance\Client\Spot\Model\OrderListOpocoRequest(); // \Binance\Client\Spot\Model\OrderListOpocoRequest
+
+try {
+    $result = $apiInstance->orderListOpoco($orderListOpocoRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->orderListOpoco: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **orderListOpocoRequest** | [**\Binance\Client\Spot\Model\OrderListOpocoRequest**](../Model/OrderListOpocoRequest.md)|  | |
+
+### Return type
+
+[**\Binance\Client\Spot\Model\OrderListOpocoResponse**](../Model/OrderListOpocoResponse.md)
 
 ### Authorization
 

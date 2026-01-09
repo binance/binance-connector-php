@@ -21,7 +21,7 @@ function depositHistoryV2Example()
     $configurationBuilder = WalletRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
-    $depositId = '1';
+    $depositId = 1;
     $txId = '1';
     $network = '';
     $coin = '';

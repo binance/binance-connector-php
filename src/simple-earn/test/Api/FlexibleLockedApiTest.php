@@ -532,7 +532,7 @@ class FlexibleLockedApiTest extends TestCase
     {
         $setLockedProductRedeemOptionRequest = new SetLockedProductRedeemOptionRequest();
         $setLockedProductRedeemOptionRequest->setPositionId('1');
-        $setLockedProductRedeemOptionRequest->setRedeemTo('');
+        $setLockedProductRedeemOptionRequest->setRedeemTo('SPOT');
 
         $response = $this->getApiMock($request)->setLockedProductRedeemOption($setLockedProductRedeemOptionRequest);
 
@@ -540,7 +540,7 @@ class FlexibleLockedApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/simple-earn/locked/setRedeemOption', $request->getUri()->getPath());
-        self::assertEquals('05345189012e725ecf394a569c76b468c3a9d6377f5b644a1b90e1551920ce91', $queryMap['signature']);
+        self::assertEquals('54b4c36882fe7b0b06bb851e208c082cdc9e6d0ca526a21cbb323a3659e02a2e', $queryMap['signature']);
     }
 
     /**

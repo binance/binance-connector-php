@@ -65,11 +65,21 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'symbol' => 'string',
         'price' => 'string',
         'quantity' => 'string',
+        'executedQty' => 'string',
         'side' => 'string',
         'type' => 'string',
+        'timeInForce' => 'string',
         'reduceOnly' => 'bool',
-        'postOnly' => 'bool',
+        'createTime' => 'int',
+        'updateTime' => 'int',
+        'status' => 'string',
+        'avgPrice' => 'string',
+        'source' => 'string',
         'clientOrderId' => 'string',
+        'priceScale' => 'int',
+        'quantityScale' => 'int',
+        'optionSide' => 'string',
+        'quoteAsset' => 'string',
         'mmp' => 'bool',
     ];
 
@@ -87,11 +97,21 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'symbol' => null,
         'price' => null,
         'quantity' => null,
+        'executedQty' => null,
         'side' => null,
         'type' => null,
+        'timeInForce' => null,
         'reduceOnly' => null,
-        'postOnly' => null,
+        'createTime' => 'int64',
+        'updateTime' => 'int64',
+        'status' => null,
+        'avgPrice' => null,
+        'source' => null,
         'clientOrderId' => null,
+        'priceScale' => 'int64',
+        'quantityScale' => 'int64',
+        'optionSide' => null,
+        'quoteAsset' => null,
         'mmp' => null,
     ];
 
@@ -105,11 +125,21 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'symbol' => false,
         'price' => false,
         'quantity' => false,
+        'executedQty' => false,
         'side' => false,
         'type' => false,
+        'timeInForce' => false,
         'reduceOnly' => false,
-        'postOnly' => false,
+        'createTime' => false,
+        'updateTime' => false,
+        'status' => false,
+        'avgPrice' => false,
+        'source' => false,
         'clientOrderId' => false,
+        'priceScale' => false,
+        'quantityScale' => false,
+        'optionSide' => false,
+        'quoteAsset' => false,
         'mmp' => false,
     ];
 
@@ -131,11 +161,21 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'symbol' => 'symbol',
         'price' => 'price',
         'quantity' => 'quantity',
+        'executedQty' => 'executedQty',
         'side' => 'side',
         'type' => 'type',
+        'timeInForce' => 'timeInForce',
         'reduceOnly' => 'reduceOnly',
-        'postOnly' => 'postOnly',
+        'createTime' => 'createTime',
+        'updateTime' => 'updateTime',
+        'status' => 'status',
+        'avgPrice' => 'avgPrice',
+        'source' => 'source',
         'clientOrderId' => 'clientOrderId',
+        'priceScale' => 'priceScale',
+        'quantityScale' => 'quantityScale',
+        'optionSide' => 'optionSide',
+        'quoteAsset' => 'quoteAsset',
         'mmp' => 'mmp',
     ];
 
@@ -149,11 +189,21 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'symbol' => 'setSymbol',
         'price' => 'setPrice',
         'quantity' => 'setQuantity',
+        'executedQty' => 'setExecutedQty',
         'side' => 'setSide',
         'type' => 'setType',
+        'timeInForce' => 'setTimeInForce',
         'reduceOnly' => 'setReduceOnly',
-        'postOnly' => 'setPostOnly',
+        'createTime' => 'setCreateTime',
+        'updateTime' => 'setUpdateTime',
+        'status' => 'setStatus',
+        'avgPrice' => 'setAvgPrice',
+        'source' => 'setSource',
         'clientOrderId' => 'setClientOrderId',
+        'priceScale' => 'setPriceScale',
+        'quantityScale' => 'setQuantityScale',
+        'optionSide' => 'setOptionSide',
+        'quoteAsset' => 'setQuoteAsset',
         'mmp' => 'setMmp',
     ];
 
@@ -167,11 +217,21 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'symbol' => 'getSymbol',
         'price' => 'getPrice',
         'quantity' => 'getQuantity',
+        'executedQty' => 'getExecutedQty',
         'side' => 'getSide',
         'type' => 'getType',
+        'timeInForce' => 'getTimeInForce',
         'reduceOnly' => 'getReduceOnly',
-        'postOnly' => 'getPostOnly',
+        'createTime' => 'getCreateTime',
+        'updateTime' => 'getUpdateTime',
+        'status' => 'getStatus',
+        'avgPrice' => 'getAvgPrice',
+        'source' => 'getSource',
         'clientOrderId' => 'getClientOrderId',
+        'priceScale' => 'getPriceScale',
+        'quantityScale' => 'getQuantityScale',
+        'optionSide' => 'getOptionSide',
+        'quoteAsset' => 'getQuoteAsset',
         'mmp' => 'getMmp',
     ];
 
@@ -194,11 +254,21 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         $this->setIfExists('symbol', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
+        $this->setIfExists('executedQty', $data ?? [], null);
         $this->setIfExists('side', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('timeInForce', $data ?? [], null);
         $this->setIfExists('reduceOnly', $data ?? [], null);
-        $this->setIfExists('postOnly', $data ?? [], null);
+        $this->setIfExists('createTime', $data ?? [], null);
+        $this->setIfExists('updateTime', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('avgPrice', $data ?? [], null);
+        $this->setIfExists('source', $data ?? [], null);
         $this->setIfExists('clientOrderId', $data ?? [], null);
+        $this->setIfExists('priceScale', $data ?? [], null);
+        $this->setIfExists('quantityScale', $data ?? [], null);
+        $this->setIfExists('optionSide', $data ?? [], null);
+        $this->setIfExists('quoteAsset', $data ?? [], null);
         $this->setIfExists('mmp', $data ?? [], null);
     }
 
@@ -439,6 +509,33 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
     }
 
     /**
+     * Gets executedQty.
+     *
+     * @return null|string
+     */
+    public function getExecutedQty()
+    {
+        return $this->container['executedQty'];
+    }
+
+    /**
+     * Sets executedQty.
+     *
+     * @param null|string $executedQty executedQty
+     *
+     * @return self
+     */
+    public function setExecutedQty($executedQty)
+    {
+        if (is_null($executedQty)) {
+            throw new \InvalidArgumentException('non-nullable executedQty cannot be null');
+        }
+        $this->container['executedQty'] = $executedQty;
+
+        return $this;
+    }
+
+    /**
      * Gets side.
      *
      * @return null|string
@@ -493,6 +590,33 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
     }
 
     /**
+     * Gets timeInForce.
+     *
+     * @return null|string
+     */
+    public function getTimeInForce()
+    {
+        return $this->container['timeInForce'];
+    }
+
+    /**
+     * Sets timeInForce.
+     *
+     * @param null|string $timeInForce timeInForce
+     *
+     * @return self
+     */
+    public function setTimeInForce($timeInForce)
+    {
+        if (is_null($timeInForce)) {
+            throw new \InvalidArgumentException('non-nullable timeInForce cannot be null');
+        }
+        $this->container['timeInForce'] = $timeInForce;
+
+        return $this;
+    }
+
+    /**
      * Gets reduceOnly.
      *
      * @return null|bool
@@ -520,28 +644,136 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
     }
 
     /**
-     * Gets postOnly.
+     * Gets createTime.
      *
-     * @return null|bool
+     * @return null|int
      */
-    public function getPostOnly()
+    public function getCreateTime()
     {
-        return $this->container['postOnly'];
+        return $this->container['createTime'];
     }
 
     /**
-     * Sets postOnly.
+     * Sets createTime.
      *
-     * @param null|bool $postOnly postOnly
+     * @param null|int $createTime createTime
      *
      * @return self
      */
-    public function setPostOnly($postOnly)
+    public function setCreateTime($createTime)
     {
-        if (is_null($postOnly)) {
-            throw new \InvalidArgumentException('non-nullable postOnly cannot be null');
+        if (is_null($createTime)) {
+            throw new \InvalidArgumentException('non-nullable createTime cannot be null');
         }
-        $this->container['postOnly'] = $postOnly;
+        $this->container['createTime'] = $createTime;
+
+        return $this;
+    }
+
+    /**
+     * Gets updateTime.
+     *
+     * @return null|int
+     */
+    public function getUpdateTime()
+    {
+        return $this->container['updateTime'];
+    }
+
+    /**
+     * Sets updateTime.
+     *
+     * @param null|int $updateTime updateTime
+     *
+     * @return self
+     */
+    public function setUpdateTime($updateTime)
+    {
+        if (is_null($updateTime)) {
+            throw new \InvalidArgumentException('non-nullable updateTime cannot be null');
+        }
+        $this->container['updateTime'] = $updateTime;
+
+        return $this;
+    }
+
+    /**
+     * Gets status.
+     *
+     * @return null|string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status.
+     *
+     * @param null|string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets avgPrice.
+     *
+     * @return null|string
+     */
+    public function getAvgPrice()
+    {
+        return $this->container['avgPrice'];
+    }
+
+    /**
+     * Sets avgPrice.
+     *
+     * @param null|string $avgPrice avgPrice
+     *
+     * @return self
+     */
+    public function setAvgPrice($avgPrice)
+    {
+        if (is_null($avgPrice)) {
+            throw new \InvalidArgumentException('non-nullable avgPrice cannot be null');
+        }
+        $this->container['avgPrice'] = $avgPrice;
+
+        return $this;
+    }
+
+    /**
+     * Gets source.
+     *
+     * @return null|string
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source.
+     *
+     * @param null|string $source source
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        if (is_null($source)) {
+            throw new \InvalidArgumentException('non-nullable source cannot be null');
+        }
+        $this->container['source'] = $source;
 
         return $this;
     }
@@ -569,6 +801,114 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable clientOrderId cannot be null');
         }
         $this->container['clientOrderId'] = $clientOrderId;
+
+        return $this;
+    }
+
+    /**
+     * Gets priceScale.
+     *
+     * @return null|int
+     */
+    public function getPriceScale()
+    {
+        return $this->container['priceScale'];
+    }
+
+    /**
+     * Sets priceScale.
+     *
+     * @param null|int $priceScale priceScale
+     *
+     * @return self
+     */
+    public function setPriceScale($priceScale)
+    {
+        if (is_null($priceScale)) {
+            throw new \InvalidArgumentException('non-nullable priceScale cannot be null');
+        }
+        $this->container['priceScale'] = $priceScale;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantityScale.
+     *
+     * @return null|int
+     */
+    public function getQuantityScale()
+    {
+        return $this->container['quantityScale'];
+    }
+
+    /**
+     * Sets quantityScale.
+     *
+     * @param null|int $quantityScale quantityScale
+     *
+     * @return self
+     */
+    public function setQuantityScale($quantityScale)
+    {
+        if (is_null($quantityScale)) {
+            throw new \InvalidArgumentException('non-nullable quantityScale cannot be null');
+        }
+        $this->container['quantityScale'] = $quantityScale;
+
+        return $this;
+    }
+
+    /**
+     * Gets optionSide.
+     *
+     * @return null|string
+     */
+    public function getOptionSide()
+    {
+        return $this->container['optionSide'];
+    }
+
+    /**
+     * Sets optionSide.
+     *
+     * @param null|string $optionSide optionSide
+     *
+     * @return self
+     */
+    public function setOptionSide($optionSide)
+    {
+        if (is_null($optionSide)) {
+            throw new \InvalidArgumentException('non-nullable optionSide cannot be null');
+        }
+        $this->container['optionSide'] = $optionSide;
+
+        return $this;
+    }
+
+    /**
+     * Gets quoteAsset.
+     *
+     * @return null|string
+     */
+    public function getQuoteAsset()
+    {
+        return $this->container['quoteAsset'];
+    }
+
+    /**
+     * Sets quoteAsset.
+     *
+     * @param null|string $quoteAsset quoteAsset
+     *
+     * @return self
+     */
+    public function setQuoteAsset($quoteAsset)
+    {
+        if (is_null($quoteAsset)) {
+            throw new \InvalidArgumentException('non-nullable quoteAsset cannot be null');
+        }
+        $this->container['quoteAsset'] = $quoteAsset;
 
         return $this;
     }

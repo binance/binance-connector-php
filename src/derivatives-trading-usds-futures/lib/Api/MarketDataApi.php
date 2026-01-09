@@ -29,6 +29,7 @@
 
 namespace Binance\Client\DerivativesTradingUsdsFutures\Api;
 
+use Binance\Client\DerivativesTradingUsdsFutures\Model\AdlRiskResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\BasisResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\CheckServerTimeResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\CompositeIndexSymbolInformationResponse;
@@ -55,6 +56,7 @@ use Binance\Client\DerivativesTradingUsdsFutures\Model\QuarterlyContractSettleme
 use Binance\Client\DerivativesTradingUsdsFutures\Model\QueryIndexPriceConstituentsResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\QueryInsuranceFundBalanceSnapshotResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\RecentTradesListResponse;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\RpiOrderBookResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\SymbolOrderBookTickerResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\SymbolPriceTickerResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\SymbolPriceTickerV2Response;
@@ -62,6 +64,7 @@ use Binance\Client\DerivativesTradingUsdsFutures\Model\TakerBuySellVolumeRespons
 use Binance\Client\DerivativesTradingUsdsFutures\Model\Ticker24hrPriceChangeStatisticsResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\TopTraderLongShortRatioAccountsResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\TopTraderLongShortRatioPositionsResponse;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\TradingScheduleResponse;
 use Binance\Common\ApiException;
 use Binance\Common\Auth\SignerFactory;
 use Binance\Common\Auth\SignerInterface;
@@ -91,6 +94,7 @@ class MarketDataApi
 {
     /** @var string[] */
     public const contentTypes = [
+        'adlRisk' => ['application/x-www-form-urlencoded'],
         'basis' => ['application/x-www-form-urlencoded'],
         'checkServerTime' => ['application/x-www-form-urlencoded'],
         'compositeIndexSymbolInformation' => ['application/x-www-form-urlencoded'],
@@ -114,6 +118,7 @@ class MarketDataApi
         'queryIndexPriceConstituents' => ['application/x-www-form-urlencoded'],
         'queryInsuranceFundBalanceSnapshot' => ['application/x-www-form-urlencoded'],
         'recentTradesList' => ['application/x-www-form-urlencoded'],
+        'rpiOrderBook' => ['application/x-www-form-urlencoded'],
         'symbolOrderBookTicker' => ['application/x-www-form-urlencoded'],
         'symbolPriceTicker' => ['application/x-www-form-urlencoded'],
         'symbolPriceTickerV2' => ['application/x-www-form-urlencoded'],
@@ -122,6 +127,7 @@ class MarketDataApi
         'ticker24hrPriceChangeStatistics' => ['application/x-www-form-urlencoded'],
         'topTraderLongShortRatioAccounts' => ['application/x-www-form-urlencoded'],
         'topTraderLongShortRatioPositions' => ['application/x-www-form-urlencoded'],
+        'tradingSchedule' => ['application/x-www-form-urlencoded'],
     ];
     private const HAS_TIME_UNIT = false;
 
@@ -168,6 +174,165 @@ class MarketDataApi
             $this->signer = SignerFactory::getSigner($clientConfig->getSignatureConfiguration());
         }
         $this->userAgent = CommonUtils::getUserAgent('derivatives-trading-usds-futures');
+    }
+
+    /**
+     * Operation adlRisk.
+     *
+     * ADL Risk
+     *
+     * @param null|string $symbol symbol (optional)
+     *
+     * @return ApiResponse<AdlRiskResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function adlRisk($symbol = null): ApiResponse
+    {
+        return $this->adlRiskWithHttpInfo($symbol);
+    }
+
+    /**
+     * Operation adlRiskWithHttpInfo.
+     *
+     * ADL Risk
+     *
+     * @param null|string $symbol (optional)
+     *
+     * @return ApiResponse<AdlRiskResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function adlRiskWithHttpInfo($symbol = null): ApiResponse
+    {
+        $request = $this->adlRiskRequest($symbol);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingUsdsFutures\Model\AdlRiskResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingUsdsFutures\Model\AdlRiskResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingUsdsFutures\Model\AdlRiskResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'adlRisk'.
+     *
+     * @param null|string $symbol (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function adlRiskRequest($symbol = null)
+    {
+        $contentType = self::contentTypes['adlRisk'][0];
+
+        $resourcePath = '/fapi/v1/symbolAdlRisk';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbol,
+            'symbol', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -4502,6 +4667,184 @@ class MarketDataApi
     }
 
     /**
+     * Operation rpiOrderBook.
+     *
+     * RPI Order Book
+     *
+     * @param string   $symbol symbol (required)
+     * @param null|int $limit  Default 100; max 1000 (optional)
+     *
+     * @return ApiResponse<RpiOrderBookResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function rpiOrderBook($symbol, $limit = null): ApiResponse
+    {
+        return $this->rpiOrderBookWithHttpInfo($symbol, $limit);
+    }
+
+    /**
+     * Operation rpiOrderBookWithHttpInfo.
+     *
+     * RPI Order Book
+     *
+     * @param string   $symbol (required)
+     * @param null|int $limit  Default 100; max 1000 (optional)
+     *
+     * @return ApiResponse<RpiOrderBookResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function rpiOrderBookWithHttpInfo($symbol, $limit = null): ApiResponse
+    {
+        $request = $this->rpiOrderBookRequest($symbol, $limit);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingUsdsFutures\Model\RpiOrderBookResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingUsdsFutures\Model\RpiOrderBookResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingUsdsFutures\Model\RpiOrderBookResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'rpiOrderBook'.
+     *
+     * @param string   $symbol (required)
+     * @param null|int $limit  Default 100; max 1000 (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function rpiOrderBookRequest($symbol, $limit = null)
+    {
+        $contentType = self::contentTypes['rpiOrderBook'][0];
+
+        // verify the required parameter 'symbol' is set
+        if (null === $symbol || (is_array($symbol) && 0 === count($symbol))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $symbol when calling rpiOrderBook'
+            );
+        }
+
+        $resourcePath = '/fapi/v1/rpiDepth';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbol,
+            'symbol', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation symbolOrderBookTicker.
      *
      * Symbol Order Book Ticker
@@ -5878,6 +6221,149 @@ class MarketDataApi
             true, // explode
             false // required
         ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation tradingSchedule.
+     *
+     * Trading Schedule
+     *
+     * @return ApiResponse<TradingScheduleResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function tradingSchedule(): ApiResponse
+    {
+        return $this->tradingScheduleWithHttpInfo();
+    }
+
+    /**
+     * Operation tradingScheduleWithHttpInfo.
+     *
+     * Trading Schedule
+     *
+     * @return ApiResponse<TradingScheduleResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function tradingScheduleWithHttpInfo(): ApiResponse
+    {
+        $request = $this->tradingScheduleRequest();
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingUsdsFutures\Model\TradingScheduleResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingUsdsFutures\Model\TradingScheduleResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingUsdsFutures\Model\TradingScheduleResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'tradingSchedule'.
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function tradingScheduleRequest()
+    {
+        $contentType = self::contentTypes['tradingSchedule'][0];
+
+        $resourcePath = '/fapi/v1/tradingSchedule';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],

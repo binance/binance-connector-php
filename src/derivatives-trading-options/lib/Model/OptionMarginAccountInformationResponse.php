@@ -62,8 +62,12 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
      */
     protected static $openAPITypes = [
         'asset' => '\Binance\Client\DerivativesTradingOptions\Model\OptionMarginAccountInformationResponseAssetInner[]',
-        'greek' => '\Binance\Client\DerivativesTradingOptions\Model\OptionAccountInformationResponseGreekInner[]',
+        'greek' => '\Binance\Client\DerivativesTradingOptions\Model\OptionMarginAccountInformationResponseGreekInner[]',
         'time' => 'int',
+        'canTrade' => 'bool',
+        'canDeposit' => 'bool',
+        'canWithdraw' => 'bool',
+        'reduceOnly' => 'bool',
     ];
 
     /**
@@ -79,6 +83,10 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
         'asset' => null,
         'greek' => null,
         'time' => 'int64',
+        'canTrade' => null,
+        'canDeposit' => null,
+        'canWithdraw' => null,
+        'reduceOnly' => null,
     ];
 
     /**
@@ -90,6 +98,10 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
         'asset' => false,
         'greek' => false,
         'time' => false,
+        'canTrade' => false,
+        'canDeposit' => false,
+        'canWithdraw' => false,
+        'reduceOnly' => false,
     ];
 
     /**
@@ -109,6 +121,10 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
         'asset' => 'asset',
         'greek' => 'greek',
         'time' => 'time',
+        'canTrade' => 'canTrade',
+        'canDeposit' => 'canDeposit',
+        'canWithdraw' => 'canWithdraw',
+        'reduceOnly' => 'reduceOnly',
     ];
 
     /**
@@ -120,6 +136,10 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
         'asset' => 'setAsset',
         'greek' => 'setGreek',
         'time' => 'setTime',
+        'canTrade' => 'setCanTrade',
+        'canDeposit' => 'setCanDeposit',
+        'canWithdraw' => 'setCanWithdraw',
+        'reduceOnly' => 'setReduceOnly',
     ];
 
     /**
@@ -131,6 +151,10 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
         'asset' => 'getAsset',
         'greek' => 'getGreek',
         'time' => 'getTime',
+        'canTrade' => 'getCanTrade',
+        'canDeposit' => 'getCanDeposit',
+        'canWithdraw' => 'getCanWithdraw',
+        'reduceOnly' => 'getReduceOnly',
     ];
 
     /**
@@ -151,6 +175,10 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
         $this->setIfExists('asset', $data ?? [], null);
         $this->setIfExists('greek', $data ?? [], null);
         $this->setIfExists('time', $data ?? [], null);
+        $this->setIfExists('canTrade', $data ?? [], null);
+        $this->setIfExists('canDeposit', $data ?? [], null);
+        $this->setIfExists('canWithdraw', $data ?? [], null);
+        $this->setIfExists('reduceOnly', $data ?? [], null);
     }
 
     /**
@@ -311,7 +339,7 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
     /**
      * Gets greek.
      *
-     * @return null|OptionAccountInformationResponseGreekInner[]
+     * @return null|OptionMarginAccountInformationResponseGreekInner[]
      */
     public function getGreek()
     {
@@ -321,7 +349,7 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
     /**
      * Sets greek.
      *
-     * @param null|OptionAccountInformationResponseGreekInner[] $greek greek
+     * @param null|OptionMarginAccountInformationResponseGreekInner[] $greek greek
      *
      * @return self
      */
@@ -358,6 +386,114 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
             throw new \InvalidArgumentException('non-nullable time cannot be null');
         }
         $this->container['time'] = $time;
+
+        return $this;
+    }
+
+    /**
+     * Gets canTrade.
+     *
+     * @return null|bool
+     */
+    public function getCanTrade()
+    {
+        return $this->container['canTrade'];
+    }
+
+    /**
+     * Sets canTrade.
+     *
+     * @param null|bool $canTrade canTrade
+     *
+     * @return self
+     */
+    public function setCanTrade($canTrade)
+    {
+        if (is_null($canTrade)) {
+            throw new \InvalidArgumentException('non-nullable canTrade cannot be null');
+        }
+        $this->container['canTrade'] = $canTrade;
+
+        return $this;
+    }
+
+    /**
+     * Gets canDeposit.
+     *
+     * @return null|bool
+     */
+    public function getCanDeposit()
+    {
+        return $this->container['canDeposit'];
+    }
+
+    /**
+     * Sets canDeposit.
+     *
+     * @param null|bool $canDeposit canDeposit
+     *
+     * @return self
+     */
+    public function setCanDeposit($canDeposit)
+    {
+        if (is_null($canDeposit)) {
+            throw new \InvalidArgumentException('non-nullable canDeposit cannot be null');
+        }
+        $this->container['canDeposit'] = $canDeposit;
+
+        return $this;
+    }
+
+    /**
+     * Gets canWithdraw.
+     *
+     * @return null|bool
+     */
+    public function getCanWithdraw()
+    {
+        return $this->container['canWithdraw'];
+    }
+
+    /**
+     * Sets canWithdraw.
+     *
+     * @param null|bool $canWithdraw canWithdraw
+     *
+     * @return self
+     */
+    public function setCanWithdraw($canWithdraw)
+    {
+        if (is_null($canWithdraw)) {
+            throw new \InvalidArgumentException('non-nullable canWithdraw cannot be null');
+        }
+        $this->container['canWithdraw'] = $canWithdraw;
+
+        return $this;
+    }
+
+    /**
+     * Gets reduceOnly.
+     *
+     * @return null|bool
+     */
+    public function getReduceOnly()
+    {
+        return $this->container['reduceOnly'];
+    }
+
+    /**
+     * Sets reduceOnly.
+     *
+     * @param null|bool $reduceOnly reduceOnly
+     *
+     * @return self
+     */
+    public function setReduceOnly($reduceOnly)
+    {
+        if (is_null($reduceOnly)) {
+            throw new \InvalidArgumentException('non-nullable reduceOnly cannot be null');
+        }
+        $this->container['reduceOnly'] = $reduceOnly;
 
         return $this;
     }

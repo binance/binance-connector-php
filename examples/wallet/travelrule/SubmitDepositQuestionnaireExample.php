@@ -24,7 +24,7 @@ function submitDepositQuestionnaireExample()
     $api = new WalletRestApi($configurationBuilder->build());
     $submitDepositQuestionnaireRequest = new SubmitDepositQuestionnaireRequest();
     $submitDepositQuestionnaireRequest->setSubAccountId('1');
-    $submitDepositQuestionnaireRequest->setDepositId('1');
+    $submitDepositQuestionnaireRequest->setDepositId(1);
     $submitDepositQuestionnaireRequest->setQuestionnaire('');
     $submitDepositQuestionnaireRequest->setBeneficiaryPii('');
     $submitDepositQuestionnaireRequest->setSignature('');

@@ -62,6 +62,7 @@ class GetBfusdRewardsHistoryResponseRowsInner implements ModelInterface, \ArrayA
      */
     protected static $openAPITypes = [
         'time' => 'int',
+        'rewardAsset' => 'string',
         'rewardsAmount' => 'string',
         'bFUSDPosition' => 'string',
         'annualPercentageRate' => 'string',
@@ -78,6 +79,7 @@ class GetBfusdRewardsHistoryResponseRowsInner implements ModelInterface, \ArrayA
      */
     protected static $openAPIFormats = [
         'time' => 'int64',
+        'rewardAsset' => null,
         'rewardsAmount' => null,
         'bFUSDPosition' => null,
         'annualPercentageRate' => null,
@@ -90,6 +92,7 @@ class GetBfusdRewardsHistoryResponseRowsInner implements ModelInterface, \ArrayA
      */
     protected static array $openAPINullables = [
         'time' => false,
+        'rewardAsset' => false,
         'rewardsAmount' => false,
         'bFUSDPosition' => false,
         'annualPercentageRate' => false,
@@ -110,6 +113,7 @@ class GetBfusdRewardsHistoryResponseRowsInner implements ModelInterface, \ArrayA
      */
     protected static $attributeMap = [
         'time' => 'time',
+        'rewardAsset' => 'rewardAsset',
         'rewardsAmount' => 'rewardsAmount',
         'bFUSDPosition' => 'BFUSDPosition',
         'annualPercentageRate' => 'annualPercentageRate',
@@ -122,6 +126,7 @@ class GetBfusdRewardsHistoryResponseRowsInner implements ModelInterface, \ArrayA
      */
     protected static $setters = [
         'time' => 'setTime',
+        'rewardAsset' => 'setRewardAsset',
         'rewardsAmount' => 'setRewardsAmount',
         'bFUSDPosition' => 'setBFUSDPosition',
         'annualPercentageRate' => 'setAnnualPercentageRate',
@@ -134,6 +139,7 @@ class GetBfusdRewardsHistoryResponseRowsInner implements ModelInterface, \ArrayA
      */
     protected static $getters = [
         'time' => 'getTime',
+        'rewardAsset' => 'getRewardAsset',
         'rewardsAmount' => 'getRewardsAmount',
         'bFUSDPosition' => 'getBFUSDPosition',
         'annualPercentageRate' => 'getAnnualPercentageRate',
@@ -155,6 +161,7 @@ class GetBfusdRewardsHistoryResponseRowsInner implements ModelInterface, \ArrayA
     public function __construct(?array $data = null)
     {
         $this->setIfExists('time', $data ?? [], null);
+        $this->setIfExists('rewardAsset', $data ?? [], null);
         $this->setIfExists('rewardsAmount', $data ?? [], null);
         $this->setIfExists('bFUSDPosition', $data ?? [], null);
         $this->setIfExists('annualPercentageRate', $data ?? [], null);
@@ -311,6 +318,33 @@ class GetBfusdRewardsHistoryResponseRowsInner implements ModelInterface, \ArrayA
             throw new \InvalidArgumentException('non-nullable time cannot be null');
         }
         $this->container['time'] = $time;
+
+        return $this;
+    }
+
+    /**
+     * Gets rewardAsset.
+     *
+     * @return null|string
+     */
+    public function getRewardAsset()
+    {
+        return $this->container['rewardAsset'];
+    }
+
+    /**
+     * Sets rewardAsset.
+     *
+     * @param null|string $rewardAsset rewardAsset
+     *
+     * @return self
+     */
+    public function setRewardAsset($rewardAsset)
+    {
+        if (is_null($rewardAsset)) {
+            throw new \InvalidArgumentException('non-nullable rewardAsset cannot be null');
+        }
+        $this->container['rewardAsset'] = $rewardAsset;
 
         return $this;
     }

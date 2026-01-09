@@ -29,8 +29,13 @@
 
 namespace Binance\Client\Fiat\Api;
 
+use Binance\Client\Fiat\Model\DepositRequest;
+use Binance\Client\Fiat\Model\DepositResponse;
+use Binance\Client\Fiat\Model\FiatWithdrawRequest;
+use Binance\Client\Fiat\Model\FiatWithdrawResponse;
 use Binance\Client\Fiat\Model\GetFiatDepositWithdrawHistoryResponse;
 use Binance\Client\Fiat\Model\GetFiatPaymentsHistoryResponse;
+use Binance\Client\Fiat\Model\GetOrderDetailResponse;
 use Binance\Common\ApiException;
 use Binance\Common\Auth\SignerFactory;
 use Binance\Common\Auth\SignerInterface;
@@ -43,7 +48,9 @@ use Binance\Common\ObjectSerializer;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Utils;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -60,8 +67,11 @@ class FiatApi
 {
     /** @var string[] */
     public const contentTypes = [
+        'deposit' => ['application/x-www-form-urlencoded'],
+        'fiatWithdraw' => ['application/x-www-form-urlencoded'],
         'getFiatDepositWithdrawHistory' => ['application/x-www-form-urlencoded'],
         'getFiatPaymentsHistory' => ['application/x-www-form-urlencoded'],
+        'getOrderDetail' => ['application/x-www-form-urlencoded'],
     ];
     private const HAS_TIME_UNIT = false;
 
@@ -108,6 +118,406 @@ class FiatApi
             $this->signer = SignerFactory::getSigner($clientConfig->getSignatureConfiguration());
         }
         $this->userAgent = CommonUtils::getUserAgent('fiat');
+    }
+
+    /**
+     * Operation deposit.
+     *
+     * Deposit(TRADE)
+     *
+     * @param DepositRequest $depositRequest depositRequest (required)
+     *
+     * @return ApiResponse<DepositResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function deposit($depositRequest): ApiResponse
+    {
+        return $this->depositWithHttpInfo($depositRequest);
+    }
+
+    /**
+     * Operation depositWithHttpInfo.
+     *
+     * Deposit(TRADE)
+     *
+     * @param DepositRequest $depositRequest (required)
+     *
+     * @return ApiResponse<DepositResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function depositWithHttpInfo($depositRequest): ApiResponse
+    {
+        $request = $this->depositRequest($depositRequest);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Fiat\Model\DepositResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Fiat\Model\DepositResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Fiat\Model\DepositResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'deposit'.
+     *
+     * @param DepositRequest $depositRequest (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function depositRequest($depositRequest)
+    {
+        $contentType = self::contentTypes['deposit'][0];
+
+        // verify the required parameter 'depositRequest' is set
+        if (null === $depositRequest || (is_array($depositRequest) && 0 === count($depositRequest))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $depositRequest when calling deposit'
+            );
+        }
+
+        $resourcePath = '/sapi/v1/fiat/deposit';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $getters = $depositRequest::getters();
+        $formParams = [];
+        foreach ($getters as $property => $getter) {
+            $value = $depositRequest->{$getter}();
+            if (!empty($value)) {
+                $formParams[$property] = $depositRequest->{$getter}();
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        } elseif (isset($depositRequest)) {
+            if (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($depositRequest));
+            } else {
+                $httpBody = $depositRequest;
+            }
+        }
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'POST',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation fiatWithdraw.
+     *
+     * Fiat Withdraw(WITHDRAW)
+     *
+     * @param FiatWithdrawRequest $fiatWithdrawRequest fiatWithdrawRequest (required)
+     *
+     * @return ApiResponse<FiatWithdrawResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function fiatWithdraw($fiatWithdrawRequest): ApiResponse
+    {
+        return $this->fiatWithdrawWithHttpInfo($fiatWithdrawRequest);
+    }
+
+    /**
+     * Operation fiatWithdrawWithHttpInfo.
+     *
+     * Fiat Withdraw(WITHDRAW)
+     *
+     * @param FiatWithdrawRequest $fiatWithdrawRequest (required)
+     *
+     * @return ApiResponse<FiatWithdrawResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function fiatWithdrawWithHttpInfo($fiatWithdrawRequest): ApiResponse
+    {
+        $request = $this->fiatWithdrawRequest($fiatWithdrawRequest);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Fiat\Model\FiatWithdrawResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Fiat\Model\FiatWithdrawResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Fiat\Model\FiatWithdrawResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'fiatWithdraw'.
+     *
+     * @param FiatWithdrawRequest $fiatWithdrawRequest (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function fiatWithdrawRequest($fiatWithdrawRequest)
+    {
+        $contentType = self::contentTypes['fiatWithdraw'][0];
+
+        // verify the required parameter 'fiatWithdrawRequest' is set
+        if (null === $fiatWithdrawRequest || (is_array($fiatWithdrawRequest) && 0 === count($fiatWithdrawRequest))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fiatWithdrawRequest when calling fiatWithdraw'
+            );
+        }
+
+        $resourcePath = '/sapi/v2/fiat/withdraw';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $getters = $fiatWithdrawRequest::getters();
+        $formParams = [];
+        foreach ($getters as $property => $getter) {
+            $value = $fiatWithdrawRequest->{$getter}();
+            if (!empty($value)) {
+                $formParams[$property] = $fiatWithdrawRequest->{$getter}();
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        } elseif (isset($fiatWithdrawRequest)) {
+            if (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($fiatWithdrawRequest));
+            } else {
+                $httpBody = $fiatWithdrawRequest;
+            }
+        }
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'POST',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -524,6 +934,188 @@ class FiatApi
             'form', // style
             true, // explode
             false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recvWindow,
+            'recvWindow', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getOrderDetail.
+     *
+     * Get Order Detail(USER_DATA)
+     *
+     * @param string   $orderNo    order id retrieved from the api call of withdrawal (required)
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<GetOrderDetailResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getOrderDetail($orderNo, $recvWindow = null): ApiResponse
+    {
+        return $this->getOrderDetailWithHttpInfo($orderNo, $recvWindow);
+    }
+
+    /**
+     * Operation getOrderDetailWithHttpInfo.
+     *
+     * Get Order Detail(USER_DATA)
+     *
+     * @param string   $orderNo    order id retrieved from the api call of withdrawal (required)
+     * @param null|int $recvWindow (optional)
+     *
+     * @return ApiResponse<GetOrderDetailResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getOrderDetailWithHttpInfo($orderNo, $recvWindow = null): ApiResponse
+    {
+        $request = $this->getOrderDetailRequest($orderNo, $recvWindow);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Fiat\Model\GetOrderDetailResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Fiat\Model\GetOrderDetailResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Fiat\Model\GetOrderDetailResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'getOrderDetail'.
+     *
+     * @param string   $orderNo    order id retrieved from the api call of withdrawal (required)
+     * @param null|int $recvWindow (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getOrderDetailRequest($orderNo, $recvWindow = null)
+    {
+        $contentType = self::contentTypes['getOrderDetail'][0];
+
+        // verify the required parameter 'orderNo' is set
+        if (null === $orderNo || (is_array($orderNo) && 0 === count($orderNo))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $orderNo when calling getOrderDetail'
+            );
+        }
+
+        $resourcePath = '/sapi/v1/fiat/get-order-detail';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $orderNo,
+            'orderNo', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

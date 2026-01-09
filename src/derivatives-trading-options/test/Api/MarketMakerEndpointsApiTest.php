@@ -179,7 +179,7 @@ class MarketMakerEndpointsApiTest extends TestCase
     {
         $setAutoCancelAllOpenOrdersRequest = new SetAutoCancelAllOpenOrdersRequest();
         $setAutoCancelAllOpenOrdersRequest->setUnderlying('');
-        $setAutoCancelAllOpenOrdersRequest->setCountdownTime(100);
+        $setAutoCancelAllOpenOrdersRequest->setCountdownTime(1);
 
         $response = $this->getApiMock($request)->setAutoCancelAllOpenOrders($setAutoCancelAllOpenOrdersRequest);
 
@@ -187,7 +187,7 @@ class MarketMakerEndpointsApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/eapi/v1/countdownCancelAll', $request->getUri()->getPath());
-        self::assertEquals('2a6a8357653f444de03f2fa97dd19a78b1b6459ce33a8cba863c08cc2228110d', $queryMap['signature']);
+        self::assertEquals('ffeb79f9ed5e4cabe07e39725c15ed03fad830cb2a86d4aae1b7081c89aa7150', $queryMap['signature']);
     }
 
     /**

@@ -54,6 +54,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
     public const TIME_IN_FORCE_GTC = 'GTC';
     public const TIME_IN_FORCE_IOC = 'IOC';
     public const TIME_IN_FORCE_FOK = 'FOK';
+    public const TIME_IN_FORCE_GTX = 'GTX';
     public const NEW_ORDER_RESP_TYPE_ACK = 'ACK';
     public const NEW_ORDER_RESP_TYPE_RESULT = 'RESULT';
 
@@ -73,14 +74,14 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
         'symbol' => 'string',
         'side' => 'string',
         'type' => 'string',
-        'quantity' => 'float',
-        'price' => 'float',
+        'quantity' => 'string',
+        'price' => 'string',
         'timeInForce' => 'string',
-        'reduceOnly' => 'bool',
-        'postOnly' => 'bool',
+        'reduceOnly' => 'string',
+        'postOnly' => 'string',
         'newOrderRespType' => 'string',
         'clientOrderId' => 'string',
-        'isMmp' => 'bool',
+        'isMmp' => 'string',
     ];
 
     /**
@@ -96,8 +97,8 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
         'symbol' => null,
         'side' => null,
         'type' => null,
-        'quantity' => 'float',
-        'price' => 'float',
+        'quantity' => null,
+        'price' => null,
         'timeInForce' => null,
         'reduceOnly' => null,
         'postOnly' => null,
@@ -361,6 +362,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
             self::TIME_IN_FORCE_GTC,
             self::TIME_IN_FORCE_IOC,
             self::TIME_IN_FORCE_FOK,
+            self::TIME_IN_FORCE_GTX,
         ];
     }
 
@@ -540,7 +542,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets quantity.
      *
-     * @return null|float
+     * @return null|string
      */
     public function getQuantity()
     {
@@ -550,7 +552,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets quantity.
      *
-     * @param null|float $quantity quantity
+     * @param null|string $quantity quantity
      *
      * @return self
      */
@@ -567,7 +569,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets price.
      *
-     * @return null|float
+     * @return null|string
      */
     public function getPrice()
     {
@@ -577,7 +579,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets price.
      *
-     * @param null|float $price price
+     * @param null|string $price price
      *
      * @return self
      */
@@ -631,7 +633,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets reduceOnly.
      *
-     * @return null|bool
+     * @return null|string
      */
     public function getReduceOnly()
     {
@@ -641,7 +643,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets reduceOnly.
      *
-     * @param null|bool $reduceOnly reduceOnly
+     * @param null|string $reduceOnly reduceOnly
      *
      * @return self
      */
@@ -658,7 +660,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets postOnly.
      *
-     * @return null|bool
+     * @return null|string
      */
     public function getPostOnly()
     {
@@ -668,7 +670,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets postOnly.
      *
-     * @param null|bool $postOnly postOnly
+     * @param null|string $postOnly postOnly
      *
      * @return self
      */
@@ -749,7 +751,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets isMmp.
      *
-     * @return null|bool
+     * @return null|string
      */
     public function getIsMmp()
     {
@@ -759,7 +761,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets isMmp.
      *
-     * @param null|bool $isMmp isMmp
+     * @param null|string $isMmp isMmp
      *
      * @return self
      */

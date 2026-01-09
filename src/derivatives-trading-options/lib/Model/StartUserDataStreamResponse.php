@@ -62,6 +62,7 @@ class StartUserDataStreamResponse implements ModelInterface, \ArrayAccess, \Json
      */
     protected static $openAPITypes = [
         'listenKey' => 'string',
+        'expiration' => 'int',
     ];
 
     /**
@@ -75,6 +76,7 @@ class StartUserDataStreamResponse implements ModelInterface, \ArrayAccess, \Json
      */
     protected static $openAPIFormats = [
         'listenKey' => null,
+        'expiration' => 'int64',
     ];
 
     /**
@@ -84,6 +86,7 @@ class StartUserDataStreamResponse implements ModelInterface, \ArrayAccess, \Json
      */
     protected static array $openAPINullables = [
         'listenKey' => false,
+        'expiration' => false,
     ];
 
     /**
@@ -101,6 +104,7 @@ class StartUserDataStreamResponse implements ModelInterface, \ArrayAccess, \Json
      */
     protected static $attributeMap = [
         'listenKey' => 'listenKey',
+        'expiration' => 'expiration',
     ];
 
     /**
@@ -110,6 +114,7 @@ class StartUserDataStreamResponse implements ModelInterface, \ArrayAccess, \Json
      */
     protected static $setters = [
         'listenKey' => 'setListenKey',
+        'expiration' => 'setExpiration',
     ];
 
     /**
@@ -119,6 +124,7 @@ class StartUserDataStreamResponse implements ModelInterface, \ArrayAccess, \Json
      */
     protected static $getters = [
         'listenKey' => 'getListenKey',
+        'expiration' => 'getExpiration',
     ];
 
     /**
@@ -137,6 +143,7 @@ class StartUserDataStreamResponse implements ModelInterface, \ArrayAccess, \Json
     public function __construct(?array $data = null)
     {
         $this->setIfExists('listenKey', $data ?? [], null);
+        $this->setIfExists('expiration', $data ?? [], null);
     }
 
     /**
@@ -290,6 +297,33 @@ class StartUserDataStreamResponse implements ModelInterface, \ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable listenKey cannot be null');
         }
         $this->container['listenKey'] = $listenKey;
+
+        return $this;
+    }
+
+    /**
+     * Gets expiration.
+     *
+     * @return null|int
+     */
+    public function getExpiration()
+    {
+        return $this->container['expiration'];
+    }
+
+    /**
+     * Sets expiration.
+     *
+     * @param null|int $expiration expiration
+     *
+     * @return self
+     */
+    public function setExpiration($expiration)
+    {
+        if (is_null($expiration)) {
+            throw new \InvalidArgumentException('non-nullable expiration cannot be null');
+        }
+        $this->container['expiration'] = $expiration;
 
         return $this;
     }

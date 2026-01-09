@@ -6,6 +6,8 @@ All URIs are relative to https://api.binance.com, except if the operation define
 | ------------- | ------------- | ------------- |
 | [**assetDetail()**](AssetApi.md#assetDetail) | **GET** /sapi/v1/asset/assetDetail | Asset Detail (USER_DATA) |
 | [**assetDividendRecord()**](AssetApi.md#assetDividendRecord) | **GET** /sapi/v1/asset/assetDividend | Asset Dividend Record (USER_DATA) |
+| [**dustConvert()**](AssetApi.md#dustConvert) | **POST** /sapi/v1/asset/dust-convert/convert | Dust Convert (USER_DATA) |
+| [**dustConvertibleAssets()**](AssetApi.md#dustConvertibleAssets) | **POST** /sapi/v1/asset/dust-convert/query-convertible-assets | Dust Convertible Assets (USER_DATA) |
 | [**dustTransfer()**](AssetApi.md#dustTransfer) | **POST** /sapi/v1/asset/dust | Dust Transfer (USER_DATA) |
 | [**dustlog()**](AssetApi.md#dustlog) | **GET** /sapi/v1/asset/dribblet | DustLog(USER_DATA) |
 | [**fundingWallet()**](AssetApi.md#fundingWallet) | **POST** /sapi/v1/asset/get-funding-asset | Funding Wallet (USER_DATA) |
@@ -135,6 +137,118 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `dustConvert()`
+
+```php
+dustConvert($dustConvertRequest): \Binance\Client\Wallet\Model\DustConvertResponse
+```
+
+Dust Convert (USER_DATA)
+
+Convert dust assets  Weight: 10
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\Wallet\Api\AssetApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$dustConvertRequest = new \Binance\Client\Wallet\Model\DustConvertRequest(); // \Binance\Client\Wallet\Model\DustConvertRequest
+
+try {
+    $result = $apiInstance->dustConvert($dustConvertRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AssetApi->dustConvert: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **dustConvertRequest** | [**\Binance\Client\Wallet\Model\DustConvertRequest**](../Model/DustConvertRequest.md)|  | |
+
+### Return type
+
+[**\Binance\Client\Wallet\Model\DustConvertResponse**](../Model/DustConvertResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `dustConvertibleAssets()`
+
+```php
+dustConvertibleAssets($dustConvertibleAssetsRequest): \Binance\Client\Wallet\Model\DustConvertibleAssetsResponse
+```
+
+Dust Convertible Assets (USER_DATA)
+
+Query dust convertible assets  Weight: 1
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\Wallet\Api\AssetApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$dustConvertibleAssetsRequest = new \Binance\Client\Wallet\Model\DustConvertibleAssetsRequest(); // \Binance\Client\Wallet\Model\DustConvertibleAssetsRequest
+
+try {
+    $result = $apiInstance->dustConvertibleAssets($dustConvertibleAssetsRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AssetApi->dustConvertibleAssets: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **dustConvertibleAssetsRequest** | [**\Binance\Client\Wallet\Model\DustConvertibleAssetsRequest**](../Model/DustConvertibleAssetsRequest.md)|  | |
+
+### Return type
+
+[**\Binance\Client\Wallet\Model\DustConvertibleAssetsResponse**](../Model/DustConvertibleAssetsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -498,7 +612,7 @@ queryUserDelegationHistory($email, $startTime, $endTime, $type, $asset, $current
 
 Query User Delegation History(For Master Account)(USER_DATA)
 
-Query User Delegation History  * You need to open Enable Spot & Margin Trading permission for the API Key which requests this endpoint  Weight: 60
+Query User Delegation History  Weight: 60
 
 ### Example
 

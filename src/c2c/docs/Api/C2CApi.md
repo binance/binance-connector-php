@@ -10,12 +10,12 @@ All URIs are relative to https://api.binance.com, except if the operation define
 ## `getC2CTradeHistory()`
 
 ```php
-getC2CTradeHistory($startTime, $endTime, $page, $recvWindow): \Binance\Client\C2c\Model\GetC2CTradeHistoryResponse
+getC2CTradeHistory($tradeType, $startTimestamp, $endTimestamp, $page, $rows, $recvWindow): \Binance\Client\C2c\Model\GetC2CTradeHistoryResponse
 ```
 
 Get C2C Trade History (USER_DATA)
 
-Get C2C Trade History  * The max interval between startTime and endTime is 30 days. * If startTime and endTime are not sent, the recent 7 days' data will be returned. * The earliest startTime is supported on June 10, 2020 * Return up to 200 records per request.  Weight: 1
+Get C2C Trade History  * The max interval between startTimestamp and endTimestamp is 30 days. * If startTimestamp and endTimestamp are not sent, the recent 30 days' data will be returned. * You can only view data from the past 6 months. To see all C2C orders, please check https://c2c.binance.com/en/fiatOrder  Weight: 1
 
 ### Example
 
@@ -30,13 +30,15 @@ $apiInstance = new Binance\Client\C2c\Api\C2CApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$startTime = 56; // int
-$endTime = 56; // int
+$tradeType = 'tradeType_example'; // string | BUY, SELL
+$startTimestamp = 56; // int
+$endTimestamp = 56; // int
 $page = 56; // int | Default 1
+$rows = 56; // int | default 100, max 100
 $recvWindow = 56; // int
 
 try {
-    $result = $apiInstance->getC2CTradeHistory($startTime, $endTime, $page, $recvWindow);
+    $result = $apiInstance->getC2CTradeHistory($tradeType, $startTimestamp, $endTimestamp, $page, $rows, $recvWindow);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling C2CApi->getC2CTradeHistory: ', $e->getMessage(), PHP_EOL;
@@ -47,9 +49,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **startTime** | **int**|  | [optional] |
-| **endTime** | **int**|  | [optional] |
+| **tradeType** | **string**| BUY, SELL | [optional] |
+| **startTimestamp** | **int**|  | [optional] |
+| **endTimestamp** | **int**|  | [optional] |
 | **page** | **int**| Default 1 | [optional] |
+| **rows** | **int**| default 100, max 100 | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type

@@ -33,7 +33,6 @@ use Binance\Client\Convert\Api\TradeApi;
 use Binance\Client\Convert\Model\AcceptQuoteRequest;
 use Binance\Client\Convert\Model\CancelLimitOrderRequest;
 use Binance\Client\Convert\Model\PlaceLimitOrderRequest;
-use Binance\Client\Convert\Model\QueryLimitOpenOrdersRequest;
 use Binance\Client\Convert\Model\SendQuoteRequestRequest;
 use Binance\Common\Configuration\ClientConfiguration;
 use Binance\Common\Configuration\SignatureConfiguration;
@@ -204,13 +203,14 @@ class TradeApiTest extends TestCase
      */
     public function testQueryLimitOpenOrders()
     {
-        $response = $this->getApiMock($request)->queryLimitOpenOrders();
+        $recvWindow = 5000;
+        $response = $this->getApiMock($request)->queryLimitOpenOrders($recvWindow);
 
         parse_str($request->getUri(), $queryMap);
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/convert/limit/queryOpenOrders', $request->getUri()->getPath());
-        self::assertEquals('53668e00dc92eb93de0b253c301e9fc0c20042b13db384a0ad94b38688a5a84c', $queryMap['signature']);
+        self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
     }
 
     /**

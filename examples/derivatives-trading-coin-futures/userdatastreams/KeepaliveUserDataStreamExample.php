@@ -20,7 +20,8 @@ function keepaliveUserDataStreamExample()
 {
     $configurationBuilder = DerivativesTradingCoinFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
-    $api->keepaliveUserDataStream();
+    $response = $api->keepaliveUserDataStream();
+    print_r($response);
 }
 
 keepaliveUserDataStreamExample();

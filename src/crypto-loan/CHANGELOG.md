@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.0 - 2026-01-08
+
+### Added (1)
+
+- `getFlexibleLoanInterestRateHistory()` (`GET /sapi/v2/loan/interestRateHistory`)
+
 ## 2.0.0 - 2025-10-21
 
 ### Changed (4)

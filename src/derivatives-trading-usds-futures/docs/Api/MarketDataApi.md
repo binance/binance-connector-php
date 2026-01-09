@@ -4,6 +4,7 @@ All URIs are relative to https://fapi.binance.com, except if the operation defin
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**adlRisk()**](MarketDataApi.md#adlRisk) | **GET** /fapi/v1/symbolAdlRisk | ADL Risk |
 | [**basis()**](MarketDataApi.md#basis) | **GET** /futures/data/basis | Basis |
 | [**checkServerTime()**](MarketDataApi.md#checkServerTime) | **GET** /fapi/v1/time | Check Server Time |
 | [**compositeIndexSymbolInformation()**](MarketDataApi.md#compositeIndexSymbolInformation) | **GET** /fapi/v1/indexInfo | Composite Index Symbol Information |
@@ -27,6 +28,7 @@ All URIs are relative to https://fapi.binance.com, except if the operation defin
 | [**queryIndexPriceConstituents()**](MarketDataApi.md#queryIndexPriceConstituents) | **GET** /fapi/v1/constituents | Query Index Price Constituents |
 | [**queryInsuranceFundBalanceSnapshot()**](MarketDataApi.md#queryInsuranceFundBalanceSnapshot) | **GET** /fapi/v1/insuranceBalance | Query Insurance Fund Balance Snapshot |
 | [**recentTradesList()**](MarketDataApi.md#recentTradesList) | **GET** /fapi/v1/trades | Recent Trades List |
+| [**rpiOrderBook()**](MarketDataApi.md#rpiOrderBook) | **GET** /fapi/v1/rpiDepth | RPI Order Book |
 | [**symbolOrderBookTicker()**](MarketDataApi.md#symbolOrderBookTicker) | **GET** /fapi/v1/ticker/bookTicker | Symbol Order Book Ticker |
 | [**symbolPriceTicker()**](MarketDataApi.md#symbolPriceTicker) | **GET** /fapi/v1/ticker/price | Symbol Price Ticker |
 | [**symbolPriceTickerV2()**](MarketDataApi.md#symbolPriceTickerV2) | **GET** /fapi/v2/ticker/price | Symbol Price Ticker V2 |
@@ -35,7 +37,64 @@ All URIs are relative to https://fapi.binance.com, except if the operation defin
 | [**ticker24hrPriceChangeStatistics()**](MarketDataApi.md#ticker24hrPriceChangeStatistics) | **GET** /fapi/v1/ticker/24hr | 24hr Ticker Price Change Statistics |
 | [**topTraderLongShortRatioAccounts()**](MarketDataApi.md#topTraderLongShortRatioAccounts) | **GET** /futures/data/topLongShortAccountRatio | Top Trader Long/Short Ratio (Accounts) |
 | [**topTraderLongShortRatioPositions()**](MarketDataApi.md#topTraderLongShortRatioPositions) | **GET** /futures/data/topLongShortPositionRatio | Top Trader Long/Short Ratio (Positions) |
+| [**tradingSchedule()**](MarketDataApi.md#tradingSchedule) | **GET** /fapi/v1/tradingSchedule | Trading Schedule |
 
+
+## `adlRisk()`
+
+```php
+adlRisk($symbol): \Binance\Client\DerivativesTradingUsdsFutures\Model\AdlRiskResponse
+```
+
+ADL Risk
+
+Query the symbol-level ADL risk rating. The ADL risk rating measures the likelihood of ADL during liquidation, and the rating takes into account the insurance fund balance, position concentration on the symbol, order book depth, price volatility, average leverage, unrealized PnL, and margin utilization at the symbol level. The rating can be high, medium and low, and is updated every 30 minutes.  Weight: 1
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$symbol = 'symbol_example'; // string
+
+try {
+    $result = $apiInstance->adlRisk($symbol);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MarketDataApi->adlRisk: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **symbol** | **string**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingUsdsFutures\Model\AdlRiskResponse**](../Model/AdlRiskResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `basis()`
 
@@ -220,7 +279,7 @@ compressedAggregateTradesList($symbol, $fromId, $startTime, $endTime, $limit): \
 
 Compressed/Aggregate Trades List
 
-Get compressed, aggregate market trades. Market trades that fill in 100ms with the same price and the same taking side will have the quantity aggregated.   * support querying futures trade histories that are not older than one year * If both `startTime` and `endTime` are sent, time between `startTime` and `endTime` must be less than 1 hour. * If `fromId`, `startTime`, and `endTime` are not sent, the most recent aggregate trades will be returned. * Only market trades will be aggregated and returned, which means the insurance fund trades and ADL trades won't be aggregated. * Sending both `startTime`/`endTime` and `fromId` might cause response timeout, please send either `fromId` or `startTime`/`endTime`  Weight: 20
+Get compressed, aggregate market trades. Market trades that fill in 100ms with the same price and the same taking side will have the quantity aggregated.   Retail Price Improvement(RPI) orders are aggregated and without special tags to be distinguished. * support querying futures trade histories that are not older than one year * If both `startTime` and `endTime` are sent, time between `startTime` and `endTime` must be less than 1 hour. * If `fromId`, `startTime`, and `endTime` are not sent, the most recent aggregate trades will be returned. * Only market trades will be aggregated and returned, which means the insurance fund trades and ADL trades won't be aggregated. * Sending both `startTime`/`endTime` and `fromId` might cause response timeout, please send either `fromId` or `startTime`/`endTime`  Weight: 20
 
 ### Example
 
@@ -284,7 +343,7 @@ continuousContractKlineCandlestickData($pair, $contractType, $interval, $startTi
 
 Continuous Contract Kline/Candlestick Data
 
-Kline/candlestick bars for a specific contract type. Klines are uniquely identified by their open time.  * If startTime and endTime are not sent, the most recent klines are returned. * Contract type: * PERPETUAL * CURRENT_QUARTER * NEXT_QUARTER  Weight: based on parameter LIMIT | LIMIT       | weight | | ----------- | ------ | | [1,100)     | 1      | | [100, 500)  | 2      | | [500, 1000] | 5      | | > 1000      | 10     |
+Kline/candlestick bars for a specific contract type. Klines are uniquely identified by their open time.  * If startTime and endTime are not sent, the most recent klines are returned. * Contract type: * PERPETUAL * CURRENT_QUARTER * NEXT_QUARTER * TRADIFI_PERPETUAL  Weight: based on parameter LIMIT | LIMIT       | weight | | ----------- | ------ | | [1,100)     | 1      | | [100, 500)  | 2      | | [500, 1000] | 5      | | > 1000      | 10     |
 
 ### Example
 
@@ -710,7 +769,7 @@ markPrice($symbol): \Binance\Client\DerivativesTradingUsdsFutures\Model\MarkPric
 
 Mark Price
 
-Mark Price and Funding Rate  Weight: 1
+Mark Price and Funding Rate  Weight: 1 with symbol, 10 without symbol
 
 ### Example
 
@@ -1066,7 +1125,7 @@ orderBook($symbol, $limit): \Binance\Client\DerivativesTradingUsdsFutures\Model\
 
 Order Book
 
-Query symbol orderbook  Weight: Adjusted based on the limit: | Limit         | Weight | | ------------- | ------ | | 5, 10, 20, 50 | 2      | | 100           | 5      | | 500           | 10     | | 1000          | 20     |
+Query symbol orderbook  Retail Price Improvement(RPI) orders are not visible and excluded in the response message.  Weight: Adjusted based on the limit: | Limit         | Weight | | ------------- | ------ | | 5, 10, 20, 50 | 2      | | 100           | 5      | | 500           | 10     | | 1000          | 20     |
 
 ### Example
 
@@ -1244,7 +1303,7 @@ queryIndexPriceConstituents($symbol): \Binance\Client\DerivativesTradingUsdsFutu
 
 Query Index Price Constituents
 
-Query index price constituents  Weight: 2
+Query index price constituents   **Note**:  Prices from constituents of TradFi perps will be hiden and displayed as -1.  Weight: 2
 
 ### Example
 
@@ -1406,6 +1465,64 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `rpiOrderBook()`
+
+```php
+rpiOrderBook($symbol, $limit): \Binance\Client\DerivativesTradingUsdsFutures\Model\RpiOrderBookResponse
+```
+
+RPI Order Book
+
+Query symbol orderbook with RPI orders  RPI(Retail Price Improvement) orders are included and aggreated in the response message. Crossed price levels are hidden and invisible.  Weight: Adjusted based on the limit: | Limit         | Weight | | ------------- | ------ | | 1000          | 20     |
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$symbol = 'symbol_example'; // string
+$limit = 56; // int | Default 100; max 1000
+
+try {
+    $result = $apiInstance->rpiOrderBook($symbol, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MarketDataApi->rpiOrderBook: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **symbol** | **string**|  | |
+| **limit** | **int**| Default 100; max 1000 | [optional] |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingUsdsFutures\Model\RpiOrderBookResponse**](../Model/RpiOrderBookResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `symbolOrderBookTicker()`
 
 ```php
@@ -1414,7 +1531,7 @@ symbolOrderBookTicker($symbol): \Binance\Client\DerivativesTradingUsdsFutures\Mo
 
 Symbol Order Book Ticker
 
-Best price/qty on the order book for a symbol or symbols.  * If the symbol is not sent, bookTickers for all symbols will be returned in an array. * The field `X-MBX-USED-WEIGHT-1M` in response header is not accurate from this endpoint, please ignore.  Weight: 2 for a single symbol; 5 when the symbol parameter is omitted
+Best price/qty on the order book for a symbol or symbols.  Retail Price Improvement(RPI) orders are not visible and excluded in the response message. * If the symbol is not sent, bookTickers for all symbols will be returned in an array. * The field `X-MBX-USED-WEIGHT-1M` in response header is not accurate from this endpoint, please ignore.  Weight: 2 for a single symbol; 5 when the symbol parameter is omitted
 
 ### Example
 
@@ -1860,6 +1977,59 @@ try {
 ### Return type
 
 [**\Binance\Client\DerivativesTradingUsdsFutures\Model\TopTraderLongShortRatioPositionsResponse**](../Model/TopTraderLongShortRatioPositionsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `tradingSchedule()`
+
+```php
+tradingSchedule(): \Binance\Client\DerivativesTradingUsdsFutures\Model\TradingScheduleResponse
+```
+
+Trading Schedule
+
+Trading session schedules for the underlying assets of TradFi Perps are provided for a one-week period starting from the day prior to the query time, covering both the U.S. equity and commodity markets. Equity market session types include \"PRE_MARKET\", \"REGULAR\", \"AFTER_MARKET\", \"OVERNIGHT\", and \"NO_TRADING\", while commodity market session types include \"REGULAR\" and \"NO_TRADING\".  Weight: 5
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+
+try {
+    $result = $apiInstance->tradingSchedule();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MarketDataApi->tradingSchedule: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingUsdsFutures\Model\TradingScheduleResponse**](../Model/TradingScheduleResponse.md)
 
 ### Authorization
 

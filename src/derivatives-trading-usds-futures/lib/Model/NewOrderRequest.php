@@ -70,12 +70,6 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'reduceOnly' => 'string',
         'price' => 'float',
         'newClientOrderId' => 'string',
-        'stopPrice' => 'float',
-        'closePosition' => 'string',
-        'activationPrice' => 'float',
-        'callbackRate' => 'float',
-        'workingType' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\WorkingType',
-        'priceProtect' => 'string',
         'newOrderRespType' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\NewOrderRespType',
         'priceMatch' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\PriceMatch',
         'selfTradePreventionMode' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\SelfTradePreventionMode',
@@ -102,12 +96,6 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'reduceOnly' => null,
         'price' => 'float',
         'newClientOrderId' => null,
-        'stopPrice' => 'float',
-        'closePosition' => null,
-        'activationPrice' => 'float',
-        'callbackRate' => 'float',
-        'workingType' => null,
-        'priceProtect' => null,
         'newOrderRespType' => null,
         'priceMatch' => null,
         'selfTradePreventionMode' => null,
@@ -130,12 +118,6 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'reduceOnly' => false,
         'price' => false,
         'newClientOrderId' => false,
-        'stopPrice' => false,
-        'closePosition' => false,
-        'activationPrice' => false,
-        'callbackRate' => false,
-        'workingType' => false,
-        'priceProtect' => false,
         'newOrderRespType' => false,
         'priceMatch' => false,
         'selfTradePreventionMode' => false,
@@ -166,12 +148,6 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'reduceOnly' => 'reduceOnly',
         'price' => 'price',
         'newClientOrderId' => 'newClientOrderId',
-        'stopPrice' => 'stopPrice',
-        'closePosition' => 'closePosition',
-        'activationPrice' => 'activationPrice',
-        'callbackRate' => 'callbackRate',
-        'workingType' => 'workingType',
-        'priceProtect' => 'priceProtect',
         'newOrderRespType' => 'newOrderRespType',
         'priceMatch' => 'priceMatch',
         'selfTradePreventionMode' => 'selfTradePreventionMode',
@@ -194,12 +170,6 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'reduceOnly' => 'setReduceOnly',
         'price' => 'setPrice',
         'newClientOrderId' => 'setNewClientOrderId',
-        'stopPrice' => 'setStopPrice',
-        'closePosition' => 'setClosePosition',
-        'activationPrice' => 'setActivationPrice',
-        'callbackRate' => 'setCallbackRate',
-        'workingType' => 'setWorkingType',
-        'priceProtect' => 'setPriceProtect',
         'newOrderRespType' => 'setNewOrderRespType',
         'priceMatch' => 'setPriceMatch',
         'selfTradePreventionMode' => 'setSelfTradePreventionMode',
@@ -222,12 +192,6 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'reduceOnly' => 'getReduceOnly',
         'price' => 'getPrice',
         'newClientOrderId' => 'getNewClientOrderId',
-        'stopPrice' => 'getStopPrice',
-        'closePosition' => 'getClosePosition',
-        'activationPrice' => 'getActivationPrice',
-        'callbackRate' => 'getCallbackRate',
-        'workingType' => 'getWorkingType',
-        'priceProtect' => 'getPriceProtect',
         'newOrderRespType' => 'getNewOrderRespType',
         'priceMatch' => 'getPriceMatch',
         'selfTradePreventionMode' => 'getSelfTradePreventionMode',
@@ -259,12 +223,6 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('reduceOnly', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('newClientOrderId', $data ?? [], null);
-        $this->setIfExists('stopPrice', $data ?? [], null);
-        $this->setIfExists('closePosition', $data ?? [], null);
-        $this->setIfExists('activationPrice', $data ?? [], null);
-        $this->setIfExists('callbackRate', $data ?? [], null);
-        $this->setIfExists('workingType', $data ?? [], null);
-        $this->setIfExists('priceProtect', $data ?? [], null);
         $this->setIfExists('newOrderRespType', $data ?? [], null);
         $this->setIfExists('priceMatch', $data ?? [], null);
         $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
@@ -651,168 +609,6 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable newClientOrderId cannot be null');
         }
         $this->container['newClientOrderId'] = $newClientOrderId;
-
-        return $this;
-    }
-
-    /**
-     * Gets stopPrice.
-     *
-     * @return null|float
-     */
-    public function getStopPrice()
-    {
-        return $this->container['stopPrice'];
-    }
-
-    /**
-     * Sets stopPrice.
-     *
-     * @param null|float $stopPrice stopPrice
-     *
-     * @return self
-     */
-    public function setStopPrice($stopPrice)
-    {
-        if (is_null($stopPrice)) {
-            throw new \InvalidArgumentException('non-nullable stopPrice cannot be null');
-        }
-        $this->container['stopPrice'] = $stopPrice;
-
-        return $this;
-    }
-
-    /**
-     * Gets closePosition.
-     *
-     * @return null|string
-     */
-    public function getClosePosition()
-    {
-        return $this->container['closePosition'];
-    }
-
-    /**
-     * Sets closePosition.
-     *
-     * @param null|string $closePosition closePosition
-     *
-     * @return self
-     */
-    public function setClosePosition($closePosition)
-    {
-        if (is_null($closePosition)) {
-            throw new \InvalidArgumentException('non-nullable closePosition cannot be null');
-        }
-        $this->container['closePosition'] = $closePosition;
-
-        return $this;
-    }
-
-    /**
-     * Gets activationPrice.
-     *
-     * @return null|float
-     */
-    public function getActivationPrice()
-    {
-        return $this->container['activationPrice'];
-    }
-
-    /**
-     * Sets activationPrice.
-     *
-     * @param null|float $activationPrice activationPrice
-     *
-     * @return self
-     */
-    public function setActivationPrice($activationPrice)
-    {
-        if (is_null($activationPrice)) {
-            throw new \InvalidArgumentException('non-nullable activationPrice cannot be null');
-        }
-        $this->container['activationPrice'] = $activationPrice;
-
-        return $this;
-    }
-
-    /**
-     * Gets callbackRate.
-     *
-     * @return null|float
-     */
-    public function getCallbackRate()
-    {
-        return $this->container['callbackRate'];
-    }
-
-    /**
-     * Sets callbackRate.
-     *
-     * @param null|float $callbackRate callbackRate
-     *
-     * @return self
-     */
-    public function setCallbackRate($callbackRate)
-    {
-        if (is_null($callbackRate)) {
-            throw new \InvalidArgumentException('non-nullable callbackRate cannot be null');
-        }
-        $this->container['callbackRate'] = $callbackRate;
-
-        return $this;
-    }
-
-    /**
-     * Gets workingType.
-     *
-     * @return null|WorkingType
-     */
-    public function getWorkingType()
-    {
-        return $this->container['workingType'];
-    }
-
-    /**
-     * Sets workingType.
-     *
-     * @param null|WorkingType $workingType workingType
-     *
-     * @return self
-     */
-    public function setWorkingType($workingType)
-    {
-        if (is_null($workingType)) {
-            throw new \InvalidArgumentException('non-nullable workingType cannot be null');
-        }
-        $this->container['workingType'] = $workingType;
-
-        return $this;
-    }
-
-    /**
-     * Gets priceProtect.
-     *
-     * @return null|string
-     */
-    public function getPriceProtect()
-    {
-        return $this->container['priceProtect'];
-    }
-
-    /**
-     * Sets priceProtect.
-     *
-     * @param null|string $priceProtect priceProtect
-     *
-     * @return self
-     */
-    public function setPriceProtect($priceProtect)
-    {
-        if (is_null($priceProtect)) {
-            throw new \InvalidArgumentException('non-nullable priceProtect cannot be null');
-        }
-        $this->container['priceProtect'] = $priceProtect;
 
         return $this;
     }

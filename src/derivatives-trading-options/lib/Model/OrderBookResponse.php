@@ -61,10 +61,10 @@ class OrderBookResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $openAPITypes = [
-        't' => 'int',
-        'u' => 'int',
         'bids' => '\Binance\Client\DerivativesTradingOptions\Model\OrderBookResponseBidsItem[]',
         'asks' => '\Binance\Client\DerivativesTradingOptions\Model\OrderBookResponseAsksItem[]',
+        't' => 'int',
+        'lastUpdateId' => 'int',
     ];
 
     /**
@@ -77,10 +77,10 @@ class OrderBookResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        't' => 'int64',
-        'u' => 'int64',
         'bids' => null,
         'asks' => null,
+        't' => 'int64',
+        'lastUpdateId' => 'int64',
     ];
 
     /**
@@ -89,10 +89,10 @@ class OrderBookResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        't' => false,
-        'u' => false,
         'bids' => false,
         'asks' => false,
+        't' => false,
+        'lastUpdateId' => false,
     ];
 
     /**
@@ -109,10 +109,10 @@ class OrderBookResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        't' => 'T',
-        'u' => 'u',
         'bids' => 'bids',
         'asks' => 'asks',
+        't' => 'T',
+        'lastUpdateId' => 'lastUpdateId',
     ];
 
     /**
@@ -121,10 +121,10 @@ class OrderBookResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        't' => 'setT',
-        'u' => 'setU',
         'bids' => 'setBids',
         'asks' => 'setAsks',
+        't' => 'setT',
+        'lastUpdateId' => 'setLastUpdateId',
     ];
 
     /**
@@ -133,10 +133,10 @@ class OrderBookResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        't' => 'getT',
-        'u' => 'getU',
         'bids' => 'getBids',
         'asks' => 'getAsks',
+        't' => 'getT',
+        'lastUpdateId' => 'getLastUpdateId',
     ];
 
     /**
@@ -154,10 +154,10 @@ class OrderBookResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('t', $data ?? [], null);
-        $this->setIfExists('u', $data ?? [], null);
         $this->setIfExists('bids', $data ?? [], null);
         $this->setIfExists('asks', $data ?? [], null);
+        $this->setIfExists('t', $data ?? [], null);
+        $this->setIfExists('lastUpdateId', $data ?? [], null);
     }
 
     /**
@@ -289,60 +289,6 @@ class OrderBookResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets t.
-     *
-     * @return null|int
-     */
-    public function getT()
-    {
-        return $this->container['t'];
-    }
-
-    /**
-     * Sets t.
-     *
-     * @param null|int $t t
-     *
-     * @return self
-     */
-    public function setT($t)
-    {
-        if (is_null($t)) {
-            throw new \InvalidArgumentException('non-nullable t cannot be null');
-        }
-        $this->container['t'] = $t;
-
-        return $this;
-    }
-
-    /**
-     * Gets u.
-     *
-     * @return null|int
-     */
-    public function getU()
-    {
-        return $this->container['u'];
-    }
-
-    /**
-     * Sets u.
-     *
-     * @param null|int $u u
-     *
-     * @return self
-     */
-    public function setU($u)
-    {
-        if (is_null($u)) {
-            throw new \InvalidArgumentException('non-nullable u cannot be null');
-        }
-        $this->container['u'] = $u;
-
-        return $this;
-    }
-
-    /**
      * Gets bids.
      *
      * @return null|OrderBookResponseBidsItem[]
@@ -392,6 +338,60 @@ class OrderBookResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable asks cannot be null');
         }
         $this->container['asks'] = $asks;
+
+        return $this;
+    }
+
+    /**
+     * Gets t.
+     *
+     * @return null|int
+     */
+    public function getT()
+    {
+        return $this->container['t'];
+    }
+
+    /**
+     * Sets t.
+     *
+     * @param null|int $t t
+     *
+     * @return self
+     */
+    public function setT($t)
+    {
+        if (is_null($t)) {
+            throw new \InvalidArgumentException('non-nullable t cannot be null');
+        }
+        $this->container['t'] = $t;
+
+        return $this;
+    }
+
+    /**
+     * Gets lastUpdateId.
+     *
+     * @return null|int
+     */
+    public function getLastUpdateId()
+    {
+        return $this->container['lastUpdateId'];
+    }
+
+    /**
+     * Sets lastUpdateId.
+     *
+     * @param null|int $lastUpdateId lastUpdateId
+     *
+     * @return self
+     */
+    public function setLastUpdateId($lastUpdateId)
+    {
+        if (is_null($lastUpdateId)) {
+            throw new \InvalidArgumentException('non-nullable lastUpdateId cannot be null');
+        }
+        $this->container['lastUpdateId'] = $lastUpdateId;
 
         return $this;
     }

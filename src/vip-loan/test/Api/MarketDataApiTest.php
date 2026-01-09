@@ -147,4 +147,26 @@ class MarketDataApiTest extends TestCase
         self::assertEquals('/sapi/v1/loan/vip/loanable/data', $request->getUri()->getPath());
         self::assertEquals('a62fe6f3ebcc76daa42cdbc545942422a6a55499946c0d5a642a1f6457231173', $queryMap['signature']);
     }
+
+    /**
+     * Test case for getVIPLoanInterestRateHistory.
+     *
+     * Get VIP Loan Interest Rate History (USER_DATA).
+     */
+    public function testGetVIPLoanInterestRateHistory()
+    {
+        $coin = '';
+        $recvWindow = 5000;
+        $startTime = 1623319461670;
+        $endTime = 1641782889000;
+        $current = 1;
+        $limit = 10;
+        $response = $this->getApiMock($request)->getVIPLoanInterestRateHistory($coin, $recvWindow, $startTime, $endTime, $current, $limit);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/sapi/v1/loan/vip/interestRateHistory', $request->getUri()->getPath());
+        self::assertEquals('72cd0355d89715dad29de1cd1a2f5810a0691c37c444344d80894c742be1bd62', $queryMap['signature']);
+    }
 }

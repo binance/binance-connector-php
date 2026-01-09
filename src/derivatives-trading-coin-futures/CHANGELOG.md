@@ -1,5 +1,23 @@
 # Changelog
 
+## 3.0.0 - 2026-01-08
+
+### Changed (1)
+
+#### REST API
+
+- Modified parameter `batchOrders`:
+  - items.`orderId`: type `integer` → `string`
+  - items.`price`: type `number` → `string`
+  - items.`quantity`: type `number` → `string`
+  - items.`recvWindow`: type `integer` → `string`
+  - items.`orderId`: type `integer` → `string`
+  - items.`price`: type `number` → `string`
+  - items.`quantity`: type `number` → `string`
+  - items.`recvWindow`: type `integer` → `string`
+  - affected methods:
+    - `modifyMultipleOrders()` (`PUT /dapi/v1/batchOrders`)
+
 ## 2.0.0 - 2025-10-21
 
 ### Changed (24)

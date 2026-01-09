@@ -65,7 +65,6 @@ class UserExerciseRecordResponseInner implements ModelInterface, \ArrayAccess, \
         'currency' => 'string',
         'symbol' => 'string',
         'exercisePrice' => 'string',
-        'markPrice' => 'string',
         'quantity' => 'string',
         'amount' => 'string',
         'fee' => 'string',
@@ -91,7 +90,6 @@ class UserExerciseRecordResponseInner implements ModelInterface, \ArrayAccess, \
         'currency' => null,
         'symbol' => null,
         'exercisePrice' => null,
-        'markPrice' => null,
         'quantity' => null,
         'amount' => null,
         'fee' => null,
@@ -113,7 +111,6 @@ class UserExerciseRecordResponseInner implements ModelInterface, \ArrayAccess, \
         'currency' => false,
         'symbol' => false,
         'exercisePrice' => false,
-        'markPrice' => false,
         'quantity' => false,
         'amount' => false,
         'fee' => false,
@@ -143,7 +140,6 @@ class UserExerciseRecordResponseInner implements ModelInterface, \ArrayAccess, \
         'currency' => 'currency',
         'symbol' => 'symbol',
         'exercisePrice' => 'exercisePrice',
-        'markPrice' => 'markPrice',
         'quantity' => 'quantity',
         'amount' => 'amount',
         'fee' => 'fee',
@@ -165,7 +161,6 @@ class UserExerciseRecordResponseInner implements ModelInterface, \ArrayAccess, \
         'currency' => 'setCurrency',
         'symbol' => 'setSymbol',
         'exercisePrice' => 'setExercisePrice',
-        'markPrice' => 'setMarkPrice',
         'quantity' => 'setQuantity',
         'amount' => 'setAmount',
         'fee' => 'setFee',
@@ -187,7 +182,6 @@ class UserExerciseRecordResponseInner implements ModelInterface, \ArrayAccess, \
         'currency' => 'getCurrency',
         'symbol' => 'getSymbol',
         'exercisePrice' => 'getExercisePrice',
-        'markPrice' => 'getMarkPrice',
         'quantity' => 'getQuantity',
         'amount' => 'getAmount',
         'fee' => 'getFee',
@@ -218,7 +212,6 @@ class UserExerciseRecordResponseInner implements ModelInterface, \ArrayAccess, \
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('symbol', $data ?? [], null);
         $this->setIfExists('exercisePrice', $data ?? [], null);
-        $this->setIfExists('markPrice', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('fee', $data ?? [], null);
@@ -462,33 +455,6 @@ class UserExerciseRecordResponseInner implements ModelInterface, \ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable exercisePrice cannot be null');
         }
         $this->container['exercisePrice'] = $exercisePrice;
-
-        return $this;
-    }
-
-    /**
-     * Gets markPrice.
-     *
-     * @return null|string
-     */
-    public function getMarkPrice()
-    {
-        return $this->container['markPrice'];
-    }
-
-    /**
-     * Sets markPrice.
-     *
-     * @param null|string $markPrice markPrice
-     *
-     * @return self
-     */
-    public function setMarkPrice($markPrice)
-    {
-        if (is_null($markPrice)) {
-            throw new \InvalidArgumentException('non-nullable markPrice cannot be null');
-        }
-        $this->container['markPrice'] = $markPrice;
 
         return $this;
     }

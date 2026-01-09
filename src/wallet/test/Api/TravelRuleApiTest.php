@@ -33,6 +33,7 @@ use Binance\Client\Wallet\Api\TravelRuleApi;
 use Binance\Client\Wallet\Model\BrokerWithdrawRequest;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireRequest;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireTravelRuleRequest;
+use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireV2Request;
 use Binance\Client\Wallet\Model\WithdrawTravelRuleRequest;
 use Binance\Common\Configuration\ClientConfiguration;
 use Binance\Common\Configuration\SignatureConfiguration;
@@ -123,6 +124,23 @@ class TravelRuleApiTest extends TestCase
     }
 
     /**
+     * Test case for checkQuestionnaireRequirements.
+     *
+     * Check Questionnaire Requirements (for local entities that require travel rule) (supporting network) (USER_DATA).
+     */
+    public function testCheckQuestionnaireRequirements()
+    {
+        $recvWindow = 5000;
+        $response = $this->getApiMock($request)->checkQuestionnaireRequirements($recvWindow);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/sapi/v1/localentity/questionnaire-requirements', $request->getUri()->getPath());
+        self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
+    }
+
+    /**
      * Test case for depositHistoryTravelRule.
      *
      * Deposit History (for local entities that required travel rule) (supporting network) (USER_DATA).
@@ -150,19 +168,45 @@ class TravelRuleApiTest extends TestCase
     }
 
     /**
+     * Test case for depositHistoryV2.
+     *
+     * Deposit History V2 (for local entities that required travel rule) (supporting network) (USER_DATA).
+     */
+    public function testDepositHistoryV2()
+    {
+        $depositId = 1;
+        $txId = '1';
+        $network = '';
+        $coin = '';
+        $retrieveQuestionnaire = null;
+        $startTime = 1623319461670;
+        $endTime = 1641782889000;
+        $offset = 0;
+        $limit = 7;
+        $response = $this->getApiMock($request)->depositHistoryV2($depositId, $txId, $network, $coin, $retrieveQuestionnaire, $startTime, $endTime, $offset, $limit);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/sapi/v2/localentity/deposit/history', $request->getUri()->getPath());
+        self::assertEquals('1c4d7aa79c3265cee0dd986f32c4e66e0e19193b53c32d6cc883929ef48055b2', $queryMap['signature']);
+    }
+
+    /**
      * Test case for fetchAddressVerificationList.
      *
      * Fetch address verification list (USER_DATA).
      */
     public function testFetchAddressVerificationList()
     {
-        $response = $this->getApiMock($request)->fetchAddressVerificationList();
+        $recvWindow = 5000;
+        $response = $this->getApiMock($request)->fetchAddressVerificationList($recvWindow);
 
         parse_str($request->getUri(), $queryMap);
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/addressVerify/list', $request->getUri()->getPath());
-        self::assertEquals('53668e00dc92eb93de0b253c301e9fc0c20042b13db384a0ad94b38688a5a84c', $queryMap['signature']);
+        self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
     }
 
     /**
@@ -174,7 +218,7 @@ class TravelRuleApiTest extends TestCase
     {
         $submitDepositQuestionnaireRequest = new SubmitDepositQuestionnaireRequest();
         $submitDepositQuestionnaireRequest->setSubAccountId('1');
-        $submitDepositQuestionnaireRequest->setDepositId('1');
+        $submitDepositQuestionnaireRequest->setDepositId(1);
         $submitDepositQuestionnaireRequest->setQuestionnaire('');
         $submitDepositQuestionnaireRequest->setBeneficiaryPii('');
         $submitDepositQuestionnaireRequest->setSignature('');
@@ -206,6 +250,43 @@ class TravelRuleApiTest extends TestCase
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/localentity/deposit/provide-info', $request->getUri()->getPath());
         self::assertEquals('9e2879ef1f6acbc94112cf07e1b20e19c20feb58efaa07eb8f91b2b917dfb74a', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for submitDepositQuestionnaireV2.
+     *
+     * Submit Deposit Questionnaire V2 (For local entities that require travel rule) (supporting network) (USER_DATA).
+     */
+    public function testSubmitDepositQuestionnaireV2()
+    {
+        $submitDepositQuestionnaireV2Request = new SubmitDepositQuestionnaireV2Request();
+        $submitDepositQuestionnaireV2Request->setDepositId(1);
+        $submitDepositQuestionnaireV2Request->setQuestionnaire('');
+
+        $response = $this->getApiMock($request)->submitDepositQuestionnaireV2($submitDepositQuestionnaireV2Request);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/sapi/v2/localentity/deposit/provide-info', $request->getUri()->getPath());
+        self::assertEquals('0740dd9c29b45a12194c82ead461fc0551e7fd665e2c44f01b15eef46708e287', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for vaspList.
+     *
+     * VASP list (for local entities that require travel rule) (supporting network) (USER_DATA).
+     */
+    public function testVaspList()
+    {
+        $recvWindow = 5000;
+        $response = $this->getApiMock($request)->vaspList($recvWindow);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/sapi/v1/localentity/vasp', $request->getUri()->getPath());
+        self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
     }
 
     /**

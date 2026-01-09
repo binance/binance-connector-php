@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **subAccountId** | **string** |  |
-**depositId** | **string** |  |
+**depositId** | **int** |  |
 **questionnaire** | **string** |  |
 **beneficiaryPii** | **string** |  |
 **network** | **string** |  | [optional]

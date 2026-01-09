@@ -33,6 +33,7 @@ use Binance\Client\DerivativesTradingCoinFutures\Api\TradeApi;
 use Binance\Client\DerivativesTradingCoinFutures\Model\AutoCancelAllOpenOrdersRequest;
 use Binance\Client\DerivativesTradingCoinFutures\Model\AutoCloseType;
 use Binance\Client\DerivativesTradingCoinFutures\Model\BatchOrders;
+use Binance\Client\DerivativesTradingCoinFutures\Model\BatchOrdersPlaceMultipleOrders;
 use Binance\Client\DerivativesTradingCoinFutures\Model\ChangeInitialLeverageRequest;
 use Binance\Client\DerivativesTradingCoinFutures\Model\ChangeMarginTypeRequest;
 use Binance\Client\DerivativesTradingCoinFutures\Model\ChangePositionModeRequest;
@@ -41,6 +42,7 @@ use Binance\Client\DerivativesTradingCoinFutures\Model\ModifyIsolatedPositionMar
 use Binance\Client\DerivativesTradingCoinFutures\Model\ModifyMultipleOrdersRequest;
 use Binance\Client\DerivativesTradingCoinFutures\Model\ModifyOrderRequest;
 use Binance\Client\DerivativesTradingCoinFutures\Model\NewOrderRequest;
+use Binance\Client\DerivativesTradingCoinFutures\Model\PlaceMultipleOrdersRequest;
 use Binance\Client\DerivativesTradingCoinFutures\Model\Side;
 use Binance\Client\DerivativesTradingCoinFutures\Model\Type;
 use Binance\Common\Configuration\ClientConfiguration;
@@ -162,14 +164,15 @@ class TradeApiTest extends TestCase
     {
         $autoCancelAllOpenOrdersRequest = new AutoCancelAllOpenOrdersRequest();
         $autoCancelAllOpenOrdersRequest->setSymbol('');
-        $autoCancelAllOpenOrdersRequest->setCountdownTime(100);
+        $autoCancelAllOpenOrdersRequest->setCountdownTime(1);
 
-        $this->getApiMock($request)->autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest);
+        $response = $this->getApiMock($request)->autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest);
 
         parse_str($request->getUri(), $queryMap);
 
+        self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/dapi/v1/countdownCancelAll', $request->getUri()->getPath());
-        self::assertEquals('2a6a8357653f444de03f2fa97dd19a78b1b6459ce33a8cba863c08cc2228110d', $queryMap['signature']);
+        self::assertEquals('ffeb79f9ed5e4cabe07e39725c15ed03fad830cb2a86d4aae1b7081c89aa7150', $queryMap['signature']);
     }
 
     /**
@@ -432,6 +435,25 @@ class TradeApiTest extends TestCase
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/dapi/v1/order', $request->getUri()->getPath());
         self::assertEquals('787448d76e6ae183a500e7d6c966bd790e96d41ecadc1a31f75964ef0fcad3cf', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for placeMultipleOrders.
+     *
+     * Place Multiple Orders(TRADE).
+     */
+    public function testPlaceMultipleOrders()
+    {
+        $placeMultipleOrdersRequest = new PlaceMultipleOrdersRequest();
+        $placeMultipleOrdersRequest->setBatchOrders(new BatchOrdersPlaceMultipleOrders());
+
+        $response = $this->getApiMock($request)->placeMultipleOrders($placeMultipleOrdersRequest);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/dapi/v1/batchOrders', $request->getUri()->getPath());
+        self::assertEquals('53668e00dc92eb93de0b253c301e9fc0c20042b13db384a0ad94b38688a5a84c', $queryMap['signature']);
     }
 
     /**

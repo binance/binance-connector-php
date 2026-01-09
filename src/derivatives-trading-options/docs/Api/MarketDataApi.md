@@ -7,14 +7,13 @@ All URIs are relative to https://eapi.binance.com, except if the operation defin
 | [**checkServerTime()**](MarketDataApi.md#checkServerTime) | **GET** /eapi/v1/time | Check Server Time |
 | [**exchangeInformation()**](MarketDataApi.md#exchangeInformation) | **GET** /eapi/v1/exchangeInfo | Exchange Information |
 | [**historicalExerciseRecords()**](MarketDataApi.md#historicalExerciseRecords) | **GET** /eapi/v1/exerciseHistory | Historical Exercise Records |
+| [**indexPrice()**](MarketDataApi.md#indexPrice) | **GET** /eapi/v1/index | Index Price |
 | [**klineCandlestickData()**](MarketDataApi.md#klineCandlestickData) | **GET** /eapi/v1/klines | Kline/Candlestick Data |
-| [**oldTradesLookup()**](MarketDataApi.md#oldTradesLookup) | **GET** /eapi/v1/historicalTrades | Old Trades Lookup (MARKET_DATA) |
 | [**openInterest()**](MarketDataApi.md#openInterest) | **GET** /eapi/v1/openInterest | Open Interest |
 | [**optionMarkPrice()**](MarketDataApi.md#optionMarkPrice) | **GET** /eapi/v1/mark | Option Mark Price |
 | [**orderBook()**](MarketDataApi.md#orderBook) | **GET** /eapi/v1/depth | Order Book |
 | [**recentBlockTradesList()**](MarketDataApi.md#recentBlockTradesList) | **GET** /eapi/v1/blockTrades | Recent Block Trades List |
 | [**recentTradesList()**](MarketDataApi.md#recentTradesList) | **GET** /eapi/v1/trades | Recent Trades List |
-| [**symbolPriceTicker()**](MarketDataApi.md#symbolPriceTicker) | **GET** /eapi/v1/index | Symbol Price Ticker |
 | [**testConnectivity()**](MarketDataApi.md#testConnectivity) | **GET** /eapi/v1/ping | Test Connectivity |
 | [**ticker24hrPriceChangeStatistics()**](MarketDataApi.md#ticker24hrPriceChangeStatistics) | **GET** /eapi/v1/ticker | 24hr Ticker Price Change Statistics |
 
@@ -187,6 +186,62 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `indexPrice()`
+
+```php
+indexPrice($underlying): \Binance\Client\DerivativesTradingOptions\Model\IndexPriceResponse
+```
+
+Index Price
+
+Get spot index price for option underlying.  Weight: 1
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketDataApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$underlying = 'underlying_example'; // string | Option underlying, e.g BTCUSDT
+
+try {
+    $result = $apiInstance->indexPrice($underlying);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MarketDataApi->indexPrice: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **underlying** | **string**| Option underlying, e.g BTCUSDT | |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingOptions\Model\IndexPriceResponse**](../Model/IndexPriceResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `klineCandlestickData()`
 
 ```php
@@ -237,66 +292,6 @@ try {
 ### Return type
 
 [**\Binance\Client\DerivativesTradingOptions\Model\KlineCandlestickDataResponse**](../Model/KlineCandlestickDataResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `oldTradesLookup()`
-
-```php
-oldTradesLookup($symbol, $fromId, $limit): \Binance\Client\DerivativesTradingOptions\Model\OldTradesLookupResponse
-```
-
-Old Trades Lookup (MARKET_DATA)
-
-Get older market historical trades.  Weight: 20
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketDataApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$symbol = 'symbol_example'; // string | Option trading pair, e.g BTC-200730-9000-C
-$fromId = 56; // int | The UniqueId ID from which to return. The latest deal record is returned by default
-$limit = 56; // int | Number of result sets returned Default:100 Max:1000
-
-try {
-    $result = $apiInstance->oldTradesLookup($symbol, $fromId, $limit);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling MarketDataApi->oldTradesLookup: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**| Option trading pair, e.g BTC-200730-9000-C | |
-| **fromId** | **int**| The UniqueId ID from which to return. The latest deal record is returned by default | [optional] |
-| **limit** | **int**| Number of result sets returned Default:100 Max:1000 | [optional] |
-
-### Return type
-
-[**\Binance\Client\DerivativesTradingOptions\Model\OldTradesLookupResponse**](../Model/OldTradesLookupResponse.md)
 
 ### Authorization
 
@@ -433,7 +428,7 @@ orderBook($symbol, $limit): \Binance\Client\DerivativesTradingOptions\Model\Orde
 
 Order Book
 
-Check orderbook depth on specific symbol  Weight: limit         | weight ------------  | ------------ 5, 10, 20, 50 | 2 100           | 5 500           | 10 1000          | 20
+Check orderbook depth on specific symbol  Weight: limit         | weight ------------  | ------------ 5, 10, 20, 50 | 1 100           | 5 500           | 10 1000          | 20
 
 ### Example
 
@@ -585,62 +580,6 @@ try {
 ### Return type
 
 [**\Binance\Client\DerivativesTradingOptions\Model\RecentTradesListResponse**](../Model/RecentTradesListResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `symbolPriceTicker()`
-
-```php
-symbolPriceTicker($underlying): \Binance\Client\DerivativesTradingOptions\Model\SymbolPriceTickerResponse
-```
-
-Symbol Price Ticker
-
-Get spot index price for option underlying.  Weight: 1
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketDataApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$underlying = 'underlying_example'; // string | Option underlying, e.g BTCUSDT
-
-try {
-    $result = $apiInstance->symbolPriceTicker($underlying);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling MarketDataApi->symbolPriceTicker: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **underlying** | **string**| Option underlying, e.g BTCUSDT | |
-
-### Return type
-
-[**\Binance\Client\DerivativesTradingOptions\Model\SymbolPriceTickerResponse**](../Model/SymbolPriceTickerResponse.md)
 
 ### Authorization
 

@@ -64,7 +64,7 @@ No authorization required
 ## `keepaliveUserDataStream()`
 
 ```php
-keepaliveUserDataStream()
+keepaliveUserDataStream(): \Binance\Client\DerivativesTradingCoinFutures\Model\KeepaliveUserDataStreamResponse
 ```
 
 Keepalive User Data Stream (USER_STREAM)
@@ -86,7 +86,8 @@ $apiInstance = new Binance\Client\DerivativesTradingCoinFutures\Api\UserDataStre
 );
 
 try {
-    $apiInstance->keepaliveUserDataStream();
+    $result = $apiInstance->keepaliveUserDataStream();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserDataStreamsApi->keepaliveUserDataStream: ', $e->getMessage(), PHP_EOL;
 }
@@ -98,7 +99,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Binance\Client\DerivativesTradingCoinFutures\Model\KeepaliveUserDataStreamResponse**](../Model/KeepaliveUserDataStreamResponse.md)
 
 ### Authorization
 
@@ -107,7 +108,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

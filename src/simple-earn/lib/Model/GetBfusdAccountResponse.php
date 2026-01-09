@@ -62,7 +62,8 @@ class GetBfusdAccountResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      */
     protected static $openAPITypes = [
         'bfusdAmount' => 'string',
-        'totalProfit' => 'string',
+        'usdtProfit' => 'string',
+        'bfusdProfit' => 'string',
     ];
 
     /**
@@ -76,7 +77,8 @@ class GetBfusdAccountResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      */
     protected static $openAPIFormats = [
         'bfusdAmount' => null,
-        'totalProfit' => null,
+        'usdtProfit' => null,
+        'bfusdProfit' => null,
     ];
 
     /**
@@ -86,7 +88,8 @@ class GetBfusdAccountResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      */
     protected static array $openAPINullables = [
         'bfusdAmount' => false,
-        'totalProfit' => false,
+        'usdtProfit' => false,
+        'bfusdProfit' => false,
     ];
 
     /**
@@ -104,7 +107,8 @@ class GetBfusdAccountResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      */
     protected static $attributeMap = [
         'bfusdAmount' => 'bfusdAmount',
-        'totalProfit' => 'totalProfit',
+        'usdtProfit' => 'usdtProfit',
+        'bfusdProfit' => 'bfusdProfit',
     ];
 
     /**
@@ -114,7 +118,8 @@ class GetBfusdAccountResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      */
     protected static $setters = [
         'bfusdAmount' => 'setBfusdAmount',
-        'totalProfit' => 'setTotalProfit',
+        'usdtProfit' => 'setUsdtProfit',
+        'bfusdProfit' => 'setBfusdProfit',
     ];
 
     /**
@@ -124,7 +129,8 @@ class GetBfusdAccountResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      */
     protected static $getters = [
         'bfusdAmount' => 'getBfusdAmount',
-        'totalProfit' => 'getTotalProfit',
+        'usdtProfit' => 'getUsdtProfit',
+        'bfusdProfit' => 'getBfusdProfit',
     ];
 
     /**
@@ -143,7 +149,8 @@ class GetBfusdAccountResponse implements ModelInterface, \ArrayAccess, \JsonSeri
     public function __construct(?array $data = null)
     {
         $this->setIfExists('bfusdAmount', $data ?? [], null);
-        $this->setIfExists('totalProfit', $data ?? [], null);
+        $this->setIfExists('usdtProfit', $data ?? [], null);
+        $this->setIfExists('bfusdProfit', $data ?? [], null);
     }
 
     /**
@@ -302,28 +309,55 @@ class GetBfusdAccountResponse implements ModelInterface, \ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets totalProfit.
+     * Gets usdtProfit.
      *
      * @return null|string
      */
-    public function getTotalProfit()
+    public function getUsdtProfit()
     {
-        return $this->container['totalProfit'];
+        return $this->container['usdtProfit'];
     }
 
     /**
-     * Sets totalProfit.
+     * Sets usdtProfit.
      *
-     * @param null|string $totalProfit totalProfit
+     * @param null|string $usdtProfit usdtProfit
      *
      * @return self
      */
-    public function setTotalProfit($totalProfit)
+    public function setUsdtProfit($usdtProfit)
     {
-        if (is_null($totalProfit)) {
-            throw new \InvalidArgumentException('non-nullable totalProfit cannot be null');
+        if (is_null($usdtProfit)) {
+            throw new \InvalidArgumentException('non-nullable usdtProfit cannot be null');
         }
-        $this->container['totalProfit'] = $totalProfit;
+        $this->container['usdtProfit'] = $usdtProfit;
+
+        return $this;
+    }
+
+    /**
+     * Gets bfusdProfit.
+     *
+     * @return null|string
+     */
+    public function getBfusdProfit()
+    {
+        return $this->container['bfusdProfit'];
+    }
+
+    /**
+     * Sets bfusdProfit.
+     *
+     * @param null|string $bfusdProfit bfusdProfit
+     *
+     * @return self
+     */
+    public function setBfusdProfit($bfusdProfit)
+    {
+        if (is_null($bfusdProfit)) {
+            throw new \InvalidArgumentException('non-nullable bfusdProfit cannot be null');
+        }
+        $this->container['bfusdProfit'] = $bfusdProfit;
 
         return $this;
     }

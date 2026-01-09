@@ -103,7 +103,7 @@ class AccountApiTest extends TestCase
     public function testAdjustCrossMarginMaxLeverage()
     {
         $adjustCrossMarginMaxLeverageRequest = new AdjustCrossMarginMaxLeverageRequest();
-        $adjustCrossMarginMaxLeverageRequest->setMaxLeverage(1);
+        $adjustCrossMarginMaxLeverageRequest->setMaxLeverage(10);
 
         $response = $this->getApiMock($request)->adjustCrossMarginMaxLeverage($adjustCrossMarginMaxLeverageRequest);
 
@@ -111,7 +111,7 @@ class AccountApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/margin/max-leverage', $request->getUri()->getPath());
-        self::assertEquals('e2ea5e06ab91d95f5c717620ec8ae28e53d04eeee34b9cfc65955ef17fdfa45e', $queryMap['signature']);
+        self::assertEquals('9189ed7c7a9ef0481053db46ae7448994fe2222b13ce0ebcc00062349d06e8a8', $queryMap['signature']);
     }
 
     /**

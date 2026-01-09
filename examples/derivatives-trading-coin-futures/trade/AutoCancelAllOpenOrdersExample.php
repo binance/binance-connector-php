@@ -25,7 +25,8 @@ function autoCancelAllOpenOrdersExample()
     $autoCancelAllOpenOrdersRequest = new AutoCancelAllOpenOrdersRequest();
     $autoCancelAllOpenOrdersRequest->setSymbol('');
     $autoCancelAllOpenOrdersRequest->setCountdownTime(null);
-    $api->autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest);
+    $response = $api->autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest);
+    print_r($response);
 }
 
 autoCancelAllOpenOrdersExample();

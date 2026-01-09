@@ -121,7 +121,7 @@ class AccountApiTest extends TestCase
         $startTime = 1735693200000;
         $endTime = 1735693200000;
         $limit = 500;
-        $recvWindow = 5000;
+        $recvWindow = 5000.0;
         $response = $this->getApiMock($request)->allOrderList($fromId, $startTime, $endTime, $limit, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
@@ -143,7 +143,7 @@ class AccountApiTest extends TestCase
         $startTime = 1735693200000;
         $endTime = 1735693200000;
         $limit = 500;
-        $recvWindow = 5000;
+        $recvWindow = 5000.0;
         $response = $this->getApiMock($request)->allOrders($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
@@ -161,7 +161,7 @@ class AccountApiTest extends TestCase
     public function testGetAccount()
     {
         $omitZeroBalances = false;
-        $recvWindow = 5000;
+        $recvWindow = 5000.0;
         $response = $this->getApiMock($request)->getAccount($omitZeroBalances, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
@@ -179,7 +179,7 @@ class AccountApiTest extends TestCase
     public function testGetOpenOrders()
     {
         $symbol = 'BNBUSDT';
-        $recvWindow = 5000;
+        $recvWindow = 5000.0;
         $response = $this->getApiMock($request)->getOpenOrders($symbol, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
@@ -199,7 +199,7 @@ class AccountApiTest extends TestCase
         $symbol = 'BNBUSDT';
         $orderId = 1;
         $origClientOrderId = '';
-        $recvWindow = 5000;
+        $recvWindow = 5000.0;
         $response = $this->getApiMock($request)->getOrder($symbol, $orderId, $origClientOrderId, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
@@ -218,7 +218,7 @@ class AccountApiTest extends TestCase
     {
         $orderListId = 1;
         $origClientOrderId = '';
-        $recvWindow = 5000;
+        $recvWindow = 5000.0;
         $response = $this->getApiMock($request)->getOrderList($orderListId, $origClientOrderId, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
@@ -241,7 +241,7 @@ class AccountApiTest extends TestCase
         $fromAllocationId = 1;
         $limit = 500;
         $orderId = 1;
-        $recvWindow = 5000;
+        $recvWindow = 5000.0;
         $response = $this->getApiMock($request)->myAllocations($symbol, $startTime, $endTime, $fromAllocationId, $limit, $orderId, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
@@ -249,6 +249,24 @@ class AccountApiTest extends TestCase
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/api/v3/myAllocations', $request->getUri()->getPath());
         self::assertEquals('e6d3c40d9c6d8b9c03d0a66f5f52d4518182d2e02b8a6471ca535a5478cab087', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for myFilters.
+     *
+     * Query relevant filters.
+     */
+    public function testMyFilters()
+    {
+        $symbol = 'BNBUSDT';
+        $recvWindow = 5000.0;
+        $response = $this->getApiMock($request)->myFilters($symbol, $recvWindow);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/api/v3/myFilters', $request->getUri()->getPath());
+        self::assertEquals('1c2ec70499498e5c5d2f4e98a7e24c74f2801642a8c3743d289dbfc1ca00c7a8', $queryMap['signature']);
     }
 
     /**
@@ -263,7 +281,7 @@ class AccountApiTest extends TestCase
         $orderId = 1;
         $fromPreventedMatchId = 1;
         $limit = 500;
-        $recvWindow = 5000;
+        $recvWindow = 5000.0;
         $response = $this->getApiMock($request)->myPreventedMatches($symbol, $preventedMatchId, $orderId, $fromPreventedMatchId, $limit, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
@@ -286,7 +304,7 @@ class AccountApiTest extends TestCase
         $endTime = 1735693200000;
         $fromId = 1;
         $limit = 500;
-        $recvWindow = 5000;
+        $recvWindow = 5000.0;
         $response = $this->getApiMock($request)->myTrades($symbol, $orderId, $startTime, $endTime, $fromId, $limit, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
@@ -303,7 +321,7 @@ class AccountApiTest extends TestCase
      */
     public function testOpenOrderList()
     {
-        $recvWindow = 5000;
+        $recvWindow = 5000.0;
         $response = $this->getApiMock($request)->openOrderList($recvWindow);
 
         parse_str($request->getUri(), $queryMap);
@@ -324,7 +342,7 @@ class AccountApiTest extends TestCase
         $orderId = 1;
         $fromExecutionId = 1;
         $limit = 500;
-        $recvWindow = 5000;
+        $recvWindow = 5000.0;
         $response = $this->getApiMock($request)->orderAmendments($symbol, $orderId, $fromExecutionId, $limit, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
@@ -341,7 +359,7 @@ class AccountApiTest extends TestCase
      */
     public function testRateLimitOrder()
     {
-        $recvWindow = 5000;
+        $recvWindow = 5000.0;
         $response = $this->getApiMock($request)->rateLimitOrder($recvWindow);
 
         parse_str($request->getUri(), $queryMap);

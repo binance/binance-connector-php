@@ -18,8 +18,6 @@
 
 [/sapi/v1/portfolio/earn-asset-balance](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Get-Transferable-Earn-Asset-Balance-for-Portfolio-Margin) - getTransferableEarnAssetBalanceForPortfolioMargin - [GetTransferableEarnAssetBalanceForPortfolioMarginExample.php:27](/examples/derivatives-trading-portfolio-margin-pro/account/GetTransferableEarnAssetBalanceForPortfolioMarginExample.php#L27)
 
-[/sapi/v1/portfolio/mint](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Mint-BFUSD-Portfolio-Margin) - mintBfusdForPortfolioMargin - [MintBfusdForPortfolioMarginExample.php:29](/examples/derivatives-trading-portfolio-margin-pro/account/MintBfusdForPortfolioMarginExample.php#L29)
-
 [/sapi/v1/portfolio/repay](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Classic-Portfolio-Margin-Bankruptcy-Loan-Repay) - portfolioMarginProBankruptcyLoanRepay - [PortfolioMarginProBankruptcyLoanRepayExample.php:26](/examples/derivatives-trading-portfolio-margin-pro/account/PortfolioMarginProBankruptcyLoanRepayExample.php#L26)
 
 [/sapi/v1/portfolio/pmLoan](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Query-Classic-Portfolio-Margin-Bankruptcy-Loan-Amount) - queryPortfolioMarginProBankruptcyLoanAmount - [QueryPortfolioMarginProBankruptcyLoanAmountExample.php:25](/examples/derivatives-trading-portfolio-margin-pro/account/QueryPortfolioMarginProBankruptcyLoanAmountExample.php#L25)
@@ -28,11 +26,9 @@
 
 [/sapi/v1/portfolio/interest-history](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Query-Classic-Portfolio-Margin-Negative-Balance-Interest-History) - queryPortfolioMarginProNegativeBalanceInterestHistory - [QueryPortfolioMarginProNegativeBalanceInterestHistoryExample.php:29](/examples/derivatives-trading-portfolio-margin-pro/account/QueryPortfolioMarginProNegativeBalanceInterestHistoryExample.php#L29)
 
-[/sapi/v1/portfolio/redeem](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Redeem-BFUSD-Portfolio-Margin) - redeemBfusdForPortfolioMargin - [RedeemBfusdForPortfolioMarginExample.php:29](/examples/derivatives-trading-portfolio-margin-pro/account/RedeemBfusdForPortfolioMarginExample.php#L29)
-
 [/sapi/v1/portfolio/repay-futures-negative-balance](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Repay-futures-Negative-Balance) - repayFuturesNegativeBalance - [RepayFuturesNegativeBalanceExample.php:26](/examples/derivatives-trading-portfolio-margin-pro/account/RepayFuturesNegativeBalanceExample.php#L26)
 
-[/sapi/v1/portfolio/earn-asset-transfer](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Transfer-LDUSDT-Portfolio-Margin) - transferLdusdtForPortfolioMargin - [TransferLdusdtForPortfolioMarginExample.php:29](/examples/derivatives-trading-portfolio-margin-pro/account/TransferLdusdtForPortfolioMarginExample.php#L29)
+[/sapi/v1/portfolio/earn-asset-transfer](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Transfer-LDUSDT-Portfolio-Margin) - transferLdusdtRwusdForPortfolioMargin - [TransferLdusdtRwusdForPortfolioMarginExample.php:29](/examples/derivatives-trading-portfolio-margin-pro/account/TransferLdusdtRwusdForPortfolioMarginExample.php#L29)
 
 ## MarketData
 

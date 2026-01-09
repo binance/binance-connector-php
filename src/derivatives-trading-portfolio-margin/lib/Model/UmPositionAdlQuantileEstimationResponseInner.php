@@ -62,7 +62,7 @@ class UmPositionAdlQuantileEstimationResponseInner implements ModelInterface, \A
      */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'adlQuantile' => '\Binance\Client\DerivativesTradingPortfolioMargin\Model\CmPositionAdlQuantileEstimationResponseInnerAdlQuantile',
+        'adlQuantile' => '\Binance\Client\DerivativesTradingPortfolioMargin\Model\UmPositionAdlQuantileEstimationResponseInnerAdlQuantile',
     ];
 
     /**
@@ -304,7 +304,7 @@ class UmPositionAdlQuantileEstimationResponseInner implements ModelInterface, \A
     /**
      * Gets adlQuantile.
      *
-     * @return null|CmPositionAdlQuantileEstimationResponseInnerAdlQuantile
+     * @return null|UmPositionAdlQuantileEstimationResponseInnerAdlQuantile
      */
     public function getAdlQuantile()
     {
@@ -314,7 +314,7 @@ class UmPositionAdlQuantileEstimationResponseInner implements ModelInterface, \A
     /**
      * Sets adlQuantile.
      *
-     * @param null|CmPositionAdlQuantileEstimationResponseInnerAdlQuantile $adlQuantile adlQuantile
+     * @param null|UmPositionAdlQuantileEstimationResponseInnerAdlQuantile $adlQuantile adlQuantile
      *
      * @return self
      */

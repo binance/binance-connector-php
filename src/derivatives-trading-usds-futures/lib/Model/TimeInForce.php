@@ -54,6 +54,8 @@ enum TimeInForce: string
 
     case GTD = 'GTD';
 
+    case RPI = 'RPI';
+
     /**
      * Gets allowable values of the enum.
      *
@@ -67,6 +69,7 @@ enum TimeInForce: string
             self::FOK,
             self::GTX,
             self::GTD,
+            self::RPI,
         ];
     }
 }

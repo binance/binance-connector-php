@@ -179,6 +179,22 @@ class MarketDataApiTest extends TestCase
     }
 
     /**
+     * Test case for getLimitPricePairs.
+     *
+     * Get Limit Price Pairs(MARKET_DATA).
+     */
+    public function testGetLimitPricePairs()
+    {
+        $response = $this->getApiMock($request)->getLimitPricePairs();
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/sapi/v1/margin/limit-price-pairs', $request->getUri()->getPath());
+        self::assertTrue(!isset($queryMap['signature']));
+    }
+
+    /**
      * Test case for getListSchedule.
      *
      * Get list Schedule (MARKET_DATA).

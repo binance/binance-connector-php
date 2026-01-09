@@ -120,20 +120,6 @@
 
 [/sapi/v1/margin/exchange-small-liability](https://developers.binance.com/docs/margin_trading/trade/Small-Liability-Exchange) - smallLiabilityExchange - [SmallLiabilityExchangeExample.php:27](/examples/margin-trading/trade/SmallLiabilityExchangeExample.php#L27)
 
-## TradeDataStream
-
-[/sapi/v1/userDataStream/isolated](https://developers.binance.com/docs/margin_trading/trade-data-stream/Close-Isolated-Margin-User-Data-Stream) - closeIsolatedMarginUserDataStream - [CloseIsolatedMarginUserDataStreamExample.php:25](/examples/margin-trading/tradedatastream/CloseIsolatedMarginUserDataStreamExample.php#L25)
-
-[/sapi/v1/userDataStream](https://developers.binance.com/docs/margin_trading/trade-data-stream/Close-Margin-User-Data-Stream) - closeMarginUserDataStream - [CloseMarginUserDataStreamExample.php:24](/examples/margin-trading/tradedatastream/CloseMarginUserDataStreamExample.php#L24)
-
-[/sapi/v1/userDataStream/isolated](https://developers.binance.com/docs/margin_trading/trade-data-stream/Keepalive-Isolated-Margin-User-Data-Stream) - keepaliveIsolatedMarginUserDataStream - [KeepaliveIsolatedMarginUserDataStreamExample.php:27](/examples/margin-trading/tradedatastream/KeepaliveIsolatedMarginUserDataStreamExample.php#L27)
-
-[/sapi/v1/userDataStream](https://developers.binance.com/docs/margin_trading/trade-data-stream/Keepalive-Margin-User-Data-Stream) - keepaliveMarginUserDataStream - [KeepaliveMarginUserDataStreamExample.php:26](/examples/margin-trading/tradedatastream/KeepaliveMarginUserDataStreamExample.php#L26)
-
-[/sapi/v1/userDataStream/isolated](https://developers.binance.com/docs/margin_trading/trade-data-stream/Start-Isolated-Margin-User-Data-Stream) - startIsolatedMarginUserDataStream - [StartIsolatedMarginUserDataStreamExample.php:26](/examples/margin-trading/tradedatastream/StartIsolatedMarginUserDataStreamExample.php#L26)
-
-[/sapi/v1/userDataStream](https://developers.binance.com/docs/margin_trading/trade-data-stream/Start-Margin-User-Data-Stream) - startMarginUserDataStream - [StartMarginUserDataStreamExample.php:23](/examples/margin-trading/tradedatastream/StartMarginUserDataStreamExample.php#L23)
-
 ## Transfer
 
 [/sapi/v1/margin/transfer](https://developers.binance.com/docs/margin_trading/transfer/Get-Cross-Margin-Transfer-History) - getCrossMarginTransferHistory - [GetCrossMarginTransferHistoryExample.php:32](/examples/margin-trading/transfer/GetCrossMarginTransferHistoryExample.php#L32)

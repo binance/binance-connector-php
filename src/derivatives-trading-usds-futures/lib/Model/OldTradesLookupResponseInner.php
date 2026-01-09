@@ -67,6 +67,7 @@ class OldTradesLookupResponseInner implements ModelInterface, \ArrayAccess, \Jso
         'quoteQty' => 'string',
         'time' => 'int',
         'isBuyerMaker' => 'bool',
+        'isRPITrade' => 'bool',
     ];
 
     /**
@@ -85,6 +86,7 @@ class OldTradesLookupResponseInner implements ModelInterface, \ArrayAccess, \Jso
         'quoteQty' => null,
         'time' => 'int64',
         'isBuyerMaker' => null,
+        'isRPITrade' => null,
     ];
 
     /**
@@ -99,6 +101,7 @@ class OldTradesLookupResponseInner implements ModelInterface, \ArrayAccess, \Jso
         'quoteQty' => false,
         'time' => false,
         'isBuyerMaker' => false,
+        'isRPITrade' => false,
     ];
 
     /**
@@ -121,6 +124,7 @@ class OldTradesLookupResponseInner implements ModelInterface, \ArrayAccess, \Jso
         'quoteQty' => 'quoteQty',
         'time' => 'time',
         'isBuyerMaker' => 'isBuyerMaker',
+        'isRPITrade' => 'isRPITrade',
     ];
 
     /**
@@ -135,6 +139,7 @@ class OldTradesLookupResponseInner implements ModelInterface, \ArrayAccess, \Jso
         'quoteQty' => 'setQuoteQty',
         'time' => 'setTime',
         'isBuyerMaker' => 'setIsBuyerMaker',
+        'isRPITrade' => 'setIsRPITrade',
     ];
 
     /**
@@ -149,6 +154,7 @@ class OldTradesLookupResponseInner implements ModelInterface, \ArrayAccess, \Jso
         'quoteQty' => 'getQuoteQty',
         'time' => 'getTime',
         'isBuyerMaker' => 'getIsBuyerMaker',
+        'isRPITrade' => 'getIsRPITrade',
     ];
 
     /**
@@ -172,6 +178,7 @@ class OldTradesLookupResponseInner implements ModelInterface, \ArrayAccess, \Jso
         $this->setIfExists('quoteQty', $data ?? [], null);
         $this->setIfExists('time', $data ?? [], null);
         $this->setIfExists('isBuyerMaker', $data ?? [], null);
+        $this->setIfExists('isRPITrade', $data ?? [], null);
     }
 
     /**
@@ -460,6 +467,33 @@ class OldTradesLookupResponseInner implements ModelInterface, \ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable isBuyerMaker cannot be null');
         }
         $this->container['isBuyerMaker'] = $isBuyerMaker;
+
+        return $this;
+    }
+
+    /**
+     * Gets isRPITrade.
+     *
+     * @return null|bool
+     */
+    public function getIsRPITrade()
+    {
+        return $this->container['isRPITrade'];
+    }
+
+    /**
+     * Sets isRPITrade.
+     *
+     * @param null|bool $isRPITrade isRPITrade
+     *
+     * @return self
+     */
+    public function setIsRPITrade($isRPITrade)
+    {
+        if (is_null($isRPITrade)) {
+            throw new \InvalidArgumentException('non-nullable isRPITrade cannot be null');
+        }
+        $this->container['isRPITrade'] = $isRPITrade;
 
         return $this;
     }

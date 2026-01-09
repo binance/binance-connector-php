@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.0.0 - 2026-01-08
+
+### Changed (1)
+
+#### REST API
+
+- Modified response for `umPositionAdlQuantileEstimation()` (`GET /papi/v1/um/adlQuantile`):
+  - items.`adlQuantile`: property `HEDGE` deleted
+  - items.`adlQuantile`: property `HEDGE` deleted
+
 ## 2.0.0 - 2025-10-21
 
 ### Changed (3)

@@ -238,6 +238,28 @@ class FlexibleRateApiTest extends TestCase
     }
 
     /**
+     * Test case for getFlexibleLoanInterestRateHistory.
+     *
+     * Get Flexible Loan Interest Rate History (USER_DATA).
+     */
+    public function testGetFlexibleLoanInterestRateHistory()
+    {
+        $coin = '';
+        $recvWindow = 5000;
+        $startTime = 1623319461670;
+        $endTime = 1641782889000;
+        $current = 1;
+        $limit = 10;
+        $response = $this->getApiMock($request)->getFlexibleLoanInterestRateHistory($coin, $recvWindow, $startTime, $endTime, $current, $limit);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/sapi/v2/loan/interestRateHistory', $request->getUri()->getPath());
+        self::assertEquals('72cd0355d89715dad29de1cd1a2f5810a0691c37c444344d80894c742be1bd62', $queryMap['signature']);
+    }
+
+    /**
      * Test case for getFlexibleLoanLiquidationHistory.
      *
      * Get Flexible Loan Liquidation History (USER_DATA).

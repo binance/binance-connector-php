@@ -30,6 +30,8 @@
 namespace Binance\Client\Wallet\Test\Api;
 
 use Binance\Client\Wallet\Api\AssetApi;
+use Binance\Client\Wallet\Model\DustConvertibleAssetsRequest;
+use Binance\Client\Wallet\Model\DustConvertRequest;
 use Binance\Client\Wallet\Model\DustTransferRequest;
 use Binance\Client\Wallet\Model\FundingWalletRequest;
 use Binance\Client\Wallet\Model\GetAssetsThatCanBeConvertedIntoBnbRequest;
@@ -135,6 +137,44 @@ class AssetApiTest extends TestCase
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/assetDividend', $request->getUri()->getPath());
         self::assertEquals('800fd652cbfe4ff499b20dacaec3db973da28a58d743df22c2fd31501e8fc985', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for dustConvert.
+     *
+     * Dust Convert (USER_DATA).
+     */
+    public function testDustConvert()
+    {
+        $dustConvertRequest = new DustConvertRequest();
+        $dustConvertRequest->setAsset('');
+
+        $response = $this->getApiMock($request)->dustConvert($dustConvertRequest);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/sapi/v1/asset/dust-convert/convert', $request->getUri()->getPath());
+        self::assertEquals('2979a51ce4c44a35c65db4a87fdd907b27c5f1cb4e786af718af1c6bceff4ce0', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for dustConvertibleAssets.
+     *
+     * Dust Convertible Assets (USER_DATA).
+     */
+    public function testDustConvertibleAssets()
+    {
+        $dustConvertibleAssetsRequest = new DustConvertibleAssetsRequest();
+        $dustConvertibleAssetsRequest->setTargetAsset('');
+
+        $response = $this->getApiMock($request)->dustConvertibleAssets($dustConvertibleAssetsRequest);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/sapi/v1/asset/dust-convert/query-convertible-assets', $request->getUri()->getPath());
+        self::assertEquals('c317a0c8ced4c944b9c61671703840b08ec80877601b44cc1d36b6d9816806ba', $queryMap['signature']);
     }
 
     /**

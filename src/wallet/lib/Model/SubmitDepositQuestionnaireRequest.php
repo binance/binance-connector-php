@@ -62,7 +62,7 @@ class SubmitDepositQuestionnaireRequest implements ModelInterface, \ArrayAccess,
      */
     protected static $openAPITypes = [
         'subAccountId' => 'string',
-        'depositId' => 'string',
+        'depositId' => 'int',
         'questionnaire' => 'string',
         'beneficiaryPii' => 'string',
         'network' => 'string',
@@ -84,7 +84,7 @@ class SubmitDepositQuestionnaireRequest implements ModelInterface, \ArrayAccess,
      */
     protected static $openAPIFormats = [
         'subAccountId' => null,
-        'depositId' => null,
+        'depositId' => 'int64',
         'questionnaire' => null,
         'beneficiaryPii' => null,
         'network' => null,
@@ -378,7 +378,7 @@ class SubmitDepositQuestionnaireRequest implements ModelInterface, \ArrayAccess,
     /**
      * Gets depositId.
      *
-     * @return string
+     * @return int
      */
     public function getDepositId()
     {
@@ -388,7 +388,7 @@ class SubmitDepositQuestionnaireRequest implements ModelInterface, \ArrayAccess,
     /**
      * Sets depositId.
      *
-     * @param string $depositId depositId
+     * @param int $depositId depositId
      *
      * @return self
      */

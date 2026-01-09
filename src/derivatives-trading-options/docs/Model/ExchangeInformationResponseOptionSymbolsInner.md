@@ -11,8 +11,6 @@ Name | Type | Description | Notes
 **strikePrice** | **string** |  | [optional]
 **underlying** | **string** |  | [optional]
 **unit** | **int** |  | [optional]
-**makerFeeRate** | **string** |  | [optional]
-**takerFeeRate** | **string** |  | [optional]
 **liquidationFeeRate** | **string** |  | [optional]
 **minQty** | **string** |  | [optional]
 **maxQty** | **string** |  | [optional]
@@ -23,5 +21,6 @@ Name | Type | Description | Notes
 **priceScale** | **int** |  | [optional]
 **quantityScale** | **int** |  | [optional]
 **quoteAsset** | **string** |  | [optional]
+**status** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

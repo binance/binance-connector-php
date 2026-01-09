@@ -20,6 +20,10 @@
 
 [/sapi/v1/asset/assetDividend](https://developers.binance.com/docs/wallet/asset/assets-divided-record) - assetDividendRecord - [AssetDividendRecordExample.php:29](/examples/wallet/asset/AssetDividendRecordExample.php#L29)
 
+[/sapi/v1/asset/dust-convert/convert](https://developers.binance.com/docs/wallet/asset/Dust-Convert) - dustConvert - [DustConvertExample.php:27](/examples/wallet/asset/DustConvertExample.php#L27)
+
+[/sapi/v1/asset/dust-convert/query-convertible-assets](https://developers.binance.com/docs/wallet/asset/Dust-Convertible-Assets) - dustConvertibleAssets - [DustConvertibleAssetsExample.php:27](/examples/wallet/asset/DustConvertibleAssetsExample.php#L27)
+
 [/sapi/v1/asset/dust](https://developers.binance.com/docs/wallet/asset/Dust-Transfer) - dustTransfer - [DustTransferExample.php:27](/examples/wallet/asset/DustTransferExample.php#L27)
 
 [/sapi/v1/asset/dribblet](https://developers.binance.com/docs/wallet/asset/dust-log) - dustlog - [DustlogExample.php:27](/examples/wallet/asset/DustlogExample.php#L27)
@@ -87,6 +91,8 @@
 [/sapi/v1/localentity/broker/deposit/provide-info](https://developers.binance.com/docs/wallet/travel-rule/deposit-provide-info) - submitDepositQuestionnaire - [SubmitDepositQuestionnaireExample.php:31](/examples/wallet/travelrule/SubmitDepositQuestionnaireExample.php#L31)
 
 [/sapi/v1/localentity/deposit/provide-info](https://developers.binance.com/docs/wallet/travel-rule/deposit-provide-info) - submitDepositQuestionnaireTravelRule - [SubmitDepositQuestionnaireTravelRuleExample.php:28](/examples/wallet/travelrule/SubmitDepositQuestionnaireTravelRuleExample.php#L28)
+
+[/sapi/v2/localentity/deposit/provide-info](https://developers.binance.com/docs/wallet/travel-rule/deposit-provide-info-v2) - submitDepositQuestionnaireV2 - [SubmitDepositQuestionnaireV2Example.php:28](/examples/wallet/travelrule/SubmitDepositQuestionnaireV2Example.php#L28)
 
 [/sapi/v1/localentity/vasp](https://developers.binance.com/docs/wallet/travel-rule/onboarded-vasp-list) - vaspList - [VaspListExample.php:25](/examples/wallet/travelrule/VaspListExample.php#L25)
 

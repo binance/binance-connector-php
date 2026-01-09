@@ -58,8 +58,7 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
     public const TIME_IN_FORCE_FOK = 'FOK';
     public const TIME_IN_FORCE_GTX = 'GTX';
     public const TIME_IN_FORCE_GTD = 'GTD';
-    public const WORKING_TYPE_MARK_PRICE = 'MARK_PRICE';
-    public const WORKING_TYPE_CONTRACT_PRICE = 'CONTRACT_PRICE';
+    public const TIME_IN_FORCE_RPI = 'RPI';
     public const NEW_ORDER_RESP_TYPE_ACK = 'ACK';
     public const NEW_ORDER_RESP_TYPE_RESULT = 'RESULT';
     public const PRICE_MATCH_NONE = 'NONE';
@@ -93,19 +92,14 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
         'positionSide' => 'string',
         'type' => 'string',
         'timeInForce' => 'string',
-        'quantity' => 'float',
+        'quantity' => 'string',
         'reduceOnly' => 'string',
-        'price' => 'float',
+        'price' => 'string',
         'newClientOrderId' => 'string',
-        'stopPrice' => 'float',
-        'activationPrice' => 'float',
-        'callbackRate' => 'float',
-        'workingType' => 'string',
-        'priceProtect' => 'string',
         'newOrderRespType' => 'string',
         'priceMatch' => 'string',
         'selfTradePreventionMode' => 'string',
-        'goodTillDate' => 'int',
+        'goodTillDate' => 'string',
     ];
 
     /**
@@ -123,19 +117,14 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
         'positionSide' => null,
         'type' => null,
         'timeInForce' => null,
-        'quantity' => 'float',
+        'quantity' => null,
         'reduceOnly' => null,
-        'price' => 'float',
+        'price' => null,
         'newClientOrderId' => null,
-        'stopPrice' => 'float',
-        'activationPrice' => 'float',
-        'callbackRate' => 'float',
-        'workingType' => null,
-        'priceProtect' => null,
         'newOrderRespType' => null,
         'priceMatch' => null,
         'selfTradePreventionMode' => null,
-        'goodTillDate' => 'int64',
+        'goodTillDate' => null,
     ];
 
     /**
@@ -153,11 +142,6 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
         'reduceOnly' => false,
         'price' => false,
         'newClientOrderId' => false,
-        'stopPrice' => false,
-        'activationPrice' => false,
-        'callbackRate' => false,
-        'workingType' => false,
-        'priceProtect' => false,
         'newOrderRespType' => false,
         'priceMatch' => false,
         'selfTradePreventionMode' => false,
@@ -187,11 +171,6 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
         'reduceOnly' => 'reduceOnly',
         'price' => 'price',
         'newClientOrderId' => 'newClientOrderId',
-        'stopPrice' => 'stopPrice',
-        'activationPrice' => 'activationPrice',
-        'callbackRate' => 'callbackRate',
-        'workingType' => 'workingType',
-        'priceProtect' => 'priceProtect',
         'newOrderRespType' => 'newOrderRespType',
         'priceMatch' => 'priceMatch',
         'selfTradePreventionMode' => 'selfTradePreventionMode',
@@ -213,11 +192,6 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
         'reduceOnly' => 'setReduceOnly',
         'price' => 'setPrice',
         'newClientOrderId' => 'setNewClientOrderId',
-        'stopPrice' => 'setStopPrice',
-        'activationPrice' => 'setActivationPrice',
-        'callbackRate' => 'setCallbackRate',
-        'workingType' => 'setWorkingType',
-        'priceProtect' => 'setPriceProtect',
         'newOrderRespType' => 'setNewOrderRespType',
         'priceMatch' => 'setPriceMatch',
         'selfTradePreventionMode' => 'setSelfTradePreventionMode',
@@ -239,11 +213,6 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
         'reduceOnly' => 'getReduceOnly',
         'price' => 'getPrice',
         'newClientOrderId' => 'getNewClientOrderId',
-        'stopPrice' => 'getStopPrice',
-        'activationPrice' => 'getActivationPrice',
-        'callbackRate' => 'getCallbackRate',
-        'workingType' => 'getWorkingType',
-        'priceProtect' => 'getPriceProtect',
         'newOrderRespType' => 'getNewOrderRespType',
         'priceMatch' => 'getPriceMatch',
         'selfTradePreventionMode' => 'getSelfTradePreventionMode',
@@ -274,11 +243,6 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
         $this->setIfExists('reduceOnly', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('newClientOrderId', $data ?? [], null);
-        $this->setIfExists('stopPrice', $data ?? [], null);
-        $this->setIfExists('activationPrice', $data ?? [], null);
-        $this->setIfExists('callbackRate', $data ?? [], null);
-        $this->setIfExists('workingType', $data ?? [], null);
-        $this->setIfExists('priceProtect', $data ?? [], null);
         $this->setIfExists('newOrderRespType', $data ?? [], null);
         $this->setIfExists('priceMatch', $data ?? [], null);
         $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
@@ -432,19 +396,7 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
             self::TIME_IN_FORCE_FOK,
             self::TIME_IN_FORCE_GTX,
             self::TIME_IN_FORCE_GTD,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum.
-     *
-     * @return string[]
-     */
-    public function getWorkingTypeAllowableValues()
-    {
-        return [
-            self::WORKING_TYPE_MARK_PRICE,
-            self::WORKING_TYPE_CONTRACT_PRICE,
+            self::TIME_IN_FORCE_RPI,
         ];
     }
 
@@ -527,15 +479,6 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'timeInForce', must be one of '%s'",
                 $this->container['timeInForce'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getWorkingTypeAllowableValues();
-        if (!is_null($this->container['workingType']) && !in_array($this->container['workingType'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'workingType', must be one of '%s'",
-                $this->container['workingType'],
                 implode("', '", $allowedValues)
             );
         }
@@ -749,7 +692,7 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
     /**
      * Gets quantity.
      *
-     * @return null|float
+     * @return null|string
      */
     public function getQuantity()
     {
@@ -759,7 +702,7 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
     /**
      * Sets quantity.
      *
-     * @param null|float $quantity quantity
+     * @param null|string $quantity quantity
      *
      * @return self
      */
@@ -803,7 +746,7 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
     /**
      * Gets price.
      *
-     * @return null|float
+     * @return null|string
      */
     public function getPrice()
     {
@@ -813,7 +756,7 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
     /**
      * Sets price.
      *
-     * @param null|float $price price
+     * @param null|string $price price
      *
      * @return self
      */
@@ -850,151 +793,6 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
             throw new \InvalidArgumentException('non-nullable newClientOrderId cannot be null');
         }
         $this->container['newClientOrderId'] = $newClientOrderId;
-
-        return $this;
-    }
-
-    /**
-     * Gets stopPrice.
-     *
-     * @return null|float
-     */
-    public function getStopPrice()
-    {
-        return $this->container['stopPrice'];
-    }
-
-    /**
-     * Sets stopPrice.
-     *
-     * @param null|float $stopPrice stopPrice
-     *
-     * @return self
-     */
-    public function setStopPrice($stopPrice)
-    {
-        if (is_null($stopPrice)) {
-            throw new \InvalidArgumentException('non-nullable stopPrice cannot be null');
-        }
-        $this->container['stopPrice'] = $stopPrice;
-
-        return $this;
-    }
-
-    /**
-     * Gets activationPrice.
-     *
-     * @return null|float
-     */
-    public function getActivationPrice()
-    {
-        return $this->container['activationPrice'];
-    }
-
-    /**
-     * Sets activationPrice.
-     *
-     * @param null|float $activationPrice activationPrice
-     *
-     * @return self
-     */
-    public function setActivationPrice($activationPrice)
-    {
-        if (is_null($activationPrice)) {
-            throw new \InvalidArgumentException('non-nullable activationPrice cannot be null');
-        }
-        $this->container['activationPrice'] = $activationPrice;
-
-        return $this;
-    }
-
-    /**
-     * Gets callbackRate.
-     *
-     * @return null|float
-     */
-    public function getCallbackRate()
-    {
-        return $this->container['callbackRate'];
-    }
-
-    /**
-     * Sets callbackRate.
-     *
-     * @param null|float $callbackRate callbackRate
-     *
-     * @return self
-     */
-    public function setCallbackRate($callbackRate)
-    {
-        if (is_null($callbackRate)) {
-            throw new \InvalidArgumentException('non-nullable callbackRate cannot be null');
-        }
-        $this->container['callbackRate'] = $callbackRate;
-
-        return $this;
-    }
-
-    /**
-     * Gets workingType.
-     *
-     * @return null|string
-     */
-    public function getWorkingType()
-    {
-        return $this->container['workingType'];
-    }
-
-    /**
-     * Sets workingType.
-     *
-     * @param null|string $workingType workingType
-     *
-     * @return self
-     */
-    public function setWorkingType($workingType)
-    {
-        if (is_null($workingType)) {
-            throw new \InvalidArgumentException('non-nullable workingType cannot be null');
-        }
-        $allowedValues = $this->getWorkingTypeAllowableValues();
-        if (!in_array($workingType, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'workingType', must be one of '%s'",
-                    $workingType,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['workingType'] = $workingType;
-
-        return $this;
-    }
-
-    /**
-     * Gets priceProtect.
-     *
-     * @return null|string
-     */
-    public function getPriceProtect()
-    {
-        return $this->container['priceProtect'];
-    }
-
-    /**
-     * Sets priceProtect.
-     *
-     * @param null|string $priceProtect priceProtect
-     *
-     * @return self
-     */
-    public function setPriceProtect($priceProtect)
-    {
-        if (is_null($priceProtect)) {
-            throw new \InvalidArgumentException('non-nullable priceProtect cannot be null');
-        }
-        $this->container['priceProtect'] = $priceProtect;
 
         return $this;
     }
@@ -1113,7 +911,7 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
     /**
      * Gets goodTillDate.
      *
-     * @return null|int
+     * @return null|string
      */
     public function getGoodTillDate()
     {
@@ -1123,7 +921,7 @@ class BatchOrdersPlaceMultipleOrdersInner implements ModelInterface, \ArrayAcces
     /**
      * Sets goodTillDate.
      *
-     * @param null|int $goodTillDate goodTillDate
+     * @param null|string $goodTillDate goodTillDate
      *
      * @return self
      */

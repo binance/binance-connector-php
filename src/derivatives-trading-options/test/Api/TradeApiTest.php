@@ -266,7 +266,6 @@ class TradeApiTest extends TestCase
         $orderId = 1;
         $startTime = 1623319461670;
         $endTime = 1641782889000;
-        $limit = 100;
         $recvWindow = 5000;
         $response = $this->getApiMock($request)->queryCurrentOpenOptionOrders($symbol, $orderId, $startTime, $endTime, $recvWindow);
 
@@ -317,6 +316,23 @@ class TradeApiTest extends TestCase
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/eapi/v1/order', $request->getUri()->getPath());
         self::assertEquals('22bb4aab5007bdfe2006035e30f7f5fe51b409e0fd3e500e4d31970b67154176', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for userCommission.
+     *
+     * User Commission (USER_DATA).
+     */
+    public function testUserCommission()
+    {
+        $recvWindow = 5000;
+        $response = $this->getApiMock($request)->userCommission($recvWindow);
+
+        parse_str($request->getUri(), $queryMap);
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/eapi/v1/commission', $request->getUri()->getPath());
+        self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
     }
 
     /**

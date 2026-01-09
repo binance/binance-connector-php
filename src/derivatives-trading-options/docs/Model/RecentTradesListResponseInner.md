@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional]
+**id** | **int** |  | [optional]
+**tradeId** | **int** |  | [optional]
 **symbol** | **string** |  | [optional]
 **price** | **string** |  | [optional]
 **qty** | **string** |  | [optional]

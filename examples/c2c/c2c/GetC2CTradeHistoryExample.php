@@ -21,11 +21,13 @@ function getC2CTradeHistoryExample()
     $configurationBuilder = C2cRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new C2cRestApi($configurationBuilder->build());
-    $startTime = 1623319461670;
-    $endTime = 1641782889000;
+    $tradeType = '';
+    $startTimestamp = null;
+    $endTimestamp = null;
     $page = 1;
+    $rows = 100;
     $recvWindow = 5000;
-    $response = $api->getC2CTradeHistory($startTime, $endTime, $page, $recvWindow);
+    $response = $api->getC2CTradeHistory($tradeType, $startTimestamp, $endTimestamp, $page, $rows, $recvWindow);
     print_r($response);
 }
 

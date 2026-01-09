@@ -42,19 +42,15 @@ use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetPortfolioMargin
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetPortfolioMarginProAccountInfoResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetPortfolioMarginProSpanAccountInfoResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetTransferableEarnAssetBalanceForPortfolioMarginResponse;
-use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\MintBfusdForPortfolioMarginRequest;
-use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\MintBfusdForPortfolioMarginResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\PortfolioMarginProBankruptcyLoanRepayRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\PortfolioMarginProBankruptcyLoanRepayResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\QueryPortfolioMarginProBankruptcyLoanAmountResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\QueryPortfolioMarginProBankruptcyLoanRepayHistoryResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\QueryPortfolioMarginProNegativeBalanceInterestHistoryResponse;
-use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RedeemBfusdForPortfolioMarginRequest;
-use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RedeemBfusdForPortfolioMarginResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RepayFuturesNegativeBalanceRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RepayFuturesNegativeBalanceResponse;
-use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtForPortfolioMarginRequest;
-use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtForPortfolioMarginResponse;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginRequest;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginResponse;
 use Binance\Common\ApiException;
 use Binance\Common\Auth\SignerFactory;
 use Binance\Common\Auth\SignerInterface;
@@ -95,14 +91,12 @@ class AccountApi
         'getPortfolioMarginProAccountInfo' => ['application/x-www-form-urlencoded'],
         'getPortfolioMarginProSpanAccountInfo' => ['application/x-www-form-urlencoded'],
         'getTransferableEarnAssetBalanceForPortfolioMargin' => ['application/x-www-form-urlencoded'],
-        'mintBfusdForPortfolioMargin' => ['application/x-www-form-urlencoded'],
         'portfolioMarginProBankruptcyLoanRepay' => ['application/x-www-form-urlencoded'],
         'queryPortfolioMarginProBankruptcyLoanAmount' => ['application/x-www-form-urlencoded'],
         'queryPortfolioMarginProBankruptcyLoanRepayHistory' => ['application/x-www-form-urlencoded'],
         'queryPortfolioMarginProNegativeBalanceInterestHistory' => ['application/x-www-form-urlencoded'],
-        'redeemBfusdForPortfolioMargin' => ['application/x-www-form-urlencoded'],
         'repayFuturesNegativeBalance' => ['application/x-www-form-urlencoded'],
-        'transferLdusdtForPortfolioMargin' => ['application/x-www-form-urlencoded'],
+        'transferLdusdtRwusdForPortfolioMargin' => ['application/x-www-form-urlencoded'],
     ];
     private const HAS_TIME_UNIT = false;
 
@@ -1817,206 +1811,6 @@ class AccountApi
     }
 
     /**
-     * Operation mintBfusdForPortfolioMargin.
-     *
-     * Mint BFUSD for Portfolio Margin(TRADE)
-     *
-     * @param MintBfusdForPortfolioMarginRequest $mintBfusdForPortfolioMarginRequest mintBfusdForPortfolioMarginRequest (required)
-     *
-     * @return ApiResponse<MintBfusdForPortfolioMarginResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function mintBfusdForPortfolioMargin($mintBfusdForPortfolioMarginRequest): ApiResponse
-    {
-        return $this->mintBfusdForPortfolioMarginWithHttpInfo($mintBfusdForPortfolioMarginRequest);
-    }
-
-    /**
-     * Operation mintBfusdForPortfolioMarginWithHttpInfo.
-     *
-     * Mint BFUSD for Portfolio Margin(TRADE)
-     *
-     * @param MintBfusdForPortfolioMarginRequest $mintBfusdForPortfolioMarginRequest (required)
-     *
-     * @return ApiResponse<MintBfusdForPortfolioMarginResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function mintBfusdForPortfolioMarginWithHttpInfo($mintBfusdForPortfolioMarginRequest): ApiResponse
-    {
-        $request = $this->mintBfusdForPortfolioMarginRequest($mintBfusdForPortfolioMarginRequest);
-
-        try {
-            try {
-                $response = $this->client->send($request, []);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch ($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\MintBfusdForPortfolioMarginResponse',
-                        $request,
-                        $response,
-                    );
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\MintBfusdForPortfolioMarginResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\MintBfusdForPortfolioMarginResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    throw $e;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Create request for operation 'mintBfusdForPortfolioMargin'.
-     *
-     * @param MintBfusdForPortfolioMarginRequest $mintBfusdForPortfolioMarginRequest (required)
-     *
-     * @return Request
-     *
-     * @throws \InvalidArgumentException
-     */
-    public function mintBfusdForPortfolioMarginRequest($mintBfusdForPortfolioMarginRequest)
-    {
-        $contentType = self::contentTypes['mintBfusdForPortfolioMargin'][0];
-
-        // verify the required parameter 'mintBfusdForPortfolioMarginRequest' is set
-        if (null === $mintBfusdForPortfolioMarginRequest || (is_array($mintBfusdForPortfolioMarginRequest) && 0 === count($mintBfusdForPortfolioMarginRequest))) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $mintBfusdForPortfolioMarginRequest when calling mintBfusdForPortfolioMargin'
-            );
-        }
-
-        $resourcePath = '/sapi/v1/portfolio/mint';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        $getters = $mintBfusdForPortfolioMarginRequest::getters();
-        $formParams = [];
-        foreach ($getters as $property => $getter) {
-            $value = $mintBfusdForPortfolioMarginRequest->{$getter}();
-            if (!empty($value)) {
-                $formParams[$property] = $mintBfusdForPortfolioMarginRequest->{$getter}();
-            }
-        }
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem,
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
-                // if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        } elseif (isset($mintBfusdForPortfolioMarginRequest)) {
-            if (false !== stripos($headers['Content-Type'], 'application/json')) {
-                // if Content-Type contains "application/json", json_encode the body
-                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($mintBfusdForPortfolioMarginRequest));
-            } else {
-                $httpBody = $mintBfusdForPortfolioMarginRequest;
-            }
-        }
-
-        $defaultHeaders = [];
-        $defaultHeaders['User-Agent'] = $this->userAgent;
-
-        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
-            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->clientConfig->getUrl();
-
-        $queryParams['timestamp'] = $this->getTimestamp();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
-        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
-        $query = ObjectSerializer::buildQuery($queryParams);
-
-        return new Request(
-            'POST',
-            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation portfolioMarginProBankruptcyLoanRepay.
      *
      * Portfolio Margin Pro Bankruptcy Loan Repay
@@ -2802,206 +2596,6 @@ class AccountApi
     }
 
     /**
-     * Operation redeemBfusdForPortfolioMargin.
-     *
-     * Redeem BFUSD for Portfolio Margin(TRADE)
-     *
-     * @param RedeemBfusdForPortfolioMarginRequest $redeemBfusdForPortfolioMarginRequest redeemBfusdForPortfolioMarginRequest (required)
-     *
-     * @return ApiResponse<RedeemBfusdForPortfolioMarginResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function redeemBfusdForPortfolioMargin($redeemBfusdForPortfolioMarginRequest): ApiResponse
-    {
-        return $this->redeemBfusdForPortfolioMarginWithHttpInfo($redeemBfusdForPortfolioMarginRequest);
-    }
-
-    /**
-     * Operation redeemBfusdForPortfolioMarginWithHttpInfo.
-     *
-     * Redeem BFUSD for Portfolio Margin(TRADE)
-     *
-     * @param RedeemBfusdForPortfolioMarginRequest $redeemBfusdForPortfolioMarginRequest (required)
-     *
-     * @return ApiResponse<RedeemBfusdForPortfolioMarginResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function redeemBfusdForPortfolioMarginWithHttpInfo($redeemBfusdForPortfolioMarginRequest): ApiResponse
-    {
-        $request = $this->redeemBfusdForPortfolioMarginRequest($redeemBfusdForPortfolioMarginRequest);
-
-        try {
-            try {
-                $response = $this->client->send($request, []);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch ($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RedeemBfusdForPortfolioMarginResponse',
-                        $request,
-                        $response,
-                    );
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RedeemBfusdForPortfolioMarginResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RedeemBfusdForPortfolioMarginResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    throw $e;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Create request for operation 'redeemBfusdForPortfolioMargin'.
-     *
-     * @param RedeemBfusdForPortfolioMarginRequest $redeemBfusdForPortfolioMarginRequest (required)
-     *
-     * @return Request
-     *
-     * @throws \InvalidArgumentException
-     */
-    public function redeemBfusdForPortfolioMarginRequest($redeemBfusdForPortfolioMarginRequest)
-    {
-        $contentType = self::contentTypes['redeemBfusdForPortfolioMargin'][0];
-
-        // verify the required parameter 'redeemBfusdForPortfolioMarginRequest' is set
-        if (null === $redeemBfusdForPortfolioMarginRequest || (is_array($redeemBfusdForPortfolioMarginRequest) && 0 === count($redeemBfusdForPortfolioMarginRequest))) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $redeemBfusdForPortfolioMarginRequest when calling redeemBfusdForPortfolioMargin'
-            );
-        }
-
-        $resourcePath = '/sapi/v1/portfolio/redeem';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        $getters = $redeemBfusdForPortfolioMarginRequest::getters();
-        $formParams = [];
-        foreach ($getters as $property => $getter) {
-            $value = $redeemBfusdForPortfolioMarginRequest->{$getter}();
-            if (!empty($value)) {
-                $formParams[$property] = $redeemBfusdForPortfolioMarginRequest->{$getter}();
-            }
-        }
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem,
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
-                // if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        } elseif (isset($redeemBfusdForPortfolioMarginRequest)) {
-            if (false !== stripos($headers['Content-Type'], 'application/json')) {
-                // if Content-Type contains "application/json", json_encode the body
-                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($redeemBfusdForPortfolioMarginRequest));
-            } else {
-                $httpBody = $redeemBfusdForPortfolioMarginRequest;
-            }
-        }
-
-        $defaultHeaders = [];
-        $defaultHeaders['User-Agent'] = $this->userAgent;
-
-        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
-            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->clientConfig->getUrl();
-
-        $queryParams['timestamp'] = $this->getTimestamp();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
-        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
-        $query = ObjectSerializer::buildQuery($queryParams);
-
-        return new Request(
-            'POST',
-            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation repayFuturesNegativeBalance.
      *
      * Repay futures Negative Balance(USER_DATA)
@@ -3202,37 +2796,37 @@ class AccountApi
     }
 
     /**
-     * Operation transferLdusdtForPortfolioMargin.
+     * Operation transferLdusdtRwusdForPortfolioMargin.
      *
-     * Transfer LDUSDT for Portfolio Margin(TRADE)
+     * Transfer LDUSDT/RWUSD for Portfolio Margin(TRADE)
      *
-     * @param TransferLdusdtForPortfolioMarginRequest $transferLdusdtForPortfolioMarginRequest transferLdusdtForPortfolioMarginRequest (required)
+     * @param TransferLdusdtRwusdForPortfolioMarginRequest $transferLdusdtRwusdForPortfolioMarginRequest transferLdusdtRwusdForPortfolioMarginRequest (required)
      *
-     * @return ApiResponse<TransferLdusdtForPortfolioMarginResponse>
+     * @return ApiResponse<TransferLdusdtRwusdForPortfolioMarginResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function transferLdusdtForPortfolioMargin($transferLdusdtForPortfolioMarginRequest): ApiResponse
+    public function transferLdusdtRwusdForPortfolioMargin($transferLdusdtRwusdForPortfolioMarginRequest): ApiResponse
     {
-        return $this->transferLdusdtForPortfolioMarginWithHttpInfo($transferLdusdtForPortfolioMarginRequest);
+        return $this->transferLdusdtRwusdForPortfolioMarginWithHttpInfo($transferLdusdtRwusdForPortfolioMarginRequest);
     }
 
     /**
-     * Operation transferLdusdtForPortfolioMarginWithHttpInfo.
+     * Operation transferLdusdtRwusdForPortfolioMarginWithHttpInfo.
      *
-     * Transfer LDUSDT for Portfolio Margin(TRADE)
+     * Transfer LDUSDT/RWUSD for Portfolio Margin(TRADE)
      *
-     * @param TransferLdusdtForPortfolioMarginRequest $transferLdusdtForPortfolioMarginRequest (required)
+     * @param TransferLdusdtRwusdForPortfolioMarginRequest $transferLdusdtRwusdForPortfolioMarginRequest (required)
      *
-     * @return ApiResponse<TransferLdusdtForPortfolioMarginResponse>
+     * @return ApiResponse<TransferLdusdtRwusdForPortfolioMarginResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function transferLdusdtForPortfolioMarginWithHttpInfo($transferLdusdtForPortfolioMarginRequest): ApiResponse
+    public function transferLdusdtRwusdForPortfolioMarginWithHttpInfo($transferLdusdtRwusdForPortfolioMarginRequest): ApiResponse
     {
-        $request = $this->transferLdusdtForPortfolioMarginRequest($transferLdusdtForPortfolioMarginRequest);
+        $request = $this->transferLdusdtRwusdForPortfolioMarginRequest($transferLdusdtRwusdForPortfolioMarginRequest);
 
         try {
             try {
@@ -3258,7 +2852,7 @@ class AccountApi
             switch ($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtForPortfolioMarginResponse',
+                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginResponse',
                         $request,
                         $response,
                     );
@@ -3278,7 +2872,7 @@ class AccountApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtForPortfolioMarginResponse',
+                '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginResponse',
                 $request,
                 $response,
             );
@@ -3287,7 +2881,7 @@ class AccountApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtForPortfolioMarginResponse',
+                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3300,22 +2894,22 @@ class AccountApi
     }
 
     /**
-     * Create request for operation 'transferLdusdtForPortfolioMargin'.
+     * Create request for operation 'transferLdusdtRwusdForPortfolioMargin'.
      *
-     * @param TransferLdusdtForPortfolioMarginRequest $transferLdusdtForPortfolioMarginRequest (required)
+     * @param TransferLdusdtRwusdForPortfolioMarginRequest $transferLdusdtRwusdForPortfolioMarginRequest (required)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function transferLdusdtForPortfolioMarginRequest($transferLdusdtForPortfolioMarginRequest)
+    public function transferLdusdtRwusdForPortfolioMarginRequest($transferLdusdtRwusdForPortfolioMarginRequest)
     {
-        $contentType = self::contentTypes['transferLdusdtForPortfolioMargin'][0];
+        $contentType = self::contentTypes['transferLdusdtRwusdForPortfolioMargin'][0];
 
-        // verify the required parameter 'transferLdusdtForPortfolioMarginRequest' is set
-        if (null === $transferLdusdtForPortfolioMarginRequest || (is_array($transferLdusdtForPortfolioMarginRequest) && 0 === count($transferLdusdtForPortfolioMarginRequest))) {
+        // verify the required parameter 'transferLdusdtRwusdForPortfolioMarginRequest' is set
+        if (null === $transferLdusdtRwusdForPortfolioMarginRequest || (is_array($transferLdusdtRwusdForPortfolioMarginRequest) && 0 === count($transferLdusdtRwusdForPortfolioMarginRequest))) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $transferLdusdtForPortfolioMarginRequest when calling transferLdusdtForPortfolioMargin'
+                'Missing the required parameter $transferLdusdtRwusdForPortfolioMarginRequest when calling transferLdusdtRwusdForPortfolioMargin'
             );
         }
 
@@ -3326,12 +2920,12 @@ class AccountApi
         $httpBody = '';
         $multipart = false;
 
-        $getters = $transferLdusdtForPortfolioMarginRequest::getters();
+        $getters = $transferLdusdtRwusdForPortfolioMarginRequest::getters();
         $formParams = [];
         foreach ($getters as $property => $getter) {
-            $value = $transferLdusdtForPortfolioMarginRequest->{$getter}();
+            $value = $transferLdusdtRwusdForPortfolioMarginRequest->{$getter}();
             if (!empty($value)) {
-                $formParams[$property] = $transferLdusdtForPortfolioMarginRequest->{$getter}();
+                $formParams[$property] = $transferLdusdtRwusdForPortfolioMarginRequest->{$getter}();
             }
         }
 
@@ -3363,12 +2957,12 @@ class AccountApi
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
             }
-        } elseif (isset($transferLdusdtForPortfolioMarginRequest)) {
+        } elseif (isset($transferLdusdtRwusdForPortfolioMarginRequest)) {
             if (false !== stripos($headers['Content-Type'], 'application/json')) {
                 // if Content-Type contains "application/json", json_encode the body
-                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transferLdusdtForPortfolioMarginRequest));
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transferLdusdtRwusdForPortfolioMarginRequest));
             } else {
-                $httpBody = $transferLdusdtForPortfolioMarginRequest;
+                $httpBody = $transferLdusdtRwusdForPortfolioMarginRequest;
             }
         }
 

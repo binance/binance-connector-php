@@ -71,13 +71,12 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'realizedProfit' => 'string',
         'side' => 'string',
         'type' => 'string',
-        'volatility' => 'string',
         'liquidity' => 'string',
-        'quoteAsset' => 'string',
         'time' => 'int',
         'priceScale' => 'int',
         'quantityScale' => 'int',
         'optionSide' => 'string',
+        'quoteAsset' => 'string',
     ];
 
     /**
@@ -100,13 +99,12 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'realizedProfit' => null,
         'side' => null,
         'type' => null,
-        'volatility' => null,
         'liquidity' => null,
-        'quoteAsset' => null,
         'time' => 'int64',
         'priceScale' => 'int64',
         'quantityScale' => 'int64',
         'optionSide' => null,
+        'quoteAsset' => null,
     ];
 
     /**
@@ -125,13 +123,12 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'realizedProfit' => false,
         'side' => false,
         'type' => false,
-        'volatility' => false,
         'liquidity' => false,
-        'quoteAsset' => false,
         'time' => false,
         'priceScale' => false,
         'quantityScale' => false,
         'optionSide' => false,
+        'quoteAsset' => false,
     ];
 
     /**
@@ -158,13 +155,12 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'realizedProfit' => 'realizedProfit',
         'side' => 'side',
         'type' => 'type',
-        'volatility' => 'volatility',
         'liquidity' => 'liquidity',
-        'quoteAsset' => 'quoteAsset',
         'time' => 'time',
         'priceScale' => 'priceScale',
         'quantityScale' => 'quantityScale',
         'optionSide' => 'optionSide',
+        'quoteAsset' => 'quoteAsset',
     ];
 
     /**
@@ -183,13 +179,12 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'realizedProfit' => 'setRealizedProfit',
         'side' => 'setSide',
         'type' => 'setType',
-        'volatility' => 'setVolatility',
         'liquidity' => 'setLiquidity',
-        'quoteAsset' => 'setQuoteAsset',
         'time' => 'setTime',
         'priceScale' => 'setPriceScale',
         'quantityScale' => 'setQuantityScale',
         'optionSide' => 'setOptionSide',
+        'quoteAsset' => 'setQuoteAsset',
     ];
 
     /**
@@ -208,13 +203,12 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'realizedProfit' => 'getRealizedProfit',
         'side' => 'getSide',
         'type' => 'getType',
-        'volatility' => 'getVolatility',
         'liquidity' => 'getLiquidity',
-        'quoteAsset' => 'getQuoteAsset',
         'time' => 'getTime',
         'priceScale' => 'getPriceScale',
         'quantityScale' => 'getQuantityScale',
         'optionSide' => 'getOptionSide',
+        'quoteAsset' => 'getQuoteAsset',
     ];
 
     /**
@@ -242,13 +236,12 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         $this->setIfExists('realizedProfit', $data ?? [], null);
         $this->setIfExists('side', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('volatility', $data ?? [], null);
         $this->setIfExists('liquidity', $data ?? [], null);
-        $this->setIfExists('quoteAsset', $data ?? [], null);
         $this->setIfExists('time', $data ?? [], null);
         $this->setIfExists('priceScale', $data ?? [], null);
         $this->setIfExists('quantityScale', $data ?? [], null);
         $this->setIfExists('optionSide', $data ?? [], null);
+        $this->setIfExists('quoteAsset', $data ?? [], null);
     }
 
     /**
@@ -650,33 +643,6 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
     }
 
     /**
-     * Gets volatility.
-     *
-     * @return null|string
-     */
-    public function getVolatility()
-    {
-        return $this->container['volatility'];
-    }
-
-    /**
-     * Sets volatility.
-     *
-     * @param null|string $volatility volatility
-     *
-     * @return self
-     */
-    public function setVolatility($volatility)
-    {
-        if (is_null($volatility)) {
-            throw new \InvalidArgumentException('non-nullable volatility cannot be null');
-        }
-        $this->container['volatility'] = $volatility;
-
-        return $this;
-    }
-
-    /**
      * Gets liquidity.
      *
      * @return null|string
@@ -699,33 +665,6 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable liquidity cannot be null');
         }
         $this->container['liquidity'] = $liquidity;
-
-        return $this;
-    }
-
-    /**
-     * Gets quoteAsset.
-     *
-     * @return null|string
-     */
-    public function getQuoteAsset()
-    {
-        return $this->container['quoteAsset'];
-    }
-
-    /**
-     * Sets quoteAsset.
-     *
-     * @param null|string $quoteAsset quoteAsset
-     *
-     * @return self
-     */
-    public function setQuoteAsset($quoteAsset)
-    {
-        if (is_null($quoteAsset)) {
-            throw new \InvalidArgumentException('non-nullable quoteAsset cannot be null');
-        }
-        $this->container['quoteAsset'] = $quoteAsset;
 
         return $this;
     }
@@ -834,6 +773,33 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable optionSide cannot be null');
         }
         $this->container['optionSide'] = $optionSide;
+
+        return $this;
+    }
+
+    /**
+     * Gets quoteAsset.
+     *
+     * @return null|string
+     */
+    public function getQuoteAsset()
+    {
+        return $this->container['quoteAsset'];
+    }
+
+    /**
+     * Sets quoteAsset.
+     *
+     * @param null|string $quoteAsset quoteAsset
+     *
+     * @return self
+     */
+    public function setQuoteAsset($quoteAsset)
+    {
+        if (is_null($quoteAsset)) {
+            throw new \InvalidArgumentException('non-nullable quoteAsset cannot be null');
+        }
+        $this->container['quoteAsset'] = $quoteAsset;
 
         return $this;
     }

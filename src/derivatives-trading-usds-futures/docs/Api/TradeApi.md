@@ -7,6 +7,8 @@ All URIs are relative to https://fapi.binance.com, except if the operation defin
 | [**accountTradeList()**](TradeApi.md#accountTradeList) | **GET** /fapi/v1/userTrades | Account Trade List (USER_DATA) |
 | [**allOrders()**](TradeApi.md#allOrders) | **GET** /fapi/v1/allOrders | All Orders (USER_DATA) |
 | [**autoCancelAllOpenOrders()**](TradeApi.md#autoCancelAllOpenOrders) | **POST** /fapi/v1/countdownCancelAll | Auto-Cancel All Open Orders (TRADE) |
+| [**cancelAlgoOrder()**](TradeApi.md#cancelAlgoOrder) | **DELETE** /fapi/v1/algoOrder | Cancel Algo Order (TRADE) |
+| [**cancelAllAlgoOpenOrders()**](TradeApi.md#cancelAllAlgoOpenOrders) | **DELETE** /fapi/v1/algoOpenOrders | Cancel All Algo Open Orders (TRADE) |
 | [**cancelAllOpenOrders()**](TradeApi.md#cancelAllOpenOrders) | **DELETE** /fapi/v1/allOpenOrders | Cancel All Open Orders (TRADE) |
 | [**cancelMultipleOrders()**](TradeApi.md#cancelMultipleOrders) | **DELETE** /fapi/v1/batchOrders | Cancel Multiple Orders (TRADE) |
 | [**cancelOrder()**](TradeApi.md#cancelOrder) | **DELETE** /fapi/v1/order | Cancel Order (TRADE) |
@@ -14,17 +16,22 @@ All URIs are relative to https://fapi.binance.com, except if the operation defin
 | [**changeMarginType()**](TradeApi.md#changeMarginType) | **POST** /fapi/v1/marginType | Change Margin Type(TRADE) |
 | [**changeMultiAssetsMode()**](TradeApi.md#changeMultiAssetsMode) | **POST** /fapi/v1/multiAssetsMargin | Change Multi-Assets Mode (TRADE) |
 | [**changePositionMode()**](TradeApi.md#changePositionMode) | **POST** /fapi/v1/positionSide/dual | Change Position Mode(TRADE) |
+| [**currentAllAlgoOpenOrders()**](TradeApi.md#currentAllAlgoOpenOrders) | **GET** /fapi/v1/openAlgoOrders | Current All Algo Open Orders (USER_DATA) |
 | [**currentAllOpenOrders()**](TradeApi.md#currentAllOpenOrders) | **GET** /fapi/v1/openOrders | Current All Open Orders (USER_DATA) |
+| [**futuresTradfiPerpsContract()**](TradeApi.md#futuresTradfiPerpsContract) | **POST** /fapi/v1/stock/contract | Futures TradFi Perps Contract(USER_DATA) |
 | [**getOrderModifyHistory()**](TradeApi.md#getOrderModifyHistory) | **GET** /fapi/v1/orderAmendment | Get Order Modify History (USER_DATA) |
 | [**getPositionMarginChangeHistory()**](TradeApi.md#getPositionMarginChangeHistory) | **GET** /fapi/v1/positionMargin/history | Get Position Margin Change History (TRADE) |
 | [**modifyIsolatedPositionMargin()**](TradeApi.md#modifyIsolatedPositionMargin) | **POST** /fapi/v1/positionMargin | Modify Isolated Position Margin(TRADE) |
 | [**modifyMultipleOrders()**](TradeApi.md#modifyMultipleOrders) | **PUT** /fapi/v1/batchOrders | Modify Multiple Orders(TRADE) |
 | [**modifyOrder()**](TradeApi.md#modifyOrder) | **PUT** /fapi/v1/order | Modify Order (TRADE) |
+| [**newAlgoOrder()**](TradeApi.md#newAlgoOrder) | **POST** /fapi/v1/algoOrder | New Algo Order(TRADE) |
 | [**newOrder()**](TradeApi.md#newOrder) | **POST** /fapi/v1/order | New Order(TRADE) |
 | [**placeMultipleOrders()**](TradeApi.md#placeMultipleOrders) | **POST** /fapi/v1/batchOrders | Place Multiple Orders(TRADE) |
 | [**positionAdlQuantileEstimation()**](TradeApi.md#positionAdlQuantileEstimation) | **GET** /fapi/v1/adlQuantile | Position ADL Quantile Estimation(USER_DATA) |
 | [**positionInformationV2()**](TradeApi.md#positionInformationV2) | **GET** /fapi/v2/positionRisk | Position Information V2 (USER_DATA) |
 | [**positionInformationV3()**](TradeApi.md#positionInformationV3) | **GET** /fapi/v3/positionRisk | Position Information V3 (USER_DATA) |
+| [**queryAlgoOrder()**](TradeApi.md#queryAlgoOrder) | **GET** /fapi/v1/algoOrder | Query Algo Order (USER_DATA) |
+| [**queryAllAlgoOrders()**](TradeApi.md#queryAllAlgoOrders) | **GET** /fapi/v1/allAlgoOrders | Query All Algo Orders (USER_DATA) |
 | [**queryCurrentOpenOrder()**](TradeApi.md#queryCurrentOpenOrder) | **GET** /fapi/v1/openOrder | Query Current Open Order (USER_DATA) |
 | [**queryOrder()**](TradeApi.md#queryOrder) | **GET** /fapi/v1/order | Query Order (USER_DATA) |
 | [**testOrder()**](TradeApi.md#testOrder) | **POST** /fapi/v1/order/test | Test Order(TRADE) |
@@ -215,6 +222,124 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `cancelAlgoOrder()`
+
+```php
+cancelAlgoOrder($algoid, $clientalgoid, $recvWindow): \Binance\Client\DerivativesTradingUsdsFutures\Model\CancelAlgoOrderResponse
+```
+
+Cancel Algo Order (TRADE)
+
+Cancel an active algo order.  * Either `algoid` or `clientalgoid` must be sent.  Weight: 1
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$algoid = 56; // int
+$clientalgoid = 'clientalgoid_example'; // string
+$recvWindow = 56; // int
+
+try {
+    $result = $apiInstance->cancelAlgoOrder($algoid, $clientalgoid, $recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->cancelAlgoOrder: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **algoid** | **int**|  | [optional] |
+| **clientalgoid** | **string**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingUsdsFutures\Model\CancelAlgoOrderResponse**](../Model/CancelAlgoOrderResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `cancelAllAlgoOpenOrders()`
+
+```php
+cancelAllAlgoOpenOrders($symbol, $recvWindow): \Binance\Client\DerivativesTradingUsdsFutures\Model\CancelAllAlgoOpenOrdersResponse
+```
+
+Cancel All Algo Open Orders (TRADE)
+
+Cancel All Algo Open Orders  Weight: 1
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$symbol = 'symbol_example'; // string
+$recvWindow = 56; // int
+
+try {
+    $result = $apiInstance->cancelAllAlgoOpenOrders($symbol, $recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->cancelAllAlgoOpenOrders: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **symbol** | **string**|  | |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingUsdsFutures\Model\CancelAllAlgoOpenOrdersResponse**](../Model/CancelAllAlgoOpenOrdersResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -627,6 +752,68 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `currentAllAlgoOpenOrders()`
+
+```php
+currentAllAlgoOpenOrders($algoType, $symbol, $algoId, $recvWindow): \Binance\Client\DerivativesTradingUsdsFutures\Model\CurrentAllAlgoOpenOrdersResponse
+```
+
+Current All Algo Open Orders (USER_DATA)
+
+Get all algo open orders on a symbol.  * If the symbol is not sent, orders for all symbols will be returned in an array.  Weight: 1 for a single symbol; 40 when the symbol parameter is omitted Careful when accessing this with no symbol.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$algoType = 'algoType_example'; // string
+$symbol = 'symbol_example'; // string
+$algoId = 56; // int
+$recvWindow = 56; // int
+
+try {
+    $result = $apiInstance->currentAllAlgoOpenOrders($algoType, $symbol, $algoId, $recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->currentAllAlgoOpenOrders: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **algoType** | **string**|  | [optional] |
+| **symbol** | **string**|  | [optional] |
+| **algoId** | **int**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingUsdsFutures\Model\CurrentAllAlgoOpenOrdersResponse**](../Model/CurrentAllAlgoOpenOrdersResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `currentAllOpenOrders()`
 
 ```php
@@ -679,6 +866,62 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `futuresTradfiPerpsContract()`
+
+```php
+futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest): \Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractResponse
+```
+
+Futures TradFi Perps Contract(USER_DATA)
+
+Sign TradFi-Perps agreement contract  Weight: 0
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$futuresTradfiPerpsContractRequest = new \Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractRequest(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractRequest
+
+try {
+    $result = $apiInstance->futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->futuresTradfiPerpsContract: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **futuresTradfiPerpsContractRequest** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractRequest**](../Model/FuturesTradfiPerpsContractRequest.md)|  | |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractResponse**](../Model/FuturesTradfiPerpsContractResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -987,6 +1230,62 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `newAlgoOrder()`
+
+```php
+newAlgoOrder($newAlgoOrderRequest): \Binance\Client\DerivativesTradingUsdsFutures\Model\NewAlgoOrderResponse
+```
+
+New Algo Order(TRADE)
+
+Send in a new Algo order.  * Algo order with type `STOP`,  parameter `timeInForce` can be sent ( default `GTC`). * Algo order with type `TAKE_PROFIT`,  parameter `timeInForce` can be sent ( default `GTC`). * Condition orders will be triggered when:  * If parameter`priceProtect`is sent as true: * when price reaches the `triggerPrice` ，the difference rate between \"MARK_PRICE\" and \"CONTRACT_PRICE\" cannot be larger than the \"triggerProtect\" of the symbol * \"triggerProtect\" of a symbol can be got from `GET /fapi/v1/exchangeInfo`  * `STOP`, `STOP_MARKET`: * BUY: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") >= `triggerPrice` * SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") <= `triggerPrice` * `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`: * BUY: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") <= `triggerPrice` * SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") >= `triggerPrice` * `TRAILING_STOP_MARKET`: * BUY: the lowest price after order placed <= `activatePrice`, and the latest price >= the lowest price * (1 + `callbackRate`) * SELL: the highest price after order placed >= `activatePrice`, and the latest price <= the highest price * (1 - `callbackRate`)  * For `TRAILING_STOP_MARKET`, if you got such error code. ``{\"code\": -2021, \"msg\": \"Order would immediately trigger.\"}`` means that the parameters you send do not meet the following requirements: * BUY: `activatePrice` should be smaller than latest price. * SELL: `activatePrice` should be larger than latest price.  * `STOP_MARKET`, `TAKE_PROFIT_MARKET` with `closePosition`=`true`: * Follow the same rules for condition orders. * If triggered，**close all** current long position( if `SELL`) or current short position( if `BUY`). * Cannot be used with `quantity` paremeter * Cannot be used with `reduceOnly` parameter * In Hedge Mode,cannot be used with `BUY` orders in `LONG` position side. and cannot be used with `SELL` orders in `SHORT` position side * `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`.  Weight: 0 on IP rate limit(x-mbx-used-weight-1m)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$newAlgoOrderRequest = new \Binance\Client\DerivativesTradingUsdsFutures\Model\NewAlgoOrderRequest(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\NewAlgoOrderRequest
+
+try {
+    $result = $apiInstance->newAlgoOrder($newAlgoOrderRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->newAlgoOrder: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **newAlgoOrderRequest** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\NewAlgoOrderRequest**](../Model/NewAlgoOrderRequest.md)|  | |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingUsdsFutures\Model\NewAlgoOrderResponse**](../Model/NewAlgoOrderResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `newOrder()`
 
 ```php
@@ -995,7 +1294,7 @@ newOrder($newOrderRequest): \Binance\Client\DerivativesTradingUsdsFutures\Model\
 
 New Order(TRADE)
 
-Send in a new order.  * Order with type `STOP`,  parameter `timeInForce` can be sent ( default `GTC`). * Order with type `TAKE_PROFIT`,  parameter `timeInForce` can be sent ( default `GTC`). * Condition orders will be triggered when:  * If parameter`priceProtect`is sent as true: * when price reaches the `stopPrice` ，the difference rate between \"MARK_PRICE\" and \"CONTRACT_PRICE\" cannot be larger than the \"triggerProtect\" of the symbol * \"triggerProtect\" of a symbol can be got from `GET /fapi/v1/exchangeInfo`  * `STOP`, `STOP_MARKET`: * BUY: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") >= `stopPrice` * SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") <= `stopPrice` * `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`: * BUY: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") <= `stopPrice` * SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") >= `stopPrice` * `TRAILING_STOP_MARKET`: * BUY: the lowest price after order placed `<= `activationPrice`, and the latest price >`= the lowest price * (1 + `callbackRate`) * SELL: the highest price after order placed >= `activationPrice`, and the latest price <= the highest price * (1 - `callbackRate`)  * For `TRAILING_STOP_MARKET`, if you got such error code. ``{\"code\": -2021, \"msg\": \"Order would immediately trigger.\"}`` means that the parameters you send do not meet the following requirements: * BUY: `activationPrice` should be smaller than latest price. * SELL: `activationPrice` should be larger than latest price.  * If `newOrderRespType ` is sent as `RESULT` : * `MARKET` order: the final FILLED result of the order will be return directly. * `LIMIT` order with special `timeInForce`: the final status result of the order(FILLED or EXPIRED) will be returned directly.  * `STOP_MARKET`, `TAKE_PROFIT_MARKET` with `closePosition`=`true`: * Follow the same rules for condition orders. * If triggered，**close all** current long position( if `SELL`) or current short position( if `BUY`). * Cannot be used with `quantity` paremeter * Cannot be used with `reduceOnly` parameter * In Hedge Mode,cannot be used with `BUY` orders in `LONG` position side. and cannot be used with `SELL` orders in `SHORT` position side * `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`. * In extreme market conditions, timeInForce `GTD` order auto cancel time might be delayed comparing to `goodTillDate`  Weight: 1 on 10s order rate limit(X-MBX-ORDER-COUNT-10S); 1 on 1min order rate limit(X-MBX-ORDER-COUNT-1M); 0 on IP rate limit(x-mbx-used-weight-1m)
+Send in a new order.  * If `newOrderRespType ` is sent as `RESULT` : * `MARKET` order: the final FILLED result of the order will be return directly. * `LIMIT` order with special `timeInForce`: the final status result of the order(FILLED or EXPIRED) will be returned directly.  * `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`. * In extreme market conditions, timeInForce `GTD` order auto cancel time might be delayed comparing to `goodTillDate`  Weight: 1 on 10s order rate limit(X-MBX-ORDER-COUNT-10S); 1 on 1min order rate limit(X-MBX-ORDER-COUNT-1M); 0 on IP rate limit(x-mbx-used-weight-1m)
 
 ### Example
 
@@ -1259,6 +1558,134 @@ try {
 ### Return type
 
 [**\Binance\Client\DerivativesTradingUsdsFutures\Model\PositionInformationV3Response**](../Model/PositionInformationV3Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `queryAlgoOrder()`
+
+```php
+queryAlgoOrder($algoId, $clientAlgoId, $recvWindow): \Binance\Client\DerivativesTradingUsdsFutures\Model\QueryAlgoOrderResponse
+```
+
+Query Algo Order (USER_DATA)
+
+Check an algo order's status.  * These orders will not be found: * order status is `CANCELED` or `EXPIRED` **AND** order has NO filled trade **AND** created time + 3 days < current time * order create time + 90 days < current time  * Either `algoId` or `clientAlgoId` must be sent. * `algoId` is self-increment for each specific `symbol`  Weight: 1
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$algoId = 56; // int
+$clientAlgoId = 'clientAlgoId_example'; // string
+$recvWindow = 56; // int
+
+try {
+    $result = $apiInstance->queryAlgoOrder($algoId, $clientAlgoId, $recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->queryAlgoOrder: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **algoId** | **int**|  | [optional] |
+| **clientAlgoId** | **string**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingUsdsFutures\Model\QueryAlgoOrderResponse**](../Model/QueryAlgoOrderResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `queryAllAlgoOrders()`
+
+```php
+queryAllAlgoOrders($symbol, $algoId, $startTime, $endTime, $page, $limit, $recvWindow): \Binance\Client\DerivativesTradingUsdsFutures\Model\QueryAllAlgoOrdersResponse
+```
+
+Query All Algo Orders (USER_DATA)
+
+Get all algo orders; active, CANCELED, TRIGGERED or FINISHED .  * These orders will not be found: * order status is `CANCELED` or `EXPIRED` **AND** order has NO filled trade **AND** created time + 3 days < current time * order create time + 90 days < current time  * If `algoId` is set, it will get orders >= that `algoId`. Otherwise most recent orders are returned. * The query time period must be less then 7 days( default as the recent 7 days).  Weight: 5
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$symbol = 'symbol_example'; // string
+$algoId = 56; // int
+$startTime = 56; // int
+$endTime = 56; // int
+$page = 56; // int
+$limit = 56; // int | Default 100; max 1000
+$recvWindow = 56; // int
+
+try {
+    $result = $apiInstance->queryAllAlgoOrders($symbol, $algoId, $startTime, $endTime, $page, $limit, $recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->queryAllAlgoOrders: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **symbol** | **string**|  | |
+| **algoId** | **int**|  | [optional] |
+| **startTime** | **int**|  | [optional] |
+| **endTime** | **int**|  | [optional] |
+| **page** | **int**|  | [optional] |
+| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingUsdsFutures\Model\QueryAllAlgoOrdersResponse**](../Model/QueryAllAlgoOrdersResponse.md)
 
 ### Authorization
 

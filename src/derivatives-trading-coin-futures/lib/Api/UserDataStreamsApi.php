@@ -29,6 +29,7 @@
 
 namespace Binance\Client\DerivativesTradingCoinFutures\Api;
 
+use Binance\Client\DerivativesTradingCoinFutures\Model\KeepaliveUserDataStreamResponse;
 use Binance\Client\DerivativesTradingCoinFutures\Model\StartUserDataStreamResponse;
 use Binance\Common\ApiException;
 use Binance\Common\Auth\SignerFactory;
@@ -219,12 +220,14 @@ class UserDataStreamsApi
      *
      * Keepalive User Data Stream (USER_STREAM)
      *
+     * @return ApiResponse<KeepaliveUserDataStreamResponse>
+     *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function keepaliveUserDataStream()
+    public function keepaliveUserDataStream(): ApiResponse
     {
-        $this->keepaliveUserDataStreamWithHttpInfo();
+        return $this->keepaliveUserDataStreamWithHttpInfo();
     }
 
     /**
@@ -232,10 +235,12 @@ class UserDataStreamsApi
      *
      * Keepalive User Data Stream (USER_STREAM)
      *
+     * @return ApiResponse<KeepaliveUserDataStreamResponse>
+     *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function keepaliveUserDataStreamWithHttpInfo()
+    public function keepaliveUserDataStreamWithHttpInfo(): ApiResponse
     {
         $request = $this->keepaliveUserDataStreamRequest();
 
@@ -260,9 +265,44 @@ class UserDataStreamsApi
 
             $statusCode = $response->getStatusCode();
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingCoinFutures\Model\KeepaliveUserDataStreamResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingCoinFutures\Model\KeepaliveUserDataStreamResponse',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingCoinFutures\Model\KeepaliveUserDataStreamResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
             }
 
             throw $e;
@@ -288,7 +328,7 @@ class UserDataStreamsApi
         $multipart = false;
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json'],
             $contentType,
             $multipart
         );

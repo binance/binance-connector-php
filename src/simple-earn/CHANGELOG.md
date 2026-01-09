@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.0.0 - 2026-01-08
+
+### Added (8)
+
+- `getBfusdAccount()` (`GET /sapi/v1/bfusd/account`)
+- `getBfusdQuotaDetails()` (`GET /sapi/v1/bfusd/quota`)
+- `getBfusdRateHistory()` (`GET /sapi/v1/bfusd/history/rateHistory`)
+- `getBfusdRedemptionHistory()` (`GET /sapi/v1/bfusd/history/redemptionHistory`)
+- `getBfusdRewardsHistory()` (`GET /sapi/v1/bfusd/history/rewardsHistory`)
+- `getBfusdSubscriptionHistory()` (`GET /sapi/v1/bfusd/history/subscriptionHistory`)
+- `redeemBfusd()` (`POST /sapi/v1/bfusd/redeem`)
+- `subscribeBfusd()` (`POST /sapi/v1/bfusd/subscribe`)
+
 ## 2.0.0 - 2025-10-21
 
 ### Added (16)

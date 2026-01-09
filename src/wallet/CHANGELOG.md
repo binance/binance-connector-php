@@ -1,5 +1,20 @@
 # Changelog
 
+## 3.0.0 - 2026-01-08
+
+### Added (3)
+
+- `dustConvert()` (`POST /sapi/v1/asset/dust-convert/convert`)
+- `dustConvertibleAssets()` (`POST /sapi/v1/asset/dust-convert/query-convertible-assets`)
+- `submitDepositQuestionnaireV2()` (`PUT /sapi/v2/localentity/deposit/provide-info`)
+
+### Changed (1)
+
+- Modified parameter `depositId`:
+  - type `string` → `integer`
+  - affected methods:
+    - `submitDepositQuestionnaire()` (`PUT /sapi/v1/localentity/broker/deposit/provide-info`)
+
 ## 2.0.0 - 2025-10-21
 
 ### Added (2)

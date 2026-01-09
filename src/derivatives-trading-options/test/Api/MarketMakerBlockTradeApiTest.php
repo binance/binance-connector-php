@@ -34,7 +34,6 @@ use Binance\Client\DerivativesTradingOptions\Model\AcceptBlockTradeOrderRequest;
 use Binance\Client\DerivativesTradingOptions\Model\ExtendBlockTradeOrderRequest;
 use Binance\Client\DerivativesTradingOptions\Model\Legs;
 use Binance\Client\DerivativesTradingOptions\Model\NewBlockTradeOrderRequest;
-use Binance\Client\DerivativesTradingOptions\Model\Side;
 use Binance\Common\Configuration\ClientConfiguration;
 use Binance\Common\Configuration\SignatureConfiguration;
 use Binance\Common\HttpClient;

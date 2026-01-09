@@ -25,18 +25,20 @@ class C2cRestApi
      *
      * Get C2C Trade History (USER_DATA)
      *
-     * @param null|int $startTime  startTime (optional)
-     * @param null|int $endTime    endTime (optional)
-     * @param null|int $page       Default 1 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|string $tradeType      BUY, SELL (optional)
+     * @param null|int    $startTimestamp startTimestamp (optional)
+     * @param null|int    $endTimestamp   endTimestamp (optional)
+     * @param null|int    $page           Default 1 (optional)
+     * @param null|int    $rows           default 100, max 100 (optional)
+     * @param null|int    $recvWindow     recvWindow (optional)
      *
      * @return ApiResponse<GetC2CTradeHistoryResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getC2CTradeHistory($startTime = null, $endTime = null, $page = null, $recvWindow = null): ApiResponse
+    public function getC2CTradeHistory($tradeType = null, $startTimestamp = null, $endTimestamp = null, $page = null, $rows = null, $recvWindow = null): ApiResponse
     {
-        return $this->c2CApi->getC2CTradeHistory($startTime, $endTime, $page, $recvWindow);
+        return $this->c2CApi->getC2CTradeHistory($tradeType, $startTimestamp, $endTimestamp, $page, $rows, $recvWindow);
     }
 }

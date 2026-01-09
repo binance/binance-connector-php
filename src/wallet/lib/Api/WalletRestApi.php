@@ -17,6 +17,10 @@ use Binance\Client\Wallet\Model\DepositHistoryResponse;
 use Binance\Client\Wallet\Model\DepositHistoryTravelRuleResponse;
 use Binance\Client\Wallet\Model\DepositHistoryV2Response;
 use Binance\Client\Wallet\Model\DisableFastWithdrawSwitchRequest;
+use Binance\Client\Wallet\Model\DustConvertibleAssetsRequest;
+use Binance\Client\Wallet\Model\DustConvertibleAssetsResponse;
+use Binance\Client\Wallet\Model\DustConvertRequest;
+use Binance\Client\Wallet\Model\DustConvertResponse;
 use Binance\Client\Wallet\Model\DustlogResponse;
 use Binance\Client\Wallet\Model\DustTransferRequest;
 use Binance\Client\Wallet\Model\DustTransferResponse;
@@ -42,6 +46,8 @@ use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireRequest;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireResponse;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireTravelRuleRequest;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireTravelRuleResponse;
+use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireV2Request;
+use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireV2Response;
 use Binance\Client\Wallet\Model\SystemStatusResponse;
 use Binance\Client\Wallet\Model\ToggleBnbBurnOnSpotTradeAndMarginInterestRequest;
 use Binance\Client\Wallet\Model\ToggleBnbBurnOnSpotTradeAndMarginInterestResponse;
@@ -254,6 +260,40 @@ class WalletRestApi
     public function assetDividendRecord($asset = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
         return $this->assetApi->assetDividendRecord($asset, $startTime, $endTime, $limit, $recvWindow);
+    }
+
+    /**
+     * Operation dustConvert.
+     *
+     * Dust Convert (USER_DATA)
+     *
+     * @param DustConvertRequest $dustConvertRequest dustConvertRequest (required)
+     *
+     * @return ApiResponse<DustConvertResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function dustConvert($dustConvertRequest): ApiResponse
+    {
+        return $this->assetApi->dustConvert($dustConvertRequest);
+    }
+
+    /**
+     * Operation dustConvertibleAssets.
+     *
+     * Dust Convertible Assets (USER_DATA)
+     *
+     * @param DustConvertibleAssetsRequest $dustConvertibleAssetsRequest dustConvertibleAssetsRequest (required)
+     *
+     * @return ApiResponse<DustConvertibleAssetsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function dustConvertibleAssets($dustConvertibleAssetsRequest): ApiResponse
+    {
+        return $this->assetApi->dustConvertibleAssets($dustConvertibleAssetsRequest);
     }
 
     /**
@@ -766,7 +806,7 @@ class WalletRestApi
      *
      * Deposit History V2 (for local entities that required travel rule) (supporting network) (USER_DATA)
      *
-     * @param null|string $depositId             Comma(,) separated list of wallet tran Ids. (optional)
+     * @param null|int    $depositId             Comma(,) separated list of wallet tran Ids. (optional)
      * @param null|string $txId                  txId (optional)
      * @param null|string $network               network (optional)
      * @param null|string $coin                  coin (optional)
@@ -835,6 +875,23 @@ class WalletRestApi
     public function submitDepositQuestionnaireTravelRule($submitDepositQuestionnaireTravelRuleRequest): ApiResponse
     {
         return $this->travelRuleApi->submitDepositQuestionnaireTravelRule($submitDepositQuestionnaireTravelRuleRequest);
+    }
+
+    /**
+     * Operation submitDepositQuestionnaireV2.
+     *
+     * Submit Deposit Questionnaire V2 (For local entities that require travel rule) (supporting network) (USER_DATA)
+     *
+     * @param SubmitDepositQuestionnaireV2Request $submitDepositQuestionnaireV2Request submitDepositQuestionnaireV2Request (required)
+     *
+     * @return ApiResponse<SubmitDepositQuestionnaireV2Response>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function submitDepositQuestionnaireV2($submitDepositQuestionnaireV2Request): ApiResponse
+    {
+        return $this->travelRuleApi->submitDepositQuestionnaireV2($submitDepositQuestionnaireV2Request);
     }
 
     /**

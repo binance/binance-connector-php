@@ -25,8 +25,6 @@ use Binance\Client\MarginTrading\Model\GetListScheduleResponse;
 use Binance\Client\MarginTrading\Model\GetSmallLiabilityExchangeCoinListResponse;
 use Binance\Client\MarginTrading\Model\GetSmallLiabilityExchangeHistoryResponse;
 use Binance\Client\MarginTrading\Model\GetSummaryOfMarginAccountResponse;
-use Binance\Client\MarginTrading\Model\KeepaliveIsolatedMarginUserDataStreamRequest;
-use Binance\Client\MarginTrading\Model\KeepaliveMarginUserDataStreamRequest;
 use Binance\Client\MarginTrading\Model\KeepaliveUserDataStreamRequest;
 use Binance\Client\MarginTrading\Model\MarginAccountBorrowRepayRequest;
 use Binance\Client\MarginTrading\Model\MarginAccountBorrowRepayResponse;
@@ -68,9 +66,6 @@ use Binance\Client\MarginTrading\Model\QueryMaxTransferOutAmountResponse;
 use Binance\Client\MarginTrading\Model\QuerySpecialKeyListResponse;
 use Binance\Client\MarginTrading\Model\QuerySpecialKeyResponse;
 use Binance\Client\MarginTrading\Model\SmallLiabilityExchangeRequest;
-use Binance\Client\MarginTrading\Model\StartIsolatedMarginUserDataStreamRequest;
-use Binance\Client\MarginTrading\Model\StartIsolatedMarginUserDataStreamResponse;
-use Binance\Client\MarginTrading\Model\StartMarginUserDataStreamResponse;
 use Binance\Client\MarginTrading\Model\StartUserDataStreamResponse;
 use Binance\Common\ApiException;
 use Binance\Common\Configuration\ClientConfiguration;
@@ -104,11 +99,6 @@ class MarginTradingRestApi
     private $tradeApi;
 
     /**
-     * @var TradeDataStreamApi
-     */
-    private $tradeDataStreamApi;
-
-    /**
      * @var TransferApi
      */
     private $transferApi;
@@ -121,7 +111,6 @@ class MarginTradingRestApi
         $this->marketDataApi = new MarketDataApi($clientConfig);
         $this->riskDataStreamApi = new RiskDataStreamApi($clientConfig);
         $this->tradeApi = new TradeApi($clientConfig);
-        $this->tradeDataStreamApi = new TradeDataStreamApi($clientConfig);
         $this->transferApi = new TransferApi($clientConfig);
     }
 
@@ -1150,111 +1139,6 @@ class MarginTradingRestApi
     public function smallLiabilityExchange($smallLiabilityExchangeRequest)
     {
         $this->tradeApi->smallLiabilityExchange($smallLiabilityExchangeRequest);
-    }
-
-    /**
-     * Operation closeIsolatedMarginUserDataStream.
-     *
-     * Close Isolated Margin User Data Stream (USER_STREAM)
-     *
-     * @param string $symbol    symbol (required)
-     * @param string $listenkey listenkey (required)
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     *
-     * @deprecated
-     */
-    public function closeIsolatedMarginUserDataStream($symbol, $listenkey)
-    {
-        $this->tradeDataStreamApi->closeIsolatedMarginUserDataStream($symbol, $listenkey);
-    }
-
-    /**
-     * Operation closeMarginUserDataStream.
-     *
-     * Close Margin User Data Stream (USER_STREAM)
-     *
-     * @param string $listenkey listenkey (required)
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     *
-     * @deprecated
-     */
-    public function closeMarginUserDataStream($listenkey)
-    {
-        $this->tradeDataStreamApi->closeMarginUserDataStream($listenkey);
-    }
-
-    /**
-     * Operation keepaliveIsolatedMarginUserDataStream.
-     *
-     * Keepalive Isolated Margin User Data Stream (USER_STREAM)
-     *
-     * @param KeepaliveIsolatedMarginUserDataStreamRequest $keepaliveIsolatedMarginUserDataStreamRequest keepaliveIsolatedMarginUserDataStreamRequest (required)
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     *
-     * @deprecated
-     */
-    public function keepaliveIsolatedMarginUserDataStream($keepaliveIsolatedMarginUserDataStreamRequest)
-    {
-        $this->tradeDataStreamApi->keepaliveIsolatedMarginUserDataStream($keepaliveIsolatedMarginUserDataStreamRequest);
-    }
-
-    /**
-     * Operation keepaliveMarginUserDataStream.
-     *
-     * Keepalive Margin User Data Stream (USER_STREAM)
-     *
-     * @param KeepaliveMarginUserDataStreamRequest $keepaliveMarginUserDataStreamRequest keepaliveMarginUserDataStreamRequest (required)
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     *
-     * @deprecated
-     */
-    public function keepaliveMarginUserDataStream($keepaliveMarginUserDataStreamRequest)
-    {
-        $this->tradeDataStreamApi->keepaliveMarginUserDataStream($keepaliveMarginUserDataStreamRequest);
-    }
-
-    /**
-     * Operation startIsolatedMarginUserDataStream.
-     *
-     * Start Isolated Margin User Data Stream (USER_STREAM)
-     *
-     * @param StartIsolatedMarginUserDataStreamRequest $startIsolatedMarginUserDataStreamRequest startIsolatedMarginUserDataStreamRequest (required)
-     *
-     * @return ApiResponse<StartIsolatedMarginUserDataStreamResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     *
-     * @deprecated
-     */
-    public function startIsolatedMarginUserDataStream($startIsolatedMarginUserDataStreamRequest): ApiResponse
-    {
-        return $this->tradeDataStreamApi->startIsolatedMarginUserDataStream($startIsolatedMarginUserDataStreamRequest);
-    }
-
-    /**
-     * Operation startMarginUserDataStream.
-     *
-     * Start Margin User Data Stream (USER_STREAM)
-     *
-     * @return ApiResponse<StartMarginUserDataStreamResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     *
-     * @deprecated
-     */
-    public function startMarginUserDataStream(): ApiResponse
-    {
-        return $this->tradeDataStreamApi->startMarginUserDataStream();
     }
 
     /**

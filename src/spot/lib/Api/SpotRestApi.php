@@ -35,6 +35,10 @@ use Binance\Client\Spot\Model\OrderCancelReplaceRequest;
 use Binance\Client\Spot\Model\OrderCancelReplaceResponse;
 use Binance\Client\Spot\Model\OrderListOcoRequest;
 use Binance\Client\Spot\Model\OrderListOcoResponse;
+use Binance\Client\Spot\Model\OrderListOpocoRequest;
+use Binance\Client\Spot\Model\OrderListOpocoResponse;
+use Binance\Client\Spot\Model\OrderListOpoRequest;
+use Binance\Client\Spot\Model\OrderListOpoResponse;
 use Binance\Client\Spot\Model\OrderListOtocoRequest;
 use Binance\Client\Spot\Model\OrderListOtocoResponse;
 use Binance\Client\Spot\Model\OrderListOtoRequest;
@@ -785,6 +789,40 @@ class SpotRestApi
     public function orderListOco($orderListOcoRequest): ApiResponse
     {
         return $this->tradeApi->orderListOco($orderListOcoRequest);
+    }
+
+    /**
+     * Operation orderListOpo.
+     *
+     * New Order List - OPO
+     *
+     * @param OrderListOpoRequest $orderListOpoRequest orderListOpoRequest (required)
+     *
+     * @return ApiResponse<OrderListOpoResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function orderListOpo($orderListOpoRequest): ApiResponse
+    {
+        return $this->tradeApi->orderListOpo($orderListOpoRequest);
+    }
+
+    /**
+     * Operation orderListOpoco.
+     *
+     * New Order List - OPOCO
+     *
+     * @param OrderListOpocoRequest $orderListOpocoRequest orderListOpocoRequest (required)
+     *
+     * @return ApiResponse<OrderListOpocoResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function orderListOpoco($orderListOpocoRequest): ApiResponse
+    {
+        return $this->tradeApi->orderListOpoco($orderListOpocoRequest);
     }
 
     /**

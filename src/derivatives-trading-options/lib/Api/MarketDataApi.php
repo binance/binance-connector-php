@@ -32,14 +32,13 @@ namespace Binance\Client\DerivativesTradingOptions\Api;
 use Binance\Client\DerivativesTradingOptions\Model\CheckServerTimeResponse;
 use Binance\Client\DerivativesTradingOptions\Model\ExchangeInformationResponse;
 use Binance\Client\DerivativesTradingOptions\Model\HistoricalExerciseRecordsResponse;
+use Binance\Client\DerivativesTradingOptions\Model\IndexPriceResponse;
 use Binance\Client\DerivativesTradingOptions\Model\KlineCandlestickDataResponse;
-use Binance\Client\DerivativesTradingOptions\Model\OldTradesLookupResponse;
 use Binance\Client\DerivativesTradingOptions\Model\OpenInterestResponse;
 use Binance\Client\DerivativesTradingOptions\Model\OptionMarkPriceResponse;
 use Binance\Client\DerivativesTradingOptions\Model\OrderBookResponse;
 use Binance\Client\DerivativesTradingOptions\Model\RecentBlockTradesListResponse;
 use Binance\Client\DerivativesTradingOptions\Model\RecentTradesListResponse;
-use Binance\Client\DerivativesTradingOptions\Model\SymbolPriceTickerResponse;
 use Binance\Client\DerivativesTradingOptions\Model\Ticker24hrPriceChangeStatisticsResponse;
 use Binance\Common\ApiException;
 use Binance\Common\Auth\SignerFactory;
@@ -73,14 +72,13 @@ class MarketDataApi
         'checkServerTime' => ['application/x-www-form-urlencoded'],
         'exchangeInformation' => ['application/x-www-form-urlencoded'],
         'historicalExerciseRecords' => ['application/x-www-form-urlencoded'],
+        'indexPrice' => ['application/x-www-form-urlencoded'],
         'klineCandlestickData' => ['application/x-www-form-urlencoded'],
-        'oldTradesLookup' => ['application/x-www-form-urlencoded'],
         'openInterest' => ['application/x-www-form-urlencoded'],
         'optionMarkPrice' => ['application/x-www-form-urlencoded'],
         'orderBook' => ['application/x-www-form-urlencoded'],
         'recentBlockTradesList' => ['application/x-www-form-urlencoded'],
         'recentTradesList' => ['application/x-www-form-urlencoded'],
-        'symbolPriceTicker' => ['application/x-www-form-urlencoded'],
         'testConnectivity' => ['application/x-www-form-urlencoded'],
         'ticker24hrPriceChangeStatistics' => ['application/x-www-form-urlencoded'],
     ];
@@ -613,6 +611,172 @@ class MarketDataApi
     }
 
     /**
+     * Operation indexPrice.
+     *
+     * Index Price
+     *
+     * @param string $underlying Option underlying, e.g BTCUSDT (required)
+     *
+     * @return ApiResponse<IndexPriceResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function indexPrice($underlying): ApiResponse
+    {
+        return $this->indexPriceWithHttpInfo($underlying);
+    }
+
+    /**
+     * Operation indexPriceWithHttpInfo.
+     *
+     * Index Price
+     *
+     * @param string $underlying Option underlying, e.g BTCUSDT (required)
+     *
+     * @return ApiResponse<IndexPriceResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function indexPriceWithHttpInfo($underlying): ApiResponse
+    {
+        $request = $this->indexPriceRequest($underlying);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingOptions\Model\IndexPriceResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingOptions\Model\IndexPriceResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingOptions\Model\IndexPriceResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'indexPrice'.
+     *
+     * @param string $underlying Option underlying, e.g BTCUSDT (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function indexPriceRequest($underlying)
+    {
+        $contentType = self::contentTypes['indexPrice'][0];
+
+        // verify the required parameter 'underlying' is set
+        if (null === $underlying || (is_array($underlying) && 0 === count($underlying))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $underlying when calling indexPrice'
+            );
+        }
+
+        $resourcePath = '/eapi/v1/index';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $underlying,
+            'underlying', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation klineCandlestickData.
      *
      * Kline/Candlestick Data
@@ -787,196 +951,6 @@ class MarketDataApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $endTime,
             'endTime', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            $contentType,
-            $multipart
-        );
-
-        $defaultHeaders = [];
-        $defaultHeaders['User-Agent'] = $this->userAgent;
-
-        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
-            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->clientConfig->getUrl();
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-
-        return new Request(
-            'GET',
-            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation oldTradesLookup.
-     *
-     * Old Trades Lookup (MARKET_DATA)
-     *
-     * @param string   $symbol Option trading pair, e.g BTC-200730-9000-C (required)
-     * @param null|int $fromId The UniqueId ID from which to return. The latest deal record is returned by default (optional)
-     * @param null|int $limit  Number of result sets returned Default:100 Max:1000 (optional)
-     *
-     * @return ApiResponse<OldTradesLookupResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function oldTradesLookup($symbol, $fromId = null, $limit = null): ApiResponse
-    {
-        return $this->oldTradesLookupWithHttpInfo($symbol, $fromId, $limit);
-    }
-
-    /**
-     * Operation oldTradesLookupWithHttpInfo.
-     *
-     * Old Trades Lookup (MARKET_DATA)
-     *
-     * @param string   $symbol Option trading pair, e.g BTC-200730-9000-C (required)
-     * @param null|int $fromId The UniqueId ID from which to return. The latest deal record is returned by default (optional)
-     * @param null|int $limit  Number of result sets returned Default:100 Max:1000 (optional)
-     *
-     * @return ApiResponse<OldTradesLookupResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function oldTradesLookupWithHttpInfo($symbol, $fromId = null, $limit = null): ApiResponse
-    {
-        $request = $this->oldTradesLookupRequest($symbol, $fromId, $limit);
-
-        try {
-            try {
-                $response = $this->client->send($request, []);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch ($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Binance\Client\DerivativesTradingOptions\Model\OldTradesLookupResponse',
-                        $request,
-                        $response,
-                    );
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Binance\Client\DerivativesTradingOptions\Model\OldTradesLookupResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Binance\Client\DerivativesTradingOptions\Model\OldTradesLookupResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    throw $e;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Create request for operation 'oldTradesLookup'.
-     *
-     * @param string   $symbol Option trading pair, e.g BTC-200730-9000-C (required)
-     * @param null|int $fromId The UniqueId ID from which to return. The latest deal record is returned by default (optional)
-     * @param null|int $limit  Number of result sets returned Default:100 Max:1000 (optional)
-     *
-     * @return Request
-     *
-     * @throws \InvalidArgumentException
-     */
-    public function oldTradesLookupRequest($symbol, $fromId = null, $limit = null)
-    {
-        $contentType = self::contentTypes['oldTradesLookup'][0];
-
-        // verify the required parameter 'symbol' is set
-        if (null === $symbol || (is_array($symbol) && 0 === count($symbol))) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $symbol when calling oldTradesLookup'
-            );
-        }
-
-        $resourcePath = '/eapi/v1/historicalTrades';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $symbol,
-            'symbol', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            true // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $fromId,
-            'fromId', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -1861,172 +1835,6 @@ class MarketDataApi
             'form', // style
             true, // explode
             false // required
-        ) ?? []);
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            $contentType,
-            $multipart
-        );
-
-        $defaultHeaders = [];
-        $defaultHeaders['User-Agent'] = $this->userAgent;
-
-        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
-            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->clientConfig->getUrl();
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-
-        return new Request(
-            'GET',
-            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation symbolPriceTicker.
-     *
-     * Symbol Price Ticker
-     *
-     * @param string $underlying Option underlying, e.g BTCUSDT (required)
-     *
-     * @return ApiResponse<SymbolPriceTickerResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function symbolPriceTicker($underlying): ApiResponse
-    {
-        return $this->symbolPriceTickerWithHttpInfo($underlying);
-    }
-
-    /**
-     * Operation symbolPriceTickerWithHttpInfo.
-     *
-     * Symbol Price Ticker
-     *
-     * @param string $underlying Option underlying, e.g BTCUSDT (required)
-     *
-     * @return ApiResponse<SymbolPriceTickerResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function symbolPriceTickerWithHttpInfo($underlying): ApiResponse
-    {
-        $request = $this->symbolPriceTickerRequest($underlying);
-
-        try {
-            try {
-                $response = $this->client->send($request, []);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch ($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Binance\Client\DerivativesTradingOptions\Model\SymbolPriceTickerResponse',
-                        $request,
-                        $response,
-                    );
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Binance\Client\DerivativesTradingOptions\Model\SymbolPriceTickerResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Binance\Client\DerivativesTradingOptions\Model\SymbolPriceTickerResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    throw $e;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Create request for operation 'symbolPriceTicker'.
-     *
-     * @param string $underlying Option underlying, e.g BTCUSDT (required)
-     *
-     * @return Request
-     *
-     * @throws \InvalidArgumentException
-     */
-    public function symbolPriceTickerRequest($underlying)
-    {
-        $contentType = self::contentTypes['symbolPriceTicker'][0];
-
-        // verify the required parameter 'underlying' is set
-        if (null === $underlying || (is_array($underlying) && 0 === count($underlying))) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $underlying when calling symbolPriceTicker'
-            );
-        }
-
-        $resourcePath = '/eapi/v1/index';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $underlying,
-            'underlying', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            true // required
         ) ?? []);
 
         $headers = $this->headerSelector->selectHeaders(

@@ -236,7 +236,7 @@ class AccountManagementApiTest extends TestCase
      */
     public function testQuerySubAccountTransactionStatistics()
     {
-        $email = 'sub-account-email@email.com';
+        $email = '';
         $recvWindow = 5000;
         $response = $this->getApiMock($request)->querySubAccountTransactionStatistics($email, $recvWindow);
 
@@ -244,6 +244,6 @@ class AccountManagementApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/sub-account/transaction-statistics', $request->getUri()->getPath());
-        self::assertEquals('bbb3a67207210f851b76211eae9566a7b03cd2d37dde4e5b73d48265f7b9197e', $queryMap['signature']);
+        self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
     }
 }
