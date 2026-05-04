@@ -30,6 +30,7 @@
 namespace Binance\Client\Spot\Api;
 
 use Binance\Client\Spot\Model\ExchangeInfoResponse;
+use Binance\Client\Spot\Model\ExecutionRulesResponse;
 use Binance\Client\Spot\Model\Permissions;
 use Binance\Client\Spot\Model\Symbols;
 use Binance\Client\Spot\Model\SymbolStatus;
@@ -64,6 +65,7 @@ class GeneralApi
     /** @var string[] */
     public const contentTypes = [
         'exchangeInfo' => ['application/x-www-form-urlencoded'],
+        'executionRules' => ['application/x-www-form-urlencoded'],
         'ping' => ['application/x-www-form-urlencoded'],
         'time' => ['application/x-www-form-urlencoded'],
     ];
@@ -276,6 +278,189 @@ class GeneralApi
             $showPermissionSets,
             'showPermissionSets', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbolStatus,
+            'symbolStatus', // param base name
+            'SymbolStatus', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation executionRules.
+     *
+     * Query Execution Rules
+     *
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
+     *
+     * @return ApiResponse<ExecutionRulesResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function executionRules($symbol = null, $symbols = null, $symbolStatus = null): ApiResponse
+    {
+        return $this->executionRulesWithHttpInfo($symbol, $symbols, $symbolStatus);
+    }
+
+    /**
+     * Operation executionRulesWithHttpInfo.
+     *
+     * Query Execution Rules
+     *
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|SymbolStatus $symbolStatus (optional)
+     *
+     * @return ApiResponse<ExecutionRulesResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function executionRulesWithHttpInfo($symbol = null, $symbols = null, $symbolStatus = null): ApiResponse
+    {
+        $request = $this->executionRulesRequest($symbol, $symbols, $symbolStatus);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Spot\Model\ExecutionRulesResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Spot\Model\ExecutionRulesResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Spot\Model\ExecutionRulesResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'executionRules'.
+     *
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|SymbolStatus $symbolStatus (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function executionRulesRequest($symbol = null, $symbols = null, $symbolStatus = null)
+    {
+        $contentType = self::contentTypes['executionRules'][0];
+
+        $resourcePath = '/api/v3/executionRules';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbol,
+            'symbol', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbols,
+            'symbols', // param base name
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required

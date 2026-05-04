@@ -64,6 +64,7 @@ class SubscribeEthStakingResponse implements ModelInterface, \ArrayAccess, \Json
         'success' => 'bool',
         'wbethAmount' => 'string',
         'conversionRatio' => 'string',
+        'purchaseId' => 'int',
     ];
 
     /**
@@ -79,6 +80,7 @@ class SubscribeEthStakingResponse implements ModelInterface, \ArrayAccess, \Json
         'success' => null,
         'wbethAmount' => null,
         'conversionRatio' => null,
+        'purchaseId' => 'int64',
     ];
 
     /**
@@ -90,6 +92,7 @@ class SubscribeEthStakingResponse implements ModelInterface, \ArrayAccess, \Json
         'success' => false,
         'wbethAmount' => false,
         'conversionRatio' => false,
+        'purchaseId' => false,
     ];
 
     /**
@@ -109,6 +112,7 @@ class SubscribeEthStakingResponse implements ModelInterface, \ArrayAccess, \Json
         'success' => 'success',
         'wbethAmount' => 'wbethAmount',
         'conversionRatio' => 'conversionRatio',
+        'purchaseId' => 'purchaseId',
     ];
 
     /**
@@ -120,6 +124,7 @@ class SubscribeEthStakingResponse implements ModelInterface, \ArrayAccess, \Json
         'success' => 'setSuccess',
         'wbethAmount' => 'setWbethAmount',
         'conversionRatio' => 'setConversionRatio',
+        'purchaseId' => 'setPurchaseId',
     ];
 
     /**
@@ -131,6 +136,7 @@ class SubscribeEthStakingResponse implements ModelInterface, \ArrayAccess, \Json
         'success' => 'getSuccess',
         'wbethAmount' => 'getWbethAmount',
         'conversionRatio' => 'getConversionRatio',
+        'purchaseId' => 'getPurchaseId',
     ];
 
     /**
@@ -151,6 +157,7 @@ class SubscribeEthStakingResponse implements ModelInterface, \ArrayAccess, \Json
         $this->setIfExists('success', $data ?? [], null);
         $this->setIfExists('wbethAmount', $data ?? [], null);
         $this->setIfExists('conversionRatio', $data ?? [], null);
+        $this->setIfExists('purchaseId', $data ?? [], null);
     }
 
     /**
@@ -358,6 +365,33 @@ class SubscribeEthStakingResponse implements ModelInterface, \ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable conversionRatio cannot be null');
         }
         $this->container['conversionRatio'] = $conversionRatio;
+
+        return $this;
+    }
+
+    /**
+     * Gets purchaseId.
+     *
+     * @return null|int
+     */
+    public function getPurchaseId()
+    {
+        return $this->container['purchaseId'];
+    }
+
+    /**
+     * Sets purchaseId.
+     *
+     * @param null|int $purchaseId purchaseId
+     *
+     * @return self
+     */
+    public function setPurchaseId($purchaseId)
+    {
+        if (is_null($purchaseId)) {
+            throw new \InvalidArgumentException('non-nullable purchaseId cannot be null');
+        }
+        $this->container['purchaseId'] = $purchaseId;
 
         return $this;
     }

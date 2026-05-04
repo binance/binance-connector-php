@@ -317,7 +317,7 @@ class BorrowRepayApi
      *
      * @param null|string $asset          asset (optional)
      * @param null|string $isolatedSymbol isolated symbol (optional)
-     * @param null|int    $startTime      只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime        endTime (optional)
      * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
      * @param null|int    $size           Default:10 Max:100 (optional)
@@ -340,7 +340,7 @@ class BorrowRepayApi
      *
      * @param null|string $asset          (optional)
      * @param null|string $isolatedSymbol isolated symbol (optional)
-     * @param null|int    $startTime      只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime        (optional)
      * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
      * @param null|int    $size           Default:10 Max:100 (optional)
@@ -425,7 +425,7 @@ class BorrowRepayApi
      *
      * @param null|string $asset          (optional)
      * @param null|string $isolatedSymbol isolated symbol (optional)
-     * @param null|int    $startTime      只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime        (optional)
      * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
      * @param null|int    $size           Default:10 Max:100 (optional)
@@ -754,7 +754,7 @@ class BorrowRepayApi
      * @param null|string $asset          asset (optional)
      * @param null|string $isolatedSymbol isolated symbol (optional)
      * @param null|int    $txId           &#x60;tranId&#x60; in &#x60;POST /sapi/v1/margin/loan&#x60; (optional)
-     * @param null|int    $startTime      只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime        endTime (optional)
      * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
      * @param null|int    $size           Default:10 Max:100 (optional)
@@ -779,7 +779,7 @@ class BorrowRepayApi
      * @param null|string $asset          (optional)
      * @param null|string $isolatedSymbol isolated symbol (optional)
      * @param null|int    $txId           &#x60;tranId&#x60; in &#x60;POST /sapi/v1/margin/loan&#x60; (optional)
-     * @param null|int    $startTime      只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime        (optional)
      * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
      * @param null|int    $size           Default:10 Max:100 (optional)
@@ -866,7 +866,7 @@ class BorrowRepayApi
      * @param null|string $asset          (optional)
      * @param null|string $isolatedSymbol isolated symbol (optional)
      * @param null|int    $txId           &#x60;tranId&#x60; in &#x60;POST /sapi/v1/margin/loan&#x60; (optional)
-     * @param null|int    $startTime      只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime        (optional)
      * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
      * @param null|int    $size           Default:10 Max:100 (optional)
@@ -1018,7 +1018,7 @@ class BorrowRepayApi
      *
      * @param string   $asset      asset (required)
      * @param null|int $vipLevel   User&#39;s current specific margin data will be returned if vipLevel is omitted (optional)
-     * @param null|int $startTime  只支持查询最近90天的数据 (optional)
+     * @param null|int $startTime  Only supports querying data from the past 90 days. (optional)
      * @param null|int $endTime    endTime (optional)
      * @param null|int $recvWindow No more than 60000 (optional)
      *
@@ -1039,7 +1039,7 @@ class BorrowRepayApi
      *
      * @param string   $asset      (required)
      * @param null|int $vipLevel   User&#39;s current specific margin data will be returned if vipLevel is omitted (optional)
-     * @param null|int $startTime  只支持查询最近90天的数据 (optional)
+     * @param null|int $startTime  Only supports querying data from the past 90 days. (optional)
      * @param null|int $endTime    (optional)
      * @param null|int $recvWindow No more than 60000 (optional)
      *
@@ -1122,7 +1122,7 @@ class BorrowRepayApi
      *
      * @param string   $asset      (required)
      * @param null|int $vipLevel   User&#39;s current specific margin data will be returned if vipLevel is omitted (optional)
-     * @param null|int $startTime  只支持查询最近90天的数据 (optional)
+     * @param null|int $startTime  Only supports querying data from the past 90 days. (optional)
      * @param null|int $endTime    (optional)
      * @param null|int $recvWindow No more than 60000 (optional)
      *

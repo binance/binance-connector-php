@@ -115,7 +115,7 @@ class AssetApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/assetDetail', $request->getUri()->getPath());
-        self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
+        self::assertEquals('509214a6160ae15ca662a486d584159b1d32e81f90e34dadb88e6cb46363b11a', $queryMap['signature']);
     }
 
     /**
@@ -212,7 +212,7 @@ class AssetApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/dribblet', $request->getUri()->getPath());
-        self::assertEquals('812caedbe8f349196a4532c2050ff706ed2569fed185039c7b60a78cd84bc718', $queryMap['signature']);
+        self::assertEquals('0ddec5a1715e99d1083349ffc2ef497594db001f03b7237e1096d7dd9674c652', $queryMap['signature']);
     }
 
     /**

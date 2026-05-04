@@ -182,7 +182,7 @@
 
 [/fapi/v1/algoOrder](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Query-Algo-Order) - queryAlgoOrder - [QueryAlgoOrderExample.php:27](/examples/derivatives-trading-usds-futures/trade/QueryAlgoOrderExample.php#L27)
 
-[/fapi/v1/allAlgoOrders](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Query-All-Algo-Orders) - queryAllAlgoOrders - [QueryAllAlgoOrdersExample.php:31](/examples/derivatives-trading-usds-futures/trade/QueryAllAlgoOrdersExample.php#L31)
+[/fapi/v1/allAlgoOrders](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Query-All-Algo-Orders) - queryAllAlgoOrders - [QueryAllAlgoOrdersExample.php:30](/examples/derivatives-trading-usds-futures/trade/QueryAllAlgoOrdersExample.php#L30)
 
 [/fapi/v1/openOrder](https://developers.binance.com/docs/derivatives/usds-margined-futures/trade/rest-api/Query-Current-Open-Order) - queryCurrentOpenOrder - [QueryCurrentOpenOrderExample.php:28](/examples/derivatives-trading-usds-futures/trade/QueryCurrentOpenOrderExample.php#L28)
 

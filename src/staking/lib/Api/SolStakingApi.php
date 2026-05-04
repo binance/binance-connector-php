@@ -990,6 +990,7 @@ class SolStakingApi
      *
      * Get SOL redemption history(USER_DATA)
      *
+     * @param null|int $redeemId   redeemId (optional)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
      * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
@@ -1001,9 +1002,9 @@ class SolStakingApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getSolRedemptionHistory($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    public function getSolRedemptionHistory($redeemId = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
     {
-        return $this->getSolRedemptionHistoryWithHttpInfo($startTime, $endTime, $current, $size, $recvWindow);
+        return $this->getSolRedemptionHistoryWithHttpInfo($redeemId, $startTime, $endTime, $current, $size, $recvWindow);
     }
 
     /**
@@ -1011,6 +1012,7 @@ class SolStakingApi
      *
      * Get SOL redemption history(USER_DATA)
      *
+     * @param null|int $redeemId   (optional)
      * @param null|int $startTime  (optional)
      * @param null|int $endTime    (optional)
      * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
@@ -1022,9 +1024,9 @@ class SolStakingApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getSolRedemptionHistoryWithHttpInfo($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    public function getSolRedemptionHistoryWithHttpInfo($redeemId = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->getSolRedemptionHistoryRequest($startTime, $endTime, $current, $size, $recvWindow);
+        $request = $this->getSolRedemptionHistoryRequest($redeemId, $startTime, $endTime, $current, $size, $recvWindow);
 
         try {
             try {
@@ -1094,6 +1096,7 @@ class SolStakingApi
     /**
      * Create request for operation 'getSolRedemptionHistory'.
      *
+     * @param null|int $redeemId   (optional)
      * @param null|int $startTime  (optional)
      * @param null|int $endTime    (optional)
      * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
@@ -1104,7 +1107,7 @@ class SolStakingApi
      *
      * @throws \InvalidArgumentException
      */
-    public function getSolRedemptionHistoryRequest($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null)
+    public function getSolRedemptionHistoryRequest($redeemId = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['getSolRedemptionHistory'][0];
 
@@ -1115,6 +1118,15 @@ class SolStakingApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $redeemId,
+            'redeemId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $startTime,
@@ -1201,6 +1213,7 @@ class SolStakingApi
      *
      * Get SOL staking history(USER_DATA)
      *
+     * @param null|int $purchaseId purchaseId (optional)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
      * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
@@ -1212,9 +1225,9 @@ class SolStakingApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getSolStakingHistory($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    public function getSolStakingHistory($purchaseId = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
     {
-        return $this->getSolStakingHistoryWithHttpInfo($startTime, $endTime, $current, $size, $recvWindow);
+        return $this->getSolStakingHistoryWithHttpInfo($purchaseId, $startTime, $endTime, $current, $size, $recvWindow);
     }
 
     /**
@@ -1222,6 +1235,7 @@ class SolStakingApi
      *
      * Get SOL staking history(USER_DATA)
      *
+     * @param null|int $purchaseId (optional)
      * @param null|int $startTime  (optional)
      * @param null|int $endTime    (optional)
      * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
@@ -1233,9 +1247,9 @@ class SolStakingApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getSolStakingHistoryWithHttpInfo($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    public function getSolStakingHistoryWithHttpInfo($purchaseId = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->getSolStakingHistoryRequest($startTime, $endTime, $current, $size, $recvWindow);
+        $request = $this->getSolStakingHistoryRequest($purchaseId, $startTime, $endTime, $current, $size, $recvWindow);
 
         try {
             try {
@@ -1305,6 +1319,7 @@ class SolStakingApi
     /**
      * Create request for operation 'getSolStakingHistory'.
      *
+     * @param null|int $purchaseId (optional)
      * @param null|int $startTime  (optional)
      * @param null|int $endTime    (optional)
      * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
@@ -1315,7 +1330,7 @@ class SolStakingApi
      *
      * @throws \InvalidArgumentException
      */
-    public function getSolStakingHistoryRequest($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null)
+    public function getSolStakingHistoryRequest($purchaseId = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['getSolStakingHistory'][0];
 
@@ -1326,6 +1341,15 @@ class SolStakingApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $purchaseId,
+            'purchaseId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $startTime,

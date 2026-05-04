@@ -4,9 +4,9 @@
 
 [/sapi/v1/eth-staking/eth/quota](https://developers.binance.com/docs/staking/eth-staking/account/Get-current-ETH-staking-quota) - getCurrentEthStakingQuota - [GetCurrentEthStakingQuotaExample.php:25](/examples/staking/ethstaking/GetCurrentEthStakingQuotaExample.php#L25)
 
-[/sapi/v1/eth-staking/eth/history/redemptionHistory](https://developers.binance.com/docs/staking/eth-staking/history/Get-ETH-redemption-history) - getEthRedemptionHistory - [GetEthRedemptionHistoryExample.php:29](/examples/staking/ethstaking/GetEthRedemptionHistoryExample.php#L29)
+[/sapi/v1/eth-staking/eth/history/redemptionHistory](https://developers.binance.com/docs/staking/eth-staking/history/Get-ETH-redemption-history) - getEthRedemptionHistory - [GetEthRedemptionHistoryExample.php:30](/examples/staking/ethstaking/GetEthRedemptionHistoryExample.php#L30)
 
-[/sapi/v1/eth-staking/eth/history/stakingHistory](https://developers.binance.com/docs/staking/eth-staking/history/Get-ETH-staking-history) - getEthStakingHistory - [GetEthStakingHistoryExample.php:29](/examples/staking/ethstaking/GetEthStakingHistoryExample.php#L29)
+[/sapi/v1/eth-staking/eth/history/stakingHistory](https://developers.binance.com/docs/staking/eth-staking/history/Get-ETH-staking-history) - getEthStakingHistory - [GetEthStakingHistoryExample.php:30](/examples/staking/ethstaking/GetEthStakingHistoryExample.php#L30)
 
 [/sapi/v1/eth-staking/eth/history/rateHistory](https://developers.binance.com/docs/staking/eth-staking/history/Get-BETH-Rate-History) - getWbethRateHistory - [GetWbethRateHistoryExample.php:29](/examples/staking/ethstaking/GetWbethRateHistoryExample.php#L29)
 
@@ -66,9 +66,9 @@
 
 [/sapi/v1/sol-staking/sol/history/boostRewardsHistory](https://developers.binance.com/docs/staking/sol-staking/history/Get-Boost-Rewards-History) - getBoostRewardsHistory - [GetBoostRewardsHistoryExample.php:30](/examples/staking/solstaking/GetBoostRewardsHistoryExample.php#L30)
 
-[/sapi/v1/sol-staking/sol/history/redemptionHistory](https://developers.binance.com/docs/staking/sol-staking/history/Get-SOL-redemption-history) - getSolRedemptionHistory - [GetSolRedemptionHistoryExample.php:29](/examples/staking/solstaking/GetSolRedemptionHistoryExample.php#L29)
+[/sapi/v1/sol-staking/sol/history/redemptionHistory](https://developers.binance.com/docs/staking/sol-staking/history/Get-SOL-redemption-history) - getSolRedemptionHistory - [GetSolRedemptionHistoryExample.php:30](/examples/staking/solstaking/GetSolRedemptionHistoryExample.php#L30)
 
-[/sapi/v1/sol-staking/sol/history/stakingHistory](https://developers.binance.com/docs/staking/sol-staking/history/Get-SOL-staking-history) - getSolStakingHistory - [GetSolStakingHistoryExample.php:29](/examples/staking/solstaking/GetSolStakingHistoryExample.php#L29)
+[/sapi/v1/sol-staking/sol/history/stakingHistory](https://developers.binance.com/docs/staking/sol-staking/history/Get-SOL-staking-history) - getSolStakingHistory - [GetSolStakingHistoryExample.php:30](/examples/staking/solstaking/GetSolStakingHistoryExample.php#L30)
 
 [/sapi/v1/sol-staking/sol/quota](https://developers.binance.com/docs/staking/sol-staking/account/Get-SOL-staking-quota-details) - getSolStakingQuotaDetails - [GetSolStakingQuotaDetailsExample.php:25](/examples/staking/solstaking/GetSolStakingQuotaDetailsExample.php#L25)
 

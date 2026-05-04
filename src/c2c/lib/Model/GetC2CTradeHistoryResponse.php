@@ -61,11 +61,24 @@ class GetC2CTradeHistoryResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $openAPITypes = [
-        'code' => 'string',
-        'message' => 'string',
-        'data' => '\Binance\Client\C2c\Model\GetC2CTradeHistoryResponseDataInner[]',
-        'total' => 'int',
-        'success' => 'bool',
+        'orderNumber' => 'string',
+        'advNo' => 'string',
+        'tradeType' => 'string',
+        'asset' => 'string',
+        'fiat' => 'string',
+        'fiatSymbol' => 'string',
+        'amount' => 'string',
+        'totalPrice' => 'string',
+        'unitPrice' => 'string',
+        'orderStatus' => 'string',
+        'createTime' => 'int',
+        'commission' => 'string',
+        'takerCommissionRate' => 'string',
+        'takerCommission' => 'string',
+        'takerAmount' => 'string',
+        'counterPartNickName' => 'string',
+        'payMethodName' => 'string',
+        'additionalKycVerify' => 'int',
     ];
 
     /**
@@ -78,11 +91,24 @@ class GetC2CTradeHistoryResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'code' => null,
-        'message' => null,
-        'data' => null,
-        'total' => 'int64',
-        'success' => null,
+        'orderNumber' => null,
+        'advNo' => null,
+        'tradeType' => null,
+        'asset' => null,
+        'fiat' => null,
+        'fiatSymbol' => null,
+        'amount' => null,
+        'totalPrice' => null,
+        'unitPrice' => null,
+        'orderStatus' => null,
+        'createTime' => 'int64',
+        'commission' => null,
+        'takerCommissionRate' => null,
+        'takerCommission' => null,
+        'takerAmount' => null,
+        'counterPartNickName' => null,
+        'payMethodName' => null,
+        'additionalKycVerify' => 'int64',
     ];
 
     /**
@@ -91,11 +117,24 @@ class GetC2CTradeHistoryResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'code' => false,
-        'message' => false,
-        'data' => false,
-        'total' => false,
-        'success' => false,
+        'orderNumber' => false,
+        'advNo' => false,
+        'tradeType' => false,
+        'asset' => false,
+        'fiat' => false,
+        'fiatSymbol' => false,
+        'amount' => false,
+        'totalPrice' => false,
+        'unitPrice' => false,
+        'orderStatus' => false,
+        'createTime' => false,
+        'commission' => false,
+        'takerCommissionRate' => false,
+        'takerCommission' => false,
+        'takerAmount' => false,
+        'counterPartNickName' => false,
+        'payMethodName' => false,
+        'additionalKycVerify' => false,
     ];
 
     /**
@@ -112,11 +151,24 @@ class GetC2CTradeHistoryResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message',
-        'data' => 'data',
-        'total' => 'total',
-        'success' => 'success',
+        'orderNumber' => 'orderNumber',
+        'advNo' => 'advNo',
+        'tradeType' => 'tradeType',
+        'asset' => 'asset',
+        'fiat' => 'fiat',
+        'fiatSymbol' => 'fiatSymbol',
+        'amount' => 'amount',
+        'totalPrice' => 'totalPrice',
+        'unitPrice' => 'unitPrice',
+        'orderStatus' => 'orderStatus',
+        'createTime' => 'createTime',
+        'commission' => 'commission',
+        'takerCommissionRate' => 'takerCommissionRate',
+        'takerCommission' => 'takerCommission',
+        'takerAmount' => 'takerAmount',
+        'counterPartNickName' => 'counterPartNickName',
+        'payMethodName' => 'payMethodName',
+        'additionalKycVerify' => 'additionalKycVerify',
     ];
 
     /**
@@ -125,11 +177,24 @@ class GetC2CTradeHistoryResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        'data' => 'setData',
-        'total' => 'setTotal',
-        'success' => 'setSuccess',
+        'orderNumber' => 'setOrderNumber',
+        'advNo' => 'setAdvNo',
+        'tradeType' => 'setTradeType',
+        'asset' => 'setAsset',
+        'fiat' => 'setFiat',
+        'fiatSymbol' => 'setFiatSymbol',
+        'amount' => 'setAmount',
+        'totalPrice' => 'setTotalPrice',
+        'unitPrice' => 'setUnitPrice',
+        'orderStatus' => 'setOrderStatus',
+        'createTime' => 'setCreateTime',
+        'commission' => 'setCommission',
+        'takerCommissionRate' => 'setTakerCommissionRate',
+        'takerCommission' => 'setTakerCommission',
+        'takerAmount' => 'setTakerAmount',
+        'counterPartNickName' => 'setCounterPartNickName',
+        'payMethodName' => 'setPayMethodName',
+        'additionalKycVerify' => 'setAdditionalKycVerify',
     ];
 
     /**
@@ -138,11 +203,24 @@ class GetC2CTradeHistoryResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        'data' => 'getData',
-        'total' => 'getTotal',
-        'success' => 'getSuccess',
+        'orderNumber' => 'getOrderNumber',
+        'advNo' => 'getAdvNo',
+        'tradeType' => 'getTradeType',
+        'asset' => 'getAsset',
+        'fiat' => 'getFiat',
+        'fiatSymbol' => 'getFiatSymbol',
+        'amount' => 'getAmount',
+        'totalPrice' => 'getTotalPrice',
+        'unitPrice' => 'getUnitPrice',
+        'orderStatus' => 'getOrderStatus',
+        'createTime' => 'getCreateTime',
+        'commission' => 'getCommission',
+        'takerCommissionRate' => 'getTakerCommissionRate',
+        'takerCommission' => 'getTakerCommission',
+        'takerAmount' => 'getTakerAmount',
+        'counterPartNickName' => 'getCounterPartNickName',
+        'payMethodName' => 'getPayMethodName',
+        'additionalKycVerify' => 'getAdditionalKycVerify',
     ];
 
     /**
@@ -160,11 +238,24 @@ class GetC2CTradeHistoryResponse implements ModelInterface, \ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('total', $data ?? [], null);
-        $this->setIfExists('success', $data ?? [], null);
+        $this->setIfExists('orderNumber', $data ?? [], null);
+        $this->setIfExists('advNo', $data ?? [], null);
+        $this->setIfExists('tradeType', $data ?? [], null);
+        $this->setIfExists('asset', $data ?? [], null);
+        $this->setIfExists('fiat', $data ?? [], null);
+        $this->setIfExists('fiatSymbol', $data ?? [], null);
+        $this->setIfExists('amount', $data ?? [], null);
+        $this->setIfExists('totalPrice', $data ?? [], null);
+        $this->setIfExists('unitPrice', $data ?? [], null);
+        $this->setIfExists('orderStatus', $data ?? [], null);
+        $this->setIfExists('createTime', $data ?? [], null);
+        $this->setIfExists('commission', $data ?? [], null);
+        $this->setIfExists('takerCommissionRate', $data ?? [], null);
+        $this->setIfExists('takerCommission', $data ?? [], null);
+        $this->setIfExists('takerAmount', $data ?? [], null);
+        $this->setIfExists('counterPartNickName', $data ?? [], null);
+        $this->setIfExists('payMethodName', $data ?? [], null);
+        $this->setIfExists('additionalKycVerify', $data ?? [], null);
     }
 
     /**
@@ -296,136 +387,487 @@ class GetC2CTradeHistoryResponse implements ModelInterface, \ArrayAccess, \JsonS
     }
 
     /**
-     * Gets code.
+     * Gets orderNumber.
      *
      * @return null|string
      */
-    public function getCode()
+    public function getOrderNumber()
     {
-        return $this->container['code'];
+        return $this->container['orderNumber'];
     }
 
     /**
-     * Sets code.
+     * Sets orderNumber.
      *
-     * @param null|string $code code
+     * @param null|string $orderNumber orderNumber
      *
      * @return self
      */
-    public function setCode($code)
+    public function setOrderNumber($orderNumber)
     {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        if (is_null($orderNumber)) {
+            throw new \InvalidArgumentException('non-nullable orderNumber cannot be null');
         }
-        $this->container['code'] = $code;
+        $this->container['orderNumber'] = $orderNumber;
 
         return $this;
     }
 
     /**
-     * Gets message.
+     * Gets advNo.
      *
      * @return null|string
      */
-    public function getMessage()
+    public function getAdvNo()
     {
-        return $this->container['message'];
+        return $this->container['advNo'];
     }
 
     /**
-     * Sets message.
+     * Sets advNo.
      *
-     * @param null|string $message message
+     * @param null|string $advNo advNo
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setAdvNo($advNo)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($advNo)) {
+            throw new \InvalidArgumentException('non-nullable advNo cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['advNo'] = $advNo;
 
         return $this;
     }
 
     /**
-     * Gets data.
+     * Gets tradeType.
      *
-     * @return null|GetC2CTradeHistoryResponseDataInner[]
+     * @return null|string
      */
-    public function getData()
+    public function getTradeType()
     {
-        return $this->container['data'];
+        return $this->container['tradeType'];
     }
 
     /**
-     * Sets data.
+     * Sets tradeType.
      *
-     * @param null|GetC2CTradeHistoryResponseDataInner[] $data data
+     * @param null|string $tradeType tradeType
      *
      * @return self
      */
-    public function setData($data)
+    public function setTradeType($tradeType)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($tradeType)) {
+            throw new \InvalidArgumentException('non-nullable tradeType cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['tradeType'] = $tradeType;
 
         return $this;
     }
 
     /**
-     * Gets total.
+     * Gets asset.
+     *
+     * @return null|string
+     */
+    public function getAsset()
+    {
+        return $this->container['asset'];
+    }
+
+    /**
+     * Sets asset.
+     *
+     * @param null|string $asset asset
+     *
+     * @return self
+     */
+    public function setAsset($asset)
+    {
+        if (is_null($asset)) {
+            throw new \InvalidArgumentException('non-nullable asset cannot be null');
+        }
+        $this->container['asset'] = $asset;
+
+        return $this;
+    }
+
+    /**
+     * Gets fiat.
+     *
+     * @return null|string
+     */
+    public function getFiat()
+    {
+        return $this->container['fiat'];
+    }
+
+    /**
+     * Sets fiat.
+     *
+     * @param null|string $fiat fiat
+     *
+     * @return self
+     */
+    public function setFiat($fiat)
+    {
+        if (is_null($fiat)) {
+            throw new \InvalidArgumentException('non-nullable fiat cannot be null');
+        }
+        $this->container['fiat'] = $fiat;
+
+        return $this;
+    }
+
+    /**
+     * Gets fiatSymbol.
+     *
+     * @return null|string
+     */
+    public function getFiatSymbol()
+    {
+        return $this->container['fiatSymbol'];
+    }
+
+    /**
+     * Sets fiatSymbol.
+     *
+     * @param null|string $fiatSymbol fiatSymbol
+     *
+     * @return self
+     */
+    public function setFiatSymbol($fiatSymbol)
+    {
+        if (is_null($fiatSymbol)) {
+            throw new \InvalidArgumentException('non-nullable fiatSymbol cannot be null');
+        }
+        $this->container['fiatSymbol'] = $fiatSymbol;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount.
+     *
+     * @return null|string
+     */
+    public function getAmount()
+    {
+        return $this->container['amount'];
+    }
+
+    /**
+     * Sets amount.
+     *
+     * @param null|string $amount amount
+     *
+     * @return self
+     */
+    public function setAmount($amount)
+    {
+        if (is_null($amount)) {
+            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+        }
+        $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets totalPrice.
+     *
+     * @return null|string
+     */
+    public function getTotalPrice()
+    {
+        return $this->container['totalPrice'];
+    }
+
+    /**
+     * Sets totalPrice.
+     *
+     * @param null|string $totalPrice totalPrice
+     *
+     * @return self
+     */
+    public function setTotalPrice($totalPrice)
+    {
+        if (is_null($totalPrice)) {
+            throw new \InvalidArgumentException('non-nullable totalPrice cannot be null');
+        }
+        $this->container['totalPrice'] = $totalPrice;
+
+        return $this;
+    }
+
+    /**
+     * Gets unitPrice.
+     *
+     * @return null|string
+     */
+    public function getUnitPrice()
+    {
+        return $this->container['unitPrice'];
+    }
+
+    /**
+     * Sets unitPrice.
+     *
+     * @param null|string $unitPrice unitPrice
+     *
+     * @return self
+     */
+    public function setUnitPrice($unitPrice)
+    {
+        if (is_null($unitPrice)) {
+            throw new \InvalidArgumentException('non-nullable unitPrice cannot be null');
+        }
+        $this->container['unitPrice'] = $unitPrice;
+
+        return $this;
+    }
+
+    /**
+     * Gets orderStatus.
+     *
+     * @return null|string
+     */
+    public function getOrderStatus()
+    {
+        return $this->container['orderStatus'];
+    }
+
+    /**
+     * Sets orderStatus.
+     *
+     * @param null|string $orderStatus orderStatus
+     *
+     * @return self
+     */
+    public function setOrderStatus($orderStatus)
+    {
+        if (is_null($orderStatus)) {
+            throw new \InvalidArgumentException('non-nullable orderStatus cannot be null');
+        }
+        $this->container['orderStatus'] = $orderStatus;
+
+        return $this;
+    }
+
+    /**
+     * Gets createTime.
      *
      * @return null|int
      */
-    public function getTotal()
+    public function getCreateTime()
     {
-        return $this->container['total'];
+        return $this->container['createTime'];
     }
 
     /**
-     * Sets total.
+     * Sets createTime.
      *
-     * @param null|int $total total
+     * @param null|int $createTime createTime
      *
      * @return self
      */
-    public function setTotal($total)
+    public function setCreateTime($createTime)
     {
-        if (is_null($total)) {
-            throw new \InvalidArgumentException('non-nullable total cannot be null');
+        if (is_null($createTime)) {
+            throw new \InvalidArgumentException('non-nullable createTime cannot be null');
         }
-        $this->container['total'] = $total;
+        $this->container['createTime'] = $createTime;
 
         return $this;
     }
 
     /**
-     * Gets success.
+     * Gets commission.
      *
-     * @return null|bool
+     * @return null|string
      */
-    public function getSuccess()
+    public function getCommission()
     {
-        return $this->container['success'];
+        return $this->container['commission'];
     }
 
     /**
-     * Sets success.
+     * Sets commission.
      *
-     * @param null|bool $success success
+     * @param null|string $commission commission
      *
      * @return self
      */
-    public function setSuccess($success)
+    public function setCommission($commission)
     {
-        if (is_null($success)) {
-            throw new \InvalidArgumentException('non-nullable success cannot be null');
+        if (is_null($commission)) {
+            throw new \InvalidArgumentException('non-nullable commission cannot be null');
         }
-        $this->container['success'] = $success;
+        $this->container['commission'] = $commission;
+
+        return $this;
+    }
+
+    /**
+     * Gets takerCommissionRate.
+     *
+     * @return null|string
+     */
+    public function getTakerCommissionRate()
+    {
+        return $this->container['takerCommissionRate'];
+    }
+
+    /**
+     * Sets takerCommissionRate.
+     *
+     * @param null|string $takerCommissionRate takerCommissionRate
+     *
+     * @return self
+     */
+    public function setTakerCommissionRate($takerCommissionRate)
+    {
+        if (is_null($takerCommissionRate)) {
+            throw new \InvalidArgumentException('non-nullable takerCommissionRate cannot be null');
+        }
+        $this->container['takerCommissionRate'] = $takerCommissionRate;
+
+        return $this;
+    }
+
+    /**
+     * Gets takerCommission.
+     *
+     * @return null|string
+     */
+    public function getTakerCommission()
+    {
+        return $this->container['takerCommission'];
+    }
+
+    /**
+     * Sets takerCommission.
+     *
+     * @param null|string $takerCommission takerCommission
+     *
+     * @return self
+     */
+    public function setTakerCommission($takerCommission)
+    {
+        if (is_null($takerCommission)) {
+            throw new \InvalidArgumentException('non-nullable takerCommission cannot be null');
+        }
+        $this->container['takerCommission'] = $takerCommission;
+
+        return $this;
+    }
+
+    /**
+     * Gets takerAmount.
+     *
+     * @return null|string
+     */
+    public function getTakerAmount()
+    {
+        return $this->container['takerAmount'];
+    }
+
+    /**
+     * Sets takerAmount.
+     *
+     * @param null|string $takerAmount takerAmount
+     *
+     * @return self
+     */
+    public function setTakerAmount($takerAmount)
+    {
+        if (is_null($takerAmount)) {
+            throw new \InvalidArgumentException('non-nullable takerAmount cannot be null');
+        }
+        $this->container['takerAmount'] = $takerAmount;
+
+        return $this;
+    }
+
+    /**
+     * Gets counterPartNickName.
+     *
+     * @return null|string
+     */
+    public function getCounterPartNickName()
+    {
+        return $this->container['counterPartNickName'];
+    }
+
+    /**
+     * Sets counterPartNickName.
+     *
+     * @param null|string $counterPartNickName counterPartNickName
+     *
+     * @return self
+     */
+    public function setCounterPartNickName($counterPartNickName)
+    {
+        if (is_null($counterPartNickName)) {
+            throw new \InvalidArgumentException('non-nullable counterPartNickName cannot be null');
+        }
+        $this->container['counterPartNickName'] = $counterPartNickName;
+
+        return $this;
+    }
+
+    /**
+     * Gets payMethodName.
+     *
+     * @return null|string
+     */
+    public function getPayMethodName()
+    {
+        return $this->container['payMethodName'];
+    }
+
+    /**
+     * Sets payMethodName.
+     *
+     * @param null|string $payMethodName payMethodName
+     *
+     * @return self
+     */
+    public function setPayMethodName($payMethodName)
+    {
+        if (is_null($payMethodName)) {
+            throw new \InvalidArgumentException('non-nullable payMethodName cannot be null');
+        }
+        $this->container['payMethodName'] = $payMethodName;
+
+        return $this;
+    }
+
+    /**
+     * Gets additionalKycVerify.
+     *
+     * @return null|int
+     */
+    public function getAdditionalKycVerify()
+    {
+        return $this->container['additionalKycVerify'];
+    }
+
+    /**
+     * Sets additionalKycVerify.
+     *
+     * @param null|int $additionalKycVerify additionalKycVerify
+     *
+     * @return self
+     */
+    public function setAdditionalKycVerify($additionalKycVerify)
+    {
+        if (is_null($additionalKycVerify)) {
+            throw new \InvalidArgumentException('non-nullable additionalKycVerify cannot be null');
+        }
+        $this->container['additionalKycVerify'] = $additionalKycVerify;
 
         return $this;
     }

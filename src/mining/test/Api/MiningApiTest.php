@@ -233,7 +233,7 @@ class MiningApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/mining/hash-transfer/profit/details', $request->getUri()->getPath());
-        self::assertEquals('0e8fcfdcf386327eada1fb1bb00c69111c8c7d861aaa5def89182a273784e2ae', $queryMap['signature']);
+        self::assertEquals('a696c96ceb92dd583b16d09c9ae524d17cd14816667f58269c9ee88f174e79b7', $queryMap['signature']);
     }
 
     /**

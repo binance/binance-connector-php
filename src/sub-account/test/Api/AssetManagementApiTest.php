@@ -254,13 +254,13 @@ class AssetManagementApiTest extends TestCase
     public function testGetSummaryOfSubAccountsFuturesAccount()
     {
         $recvWindow = 5000;
-        $response = $this->getApiMock($request)->getSummaryOfSubAccountsFuturesAccount($recvWindow);
+        $response = $this->getApiMock($request)->getSummaryOfSubAccountsFuturesAccount(1, 1, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/sub-account/futures/accountSummary', $request->getUri()->getPath());
-        self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
+        self::assertEquals('8a73086a1b7b0b8fdd097b5e9651c03b0a8938014f4aae424ed1db47d1030ab6', $queryMap['signature']);
     }
 
     /**

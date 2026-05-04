@@ -464,6 +464,7 @@ class EthStakingApi
      *
      * Get ETH redemption history(USER_DATA)
      *
+     * @param null|int $redeemId   redeemId (optional)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
      * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
@@ -475,9 +476,9 @@ class EthStakingApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getEthRedemptionHistory($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    public function getEthRedemptionHistory($redeemId = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
     {
-        return $this->getEthRedemptionHistoryWithHttpInfo($startTime, $endTime, $current, $size, $recvWindow);
+        return $this->getEthRedemptionHistoryWithHttpInfo($redeemId, $startTime, $endTime, $current, $size, $recvWindow);
     }
 
     /**
@@ -485,6 +486,7 @@ class EthStakingApi
      *
      * Get ETH redemption history(USER_DATA)
      *
+     * @param null|int $redeemId   (optional)
      * @param null|int $startTime  (optional)
      * @param null|int $endTime    (optional)
      * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
@@ -496,9 +498,9 @@ class EthStakingApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getEthRedemptionHistoryWithHttpInfo($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    public function getEthRedemptionHistoryWithHttpInfo($redeemId = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->getEthRedemptionHistoryRequest($startTime, $endTime, $current, $size, $recvWindow);
+        $request = $this->getEthRedemptionHistoryRequest($redeemId, $startTime, $endTime, $current, $size, $recvWindow);
 
         try {
             try {
@@ -568,6 +570,7 @@ class EthStakingApi
     /**
      * Create request for operation 'getEthRedemptionHistory'.
      *
+     * @param null|int $redeemId   (optional)
      * @param null|int $startTime  (optional)
      * @param null|int $endTime    (optional)
      * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
@@ -578,7 +581,7 @@ class EthStakingApi
      *
      * @throws \InvalidArgumentException
      */
-    public function getEthRedemptionHistoryRequest($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null)
+    public function getEthRedemptionHistoryRequest($redeemId = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['getEthRedemptionHistory'][0];
 
@@ -589,6 +592,15 @@ class EthStakingApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $redeemId,
+            'redeemId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $startTime,
@@ -675,6 +687,7 @@ class EthStakingApi
      *
      * Get ETH staking history(USER_DATA)
      *
+     * @param null|int $purchaseId purchaseId (optional)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
      * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
@@ -686,9 +699,9 @@ class EthStakingApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getEthStakingHistory($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    public function getEthStakingHistory($purchaseId = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
     {
-        return $this->getEthStakingHistoryWithHttpInfo($startTime, $endTime, $current, $size, $recvWindow);
+        return $this->getEthStakingHistoryWithHttpInfo($purchaseId, $startTime, $endTime, $current, $size, $recvWindow);
     }
 
     /**
@@ -696,6 +709,7 @@ class EthStakingApi
      *
      * Get ETH staking history(USER_DATA)
      *
+     * @param null|int $purchaseId (optional)
      * @param null|int $startTime  (optional)
      * @param null|int $endTime    (optional)
      * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
@@ -707,9 +721,9 @@ class EthStakingApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getEthStakingHistoryWithHttpInfo($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    public function getEthStakingHistoryWithHttpInfo($purchaseId = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->getEthStakingHistoryRequest($startTime, $endTime, $current, $size, $recvWindow);
+        $request = $this->getEthStakingHistoryRequest($purchaseId, $startTime, $endTime, $current, $size, $recvWindow);
 
         try {
             try {
@@ -779,6 +793,7 @@ class EthStakingApi
     /**
      * Create request for operation 'getEthStakingHistory'.
      *
+     * @param null|int $purchaseId (optional)
      * @param null|int $startTime  (optional)
      * @param null|int $endTime    (optional)
      * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
@@ -789,7 +804,7 @@ class EthStakingApi
      *
      * @throws \InvalidArgumentException
      */
-    public function getEthStakingHistoryRequest($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null)
+    public function getEthStakingHistoryRequest($purchaseId = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['getEthStakingHistory'][0];
 
@@ -800,6 +815,15 @@ class EthStakingApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $purchaseId,
+            'purchaseId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $startTime,

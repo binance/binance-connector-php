@@ -64,6 +64,7 @@ class SubscribeSolStakingResponse implements ModelInterface, \ArrayAccess, \Json
         'success' => 'bool',
         'bnsolAmount' => 'string',
         'exchangeRate' => 'string',
+        'purchaseId' => 'int',
     ];
 
     /**
@@ -79,6 +80,7 @@ class SubscribeSolStakingResponse implements ModelInterface, \ArrayAccess, \Json
         'success' => null,
         'bnsolAmount' => null,
         'exchangeRate' => null,
+        'purchaseId' => 'int64',
     ];
 
     /**
@@ -90,6 +92,7 @@ class SubscribeSolStakingResponse implements ModelInterface, \ArrayAccess, \Json
         'success' => false,
         'bnsolAmount' => false,
         'exchangeRate' => false,
+        'purchaseId' => false,
     ];
 
     /**
@@ -109,6 +112,7 @@ class SubscribeSolStakingResponse implements ModelInterface, \ArrayAccess, \Json
         'success' => 'success',
         'bnsolAmount' => 'bnsolAmount',
         'exchangeRate' => 'exchangeRate',
+        'purchaseId' => 'purchaseId',
     ];
 
     /**
@@ -120,6 +124,7 @@ class SubscribeSolStakingResponse implements ModelInterface, \ArrayAccess, \Json
         'success' => 'setSuccess',
         'bnsolAmount' => 'setBnsolAmount',
         'exchangeRate' => 'setExchangeRate',
+        'purchaseId' => 'setPurchaseId',
     ];
 
     /**
@@ -131,6 +136,7 @@ class SubscribeSolStakingResponse implements ModelInterface, \ArrayAccess, \Json
         'success' => 'getSuccess',
         'bnsolAmount' => 'getBnsolAmount',
         'exchangeRate' => 'getExchangeRate',
+        'purchaseId' => 'getPurchaseId',
     ];
 
     /**
@@ -151,6 +157,7 @@ class SubscribeSolStakingResponse implements ModelInterface, \ArrayAccess, \Json
         $this->setIfExists('success', $data ?? [], null);
         $this->setIfExists('bnsolAmount', $data ?? [], null);
         $this->setIfExists('exchangeRate', $data ?? [], null);
+        $this->setIfExists('purchaseId', $data ?? [], null);
     }
 
     /**
@@ -358,6 +365,33 @@ class SubscribeSolStakingResponse implements ModelInterface, \ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable exchangeRate cannot be null');
         }
         $this->container['exchangeRate'] = $exchangeRate;
+
+        return $this;
+    }
+
+    /**
+     * Gets purchaseId.
+     *
+     * @return null|int
+     */
+    public function getPurchaseId()
+    {
+        return $this->container['purchaseId'];
+    }
+
+    /**
+     * Sets purchaseId.
+     *
+     * @param null|int $purchaseId purchaseId
+     *
+     * @return self
+     */
+    public function setPurchaseId($purchaseId)
+    {
+        if (is_null($purchaseId)) {
+            throw new \InvalidArgumentException('non-nullable purchaseId cannot be null');
+        }
+        $this->container['purchaseId'] = $purchaseId;
 
         return $this;
     }

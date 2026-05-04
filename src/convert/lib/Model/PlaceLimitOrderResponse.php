@@ -61,12 +61,8 @@ class PlaceLimitOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $openAPITypes = [
-        'quoteId' => 'string',
-        'ratio' => 'string',
-        'inverseRatio' => 'string',
-        'validTimestamp' => 'int',
-        'toAmount' => 'string',
-        'fromAmount' => 'string',
+        'orderId' => 'int',
+        'status' => 'string',
     ];
 
     /**
@@ -79,12 +75,8 @@ class PlaceLimitOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'quoteId' => null,
-        'ratio' => null,
-        'inverseRatio' => null,
-        'validTimestamp' => 'int64',
-        'toAmount' => null,
-        'fromAmount' => null,
+        'orderId' => 'int64',
+        'status' => null,
     ];
 
     /**
@@ -93,12 +85,8 @@ class PlaceLimitOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'quoteId' => false,
-        'ratio' => false,
-        'inverseRatio' => false,
-        'validTimestamp' => false,
-        'toAmount' => false,
-        'fromAmount' => false,
+        'orderId' => false,
+        'status' => false,
     ];
 
     /**
@@ -115,12 +103,8 @@ class PlaceLimitOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'quoteId' => 'quoteId',
-        'ratio' => 'ratio',
-        'inverseRatio' => 'inverseRatio',
-        'validTimestamp' => 'validTimestamp',
-        'toAmount' => 'toAmount',
-        'fromAmount' => 'fromAmount',
+        'orderId' => 'orderId',
+        'status' => 'status',
     ];
 
     /**
@@ -129,12 +113,8 @@ class PlaceLimitOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'quoteId' => 'setQuoteId',
-        'ratio' => 'setRatio',
-        'inverseRatio' => 'setInverseRatio',
-        'validTimestamp' => 'setValidTimestamp',
-        'toAmount' => 'setToAmount',
-        'fromAmount' => 'setFromAmount',
+        'orderId' => 'setOrderId',
+        'status' => 'setStatus',
     ];
 
     /**
@@ -143,12 +123,8 @@ class PlaceLimitOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'quoteId' => 'getQuoteId',
-        'ratio' => 'getRatio',
-        'inverseRatio' => 'getInverseRatio',
-        'validTimestamp' => 'getValidTimestamp',
-        'toAmount' => 'getToAmount',
-        'fromAmount' => 'getFromAmount',
+        'orderId' => 'getOrderId',
+        'status' => 'getStatus',
     ];
 
     /**
@@ -166,12 +142,8 @@ class PlaceLimitOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('quoteId', $data ?? [], null);
-        $this->setIfExists('ratio', $data ?? [], null);
-        $this->setIfExists('inverseRatio', $data ?? [], null);
-        $this->setIfExists('validTimestamp', $data ?? [], null);
-        $this->setIfExists('toAmount', $data ?? [], null);
-        $this->setIfExists('fromAmount', $data ?? [], null);
+        $this->setIfExists('orderId', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -303,163 +275,55 @@ class PlaceLimitOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets quoteId.
-     *
-     * @return null|string
-     */
-    public function getQuoteId()
-    {
-        return $this->container['quoteId'];
-    }
-
-    /**
-     * Sets quoteId.
-     *
-     * @param null|string $quoteId quoteId
-     *
-     * @return self
-     */
-    public function setQuoteId($quoteId)
-    {
-        if (is_null($quoteId)) {
-            throw new \InvalidArgumentException('non-nullable quoteId cannot be null');
-        }
-        $this->container['quoteId'] = $quoteId;
-
-        return $this;
-    }
-
-    /**
-     * Gets ratio.
-     *
-     * @return null|string
-     */
-    public function getRatio()
-    {
-        return $this->container['ratio'];
-    }
-
-    /**
-     * Sets ratio.
-     *
-     * @param null|string $ratio ratio
-     *
-     * @return self
-     */
-    public function setRatio($ratio)
-    {
-        if (is_null($ratio)) {
-            throw new \InvalidArgumentException('non-nullable ratio cannot be null');
-        }
-        $this->container['ratio'] = $ratio;
-
-        return $this;
-    }
-
-    /**
-     * Gets inverseRatio.
-     *
-     * @return null|string
-     */
-    public function getInverseRatio()
-    {
-        return $this->container['inverseRatio'];
-    }
-
-    /**
-     * Sets inverseRatio.
-     *
-     * @param null|string $inverseRatio inverseRatio
-     *
-     * @return self
-     */
-    public function setInverseRatio($inverseRatio)
-    {
-        if (is_null($inverseRatio)) {
-            throw new \InvalidArgumentException('non-nullable inverseRatio cannot be null');
-        }
-        $this->container['inverseRatio'] = $inverseRatio;
-
-        return $this;
-    }
-
-    /**
-     * Gets validTimestamp.
+     * Gets orderId.
      *
      * @return null|int
      */
-    public function getValidTimestamp()
+    public function getOrderId()
     {
-        return $this->container['validTimestamp'];
+        return $this->container['orderId'];
     }
 
     /**
-     * Sets validTimestamp.
+     * Sets orderId.
      *
-     * @param null|int $validTimestamp validTimestamp
+     * @param null|int $orderId orderId
      *
      * @return self
      */
-    public function setValidTimestamp($validTimestamp)
+    public function setOrderId($orderId)
     {
-        if (is_null($validTimestamp)) {
-            throw new \InvalidArgumentException('non-nullable validTimestamp cannot be null');
+        if (is_null($orderId)) {
+            throw new \InvalidArgumentException('non-nullable orderId cannot be null');
         }
-        $this->container['validTimestamp'] = $validTimestamp;
+        $this->container['orderId'] = $orderId;
 
         return $this;
     }
 
     /**
-     * Gets toAmount.
+     * Gets status.
      *
      * @return null|string
      */
-    public function getToAmount()
+    public function getStatus()
     {
-        return $this->container['toAmount'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets toAmount.
+     * Sets status.
      *
-     * @param null|string $toAmount toAmount
+     * @param null|string $status status
      *
      * @return self
      */
-    public function setToAmount($toAmount)
+    public function setStatus($status)
     {
-        if (is_null($toAmount)) {
-            throw new \InvalidArgumentException('non-nullable toAmount cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['toAmount'] = $toAmount;
-
-        return $this;
-    }
-
-    /**
-     * Gets fromAmount.
-     *
-     * @return null|string
-     */
-    public function getFromAmount()
-    {
-        return $this->container['fromAmount'];
-    }
-
-    /**
-     * Sets fromAmount.
-     *
-     * @param null|string $fromAmount fromAmount
-     *
-     * @return self
-     */
-    public function setFromAmount($fromAmount)
-    {
-        if (is_null($fromAmount)) {
-            throw new \InvalidArgumentException('non-nullable fromAmount cannot be null');
-        }
-        $this->container['fromAmount'] = $fromAmount;
+        $this->container['status'] = $status;
 
         return $this;
     }

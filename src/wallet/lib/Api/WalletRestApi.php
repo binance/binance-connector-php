@@ -229,16 +229,17 @@ class WalletRestApi
      *
      * Asset Detail (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|string $asset      asset (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<AssetDetailResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function assetDetail($recvWindow = null): ApiResponse
+    public function assetDetail($asset = null, $recvWindow = null): ApiResponse
     {
-        return $this->assetApi->assetDetail($recvWindow);
+        return $this->assetApi->assetDetail($asset, $recvWindow);
     }
 
     /**
@@ -318,18 +319,19 @@ class WalletRestApi
      *
      * DustLog(USER_DATA)
      *
-     * @param null|int $startTime  startTime (optional)
-     * @param null|int $endTime    endTime (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|string $accountType &#x60;SPOT&#x60;or&#x60;MARGIN&#x60;,default&#x60;SPOT&#x60; (optional)
+     * @param null|int    $startTime   startTime (optional)
+     * @param null|int    $endTime     endTime (optional)
+     * @param null|int    $recvWindow  recvWindow (optional)
      *
      * @return ApiResponse<DustlogResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function dustlog($startTime = null, $endTime = null, $recvWindow = null): ApiResponse
+    public function dustlog($accountType = null, $startTime = null, $endTime = null, $recvWindow = null): ApiResponse
     {
-        return $this->assetApi->dustlog($startTime, $endTime, $recvWindow);
+        return $this->assetApi->dustlog($accountType, $startTime, $endTime, $recvWindow);
     }
 
     /**

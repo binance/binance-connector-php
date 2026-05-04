@@ -62,7 +62,7 @@ class ExchangeInformationResponseSymbolsInner implements ModelInterface, \ArrayA
      */
     protected static $openAPITypes = [
         'filters' => '\Binance\Client\DerivativesTradingCoinFutures\Model\ExchangeInformationResponseSymbolsInnerFiltersInner[]',
-        'orderType' => 'string[]',
+        'orderTypes' => 'string[]',
         'timeInForce' => 'string[]',
         'liquidationFee' => 'string',
         'marketTakeBound' => 'string',
@@ -99,7 +99,7 @@ class ExchangeInformationResponseSymbolsInner implements ModelInterface, \ArrayA
      */
     protected static $openAPIFormats = [
         'filters' => null,
-        'orderType' => null,
+        'orderTypes' => null,
         'timeInForce' => null,
         'liquidationFee' => null,
         'marketTakeBound' => null,
@@ -132,7 +132,7 @@ class ExchangeInformationResponseSymbolsInner implements ModelInterface, \ArrayA
      */
     protected static array $openAPINullables = [
         'filters' => false,
-        'orderType' => false,
+        'orderTypes' => false,
         'timeInForce' => false,
         'liquidationFee' => false,
         'marketTakeBound' => false,
@@ -173,7 +173,7 @@ class ExchangeInformationResponseSymbolsInner implements ModelInterface, \ArrayA
      */
     protected static $attributeMap = [
         'filters' => 'filters',
-        'orderType' => 'OrderType',
+        'orderTypes' => 'orderTypes',
         'timeInForce' => 'timeInForce',
         'liquidationFee' => 'liquidationFee',
         'marketTakeBound' => 'marketTakeBound',
@@ -206,7 +206,7 @@ class ExchangeInformationResponseSymbolsInner implements ModelInterface, \ArrayA
      */
     protected static $setters = [
         'filters' => 'setFilters',
-        'orderType' => 'setOrderType',
+        'orderTypes' => 'setOrderTypes',
         'timeInForce' => 'setTimeInForce',
         'liquidationFee' => 'setLiquidationFee',
         'marketTakeBound' => 'setMarketTakeBound',
@@ -239,7 +239,7 @@ class ExchangeInformationResponseSymbolsInner implements ModelInterface, \ArrayA
      */
     protected static $getters = [
         'filters' => 'getFilters',
-        'orderType' => 'getOrderType',
+        'orderTypes' => 'getOrderTypes',
         'timeInForce' => 'getTimeInForce',
         'liquidationFee' => 'getLiquidationFee',
         'marketTakeBound' => 'getMarketTakeBound',
@@ -281,7 +281,7 @@ class ExchangeInformationResponseSymbolsInner implements ModelInterface, \ArrayA
     public function __construct(?array $data = null)
     {
         $this->setIfExists('filters', $data ?? [], null);
-        $this->setIfExists('orderType', $data ?? [], null);
+        $this->setIfExists('orderTypes', $data ?? [], null);
         $this->setIfExists('timeInForce', $data ?? [], null);
         $this->setIfExists('liquidationFee', $data ?? [], null);
         $this->setIfExists('marketTakeBound', $data ?? [], null);
@@ -463,28 +463,28 @@ class ExchangeInformationResponseSymbolsInner implements ModelInterface, \ArrayA
     }
 
     /**
-     * Gets orderType.
+     * Gets orderTypes.
      *
      * @return null|string[]
      */
-    public function getOrderType()
+    public function getOrderTypes()
     {
-        return $this->container['orderType'];
+        return $this->container['orderTypes'];
     }
 
     /**
-     * Sets orderType.
+     * Sets orderTypes.
      *
-     * @param null|string[] $orderType orderType
+     * @param null|string[] $orderTypes orderTypes
      *
      * @return self
      */
-    public function setOrderType($orderType)
+    public function setOrderTypes($orderTypes)
     {
-        if (is_null($orderType)) {
-            throw new \InvalidArgumentException('non-nullable orderType cannot be null');
+        if (is_null($orderTypes)) {
+            throw new \InvalidArgumentException('non-nullable orderTypes cannot be null');
         }
-        $this->container['orderType'] = $orderType;
+        $this->container['orderTypes'] = $orderTypes;
 
         return $this;
     }

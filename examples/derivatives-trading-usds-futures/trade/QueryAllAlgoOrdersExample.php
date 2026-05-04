@@ -25,10 +25,9 @@ function queryAllAlgoOrdersExample()
     $algoId = 1;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
-    $page = null;
     $limit = 100;
     $recvWindow = 5000;
-    $response = $api->queryAllAlgoOrders($symbol, $algoId, $startTime, $endTime, $page, $limit, $recvWindow);
+    $response = $api->queryAllAlgoOrders($symbol, $algoId, $startTime, $endTime, $limit, $recvWindow);
     print_r($response);
 }
 

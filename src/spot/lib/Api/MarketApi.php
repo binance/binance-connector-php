@@ -36,6 +36,8 @@ use Binance\Client\Spot\Model\GetTradesResponse;
 use Binance\Client\Spot\Model\HistoricalTradesResponse;
 use Binance\Client\Spot\Model\Interval;
 use Binance\Client\Spot\Model\KlinesResponse;
+use Binance\Client\Spot\Model\ReferencePriceCalculationResponse;
+use Binance\Client\Spot\Model\ReferencePriceResponse;
 use Binance\Client\Spot\Model\Symbols;
 use Binance\Client\Spot\Model\SymbolStatus;
 use Binance\Client\Spot\Model\Ticker24hrResponse;
@@ -81,6 +83,8 @@ class MarketApi
         'getTrades' => ['application/x-www-form-urlencoded'],
         'historicalTrades' => ['application/x-www-form-urlencoded'],
         'klines' => ['application/x-www-form-urlencoded'],
+        'referencePrice' => ['application/x-www-form-urlencoded'],
+        'referencePriceCalculation' => ['application/x-www-form-urlencoded'],
         'ticker' => ['application/x-www-form-urlencoded'],
         'ticker24hr' => ['application/x-www-form-urlencoded'],
         'tickerBookTicker' => ['application/x-www-form-urlencoded'],
@@ -1270,6 +1274,350 @@ class MarketApi
             $limit,
             'limit', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation referencePrice.
+     *
+     * Query Reference Price
+     *
+     * @param string $symbol symbol (required)
+     *
+     * @return ApiResponse<ReferencePriceResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function referencePrice($symbol): ApiResponse
+    {
+        return $this->referencePriceWithHttpInfo($symbol);
+    }
+
+    /**
+     * Operation referencePriceWithHttpInfo.
+     *
+     * Query Reference Price
+     *
+     * @param string $symbol (required)
+     *
+     * @return ApiResponse<ReferencePriceResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function referencePriceWithHttpInfo($symbol): ApiResponse
+    {
+        $request = $this->referencePriceRequest($symbol);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Spot\Model\ReferencePriceResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Spot\Model\ReferencePriceResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Spot\Model\ReferencePriceResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'referencePrice'.
+     *
+     * @param string $symbol (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function referencePriceRequest($symbol)
+    {
+        $contentType = self::contentTypes['referencePrice'][0];
+
+        // verify the required parameter 'symbol' is set
+        if (null === $symbol || (is_array($symbol) && 0 === count($symbol))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $symbol when calling referencePrice'
+            );
+        }
+
+        $resourcePath = '/api/v3/referencePrice';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbol,
+            'symbol', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation referencePriceCalculation.
+     *
+     * Query Reference Price Calculation
+     *
+     * @param string            $symbol       symbol (required)
+     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
+     *
+     * @return ApiResponse<ReferencePriceCalculationResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function referencePriceCalculation($symbol, $symbolStatus = null): ApiResponse
+    {
+        return $this->referencePriceCalculationWithHttpInfo($symbol, $symbolStatus);
+    }
+
+    /**
+     * Operation referencePriceCalculationWithHttpInfo.
+     *
+     * Query Reference Price Calculation
+     *
+     * @param string            $symbol       (required)
+     * @param null|SymbolStatus $symbolStatus (optional)
+     *
+     * @return ApiResponse<ReferencePriceCalculationResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function referencePriceCalculationWithHttpInfo($symbol, $symbolStatus = null): ApiResponse
+    {
+        $request = $this->referencePriceCalculationRequest($symbol, $symbolStatus);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Spot\Model\ReferencePriceCalculationResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Spot\Model\ReferencePriceCalculationResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Spot\Model\ReferencePriceCalculationResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'referencePriceCalculation'.
+     *
+     * @param string            $symbol       (required)
+     * @param null|SymbolStatus $symbolStatus (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function referencePriceCalculationRequest($symbol, $symbolStatus = null)
+    {
+        $contentType = self::contentTypes['referencePriceCalculation'][0];
+
+        // verify the required parameter 'symbol' is set
+        if (null === $symbol || (is_array($symbol) && 0 === count($symbol))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $symbol when calling referencePriceCalculation'
+            );
+        }
+
+        $resourcePath = '/api/v3/referencePrice/calculation';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbol,
+            'symbol', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbolStatus,
+            'symbolStatus', // param base name
+            'SymbolStatus', // openApiType
             'form', // style
             true, // explode
             false // required

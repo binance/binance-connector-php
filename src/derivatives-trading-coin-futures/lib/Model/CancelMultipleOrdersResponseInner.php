@@ -77,6 +77,7 @@ class CancelMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess,
         'stopPrice' => 'string',
         'closePosition' => 'bool',
         'symbol' => 'string',
+        'pair' => 'string',
         'timeInForce' => 'string',
         'type' => 'string',
         'activatePrice' => 'string',
@@ -116,6 +117,7 @@ class CancelMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess,
         'stopPrice' => null,
         'closePosition' => null,
         'symbol' => null,
+        'pair' => null,
         'timeInForce' => null,
         'type' => null,
         'activatePrice' => null,
@@ -151,6 +153,7 @@ class CancelMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess,
         'stopPrice' => false,
         'closePosition' => false,
         'symbol' => false,
+        'pair' => false,
         'timeInForce' => false,
         'type' => false,
         'activatePrice' => false,
@@ -194,6 +197,7 @@ class CancelMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess,
         'stopPrice' => 'stopPrice',
         'closePosition' => 'closePosition',
         'symbol' => 'symbol',
+        'pair' => 'pair',
         'timeInForce' => 'timeInForce',
         'type' => 'type',
         'activatePrice' => 'activatePrice',
@@ -229,6 +233,7 @@ class CancelMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess,
         'stopPrice' => 'setStopPrice',
         'closePosition' => 'setClosePosition',
         'symbol' => 'setSymbol',
+        'pair' => 'setPair',
         'timeInForce' => 'setTimeInForce',
         'type' => 'setType',
         'activatePrice' => 'setActivatePrice',
@@ -264,6 +269,7 @@ class CancelMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess,
         'stopPrice' => 'getStopPrice',
         'closePosition' => 'getClosePosition',
         'symbol' => 'getSymbol',
+        'pair' => 'getPair',
         'timeInForce' => 'getTimeInForce',
         'type' => 'getType',
         'activatePrice' => 'getActivatePrice',
@@ -308,6 +314,7 @@ class CancelMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess,
         $this->setIfExists('stopPrice', $data ?? [], null);
         $this->setIfExists('closePosition', $data ?? [], null);
         $this->setIfExists('symbol', $data ?? [], null);
+        $this->setIfExists('pair', $data ?? [], null);
         $this->setIfExists('timeInForce', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('activatePrice', $data ?? [], null);
@@ -877,6 +884,33 @@ class CancelMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess,
             throw new \InvalidArgumentException('non-nullable symbol cannot be null');
         }
         $this->container['symbol'] = $symbol;
+
+        return $this;
+    }
+
+    /**
+     * Gets pair.
+     *
+     * @return null|string
+     */
+    public function getPair()
+    {
+        return $this->container['pair'];
+    }
+
+    /**
+     * Sets pair.
+     *
+     * @param null|string $pair pair
+     *
+     * @return self
+     */
+    public function setPair($pair)
+    {
+        if (is_null($pair)) {
+            throw new \InvalidArgumentException('non-nullable pair cannot be null');
+        }
+        $this->container['pair'] = $pair;
 
         return $this;
     }

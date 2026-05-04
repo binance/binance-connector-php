@@ -1048,10 +1048,10 @@ class AccountApi
      * @param null|string $asset      asset (optional)
      * @param null|string $symbol     isolated margin pair (optional)
      * @param null|string $type       Transfer Type: ROLL_IN, ROLL_OUT (optional)
-     * @param null|int    $startTime  只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime  Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $fromId     如设置fromId, 将返回id &gt; fromId的数据。否则将返回最新数据 (optional)
-     * @param null|int    $limit      Default Value: 500; Max Value: 1000 (optional)
+     * @param null|int    $fromId     If &#x60;fromId&#x60; is set, data with &#x60;id&#x60; greater than &#x60;fromId&#x60; will be returned. Otherwise, the latest data will be returned. (optional)
+     * @param null|int    $limit      Limit on the number of data records returned per request. Default: 500; Maximum: 1000. (optional)
      * @param null|int    $recvWindow No more than 60000 (optional)
      *
      * @return ApiResponse<QueryCrossIsolatedMarginCapitalFlowResponse>
@@ -1072,10 +1072,10 @@ class AccountApi
      * @param null|string $asset      (optional)
      * @param null|string $symbol     isolated margin pair (optional)
      * @param null|string $type       Transfer Type: ROLL_IN, ROLL_OUT (optional)
-     * @param null|int    $startTime  只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime  Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $fromId     如设置fromId, 将返回id &gt; fromId的数据。否则将返回最新数据 (optional)
-     * @param null|int    $limit      Default Value: 500; Max Value: 1000 (optional)
+     * @param null|int    $fromId     If &#x60;fromId&#x60; is set, data with &#x60;id&#x60; greater than &#x60;fromId&#x60; will be returned. Otherwise, the latest data will be returned. (optional)
+     * @param null|int    $limit      Limit on the number of data records returned per request. Default: 500; Maximum: 1000. (optional)
      * @param null|int    $recvWindow No more than 60000 (optional)
      *
      * @return ApiResponse<QueryCrossIsolatedMarginCapitalFlowResponse>
@@ -1158,10 +1158,10 @@ class AccountApi
      * @param null|string $asset      (optional)
      * @param null|string $symbol     isolated margin pair (optional)
      * @param null|string $type       Transfer Type: ROLL_IN, ROLL_OUT (optional)
-     * @param null|int    $startTime  只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime  Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime    (optional)
-     * @param null|int    $fromId     如设置fromId, 将返回id &gt; fromId的数据。否则将返回最新数据 (optional)
-     * @param null|int    $limit      Default Value: 500; Max Value: 1000 (optional)
+     * @param null|int    $fromId     If &#x60;fromId&#x60; is set, data with &#x60;id&#x60; greater than &#x60;fromId&#x60; will be returned. Otherwise, the latest data will be returned. (optional)
+     * @param null|int    $limit      Limit on the number of data records returned per request. Default: 500; Maximum: 1000. (optional)
      * @param null|int    $recvWindow No more than 60000 (optional)
      *
      * @return Request

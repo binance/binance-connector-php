@@ -64,6 +64,7 @@ class GetVIPLoanOngoingOrdersResponseRowsInner implements ModelInterface, \Array
         'orderId' => 'int',
         'loanCoin' => 'string',
         'totalDebt' => 'string',
+        'loanRate' => 'string',
         'residualInterest' => 'string',
         'collateralAccountId' => 'string',
         'collateralCoin' => 'string',
@@ -88,6 +89,7 @@ class GetVIPLoanOngoingOrdersResponseRowsInner implements ModelInterface, \Array
         'orderId' => 'int64',
         'loanCoin' => null,
         'totalDebt' => null,
+        'loanRate' => null,
         'residualInterest' => null,
         'collateralAccountId' => null,
         'collateralCoin' => null,
@@ -108,6 +110,7 @@ class GetVIPLoanOngoingOrdersResponseRowsInner implements ModelInterface, \Array
         'orderId' => false,
         'loanCoin' => false,
         'totalDebt' => false,
+        'loanRate' => false,
         'residualInterest' => false,
         'collateralAccountId' => false,
         'collateralCoin' => false,
@@ -136,6 +139,7 @@ class GetVIPLoanOngoingOrdersResponseRowsInner implements ModelInterface, \Array
         'orderId' => 'orderId',
         'loanCoin' => 'loanCoin',
         'totalDebt' => 'totalDebt',
+        'loanRate' => 'loanRate',
         'residualInterest' => 'residualInterest',
         'collateralAccountId' => 'collateralAccountId',
         'collateralCoin' => 'collateralCoin',
@@ -156,6 +160,7 @@ class GetVIPLoanOngoingOrdersResponseRowsInner implements ModelInterface, \Array
         'orderId' => 'setOrderId',
         'loanCoin' => 'setLoanCoin',
         'totalDebt' => 'setTotalDebt',
+        'loanRate' => 'setLoanRate',
         'residualInterest' => 'setResidualInterest',
         'collateralAccountId' => 'setCollateralAccountId',
         'collateralCoin' => 'setCollateralCoin',
@@ -176,6 +181,7 @@ class GetVIPLoanOngoingOrdersResponseRowsInner implements ModelInterface, \Array
         'orderId' => 'getOrderId',
         'loanCoin' => 'getLoanCoin',
         'totalDebt' => 'getTotalDebt',
+        'loanRate' => 'getLoanRate',
         'residualInterest' => 'getResidualInterest',
         'collateralAccountId' => 'getCollateralAccountId',
         'collateralCoin' => 'getCollateralCoin',
@@ -205,6 +211,7 @@ class GetVIPLoanOngoingOrdersResponseRowsInner implements ModelInterface, \Array
         $this->setIfExists('orderId', $data ?? [], null);
         $this->setIfExists('loanCoin', $data ?? [], null);
         $this->setIfExists('totalDebt', $data ?? [], null);
+        $this->setIfExists('loanRate', $data ?? [], null);
         $this->setIfExists('residualInterest', $data ?? [], null);
         $this->setIfExists('collateralAccountId', $data ?? [], null);
         $this->setIfExists('collateralCoin', $data ?? [], null);
@@ -421,6 +428,33 @@ class GetVIPLoanOngoingOrdersResponseRowsInner implements ModelInterface, \Array
             throw new \InvalidArgumentException('non-nullable totalDebt cannot be null');
         }
         $this->container['totalDebt'] = $totalDebt;
+
+        return $this;
+    }
+
+    /**
+     * Gets loanRate.
+     *
+     * @return null|string
+     */
+    public function getLoanRate()
+    {
+        return $this->container['loanRate'];
+    }
+
+    /**
+     * Sets loanRate.
+     *
+     * @param null|string $loanRate loanRate
+     *
+     * @return self
+     */
+    public function setLoanRate($loanRate)
+    {
+        if (is_null($loanRate)) {
+            throw new \InvalidArgumentException('non-nullable loanRate cannot be null');
+        }
+        $this->container['loanRate'] = $loanRate;
 
         return $this;
     }

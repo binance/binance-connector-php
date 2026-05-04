@@ -69,6 +69,18 @@ class ExchangeFilters implements ModelInterface, \ArrayAccess, \JsonSerializable
     ];
 
     /**
+     * Array of mapping. Used for (de)serialization.
+     *
+     * @var string[]
+     */
+    protected static $openAPIMappings = [
+        'EXCHANGE_MAX_NUM_ALGO_ORDERS' => '\Binance\Client\Spot\Model\ExchangeMaxNumAlgoOrdersFilter',
+        'EXCHANGE_MAX_NUM_ICEBERG_ORDERS' => '\Binance\Client\Spot\Model\ExchangeMaxNumIcebergOrdersFilter',
+        'EXCHANGE_MAX_NUM_ORDERS' => '\Binance\Client\Spot\Model\ExchangeMaxNumOrdersFilter',
+        'EXCHANGE_MAX_NUM_ORDER_LISTS' => '\Binance\Client\Spot\Model\ExchangeMaxNumOrderListsFilter',
+    ];
+
+    /**
      * Array of property to format mappings. Used for (de)serialization.
      *
      * @var string[]
@@ -209,6 +221,16 @@ class ExchangeFilters implements ModelInterface, \ArrayAccess, \JsonSerializable
     public static function openAPIFormats()
     {
         return self::$openAPIFormats;
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization.
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**

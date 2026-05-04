@@ -40,7 +40,7 @@
 
 [/sapi/v1/capital/deposit/subHisrec](https://developers.binance.com/docs/sub_account/asset-management/Get-Sub-account-Deposit-History) - getSubAccountDepositHistory - [GetSubAccountDepositHistoryExample.php:33](/examples/sub-account/assetmanagement/GetSubAccountDepositHistoryExample.php#L33)
 
-[/sapi/v1/sub-account/futures/accountSummary](https://developers.binance.com/docs/sub_account/asset-management/Get-Summary-of-Sub-accounts-Futures-Account) - getSummaryOfSubAccountsFuturesAccount - [GetSummaryOfSubAccountsFuturesAccountExample.php:25](/examples/sub-account/assetmanagement/GetSummaryOfSubAccountsFuturesAccountExample.php#L25)
+[/sapi/v1/sub-account/futures/accountSummary](https://developers.binance.com/docs/sub_account/asset-management/Get-Summary-of-Sub-accounts-Futures-Account) - getSummaryOfSubAccountsFuturesAccount - [GetSummaryOfSubAccountsFuturesAccountExample.php:27](/examples/sub-account/assetmanagement/GetSummaryOfSubAccountsFuturesAccountExample.php#L27)
 
 [/sapi/v2/sub-account/futures/accountSummary](https://developers.binance.com/docs/sub_account/asset-management/Get-Summary-of-Sub-accounts-Futures-Account-V2) - getSummaryOfSubAccountsFuturesAccountV2 - [GetSummaryOfSubAccountsFuturesAccountV2Example.php:28](/examples/sub-account/assetmanagement/GetSummaryOfSubAccountsFuturesAccountV2Example.php#L28)
 

@@ -63,7 +63,7 @@ class SymbolConfigurationResponseInner implements ModelInterface, \ArrayAccess, 
     protected static $openAPITypes = [
         'symbol' => 'string',
         'marginType' => 'string',
-        'isAutoAddMargin' => 'string',
+        'isAutoAddMargin' => 'bool',
         'leverage' => 'int',
         'maxNotionalValue' => 'string',
     ];
@@ -352,7 +352,7 @@ class SymbolConfigurationResponseInner implements ModelInterface, \ArrayAccess, 
     /**
      * Gets isAutoAddMargin.
      *
-     * @return null|string
+     * @return null|bool
      */
     public function getIsAutoAddMargin()
     {
@@ -362,7 +362,7 @@ class SymbolConfigurationResponseInner implements ModelInterface, \ArrayAccess, 
     /**
      * Sets isAutoAddMargin.
      *
-     * @param null|string $isAutoAddMargin isAutoAddMargin
+     * @param null|bool $isAutoAddMargin isAutoAddMargin
      *
      * @return self
      */

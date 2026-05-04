@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.0.0 - 2026-05-01
+
+### Changed (1)
+
+- Modified response for `getVIPLoanOngoingOrders()` (`GET /sapi/v1/loan/vip/ongoing/orders`):
+  - `rows`.items: property `loanRate` added
+  - `rows`.items: item property `loanRate` added
+
 ## 3.0.0 - 2026-01-08
 
 ### Added (2)

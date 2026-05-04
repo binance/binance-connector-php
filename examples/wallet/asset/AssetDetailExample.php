@@ -21,8 +21,9 @@ function assetDetailExample()
     $configurationBuilder = WalletRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
+    $asset = '';
     $recvWindow = 5000;
-    $response = $api->assetDetail($recvWindow);
+    $response = $api->assetDetail($asset, $recvWindow);
     print_r($response);
 }
 

@@ -33,11 +33,14 @@ use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\BnbTransferRequest
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\BnbTransferResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\ChangeAutoRepayFuturesStatusRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\ChangeAutoRepayFuturesStatusResponse;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\DeleteMarginCallLevelResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\FundAutoCollectionRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\FundAutoCollectionResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\FundCollectionByAssetRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\FundCollectionByAssetResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetAutoRepayFuturesStatusResponse;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetDeltaModeStatusResponse;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetMarginCallLevelResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetPortfolioMarginProAccountBalanceResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetPortfolioMarginProAccountInfoResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetPortfolioMarginProSpanAccountInfoResponse;
@@ -49,6 +52,10 @@ use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\QueryPortfolioMarg
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\QueryPortfolioMarginProNegativeBalanceInterestHistoryResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RepayFuturesNegativeBalanceRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RepayFuturesNegativeBalanceResponse;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\SetMarginCallLevelRequest;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\SetMarginCallLevelResponse;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\SwitchDeltaModeRequest;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\SwitchDeltaModeResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginResponse;
 use Binance\Common\ApiException;
@@ -84,9 +91,12 @@ class AccountApi
     public const contentTypes = [
         'bnbTransfer' => ['application/x-www-form-urlencoded'],
         'changeAutoRepayFuturesStatus' => ['application/x-www-form-urlencoded'],
+        'deleteMarginCallLevel' => ['application/x-www-form-urlencoded'],
         'fundAutoCollection' => ['application/x-www-form-urlencoded'],
         'fundCollectionByAsset' => ['application/x-www-form-urlencoded'],
         'getAutoRepayFuturesStatus' => ['application/x-www-form-urlencoded'],
+        'getDeltaModeStatus' => ['application/x-www-form-urlencoded'],
+        'getMarginCallLevel' => ['application/x-www-form-urlencoded'],
         'getPortfolioMarginProAccountBalance' => ['application/x-www-form-urlencoded'],
         'getPortfolioMarginProAccountInfo' => ['application/x-www-form-urlencoded'],
         'getPortfolioMarginProSpanAccountInfo' => ['application/x-www-form-urlencoded'],
@@ -96,6 +106,8 @@ class AccountApi
         'queryPortfolioMarginProBankruptcyLoanRepayHistory' => ['application/x-www-form-urlencoded'],
         'queryPortfolioMarginProNegativeBalanceInterestHistory' => ['application/x-www-form-urlencoded'],
         'repayFuturesNegativeBalance' => ['application/x-www-form-urlencoded'],
+        'setMarginCallLevel' => ['application/x-www-form-urlencoded'],
+        'switchDeltaMode' => ['application/x-www-form-urlencoded'],
         'transferLdusdtRwusdForPortfolioMargin' => ['application/x-www-form-urlencoded'],
     ];
     private const HAS_TIME_UNIT = false;
@@ -539,6 +551,169 @@ class AccountApi
 
         return new Request(
             'POST',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteMarginCallLevel.
+     *
+     * Delete Margin Call Level (USER_DATA)
+     *
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<DeleteMarginCallLevelResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function deleteMarginCallLevel($recvWindow = null): ApiResponse
+    {
+        return $this->deleteMarginCallLevelWithHttpInfo($recvWindow);
+    }
+
+    /**
+     * Operation deleteMarginCallLevelWithHttpInfo.
+     *
+     * Delete Margin Call Level (USER_DATA)
+     *
+     * @param null|int $recvWindow (optional)
+     *
+     * @return ApiResponse<DeleteMarginCallLevelResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function deleteMarginCallLevelWithHttpInfo($recvWindow = null): ApiResponse
+    {
+        $request = $this->deleteMarginCallLevelRequest($recvWindow);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\DeleteMarginCallLevelResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\DeleteMarginCallLevelResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\DeleteMarginCallLevelResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'deleteMarginCallLevel'.
+     *
+     * @param null|int $recvWindow (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function deleteMarginCallLevelRequest($recvWindow = null)
+    {
+        $contentType = self::contentTypes['deleteMarginCallLevel'][0];
+
+        $resourcePath = '/sapi/v1/portfolio/margin-call-level';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recvWindow,
+            'recvWindow', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'DELETE',
             $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -1057,6 +1232,332 @@ class AccountApi
         $contentType = self::contentTypes['getAutoRepayFuturesStatus'][0];
 
         $resourcePath = '/sapi/v1/portfolio/repay-futures-switch';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recvWindow,
+            'recvWindow', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getDeltaModeStatus.
+     *
+     * Get Delta Mode Status(USER_DATA)
+     *
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<GetDeltaModeStatusResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getDeltaModeStatus($recvWindow = null): ApiResponse
+    {
+        return $this->getDeltaModeStatusWithHttpInfo($recvWindow);
+    }
+
+    /**
+     * Operation getDeltaModeStatusWithHttpInfo.
+     *
+     * Get Delta Mode Status(USER_DATA)
+     *
+     * @param null|int $recvWindow (optional)
+     *
+     * @return ApiResponse<GetDeltaModeStatusResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getDeltaModeStatusWithHttpInfo($recvWindow = null): ApiResponse
+    {
+        $request = $this->getDeltaModeStatusRequest($recvWindow);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetDeltaModeStatusResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetDeltaModeStatusResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetDeltaModeStatusResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'getDeltaModeStatus'.
+     *
+     * @param null|int $recvWindow (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getDeltaModeStatusRequest($recvWindow = null)
+    {
+        $contentType = self::contentTypes['getDeltaModeStatus'][0];
+
+        $resourcePath = '/sapi/v1/portfolio/delta-mode';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recvWindow,
+            'recvWindow', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getMarginCallLevel.
+     *
+     * Get Margin Call Level (USER_DATA)
+     *
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<GetMarginCallLevelResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getMarginCallLevel($recvWindow = null): ApiResponse
+    {
+        return $this->getMarginCallLevelWithHttpInfo($recvWindow);
+    }
+
+    /**
+     * Operation getMarginCallLevelWithHttpInfo.
+     *
+     * Get Margin Call Level (USER_DATA)
+     *
+     * @param null|int $recvWindow (optional)
+     *
+     * @return ApiResponse<GetMarginCallLevelResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getMarginCallLevelWithHttpInfo($recvWindow = null): ApiResponse
+    {
+        $request = $this->getMarginCallLevelRequest($recvWindow);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetMarginCallLevelResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetMarginCallLevelResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetMarginCallLevelResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'getMarginCallLevel'.
+     *
+     * @param null|int $recvWindow (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getMarginCallLevelRequest($recvWindow = null)
+    {
+        $contentType = self::contentTypes['getMarginCallLevel'][0];
+
+        $resourcePath = '/sapi/v1/portfolio/margin-call-level';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2763,6 +3264,406 @@ class AccountApi
                 $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($repayFuturesNegativeBalanceRequest));
             } else {
                 $httpBody = $repayFuturesNegativeBalanceRequest;
+            }
+        }
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'POST',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation setMarginCallLevel.
+     *
+     * Set Margin Call Level (USER_DATA)
+     *
+     * @param SetMarginCallLevelRequest $setMarginCallLevelRequest setMarginCallLevelRequest (required)
+     *
+     * @return ApiResponse<SetMarginCallLevelResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function setMarginCallLevel($setMarginCallLevelRequest): ApiResponse
+    {
+        return $this->setMarginCallLevelWithHttpInfo($setMarginCallLevelRequest);
+    }
+
+    /**
+     * Operation setMarginCallLevelWithHttpInfo.
+     *
+     * Set Margin Call Level (USER_DATA)
+     *
+     * @param SetMarginCallLevelRequest $setMarginCallLevelRequest (required)
+     *
+     * @return ApiResponse<SetMarginCallLevelResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function setMarginCallLevelWithHttpInfo($setMarginCallLevelRequest): ApiResponse
+    {
+        $request = $this->setMarginCallLevelRequest($setMarginCallLevelRequest);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\SetMarginCallLevelResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\SetMarginCallLevelResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\SetMarginCallLevelResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'setMarginCallLevel'.
+     *
+     * @param SetMarginCallLevelRequest $setMarginCallLevelRequest (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function setMarginCallLevelRequest($setMarginCallLevelRequest)
+    {
+        $contentType = self::contentTypes['setMarginCallLevel'][0];
+
+        // verify the required parameter 'setMarginCallLevelRequest' is set
+        if (null === $setMarginCallLevelRequest || (is_array($setMarginCallLevelRequest) && 0 === count($setMarginCallLevelRequest))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $setMarginCallLevelRequest when calling setMarginCallLevel'
+            );
+        }
+
+        $resourcePath = '/sapi/v1/portfolio/margin-call-level';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $getters = $setMarginCallLevelRequest::getters();
+        $formParams = [];
+        foreach ($getters as $property => $getter) {
+            $value = $setMarginCallLevelRequest->{$getter}();
+            if (!empty($value)) {
+                $formParams[$property] = $setMarginCallLevelRequest->{$getter}();
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        } elseif (isset($setMarginCallLevelRequest)) {
+            if (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($setMarginCallLevelRequest));
+            } else {
+                $httpBody = $setMarginCallLevelRequest;
+            }
+        }
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'POST',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation switchDeltaMode.
+     *
+     * Switch Delta Mode(TRADE)
+     *
+     * @param SwitchDeltaModeRequest $switchDeltaModeRequest switchDeltaModeRequest (required)
+     *
+     * @return ApiResponse<SwitchDeltaModeResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function switchDeltaMode($switchDeltaModeRequest): ApiResponse
+    {
+        return $this->switchDeltaModeWithHttpInfo($switchDeltaModeRequest);
+    }
+
+    /**
+     * Operation switchDeltaModeWithHttpInfo.
+     *
+     * Switch Delta Mode(TRADE)
+     *
+     * @param SwitchDeltaModeRequest $switchDeltaModeRequest (required)
+     *
+     * @return ApiResponse<SwitchDeltaModeResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function switchDeltaModeWithHttpInfo($switchDeltaModeRequest): ApiResponse
+    {
+        $request = $this->switchDeltaModeRequest($switchDeltaModeRequest);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\SwitchDeltaModeResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\SwitchDeltaModeResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\SwitchDeltaModeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'switchDeltaMode'.
+     *
+     * @param SwitchDeltaModeRequest $switchDeltaModeRequest (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function switchDeltaModeRequest($switchDeltaModeRequest)
+    {
+        $contentType = self::contentTypes['switchDeltaMode'][0];
+
+        // verify the required parameter 'switchDeltaModeRequest' is set
+        if (null === $switchDeltaModeRequest || (is_array($switchDeltaModeRequest) && 0 === count($switchDeltaModeRequest))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $switchDeltaModeRequest when calling switchDeltaMode'
+            );
+        }
+
+        $resourcePath = '/sapi/v1/portfolio/delta-mode';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $getters = $switchDeltaModeRequest::getters();
+        $formParams = [];
+        foreach ($getters as $property => $getter) {
+            $value = $switchDeltaModeRequest->{$getter}();
+            if (!empty($value)) {
+                $formParams[$property] = $switchDeltaModeRequest->{$getter}();
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        } elseif (isset($switchDeltaModeRequest)) {
+            if (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($switchDeltaModeRequest));
+            } else {
+                $httpBody = $switchDeltaModeRequest;
             }
         }
 

@@ -69,7 +69,6 @@ class WithdrawHistoryV2ResponseInner implements ModelInterface, \ArrayAccess, \J
         'withdrawalStatus' => 'int',
         'travelRuleStatus' => 'int',
         'address' => 'string',
-        'addressTag' => 'string',
         'txId' => 'string',
         'applyTime' => 'string',
         'network' => 'string',
@@ -101,7 +100,6 @@ class WithdrawHistoryV2ResponseInner implements ModelInterface, \ArrayAccess, \J
         'withdrawalStatus' => 'int64',
         'travelRuleStatus' => 'int64',
         'address' => null,
-        'addressTag' => null,
         'txId' => null,
         'applyTime' => null,
         'network' => null,
@@ -129,7 +127,6 @@ class WithdrawHistoryV2ResponseInner implements ModelInterface, \ArrayAccess, \J
         'withdrawalStatus' => false,
         'travelRuleStatus' => false,
         'address' => false,
-        'addressTag' => false,
         'txId' => false,
         'applyTime' => false,
         'network' => false,
@@ -165,7 +162,6 @@ class WithdrawHistoryV2ResponseInner implements ModelInterface, \ArrayAccess, \J
         'withdrawalStatus' => 'withdrawalStatus',
         'travelRuleStatus' => 'travelRuleStatus',
         'address' => 'address',
-        'addressTag' => 'addressTag',
         'txId' => 'txId',
         'applyTime' => 'applyTime',
         'network' => 'network',
@@ -193,7 +189,6 @@ class WithdrawHistoryV2ResponseInner implements ModelInterface, \ArrayAccess, \J
         'withdrawalStatus' => 'setWithdrawalStatus',
         'travelRuleStatus' => 'setTravelRuleStatus',
         'address' => 'setAddress',
-        'addressTag' => 'setAddressTag',
         'txId' => 'setTxId',
         'applyTime' => 'setApplyTime',
         'network' => 'setNetwork',
@@ -221,7 +216,6 @@ class WithdrawHistoryV2ResponseInner implements ModelInterface, \ArrayAccess, \J
         'withdrawalStatus' => 'getWithdrawalStatus',
         'travelRuleStatus' => 'getTravelRuleStatus',
         'address' => 'getAddress',
-        'addressTag' => 'getAddressTag',
         'txId' => 'getTxId',
         'applyTime' => 'getApplyTime',
         'network' => 'getNetwork',
@@ -258,7 +252,6 @@ class WithdrawHistoryV2ResponseInner implements ModelInterface, \ArrayAccess, \J
         $this->setIfExists('withdrawalStatus', $data ?? [], null);
         $this->setIfExists('travelRuleStatus', $data ?? [], null);
         $this->setIfExists('address', $data ?? [], null);
-        $this->setIfExists('addressTag', $data ?? [], null);
         $this->setIfExists('txId', $data ?? [], null);
         $this->setIfExists('applyTime', $data ?? [], null);
         $this->setIfExists('network', $data ?? [], null);
@@ -612,33 +605,6 @@ class WithdrawHistoryV2ResponseInner implements ModelInterface, \ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable address cannot be null');
         }
         $this->container['address'] = $address;
-
-        return $this;
-    }
-
-    /**
-     * Gets addressTag.
-     *
-     * @return null|string
-     */
-    public function getAddressTag()
-    {
-        return $this->container['addressTag'];
-    }
-
-    /**
-     * Sets addressTag.
-     *
-     * @param null|string $addressTag addressTag
-     *
-     * @return self
-     */
-    public function setAddressTag($addressTag)
-    {
-        if (is_null($addressTag)) {
-            throw new \InvalidArgumentException('non-nullable addressTag cannot be null');
-        }
-        $this->container['addressTag'] = $addressTag;
 
         return $this;
     }

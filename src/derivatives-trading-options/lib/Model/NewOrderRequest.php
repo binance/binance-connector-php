@@ -72,6 +72,7 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'newOrderRespType' => '\Binance\Client\DerivativesTradingOptions\Model\NewOrderRespType',
         'clientOrderId' => 'string',
         'isMmp' => 'bool',
+        'selfTradePreventionMode' => '\Binance\Client\DerivativesTradingOptions\Model\SelfTradePreventionMode',
         'recvWindow' => 'int',
     ];
 
@@ -96,6 +97,7 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'newOrderRespType' => null,
         'clientOrderId' => null,
         'isMmp' => null,
+        'selfTradePreventionMode' => null,
         'recvWindow' => 'int64',
     ];
 
@@ -116,6 +118,7 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'newOrderRespType' => false,
         'clientOrderId' => false,
         'isMmp' => false,
+        'selfTradePreventionMode' => false,
         'recvWindow' => false,
     ];
 
@@ -144,6 +147,7 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'newOrderRespType' => 'newOrderRespType',
         'clientOrderId' => 'clientOrderId',
         'isMmp' => 'isMmp',
+        'selfTradePreventionMode' => 'selfTradePreventionMode',
         'recvWindow' => 'recvWindow',
     ];
 
@@ -164,6 +168,7 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'newOrderRespType' => 'setNewOrderRespType',
         'clientOrderId' => 'setClientOrderId',
         'isMmp' => 'setIsMmp',
+        'selfTradePreventionMode' => 'setSelfTradePreventionMode',
         'recvWindow' => 'setRecvWindow',
     ];
 
@@ -184,6 +189,7 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         'newOrderRespType' => 'getNewOrderRespType',
         'clientOrderId' => 'getClientOrderId',
         'isMmp' => 'getIsMmp',
+        'selfTradePreventionMode' => 'getSelfTradePreventionMode',
         'recvWindow' => 'getRecvWindow',
     ];
 
@@ -213,6 +219,7 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('newOrderRespType', $data ?? [], null);
         $this->setIfExists('clientOrderId', $data ?? [], null);
         $this->setIfExists('isMmp', $data ?? [], null);
+        $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }
 
@@ -652,6 +659,33 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable isMmp cannot be null');
         }
         $this->container['isMmp'] = $isMmp;
+
+        return $this;
+    }
+
+    /**
+     * Gets selfTradePreventionMode.
+     *
+     * @return null|SelfTradePreventionMode
+     */
+    public function getSelfTradePreventionMode()
+    {
+        return $this->container['selfTradePreventionMode'];
+    }
+
+    /**
+     * Sets selfTradePreventionMode.
+     *
+     * @param null|SelfTradePreventionMode $selfTradePreventionMode selfTradePreventionMode
+     *
+     * @return self
+     */
+    public function setSelfTradePreventionMode($selfTradePreventionMode)
+    {
+        if (is_null($selfTradePreventionMode)) {
+            throw new \InvalidArgumentException('non-nullable selfTradePreventionMode cannot be null');
+        }
+        $this->container['selfTradePreventionMode'] = $selfTradePreventionMode;
 
         return $this;
     }

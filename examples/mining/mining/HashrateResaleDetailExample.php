@@ -22,11 +22,10 @@ function hashrateResaleDetailExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new MiningRestApi($configurationBuilder->build());
     $configId = 1;
-    $userName = '';
     $pageIndex = 1;
     $pageSize = null;
     $recvWindow = 5000;
-    $response = $api->hashrateResaleDetail($configId, $userName, $pageIndex, $pageSize, $recvWindow);
+    $response = $api->hashrateResaleDetail($configId, $pageIndex, $pageSize, $recvWindow);
     print_r($response);
 }
 

@@ -69,6 +69,7 @@ class CancelOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializ
         'origQty' => 'string',
         'origType' => 'string',
         'price' => 'string',
+        'avgPrice' => 'string',
         'reduceOnly' => 'bool',
         'side' => 'string',
         'positionSide' => 'string',
@@ -106,6 +107,7 @@ class CancelOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializ
         'origQty' => null,
         'origType' => null,
         'price' => null,
+        'avgPrice' => null,
         'reduceOnly' => null,
         'side' => null,
         'positionSide' => null,
@@ -139,6 +141,7 @@ class CancelOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializ
         'origQty' => false,
         'origType' => false,
         'price' => false,
+        'avgPrice' => false,
         'reduceOnly' => false,
         'side' => false,
         'positionSide' => false,
@@ -180,6 +183,7 @@ class CancelOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializ
         'origQty' => 'origQty',
         'origType' => 'origType',
         'price' => 'price',
+        'avgPrice' => 'avgPrice',
         'reduceOnly' => 'reduceOnly',
         'side' => 'side',
         'positionSide' => 'positionSide',
@@ -213,6 +217,7 @@ class CancelOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializ
         'origQty' => 'setOrigQty',
         'origType' => 'setOrigType',
         'price' => 'setPrice',
+        'avgPrice' => 'setAvgPrice',
         'reduceOnly' => 'setReduceOnly',
         'side' => 'setSide',
         'positionSide' => 'setPositionSide',
@@ -246,6 +251,7 @@ class CancelOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializ
         'origQty' => 'getOrigQty',
         'origType' => 'getOrigType',
         'price' => 'getPrice',
+        'avgPrice' => 'getAvgPrice',
         'reduceOnly' => 'getReduceOnly',
         'side' => 'getSide',
         'positionSide' => 'getPositionSide',
@@ -288,6 +294,7 @@ class CancelOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializ
         $this->setIfExists('origQty', $data ?? [], null);
         $this->setIfExists('origType', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
+        $this->setIfExists('avgPrice', $data ?? [], null);
         $this->setIfExists('reduceOnly', $data ?? [], null);
         $this->setIfExists('side', $data ?? [], null);
         $this->setIfExists('positionSide', $data ?? [], null);
@@ -647,6 +654,33 @@ class CancelOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable price cannot be null');
         }
         $this->container['price'] = $price;
+
+        return $this;
+    }
+
+    /**
+     * Gets avgPrice.
+     *
+     * @return null|string
+     */
+    public function getAvgPrice()
+    {
+        return $this->container['avgPrice'];
+    }
+
+    /**
+     * Sets avgPrice.
+     *
+     * @param null|string $avgPrice avgPrice
+     *
+     * @return self
+     */
+    public function setAvgPrice($avgPrice)
+    {
+        if (is_null($avgPrice)) {
+            throw new \InvalidArgumentException('non-nullable avgPrice cannot be null');
+        }
+        $this->container['avgPrice'] = $avgPrice;
 
         return $this;
     }

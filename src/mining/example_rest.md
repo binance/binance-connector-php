@@ -12,7 +12,7 @@
 
 [/sapi/v1/mining/payment/other](https://developers.binance.com/docs/mining/rest-api/Extra-Bonus-List) - extraBonusList - [ExtraBonusListExample.php:32](/examples/mining/mining/ExtraBonusListExample.php#L32)
 
-[/sapi/v1/mining/hash-transfer/profit/details](https://developers.binance.com/docs/mining/rest-api/Hashrate-Resale-Detail) - hashrateResaleDetail - [HashrateResaleDetailExample.php:29](/examples/mining/mining/HashrateResaleDetailExample.php#L29)
+[/sapi/v1/mining/hash-transfer/profit/details](https://developers.binance.com/docs/mining/rest-api/Hashrate-Resale-Detail) - hashrateResaleDetail - [HashrateResaleDetailExample.php:28](/examples/mining/mining/HashrateResaleDetailExample.php#L28)
 
 [/sapi/v1/mining/hash-transfer/config/details/list](https://developers.binance.com/docs/mining/rest-api/Hashrate-Resale-List) - hashrateResaleList - [HashrateResaleListExample.php:27](/examples/mining/mining/HashrateResaleListExample.php#L27)
 

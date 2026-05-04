@@ -44,6 +44,8 @@ enum Interval: string
     /**
      * Possible values of this enum.
      */
+    case INTERVAL_1S = '1s';
+
     case INTERVAL_1M = '1m';
 
     case INTERVAL_3M = '3m';
@@ -82,6 +84,7 @@ enum Interval: string
     public static function getAllowableEnumValues()
     {
         return [
+            self::INTERVAL_1S,
             self::INTERVAL_1M,
             self::INTERVAL_3M,
             self::INTERVAL_5M,

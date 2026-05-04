@@ -39,7 +39,6 @@ use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesAccountBalanceV2Re
 use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesAccountBalanceV3Response;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesAccountConfigurationResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractRequest;
-use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradingQuantitativeRulesIndicatorsResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\GetBnbBurnStatusResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\GetCurrentMultiAssetsModeResponse;
@@ -635,7 +634,7 @@ class DerivativesTradingUsdsFuturesRestApi
      * @param string       $pair         pair (required)
      * @param ContractType $contractType contractType (required)
      * @param Period       $period       \&quot;5m\&quot;,\&quot;15m\&quot;,\&quot;30m\&quot;,\&quot;1h\&quot;,\&quot;2h\&quot;,\&quot;4h\&quot;,\&quot;6h\&quot;,\&quot;12h\&quot;,\&quot;1d\&quot; (required)
-     * @param int          $limit        Default 30,Max 500 (required)
+     * @param null|int     $limit        Default 100; max 1000 (optional)
      * @param null|int     $startTime    startTime (optional)
      * @param null|int     $endTime      endTime (optional)
      *
@@ -644,7 +643,7 @@ class DerivativesTradingUsdsFuturesRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function basis($pair, $contractType, $period, $limit, $startTime = null, $endTime = null): ApiResponse
+    public function basis($pair, $contractType, $period, $limit = null, $startTime = null, $endTime = null): ApiResponse
     {
         return $this->marketDataApi->basis($pair, $contractType, $period, $limit, $startTime, $endTime);
     }
@@ -1321,8 +1320,8 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * Cancel Algo Order (TRADE)
      *
-     * @param null|int    $algoid       algoid (optional)
-     * @param null|string $clientalgoid clientalgoid (optional)
+     * @param null|int    $algoId       algoId (optional)
+     * @param null|string $clientAlgoId clientAlgoId (optional)
      * @param null|int    $recvWindow   recvWindow (optional)
      *
      * @return ApiResponse<CancelAlgoOrderResponse>
@@ -1330,9 +1329,9 @@ class DerivativesTradingUsdsFuturesRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function cancelAlgoOrder($algoid = null, $clientalgoid = null, $recvWindow = null): ApiResponse
+    public function cancelAlgoOrder($algoId = null, $clientAlgoId = null, $recvWindow = null): ApiResponse
     {
-        return $this->tradeApi->cancelAlgoOrder($algoid, $clientalgoid, $recvWindow);
+        return $this->tradeApi->cancelAlgoOrder($algoId, $clientAlgoId, $recvWindow);
     }
 
     /**
@@ -1524,14 +1523,12 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * @param FuturesTradfiPerpsContractRequest $futuresTradfiPerpsContractRequest futuresTradfiPerpsContractRequest (required)
      *
-     * @return ApiResponse<FuturesTradfiPerpsContractResponse>
-     *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest): ApiResponse
+    public function futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest)
     {
-        return $this->tradeApi->futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest);
+        $this->tradeApi->futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest);
     }
 
     /**
@@ -1763,7 +1760,6 @@ class DerivativesTradingUsdsFuturesRestApi
      * @param null|int $algoId     algoId (optional)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $page       page (optional)
      * @param null|int $limit      Default 100; max 1000 (optional)
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -1772,9 +1768,9 @@ class DerivativesTradingUsdsFuturesRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function queryAllAlgoOrders($symbol, $algoId = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null): ApiResponse
+    public function queryAllAlgoOrders($symbol, $algoId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
-        return $this->tradeApi->queryAllAlgoOrders($symbol, $algoId, $startTime, $endTime, $page, $limit, $recvWindow);
+        return $this->tradeApi->queryAllAlgoOrders($symbol, $algoId, $startTime, $endTime, $limit, $recvWindow);
     }
 
     /**

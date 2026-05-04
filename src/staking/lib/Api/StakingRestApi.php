@@ -123,6 +123,7 @@ class StakingRestApi
      *
      * Get ETH redemption history(USER_DATA)
      *
+     * @param null|int $redeemId   redeemId (optional)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
      * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
@@ -134,9 +135,9 @@ class StakingRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getEthRedemptionHistory($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    public function getEthRedemptionHistory($redeemId = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
     {
-        return $this->ethStakingApi->getEthRedemptionHistory($startTime, $endTime, $current, $size, $recvWindow);
+        return $this->ethStakingApi->getEthRedemptionHistory($redeemId, $startTime, $endTime, $current, $size, $recvWindow);
     }
 
     /**
@@ -144,6 +145,7 @@ class StakingRestApi
      *
      * Get ETH staking history(USER_DATA)
      *
+     * @param null|int $purchaseId purchaseId (optional)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
      * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
@@ -155,9 +157,9 @@ class StakingRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getEthStakingHistory($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    public function getEthStakingHistory($purchaseId = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
     {
-        return $this->ethStakingApi->getEthStakingHistory($startTime, $endTime, $current, $size, $recvWindow);
+        return $this->ethStakingApi->getEthStakingHistory($purchaseId, $startTime, $endTime, $current, $size, $recvWindow);
     }
 
     /**
@@ -677,6 +679,7 @@ class StakingRestApi
      *
      * Get SOL redemption history(USER_DATA)
      *
+     * @param null|int $redeemId   redeemId (optional)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
      * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
@@ -688,9 +691,9 @@ class StakingRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getSolRedemptionHistory($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    public function getSolRedemptionHistory($redeemId = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
     {
-        return $this->solStakingApi->getSolRedemptionHistory($startTime, $endTime, $current, $size, $recvWindow);
+        return $this->solStakingApi->getSolRedemptionHistory($redeemId, $startTime, $endTime, $current, $size, $recvWindow);
     }
 
     /**
@@ -698,6 +701,7 @@ class StakingRestApi
      *
      * Get SOL staking history(USER_DATA)
      *
+     * @param null|int $purchaseId purchaseId (optional)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
      * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
@@ -709,9 +713,9 @@ class StakingRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getSolStakingHistory($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    public function getSolStakingHistory($purchaseId = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
     {
-        return $this->solStakingApi->getSolStakingHistory($startTime, $endTime, $current, $size, $recvWindow);
+        return $this->solStakingApi->getSolStakingHistory($purchaseId, $startTime, $endTime, $current, $size, $recvWindow);
     }
 
     /**

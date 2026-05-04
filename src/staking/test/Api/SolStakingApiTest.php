@@ -185,18 +185,19 @@ class SolStakingApiTest extends TestCase
      */
     public function testGetSolRedemptionHistory()
     {
+        $redeemId = 123;
         $startTime = 1623319461670;
         $endTime = 1641782889000;
         $current = 1;
         $size = 10;
         $recvWindow = 5000;
-        $response = $this->getApiMock($request)->getSolRedemptionHistory($startTime, $endTime, $current, $size, $recvWindow);
+        $response = $this->getApiMock($request)->getSolRedemptionHistory($redeemId, $startTime, $endTime, $current, $size, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/sol-staking/sol/history/redemptionHistory', $request->getUri()->getPath());
-        self::assertEquals('2ecc0415a3bdb2963e8030cdf6cf00de6f49d21b71ff939dda42e5756eb8ba66', $queryMap['signature']);
+        self::assertEquals('90b22be90fad28e8f5f7cd6af50eb4c523db9c1363ee49915fad9713c0656f0d', $queryMap['signature']);
     }
 
     /**
@@ -206,18 +207,19 @@ class SolStakingApiTest extends TestCase
      */
     public function testGetSolStakingHistory()
     {
+        $purchaseId = 123;
         $startTime = 1623319461670;
         $endTime = 1641782889000;
         $current = 1;
         $size = 10;
         $recvWindow = 5000;
-        $response = $this->getApiMock($request)->getSolStakingHistory($startTime, $endTime, $current, $size, $recvWindow);
+        $response = $this->getApiMock($request)->getSolStakingHistory($purchaseId, $startTime, $endTime, $current, $size, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/sol-staking/sol/history/stakingHistory', $request->getUri()->getPath());
-        self::assertEquals('2ecc0415a3bdb2963e8030cdf6cf00de6f49d21b71ff939dda42e5756eb8ba66', $queryMap['signature']);
+        self::assertEquals('35f8697a0b1f039ff660d5b47cb802e92c651d0f135334ec523e176dad5b714b', $queryMap['signature']);
     }
 
     /**

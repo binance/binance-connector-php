@@ -81,6 +81,7 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
         'optionSide' => 'string',
         'quoteAsset' => 'string',
         'mmp' => 'bool',
+        'selfTradePreventionMode' => 'string',
     ];
 
     /**
@@ -113,6 +114,7 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
         'optionSide' => null,
         'quoteAsset' => null,
         'mmp' => null,
+        'selfTradePreventionMode' => null,
     ];
 
     /**
@@ -141,6 +143,7 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
         'optionSide' => false,
         'quoteAsset' => false,
         'mmp' => false,
+        'selfTradePreventionMode' => false,
     ];
 
     /**
@@ -177,6 +180,7 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
         'optionSide' => 'optionSide',
         'quoteAsset' => 'quoteAsset',
         'mmp' => 'mmp',
+        'selfTradePreventionMode' => 'selfTradePreventionMode',
     ];
 
     /**
@@ -205,6 +209,7 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
         'optionSide' => 'setOptionSide',
         'quoteAsset' => 'setQuoteAsset',
         'mmp' => 'setMmp',
+        'selfTradePreventionMode' => 'setSelfTradePreventionMode',
     ];
 
     /**
@@ -233,6 +238,7 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
         'optionSide' => 'getOptionSide',
         'quoteAsset' => 'getQuoteAsset',
         'mmp' => 'getMmp',
+        'selfTradePreventionMode' => 'getSelfTradePreventionMode',
     ];
 
     /**
@@ -270,6 +276,7 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
         $this->setIfExists('optionSide', $data ?? [], null);
         $this->setIfExists('quoteAsset', $data ?? [], null);
         $this->setIfExists('mmp', $data ?? [], null);
+        $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
     }
 
     /**
@@ -936,6 +943,33 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable mmp cannot be null');
         }
         $this->container['mmp'] = $mmp;
+
+        return $this;
+    }
+
+    /**
+     * Gets selfTradePreventionMode.
+     *
+     * @return null|string
+     */
+    public function getSelfTradePreventionMode()
+    {
+        return $this->container['selfTradePreventionMode'];
+    }
+
+    /**
+     * Sets selfTradePreventionMode.
+     *
+     * @param null|string $selfTradePreventionMode selfTradePreventionMode
+     *
+     * @return self
+     */
+    public function setSelfTradePreventionMode($selfTradePreventionMode)
+    {
+        if (is_null($selfTradePreventionMode)) {
+            throw new \InvalidArgumentException('non-nullable selfTradePreventionMode cannot be null');
+        }
+        $this->container['selfTradePreventionMode'] = $selfTradePreventionMode;
 
         return $this;
     }

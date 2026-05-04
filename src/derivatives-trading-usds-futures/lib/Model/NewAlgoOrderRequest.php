@@ -78,6 +78,7 @@ class NewAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'activatePrice' => 'float',
         'callbackRate' => 'float',
         'clientAlgoId' => 'string',
+        'newOrderRespType' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\NewOrderRespType',
         'selfTradePreventionMode' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\SelfTradePreventionMode',
         'goodTillDate' => 'int',
         'recvWindow' => 'int',
@@ -110,6 +111,7 @@ class NewAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'activatePrice' => 'float',
         'callbackRate' => 'float',
         'clientAlgoId' => null,
+        'newOrderRespType' => null,
         'selfTradePreventionMode' => null,
         'goodTillDate' => 'int64',
         'recvWindow' => 'int64',
@@ -138,6 +140,7 @@ class NewAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'activatePrice' => false,
         'callbackRate' => false,
         'clientAlgoId' => false,
+        'newOrderRespType' => false,
         'selfTradePreventionMode' => false,
         'goodTillDate' => false,
         'recvWindow' => false,
@@ -174,6 +177,7 @@ class NewAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'activatePrice' => 'activatePrice',
         'callbackRate' => 'callbackRate',
         'clientAlgoId' => 'clientAlgoId',
+        'newOrderRespType' => 'newOrderRespType',
         'selfTradePreventionMode' => 'selfTradePreventionMode',
         'goodTillDate' => 'goodTillDate',
         'recvWindow' => 'recvWindow',
@@ -202,6 +206,7 @@ class NewAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'activatePrice' => 'setActivatePrice',
         'callbackRate' => 'setCallbackRate',
         'clientAlgoId' => 'setClientAlgoId',
+        'newOrderRespType' => 'setNewOrderRespType',
         'selfTradePreventionMode' => 'setSelfTradePreventionMode',
         'goodTillDate' => 'setGoodTillDate',
         'recvWindow' => 'setRecvWindow',
@@ -230,6 +235,7 @@ class NewAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         'activatePrice' => 'getActivatePrice',
         'callbackRate' => 'getCallbackRate',
         'clientAlgoId' => 'getClientAlgoId',
+        'newOrderRespType' => 'getNewOrderRespType',
         'selfTradePreventionMode' => 'getSelfTradePreventionMode',
         'goodTillDate' => 'getGoodTillDate',
         'recvWindow' => 'getRecvWindow',
@@ -267,6 +273,7 @@ class NewAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         $this->setIfExists('activatePrice', $data ?? [], null);
         $this->setIfExists('callbackRate', $data ?? [], null);
         $this->setIfExists('clientAlgoId', $data ?? [], null);
+        $this->setIfExists('newOrderRespType', $data ?? [], null);
         $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
         $this->setIfExists('goodTillDate', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
@@ -870,6 +877,33 @@ class NewAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable clientAlgoId cannot be null');
         }
         $this->container['clientAlgoId'] = $clientAlgoId;
+
+        return $this;
+    }
+
+    /**
+     * Gets newOrderRespType.
+     *
+     * @return null|NewOrderRespType
+     */
+    public function getNewOrderRespType()
+    {
+        return $this->container['newOrderRespType'];
+    }
+
+    /**
+     * Sets newOrderRespType.
+     *
+     * @param null|NewOrderRespType $newOrderRespType newOrderRespType
+     *
+     * @return self
+     */
+    public function setNewOrderRespType($newOrderRespType)
+    {
+        if (is_null($newOrderRespType)) {
+            throw new \InvalidArgumentException('non-nullable newOrderRespType cannot be null');
+        }
+        $this->container['newOrderRespType'] = $newOrderRespType;
 
         return $this;
     }

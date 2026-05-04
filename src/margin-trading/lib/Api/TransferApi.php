@@ -117,7 +117,7 @@ class TransferApi
      *
      * @param null|string $asset          asset (optional)
      * @param null|string $type           Transfer Type: ROLL_IN, ROLL_OUT (optional)
-     * @param null|int    $startTime      只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime        endTime (optional)
      * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
      * @param null|int    $size           Default:10 Max:100 (optional)
@@ -141,7 +141,7 @@ class TransferApi
      *
      * @param null|string $asset          (optional)
      * @param null|string $type           Transfer Type: ROLL_IN, ROLL_OUT (optional)
-     * @param null|int    $startTime      只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime        (optional)
      * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
      * @param null|int    $size           Default:10 Max:100 (optional)
@@ -227,7 +227,7 @@ class TransferApi
      *
      * @param null|string $asset          (optional)
      * @param null|string $type           Transfer Type: ROLL_IN, ROLL_OUT (optional)
-     * @param null|int    $startTime      只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime        (optional)
      * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
      * @param null|int    $size           Default:10 Max:100 (optional)

@@ -52,6 +52,10 @@
 
 [/sapi/v1/margin/list-schedule](https://developers.binance.com/docs/margin_trading/market-data/Get-list-Schedule) - getListSchedule - [GetListScheduleExample.php:24](/examples/margin-trading/marketdata/GetListScheduleExample.php#L24)
 
+[/sapi/v1/margin/risk-based-liquidation-ratio](https://developers.binance.com/docs/margin_trading/market-data/Get-Margin-Asset-Risk-Based-Liquidation-Ratio) - getMarginAssetRiskBasedLiquidationRatio - [GetMarginAssetRiskBasedLiquidationRatioExample.php:23](/examples/margin-trading/marketdata/GetMarginAssetRiskBasedLiquidationRatioExample.php#L23)
+
+[/sapi/v1/margin/restricted-asset](https://developers.binance.com/docs/margin_trading/market-data/Get-Margin-Restricted-Assets) - getMarginRestrictedAssets - [GetMarginRestrictedAssetsExample.php:23](/examples/margin-trading/marketdata/GetMarginRestrictedAssetsExample.php#L23)
+
 [/sapi/v1/margin/isolatedMarginTier](https://developers.binance.com/docs/margin_trading/market-data/Query-Isolated-Margin-Tier-Data) - queryIsolatedMarginTierData - [QueryIsolatedMarginTierDataExample.php:27](/examples/margin-trading/marketdata/QueryIsolatedMarginTierDataExample.php#L27)
 
 [/sapi/v1/margin/leverageBracket](https://developers.binance.com/docs/margin_trading/market-data/Query-Liability-Coin-Leverage-Bracket-in-Cross-Margin-Pro-Mode) - queryLiabilityCoinLeverageBracketInCrossMarginProMode - [QueryLiabilityCoinLeverageBracketInCrossMarginProModeExample.php:23](/examples/margin-trading/marketdata/QueryLiabilityCoinLeverageBracketInCrossMarginProModeExample.php#L23)
@@ -113,6 +117,8 @@
 [/sapi/v1/margin/order](https://developers.binance.com/docs/margin_trading/trade/Query-Margin-Account-Order) - queryMarginAccountsOrder - [QueryMarginAccountsOrderExample.php:29](/examples/margin-trading/trade/QueryMarginAccountsOrderExample.php#L29)
 
 [/sapi/v1/margin/myTrades](https://developers.binance.com/docs/margin_trading/trade/Query-Margin-Account-Trade-List) - queryMarginAccountsTradeList - [QueryMarginAccountsTradeListExample.php:32](/examples/margin-trading/trade/QueryMarginAccountsTradeListExample.php#L32)
+
+[/sapi/v1/margin/myPreventedMatches](https://developers.binance.com/docs/margin_trading/trade/Query-Margin-Prevented-Matches) - queryPreventedMatches - [QueryPreventedMatchesExample.php:30](/examples/margin-trading/trade/QueryPreventedMatchesExample.php#L30)
 
 [/sapi/v1/margin/apiKey](https://developers.binance.com/docs/margin_trading/trade/Query-Special-Key-of-Low-Latency-Trading) - querySpecialKey - [QuerySpecialKeyExample.php:26](/examples/margin-trading/trade/QuerySpecialKeyExample.php#L26)
 

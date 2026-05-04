@@ -1,5 +1,33 @@
 # Changelog
 
+## 5.0.0 - 2026-05-01
+
+### Added (7)
+
+#### REST API
+
+- `executionRules()` (`GET /api/v3/executionRules`)
+- `referencePrice()` (`GET /api/v3/referencePrice`)
+- `referencePriceCalculation()` (`GET /api/v3/referencePrice/calculation`)
+
+#### WebSocket API
+
+- `executionRules()` (`executionRules` method)
+- `referencePrice()` (`referencePrice` method)
+- `referencePriceCalculation()` (`referencePrice.calculation` method)
+
+#### WebSocket Streams
+
+- `referencePrice()` (`<symbol>@referencePrice` stream)
+
+### Changed (1)
+
+#### WebSocket API
+
+- Added parameter `recvWindow`
+  - affected methods:
+    - `userDataStreamSubscribeSignature()` (`userDataStream.subscribe.signature` method)
+
 ## 3.0.0 - 2026-01-08
 
 ### Added (4)

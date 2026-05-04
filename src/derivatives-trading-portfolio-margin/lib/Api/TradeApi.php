@@ -32,6 +32,7 @@ namespace Binance\Client\DerivativesTradingPortfolioMargin\Api;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\AutoCloseType;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllCmOpenConditionalOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllCmOpenOrdersResponse;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllUmAlgoOpenOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllUmOpenConditionalOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllUmOpenOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelCmConditionalOrderResponse;
@@ -39,10 +40,13 @@ use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelCmOrderResponse
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelMarginAccountAllOpenOrdersOnASymbolResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelMarginAccountOcoOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelMarginAccountOrderResponse;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelUmAlgoOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelUmConditionalOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelUmOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CmAccountTradeListResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CmPositionAdlQuantileEstimationResponse;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\FuturesTradfiPerpsContractRequest;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\FuturesTradfiPerpsContractResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\GetUmFuturesBnbBurnStatusResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\MarginAccountBorrowRequest;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\MarginAccountBorrowResponse;
@@ -63,6 +67,8 @@ use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewCmOrderRequest;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewCmOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewMarginOrderRequest;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewMarginOrderResponse;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmAlgoOrderRequest;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmAlgoOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmConditionalOrderRequest;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmConditionalOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmOrderRequest;
@@ -71,6 +77,7 @@ use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCmConditional
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCmOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentCmOpenConditionalOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentCmOpenOrdersResponse;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentUmOpenAlgoOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentUmOpenConditionalOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentUmOpenOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllMarginAccountOrdersResponse;
@@ -82,12 +89,14 @@ use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCmOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentCmOpenConditionalOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentCmOpenOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentMarginOpenOrderResponse;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentUmOpenAlgoOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentUmOpenConditionalOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentUmOpenOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryMarginAccountOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryMarginAccountsAllOcoResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryMarginAccountsOcoResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryMarginAccountsOpenOcoResponse;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUmAlgoOrderHistoryResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUmConditionalOrderHistoryResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUmModifyOrderHistoryResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUmOrderResponse;
@@ -131,6 +140,7 @@ class TradeApi
     public const contentTypes = [
         'cancelAllCmOpenConditionalOrders' => ['application/x-www-form-urlencoded'],
         'cancelAllCmOpenOrders' => ['application/x-www-form-urlencoded'],
+        'cancelAllUmAlgoOpenOrders' => ['application/x-www-form-urlencoded'],
         'cancelAllUmOpenConditionalOrders' => ['application/x-www-form-urlencoded'],
         'cancelAllUmOpenOrders' => ['application/x-www-form-urlencoded'],
         'cancelCmConditionalOrder' => ['application/x-www-form-urlencoded'],
@@ -138,10 +148,12 @@ class TradeApi
         'cancelMarginAccountAllOpenOrdersOnASymbol' => ['application/x-www-form-urlencoded'],
         'cancelMarginAccountOcoOrders' => ['application/x-www-form-urlencoded'],
         'cancelMarginAccountOrder' => ['application/x-www-form-urlencoded'],
+        'cancelUmAlgoOrder' => ['application/x-www-form-urlencoded'],
         'cancelUmConditionalOrder' => ['application/x-www-form-urlencoded'],
         'cancelUmOrder' => ['application/x-www-form-urlencoded'],
         'cmAccountTradeList' => ['application/x-www-form-urlencoded'],
         'cmPositionAdlQuantileEstimation' => ['application/x-www-form-urlencoded'],
+        'futuresTradfiPerpsContract' => ['application/x-www-form-urlencoded'],
         'getUmFuturesBnbBurnStatus' => ['application/x-www-form-urlencoded'],
         'marginAccountBorrow' => ['application/x-www-form-urlencoded'],
         'marginAccountNewOco' => ['application/x-www-form-urlencoded'],
@@ -153,12 +165,14 @@ class TradeApi
         'newCmConditionalOrder' => ['application/x-www-form-urlencoded'],
         'newCmOrder' => ['application/x-www-form-urlencoded'],
         'newMarginOrder' => ['application/x-www-form-urlencoded'],
+        'newUmAlgoOrder' => ['application/x-www-form-urlencoded'],
         'newUmConditionalOrder' => ['application/x-www-form-urlencoded'],
         'newUmOrder' => ['application/x-www-form-urlencoded'],
         'queryAllCmConditionalOrders' => ['application/x-www-form-urlencoded'],
         'queryAllCmOrders' => ['application/x-www-form-urlencoded'],
         'queryAllCurrentCmOpenConditionalOrders' => ['application/x-www-form-urlencoded'],
         'queryAllCurrentCmOpenOrders' => ['application/x-www-form-urlencoded'],
+        'queryAllCurrentUmOpenAlgoOrders' => ['application/x-www-form-urlencoded'],
         'queryAllCurrentUmOpenConditionalOrders' => ['application/x-www-form-urlencoded'],
         'queryAllCurrentUmOpenOrders' => ['application/x-www-form-urlencoded'],
         'queryAllMarginAccountOrders' => ['application/x-www-form-urlencoded'],
@@ -170,12 +184,14 @@ class TradeApi
         'queryCurrentCmOpenConditionalOrder' => ['application/x-www-form-urlencoded'],
         'queryCurrentCmOpenOrder' => ['application/x-www-form-urlencoded'],
         'queryCurrentMarginOpenOrder' => ['application/x-www-form-urlencoded'],
+        'queryCurrentUmOpenAlgoOrder' => ['application/x-www-form-urlencoded'],
         'queryCurrentUmOpenConditionalOrder' => ['application/x-www-form-urlencoded'],
         'queryCurrentUmOpenOrder' => ['application/x-www-form-urlencoded'],
         'queryMarginAccountOrder' => ['application/x-www-form-urlencoded'],
         'queryMarginAccountsAllOco' => ['application/x-www-form-urlencoded'],
         'queryMarginAccountsOco' => ['application/x-www-form-urlencoded'],
         'queryMarginAccountsOpenOco' => ['application/x-www-form-urlencoded'],
+        'queryUmAlgoOrderHistory' => ['application/x-www-form-urlencoded'],
         'queryUmConditionalOrderHistory' => ['application/x-www-form-urlencoded'],
         'queryUmModifyOrderHistory' => ['application/x-www-form-urlencoded'],
         'queryUmOrder' => ['application/x-www-form-urlencoded'],
@@ -598,9 +614,191 @@ class TradeApi
     }
 
     /**
+     * Operation cancelAllUmAlgoOpenOrders.
+     *
+     * Cancel All UM Algo Open Orders (TRADE)
+     *
+     * @param string   $symbol     symbol (required)
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<CancelAllUmAlgoOpenOrdersResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function cancelAllUmAlgoOpenOrders($symbol, $recvWindow = null): ApiResponse
+    {
+        return $this->cancelAllUmAlgoOpenOrdersWithHttpInfo($symbol, $recvWindow);
+    }
+
+    /**
+     * Operation cancelAllUmAlgoOpenOrdersWithHttpInfo.
+     *
+     * Cancel All UM Algo Open Orders (TRADE)
+     *
+     * @param string   $symbol     (required)
+     * @param null|int $recvWindow (optional)
+     *
+     * @return ApiResponse<CancelAllUmAlgoOpenOrdersResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function cancelAllUmAlgoOpenOrdersWithHttpInfo($symbol, $recvWindow = null): ApiResponse
+    {
+        $request = $this->cancelAllUmAlgoOpenOrdersRequest($symbol, $recvWindow);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllUmAlgoOpenOrdersResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllUmAlgoOpenOrdersResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllUmAlgoOpenOrdersResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'cancelAllUmAlgoOpenOrders'.
+     *
+     * @param string   $symbol     (required)
+     * @param null|int $recvWindow (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function cancelAllUmAlgoOpenOrdersRequest($symbol, $recvWindow = null)
+    {
+        $contentType = self::contentTypes['cancelAllUmAlgoOpenOrders'][0];
+
+        // verify the required parameter 'symbol' is set
+        if (null === $symbol || (is_array($symbol) && 0 === count($symbol))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $symbol when calling cancelAllUmAlgoOpenOrders'
+            );
+        }
+
+        $resourcePath = '/papi/v1/um/algo/allOpenOrders';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbol,
+            'symbol', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recvWindow,
+            'recvWindow', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'DELETE',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation cancelAllUmOpenConditionalOrders.
      *
-     * Cancel All UM Open Conditional Orders (TRADE)
+     * Cancel All UM Open Conditional Orders
      *
      * @param string   $symbol     symbol (required)
      * @param null|int $recvWindow recvWindow (optional)
@@ -609,6 +807,8 @@ class TradeApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function cancelAllUmOpenConditionalOrders($symbol, $recvWindow = null): ApiResponse
     {
@@ -618,7 +818,7 @@ class TradeApi
     /**
      * Operation cancelAllUmOpenConditionalOrdersWithHttpInfo.
      *
-     * Cancel All UM Open Conditional Orders (TRADE)
+     * Cancel All UM Open Conditional Orders
      *
      * @param string   $symbol     (required)
      * @param null|int $recvWindow (optional)
@@ -627,6 +827,8 @@ class TradeApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function cancelAllUmOpenConditionalOrdersWithHttpInfo($symbol, $recvWindow = null): ApiResponse
     {
@@ -706,6 +908,8 @@ class TradeApi
      * @return Request
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function cancelAllUmOpenConditionalOrdersRequest($symbol, $recvWindow = null)
     {
@@ -1992,9 +2196,196 @@ class TradeApi
     }
 
     /**
+     * Operation cancelUmAlgoOrder.
+     *
+     * Cancel UM Algo Order (TRADE)
+     *
+     * @param null|int    $algoId       algoId (optional)
+     * @param null|string $clientAlgoId clientAlgoId (optional)
+     * @param null|int    $recvWindow   recvWindow (optional)
+     *
+     * @return ApiResponse<CancelUmAlgoOrderResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function cancelUmAlgoOrder($algoId = null, $clientAlgoId = null, $recvWindow = null): ApiResponse
+    {
+        return $this->cancelUmAlgoOrderWithHttpInfo($algoId, $clientAlgoId, $recvWindow);
+    }
+
+    /**
+     * Operation cancelUmAlgoOrderWithHttpInfo.
+     *
+     * Cancel UM Algo Order (TRADE)
+     *
+     * @param null|int    $algoId       (optional)
+     * @param null|string $clientAlgoId (optional)
+     * @param null|int    $recvWindow   (optional)
+     *
+     * @return ApiResponse<CancelUmAlgoOrderResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function cancelUmAlgoOrderWithHttpInfo($algoId = null, $clientAlgoId = null, $recvWindow = null): ApiResponse
+    {
+        $request = $this->cancelUmAlgoOrderRequest($algoId, $clientAlgoId, $recvWindow);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelUmAlgoOrderResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelUmAlgoOrderResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelUmAlgoOrderResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'cancelUmAlgoOrder'.
+     *
+     * @param null|int    $algoId       (optional)
+     * @param null|string $clientAlgoId (optional)
+     * @param null|int    $recvWindow   (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function cancelUmAlgoOrderRequest($algoId = null, $clientAlgoId = null, $recvWindow = null)
+    {
+        $contentType = self::contentTypes['cancelUmAlgoOrder'][0];
+
+        $resourcePath = '/papi/v1/um/algo/order';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $algoId,
+            'algoId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $clientAlgoId,
+            'clientAlgoId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recvWindow,
+            'recvWindow', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'DELETE',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation cancelUmConditionalOrder.
      *
-     * Cancel UM Conditional Order(TRADE)
+     * Cancel UM Conditional Order
      *
      * @param string      $symbol              symbol (required)
      * @param null|int    $strategyId          strategyId (optional)
@@ -2005,6 +2396,8 @@ class TradeApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function cancelUmConditionalOrder($symbol, $strategyId = null, $newClientStrategyId = null, $recvWindow = null): ApiResponse
     {
@@ -2014,7 +2407,7 @@ class TradeApi
     /**
      * Operation cancelUmConditionalOrderWithHttpInfo.
      *
-     * Cancel UM Conditional Order(TRADE)
+     * Cancel UM Conditional Order
      *
      * @param string      $symbol              (required)
      * @param null|int    $strategyId          (optional)
@@ -2025,6 +2418,8 @@ class TradeApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function cancelUmConditionalOrderWithHttpInfo($symbol, $strategyId = null, $newClientStrategyId = null, $recvWindow = null): ApiResponse
     {
@@ -2106,6 +2501,8 @@ class TradeApi
      * @return Request
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function cancelUmConditionalOrderRequest($symbol, $strategyId = null, $newClientStrategyId = null, $recvWindow = null)
     {
@@ -2807,6 +3204,206 @@ class TradeApi
 
         return new Request(
             'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation futuresTradfiPerpsContract.
+     *
+     * Futures TradFi Perps Contract(USER_DATA)
+     *
+     * @param FuturesTradfiPerpsContractRequest $futuresTradfiPerpsContractRequest futuresTradfiPerpsContractRequest (required)
+     *
+     * @return ApiResponse<FuturesTradfiPerpsContractResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest): ApiResponse
+    {
+        return $this->futuresTradfiPerpsContractWithHttpInfo($futuresTradfiPerpsContractRequest);
+    }
+
+    /**
+     * Operation futuresTradfiPerpsContractWithHttpInfo.
+     *
+     * Futures TradFi Perps Contract(USER_DATA)
+     *
+     * @param FuturesTradfiPerpsContractRequest $futuresTradfiPerpsContractRequest (required)
+     *
+     * @return ApiResponse<FuturesTradfiPerpsContractResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function futuresTradfiPerpsContractWithHttpInfo($futuresTradfiPerpsContractRequest): ApiResponse
+    {
+        $request = $this->futuresTradfiPerpsContractRequest($futuresTradfiPerpsContractRequest);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingPortfolioMargin\Model\FuturesTradfiPerpsContractResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingPortfolioMargin\Model\FuturesTradfiPerpsContractResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingPortfolioMargin\Model\FuturesTradfiPerpsContractResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'futuresTradfiPerpsContract'.
+     *
+     * @param FuturesTradfiPerpsContractRequest $futuresTradfiPerpsContractRequest (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function futuresTradfiPerpsContractRequest($futuresTradfiPerpsContractRequest)
+    {
+        $contentType = self::contentTypes['futuresTradfiPerpsContract'][0];
+
+        // verify the required parameter 'futuresTradfiPerpsContractRequest' is set
+        if (null === $futuresTradfiPerpsContractRequest || (is_array($futuresTradfiPerpsContractRequest) && 0 === count($futuresTradfiPerpsContractRequest))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $futuresTradfiPerpsContractRequest when calling futuresTradfiPerpsContract'
+            );
+        }
+
+        $resourcePath = '/papi/v1/um/stock/contract';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $getters = $futuresTradfiPerpsContractRequest::getters();
+        $formParams = [];
+        foreach ($getters as $property => $getter) {
+            $value = $futuresTradfiPerpsContractRequest->{$getter}();
+            if (!empty($value)) {
+                $formParams[$property] = $futuresTradfiPerpsContractRequest->{$getter}();
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        } elseif (isset($futuresTradfiPerpsContractRequest)) {
+            if (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($futuresTradfiPerpsContractRequest));
+            } else {
+                $httpBody = $futuresTradfiPerpsContractRequest;
+            }
+        }
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'POST',
             $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -5019,9 +5616,209 @@ class TradeApi
     }
 
     /**
+     * Operation newUmAlgoOrder.
+     *
+     * New UM Algo Order (TRADE)
+     *
+     * @param NewUmAlgoOrderRequest $newUmAlgoOrderRequest newUmAlgoOrderRequest (required)
+     *
+     * @return ApiResponse<NewUmAlgoOrderResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function newUmAlgoOrder($newUmAlgoOrderRequest): ApiResponse
+    {
+        return $this->newUmAlgoOrderWithHttpInfo($newUmAlgoOrderRequest);
+    }
+
+    /**
+     * Operation newUmAlgoOrderWithHttpInfo.
+     *
+     * New UM Algo Order (TRADE)
+     *
+     * @param NewUmAlgoOrderRequest $newUmAlgoOrderRequest (required)
+     *
+     * @return ApiResponse<NewUmAlgoOrderResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function newUmAlgoOrderWithHttpInfo($newUmAlgoOrderRequest): ApiResponse
+    {
+        $request = $this->newUmAlgoOrderRequest($newUmAlgoOrderRequest);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmAlgoOrderResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmAlgoOrderResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmAlgoOrderResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'newUmAlgoOrder'.
+     *
+     * @param NewUmAlgoOrderRequest $newUmAlgoOrderRequest (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function newUmAlgoOrderRequest($newUmAlgoOrderRequest)
+    {
+        $contentType = self::contentTypes['newUmAlgoOrder'][0];
+
+        // verify the required parameter 'newUmAlgoOrderRequest' is set
+        if (null === $newUmAlgoOrderRequest || (is_array($newUmAlgoOrderRequest) && 0 === count($newUmAlgoOrderRequest))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $newUmAlgoOrderRequest when calling newUmAlgoOrder'
+            );
+        }
+
+        $resourcePath = '/papi/v1/um/algo/order';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $getters = $newUmAlgoOrderRequest::getters();
+        $formParams = [];
+        foreach ($getters as $property => $getter) {
+            $value = $newUmAlgoOrderRequest->{$getter}();
+            if (!empty($value)) {
+                $formParams[$property] = $newUmAlgoOrderRequest->{$getter}();
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        } elseif (isset($newUmAlgoOrderRequest)) {
+            if (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($newUmAlgoOrderRequest));
+            } else {
+                $httpBody = $newUmAlgoOrderRequest;
+            }
+        }
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'POST',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation newUmConditionalOrder.
      *
-     * New UM Conditional Order (TRADE)
+     * New UM Conditional Order
      *
      * @param NewUmConditionalOrderRequest $newUmConditionalOrderRequest newUmConditionalOrderRequest (required)
      *
@@ -5029,6 +5826,8 @@ class TradeApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function newUmConditionalOrder($newUmConditionalOrderRequest): ApiResponse
     {
@@ -5038,7 +5837,7 @@ class TradeApi
     /**
      * Operation newUmConditionalOrderWithHttpInfo.
      *
-     * New UM Conditional Order (TRADE)
+     * New UM Conditional Order
      *
      * @param NewUmConditionalOrderRequest $newUmConditionalOrderRequest (required)
      *
@@ -5046,6 +5845,8 @@ class TradeApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function newUmConditionalOrderWithHttpInfo($newUmConditionalOrderRequest): ApiResponse
     {
@@ -5124,6 +5925,8 @@ class TradeApi
      * @return Request
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function newUmConditionalOrderRequest($newUmConditionalOrderRequest)
     {
@@ -6246,9 +7049,208 @@ class TradeApi
     }
 
     /**
+     * Operation queryAllCurrentUmOpenAlgoOrders.
+     *
+     * Query All Current UM Open Algo Orders (USER_DATA)
+     *
+     * @param null|string $algoType   algoType (optional)
+     * @param null|string $symbol     symbol (optional)
+     * @param null|int    $algoId     algoId (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<QueryAllCurrentUmOpenAlgoOrdersResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function queryAllCurrentUmOpenAlgoOrders($algoType = null, $symbol = null, $algoId = null, $recvWindow = null): ApiResponse
+    {
+        return $this->queryAllCurrentUmOpenAlgoOrdersWithHttpInfo($algoType, $symbol, $algoId, $recvWindow);
+    }
+
+    /**
+     * Operation queryAllCurrentUmOpenAlgoOrdersWithHttpInfo.
+     *
+     * Query All Current UM Open Algo Orders (USER_DATA)
+     *
+     * @param null|string $algoType   (optional)
+     * @param null|string $symbol     (optional)
+     * @param null|int    $algoId     (optional)
+     * @param null|int    $recvWindow (optional)
+     *
+     * @return ApiResponse<QueryAllCurrentUmOpenAlgoOrdersResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function queryAllCurrentUmOpenAlgoOrdersWithHttpInfo($algoType = null, $symbol = null, $algoId = null, $recvWindow = null): ApiResponse
+    {
+        $request = $this->queryAllCurrentUmOpenAlgoOrdersRequest($algoType, $symbol, $algoId, $recvWindow);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentUmOpenAlgoOrdersResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentUmOpenAlgoOrdersResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentUmOpenAlgoOrdersResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'queryAllCurrentUmOpenAlgoOrders'.
+     *
+     * @param null|string $algoType   (optional)
+     * @param null|string $symbol     (optional)
+     * @param null|int    $algoId     (optional)
+     * @param null|int    $recvWindow (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function queryAllCurrentUmOpenAlgoOrdersRequest($algoType = null, $symbol = null, $algoId = null, $recvWindow = null)
+    {
+        $contentType = self::contentTypes['queryAllCurrentUmOpenAlgoOrders'][0];
+
+        $resourcePath = '/papi/v1/um/algo/openAlgoOrders';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $algoType,
+            'algoType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbol,
+            'symbol', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $algoId,
+            'algoId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recvWindow,
+            'recvWindow', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation queryAllCurrentUmOpenConditionalOrders.
      *
-     * Query All Current UM Open Conditional Orders(USER_DATA)
+     * Query All Current UM Open Conditional Orders
      *
      * @param null|string $symbol     symbol (optional)
      * @param null|int    $recvWindow recvWindow (optional)
@@ -6257,6 +7259,8 @@ class TradeApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function queryAllCurrentUmOpenConditionalOrders($symbol = null, $recvWindow = null): ApiResponse
     {
@@ -6266,7 +7270,7 @@ class TradeApi
     /**
      * Operation queryAllCurrentUmOpenConditionalOrdersWithHttpInfo.
      *
-     * Query All Current UM Open Conditional Orders(USER_DATA)
+     * Query All Current UM Open Conditional Orders
      *
      * @param null|string $symbol     (optional)
      * @param null|int    $recvWindow (optional)
@@ -6275,6 +7279,8 @@ class TradeApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function queryAllCurrentUmOpenConditionalOrdersWithHttpInfo($symbol = null, $recvWindow = null): ApiResponse
     {
@@ -6354,6 +7360,8 @@ class TradeApi
      * @return Request
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function queryAllCurrentUmOpenConditionalOrdersRequest($symbol = null, $recvWindow = null)
     {
@@ -6828,7 +7836,7 @@ class TradeApi
     /**
      * Operation queryAllUmConditionalOrders.
      *
-     * Query All UM Conditional Orders(USER_DATA)
+     * Query All UM Conditional Orders
      *
      * @param null|string $symbol     symbol (optional)
      * @param null|int    $strategyId strategyId (optional)
@@ -6841,6 +7849,8 @@ class TradeApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function queryAllUmConditionalOrders($symbol = null, $strategyId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
@@ -6850,7 +7860,7 @@ class TradeApi
     /**
      * Operation queryAllUmConditionalOrdersWithHttpInfo.
      *
-     * Query All UM Conditional Orders(USER_DATA)
+     * Query All UM Conditional Orders
      *
      * @param null|string $symbol     (optional)
      * @param null|int    $strategyId (optional)
@@ -6863,6 +7873,8 @@ class TradeApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function queryAllUmConditionalOrdersWithHttpInfo($symbol = null, $strategyId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
@@ -6946,6 +7958,8 @@ class TradeApi
      * @return Request
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function queryAllUmConditionalOrdersRequest($symbol = null, $strategyId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null)
     {
@@ -8527,9 +9541,196 @@ class TradeApi
     }
 
     /**
+     * Operation queryCurrentUmOpenAlgoOrder.
+     *
+     * Query Current UM Open Algo Order (USER_DATA)
+     *
+     * @param null|int    $algoId       algoId (optional)
+     * @param null|string $clientAlgoId clientAlgoId (optional)
+     * @param null|int    $recvWindow   recvWindow (optional)
+     *
+     * @return ApiResponse<QueryCurrentUmOpenAlgoOrderResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function queryCurrentUmOpenAlgoOrder($algoId = null, $clientAlgoId = null, $recvWindow = null): ApiResponse
+    {
+        return $this->queryCurrentUmOpenAlgoOrderWithHttpInfo($algoId, $clientAlgoId, $recvWindow);
+    }
+
+    /**
+     * Operation queryCurrentUmOpenAlgoOrderWithHttpInfo.
+     *
+     * Query Current UM Open Algo Order (USER_DATA)
+     *
+     * @param null|int    $algoId       (optional)
+     * @param null|string $clientAlgoId (optional)
+     * @param null|int    $recvWindow   (optional)
+     *
+     * @return ApiResponse<QueryCurrentUmOpenAlgoOrderResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function queryCurrentUmOpenAlgoOrderWithHttpInfo($algoId = null, $clientAlgoId = null, $recvWindow = null): ApiResponse
+    {
+        $request = $this->queryCurrentUmOpenAlgoOrderRequest($algoId, $clientAlgoId, $recvWindow);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentUmOpenAlgoOrderResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentUmOpenAlgoOrderResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentUmOpenAlgoOrderResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'queryCurrentUmOpenAlgoOrder'.
+     *
+     * @param null|int    $algoId       (optional)
+     * @param null|string $clientAlgoId (optional)
+     * @param null|int    $recvWindow   (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function queryCurrentUmOpenAlgoOrderRequest($algoId = null, $clientAlgoId = null, $recvWindow = null)
+    {
+        $contentType = self::contentTypes['queryCurrentUmOpenAlgoOrder'][0];
+
+        $resourcePath = '/papi/v1/um/algo/algoOrder';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $algoId,
+            'algoId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $clientAlgoId,
+            'clientAlgoId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recvWindow,
+            'recvWindow', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation queryCurrentUmOpenConditionalOrder.
      *
-     * Query Current UM Open Conditional Order(USER_DATA)
+     * Query Current UM Open Conditional Order
      *
      * @param string      $symbol              symbol (required)
      * @param null|int    $strategyId          strategyId (optional)
@@ -8540,6 +9741,8 @@ class TradeApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function queryCurrentUmOpenConditionalOrder($symbol, $strategyId = null, $newClientStrategyId = null, $recvWindow = null): ApiResponse
     {
@@ -8549,7 +9752,7 @@ class TradeApi
     /**
      * Operation queryCurrentUmOpenConditionalOrderWithHttpInfo.
      *
-     * Query Current UM Open Conditional Order(USER_DATA)
+     * Query Current UM Open Conditional Order
      *
      * @param string      $symbol              (required)
      * @param null|int    $strategyId          (optional)
@@ -8560,6 +9763,8 @@ class TradeApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function queryCurrentUmOpenConditionalOrderWithHttpInfo($symbol, $strategyId = null, $newClientStrategyId = null, $recvWindow = null): ApiResponse
     {
@@ -8641,6 +9846,8 @@ class TradeApi
      * @return Request
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function queryCurrentUmOpenConditionalOrderRequest($symbol, $strategyId = null, $newClientStrategyId = null, $recvWindow = null)
     {
@@ -9706,9 +10913,239 @@ class TradeApi
     }
 
     /**
+     * Operation queryUmAlgoOrderHistory.
+     *
+     * Query UM Algo Order History (USER_DATA)
+     *
+     * @param string   $symbol     symbol (required)
+     * @param null|int $algoId     algoId (optional)
+     * @param null|int $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
+     * @param null|int $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
+     * @param null|int $limit      Default 100; max 1000 (optional)
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<QueryUmAlgoOrderHistoryResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function queryUmAlgoOrderHistory($symbol, $algoId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
+    {
+        return $this->queryUmAlgoOrderHistoryWithHttpInfo($symbol, $algoId, $startTime, $endTime, $limit, $recvWindow);
+    }
+
+    /**
+     * Operation queryUmAlgoOrderHistoryWithHttpInfo.
+     *
+     * Query UM Algo Order History (USER_DATA)
+     *
+     * @param string   $symbol     (required)
+     * @param null|int $algoId     (optional)
+     * @param null|int $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
+     * @param null|int $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
+     * @param null|int $limit      Default 100; max 1000 (optional)
+     * @param null|int $recvWindow (optional)
+     *
+     * @return ApiResponse<QueryUmAlgoOrderHistoryResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function queryUmAlgoOrderHistoryWithHttpInfo($symbol, $algoId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
+    {
+        $request = $this->queryUmAlgoOrderHistoryRequest($symbol, $algoId, $startTime, $endTime, $limit, $recvWindow);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUmAlgoOrderHistoryResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUmAlgoOrderHistoryResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUmAlgoOrderHistoryResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'queryUmAlgoOrderHistory'.
+     *
+     * @param string   $symbol     (required)
+     * @param null|int $algoId     (optional)
+     * @param null|int $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
+     * @param null|int $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
+     * @param null|int $limit      Default 100; max 1000 (optional)
+     * @param null|int $recvWindow (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function queryUmAlgoOrderHistoryRequest($symbol, $algoId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null)
+    {
+        $contentType = self::contentTypes['queryUmAlgoOrderHistory'][0];
+
+        // verify the required parameter 'symbol' is set
+        if (null === $symbol || (is_array($symbol) && 0 === count($symbol))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $symbol when calling queryUmAlgoOrderHistory'
+            );
+        }
+
+        $resourcePath = '/papi/v1/um/algo/allAlgoOrders';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $symbol,
+            'symbol', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $algoId,
+            'algoId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $startTime,
+            'startTime', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $endTime,
+            'endTime', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recvWindow,
+            'recvWindow', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation queryUmConditionalOrderHistory.
      *
-     * Query UM Conditional Order History(USER_DATA)
+     * Query UM Conditional Order History
      *
      * @param string      $symbol              symbol (required)
      * @param null|int    $strategyId          strategyId (optional)
@@ -9719,6 +11156,8 @@ class TradeApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function queryUmConditionalOrderHistory($symbol, $strategyId = null, $newClientStrategyId = null, $recvWindow = null): ApiResponse
     {
@@ -9728,7 +11167,7 @@ class TradeApi
     /**
      * Operation queryUmConditionalOrderHistoryWithHttpInfo.
      *
-     * Query UM Conditional Order History(USER_DATA)
+     * Query UM Conditional Order History
      *
      * @param string      $symbol              (required)
      * @param null|int    $strategyId          (optional)
@@ -9739,6 +11178,8 @@ class TradeApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function queryUmConditionalOrderHistoryWithHttpInfo($symbol, $strategyId = null, $newClientStrategyId = null, $recvWindow = null): ApiResponse
     {
@@ -9820,6 +11261,8 @@ class TradeApi
      * @return Request
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function queryUmConditionalOrderHistoryRequest($symbol, $strategyId = null, $newClientStrategyId = null, $recvWindow = null)
     {

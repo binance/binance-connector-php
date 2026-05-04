@@ -32,6 +32,8 @@
 
 [/api/v3/exchangeInfo](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-endpoints#exchange-information) - exchangeInfo - [ExchangeInfoExample.php:29](/examples/spot/general/ExchangeInfoExample.php#L29)
 
+[/api/v3/executionRules](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-endpoints#query-execution-rules) - executionRules - [ExecutionRulesExample.php:27](/examples/spot/general/ExecutionRulesExample.php#L27)
+
 [/api/v3/ping](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-endpoints#test-connectivity) - ping - [PingExample.php:23](/examples/spot/general/PingExample.php#L23)
 
 [/api/v3/time](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-endpoints#check-server-time) - time - [TimeExample.php:23](/examples/spot/general/TimeExample.php#L23)
@@ -49,6 +51,10 @@
 [/api/v3/historicalTrades](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#old-trade-lookup) - historicalTrades - [HistoricalTradesExample.php:26](/examples/spot/market/HistoricalTradesExample.php#L26)
 
 [/api/v3/klines](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#klinecandlestick-data) - klines - [KlinesExample.php:30](/examples/spot/market/KlinesExample.php#L30)
+
+[/api/v3/referencePrice](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#query-reference-price) - referencePrice - [ReferencePriceExample.php:24](/examples/spot/market/ReferencePriceExample.php#L24)
+
+[/api/v3/referencePrice/calculation](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#query-reference-price-calculation) - referencePriceCalculation - [ReferencePriceCalculationExample.php:26](/examples/spot/market/ReferencePriceCalculationExample.php#L26)
 
 [/api/v3/ticker](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#rolling-window-price-change-statistics) - ticker - [TickerExample.php:31](/examples/spot/market/TickerExample.php#L31)
 
