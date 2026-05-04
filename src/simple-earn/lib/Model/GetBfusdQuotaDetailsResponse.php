@@ -61,10 +61,9 @@ class GetBfusdQuotaDetailsResponse implements ModelInterface, \ArrayAccess, \Jso
      * @var string[]
      */
     protected static $openAPITypes = [
+        'subscriptionQuota' => '\Binance\Client\SimpleEarn\Model\GetBfusdQuotaDetailsResponseSubscriptionQuota',
         'fastRedemptionQuota' => '\Binance\Client\SimpleEarn\Model\GetBfusdQuotaDetailsResponseFastRedemptionQuota',
         'standardRedemptionQuota' => '\Binance\Client\SimpleEarn\Model\GetBfusdQuotaDetailsResponseStandardRedemptionQuota',
-        'subscribeEnable' => 'bool',
-        'redeemEnable' => 'bool',
     ];
 
     /**
@@ -77,10 +76,9 @@ class GetBfusdQuotaDetailsResponse implements ModelInterface, \ArrayAccess, \Jso
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
+        'subscriptionQuota' => null,
         'fastRedemptionQuota' => null,
         'standardRedemptionQuota' => null,
-        'subscribeEnable' => null,
-        'redeemEnable' => null,
     ];
 
     /**
@@ -89,10 +87,9 @@ class GetBfusdQuotaDetailsResponse implements ModelInterface, \ArrayAccess, \Jso
      * @var bool[]
      */
     protected static array $openAPINullables = [
+        'subscriptionQuota' => false,
         'fastRedemptionQuota' => false,
         'standardRedemptionQuota' => false,
-        'subscribeEnable' => false,
-        'redeemEnable' => false,
     ];
 
     /**
@@ -109,10 +106,9 @@ class GetBfusdQuotaDetailsResponse implements ModelInterface, \ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
+        'subscriptionQuota' => 'subscriptionQuota',
         'fastRedemptionQuota' => 'fastRedemptionQuota',
         'standardRedemptionQuota' => 'standardRedemptionQuota',
-        'subscribeEnable' => 'subscribeEnable',
-        'redeemEnable' => 'redeemEnable',
     ];
 
     /**
@@ -121,10 +117,9 @@ class GetBfusdQuotaDetailsResponse implements ModelInterface, \ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
+        'subscriptionQuota' => 'setSubscriptionQuota',
         'fastRedemptionQuota' => 'setFastRedemptionQuota',
         'standardRedemptionQuota' => 'setStandardRedemptionQuota',
-        'subscribeEnable' => 'setSubscribeEnable',
-        'redeemEnable' => 'setRedeemEnable',
     ];
 
     /**
@@ -133,10 +128,9 @@ class GetBfusdQuotaDetailsResponse implements ModelInterface, \ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
+        'subscriptionQuota' => 'getSubscriptionQuota',
         'fastRedemptionQuota' => 'getFastRedemptionQuota',
         'standardRedemptionQuota' => 'getStandardRedemptionQuota',
-        'subscribeEnable' => 'getSubscribeEnable',
-        'redeemEnable' => 'getRedeemEnable',
     ];
 
     /**
@@ -154,10 +148,9 @@ class GetBfusdQuotaDetailsResponse implements ModelInterface, \ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('subscriptionQuota', $data ?? [], null);
         $this->setIfExists('fastRedemptionQuota', $data ?? [], null);
         $this->setIfExists('standardRedemptionQuota', $data ?? [], null);
-        $this->setIfExists('subscribeEnable', $data ?? [], null);
-        $this->setIfExists('redeemEnable', $data ?? [], null);
     }
 
     /**
@@ -289,6 +282,33 @@ class GetBfusdQuotaDetailsResponse implements ModelInterface, \ArrayAccess, \Jso
     }
 
     /**
+     * Gets subscriptionQuota.
+     *
+     * @return null|GetBfusdQuotaDetailsResponseSubscriptionQuota
+     */
+    public function getSubscriptionQuota()
+    {
+        return $this->container['subscriptionQuota'];
+    }
+
+    /**
+     * Sets subscriptionQuota.
+     *
+     * @param null|GetBfusdQuotaDetailsResponseSubscriptionQuota $subscriptionQuota subscriptionQuota
+     *
+     * @return self
+     */
+    public function setSubscriptionQuota($subscriptionQuota)
+    {
+        if (is_null($subscriptionQuota)) {
+            throw new \InvalidArgumentException('non-nullable subscriptionQuota cannot be null');
+        }
+        $this->container['subscriptionQuota'] = $subscriptionQuota;
+
+        return $this;
+    }
+
+    /**
      * Gets fastRedemptionQuota.
      *
      * @return null|GetBfusdQuotaDetailsResponseFastRedemptionQuota
@@ -338,60 +358,6 @@ class GetBfusdQuotaDetailsResponse implements ModelInterface, \ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable standardRedemptionQuota cannot be null');
         }
         $this->container['standardRedemptionQuota'] = $standardRedemptionQuota;
-
-        return $this;
-    }
-
-    /**
-     * Gets subscribeEnable.
-     *
-     * @return null|bool
-     */
-    public function getSubscribeEnable()
-    {
-        return $this->container['subscribeEnable'];
-    }
-
-    /**
-     * Sets subscribeEnable.
-     *
-     * @param null|bool $subscribeEnable subscribeEnable
-     *
-     * @return self
-     */
-    public function setSubscribeEnable($subscribeEnable)
-    {
-        if (is_null($subscribeEnable)) {
-            throw new \InvalidArgumentException('non-nullable subscribeEnable cannot be null');
-        }
-        $this->container['subscribeEnable'] = $subscribeEnable;
-
-        return $this;
-    }
-
-    /**
-     * Gets redeemEnable.
-     *
-     * @return null|bool
-     */
-    public function getRedeemEnable()
-    {
-        return $this->container['redeemEnable'];
-    }
-
-    /**
-     * Sets redeemEnable.
-     *
-     * @param null|bool $redeemEnable redeemEnable
-     *
-     * @return self
-     */
-    public function setRedeemEnable($redeemEnable)
-    {
-        if (is_null($redeemEnable)) {
-            throw new \InvalidArgumentException('non-nullable redeemEnable cannot be null');
-        }
-        $this->container['redeemEnable'] = $redeemEnable;
 
         return $this;
     }

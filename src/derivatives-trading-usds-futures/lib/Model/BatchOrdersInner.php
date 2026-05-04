@@ -80,6 +80,7 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'quantity' => 'string',
         'price' => 'string',
         'priceMatch' => 'string',
+        'stopPrice' => 'string',
         'recvWindow' => 'string',
     ];
 
@@ -100,6 +101,7 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'quantity' => null,
         'price' => null,
         'priceMatch' => null,
+        'stopPrice' => null,
         'recvWindow' => null,
     ];
 
@@ -116,6 +118,7 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'quantity' => false,
         'price' => false,
         'priceMatch' => false,
+        'stopPrice' => false,
         'recvWindow' => false,
     ];
 
@@ -140,6 +143,7 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'quantity' => 'quantity',
         'price' => 'price',
         'priceMatch' => 'priceMatch',
+        'stopPrice' => 'stopPrice',
         'recvWindow' => 'recvWindow',
     ];
 
@@ -156,6 +160,7 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'quantity' => 'setQuantity',
         'price' => 'setPrice',
         'priceMatch' => 'setPriceMatch',
+        'stopPrice' => 'setStopPrice',
         'recvWindow' => 'setRecvWindow',
     ];
 
@@ -172,6 +177,7 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'quantity' => 'getQuantity',
         'price' => 'getPrice',
         'priceMatch' => 'getPriceMatch',
+        'stopPrice' => 'getStopPrice',
         'recvWindow' => 'getRecvWindow',
     ];
 
@@ -197,6 +203,7 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
         $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('priceMatch', $data ?? [], null);
+        $this->setIfExists('stopPrice', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }
 
@@ -586,6 +593,33 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
             );
         }
         $this->container['priceMatch'] = $priceMatch;
+
+        return $this;
+    }
+
+    /**
+     * Gets stopPrice.
+     *
+     * @return null|string
+     */
+    public function getStopPrice()
+    {
+        return $this->container['stopPrice'];
+    }
+
+    /**
+     * Sets stopPrice.
+     *
+     * @param null|string $stopPrice stopPrice
+     *
+     * @return self
+     */
+    public function setStopPrice($stopPrice)
+    {
+        if (is_null($stopPrice)) {
+            throw new \InvalidArgumentException('non-nullable stopPrice cannot be null');
+        }
+        $this->container['stopPrice'] = $stopPrice;
 
         return $this;
     }

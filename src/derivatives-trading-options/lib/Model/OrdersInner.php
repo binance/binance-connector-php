@@ -57,6 +57,9 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
     public const TIME_IN_FORCE_GTX = 'GTX';
     public const NEW_ORDER_RESP_TYPE_ACK = 'ACK';
     public const NEW_ORDER_RESP_TYPE_RESULT = 'RESULT';
+    public const SELF_TRADE_PREVENTION_MODE_EXPIRE_TAKER = 'EXPIRE_TAKER';
+    public const SELF_TRADE_PREVENTION_MODE_EXPIRE_BOTH = 'EXPIRE_BOTH';
+    public const SELF_TRADE_PREVENTION_MODE_EXPIRE_MAKER = 'EXPIRE_MAKER';
 
     /**
      * The original name of the model.
@@ -82,6 +85,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
         'newOrderRespType' => 'string',
         'clientOrderId' => 'string',
         'isMmp' => 'string',
+        'selfTradePreventionMode' => 'string',
     ];
 
     /**
@@ -105,6 +109,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
         'newOrderRespType' => null,
         'clientOrderId' => null,
         'isMmp' => null,
+        'selfTradePreventionMode' => null,
     ];
 
     /**
@@ -124,6 +129,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
         'newOrderRespType' => false,
         'clientOrderId' => false,
         'isMmp' => false,
+        'selfTradePreventionMode' => false,
     ];
 
     /**
@@ -151,6 +157,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
         'newOrderRespType' => 'newOrderRespType',
         'clientOrderId' => 'clientOrderId',
         'isMmp' => 'isMmp',
+        'selfTradePreventionMode' => 'selfTradePreventionMode',
     ];
 
     /**
@@ -170,6 +177,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
         'newOrderRespType' => 'setNewOrderRespType',
         'clientOrderId' => 'setClientOrderId',
         'isMmp' => 'setIsMmp',
+        'selfTradePreventionMode' => 'setSelfTradePreventionMode',
     ];
 
     /**
@@ -189,6 +197,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
         'newOrderRespType' => 'getNewOrderRespType',
         'clientOrderId' => 'getClientOrderId',
         'isMmp' => 'getIsMmp',
+        'selfTradePreventionMode' => 'getSelfTradePreventionMode',
     ];
 
     /**
@@ -217,6 +226,7 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('newOrderRespType', $data ?? [], null);
         $this->setIfExists('clientOrderId', $data ?? [], null);
         $this->setIfExists('isMmp', $data ?? [], null);
+        $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
     }
 
     /**
@@ -380,6 +390,20 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets allowable values of the enum.
+     *
+     * @return string[]
+     */
+    public function getSelfTradePreventionModeAllowableValues()
+    {
+        return [
+            self::SELF_TRADE_PREVENTION_MODE_EXPIRE_TAKER,
+            self::SELF_TRADE_PREVENTION_MODE_EXPIRE_BOTH,
+            self::SELF_TRADE_PREVENTION_MODE_EXPIRE_MAKER,
+        ];
+    }
+
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -420,6 +444,15 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'newOrderRespType', must be one of '%s'",
                 $this->container['newOrderRespType'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getSelfTradePreventionModeAllowableValues();
+        if (!is_null($this->container['selfTradePreventionMode']) && !in_array($this->container['selfTradePreventionMode'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'selfTradePreventionMode', must be one of '%s'",
+                $this->container['selfTradePreventionMode'],
                 implode("', '", $allowedValues)
             );
         }
@@ -771,6 +804,43 @@ class OrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable isMmp cannot be null');
         }
         $this->container['isMmp'] = $isMmp;
+
+        return $this;
+    }
+
+    /**
+     * Gets selfTradePreventionMode.
+     *
+     * @return null|string
+     */
+    public function getSelfTradePreventionMode()
+    {
+        return $this->container['selfTradePreventionMode'];
+    }
+
+    /**
+     * Sets selfTradePreventionMode.
+     *
+     * @param null|string $selfTradePreventionMode selfTradePreventionMode
+     *
+     * @return self
+     */
+    public function setSelfTradePreventionMode($selfTradePreventionMode)
+    {
+        if (is_null($selfTradePreventionMode)) {
+            throw new \InvalidArgumentException('non-nullable selfTradePreventionMode cannot be null');
+        }
+        $allowedValues = $this->getSelfTradePreventionModeAllowableValues();
+        if (!in_array($selfTradePreventionMode, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'selfTradePreventionMode', must be one of '%s'",
+                    $selfTradePreventionMode,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['selfTradePreventionMode'] = $selfTradePreventionMode;
 
         return $this;
     }

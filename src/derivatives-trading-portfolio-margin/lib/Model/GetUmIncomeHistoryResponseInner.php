@@ -67,7 +67,7 @@ class GetUmIncomeHistoryResponseInner implements ModelInterface, \ArrayAccess, \
         'asset' => 'string',
         'info' => 'string',
         'time' => 'int',
-        'tranId' => 'string',
+        'tranId' => 'int',
         'tradeId' => 'string',
     ];
 
@@ -87,7 +87,7 @@ class GetUmIncomeHistoryResponseInner implements ModelInterface, \ArrayAccess, \
         'asset' => null,
         'info' => null,
         'time' => 'int64',
-        'tranId' => null,
+        'tranId' => 'int64',
         'tradeId' => null,
     ];
 
@@ -481,7 +481,7 @@ class GetUmIncomeHistoryResponseInner implements ModelInterface, \ArrayAccess, \
     /**
      * Gets tranId.
      *
-     * @return null|string
+     * @return null|int
      */
     public function getTranId()
     {
@@ -491,7 +491,7 @@ class GetUmIncomeHistoryResponseInner implements ModelInterface, \ArrayAccess, \
     /**
      * Sets tranId.
      *
-     * @param null|string $tranId tranId
+     * @param null|int $tranId tranId
      *
      * @return self
      */

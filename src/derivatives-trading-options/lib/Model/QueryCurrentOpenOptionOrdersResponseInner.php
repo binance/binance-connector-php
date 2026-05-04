@@ -80,6 +80,7 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
         'optionSide' => 'string',
         'quoteAsset' => 'string',
         'mmp' => 'bool',
+        'selfTradePreventionMode' => 'string',
     ];
 
     /**
@@ -111,6 +112,7 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
         'optionSide' => null,
         'quoteAsset' => null,
         'mmp' => null,
+        'selfTradePreventionMode' => null,
     ];
 
     /**
@@ -138,6 +140,7 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
         'optionSide' => false,
         'quoteAsset' => false,
         'mmp' => false,
+        'selfTradePreventionMode' => false,
     ];
 
     /**
@@ -173,6 +176,7 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
         'optionSide' => 'optionSide',
         'quoteAsset' => 'quoteAsset',
         'mmp' => 'mmp',
+        'selfTradePreventionMode' => 'selfTradePreventionMode',
     ];
 
     /**
@@ -200,6 +204,7 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
         'optionSide' => 'setOptionSide',
         'quoteAsset' => 'setQuoteAsset',
         'mmp' => 'setMmp',
+        'selfTradePreventionMode' => 'setSelfTradePreventionMode',
     ];
 
     /**
@@ -227,6 +232,7 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
         'optionSide' => 'getOptionSide',
         'quoteAsset' => 'getQuoteAsset',
         'mmp' => 'getMmp',
+        'selfTradePreventionMode' => 'getSelfTradePreventionMode',
     ];
 
     /**
@@ -263,6 +269,7 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
         $this->setIfExists('optionSide', $data ?? [], null);
         $this->setIfExists('quoteAsset', $data ?? [], null);
         $this->setIfExists('mmp', $data ?? [], null);
+        $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
     }
 
     /**
@@ -902,6 +909,33 @@ class QueryCurrentOpenOptionOrdersResponseInner implements ModelInterface, \Arra
             throw new \InvalidArgumentException('non-nullable mmp cannot be null');
         }
         $this->container['mmp'] = $mmp;
+
+        return $this;
+    }
+
+    /**
+     * Gets selfTradePreventionMode.
+     *
+     * @return null|string
+     */
+    public function getSelfTradePreventionMode()
+    {
+        return $this->container['selfTradePreventionMode'];
+    }
+
+    /**
+     * Sets selfTradePreventionMode.
+     *
+     * @param null|string $selfTradePreventionMode selfTradePreventionMode
+     *
+     * @return self
+     */
+    public function setSelfTradePreventionMode($selfTradePreventionMode)
+    {
+        if (is_null($selfTradePreventionMode)) {
+            throw new \InvalidArgumentException('non-nullable selfTradePreventionMode cannot be null');
+        }
+        $this->container['selfTradePreventionMode'] = $selfTradePreventionMode;
 
         return $this;
     }

@@ -68,6 +68,15 @@ class AssetFilters implements ModelInterface, \ArrayAccess, \JsonSerializable
     ];
 
     /**
+     * Array of mapping. Used for (de)serialization.
+     *
+     * @var string[]
+     */
+    protected static $openAPIMappings = [
+        'MAX_ASSET' => '\Binance\Client\Spot\Model\MaxAssetFilter',
+    ];
+
+    /**
      * Array of property to format mappings. Used for (de)serialization.
      *
      * @var string[]
@@ -196,6 +205,16 @@ class AssetFilters implements ModelInterface, \ArrayAccess, \JsonSerializable
     public static function openAPIFormats()
     {
         return self::$openAPIFormats;
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization.
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**

@@ -48,6 +48,8 @@ enum StrategyType: string
 
     case STOP_MARKET = 'STOP_MARKET';
 
+    case LIMIT_MAKER = 'LIMIT_MAKER';
+
     case TAKE_PROFIT = 'TAKE_PROFIT';
 
     case TAKE_PROFIT_MARKET = 'TAKE_PROFIT_MARKET';
@@ -64,6 +66,7 @@ enum StrategyType: string
         return [
             self::STOP,
             self::STOP_MARKET,
+            self::LIMIT_MAKER,
             self::TAKE_PROFIT,
             self::TAKE_PROFIT_MARKET,
             self::TRAILING_STOP_MARKET,

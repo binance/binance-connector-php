@@ -45,13 +45,13 @@ class CurrentAllOpenOrdersResponse
 {
     public const DISCRIMINATOR = null;
 
-    /** @var CurrentAllOpenOrdersResponseInner[] */
+    /** @var AllOrdersResponseInner[] */
     protected array $items = [];
 
     /**
      * Constructor.
      *
-     * @param CurrentAllOpenOrdersResponseInner[] items
+     * @param AllOrdersResponseInner[] items
      */
     public function __construct(array $items = [])
     {
@@ -63,7 +63,7 @@ class CurrentAllOpenOrdersResponse
      */
     public static function getItemType(): string
     {
-        return '\Binance\Client\DerivativesTradingCoinFutures\Model\CurrentAllOpenOrdersResponseInner';
+        return '\Binance\Client\DerivativesTradingCoinFutures\Model\AllOrdersResponseInner';
     }
 
     /**
@@ -94,20 +94,20 @@ class CurrentAllOpenOrdersResponse
     }
 
     /**
-     * @return CurrentAllOpenOrdersResponseInner[]
+     * @return AllOrdersResponseInner[]
      */
     public function getItems(): array
     {
         return $this->items;
     }
 
-    public function addItem(CurrentAllOpenOrdersResponseInner $item): void
+    public function addItem(AllOrdersResponseInner $item): void
     {
         $this->items[] = $item;
     }
 
     /**
-     * @param CurrentAllOpenOrdersResponseInner[] $items
+     * @param AllOrdersResponseInner[] $items
      */
     public function addItems(array $items): void
     {

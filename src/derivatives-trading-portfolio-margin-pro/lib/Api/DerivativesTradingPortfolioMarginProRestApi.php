@@ -6,11 +6,14 @@ use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\BnbTransferRequest
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\BnbTransferResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\ChangeAutoRepayFuturesStatusRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\ChangeAutoRepayFuturesStatusResponse;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\DeleteMarginCallLevelResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\FundAutoCollectionRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\FundAutoCollectionResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\FundCollectionByAssetRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\FundCollectionByAssetResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetAutoRepayFuturesStatusResponse;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetDeltaModeStatusResponse;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetMarginCallLevelResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetPortfolioMarginAssetLeverageResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetPortfolioMarginProAccountBalanceResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetPortfolioMarginProAccountInfoResponse;
@@ -26,6 +29,10 @@ use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\QueryPortfolioMarg
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\QueryPortfolioMarginProNegativeBalanceInterestHistoryResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RepayFuturesNegativeBalanceRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\RepayFuturesNegativeBalanceResponse;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\SetMarginCallLevelRequest;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\SetMarginCallLevelResponse;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\SwitchDeltaModeRequest;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\SwitchDeltaModeResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginResponse;
 use Binance\Common\ApiException;
@@ -86,6 +93,23 @@ class DerivativesTradingPortfolioMarginProRestApi
     }
 
     /**
+     * Operation deleteMarginCallLevel.
+     *
+     * Delete Margin Call Level (USER_DATA)
+     *
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<DeleteMarginCallLevelResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function deleteMarginCallLevel($recvWindow = null): ApiResponse
+    {
+        return $this->accountApi->deleteMarginCallLevel($recvWindow);
+    }
+
+    /**
      * Operation fundAutoCollection.
      *
      * Fund Auto-collection(USER_DATA)
@@ -134,6 +158,40 @@ class DerivativesTradingPortfolioMarginProRestApi
     public function getAutoRepayFuturesStatus($recvWindow = null): ApiResponse
     {
         return $this->accountApi->getAutoRepayFuturesStatus($recvWindow);
+    }
+
+    /**
+     * Operation getDeltaModeStatus.
+     *
+     * Get Delta Mode Status(USER_DATA)
+     *
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<GetDeltaModeStatusResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getDeltaModeStatus($recvWindow = null): ApiResponse
+    {
+        return $this->accountApi->getDeltaModeStatus($recvWindow);
+    }
+
+    /**
+     * Operation getMarginCallLevel.
+     *
+     * Get Margin Call Level (USER_DATA)
+     *
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<GetMarginCallLevelResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getMarginCallLevel($recvWindow = null): ApiResponse
+    {
+        return $this->accountApi->getMarginCallLevel($recvWindow);
     }
 
     /**
@@ -298,6 +356,40 @@ class DerivativesTradingPortfolioMarginProRestApi
     public function repayFuturesNegativeBalance($repayFuturesNegativeBalanceRequest): ApiResponse
     {
         return $this->accountApi->repayFuturesNegativeBalance($repayFuturesNegativeBalanceRequest);
+    }
+
+    /**
+     * Operation setMarginCallLevel.
+     *
+     * Set Margin Call Level (USER_DATA)
+     *
+     * @param SetMarginCallLevelRequest $setMarginCallLevelRequest setMarginCallLevelRequest (required)
+     *
+     * @return ApiResponse<SetMarginCallLevelResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function setMarginCallLevel($setMarginCallLevelRequest): ApiResponse
+    {
+        return $this->accountApi->setMarginCallLevel($setMarginCallLevelRequest);
+    }
+
+    /**
+     * Operation switchDeltaMode.
+     *
+     * Switch Delta Mode(TRADE)
+     *
+     * @param SwitchDeltaModeRequest $switchDeltaModeRequest switchDeltaModeRequest (required)
+     *
+     * @return ApiResponse<SwitchDeltaModeResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function switchDeltaMode($switchDeltaModeRequest): ApiResponse
+    {
+        return $this->accountApi->switchDeltaMode($switchDeltaModeRequest);
     }
 
     /**

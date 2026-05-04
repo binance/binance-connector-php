@@ -61,7 +61,7 @@ class CancelAllOptionOrdersOnSpecificSymbolResponse implements ModelInterface, \
      * @var string[]
      */
     protected static $openAPITypes = [
-        'code' => 'int',
+        'code' => 'string',
         'msg' => 'string',
     ];
 
@@ -75,7 +75,7 @@ class CancelAllOptionOrdersOnSpecificSymbolResponse implements ModelInterface, \
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'code' => 'int64',
+        'code' => null,
         'msg' => null,
     ];
 
@@ -277,7 +277,7 @@ class CancelAllOptionOrdersOnSpecificSymbolResponse implements ModelInterface, \
     /**
      * Gets code.
      *
-     * @return null|int
+     * @return null|string
      */
     public function getCode()
     {
@@ -287,7 +287,7 @@ class CancelAllOptionOrdersOnSpecificSymbolResponse implements ModelInterface, \
     /**
      * Sets code.
      *
-     * @param null|int $code code
+     * @param null|string $code code
      *
      * @return self
      */

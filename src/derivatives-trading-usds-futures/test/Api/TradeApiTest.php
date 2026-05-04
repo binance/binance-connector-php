@@ -396,11 +396,10 @@ class TradeApiTest extends TestCase
     {
         $futuresTradfiPerpsContractRequest = new FuturesTradfiPerpsContractRequest();
 
-        $response = $this->getApiMock($request)->futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest);
+        $this->getApiMock($request)->futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest);
 
         parse_str($request->getUri(), $queryMap);
 
-        self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/fapi/v1/stock/contract', $request->getUri()->getPath());
         self::assertEquals('dc0def720e795be0f84b02a8fa211ecc3a27dd06ffdbd287a679f1321807f820', $queryMap['signature']);
     }
@@ -667,7 +666,7 @@ class TradeApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/fapi/v1/allAlgoOrders', $request->getUri()->getPath());
-        self::assertEquals('18e6c5ac747aa6e137469fc36cf46ee877229de205dc907b71238333651056ed', $queryMap['signature']);
+        self::assertEquals('7962b1eca7a9bf92d930e06db968cf40da31df8928dab36418fa383de5404789', $queryMap['signature']);
     }
 
     /**

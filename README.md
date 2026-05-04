@@ -17,6 +17,7 @@ Before using the connectors, ensure you have:
 
 ## Available Connectors
 - [binance-algo](src/algo) - Algo Trading connector
+- [binance-alpha](src/alpha) - Alpha connector
 - [binance-c2c](src/c2c) - C2C connector
 - [binance-convert](src/convert) - Convert connector
 - [binance-copy-trading](src/copy-trading) - Copy Trading connector
@@ -100,6 +101,8 @@ When creating REST clients (such as SpotRestApi), you use one of the following t
 
 ## Examples
 **Algo**: [Rest API](src/algo/example_rest.md)
+
+**Alpha**: [Rest API](src/alpha/example_rest.md)
 
 **C2c**: [Rest API](src/c2c/example_rest.md)
 

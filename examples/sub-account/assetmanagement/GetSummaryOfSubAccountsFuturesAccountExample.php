@@ -21,8 +21,10 @@ function getSummaryOfSubAccountsFuturesAccountExample()
     $configurationBuilder = SubAccountRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
+    $page = null;
+    $limit = null;
     $recvWindow = 5000;
-    $response = $api->getSummaryOfSubAccountsFuturesAccount($recvWindow);
+    $response = $api->getSummaryOfSubAccountsFuturesAccount($page, $limit, $recvWindow);
     print_r($response);
 }
 

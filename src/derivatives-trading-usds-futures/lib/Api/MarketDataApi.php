@@ -343,7 +343,7 @@ class MarketDataApi
      * @param string       $pair         pair (required)
      * @param ContractType $contractType contractType (required)
      * @param Period       $period       \&quot;5m\&quot;,\&quot;15m\&quot;,\&quot;30m\&quot;,\&quot;1h\&quot;,\&quot;2h\&quot;,\&quot;4h\&quot;,\&quot;6h\&quot;,\&quot;12h\&quot;,\&quot;1d\&quot; (required)
-     * @param int          $limit        Default 30,Max 500 (required)
+     * @param null|int     $limit        Default 100; max 1000 (optional)
      * @param null|int     $startTime    startTime (optional)
      * @param null|int     $endTime      endTime (optional)
      *
@@ -352,7 +352,7 @@ class MarketDataApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function basis($pair, $contractType, $period, $limit, $startTime = null, $endTime = null): ApiResponse
+    public function basis($pair, $contractType, $period, $limit = null, $startTime = null, $endTime = null): ApiResponse
     {
         return $this->basisWithHttpInfo($pair, $contractType, $period, $limit, $startTime, $endTime);
     }
@@ -365,7 +365,7 @@ class MarketDataApi
      * @param string       $pair         (required)
      * @param ContractType $contractType (required)
      * @param Period       $period       \&quot;5m\&quot;,\&quot;15m\&quot;,\&quot;30m\&quot;,\&quot;1h\&quot;,\&quot;2h\&quot;,\&quot;4h\&quot;,\&quot;6h\&quot;,\&quot;12h\&quot;,\&quot;1d\&quot; (required)
-     * @param int          $limit        Default 30,Max 500 (required)
+     * @param null|int     $limit        Default 100; max 1000 (optional)
      * @param null|int     $startTime    (optional)
      * @param null|int     $endTime      (optional)
      *
@@ -374,7 +374,7 @@ class MarketDataApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function basisWithHttpInfo($pair, $contractType, $period, $limit, $startTime = null, $endTime = null): ApiResponse
+    public function basisWithHttpInfo($pair, $contractType, $period, $limit = null, $startTime = null, $endTime = null): ApiResponse
     {
         $request = $this->basisRequest($pair, $contractType, $period, $limit, $startTime, $endTime);
 
@@ -449,7 +449,7 @@ class MarketDataApi
      * @param string       $pair         (required)
      * @param ContractType $contractType (required)
      * @param Period       $period       \&quot;5m\&quot;,\&quot;15m\&quot;,\&quot;30m\&quot;,\&quot;1h\&quot;,\&quot;2h\&quot;,\&quot;4h\&quot;,\&quot;6h\&quot;,\&quot;12h\&quot;,\&quot;1d\&quot; (required)
-     * @param int          $limit        Default 30,Max 500 (required)
+     * @param null|int     $limit        Default 100; max 1000 (optional)
      * @param null|int     $startTime    (optional)
      * @param null|int     $endTime      (optional)
      *
@@ -457,7 +457,7 @@ class MarketDataApi
      *
      * @throws \InvalidArgumentException
      */
-    public function basisRequest($pair, $contractType, $period, $limit, $startTime = null, $endTime = null)
+    public function basisRequest($pair, $contractType, $period, $limit = null, $startTime = null, $endTime = null)
     {
         $contentType = self::contentTypes['basis'][0];
 
@@ -479,13 +479,6 @@ class MarketDataApi
         if (null === $period || (is_array($period) && 0 === count($period))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $period when calling basis'
-            );
-        }
-
-        // verify the required parameter 'limit' is set
-        if (null === $limit || (is_array($limit) && 0 === count($limit))) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $limit when calling basis'
             );
         }
 
@@ -530,7 +523,7 @@ class MarketDataApi
             'integer', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

@@ -1,5 +1,15 @@
 # Changelog
 
+## 5.0.0 - 2026-05-01
+
+### Added (3)
+
+#### REST API
+
+- `getMarginAssetRiskBasedLiquidationRatio()` (`GET /sapi/v1/margin/risk-based-liquidation-ratio`)
+- `getMarginRestrictedAssets()` (`GET /sapi/v1/margin/restricted-asset`)
+- `queryPreventedMatches()` (`GET /sapi/v1/margin/myPreventedMatches`)
+
 ## 3.0.0 - 2026-01-08
 
 ### Removed (6)

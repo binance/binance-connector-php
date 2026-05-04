@@ -9,6 +9,7 @@ use Binance\Client\DerivativesTradingPortfolioMargin\Model\BnbTransferRequest;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\BnbTransferResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllCmOpenConditionalOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllCmOpenOrdersResponse;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllUmAlgoOpenOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllUmOpenConditionalOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllUmOpenOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelCmConditionalOrderResponse;
@@ -16,6 +17,7 @@ use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelCmOrderResponse
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelMarginAccountAllOpenOrdersOnASymbolResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelMarginAccountOcoOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelMarginAccountOrderResponse;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelUmAlgoOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelUmConditionalOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelUmOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\ChangeAutoRepayFuturesStatusRequest;
@@ -35,6 +37,8 @@ use Binance\Client\DerivativesTradingPortfolioMargin\Model\FundAutoCollectionReq
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\FundAutoCollectionResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\FundCollectionByAssetRequest;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\FundCollectionByAssetResponse;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\FuturesTradfiPerpsContractRequest;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\FuturesTradfiPerpsContractResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\GetAutoRepayFuturesStatusResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\GetCmAccountDetailResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\GetCmCurrentPositionModeResponse;
@@ -73,6 +77,8 @@ use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewCmOrderRequest;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewCmOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewMarginOrderRequest;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewMarginOrderResponse;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmAlgoOrderRequest;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmAlgoOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmConditionalOrderRequest;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmConditionalOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmOrderRequest;
@@ -82,6 +88,7 @@ use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCmConditional
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCmOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentCmOpenConditionalOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentCmOpenOrdersResponse;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentUmOpenAlgoOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentUmOpenConditionalOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentUmOpenOrdersResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllMarginAccountOrdersResponse;
@@ -94,6 +101,7 @@ use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCmPositionInform
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentCmOpenConditionalOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentCmOpenOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentMarginOpenOrderResponse;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentUmOpenAlgoOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentUmOpenConditionalOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentUmOpenOrderResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryMarginAccountOrderResponse;
@@ -104,6 +112,7 @@ use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryMarginLoanRecord
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryMarginMaxWithdrawResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryMarginRepayRecordResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryPortfolioMarginNegativeBalanceInterestHistoryResponse;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUmAlgoOrderHistoryResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUmConditionalOrderHistoryResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUmModifyOrderHistoryResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUmOrderResponse;
@@ -981,9 +990,27 @@ class DerivativesTradingPortfolioMarginRestApi
     }
 
     /**
+     * Operation cancelAllUmAlgoOpenOrders.
+     *
+     * Cancel All UM Algo Open Orders (TRADE)
+     *
+     * @param string   $symbol     symbol (required)
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<CancelAllUmAlgoOpenOrdersResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function cancelAllUmAlgoOpenOrders($symbol, $recvWindow = null): ApiResponse
+    {
+        return $this->tradeApi->cancelAllUmAlgoOpenOrders($symbol, $recvWindow);
+    }
+
+    /**
      * Operation cancelAllUmOpenConditionalOrders.
      *
-     * Cancel All UM Open Conditional Orders (TRADE)
+     * Cancel All UM Open Conditional Orders
      *
      * @param string   $symbol     symbol (required)
      * @param null|int $recvWindow recvWindow (optional)
@@ -992,6 +1019,8 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function cancelAllUmOpenConditionalOrders($symbol, $recvWindow = null): ApiResponse
     {
@@ -1117,9 +1146,28 @@ class DerivativesTradingPortfolioMarginRestApi
     }
 
     /**
+     * Operation cancelUmAlgoOrder.
+     *
+     * Cancel UM Algo Order (TRADE)
+     *
+     * @param null|int    $algoId       algoId (optional)
+     * @param null|string $clientAlgoId clientAlgoId (optional)
+     * @param null|int    $recvWindow   recvWindow (optional)
+     *
+     * @return ApiResponse<CancelUmAlgoOrderResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function cancelUmAlgoOrder($algoId = null, $clientAlgoId = null, $recvWindow = null): ApiResponse
+    {
+        return $this->tradeApi->cancelUmAlgoOrder($algoId, $clientAlgoId, $recvWindow);
+    }
+
+    /**
      * Operation cancelUmConditionalOrder.
      *
-     * Cancel UM Conditional Order(TRADE)
+     * Cancel UM Conditional Order
      *
      * @param string      $symbol              symbol (required)
      * @param null|int    $strategyId          strategyId (optional)
@@ -1130,6 +1178,8 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function cancelUmConditionalOrder($symbol, $strategyId = null, $newClientStrategyId = null, $recvWindow = null): ApiResponse
     {
@@ -1195,6 +1245,23 @@ class DerivativesTradingPortfolioMarginRestApi
     public function cmPositionAdlQuantileEstimation($symbol = null, $recvWindow = null): ApiResponse
     {
         return $this->tradeApi->cmPositionAdlQuantileEstimation($symbol, $recvWindow);
+    }
+
+    /**
+     * Operation futuresTradfiPerpsContract.
+     *
+     * Futures TradFi Perps Contract(USER_DATA)
+     *
+     * @param FuturesTradfiPerpsContractRequest $futuresTradfiPerpsContractRequest futuresTradfiPerpsContractRequest (required)
+     *
+     * @return ApiResponse<FuturesTradfiPerpsContractResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest): ApiResponse
+    {
+        return $this->tradeApi->futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest);
     }
 
     /**
@@ -1391,9 +1458,26 @@ class DerivativesTradingPortfolioMarginRestApi
     }
 
     /**
+     * Operation newUmAlgoOrder.
+     *
+     * New UM Algo Order (TRADE)
+     *
+     * @param NewUmAlgoOrderRequest $newUmAlgoOrderRequest newUmAlgoOrderRequest (required)
+     *
+     * @return ApiResponse<NewUmAlgoOrderResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function newUmAlgoOrder($newUmAlgoOrderRequest): ApiResponse
+    {
+        return $this->tradeApi->newUmAlgoOrder($newUmAlgoOrderRequest);
+    }
+
+    /**
      * Operation newUmConditionalOrder.
      *
-     * New UM Conditional Order (TRADE)
+     * New UM Conditional Order
      *
      * @param NewUmConditionalOrderRequest $newUmConditionalOrderRequest newUmConditionalOrderRequest (required)
      *
@@ -1401,6 +1485,8 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function newUmConditionalOrder($newUmConditionalOrderRequest): ApiResponse
     {
@@ -1507,9 +1593,29 @@ class DerivativesTradingPortfolioMarginRestApi
     }
 
     /**
+     * Operation queryAllCurrentUmOpenAlgoOrders.
+     *
+     * Query All Current UM Open Algo Orders (USER_DATA)
+     *
+     * @param null|string $algoType   algoType (optional)
+     * @param null|string $symbol     symbol (optional)
+     * @param null|int    $algoId     algoId (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<QueryAllCurrentUmOpenAlgoOrdersResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function queryAllCurrentUmOpenAlgoOrders($algoType = null, $symbol = null, $algoId = null, $recvWindow = null): ApiResponse
+    {
+        return $this->tradeApi->queryAllCurrentUmOpenAlgoOrders($algoType, $symbol, $algoId, $recvWindow);
+    }
+
+    /**
      * Operation queryAllCurrentUmOpenConditionalOrders.
      *
-     * Query All Current UM Open Conditional Orders(USER_DATA)
+     * Query All Current UM Open Conditional Orders
      *
      * @param null|string $symbol     symbol (optional)
      * @param null|int    $recvWindow recvWindow (optional)
@@ -1518,6 +1624,8 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function queryAllCurrentUmOpenConditionalOrders($symbol = null, $recvWindow = null): ApiResponse
     {
@@ -1567,7 +1675,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryAllUmConditionalOrders.
      *
-     * Query All UM Conditional Orders(USER_DATA)
+     * Query All UM Conditional Orders
      *
      * @param null|string $symbol     symbol (optional)
      * @param null|int    $strategyId strategyId (optional)
@@ -1580,6 +1688,8 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function queryAllUmConditionalOrders($symbol = null, $strategyId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
@@ -1730,9 +1840,28 @@ class DerivativesTradingPortfolioMarginRestApi
     }
 
     /**
+     * Operation queryCurrentUmOpenAlgoOrder.
+     *
+     * Query Current UM Open Algo Order (USER_DATA)
+     *
+     * @param null|int    $algoId       algoId (optional)
+     * @param null|string $clientAlgoId clientAlgoId (optional)
+     * @param null|int    $recvWindow   recvWindow (optional)
+     *
+     * @return ApiResponse<QueryCurrentUmOpenAlgoOrderResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function queryCurrentUmOpenAlgoOrder($algoId = null, $clientAlgoId = null, $recvWindow = null): ApiResponse
+    {
+        return $this->tradeApi->queryCurrentUmOpenAlgoOrder($algoId, $clientAlgoId, $recvWindow);
+    }
+
+    /**
      * Operation queryCurrentUmOpenConditionalOrder.
      *
-     * Query Current UM Open Conditional Order(USER_DATA)
+     * Query Current UM Open Conditional Order
      *
      * @param string      $symbol              symbol (required)
      * @param null|int    $strategyId          strategyId (optional)
@@ -1743,6 +1872,8 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function queryCurrentUmOpenConditionalOrder($symbol, $strategyId = null, $newClientStrategyId = null, $recvWindow = null): ApiResponse
     {
@@ -1847,9 +1978,31 @@ class DerivativesTradingPortfolioMarginRestApi
     }
 
     /**
+     * Operation queryUmAlgoOrderHistory.
+     *
+     * Query UM Algo Order History (USER_DATA)
+     *
+     * @param string   $symbol     symbol (required)
+     * @param null|int $algoId     algoId (optional)
+     * @param null|int $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
+     * @param null|int $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
+     * @param null|int $limit      Default 100; max 1000 (optional)
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<QueryUmAlgoOrderHistoryResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function queryUmAlgoOrderHistory($symbol, $algoId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
+    {
+        return $this->tradeApi->queryUmAlgoOrderHistory($symbol, $algoId, $startTime, $endTime, $limit, $recvWindow);
+    }
+
+    /**
      * Operation queryUmConditionalOrderHistory.
      *
-     * Query UM Conditional Order History(USER_DATA)
+     * Query UM Conditional Order History
      *
      * @param string      $symbol              symbol (required)
      * @param null|int    $strategyId          strategyId (optional)
@@ -1860,6 +2013,8 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function queryUmConditionalOrderHistory($symbol, $strategyId = null, $newClientStrategyId = null, $recvWindow = null): ApiResponse
     {

@@ -154,7 +154,6 @@ class MiningRestApi
      * Hashrate Resale Detail(USER_DATA)
      *
      * @param int      $configId   Mining ID 168 (required)
-     * @param string   $userName   Mining account test (required)
      * @param null|int $pageIndex  Page number, empty default first page, starting from 1 (optional)
      * @param null|int $pageSize   Min 10,Max 200 (optional)
      * @param null|int $recvWindow recvWindow (optional)
@@ -164,9 +163,9 @@ class MiningRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function hashrateResaleDetail($configId, $userName, $pageIndex = null, $pageSize = null, $recvWindow = null): ApiResponse
+    public function hashrateResaleDetail($configId, $pageIndex = null, $pageSize = null, $recvWindow = null): ApiResponse
     {
-        return $this->miningApi->hashrateResaleDetail($configId, $userName, $pageIndex, $pageSize, $recvWindow);
+        return $this->miningApi->hashrateResaleDetail($configId, $pageIndex, $pageSize, $recvWindow);
     }
 
     /**

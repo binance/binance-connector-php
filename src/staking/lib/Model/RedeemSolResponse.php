@@ -65,6 +65,7 @@ class RedeemSolResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
         'solAmount' => 'string',
         'exchangeRate' => 'string',
         'arrivalTime' => 'int',
+        'redeemId' => 'int',
     ];
 
     /**
@@ -81,6 +82,7 @@ class RedeemSolResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
         'solAmount' => null,
         'exchangeRate' => null,
         'arrivalTime' => 'int64',
+        'redeemId' => 'int64',
     ];
 
     /**
@@ -93,6 +95,7 @@ class RedeemSolResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
         'solAmount' => false,
         'exchangeRate' => false,
         'arrivalTime' => false,
+        'redeemId' => false,
     ];
 
     /**
@@ -113,6 +116,7 @@ class RedeemSolResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
         'solAmount' => 'solAmount',
         'exchangeRate' => 'exchangeRate',
         'arrivalTime' => 'arrivalTime',
+        'redeemId' => 'redeemId',
     ];
 
     /**
@@ -125,6 +129,7 @@ class RedeemSolResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
         'solAmount' => 'setSolAmount',
         'exchangeRate' => 'setExchangeRate',
         'arrivalTime' => 'setArrivalTime',
+        'redeemId' => 'setRedeemId',
     ];
 
     /**
@@ -137,6 +142,7 @@ class RedeemSolResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
         'solAmount' => 'getSolAmount',
         'exchangeRate' => 'getExchangeRate',
         'arrivalTime' => 'getArrivalTime',
+        'redeemId' => 'getRedeemId',
     ];
 
     /**
@@ -158,6 +164,7 @@ class RedeemSolResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
         $this->setIfExists('solAmount', $data ?? [], null);
         $this->setIfExists('exchangeRate', $data ?? [], null);
         $this->setIfExists('arrivalTime', $data ?? [], null);
+        $this->setIfExists('redeemId', $data ?? [], null);
     }
 
     /**
@@ -392,6 +399,33 @@ class RedeemSolResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable arrivalTime cannot be null');
         }
         $this->container['arrivalTime'] = $arrivalTime;
+
+        return $this;
+    }
+
+    /**
+     * Gets redeemId.
+     *
+     * @return null|int
+     */
+    public function getRedeemId()
+    {
+        return $this->container['redeemId'];
+    }
+
+    /**
+     * Sets redeemId.
+     *
+     * @param null|int $redeemId redeemId
+     *
+     * @return self
+     */
+    public function setRedeemId($redeemId)
+    {
+        if (is_null($redeemId)) {
+            throw new \InvalidArgumentException('non-nullable redeemId cannot be null');
+        }
+        $this->container['redeemId'] = $redeemId;
 
         return $this;
     }

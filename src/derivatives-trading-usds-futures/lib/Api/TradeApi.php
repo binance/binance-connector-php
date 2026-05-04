@@ -50,7 +50,6 @@ use Binance\Client\DerivativesTradingUsdsFutures\Model\ChangePositionModeRespons
 use Binance\Client\DerivativesTradingUsdsFutures\Model\CurrentAllAlgoOpenOrdersResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\CurrentAllOpenOrdersResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractRequest;
-use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\GetOrderModifyHistoryResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\GetPositionMarginChangeHistoryResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\ModifyIsolatedPositionMarginRequest;
@@ -865,8 +864,8 @@ class TradeApi
      *
      * Cancel Algo Order (TRADE)
      *
-     * @param null|int    $algoid       algoid (optional)
-     * @param null|string $clientalgoid clientalgoid (optional)
+     * @param null|int    $algoId       algoId (optional)
+     * @param null|string $clientAlgoId clientAlgoId (optional)
      * @param null|int    $recvWindow   recvWindow (optional)
      *
      * @return ApiResponse<CancelAlgoOrderResponse>
@@ -874,9 +873,9 @@ class TradeApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function cancelAlgoOrder($algoid = null, $clientalgoid = null, $recvWindow = null): ApiResponse
+    public function cancelAlgoOrder($algoId = null, $clientAlgoId = null, $recvWindow = null): ApiResponse
     {
-        return $this->cancelAlgoOrderWithHttpInfo($algoid, $clientalgoid, $recvWindow);
+        return $this->cancelAlgoOrderWithHttpInfo($algoId, $clientAlgoId, $recvWindow);
     }
 
     /**
@@ -884,8 +883,8 @@ class TradeApi
      *
      * Cancel Algo Order (TRADE)
      *
-     * @param null|int    $algoid       (optional)
-     * @param null|string $clientalgoid (optional)
+     * @param null|int    $algoId       (optional)
+     * @param null|string $clientAlgoId (optional)
      * @param null|int    $recvWindow   (optional)
      *
      * @return ApiResponse<CancelAlgoOrderResponse>
@@ -893,9 +892,9 @@ class TradeApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function cancelAlgoOrderWithHttpInfo($algoid = null, $clientalgoid = null, $recvWindow = null): ApiResponse
+    public function cancelAlgoOrderWithHttpInfo($algoId = null, $clientAlgoId = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->cancelAlgoOrderRequest($algoid, $clientalgoid, $recvWindow);
+        $request = $this->cancelAlgoOrderRequest($algoId, $clientAlgoId, $recvWindow);
 
         try {
             try {
@@ -965,15 +964,15 @@ class TradeApi
     /**
      * Create request for operation 'cancelAlgoOrder'.
      *
-     * @param null|int    $algoid       (optional)
-     * @param null|string $clientalgoid (optional)
+     * @param null|int    $algoId       (optional)
+     * @param null|string $clientAlgoId (optional)
      * @param null|int    $recvWindow   (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function cancelAlgoOrderRequest($algoid = null, $clientalgoid = null, $recvWindow = null)
+    public function cancelAlgoOrderRequest($algoId = null, $clientAlgoId = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['cancelAlgoOrder'][0];
 
@@ -986,8 +985,8 @@ class TradeApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $algoid,
-            'algoid', // param base name
+            $algoId,
+            'algoId', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -995,8 +994,8 @@ class TradeApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $clientalgoid,
-            'clientalgoid', // param base name
+            $clientAlgoId,
+            'clientAlgoId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -3004,14 +3003,12 @@ class TradeApi
      *
      * @param FuturesTradfiPerpsContractRequest $futuresTradfiPerpsContractRequest futuresTradfiPerpsContractRequest (required)
      *
-     * @return ApiResponse<FuturesTradfiPerpsContractResponse>
-     *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest): ApiResponse
+    public function futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest)
     {
-        return $this->futuresTradfiPerpsContractWithHttpInfo($futuresTradfiPerpsContractRequest);
+        $this->futuresTradfiPerpsContractWithHttpInfo($futuresTradfiPerpsContractRequest);
     }
 
     /**
@@ -3021,12 +3018,10 @@ class TradeApi
      *
      * @param FuturesTradfiPerpsContractRequest $futuresTradfiPerpsContractRequest (required)
      *
-     * @return ApiResponse<FuturesTradfiPerpsContractResponse>
-     *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function futuresTradfiPerpsContractWithHttpInfo($futuresTradfiPerpsContractRequest): ApiResponse
+    public function futuresTradfiPerpsContractWithHttpInfo($futuresTradfiPerpsContractRequest)
     {
         $request = $this->futuresTradfiPerpsContractRequest($futuresTradfiPerpsContractRequest);
 
@@ -3051,44 +3046,9 @@ class TradeApi
 
             $statusCode = $response->getStatusCode();
 
-            switch ($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractResponse',
-                        $request,
-                        $response,
-                    );
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractResponse',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    throw $e;
             }
 
             throw $e;
@@ -3132,7 +3092,7 @@ class TradeApi
         }
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
+            [],
             $contentType,
             $multipart
         );
@@ -5590,7 +5550,6 @@ class TradeApi
      * @param null|int $algoId     algoId (optional)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $page       page (optional)
      * @param null|int $limit      Default 100; max 1000 (optional)
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -5599,9 +5558,9 @@ class TradeApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function queryAllAlgoOrders($symbol, $algoId = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null): ApiResponse
+    public function queryAllAlgoOrders($symbol, $algoId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
-        return $this->queryAllAlgoOrdersWithHttpInfo($symbol, $algoId, $startTime, $endTime, $page, $limit, $recvWindow);
+        return $this->queryAllAlgoOrdersWithHttpInfo($symbol, $algoId, $startTime, $endTime, $limit, $recvWindow);
     }
 
     /**
@@ -5613,7 +5572,6 @@ class TradeApi
      * @param null|int $algoId     (optional)
      * @param null|int $startTime  (optional)
      * @param null|int $endTime    (optional)
-     * @param null|int $page       (optional)
      * @param null|int $limit      Default 100; max 1000 (optional)
      * @param null|int $recvWindow (optional)
      *
@@ -5622,9 +5580,9 @@ class TradeApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function queryAllAlgoOrdersWithHttpInfo($symbol, $algoId = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null): ApiResponse
+    public function queryAllAlgoOrdersWithHttpInfo($symbol, $algoId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->queryAllAlgoOrdersRequest($symbol, $algoId, $startTime, $endTime, $page, $limit, $recvWindow);
+        $request = $this->queryAllAlgoOrdersRequest($symbol, $algoId, $startTime, $endTime, $limit, $recvWindow);
 
         try {
             try {
@@ -5698,7 +5656,6 @@ class TradeApi
      * @param null|int $algoId     (optional)
      * @param null|int $startTime  (optional)
      * @param null|int $endTime    (optional)
-     * @param null|int $page       (optional)
      * @param null|int $limit      Default 100; max 1000 (optional)
      * @param null|int $recvWindow (optional)
      *
@@ -5706,7 +5663,7 @@ class TradeApi
      *
      * @throws \InvalidArgumentException
      */
-    public function queryAllAlgoOrdersRequest($symbol, $algoId = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null)
+    public function queryAllAlgoOrdersRequest($symbol, $algoId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['queryAllAlgoOrders'][0];
 
@@ -5755,15 +5712,6 @@ class TradeApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $endTime,
             'endTime', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode

@@ -1,5 +1,100 @@
 # Changelog
 
+## 5.0.0 - 2026-05-01
+
+### Changed (22)
+
+#### REST API
+
+- Added parameter `algoId`
+  - affected methods:
+    - `cancelAlgoOrder()` (`DELETE /fapi/v1/algoOrder`)
+- Added parameter `clientAlgoId`
+  - affected methods:
+    - `cancelAlgoOrder()` (`DELETE /fapi/v1/algoOrder`)
+- Added parameter `newOrderRespType`
+  - affected methods:
+    - `newAlgoOrder()` (`POST /fapi/v1/algoOrder`)
+- Deleted parameter `algoid`
+  - affected methods:
+    - `cancelAlgoOrder()` (`DELETE /fapi/v1/algoOrder`)
+- Deleted parameter `clientalgoid`
+  - affected methods:
+    - `cancelAlgoOrder()` (`DELETE /fapi/v1/algoOrder`)
+- Deleted parameter `page`
+  - affected methods:
+    - `queryAllAlgoOrders()` (`GET /fapi/v1/allAlgoOrders`)
+- Modified parameter `batchOrders`:
+  - items: property `stopPrice` added
+  - items: item property `stopPrice` added
+  - affected methods:
+    - `modifyMultipleOrders()` (`PUT /fapi/v1/batchOrders`)
+- Modified parameter `interval`:
+  - enum added: `1s`
+  - affected methods:
+    - `continuousContractKlineCandlestickData()` (`GET /fapi/v1/continuousKlines`)
+    - `indexPriceKlineCandlestickData()` (`GET /fapi/v1/indexPriceKlines`)
+    - `klineCandlestickData()` (`GET /fapi/v1/klines`)
+    - `markPriceKlineCandlestickData()` (`GET /fapi/v1/markPriceKlines`)
+    - `premiumIndexKlineData()` (`GET /fapi/v1/premiumIndexKlines`)
+- Modified parameter `limit`:
+  - required: `true` → `false`
+  - affected methods:
+    - `basis()` (`GET /futures/data/basis`)
+- Modified response for `placeMultipleOrders()` (`POST /fapi/v1/batchOrders`):
+  - items: property `closePosition` added
+  - items: item property `closePosition` added
+
+- Modified response for `exchangeInformation()` (`GET /fapi/v1/exchangeInfo`):
+  - `symbols`.items: property `orderTypes` added
+  - `symbols`.items: property `OrderType` deleted
+  - `symbols`.items: item property `orderTypes` added
+  - `symbols`.items: item property `OrderType` deleted
+
+- Modified response for `cancelOrder()` (`DELETE /fapi/v1/order`):
+  - property `avgPrice` added
+
+- Modified response for `queryOrder()` (`GET /fapi/v1/order`):
+  - property `goodTillDate` deleted
+  - property `priceMatch` deleted
+  - property `selfTradePreventionMode` deleted
+
+- Modified response for `symbolConfiguration()` (`GET /fapi/v1/symbolConfig`):
+  - items.`isAutoAddMargin`: type `string` → `boolean`
+  - items.`isAutoAddMargin`: type `string` → `boolean`
+
+#### WebSocket API
+
+- Added parameter `algoId`
+  - affected methods:
+    - `cancelAlgoOrder()` (`algoOrder.cancel` method)
+- Added parameter `clientAlgoId`
+  - affected methods:
+    - `cancelAlgoOrder()` (`algoOrder.cancel` method)
+- Added parameter `newOrderRespType`
+  - affected methods:
+    - `newAlgoOrder()` (`algoOrder.place` method)
+- Deleted parameter `algoid`
+  - affected methods:
+    - `cancelAlgoOrder()` (`algoOrder.cancel` method)
+- Deleted parameter `clientalgoid`
+  - affected methods:
+    - `cancelAlgoOrder()` (`algoOrder.cancel` method)
+- Modified response for `positionInformationV2()` (`v2/account.position` method):
+  - `result`.items: property `unRealizedProfit` added
+  - `result`.items: property `unrealizedProfit` deleted
+  - `result`.items: item property `unRealizedProfit` added
+  - `result`.items: item property `unrealizedProfit` deleted
+
+#### WebSocket Streams
+
+- Modified response for `markPriceStreamForAllMarket()` (`!markPrice@arr@<updateSpeed>` stream):
+  - items: property `ap` added
+  - items: item property `ap` added
+
+- Modified response for `markPriceStream()` (`<symbol>@markPrice@<updateSpeed>` stream):
+  - property `ap` added
+
 ## 3.0.0 - 2026-01-08
 
 ### Added (14)

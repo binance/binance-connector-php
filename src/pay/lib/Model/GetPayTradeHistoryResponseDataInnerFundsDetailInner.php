@@ -63,7 +63,7 @@ class GetPayTradeHistoryResponseDataInnerFundsDetailInner implements ModelInterf
     protected static $openAPITypes = [
         'currency' => 'string',
         'amount' => 'string',
-        'walletAssetCost' => '\Binance\Client\Pay\Model\GetPayTradeHistoryResponseDataInnerFundsDetailInnerWalletAssetCostInner[]',
+        'walletAssetCost' => '\Binance\Client\Pay\Model\GetPayTradeHistoryResponseDataInnerFundsDetailInnerWalletAssetCost',
     ];
 
     /**
@@ -338,7 +338,7 @@ class GetPayTradeHistoryResponseDataInnerFundsDetailInner implements ModelInterf
     /**
      * Gets walletAssetCost.
      *
-     * @return null|GetPayTradeHistoryResponseDataInnerFundsDetailInnerWalletAssetCostInner[]
+     * @return null|GetPayTradeHistoryResponseDataInnerFundsDetailInnerWalletAssetCost
      */
     public function getWalletAssetCost()
     {
@@ -348,7 +348,7 @@ class GetPayTradeHistoryResponseDataInnerFundsDetailInner implements ModelInterf
     /**
      * Sets walletAssetCost.
      *
-     * @param null|GetPayTradeHistoryResponseDataInnerFundsDetailInnerWalletAssetCostInner[] $walletAssetCost walletAssetCost
+     * @param null|GetPayTradeHistoryResponseDataInnerFundsDetailInnerWalletAssetCost $walletAssetCost walletAssetCost
      *
      * @return self
      */

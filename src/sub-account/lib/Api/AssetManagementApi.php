@@ -1666,6 +1666,8 @@ class AssetManagementApi
      *
      * Get Summary of Sub-account&#39;s Futures Account (For Master Account) (USER_DATA)
      *
+     * @param int      $page       Page (required)
+     * @param int      $limit      Limit (Max: 500) (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetSummaryOfSubAccountsFuturesAccountResponse>
@@ -1673,9 +1675,9 @@ class AssetManagementApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getSummaryOfSubAccountsFuturesAccount($recvWindow = null): ApiResponse
+    public function getSummaryOfSubAccountsFuturesAccount($page, $limit, $recvWindow = null): ApiResponse
     {
-        return $this->getSummaryOfSubAccountsFuturesAccountWithHttpInfo($recvWindow);
+        return $this->getSummaryOfSubAccountsFuturesAccountWithHttpInfo($page, $limit, $recvWindow);
     }
 
     /**
@@ -1683,6 +1685,8 @@ class AssetManagementApi
      *
      * Get Summary of Sub-account&#39;s Futures Account (For Master Account) (USER_DATA)
      *
+     * @param int      $page       Page (required)
+     * @param int      $limit      Limit (Max: 500) (required)
      * @param null|int $recvWindow (optional)
      *
      * @return ApiResponse<GetSummaryOfSubAccountsFuturesAccountResponse>
@@ -1690,9 +1694,9 @@ class AssetManagementApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getSummaryOfSubAccountsFuturesAccountWithHttpInfo($recvWindow = null): ApiResponse
+    public function getSummaryOfSubAccountsFuturesAccountWithHttpInfo($page, $limit, $recvWindow = null): ApiResponse
     {
-        $request = $this->getSummaryOfSubAccountsFuturesAccountRequest($recvWindow);
+        $request = $this->getSummaryOfSubAccountsFuturesAccountRequest($page, $limit, $recvWindow);
 
         try {
             try {
@@ -1762,15 +1766,31 @@ class AssetManagementApi
     /**
      * Create request for operation 'getSummaryOfSubAccountsFuturesAccount'.
      *
+     * @param int      $page       Page (required)
+     * @param int      $limit      Limit (Max: 500) (required)
      * @param null|int $recvWindow (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function getSummaryOfSubAccountsFuturesAccountRequest($recvWindow = null)
+    public function getSummaryOfSubAccountsFuturesAccountRequest($page, $limit, $recvWindow = null)
     {
         $contentType = self::contentTypes['getSummaryOfSubAccountsFuturesAccount'][0];
+
+        // verify the required parameter 'page' is set
+        if (null === $page || (is_array($page) && 0 === count($page))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page when calling getSummaryOfSubAccountsFuturesAccount'
+            );
+        }
+
+        // verify the required parameter 'limit' is set
+        if (null === $limit || (is_array($limit) && 0 === count($limit))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $limit when calling getSummaryOfSubAccountsFuturesAccount'
+            );
+        }
 
         $resourcePath = '/sapi/v1/sub-account/futures/accountSummary';
         $formParams = [];
@@ -1779,6 +1799,24 @@ class AssetManagementApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page,
+            'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,

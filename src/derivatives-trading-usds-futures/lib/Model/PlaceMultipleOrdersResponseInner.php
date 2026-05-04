@@ -74,6 +74,7 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'positionSide' => 'string',
         'status' => 'string',
         'stopPrice' => 'string',
+        'closePosition' => 'bool',
         'symbol' => 'string',
         'timeInForce' => 'string',
         'type' => 'string',
@@ -111,6 +112,7 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'positionSide' => null,
         'status' => null,
         'stopPrice' => null,
+        'closePosition' => null,
         'symbol' => null,
         'timeInForce' => null,
         'type' => null,
@@ -144,6 +146,7 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'positionSide' => false,
         'status' => false,
         'stopPrice' => false,
+        'closePosition' => false,
         'symbol' => false,
         'timeInForce' => false,
         'type' => false,
@@ -185,6 +188,7 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'positionSide' => 'positionSide',
         'status' => 'status',
         'stopPrice' => 'stopPrice',
+        'closePosition' => 'closePosition',
         'symbol' => 'symbol',
         'timeInForce' => 'timeInForce',
         'type' => 'type',
@@ -218,6 +222,7 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'positionSide' => 'setPositionSide',
         'status' => 'setStatus',
         'stopPrice' => 'setStopPrice',
+        'closePosition' => 'setClosePosition',
         'symbol' => 'setSymbol',
         'timeInForce' => 'setTimeInForce',
         'type' => 'setType',
@@ -251,6 +256,7 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         'positionSide' => 'getPositionSide',
         'status' => 'getStatus',
         'stopPrice' => 'getStopPrice',
+        'closePosition' => 'getClosePosition',
         'symbol' => 'getSymbol',
         'timeInForce' => 'getTimeInForce',
         'type' => 'getType',
@@ -293,6 +299,7 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
         $this->setIfExists('positionSide', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('stopPrice', $data ?? [], null);
+        $this->setIfExists('closePosition', $data ?? [], null);
         $this->setIfExists('symbol', $data ?? [], null);
         $this->setIfExists('timeInForce', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
@@ -782,6 +789,33 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable stopPrice cannot be null');
         }
         $this->container['stopPrice'] = $stopPrice;
+
+        return $this;
+    }
+
+    /**
+     * Gets closePosition.
+     *
+     * @return null|bool
+     */
+    public function getClosePosition()
+    {
+        return $this->container['closePosition'];
+    }
+
+    /**
+     * Sets closePosition.
+     *
+     * @param null|bool $closePosition closePosition
+     *
+     * @return self
+     */
+    public function setClosePosition($closePosition)
+    {
+        if (is_null($closePosition)) {
+            throw new \InvalidArgumentException('non-nullable closePosition cannot be null');
+        }
+        $this->container['closePosition'] = $closePosition;
 
         return $this;
     }

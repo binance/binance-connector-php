@@ -16,7 +16,7 @@
 
 ## Asset
 
-[/sapi/v1/asset/assetDetail](https://developers.binance.com/docs/wallet/asset/Asset-Detail) - assetDetail - [AssetDetailExample.php:25](/examples/wallet/asset/AssetDetailExample.php#L25)
+[/sapi/v1/asset/assetDetail](https://developers.binance.com/docs/wallet/asset/Asset-Detail) - assetDetail - [AssetDetailExample.php:26](/examples/wallet/asset/AssetDetailExample.php#L26)
 
 [/sapi/v1/asset/assetDividend](https://developers.binance.com/docs/wallet/asset/assets-divided-record) - assetDividendRecord - [AssetDividendRecordExample.php:29](/examples/wallet/asset/AssetDividendRecordExample.php#L29)
 
@@ -26,7 +26,7 @@
 
 [/sapi/v1/asset/dust](https://developers.binance.com/docs/wallet/asset/Dust-Transfer) - dustTransfer - [DustTransferExample.php:27](/examples/wallet/asset/DustTransferExample.php#L27)
 
-[/sapi/v1/asset/dribblet](https://developers.binance.com/docs/wallet/asset/dust-log) - dustlog - [DustlogExample.php:27](/examples/wallet/asset/DustlogExample.php#L27)
+[/sapi/v1/asset/dribblet](https://developers.binance.com/docs/wallet/asset/dust-log) - dustlog - [DustlogExample.php:28](/examples/wallet/asset/DustlogExample.php#L28)
 
 [/sapi/v1/asset/get-funding-asset](https://developers.binance.com/docs/wallet/asset/Funding-Wallet) - fundingWallet - [FundingWalletExample.php:26](/examples/wallet/asset/FundingWalletExample.php#L26)
 

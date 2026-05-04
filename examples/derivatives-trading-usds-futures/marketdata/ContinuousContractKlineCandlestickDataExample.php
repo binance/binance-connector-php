@@ -24,7 +24,7 @@ function continuousContractKlineCandlestickDataExample()
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
     $pair = '';
     $contractType = ContractType::PERPETUAL;
-    $interval = Interval::INTERVAL_1M;
+    $interval = Interval::INTERVAL_1S;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $limit = 100;

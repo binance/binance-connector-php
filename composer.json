@@ -23,6 +23,7 @@
     "autoload": {
         "psr-4": {
             "Binance\\Client\\Algo\\" : "src/algo/lib/",
+            "Binance\\Client\\Alpha\\" : "src/alpha/lib/",
             "Binance\\Client\\C2c\\" : "src/c2c/lib/",
             "Binance\\Common\\" : "src/common/lib/" ,
             "Binance\\Client\\Convert\\" : "src/convert/lib/",

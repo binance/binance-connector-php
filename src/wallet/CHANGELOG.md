@@ -1,5 +1,31 @@
 # Changelog
 
+## 5.0.0 - 2026-05-01
+
+### Changed (6)
+
+- Added parameter `accountType`
+  - affected methods:
+    - `dustlog()` (`GET /sapi/v1/asset/dribblet`)
+- Added parameter `asset`
+  - affected methods:
+    - `assetDetail()` (`GET /sapi/v1/asset/assetDetail`)
+- Modified response for `assetDividendRecord()` (`GET /sapi/v1/asset/assetDividend`):
+  - `rows`.items: property `direction` added
+  - `rows`.items: item property `direction` added
+
+- Modified response for `vaspList()` (`GET /sapi/v1/localentity/vasp`):
+  - items: property `identifier` added
+  - items: item property `identifier` added
+
+- Modified response for `withdrawHistoryV1()` (`GET /sapi/v1/localentity/withdraw/history`):
+  - items: property `addressTag` deleted
+  - items: item property `addressTag` deleted
+
+- Modified response for `withdrawHistoryV2()` (`GET /sapi/v2/localentity/withdraw/history`):
+  - items: property `addressTag` deleted
+  - items: item property `addressTag` deleted
+
 ## 3.0.0 - 2026-01-08
 
 ### Added (3)

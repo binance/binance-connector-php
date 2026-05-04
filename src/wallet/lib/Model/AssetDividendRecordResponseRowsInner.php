@@ -67,6 +67,7 @@ class AssetDividendRecordResponseRowsInner implements ModelInterface, \ArrayAcce
         'divTime' => 'int',
         'enInfo' => 'string',
         'tranId' => 'int',
+        'direction' => 'int',
     ];
 
     /**
@@ -85,6 +86,7 @@ class AssetDividendRecordResponseRowsInner implements ModelInterface, \ArrayAcce
         'divTime' => 'int64',
         'enInfo' => null,
         'tranId' => 'int64',
+        'direction' => 'int64',
     ];
 
     /**
@@ -99,6 +101,7 @@ class AssetDividendRecordResponseRowsInner implements ModelInterface, \ArrayAcce
         'divTime' => false,
         'enInfo' => false,
         'tranId' => false,
+        'direction' => false,
     ];
 
     /**
@@ -121,6 +124,7 @@ class AssetDividendRecordResponseRowsInner implements ModelInterface, \ArrayAcce
         'divTime' => 'divTime',
         'enInfo' => 'enInfo',
         'tranId' => 'tranId',
+        'direction' => 'direction',
     ];
 
     /**
@@ -135,6 +139,7 @@ class AssetDividendRecordResponseRowsInner implements ModelInterface, \ArrayAcce
         'divTime' => 'setDivTime',
         'enInfo' => 'setEnInfo',
         'tranId' => 'setTranId',
+        'direction' => 'setDirection',
     ];
 
     /**
@@ -149,6 +154,7 @@ class AssetDividendRecordResponseRowsInner implements ModelInterface, \ArrayAcce
         'divTime' => 'getDivTime',
         'enInfo' => 'getEnInfo',
         'tranId' => 'getTranId',
+        'direction' => 'getDirection',
     ];
 
     /**
@@ -172,6 +178,7 @@ class AssetDividendRecordResponseRowsInner implements ModelInterface, \ArrayAcce
         $this->setIfExists('divTime', $data ?? [], null);
         $this->setIfExists('enInfo', $data ?? [], null);
         $this->setIfExists('tranId', $data ?? [], null);
+        $this->setIfExists('direction', $data ?? [], null);
     }
 
     /**
@@ -460,6 +467,33 @@ class AssetDividendRecordResponseRowsInner implements ModelInterface, \ArrayAcce
             throw new \InvalidArgumentException('non-nullable tranId cannot be null');
         }
         $this->container['tranId'] = $tranId;
+
+        return $this;
+    }
+
+    /**
+     * Gets direction.
+     *
+     * @return null|int
+     */
+    public function getDirection()
+    {
+        return $this->container['direction'];
+    }
+
+    /**
+     * Sets direction.
+     *
+     * @param null|int $direction direction
+     *
+     * @return self
+     */
+    public function setDirection($direction)
+    {
+        if (is_null($direction)) {
+            throw new \InvalidArgumentException('non-nullable direction cannot be null');
+        }
+        $this->container['direction'] = $direction;
 
         return $this;
     }

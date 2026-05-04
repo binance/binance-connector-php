@@ -441,6 +441,8 @@ class SubAccountRestApi
      *
      * Get Summary of Sub-account&#39;s Futures Account (For Master Account) (USER_DATA)
      *
+     * @param int      $page       Page (required)
+     * @param int      $limit      Limit (Max: 500) (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetSummaryOfSubAccountsFuturesAccountResponse>
@@ -448,9 +450,9 @@ class SubAccountRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getSummaryOfSubAccountsFuturesAccount($recvWindow = null): ApiResponse
+    public function getSummaryOfSubAccountsFuturesAccount($page, $limit, $recvWindow = null): ApiResponse
     {
-        return $this->assetManagementApi->getSummaryOfSubAccountsFuturesAccount($recvWindow);
+        return $this->assetManagementApi->getSummaryOfSubAccountsFuturesAccount($page, $limit, $recvWindow);
     }
 
     /**

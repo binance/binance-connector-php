@@ -13,6 +13,7 @@ use Binance\Client\Spot\Model\DeleteOrderListResponse;
 use Binance\Client\Spot\Model\DeleteOrderResponse;
 use Binance\Client\Spot\Model\DepthResponse;
 use Binance\Client\Spot\Model\ExchangeInfoResponse;
+use Binance\Client\Spot\Model\ExecutionRulesResponse;
 use Binance\Client\Spot\Model\GetAccountResponse;
 use Binance\Client\Spot\Model\GetOpenOrdersResponse;
 use Binance\Client\Spot\Model\GetOrderListResponse;
@@ -49,6 +50,8 @@ use Binance\Client\Spot\Model\OrderTestRequest;
 use Binance\Client\Spot\Model\OrderTestResponse;
 use Binance\Client\Spot\Model\Permissions;
 use Binance\Client\Spot\Model\RateLimitOrderResponse;
+use Binance\Client\Spot\Model\ReferencePriceCalculationResponse;
+use Binance\Client\Spot\Model\ReferencePriceResponse;
 use Binance\Client\Spot\Model\SorOrderRequest;
 use Binance\Client\Spot\Model\SorOrderResponse;
 use Binance\Client\Spot\Model\SorOrderTestRequest;
@@ -397,6 +400,25 @@ class SpotRestApi
     }
 
     /**
+     * Operation executionRules.
+     *
+     * Query Execution Rules
+     *
+     * @param null|string       $symbol       Symbol to query (optional)
+     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
+     *
+     * @return ApiResponse<ExecutionRulesResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function executionRules($symbol = null, $symbols = null, $symbolStatus = null): ApiResponse
+    {
+        return $this->generalApi->executionRules($symbol, $symbols, $symbolStatus);
+    }
+
+    /**
      * Operation ping.
      *
      * Test connectivity
@@ -538,6 +560,41 @@ class SpotRestApi
     public function klines($symbol, $interval, $startTime = null, $endTime = null, $timeZone = null, $limit = null): ApiResponse
     {
         return $this->marketApi->klines($symbol, $interval, $startTime, $endTime, $timeZone, $limit);
+    }
+
+    /**
+     * Operation referencePrice.
+     *
+     * Query Reference Price
+     *
+     * @param string $symbol symbol (required)
+     *
+     * @return ApiResponse<ReferencePriceResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function referencePrice($symbol): ApiResponse
+    {
+        return $this->marketApi->referencePrice($symbol);
+    }
+
+    /**
+     * Operation referencePriceCalculation.
+     *
+     * Query Reference Price Calculation
+     *
+     * @param string            $symbol       symbol (required)
+     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
+     *
+     * @return ApiResponse<ReferencePriceCalculationResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function referencePriceCalculation($symbol, $symbolStatus = null): ApiResponse
+    {
+        return $this->marketApi->referencePriceCalculation($symbol, $symbolStatus);
     }
 
     /**

@@ -68,6 +68,7 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
         'canDeposit' => 'bool',
         'canWithdraw' => 'bool',
         'reduceOnly' => 'bool',
+        'tradeGroupId' => 'int',
     ];
 
     /**
@@ -87,6 +88,7 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
         'canDeposit' => null,
         'canWithdraw' => null,
         'reduceOnly' => null,
+        'tradeGroupId' => 'int64',
     ];
 
     /**
@@ -102,6 +104,7 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
         'canDeposit' => false,
         'canWithdraw' => false,
         'reduceOnly' => false,
+        'tradeGroupId' => false,
     ];
 
     /**
@@ -125,6 +128,7 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
         'canDeposit' => 'canDeposit',
         'canWithdraw' => 'canWithdraw',
         'reduceOnly' => 'reduceOnly',
+        'tradeGroupId' => 'tradeGroupId',
     ];
 
     /**
@@ -140,6 +144,7 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
         'canDeposit' => 'setCanDeposit',
         'canWithdraw' => 'setCanWithdraw',
         'reduceOnly' => 'setReduceOnly',
+        'tradeGroupId' => 'setTradeGroupId',
     ];
 
     /**
@@ -155,6 +160,7 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
         'canDeposit' => 'getCanDeposit',
         'canWithdraw' => 'getCanWithdraw',
         'reduceOnly' => 'getReduceOnly',
+        'tradeGroupId' => 'getTradeGroupId',
     ];
 
     /**
@@ -179,6 +185,7 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
         $this->setIfExists('canDeposit', $data ?? [], null);
         $this->setIfExists('canWithdraw', $data ?? [], null);
         $this->setIfExists('reduceOnly', $data ?? [], null);
+        $this->setIfExists('tradeGroupId', $data ?? [], null);
     }
 
     /**
@@ -494,6 +501,33 @@ class OptionMarginAccountInformationResponse implements ModelInterface, \ArrayAc
             throw new \InvalidArgumentException('non-nullable reduceOnly cannot be null');
         }
         $this->container['reduceOnly'] = $reduceOnly;
+
+        return $this;
+    }
+
+    /**
+     * Gets tradeGroupId.
+     *
+     * @return null|int
+     */
+    public function getTradeGroupId()
+    {
+        return $this->container['tradeGroupId'];
+    }
+
+    /**
+     * Sets tradeGroupId.
+     *
+     * @param null|int $tradeGroupId tradeGroupId
+     *
+     * @return self
+     */
+    public function setTradeGroupId($tradeGroupId)
+    {
+        if (is_null($tradeGroupId)) {
+            throw new \InvalidArgumentException('non-nullable tradeGroupId cannot be null');
+        }
+        $this->container['tradeGroupId'] = $tradeGroupId;
 
         return $this;
     }

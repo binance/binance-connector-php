@@ -1,0 +1,46 @@
+# # TokenListResponseDataInner
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**tokenId** | **string** |  | [optional]
+**chainId** | **string** |  | [optional]
+**chainIconUrl** | **string** |  | [optional]
+**chainName** | **string** |  | [optional]
+**contractAddress** | **string** |  | [optional]
+**name** | **string** |  | [optional]
+**symbol** | **string** |  | [optional]
+**iconUrl** | **string** |  | [optional]
+**price** | **string** |  | [optional]
+**percentChange24h** | **string** |  | [optional]
+**volume24h** | **string** |  | [optional]
+**marketCap** | **string** |  | [optional]
+**fdv** | **string** |  | [optional]
+**liquidity** | **string** |  | [optional]
+**totalSupply** | **string** |  | [optional]
+**circulatingSupply** | **string** |  | [optional]
+**holders** | **string** |  | [optional]
+**decimals** | **int** |  | [optional]
+**listingCex** | **bool** |  | [optional]
+**hotTag** | **bool** |  | [optional]
+**cexCoinName** | **string** |  | [optional]
+**canTransfer** | **bool** |  | [optional]
+**denomination** | **int** |  | [optional]
+**offline** | **bool** |  | [optional]
+**tradeDecimal** | **int** |  | [optional]
+**alphaId** | **string** |  | [optional]
+**offsell** | **bool** |  | [optional]
+**priceHigh24h** | **string** |  | [optional]
+**priceLow24h** | **string** |  | [optional]
+**count24h** | **string** |  | [optional]
+**onlineTge** | **bool** |  | [optional]
+**onlineAirdrop** | **bool** |  | [optional]
+**score** | **int** |  | [optional]
+**cexOffDisplay** | **bool** |  | [optional]
+**stockState** | **bool** |  | [optional]
+**listingTime** | **int** |  | [optional]
+**mulPoint** | **int** |  | [optional]
+**bnExclusiveState** | **bool** |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

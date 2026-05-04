@@ -1352,7 +1352,6 @@ class MiningApi
      * Hashrate Resale Detail(USER_DATA)
      *
      * @param int      $configId   Mining ID 168 (required)
-     * @param string   $userName   Mining account test (required)
      * @param null|int $pageIndex  Page number, empty default first page, starting from 1 (optional)
      * @param null|int $pageSize   Min 10,Max 200 (optional)
      * @param null|int $recvWindow recvWindow (optional)
@@ -1362,9 +1361,9 @@ class MiningApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function hashrateResaleDetail($configId, $userName, $pageIndex = null, $pageSize = null, $recvWindow = null): ApiResponse
+    public function hashrateResaleDetail($configId, $pageIndex = null, $pageSize = null, $recvWindow = null): ApiResponse
     {
-        return $this->hashrateResaleDetailWithHttpInfo($configId, $userName, $pageIndex, $pageSize, $recvWindow);
+        return $this->hashrateResaleDetailWithHttpInfo($configId, $pageIndex, $pageSize, $recvWindow);
     }
 
     /**
@@ -1373,7 +1372,6 @@ class MiningApi
      * Hashrate Resale Detail(USER_DATA)
      *
      * @param int      $configId   Mining ID 168 (required)
-     * @param string   $userName   Mining account test (required)
      * @param null|int $pageIndex  Page number, empty default first page, starting from 1 (optional)
      * @param null|int $pageSize   Min 10,Max 200 (optional)
      * @param null|int $recvWindow (optional)
@@ -1383,9 +1381,9 @@ class MiningApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function hashrateResaleDetailWithHttpInfo($configId, $userName, $pageIndex = null, $pageSize = null, $recvWindow = null): ApiResponse
+    public function hashrateResaleDetailWithHttpInfo($configId, $pageIndex = null, $pageSize = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->hashrateResaleDetailRequest($configId, $userName, $pageIndex, $pageSize, $recvWindow);
+        $request = $this->hashrateResaleDetailRequest($configId, $pageIndex, $pageSize, $recvWindow);
 
         try {
             try {
@@ -1456,7 +1454,6 @@ class MiningApi
      * Create request for operation 'hashrateResaleDetail'.
      *
      * @param int      $configId   Mining ID 168 (required)
-     * @param string   $userName   Mining account test (required)
      * @param null|int $pageIndex  Page number, empty default first page, starting from 1 (optional)
      * @param null|int $pageSize   Min 10,Max 200 (optional)
      * @param null|int $recvWindow (optional)
@@ -1465,7 +1462,7 @@ class MiningApi
      *
      * @throws \InvalidArgumentException
      */
-    public function hashrateResaleDetailRequest($configId, $userName, $pageIndex = null, $pageSize = null, $recvWindow = null)
+    public function hashrateResaleDetailRequest($configId, $pageIndex = null, $pageSize = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['hashrateResaleDetail'][0];
 
@@ -1473,13 +1470,6 @@ class MiningApi
         if (null === $configId || (is_array($configId) && 0 === count($configId))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $configId when calling hashrateResaleDetail'
-            );
-        }
-
-        // verify the required parameter 'userName' is set
-        if (null === $userName || (is_array($userName) && 0 === count($userName))) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $userName when calling hashrateResaleDetail'
             );
         }
 
@@ -1495,15 +1485,6 @@ class MiningApi
             $configId,
             'configId', // param base name
             'integer', // openApiType
-            'form', // style
-            true, // explode
-            true // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $userName,
-            'userName', // param base name
-            'string', // openApiType
             'form', // style
             true, // explode
             true // required

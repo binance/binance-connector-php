@@ -94,6 +94,8 @@
 
 [/papi/v1/cm/allOpenOrders](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Cancel-All-CM-Open-Orders) - cancelAllCmOpenOrders - [CancelAllCmOpenOrdersExample.php:26](/examples/derivatives-trading-portfolio-margin/trade/CancelAllCmOpenOrdersExample.php#L26)
 
+[/papi/v1/um/algo/allOpenOrders](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Cancel-All-UM-Algo-Open-Orders) - cancelAllUmAlgoOpenOrders - [CancelAllUmAlgoOpenOrdersExample.php:26](/examples/derivatives-trading-portfolio-margin/trade/CancelAllUmAlgoOpenOrdersExample.php#L26)
+
 [/papi/v1/um/conditional/allOpenOrders](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Cancel-All-UM-Open-Conditional-Orders) - cancelAllUmOpenConditionalOrders - [CancelAllUmOpenConditionalOrdersExample.php:26](/examples/derivatives-trading-portfolio-margin/trade/CancelAllUmOpenConditionalOrdersExample.php#L26)
 
 [/papi/v1/um/allOpenOrders](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Cancel-All-UM-Open-Orders) - cancelAllUmOpenOrders - [CancelAllUmOpenOrdersExample.php:26](/examples/derivatives-trading-portfolio-margin/trade/CancelAllUmOpenOrdersExample.php#L26)
@@ -108,6 +110,8 @@
 
 [/papi/v1/margin/order](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Cancel-Margin-Account-Order) - cancelMarginAccountOrder - [CancelMarginAccountOrderExample.php:29](/examples/derivatives-trading-portfolio-margin/trade/CancelMarginAccountOrderExample.php#L29)
 
+[/papi/v1/um/algo/order](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Cancel-UM-Algo-Order) - cancelUmAlgoOrder - [CancelUmAlgoOrderExample.php:27](/examples/derivatives-trading-portfolio-margin/trade/CancelUmAlgoOrderExample.php#L27)
+
 [/papi/v1/um/conditional/order](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Cancel-UM-Conditional-Order) - cancelUmConditionalOrder - [CancelUmConditionalOrderExample.php:28](/examples/derivatives-trading-portfolio-margin/trade/CancelUmConditionalOrderExample.php#L28)
 
 [/papi/v1/um/order](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Cancel-UM-Order) - cancelUmOrder - [CancelUmOrderExample.php:28](/examples/derivatives-trading-portfolio-margin/trade/CancelUmOrderExample.php#L28)
@@ -115,6 +119,8 @@
 [/papi/v1/cm/userTrades](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/CM-Account-Trade-List) - cmAccountTradeList - [CmAccountTradeListExample.php:31](/examples/derivatives-trading-portfolio-margin/trade/CmAccountTradeListExample.php#L31)
 
 [/papi/v1/cm/adlQuantile](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/CM-Position-ADL-Quantile-Estimation) - cmPositionAdlQuantileEstimation - [CmPositionAdlQuantileEstimationExample.php:26](/examples/derivatives-trading-portfolio-margin/trade/CmPositionAdlQuantileEstimationExample.php#L26)
+
+[/papi/v1/um/stock/contract](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Futures-TradFi-Perps-Contract) - futuresTradfiPerpsContract - [FuturesTradfiPerpsContractExample.php:26](/examples/derivatives-trading-portfolio-margin/trade/FuturesTradfiPerpsContractExample.php#L26)
 
 [/papi/v1/um/feeBurn](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Get-UM-Futures-BNB-Burn-Status) - getUmFuturesBnbBurnStatus - [GetUmFuturesBnbBurnStatusExample.php:25](/examples/derivatives-trading-portfolio-margin/trade/GetUmFuturesBnbBurnStatusExample.php#L25)
 
@@ -138,6 +144,8 @@
 
 [/papi/v1/margin/order](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/New-Margin-Order) - newMarginOrder - [NewMarginOrderExample.php:31](/examples/derivatives-trading-portfolio-margin/trade/NewMarginOrderExample.php#L31)
 
+[/papi/v1/um/algo/order](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/New-UM-Algo-Order) - newUmAlgoOrder - [NewUmAlgoOrderExample.php:32](/examples/derivatives-trading-portfolio-margin/trade/NewUmAlgoOrderExample.php#L32)
+
 [/papi/v1/um/conditional/order](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/New-UM-Conditional-Order) - newUmConditionalOrder - [NewUmConditionalOrderExample.php:31](/examples/derivatives-trading-portfolio-margin/trade/NewUmConditionalOrderExample.php#L31)
 
 [/papi/v1/um/order](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/New-UM-Order) - newUmOrder - [NewUmOrderExample.php:31](/examples/derivatives-trading-portfolio-margin/trade/NewUmOrderExample.php#L31)
@@ -149,6 +157,8 @@
 [/papi/v1/cm/conditional/openOrders](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Query-All-Current-CM-Open-Conditional-Orders) - queryAllCurrentCmOpenConditionalOrders - [QueryAllCurrentCmOpenConditionalOrdersExample.php:26](/examples/derivatives-trading-portfolio-margin/trade/QueryAllCurrentCmOpenConditionalOrdersExample.php#L26)
 
 [/papi/v1/cm/openOrders](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Query-All-Current-CM-Open-Orders) - queryAllCurrentCmOpenOrders - [QueryAllCurrentCmOpenOrdersExample.php:27](/examples/derivatives-trading-portfolio-margin/trade/QueryAllCurrentCmOpenOrdersExample.php#L27)
+
+[/papi/v1/um/algo/openAlgoOrders](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Query-All-Current-UM-Open-Algo-Orders) - queryAllCurrentUmOpenAlgoOrders - [QueryAllCurrentUmOpenAlgoOrdersExample.php:28](/examples/derivatives-trading-portfolio-margin/trade/QueryAllCurrentUmOpenAlgoOrdersExample.php#L28)
 
 [/papi/v1/um/conditional/openOrders](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Query-All-Current-UM-Open-Conditional-Orders) - queryAllCurrentUmOpenConditionalOrders - [QueryAllCurrentUmOpenConditionalOrdersExample.php:26](/examples/derivatives-trading-portfolio-margin/trade/QueryAllCurrentUmOpenConditionalOrdersExample.php#L26)
 
@@ -172,6 +182,8 @@
 
 [/papi/v1/margin/openOrders](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Query-Current-Margin-Open-Order) - queryCurrentMarginOpenOrder - [QueryCurrentMarginOpenOrderExample.php:26](/examples/derivatives-trading-portfolio-margin/trade/QueryCurrentMarginOpenOrderExample.php#L26)
 
+[/papi/v1/um/algo/algoOrder](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Query-Current-UM-Open-Algo-Order) - queryCurrentUmOpenAlgoOrder - [QueryCurrentUmOpenAlgoOrderExample.php:27](/examples/derivatives-trading-portfolio-margin/trade/QueryCurrentUmOpenAlgoOrderExample.php#L27)
+
 [/papi/v1/um/conditional/openOrder](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Query-Current-UM-Open-Conditional-Order) - queryCurrentUmOpenConditionalOrder - [QueryCurrentUmOpenConditionalOrderExample.php:28](/examples/derivatives-trading-portfolio-margin/trade/QueryCurrentUmOpenConditionalOrderExample.php#L28)
 
 [/papi/v1/um/openOrder](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Query-Current-UM-Open-Order) - queryCurrentUmOpenOrder - [QueryCurrentUmOpenOrderExample.php:28](/examples/derivatives-trading-portfolio-margin/trade/QueryCurrentUmOpenOrderExample.php#L28)
@@ -183,6 +195,8 @@
 [/papi/v1/margin/orderList](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Query-Margin-Account-OCO) - queryMarginAccountsOco - [QueryMarginAccountsOcoExample.php:27](/examples/derivatives-trading-portfolio-margin/trade/QueryMarginAccountsOcoExample.php#L27)
 
 [/papi/v1/margin/openOrderList](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Query-Margin-Account-Open-OCO) - queryMarginAccountsOpenOco - [QueryMarginAccountsOpenOcoExample.php:25](/examples/derivatives-trading-portfolio-margin/trade/QueryMarginAccountsOpenOcoExample.php#L25)
+
+[/papi/v1/um/algo/allAlgoOrders](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Query-UM-Algo-Order-History) - queryUmAlgoOrderHistory - [QueryUmAlgoOrderHistoryExample.php:30](/examples/derivatives-trading-portfolio-margin/trade/QueryUmAlgoOrderHistoryExample.php#L30)
 
 [/papi/v1/um/conditional/orderHistory](https://developers.binance.com/docs/derivatives/portfolio-margin/trade/Query-UM-Conditional-Order-History) - queryUmConditionalOrderHistory - [QueryUmConditionalOrderHistoryExample.php:28](/examples/derivatives-trading-portfolio-margin/trade/QueryUmConditionalOrderHistoryExample.php#L28)
 

@@ -69,6 +69,7 @@ class HashrateResaleListResponseDataConfigDetailsInner implements ModelInterface
         'startDay' => 'int',
         'endDay' => 'int',
         'status' => 'int',
+        'type' => 'int',
     ];
 
     /**
@@ -89,6 +90,7 @@ class HashrateResaleListResponseDataConfigDetailsInner implements ModelInterface
         'startDay' => 'int64',
         'endDay' => 'int64',
         'status' => 'int64',
+        'type' => 'int64',
     ];
 
     /**
@@ -105,6 +107,7 @@ class HashrateResaleListResponseDataConfigDetailsInner implements ModelInterface
         'startDay' => false,
         'endDay' => false,
         'status' => false,
+        'type' => false,
     ];
 
     /**
@@ -129,6 +132,7 @@ class HashrateResaleListResponseDataConfigDetailsInner implements ModelInterface
         'startDay' => 'startDay',
         'endDay' => 'endDay',
         'status' => 'status',
+        'type' => 'type',
     ];
 
     /**
@@ -145,6 +149,7 @@ class HashrateResaleListResponseDataConfigDetailsInner implements ModelInterface
         'startDay' => 'setStartDay',
         'endDay' => 'setEndDay',
         'status' => 'setStatus',
+        'type' => 'setType',
     ];
 
     /**
@@ -161,6 +166,7 @@ class HashrateResaleListResponseDataConfigDetailsInner implements ModelInterface
         'startDay' => 'getStartDay',
         'endDay' => 'getEndDay',
         'status' => 'getStatus',
+        'type' => 'getType',
     ];
 
     /**
@@ -186,6 +192,7 @@ class HashrateResaleListResponseDataConfigDetailsInner implements ModelInterface
         $this->setIfExists('startDay', $data ?? [], null);
         $this->setIfExists('endDay', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -528,6 +535,33 @@ class HashrateResaleListResponseDataConfigDetailsInner implements ModelInterface
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets type.
+     *
+     * @return null|int
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type.
+     *
+     * @param null|int $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

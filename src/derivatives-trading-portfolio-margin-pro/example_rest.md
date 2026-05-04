@@ -4,11 +4,17 @@
 
 [/sapi/v1/portfolio/repay-futures-switch](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Change-Auto-repay-futures-Status) - changeAutoRepayFuturesStatus - [ChangeAutoRepayFuturesStatusExample.php:27](/examples/derivatives-trading-portfolio-margin-pro/account/ChangeAutoRepayFuturesStatusExample.php#L27)
 
+[/sapi/v1/portfolio/margin-call-level](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Delete-Margin-Call-Level) - deleteMarginCallLevel - [DeleteMarginCallLevelExample.php:25](/examples/derivatives-trading-portfolio-margin-pro/account/DeleteMarginCallLevelExample.php#L25)
+
 [/sapi/v1/portfolio/auto-collection](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Fund-Auto-collection) - fundAutoCollection - [FundAutoCollectionExample.php:26](/examples/derivatives-trading-portfolio-margin-pro/account/FundAutoCollectionExample.php#L26)
 
 [/sapi/v1/portfolio/asset-collection](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Fund-Collection-by-Asset) - fundCollectionByAsset - [FundCollectionByAssetExample.php:27](/examples/derivatives-trading-portfolio-margin-pro/account/FundCollectionByAssetExample.php#L27)
 
 [/sapi/v1/portfolio/repay-futures-switch](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Get-Auto-repay-futures-Status) - getAutoRepayFuturesStatus - [GetAutoRepayFuturesStatusExample.php:25](/examples/derivatives-trading-portfolio-margin-pro/account/GetAutoRepayFuturesStatusExample.php#L25)
+
+[/sapi/v1/portfolio/delta-mode](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Get-Delta-Mode-Status) - getDeltaModeStatus - [GetDeltaModeStatusExample.php:25](/examples/derivatives-trading-portfolio-margin-pro/account/GetDeltaModeStatusExample.php#L25)
+
+[/sapi/v1/portfolio/margin-call-level](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Get-Margin-Call-Level) - getMarginCallLevel - [GetMarginCallLevelExample.php:25](/examples/derivatives-trading-portfolio-margin-pro/account/GetMarginCallLevelExample.php#L25)
 
 [/sapi/v1/portfolio/balance](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Get-Classic-Portfolio-Margin-Balance-Info) - getPortfolioMarginProAccountBalance - [GetPortfolioMarginProAccountBalanceExample.php:26](/examples/derivatives-trading-portfolio-margin-pro/account/GetPortfolioMarginProAccountBalanceExample.php#L26)
 
@@ -27,6 +33,10 @@
 [/sapi/v1/portfolio/interest-history](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Query-Classic-Portfolio-Margin-Negative-Balance-Interest-History) - queryPortfolioMarginProNegativeBalanceInterestHistory - [QueryPortfolioMarginProNegativeBalanceInterestHistoryExample.php:29](/examples/derivatives-trading-portfolio-margin-pro/account/QueryPortfolioMarginProNegativeBalanceInterestHistoryExample.php#L29)
 
 [/sapi/v1/portfolio/repay-futures-negative-balance](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Repay-futures-Negative-Balance) - repayFuturesNegativeBalance - [RepayFuturesNegativeBalanceExample.php:26](/examples/derivatives-trading-portfolio-margin-pro/account/RepayFuturesNegativeBalanceExample.php#L26)
+
+[/sapi/v1/portfolio/margin-call-level](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Set-Margin-Call-Level) - setMarginCallLevel - [SetMarginCallLevelExample.php:26](/examples/derivatives-trading-portfolio-margin-pro/account/SetMarginCallLevelExample.php#L26)
+
+[/sapi/v1/portfolio/delta-mode](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Switch-Delta-Mode) - switchDeltaMode - [SwitchDeltaModeExample.php:27](/examples/derivatives-trading-portfolio-margin-pro/account/SwitchDeltaModeExample.php#L27)
 
 [/sapi/v1/portfolio/earn-asset-transfer](https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Transfer-LDUSDT-Portfolio-Margin) - transferLdusdtRwusdForPortfolioMargin - [TransferLdusdtRwusdForPortfolioMarginExample.php:29](/examples/derivatives-trading-portfolio-margin-pro/account/TransferLdusdtRwusdForPortfolioMarginExample.php#L29)
 

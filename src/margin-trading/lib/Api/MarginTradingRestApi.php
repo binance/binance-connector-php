@@ -22,6 +22,8 @@ use Binance\Client\MarginTrading\Model\GetFutureHourlyInterestRateResponse;
 use Binance\Client\MarginTrading\Model\GetInterestHistoryResponse;
 use Binance\Client\MarginTrading\Model\GetLimitPricePairsResponse;
 use Binance\Client\MarginTrading\Model\GetListScheduleResponse;
+use Binance\Client\MarginTrading\Model\GetMarginAssetRiskBasedLiquidationRatioResponse;
+use Binance\Client\MarginTrading\Model\GetMarginRestrictedAssetsResponse;
 use Binance\Client\MarginTrading\Model\GetSmallLiabilityExchangeCoinListResponse;
 use Binance\Client\MarginTrading\Model\GetSmallLiabilityExchangeHistoryResponse;
 use Binance\Client\MarginTrading\Model\GetSummaryOfMarginAccountResponse;
@@ -63,6 +65,7 @@ use Binance\Client\MarginTrading\Model\QueryMarginInterestRateHistoryResponse;
 use Binance\Client\MarginTrading\Model\QueryMarginPriceindexResponse;
 use Binance\Client\MarginTrading\Model\QueryMaxBorrowResponse;
 use Binance\Client\MarginTrading\Model\QueryMaxTransferOutAmountResponse;
+use Binance\Client\MarginTrading\Model\QueryPreventedMatchesResponse;
 use Binance\Client\MarginTrading\Model\QuerySpecialKeyListResponse;
 use Binance\Client\MarginTrading\Model\QuerySpecialKeyResponse;
 use Binance\Client\MarginTrading\Model\SmallLiabilityExchangeRequest;
@@ -208,10 +211,10 @@ class MarginTradingRestApi
      * @param null|string $asset      asset (optional)
      * @param null|string $symbol     isolated margin pair (optional)
      * @param null|string $type       Transfer Type: ROLL_IN, ROLL_OUT (optional)
-     * @param null|int    $startTime  只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime  Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $fromId     如设置fromId, 将返回id &gt; fromId的数据。否则将返回最新数据 (optional)
-     * @param null|int    $limit      Default Value: 500; Max Value: 1000 (optional)
+     * @param null|int    $fromId     If &#x60;fromId&#x60; is set, data with &#x60;id&#x60; greater than &#x60;fromId&#x60; will be returned. Otherwise, the latest data will be returned. (optional)
+     * @param null|int    $limit      Limit on the number of data records returned per request. Default: 500; Maximum: 1000. (optional)
      * @param null|int    $recvWindow No more than 60000 (optional)
      *
      * @return ApiResponse<QueryCrossIsolatedMarginCapitalFlowResponse>
@@ -339,7 +342,7 @@ class MarginTradingRestApi
      *
      * @param null|string $asset          asset (optional)
      * @param null|string $isolatedSymbol isolated symbol (optional)
-     * @param null|int    $startTime      只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime        endTime (optional)
      * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
      * @param null|int    $size           Default:10 Max:100 (optional)
@@ -381,7 +384,7 @@ class MarginTradingRestApi
      * @param null|string $asset          asset (optional)
      * @param null|string $isolatedSymbol isolated symbol (optional)
      * @param null|int    $txId           &#x60;tranId&#x60; in &#x60;POST /sapi/v1/margin/loan&#x60; (optional)
-     * @param null|int    $startTime      只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime        endTime (optional)
      * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
      * @param null|int    $size           Default:10 Max:100 (optional)
@@ -404,7 +407,7 @@ class MarginTradingRestApi
      *
      * @param string   $asset      asset (required)
      * @param null|int $vipLevel   User&#39;s current specific margin data will be returned if vipLevel is omitted (optional)
-     * @param null|int $startTime  只支持查询最近90天的数据 (optional)
+     * @param null|int $startTime  Only supports querying data from the past 90 days. (optional)
      * @param null|int $endTime    endTime (optional)
      * @param null|int $recvWindow No more than 60000 (optional)
      *
@@ -551,6 +554,36 @@ class MarginTradingRestApi
     public function getListSchedule($recvWindow = null): ApiResponse
     {
         return $this->marketDataApi->getListSchedule($recvWindow);
+    }
+
+    /**
+     * Operation getMarginAssetRiskBasedLiquidationRatio.
+     *
+     * Get Margin Asset Risk-Based Liquidation Ratio (MARKET_DATA)
+     *
+     * @return ApiResponse<GetMarginAssetRiskBasedLiquidationRatioResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getMarginAssetRiskBasedLiquidationRatio(): ApiResponse
+    {
+        return $this->marketDataApi->getMarginAssetRiskBasedLiquidationRatio();
+    }
+
+    /**
+     * Operation getMarginRestrictedAssets.
+     *
+     * Get Margin Restricted Assets (MARKET_DATA)
+     *
+     * @return ApiResponse<GetMarginRestrictedAssetsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getMarginRestrictedAssets(): ApiResponse
+    {
+        return $this->marketDataApi->getMarginRestrictedAssets();
     }
 
     /**
@@ -718,7 +751,7 @@ class MarginTradingRestApi
      *
      * Get Force Liquidation Record (USER_DATA)
      *
-     * @param null|int    $startTime      只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime        endTime (optional)
      * @param null|string $isolatedSymbol isolated symbol (optional)
      * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
@@ -759,7 +792,7 @@ class MarginTradingRestApi
      *
      * @param int      $current    Currently querying page. Start from 1. Default:1 (required)
      * @param int      $size       Default:10, Max:100 (required)
-     * @param null|int $startTime  只支持查询最近90天的数据 (optional)
+     * @param null|int $startTime  Only supports querying data from the past 90 days. (optional)
      * @param null|int $endTime    endTime (optional)
      * @param null|int $recvWindow No more than 60000 (optional)
      *
@@ -779,7 +812,7 @@ class MarginTradingRestApi
      * Margin Account Cancel all Open Orders on a Symbol (TRADE)
      *
      * @param string      $symbol     symbol (required)
-     * @param null|string $isIsolated for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; (optional)
+     * @param null|string $isIsolated For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
      * @param null|int    $recvWindow No more than 60000 (optional)
      *
      * @return ApiResponse<MarginAccountCancelAllOpenOrdersOnASymbolResponse>
@@ -798,7 +831,7 @@ class MarginTradingRestApi
      * Margin Account Cancel OCO (TRADE)
      *
      * @param string      $symbol            symbol (required)
-     * @param null|string $isIsolated        for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; (optional)
+     * @param null|string $isIsolated        For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
      * @param null|int    $orderListId       Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
      * @param null|string $listClientOrderId Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
      * @param null|string $newClientOrderId  Used to uniquely identify this cancel. Automatically generated by default (optional)
@@ -820,7 +853,7 @@ class MarginTradingRestApi
      * Margin Account Cancel Order (TRADE)
      *
      * @param string      $symbol            symbol (required)
-     * @param null|string $isIsolated        for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; (optional)
+     * @param null|string $isIsolated        For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
      * @param null|int    $orderId           orderId (optional)
      * @param null|string $origClientOrderId origClientOrderId (optional)
      * @param null|string $newClientOrderId  Used to uniquely identify this cancel. Automatically generated by default (optional)
@@ -926,7 +959,7 @@ class MarginTradingRestApi
      *
      * Query Current Margin Order Count Usage (TRADE)
      *
-     * @param null|string $isIsolated for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; (optional)
+     * @param null|string $isIsolated For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
      * @param null|string $symbol     isolated margin pair (optional)
      * @param null|int    $recvWindow No more than 60000 (optional)
      *
@@ -945,12 +978,12 @@ class MarginTradingRestApi
      *
      * Query Margin Account&#39;s all OCO (USER_DATA)
      *
-     * @param null|string $isIsolated for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; (optional)
+     * @param null|string $isIsolated For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
      * @param null|string $symbol     isolated margin pair (optional)
-     * @param null|int    $fromId     如设置fromId, 将返回id &gt; fromId的数据。否则将返回最新数据 (optional)
-     * @param null|int    $startTime  只支持查询最近90天的数据 (optional)
+     * @param null|int    $fromId     If &#x60;fromId&#x60; is set, data with &#x60;id&#x60; greater than &#x60;fromId&#x60; will be returned. Otherwise, the latest data will be returned. (optional)
+     * @param null|int    $startTime  Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $limit      Default Value: 500; Max Value: 1000 (optional)
+     * @param null|int    $limit      Limit on the number of data records returned per request. Default: 500; Maximum: 1000. (optional)
      * @param null|int    $recvWindow No more than 60000 (optional)
      *
      * @return ApiResponse<QueryMarginAccountsAllOcoResponse>
@@ -969,11 +1002,11 @@ class MarginTradingRestApi
      * Query Margin Account&#39;s All Orders (USER_DATA)
      *
      * @param string      $symbol     symbol (required)
-     * @param null|string $isIsolated for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; (optional)
+     * @param null|string $isIsolated For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
      * @param null|int    $orderId    orderId (optional)
-     * @param null|int    $startTime  只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime  Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $limit      Default Value: 500; Max Value: 1000 (optional)
+     * @param null|int    $limit      Limit on the number of data records returned per request. Default: 500; Maximum: 1000. (optional)
      * @param null|int    $recvWindow No more than 60000 (optional)
      *
      * @return ApiResponse<QueryMarginAccountsAllOrdersResponse>
@@ -991,7 +1024,7 @@ class MarginTradingRestApi
      *
      * Query Margin Account&#39;s OCO (USER_DATA)
      *
-     * @param null|string $isIsolated        for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; (optional)
+     * @param null|string $isIsolated        For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
      * @param null|string $symbol            isolated margin pair (optional)
      * @param null|int    $orderListId       Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
      * @param null|string $origClientOrderId origClientOrderId (optional)
@@ -1012,7 +1045,7 @@ class MarginTradingRestApi
      *
      * Query Margin Account&#39;s Open OCO (USER_DATA)
      *
-     * @param null|string $isIsolated for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; (optional)
+     * @param null|string $isIsolated For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
      * @param null|string $symbol     isolated margin pair (optional)
      * @param null|int    $recvWindow No more than 60000 (optional)
      *
@@ -1032,7 +1065,7 @@ class MarginTradingRestApi
      * Query Margin Account&#39;s Open Orders (USER_DATA)
      *
      * @param null|string $symbol     isolated margin pair (optional)
-     * @param null|string $isIsolated for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; (optional)
+     * @param null|string $isIsolated For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
      * @param null|int    $recvWindow No more than 60000 (optional)
      *
      * @return ApiResponse<QueryMarginAccountsOpenOrdersResponse>
@@ -1051,7 +1084,7 @@ class MarginTradingRestApi
      * Query Margin Account&#39;s Order (USER_DATA)
      *
      * @param string      $symbol            symbol (required)
-     * @param null|string $isIsolated        for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; (optional)
+     * @param null|string $isIsolated        For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
      * @param null|int    $orderId           orderId (optional)
      * @param null|string $origClientOrderId origClientOrderId (optional)
      * @param null|int    $recvWindow        No more than 60000 (optional)
@@ -1072,12 +1105,12 @@ class MarginTradingRestApi
      * Query Margin Account&#39;s Trade List (USER_DATA)
      *
      * @param string      $symbol     symbol (required)
-     * @param null|string $isIsolated for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; (optional)
+     * @param null|string $isIsolated For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
      * @param null|int    $orderId    orderId (optional)
-     * @param null|int    $startTime  只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime  Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $fromId     如设置fromId, 将返回id &gt; fromId的数据。否则将返回最新数据 (optional)
-     * @param null|int    $limit      Default Value: 500; Max Value: 1000 (optional)
+     * @param null|int    $fromId     If &#x60;fromId&#x60; is set, data with &#x60;id&#x60; greater than &#x60;fromId&#x60; will be returned. Otherwise, the latest data will be returned. (optional)
+     * @param null|int    $limit      Limit on the number of data records returned per request. Default: 500; Maximum: 1000. (optional)
      * @param null|int    $recvWindow No more than 60000 (optional)
      *
      * @return ApiResponse<QueryMarginAccountsTradeListResponse>
@@ -1088,6 +1121,28 @@ class MarginTradingRestApi
     public function queryMarginAccountsTradeList($symbol, $isIsolated = null, $orderId = null, $startTime = null, $endTime = null, $fromId = null, $limit = null, $recvWindow = null): ApiResponse
     {
         return $this->tradeApi->queryMarginAccountsTradeList($symbol, $isIsolated, $orderId, $startTime, $endTime, $fromId, $limit, $recvWindow);
+    }
+
+    /**
+     * Operation queryPreventedMatches.
+     *
+     * Query Prevented Matches(USER_DATA)
+     *
+     * @param string      $symbol               symbol (required)
+     * @param null|int    $preventedMatchId     preventedMatchId (optional)
+     * @param null|int    $orderId              orderId (optional)
+     * @param null|int    $fromPreventedMatchId fromPreventedMatchId (optional)
+     * @param null|int    $recvWindow           No more than 60000 (optional)
+     * @param null|string $isIsolated           For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
+     *
+     * @return ApiResponse<QueryPreventedMatchesResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function queryPreventedMatches($symbol, $preventedMatchId = null, $orderId = null, $fromPreventedMatchId = null, $recvWindow = null, $isIsolated = null): ApiResponse
+    {
+        return $this->tradeApi->queryPreventedMatches($symbol, $preventedMatchId, $orderId, $fromPreventedMatchId, $recvWindow, $isIsolated);
     }
 
     /**
@@ -1148,7 +1203,7 @@ class MarginTradingRestApi
      *
      * @param null|string $asset          asset (optional)
      * @param null|string $type           Transfer Type: ROLL_IN, ROLL_OUT (optional)
-     * @param null|int    $startTime      只支持查询最近90天的数据 (optional)
+     * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime        endTime (optional)
      * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
      * @param null|int    $size           Default:10 Max:100 (optional)

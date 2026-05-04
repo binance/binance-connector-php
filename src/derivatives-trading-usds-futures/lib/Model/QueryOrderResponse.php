@@ -84,9 +84,6 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
         'updateTime' => 'int',
         'workingType' => 'string',
         'priceProtect' => 'bool',
-        'priceMatch' => 'string',
-        'selfTradePreventionMode' => 'string',
-        'goodTillDate' => 'int',
     ];
 
     /**
@@ -122,9 +119,6 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
         'updateTime' => 'int64',
         'workingType' => null,
         'priceProtect' => null,
-        'priceMatch' => null,
-        'selfTradePreventionMode' => null,
-        'goodTillDate' => 'int64',
     ];
 
     /**
@@ -156,9 +150,6 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
         'updateTime' => false,
         'workingType' => false,
         'priceProtect' => false,
-        'priceMatch' => false,
-        'selfTradePreventionMode' => false,
-        'goodTillDate' => false,
     ];
 
     /**
@@ -198,9 +189,6 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
         'updateTime' => 'updateTime',
         'workingType' => 'workingType',
         'priceProtect' => 'priceProtect',
-        'priceMatch' => 'priceMatch',
-        'selfTradePreventionMode' => 'selfTradePreventionMode',
-        'goodTillDate' => 'goodTillDate',
     ];
 
     /**
@@ -232,9 +220,6 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
         'updateTime' => 'setUpdateTime',
         'workingType' => 'setWorkingType',
         'priceProtect' => 'setPriceProtect',
-        'priceMatch' => 'setPriceMatch',
-        'selfTradePreventionMode' => 'setSelfTradePreventionMode',
-        'goodTillDate' => 'setGoodTillDate',
     ];
 
     /**
@@ -266,9 +251,6 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
         'updateTime' => 'getUpdateTime',
         'workingType' => 'getWorkingType',
         'priceProtect' => 'getPriceProtect',
-        'priceMatch' => 'getPriceMatch',
-        'selfTradePreventionMode' => 'getSelfTradePreventionMode',
-        'goodTillDate' => 'getGoodTillDate',
     ];
 
     /**
@@ -309,9 +291,6 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
         $this->setIfExists('updateTime', $data ?? [], null);
         $this->setIfExists('workingType', $data ?? [], null);
         $this->setIfExists('priceProtect', $data ?? [], null);
-        $this->setIfExists('priceMatch', $data ?? [], null);
-        $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
-        $this->setIfExists('goodTillDate', $data ?? [], null);
     }
 
     /**
@@ -1059,87 +1038,6 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable priceProtect cannot be null');
         }
         $this->container['priceProtect'] = $priceProtect;
-
-        return $this;
-    }
-
-    /**
-     * Gets priceMatch.
-     *
-     * @return null|string
-     */
-    public function getPriceMatch()
-    {
-        return $this->container['priceMatch'];
-    }
-
-    /**
-     * Sets priceMatch.
-     *
-     * @param null|string $priceMatch priceMatch
-     *
-     * @return self
-     */
-    public function setPriceMatch($priceMatch)
-    {
-        if (is_null($priceMatch)) {
-            throw new \InvalidArgumentException('non-nullable priceMatch cannot be null');
-        }
-        $this->container['priceMatch'] = $priceMatch;
-
-        return $this;
-    }
-
-    /**
-     * Gets selfTradePreventionMode.
-     *
-     * @return null|string
-     */
-    public function getSelfTradePreventionMode()
-    {
-        return $this->container['selfTradePreventionMode'];
-    }
-
-    /**
-     * Sets selfTradePreventionMode.
-     *
-     * @param null|string $selfTradePreventionMode selfTradePreventionMode
-     *
-     * @return self
-     */
-    public function setSelfTradePreventionMode($selfTradePreventionMode)
-    {
-        if (is_null($selfTradePreventionMode)) {
-            throw new \InvalidArgumentException('non-nullable selfTradePreventionMode cannot be null');
-        }
-        $this->container['selfTradePreventionMode'] = $selfTradePreventionMode;
-
-        return $this;
-    }
-
-    /**
-     * Gets goodTillDate.
-     *
-     * @return null|int
-     */
-    public function getGoodTillDate()
-    {
-        return $this->container['goodTillDate'];
-    }
-
-    /**
-     * Sets goodTillDate.
-     *
-     * @param null|int $goodTillDate goodTillDate
-     *
-     * @return self
-     */
-    public function setGoodTillDate($goodTillDate)
-    {
-        if (is_null($goodTillDate)) {
-            throw new \InvalidArgumentException('non-nullable goodTillDate cannot be null');
-        }
-        $this->container['goodTillDate'] = $goodTillDate;
 
         return $this;
     }

@@ -25,7 +25,7 @@ function basisExample()
     $pair = '';
     $contractType = ContractType::PERPETUAL;
     $period = Period::PERIOD_5M;
-    $limit = 30;
+    $limit = 100;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $response = $api->basis($pair, $contractType, $period, $limit, $startTime, $endTime);

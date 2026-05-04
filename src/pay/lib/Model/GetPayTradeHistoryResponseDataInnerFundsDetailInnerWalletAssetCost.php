@@ -1,7 +1,7 @@
 <?php
 
 /**
- * GetPayTradeHistoryResponseDataInnerFundsDetailInnerWalletAssetCostInner.
+ * GetPayTradeHistoryResponseDataInnerFundsDetailInnerWalletAssetCost.
  *
  * PHP version 8.1
  *
@@ -34,7 +34,7 @@ use Binance\Common\Dtos\ModelInterface;
 use Binance\Common\ObjectSerializer;
 
 /**
- * GetPayTradeHistoryResponseDataInnerFundsDetailInnerWalletAssetCostInner Class Doc Comment.
+ * GetPayTradeHistoryResponseDataInnerFundsDetailInnerWalletAssetCost Class Doc Comment.
  *
  * @category Class
  *
@@ -44,7 +44,7 @@ use Binance\Common\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetPayTradeHistoryResponseDataInnerFundsDetailInnerWalletAssetCostInner implements ModelInterface, \ArrayAccess, \JsonSerializable
+class GetPayTradeHistoryResponseDataInnerFundsDetailInnerWalletAssetCost implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class GetPayTradeHistoryResponseDataInnerFundsDetailInnerWalletAssetCostInner im
      *
      * @var string
      */
-    protected static $openAPIModelName = 'getPayTradeHistoryResponse_data_inner_fundsDetail_inner_walletAssetCost_inner';
+    protected static $openAPIModelName = 'getPayTradeHistoryResponse_data_inner_fundsDetail_inner_walletAssetCost';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.

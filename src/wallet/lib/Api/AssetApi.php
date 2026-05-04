@@ -155,16 +155,17 @@ class AssetApi
      *
      * Asset Detail (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|string $asset      asset (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<AssetDetailResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function assetDetail($recvWindow = null): ApiResponse
+    public function assetDetail($asset = null, $recvWindow = null): ApiResponse
     {
-        return $this->assetDetailWithHttpInfo($recvWindow);
+        return $this->assetDetailWithHttpInfo($asset, $recvWindow);
     }
 
     /**
@@ -172,16 +173,17 @@ class AssetApi
      *
      * Asset Detail (USER_DATA)
      *
-     * @param null|int $recvWindow (optional)
+     * @param null|string $asset      (optional)
+     * @param null|int    $recvWindow (optional)
      *
      * @return ApiResponse<AssetDetailResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function assetDetailWithHttpInfo($recvWindow = null): ApiResponse
+    public function assetDetailWithHttpInfo($asset = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->assetDetailRequest($recvWindow);
+        $request = $this->assetDetailRequest($asset, $recvWindow);
 
         try {
             try {
@@ -251,13 +253,14 @@ class AssetApi
     /**
      * Create request for operation 'assetDetail'.
      *
-     * @param null|int $recvWindow (optional)
+     * @param null|string $asset      (optional)
+     * @param null|int    $recvWindow (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function assetDetailRequest($recvWindow = null)
+    public function assetDetailRequest($asset = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['assetDetail'][0];
 
@@ -268,6 +271,15 @@ class AssetApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $asset,
+            'asset', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recvWindow,
@@ -1129,18 +1141,19 @@ class AssetApi
      *
      * DustLog(USER_DATA)
      *
-     * @param null|int $startTime  startTime (optional)
-     * @param null|int $endTime    endTime (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|string $accountType &#x60;SPOT&#x60;or&#x60;MARGIN&#x60;,default&#x60;SPOT&#x60; (optional)
+     * @param null|int    $startTime   startTime (optional)
+     * @param null|int    $endTime     endTime (optional)
+     * @param null|int    $recvWindow  recvWindow (optional)
      *
      * @return ApiResponse<DustlogResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function dustlog($startTime = null, $endTime = null, $recvWindow = null): ApiResponse
+    public function dustlog($accountType = null, $startTime = null, $endTime = null, $recvWindow = null): ApiResponse
     {
-        return $this->dustlogWithHttpInfo($startTime, $endTime, $recvWindow);
+        return $this->dustlogWithHttpInfo($accountType, $startTime, $endTime, $recvWindow);
     }
 
     /**
@@ -1148,18 +1161,19 @@ class AssetApi
      *
      * DustLog(USER_DATA)
      *
-     * @param null|int $startTime  (optional)
-     * @param null|int $endTime    (optional)
-     * @param null|int $recvWindow (optional)
+     * @param null|string $accountType &#x60;SPOT&#x60;or&#x60;MARGIN&#x60;,default&#x60;SPOT&#x60; (optional)
+     * @param null|int    $startTime   (optional)
+     * @param null|int    $endTime     (optional)
+     * @param null|int    $recvWindow  (optional)
      *
      * @return ApiResponse<DustlogResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function dustlogWithHttpInfo($startTime = null, $endTime = null, $recvWindow = null): ApiResponse
+    public function dustlogWithHttpInfo($accountType = null, $startTime = null, $endTime = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->dustlogRequest($startTime, $endTime, $recvWindow);
+        $request = $this->dustlogRequest($accountType, $startTime, $endTime, $recvWindow);
 
         try {
             try {
@@ -1229,15 +1243,16 @@ class AssetApi
     /**
      * Create request for operation 'dustlog'.
      *
-     * @param null|int $startTime  (optional)
-     * @param null|int $endTime    (optional)
-     * @param null|int $recvWindow (optional)
+     * @param null|string $accountType &#x60;SPOT&#x60;or&#x60;MARGIN&#x60;,default&#x60;SPOT&#x60; (optional)
+     * @param null|int    $startTime   (optional)
+     * @param null|int    $endTime     (optional)
+     * @param null|int    $recvWindow  (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function dustlogRequest($startTime = null, $endTime = null, $recvWindow = null)
+    public function dustlogRequest($accountType = null, $startTime = null, $endTime = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['dustlog'][0];
 
@@ -1248,6 +1263,15 @@ class AssetApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $accountType,
+            'accountType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $startTime,

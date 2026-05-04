@@ -21,10 +21,10 @@ function cancelAlgoOrderExample()
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $algoid = null;
-    $clientalgoid = '';
+    $algoId = 1;
+    $clientAlgoId = '1';
     $recvWindow = 5000;
-    $response = $api->cancelAlgoOrder($algoid, $clientalgoid, $recvWindow);
+    $response = $api->cancelAlgoOrder($algoId, $clientAlgoId, $recvWindow);
     print_r($response);
 }
 

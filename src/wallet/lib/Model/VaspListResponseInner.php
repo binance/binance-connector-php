@@ -61,8 +61,9 @@ class VaspListResponseInner implements ModelInterface, \ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $openAPITypes = [
-        'vaspName' => 'string',
         'vaspCode' => 'string',
+        'vaspName' => 'string',
+        'identifier' => 'string',
     ];
 
     /**
@@ -75,8 +76,9 @@ class VaspListResponseInner implements ModelInterface, \ArrayAccess, \JsonSerial
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'vaspName' => null,
         'vaspCode' => null,
+        'vaspName' => null,
+        'identifier' => null,
     ];
 
     /**
@@ -85,8 +87,9 @@ class VaspListResponseInner implements ModelInterface, \ArrayAccess, \JsonSerial
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'vaspName' => false,
         'vaspCode' => false,
+        'vaspName' => false,
+        'identifier' => false,
     ];
 
     /**
@@ -103,8 +106,9 @@ class VaspListResponseInner implements ModelInterface, \ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'vaspName' => 'vaspName',
         'vaspCode' => 'vaspCode',
+        'vaspName' => 'vaspName',
+        'identifier' => 'identifier',
     ];
 
     /**
@@ -113,8 +117,9 @@ class VaspListResponseInner implements ModelInterface, \ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'vaspName' => 'setVaspName',
         'vaspCode' => 'setVaspCode',
+        'vaspName' => 'setVaspName',
+        'identifier' => 'setIdentifier',
     ];
 
     /**
@@ -123,8 +128,9 @@ class VaspListResponseInner implements ModelInterface, \ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'vaspName' => 'getVaspName',
         'vaspCode' => 'getVaspCode',
+        'vaspName' => 'getVaspName',
+        'identifier' => 'getIdentifier',
     ];
 
     /**
@@ -142,8 +148,9 @@ class VaspListResponseInner implements ModelInterface, \ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('vaspName', $data ?? [], null);
         $this->setIfExists('vaspCode', $data ?? [], null);
+        $this->setIfExists('vaspName', $data ?? [], null);
+        $this->setIfExists('identifier', $data ?? [], null);
     }
 
     /**
@@ -275,6 +282,33 @@ class VaspListResponseInner implements ModelInterface, \ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets vaspCode.
+     *
+     * @return null|string
+     */
+    public function getVaspCode()
+    {
+        return $this->container['vaspCode'];
+    }
+
+    /**
+     * Sets vaspCode.
+     *
+     * @param null|string $vaspCode vaspCode
+     *
+     * @return self
+     */
+    public function setVaspCode($vaspCode)
+    {
+        if (is_null($vaspCode)) {
+            throw new \InvalidArgumentException('non-nullable vaspCode cannot be null');
+        }
+        $this->container['vaspCode'] = $vaspCode;
+
+        return $this;
+    }
+
+    /**
      * Gets vaspName.
      *
      * @return null|string
@@ -302,28 +336,28 @@ class VaspListResponseInner implements ModelInterface, \ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets vaspCode.
+     * Gets identifier.
      *
      * @return null|string
      */
-    public function getVaspCode()
+    public function getIdentifier()
     {
-        return $this->container['vaspCode'];
+        return $this->container['identifier'];
     }
 
     /**
-     * Sets vaspCode.
+     * Sets identifier.
      *
-     * @param null|string $vaspCode vaspCode
+     * @param null|string $identifier identifier
      *
      * @return self
      */
-    public function setVaspCode($vaspCode)
+    public function setIdentifier($identifier)
     {
-        if (is_null($vaspCode)) {
-            throw new \InvalidArgumentException('non-nullable vaspCode cannot be null');
+        if (is_null($identifier)) {
+            throw new \InvalidArgumentException('non-nullable identifier cannot be null');
         }
-        $this->container['vaspCode'] = $vaspCode;
+        $this->container['identifier'] = $identifier;
 
         return $this;
     }

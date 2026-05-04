@@ -36,6 +36,8 @@ use Binance\Client\MarginTrading\Model\GetAllMarginAssetsResponse;
 use Binance\Client\MarginTrading\Model\GetDelistScheduleResponse;
 use Binance\Client\MarginTrading\Model\GetLimitPricePairsResponse;
 use Binance\Client\MarginTrading\Model\GetListScheduleResponse;
+use Binance\Client\MarginTrading\Model\GetMarginAssetRiskBasedLiquidationRatioResponse;
+use Binance\Client\MarginTrading\Model\GetMarginRestrictedAssetsResponse;
 use Binance\Client\MarginTrading\Model\QueryIsolatedMarginTierDataResponse;
 use Binance\Client\MarginTrading\Model\QueryLiabilityCoinLeverageBracketInCrossMarginProModeResponse;
 use Binance\Client\MarginTrading\Model\QueryMarginAvailableInventoryResponse;
@@ -76,6 +78,8 @@ class MarketDataApi
         'getDelistSchedule' => ['application/x-www-form-urlencoded'],
         'getLimitPricePairs' => ['application/x-www-form-urlencoded'],
         'getListSchedule' => ['application/x-www-form-urlencoded'],
+        'getMarginAssetRiskBasedLiquidationRatio' => ['application/x-www-form-urlencoded'],
+        'getMarginRestrictedAssets' => ['application/x-www-form-urlencoded'],
         'queryIsolatedMarginTierData' => ['application/x-www-form-urlencoded'],
         'queryLiabilityCoinLeverageBracketInCrossMarginProMode' => ['application/x-www-form-urlencoded'],
         'queryMarginAvailableInventory' => ['application/x-www-form-urlencoded'],
@@ -1189,6 +1193,292 @@ class MarketDataApi
             true, // explode
             false // required
         ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getMarginAssetRiskBasedLiquidationRatio.
+     *
+     * Get Margin Asset Risk-Based Liquidation Ratio (MARKET_DATA)
+     *
+     * @return ApiResponse<GetMarginAssetRiskBasedLiquidationRatioResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getMarginAssetRiskBasedLiquidationRatio(): ApiResponse
+    {
+        return $this->getMarginAssetRiskBasedLiquidationRatioWithHttpInfo();
+    }
+
+    /**
+     * Operation getMarginAssetRiskBasedLiquidationRatioWithHttpInfo.
+     *
+     * Get Margin Asset Risk-Based Liquidation Ratio (MARKET_DATA)
+     *
+     * @return ApiResponse<GetMarginAssetRiskBasedLiquidationRatioResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getMarginAssetRiskBasedLiquidationRatioWithHttpInfo(): ApiResponse
+    {
+        $request = $this->getMarginAssetRiskBasedLiquidationRatioRequest();
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\MarginTrading\Model\GetMarginAssetRiskBasedLiquidationRatioResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\MarginTrading\Model\GetMarginAssetRiskBasedLiquidationRatioResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\MarginTrading\Model\GetMarginAssetRiskBasedLiquidationRatioResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'getMarginAssetRiskBasedLiquidationRatio'.
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getMarginAssetRiskBasedLiquidationRatioRequest()
+    {
+        $contentType = self::contentTypes['getMarginAssetRiskBasedLiquidationRatio'][0];
+
+        $resourcePath = '/sapi/v1/margin/risk-based-liquidation-ratio';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getMarginRestrictedAssets.
+     *
+     * Get Margin Restricted Assets (MARKET_DATA)
+     *
+     * @return ApiResponse<GetMarginRestrictedAssetsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getMarginRestrictedAssets(): ApiResponse
+    {
+        return $this->getMarginRestrictedAssetsWithHttpInfo();
+    }
+
+    /**
+     * Operation getMarginRestrictedAssetsWithHttpInfo.
+     *
+     * Get Margin Restricted Assets (MARKET_DATA)
+     *
+     * @return ApiResponse<GetMarginRestrictedAssetsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getMarginRestrictedAssetsWithHttpInfo(): ApiResponse
+    {
+        $request = $this->getMarginRestrictedAssetsRequest();
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\MarginTrading\Model\GetMarginRestrictedAssetsResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\MarginTrading\Model\GetMarginRestrictedAssetsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\MarginTrading\Model\GetMarginRestrictedAssetsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'getMarginRestrictedAssets'.
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getMarginRestrictedAssetsRequest()
+    {
+        $contentType = self::contentTypes['getMarginRestrictedAssets'][0];
+
+        $resourcePath = '/sapi/v1/margin/restricted-asset';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],

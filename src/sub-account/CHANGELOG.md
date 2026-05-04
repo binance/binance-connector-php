@@ -1,5 +1,16 @@
 # Changelog
 
+## 5.0.0 - 2026-05-01
+
+### Changed (2)
+
+- Added parameter `limit`
+  - affected methods:
+    - `getSummaryOfSubAccountsFuturesAccount()` (`GET /sapi/v1/sub-account/futures/accountSummary`)
+- Added parameter `page`
+  - affected methods:
+    - `getSummaryOfSubAccountsFuturesAccount()` (`GET /sapi/v1/sub-account/futures/accountSummary`)
+
 ## 3.0.0 - 2026-01-08
 
 ## 2.0.0 - 2025-10-21
