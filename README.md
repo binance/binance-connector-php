@@ -40,6 +40,7 @@ Before using the connectors, ensure you have:
 - [binance-staking](src/staking) - Staking connector
 - [binance-sub-account](src/sub-account) - Sub Account connector
 - [binance-vip-loan](src/vip-loan) - VIP Loan connector
+- [binance-w3w-prediction](src/w3w-prediction) - W3W Prediction connector
 - [binance-wallet](src/wallet) - Wallet connector
 
 ## Documentation
@@ -147,6 +148,8 @@ When creating REST clients (such as SpotRestApi), you use one of the following t
 **Sub Account**: [Rest API](src/sub-account/example_rest.md)
 
 **Vip Loan**: [Rest API](src/vip-loan/example_rest.md)
+
+**W3W Prediction**: [Rest API](src/w3w-prediction/example_rest.md)
 
 **Wallet**: [Rest API](src/wallet/example_rest.md)
 
