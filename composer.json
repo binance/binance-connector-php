@@ -47,6 +47,7 @@
             "Binance\\Client\\Staking\\" : "src/staking/lib/",
             "Binance\\Client\\SubAccount\\" : "src/sub-account/lib/",
             "Binance\\Client\\VipLoan\\" : "src/vip-loan/lib/",
+            "Binance\\Client\\W3WPrediction\\" : "src/w3w-prediction/lib/",
             "Binance\\Client\\Wallet\\" : "src/wallet/lib/"
         }
     }
