@@ -35,7 +35,9 @@ use Binance\Client\Wallet\Model\GetApiKeyPermissionResponse;
 use Binance\Client\Wallet\Model\GetAssetsThatCanBeConvertedIntoBnbRequest;
 use Binance\Client\Wallet\Model\GetAssetsThatCanBeConvertedIntoBnbResponse;
 use Binance\Client\Wallet\Model\GetCloudMiningPaymentAndRefundHistoryResponse;
+use Binance\Client\Wallet\Model\GetCountryListResponse;
 use Binance\Client\Wallet\Model\GetOpenSymbolListResponse;
+use Binance\Client\Wallet\Model\GetRegionListResponse;
 use Binance\Client\Wallet\Model\GetSymbolsDelistScheduleForSpotResponse;
 use Binance\Client\Wallet\Model\OneClickArrivalDepositApplyRequest;
 use Binance\Client\Wallet\Model\OneClickArrivalDepositApplyResponse;
@@ -843,6 +845,38 @@ class WalletRestApi
     public function fetchAddressVerificationList($recvWindow = null): ApiResponse
     {
         return $this->travelRuleApi->fetchAddressVerificationList($recvWindow);
+    }
+
+    /**
+     * Operation getCountryList.
+     *
+     * Get Country List (USER_DATA)
+     *
+     * @return ApiResponse<GetCountryListResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getCountryList(): ApiResponse
+    {
+        return $this->travelRuleApi->getCountryList();
+    }
+
+    /**
+     * Operation getRegionList.
+     *
+     * Get Region List (USER_DATA)
+     *
+     * @param string $countryCode ISO 2-digit country code (from &#x60;Country List&#x60; API). (required)
+     *
+     * @return ApiResponse<GetRegionListResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getRegionList($countryCode): ApiResponse
+    {
+        return $this->travelRuleApi->getRegionList($countryCode);
     }
 
     /**

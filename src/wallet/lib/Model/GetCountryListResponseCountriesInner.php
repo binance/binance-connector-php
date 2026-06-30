@@ -1,7 +1,7 @@
 <?php
 
 /**
- * WithdrawTravelRuleResponse.
+ * GetCountryListResponseCountriesInner.
  *
  * PHP version 8.1
  *
@@ -34,7 +34,7 @@ use Binance\Common\Dtos\ModelInterface;
 use Binance\Common\ObjectSerializer;
 
 /**
- * WithdrawTravelRuleResponse Class Doc Comment.
+ * GetCountryListResponseCountriesInner Class Doc Comment.
  *
  * @category Class
  *
@@ -44,7 +44,7 @@ use Binance\Common\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
+class GetCountryListResponseCountriesInner implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
      *
      * @var string
      */
-    protected static $openAPIModelName = 'withdrawTravelRuleResponse';
+    protected static $openAPIModelName = 'getCountryListResponse_countries_inner';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,9 +61,12 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $openAPITypes = [
-        'trId' => 'int',
-        'accepted' => 'bool',
-        'info' => 'string',
+        'countryCode' => 'string',
+        'countryName' => 'string',
+        'blockType' => 'string',
+        'depositAllowed' => 'bool',
+        'withdrawalAllowed' => 'bool',
+        'hasRegionRestrictions' => 'bool',
     ];
 
     /**
@@ -76,9 +79,12 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'trId' => 'int64',
-        'accepted' => null,
-        'info' => null,
+        'countryCode' => null,
+        'countryName' => null,
+        'blockType' => null,
+        'depositAllowed' => null,
+        'withdrawalAllowed' => null,
+        'hasRegionRestrictions' => null,
     ];
 
     /**
@@ -87,9 +93,12 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'trId' => false,
-        'accepted' => false,
-        'info' => false,
+        'countryCode' => false,
+        'countryName' => false,
+        'blockType' => false,
+        'depositAllowed' => false,
+        'withdrawalAllowed' => false,
+        'hasRegionRestrictions' => false,
     ];
 
     /**
@@ -106,9 +115,12 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'trId' => 'trId',
-        'accepted' => 'accepted',
-        'info' => 'info',
+        'countryCode' => 'countryCode',
+        'countryName' => 'countryName',
+        'blockType' => 'blockType',
+        'depositAllowed' => 'depositAllowed',
+        'withdrawalAllowed' => 'withdrawalAllowed',
+        'hasRegionRestrictions' => 'hasRegionRestrictions',
     ];
 
     /**
@@ -117,9 +129,12 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'trId' => 'setTrId',
-        'accepted' => 'setAccepted',
-        'info' => 'setInfo',
+        'countryCode' => 'setCountryCode',
+        'countryName' => 'setCountryName',
+        'blockType' => 'setBlockType',
+        'depositAllowed' => 'setDepositAllowed',
+        'withdrawalAllowed' => 'setWithdrawalAllowed',
+        'hasRegionRestrictions' => 'setHasRegionRestrictions',
     ];
 
     /**
@@ -128,9 +143,12 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'trId' => 'getTrId',
-        'accepted' => 'getAccepted',
-        'info' => 'getInfo',
+        'countryCode' => 'getCountryCode',
+        'countryName' => 'getCountryName',
+        'blockType' => 'getBlockType',
+        'depositAllowed' => 'getDepositAllowed',
+        'withdrawalAllowed' => 'getWithdrawalAllowed',
+        'hasRegionRestrictions' => 'getHasRegionRestrictions',
     ];
 
     /**
@@ -148,9 +166,12 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('trId', $data ?? [], null);
-        $this->setIfExists('accepted', $data ?? [], null);
-        $this->setIfExists('info', $data ?? [], null);
+        $this->setIfExists('countryCode', $data ?? [], null);
+        $this->setIfExists('countryName', $data ?? [], null);
+        $this->setIfExists('blockType', $data ?? [], null);
+        $this->setIfExists('depositAllowed', $data ?? [], null);
+        $this->setIfExists('withdrawalAllowed', $data ?? [], null);
+        $this->setIfExists('hasRegionRestrictions', $data ?? [], null);
     }
 
     /**
@@ -282,82 +303,163 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
     }
 
     /**
-     * Gets trId.
-     *
-     * @return null|int
-     */
-    public function getTrId()
-    {
-        return $this->container['trId'];
-    }
-
-    /**
-     * Sets trId.
-     *
-     * @param null|int $trId trId
-     *
-     * @return self
-     */
-    public function setTrId($trId)
-    {
-        if (is_null($trId)) {
-            throw new \InvalidArgumentException('non-nullable trId cannot be null');
-        }
-        $this->container['trId'] = $trId;
-
-        return $this;
-    }
-
-    /**
-     * Gets accepted.
-     *
-     * @return null|bool
-     */
-    public function getAccepted()
-    {
-        return $this->container['accepted'];
-    }
-
-    /**
-     * Sets accepted.
-     *
-     * @param null|bool $accepted accepted
-     *
-     * @return self
-     */
-    public function setAccepted($accepted)
-    {
-        if (is_null($accepted)) {
-            throw new \InvalidArgumentException('non-nullable accepted cannot be null');
-        }
-        $this->container['accepted'] = $accepted;
-
-        return $this;
-    }
-
-    /**
-     * Gets info.
+     * Gets countryCode.
      *
      * @return null|string
      */
-    public function getInfo()
+    public function getCountryCode()
     {
-        return $this->container['info'];
+        return $this->container['countryCode'];
     }
 
     /**
-     * Sets info.
+     * Sets countryCode.
      *
-     * @param null|string $info info
+     * @param null|string $countryCode countryCode
      *
      * @return self
      */
-    public function setInfo($info)
+    public function setCountryCode($countryCode)
     {
-        if (is_null($info)) {
-            throw new \InvalidArgumentException('non-nullable info cannot be null');
+        if (is_null($countryCode)) {
+            throw new \InvalidArgumentException('non-nullable countryCode cannot be null');
         }
-        $this->container['info'] = $info;
+        $this->container['countryCode'] = $countryCode;
+
+        return $this;
+    }
+
+    /**
+     * Gets countryName.
+     *
+     * @return null|string
+     */
+    public function getCountryName()
+    {
+        return $this->container['countryName'];
+    }
+
+    /**
+     * Sets countryName.
+     *
+     * @param null|string $countryName countryName
+     *
+     * @return self
+     */
+    public function setCountryName($countryName)
+    {
+        if (is_null($countryName)) {
+            throw new \InvalidArgumentException('non-nullable countryName cannot be null');
+        }
+        $this->container['countryName'] = $countryName;
+
+        return $this;
+    }
+
+    /**
+     * Gets blockType.
+     *
+     * @return null|string
+     */
+    public function getBlockType()
+    {
+        return $this->container['blockType'];
+    }
+
+    /**
+     * Sets blockType.
+     *
+     * @param null|string $blockType blockType
+     *
+     * @return self
+     */
+    public function setBlockType($blockType)
+    {
+        if (is_null($blockType)) {
+            throw new \InvalidArgumentException('non-nullable blockType cannot be null');
+        }
+        $this->container['blockType'] = $blockType;
+
+        return $this;
+    }
+
+    /**
+     * Gets depositAllowed.
+     *
+     * @return null|bool
+     */
+    public function getDepositAllowed()
+    {
+        return $this->container['depositAllowed'];
+    }
+
+    /**
+     * Sets depositAllowed.
+     *
+     * @param null|bool $depositAllowed depositAllowed
+     *
+     * @return self
+     */
+    public function setDepositAllowed($depositAllowed)
+    {
+        if (is_null($depositAllowed)) {
+            throw new \InvalidArgumentException('non-nullable depositAllowed cannot be null');
+        }
+        $this->container['depositAllowed'] = $depositAllowed;
+
+        return $this;
+    }
+
+    /**
+     * Gets withdrawalAllowed.
+     *
+     * @return null|bool
+     */
+    public function getWithdrawalAllowed()
+    {
+        return $this->container['withdrawalAllowed'];
+    }
+
+    /**
+     * Sets withdrawalAllowed.
+     *
+     * @param null|bool $withdrawalAllowed withdrawalAllowed
+     *
+     * @return self
+     */
+    public function setWithdrawalAllowed($withdrawalAllowed)
+    {
+        if (is_null($withdrawalAllowed)) {
+            throw new \InvalidArgumentException('non-nullable withdrawalAllowed cannot be null');
+        }
+        $this->container['withdrawalAllowed'] = $withdrawalAllowed;
+
+        return $this;
+    }
+
+    /**
+     * Gets hasRegionRestrictions.
+     *
+     * @return null|bool
+     */
+    public function getHasRegionRestrictions()
+    {
+        return $this->container['hasRegionRestrictions'];
+    }
+
+    /**
+     * Sets hasRegionRestrictions.
+     *
+     * @param null|bool $hasRegionRestrictions hasRegionRestrictions
+     *
+     * @return self
+     */
+    public function setHasRegionRestrictions($hasRegionRestrictions)
+    {
+        if (is_null($hasRegionRestrictions)) {
+            throw new \InvalidArgumentException('non-nullable hasRegionRestrictions cannot be null');
+        }
+        $this->container['hasRegionRestrictions'] = $hasRegionRestrictions;
 
         return $this;
     }

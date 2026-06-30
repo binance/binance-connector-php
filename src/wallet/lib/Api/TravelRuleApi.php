@@ -35,6 +35,8 @@ use Binance\Client\Wallet\Model\CheckQuestionnaireRequirementsResponse;
 use Binance\Client\Wallet\Model\DepositHistoryTravelRuleResponse;
 use Binance\Client\Wallet\Model\DepositHistoryV2Response;
 use Binance\Client\Wallet\Model\FetchAddressVerificationListResponse;
+use Binance\Client\Wallet\Model\GetCountryListResponse;
+use Binance\Client\Wallet\Model\GetRegionListResponse;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireRequest;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireResponse;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireTravelRuleRequest;
@@ -83,6 +85,8 @@ class TravelRuleApi
         'depositHistoryTravelRule' => ['application/x-www-form-urlencoded'],
         'depositHistoryV2' => ['application/x-www-form-urlencoded'],
         'fetchAddressVerificationList' => ['application/x-www-form-urlencoded'],
+        'getCountryList' => ['application/x-www-form-urlencoded'],
+        'getRegionList' => ['application/x-www-form-urlencoded'],
         'submitDepositQuestionnaire' => ['application/x-www-form-urlencoded'],
         'submitDepositQuestionnaireTravelRule' => ['application/x-www-form-urlencoded'],
         'submitDepositQuestionnaireV2' => ['application/x-www-form-urlencoded'],
@@ -1169,6 +1173,323 @@ class TravelRuleApi
             'form', // style
             true, // explode
             false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCountryList.
+     *
+     * Get Country List (USER_DATA)
+     *
+     * @return ApiResponse<GetCountryListResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getCountryList(): ApiResponse
+    {
+        return $this->getCountryListWithHttpInfo();
+    }
+
+    /**
+     * Operation getCountryListWithHttpInfo.
+     *
+     * Get Country List (USER_DATA)
+     *
+     * @return ApiResponse<GetCountryListResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getCountryListWithHttpInfo(): ApiResponse
+    {
+        $request = $this->getCountryListRequest();
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Wallet\Model\GetCountryListResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Wallet\Model\GetCountryListResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Wallet\Model\GetCountryListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'getCountryList'.
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getCountryListRequest()
+    {
+        $contentType = self::contentTypes['getCountryList'][0];
+
+        $resourcePath = '/sapi/v1/localentity/country/list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getRegionList.
+     *
+     * Get Region List (USER_DATA)
+     *
+     * @param string $countryCode ISO 2-digit country code (from &#x60;Country List&#x60; API). (required)
+     *
+     * @return ApiResponse<GetRegionListResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getRegionList($countryCode): ApiResponse
+    {
+        return $this->getRegionListWithHttpInfo($countryCode);
+    }
+
+    /**
+     * Operation getRegionListWithHttpInfo.
+     *
+     * Get Region List (USER_DATA)
+     *
+     * @param string $countryCode ISO 2-digit country code (from &#x60;Country List&#x60; API). (required)
+     *
+     * @return ApiResponse<GetRegionListResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getRegionListWithHttpInfo($countryCode): ApiResponse
+    {
+        $request = $this->getRegionListRequest($countryCode);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Wallet\Model\GetRegionListResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Wallet\Model\GetRegionListResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Wallet\Model\GetRegionListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'getRegionList'.
+     *
+     * @param string $countryCode ISO 2-digit country code (from &#x60;Country List&#x60; API). (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getRegionListRequest($countryCode)
+    {
+        $contentType = self::contentTypes['getRegionList'][0];
+
+        // verify the required parameter 'countryCode' is set
+        if (null === $countryCode || (is_array($countryCode) && 0 === count($countryCode))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $countryCode when calling getRegionList'
+            );
+        }
+
+        $resourcePath = '/sapi/v1/localentity/region/list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $countryCode,
+            'countryCode', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
         ) ?? []);
 
         $headers = $this->headerSelector->selectHeaders(

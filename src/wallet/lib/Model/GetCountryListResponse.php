@@ -1,7 +1,7 @@
 <?php
 
 /**
- * WithdrawTravelRuleResponse.
+ * GetCountryListResponse.
  *
  * PHP version 8.1
  *
@@ -34,7 +34,7 @@ use Binance\Common\Dtos\ModelInterface;
 use Binance\Common\ObjectSerializer;
 
 /**
- * WithdrawTravelRuleResponse Class Doc Comment.
+ * GetCountryListResponse Class Doc Comment.
  *
  * @category Class
  *
@@ -44,7 +44,7 @@ use Binance\Common\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
+class GetCountryListResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
      *
      * @var string
      */
-    protected static $openAPIModelName = 'withdrawTravelRuleResponse';
+    protected static $openAPIModelName = 'getCountryListResponse';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,9 +61,8 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $openAPITypes = [
-        'trId' => 'int',
-        'accepted' => 'bool',
-        'info' => 'string',
+        'countries' => '\Binance\Client\Wallet\Model\GetCountryListResponseCountriesInner[]',
+        'lastUpdated' => 'int',
     ];
 
     /**
@@ -76,9 +75,8 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'trId' => 'int64',
-        'accepted' => null,
-        'info' => null,
+        'countries' => null,
+        'lastUpdated' => 'int64',
     ];
 
     /**
@@ -87,9 +85,8 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'trId' => false,
-        'accepted' => false,
-        'info' => false,
+        'countries' => false,
+        'lastUpdated' => false,
     ];
 
     /**
@@ -106,9 +103,8 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'trId' => 'trId',
-        'accepted' => 'accepted',
-        'info' => 'info',
+        'countries' => 'countries',
+        'lastUpdated' => 'lastUpdated',
     ];
 
     /**
@@ -117,9 +113,8 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'trId' => 'setTrId',
-        'accepted' => 'setAccepted',
-        'info' => 'setInfo',
+        'countries' => 'setCountries',
+        'lastUpdated' => 'setLastUpdated',
     ];
 
     /**
@@ -128,9 +123,8 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'trId' => 'getTrId',
-        'accepted' => 'getAccepted',
-        'info' => 'getInfo',
+        'countries' => 'getCountries',
+        'lastUpdated' => 'getLastUpdated',
     ];
 
     /**
@@ -148,9 +142,8 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('trId', $data ?? [], null);
-        $this->setIfExists('accepted', $data ?? [], null);
-        $this->setIfExists('info', $data ?? [], null);
+        $this->setIfExists('countries', $data ?? [], null);
+        $this->setIfExists('lastUpdated', $data ?? [], null);
     }
 
     /**
@@ -282,82 +275,55 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
     }
 
     /**
-     * Gets trId.
+     * Gets countries.
+     *
+     * @return null|GetCountryListResponseCountriesInner[]
+     */
+    public function getCountries()
+    {
+        return $this->container['countries'];
+    }
+
+    /**
+     * Sets countries.
+     *
+     * @param null|GetCountryListResponseCountriesInner[] $countries countries
+     *
+     * @return self
+     */
+    public function setCountries($countries)
+    {
+        if (is_null($countries)) {
+            throw new \InvalidArgumentException('non-nullable countries cannot be null');
+        }
+        $this->container['countries'] = $countries;
+
+        return $this;
+    }
+
+    /**
+     * Gets lastUpdated.
      *
      * @return null|int
      */
-    public function getTrId()
+    public function getLastUpdated()
     {
-        return $this->container['trId'];
+        return $this->container['lastUpdated'];
     }
 
     /**
-     * Sets trId.
+     * Sets lastUpdated.
      *
-     * @param null|int $trId trId
+     * @param null|int $lastUpdated lastUpdated
      *
      * @return self
      */
-    public function setTrId($trId)
+    public function setLastUpdated($lastUpdated)
     {
-        if (is_null($trId)) {
-            throw new \InvalidArgumentException('non-nullable trId cannot be null');
+        if (is_null($lastUpdated)) {
+            throw new \InvalidArgumentException('non-nullable lastUpdated cannot be null');
         }
-        $this->container['trId'] = $trId;
-
-        return $this;
-    }
-
-    /**
-     * Gets accepted.
-     *
-     * @return null|bool
-     */
-    public function getAccepted()
-    {
-        return $this->container['accepted'];
-    }
-
-    /**
-     * Sets accepted.
-     *
-     * @param null|bool $accepted accepted
-     *
-     * @return self
-     */
-    public function setAccepted($accepted)
-    {
-        if (is_null($accepted)) {
-            throw new \InvalidArgumentException('non-nullable accepted cannot be null');
-        }
-        $this->container['accepted'] = $accepted;
-
-        return $this;
-    }
-
-    /**
-     * Gets info.
-     *
-     * @return null|string
-     */
-    public function getInfo()
-    {
-        return $this->container['info'];
-    }
-
-    /**
-     * Sets info.
-     *
-     * @param null|string $info info
-     *
-     * @return self
-     */
-    public function setInfo($info)
-    {
-        if (is_null($info)) {
-            throw new \InvalidArgumentException('non-nullable info cannot be null');
-        }
-        $this->container['info'] = $info;
+        $this->container['lastUpdated'] = $lastUpdated;
 
         return $this;
     }
