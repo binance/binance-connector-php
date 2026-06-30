@@ -61,6 +61,7 @@ class DustConvertibleAssetsRequest implements ModelInterface, \ArrayAccess, \Jso
      * @var string[]
      */
     protected static $openAPITypes = [
+        'accountType' => 'string',
         'targetAsset' => 'string',
         'dustQuotaAssetToTargetAssetPrice' => 'float',
     ];
@@ -75,6 +76,7 @@ class DustConvertibleAssetsRequest implements ModelInterface, \ArrayAccess, \Jso
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
+        'accountType' => null,
         'targetAsset' => null,
         'dustQuotaAssetToTargetAssetPrice' => 'float',
     ];
@@ -85,6 +87,7 @@ class DustConvertibleAssetsRequest implements ModelInterface, \ArrayAccess, \Jso
      * @var bool[]
      */
     protected static array $openAPINullables = [
+        'accountType' => false,
         'targetAsset' => false,
         'dustQuotaAssetToTargetAssetPrice' => false,
     ];
@@ -103,6 +106,7 @@ class DustConvertibleAssetsRequest implements ModelInterface, \ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
+        'accountType' => 'accountType',
         'targetAsset' => 'targetAsset',
         'dustQuotaAssetToTargetAssetPrice' => 'dustQuotaAssetToTargetAssetPrice',
     ];
@@ -113,6 +117,7 @@ class DustConvertibleAssetsRequest implements ModelInterface, \ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
+        'accountType' => 'setAccountType',
         'targetAsset' => 'setTargetAsset',
         'dustQuotaAssetToTargetAssetPrice' => 'setDustQuotaAssetToTargetAssetPrice',
     ];
@@ -123,6 +128,7 @@ class DustConvertibleAssetsRequest implements ModelInterface, \ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
+        'accountType' => 'getAccountType',
         'targetAsset' => 'getTargetAsset',
         'dustQuotaAssetToTargetAssetPrice' => 'getDustQuotaAssetToTargetAssetPrice',
     ];
@@ -142,6 +148,7 @@ class DustConvertibleAssetsRequest implements ModelInterface, \ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('accountType', $data ?? [], null);
         $this->setIfExists('targetAsset', $data ?? [], null);
         $this->setIfExists('dustQuotaAssetToTargetAssetPrice', $data ?? [], null);
     }
@@ -278,6 +285,33 @@ class DustConvertibleAssetsRequest implements ModelInterface, \ArrayAccess, \Jso
     public function valid()
     {
         return 0 === count($this->listInvalidProperties());
+    }
+
+    /**
+     * Gets accountType.
+     *
+     * @return null|string
+     */
+    public function getAccountType()
+    {
+        return $this->container['accountType'];
+    }
+
+    /**
+     * Sets accountType.
+     *
+     * @param null|string $accountType accountType
+     *
+     * @return self
+     */
+    public function setAccountType($accountType)
+    {
+        if (is_null($accountType)) {
+            throw new \InvalidArgumentException('non-nullable accountType cannot be null');
+        }
+        $this->container['accountType'] = $accountType;
+
+        return $this;
     }
 
     /**

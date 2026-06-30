@@ -62,7 +62,7 @@ class BrokerWithdrawResponse implements ModelInterface, \ArrayAccess, \JsonSeria
      */
     protected static $openAPITypes = [
         'trId' => 'int',
-        'accpted' => 'bool',
+        'accepted' => 'bool',
         'info' => 'string',
     ];
 
@@ -77,7 +77,7 @@ class BrokerWithdrawResponse implements ModelInterface, \ArrayAccess, \JsonSeria
      */
     protected static $openAPIFormats = [
         'trId' => 'int64',
-        'accpted' => null,
+        'accepted' => null,
         'info' => null,
     ];
 
@@ -88,7 +88,7 @@ class BrokerWithdrawResponse implements ModelInterface, \ArrayAccess, \JsonSeria
      */
     protected static array $openAPINullables = [
         'trId' => false,
-        'accpted' => false,
+        'accepted' => false,
         'info' => false,
     ];
 
@@ -107,7 +107,7 @@ class BrokerWithdrawResponse implements ModelInterface, \ArrayAccess, \JsonSeria
      */
     protected static $attributeMap = [
         'trId' => 'trId',
-        'accpted' => 'accpted',
+        'accepted' => 'accepted',
         'info' => 'info',
     ];
 
@@ -118,7 +118,7 @@ class BrokerWithdrawResponse implements ModelInterface, \ArrayAccess, \JsonSeria
      */
     protected static $setters = [
         'trId' => 'setTrId',
-        'accpted' => 'setAccpted',
+        'accepted' => 'setAccepted',
         'info' => 'setInfo',
     ];
 
@@ -129,7 +129,7 @@ class BrokerWithdrawResponse implements ModelInterface, \ArrayAccess, \JsonSeria
      */
     protected static $getters = [
         'trId' => 'getTrId',
-        'accpted' => 'getAccpted',
+        'accepted' => 'getAccepted',
         'info' => 'getInfo',
     ];
 
@@ -149,7 +149,7 @@ class BrokerWithdrawResponse implements ModelInterface, \ArrayAccess, \JsonSeria
     public function __construct(?array $data = null)
     {
         $this->setIfExists('trId', $data ?? [], null);
-        $this->setIfExists('accpted', $data ?? [], null);
+        $this->setIfExists('accepted', $data ?? [], null);
         $this->setIfExists('info', $data ?? [], null);
     }
 
@@ -309,28 +309,28 @@ class BrokerWithdrawResponse implements ModelInterface, \ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets accpted.
+     * Gets accepted.
      *
      * @return null|bool
      */
-    public function getAccpted()
+    public function getAccepted()
     {
-        return $this->container['accpted'];
+        return $this->container['accepted'];
     }
 
     /**
-     * Sets accpted.
+     * Sets accepted.
      *
-     * @param null|bool $accpted accpted
+     * @param null|bool $accepted accepted
      *
      * @return self
      */
-    public function setAccpted($accpted)
+    public function setAccepted($accepted)
     {
-        if (is_null($accpted)) {
-            throw new \InvalidArgumentException('non-nullable accpted cannot be null');
+        if (is_null($accepted)) {
+            throw new \InvalidArgumentException('non-nullable accepted cannot be null');
         }
-        $this->container['accpted'] = $accpted;
+        $this->container['accepted'] = $accepted;
 
         return $this;
     }

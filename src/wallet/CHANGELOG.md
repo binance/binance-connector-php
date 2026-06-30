@@ -1,5 +1,26 @@
 # Changelog
 
+## 6.0.0 - 2026-06-30
+
+### Added (2)
+
+- `getCountryList()` (`GET /sapi/v1/localentity/country/list`)
+- `getRegionList()` (`GET /sapi/v1/localentity/region/list`)
+
+### Changed (3)
+
+- Added parameter `accountType`
+  - affected methods:
+    - `dustConvert()` (`POST /sapi/v1/asset/dust-convert/convert`)
+    - `dustConvertibleAssets()` (`POST /sapi/v1/asset/dust-convert/query-convertible-assets`)
+- Modified response for `brokerWithdraw()` (`POST /sapi/v1/localentity/broker/withdraw/apply`):
+  - property `accepted` added
+  - property `accpted` deleted
+
+- Modified response for `withdrawTravelRule()` (`POST /sapi/v1/localentity/withdraw/apply`):
+  - property `accepted` added
+  - property `accpted` deleted
+
 ## 5.0.0 - 2026-05-01
 
 ### Changed (6)

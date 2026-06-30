@@ -62,6 +62,7 @@ class DustConvertRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
      */
     protected static $openAPITypes = [
         'asset' => 'string',
+        'accountType' => 'string',
         'clientId' => 'string',
         'targetAsset' => 'string',
         'thirdPartyClientId' => 'string',
@@ -79,6 +80,7 @@ class DustConvertRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
      */
     protected static $openAPIFormats = [
         'asset' => null,
+        'accountType' => null,
         'clientId' => null,
         'targetAsset' => null,
         'thirdPartyClientId' => null,
@@ -92,6 +94,7 @@ class DustConvertRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
      */
     protected static array $openAPINullables = [
         'asset' => false,
+        'accountType' => false,
         'clientId' => false,
         'targetAsset' => false,
         'thirdPartyClientId' => false,
@@ -113,6 +116,7 @@ class DustConvertRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'asset' => 'asset',
+        'accountType' => 'accountType',
         'clientId' => 'clientId',
         'targetAsset' => 'targetAsset',
         'thirdPartyClientId' => 'thirdPartyClientId',
@@ -126,6 +130,7 @@ class DustConvertRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'asset' => 'setAsset',
+        'accountType' => 'setAccountType',
         'clientId' => 'setClientId',
         'targetAsset' => 'setTargetAsset',
         'thirdPartyClientId' => 'setThirdPartyClientId',
@@ -139,6 +144,7 @@ class DustConvertRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'asset' => 'getAsset',
+        'accountType' => 'getAccountType',
         'clientId' => 'getClientId',
         'targetAsset' => 'getTargetAsset',
         'thirdPartyClientId' => 'getThirdPartyClientId',
@@ -161,6 +167,7 @@ class DustConvertRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
     public function __construct(?array $data = null)
     {
         $this->setIfExists('asset', $data ?? [], null);
+        $this->setIfExists('accountType', $data ?? [], null);
         $this->setIfExists('clientId', $data ?? [], null);
         $this->setIfExists('targetAsset', $data ?? [], null);
         $this->setIfExists('thirdPartyClientId', $data ?? [], null);
@@ -324,6 +331,33 @@ class DustConvertRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable asset cannot be null');
         }
         $this->container['asset'] = $asset;
+
+        return $this;
+    }
+
+    /**
+     * Gets accountType.
+     *
+     * @return null|string
+     */
+    public function getAccountType()
+    {
+        return $this->container['accountType'];
+    }
+
+    /**
+     * Sets accountType.
+     *
+     * @param null|string $accountType accountType
+     *
+     * @return self
+     */
+    public function setAccountType($accountType)
+    {
+        if (is_null($accountType)) {
+            throw new \InvalidArgumentException('non-nullable accountType cannot be null');
+        }
+        $this->container['accountType'] = $accountType;
 
         return $this;
     }
