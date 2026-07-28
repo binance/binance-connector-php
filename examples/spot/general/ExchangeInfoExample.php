@@ -10,10 +10,10 @@ function exchangeInfoExample()
 {
     $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
     $api = new SpotRestApi($configurationBuilder->build());
-    $symbol = 'BNBUSDT';
-    $symbols = null;
-    $permissions = null;
-    $showPermissionSets = true;
+    $symbol = 'ETHBTC';
+    $symbols = ['BTCUSDT', 'BNBUSDT'];
+    $permissions = ['SPOT'];
+    $showPermissionSets = false;
     $symbolStatus = SymbolStatus::TRADING;
     $response = $api->exchangeInfo($symbol, $symbols, $permissions, $showPermissionSets, $symbolStatus);
     print_r($response);

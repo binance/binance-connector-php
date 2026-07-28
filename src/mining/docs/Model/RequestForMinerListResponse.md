@@ -1,4 +1,4 @@
-# # RequestForMinerListResponse
+# RequestForMinerListResponse
 
 ## Properties
 

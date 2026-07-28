@@ -1,4 +1,4 @@
-# # SetOnChainYieldsLockedProductRedeemOptionResponse
+# SetOnChainYieldsLockedProductRedeemOptionResponse
 
 ## Properties
 

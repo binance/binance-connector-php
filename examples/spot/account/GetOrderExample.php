@@ -10,10 +10,10 @@ function getOrderExample()
     $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SpotRestApi($configurationBuilder->build());
-    $symbol = 'BNBUSDT';
+    $symbol = 'LTCBTC';
     $orderId = 1;
-    $origClientOrderId = '';
-    $recvWindow = 5000.0;
+    $origClientOrderId = 'myOrder1';
+    $recvWindow = 5000;
     $response = $api->getOrder($symbol, $orderId, $origClientOrderId, $recvWindow);
     print_r($response);
 }

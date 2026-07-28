@@ -1,4 +1,4 @@
-# # GetOnChainYieldsLockedProductListResponseRowsInnerDetail
+# GetOnChainYieldsLockedProductListResponseRowsInnerDetail
 
 ## Properties
 

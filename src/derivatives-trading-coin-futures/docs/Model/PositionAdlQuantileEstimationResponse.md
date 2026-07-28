@@ -1,4 +1,4 @@
-# # PositionAdlQuantileEstimationResponse
+# PositionAdlQuantileEstimationResponse
 
 ## Properties
 

@@ -11,7 +11,7 @@ function queryCrossMarginFeeDataExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new MarginTradingRestApi($configurationBuilder->build());
     $vipLevel = 1;
-    $coin = '';
+    $coin = 'BTC';
     $recvWindow = 5000;
     $response = $api->queryCrossMarginFeeData($vipLevel, $coin, $recvWindow);
     print_r($response);

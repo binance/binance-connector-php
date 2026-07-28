@@ -12,8 +12,8 @@ function depositAssetsIntoTheManagedSubAccountExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
     $depositAssetsIntoTheManagedSubAccountRequest = new DepositAssetsIntoTheManagedSubAccountRequest();
-    $depositAssetsIntoTheManagedSubAccountRequest->setToEmail('');
-    $depositAssetsIntoTheManagedSubAccountRequest->setAsset('');
+    $depositAssetsIntoTheManagedSubAccountRequest->setToEmail('abc@test.com');
+    $depositAssetsIntoTheManagedSubAccountRequest->setAsset('BTC');
     $depositAssetsIntoTheManagedSubAccountRequest->setAmount(1.0);
     $response = $api->depositAssetsIntoTheManagedSubAccount($depositAssetsIntoTheManagedSubAccountRequest);
     print_r($response);

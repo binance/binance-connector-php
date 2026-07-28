@@ -1,4 +1,4 @@
-# # MaxNumAlgoOrdersFilter
+# MaxNumAlgoOrdersFilter
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # StatisticListResponse
+# StatisticListResponse
 
 ## Properties
 

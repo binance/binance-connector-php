@@ -1,4 +1,4 @@
-# # AggTradesResponse
+# AggTradesResponse
 
 ## Properties
 

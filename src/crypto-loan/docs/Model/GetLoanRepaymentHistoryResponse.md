@@ -1,4 +1,4 @@
-# # GetLoanRepaymentHistoryResponse
+# GetLoanRepaymentHistoryResponse
 
 ## Properties
 

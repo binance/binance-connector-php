@@ -10,8 +10,8 @@ function getFuturesPositionRiskOfSubAccountV2Example()
     $configurationBuilder = SubAccountRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
-    $email = 'sub-account-email@email.com';
-    $futuresType = null;
+    $email = '123@test.com';
+    $futuresType = 1;
     $recvWindow = 5000;
     $response = $api->getFuturesPositionRiskOfSubAccountV2($email, $futuresType, $recvWindow);
     print_r($response);

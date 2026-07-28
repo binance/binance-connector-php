@@ -1,4 +1,4 @@
-# # EnableFastWithdrawSwitchRequest
+# EnableFastWithdrawSwitchRequest
 
 ## Properties
 

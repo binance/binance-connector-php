@@ -10,7 +10,7 @@ function cancelMarginAccountOrderExample()
     $configurationBuilder = DerivativesTradingPortfolioMarginRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'LTCBTC';
     $orderId = 1;
     $origClientOrderId = '1';
     $newClientOrderId = '1';

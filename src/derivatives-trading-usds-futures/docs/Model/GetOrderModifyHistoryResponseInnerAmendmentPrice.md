@@ -1,4 +1,4 @@
-# # GetOrderModifyHistoryResponseInnerAmendmentPrice
+# GetOrderModifyHistoryResponseInnerAmendmentPrice
 
 ## Properties
 

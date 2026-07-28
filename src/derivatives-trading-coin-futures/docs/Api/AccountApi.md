@@ -1,21 +1,23 @@
 # Binance\Client\DerivativesTradingCoinFutures\AccountApi
 
+
+
 All URIs are relative to https://dapi.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**accountInformation()**](AccountApi.md#accountInformation) | **GET** /dapi/v1/account | Account Information (USER_DATA) |
 | [**futuresAccountBalance()**](AccountApi.md#futuresAccountBalance) | **GET** /dapi/v1/balance | Futures Account Balance (USER_DATA) |
-| [**getCurrentPositionMode()**](AccountApi.md#getCurrentPositionMode) | **GET** /dapi/v1/positionSide/dual | Get Current Position Mode(USER_DATA) |
+| [**getCurrentPositionMode()**](AccountApi.md#getCurrentPositionMode) | **GET** /dapi/v1/positionSide/dual | Get Current Position Mode (USER_DATA) |
 | [**getDownloadIdForFuturesOrderHistory()**](AccountApi.md#getDownloadIdForFuturesOrderHistory) | **GET** /dapi/v1/order/asyn | Get Download Id For Futures Order History (USER_DATA) |
 | [**getDownloadIdForFuturesTradeHistory()**](AccountApi.md#getDownloadIdForFuturesTradeHistory) | **GET** /dapi/v1/trade/asyn | Get Download Id For Futures Trade History (USER_DATA) |
-| [**getDownloadIdForFuturesTransactionHistory()**](AccountApi.md#getDownloadIdForFuturesTransactionHistory) | **GET** /dapi/v1/income/asyn | Get Download Id For Futures Transaction History(USER_DATA) |
+| [**getDownloadIdForFuturesTransactionHistory()**](AccountApi.md#getDownloadIdForFuturesTransactionHistory) | **GET** /dapi/v1/income/asyn | Get Download Id For Futures Transaction History (USER_DATA) |
 | [**getFuturesOrderHistoryDownloadLinkById()**](AccountApi.md#getFuturesOrderHistoryDownloadLinkById) | **GET** /dapi/v1/order/asyn/id | Get Futures Order History Download Link by Id (USER_DATA) |
-| [**getFuturesTradeDownloadLinkById()**](AccountApi.md#getFuturesTradeDownloadLinkById) | **GET** /dapi/v1/trade/asyn/id | Get Futures Trade Download Link by Id(USER_DATA) |
+| [**getFuturesTradeDownloadLinkById()**](AccountApi.md#getFuturesTradeDownloadLinkById) | **GET** /dapi/v1/trade/asyn/id | Get Futures Trade Download Link by Id (USER_DATA) |
 | [**getFuturesTransactionHistoryDownloadLinkById()**](AccountApi.md#getFuturesTransactionHistoryDownloadLinkById) | **GET** /dapi/v1/income/asyn/id | Get Futures Transaction History Download Link by Id (USER_DATA) |
-| [**getIncomeHistory()**](AccountApi.md#getIncomeHistory) | **GET** /dapi/v1/income | Get Income History(USER_DATA) |
-| [**notionalBracketForPair()**](AccountApi.md#notionalBracketForPair) | **GET** /dapi/v1/leverageBracket | Notional Bracket for Pair(USER_DATA) |
-| [**notionalBracketForSymbol()**](AccountApi.md#notionalBracketForSymbol) | **GET** /dapi/v2/leverageBracket | Notional Bracket for Symbol(USER_DATA) |
+| [**getIncomeHistory()**](AccountApi.md#getIncomeHistory) | **GET** /dapi/v1/income | Get Income History (USER_DATA) |
+| [**notionalBracketForPair()**](AccountApi.md#notionalBracketForPair) | **GET** /dapi/v1/leverageBracket | Notional Bracket for Pair (USER_DATA) |
+| [**notionalBracketForSymbol()**](AccountApi.md#notionalBracketForSymbol) | **GET** /dapi/v2/leverageBracket | Notional Bracket for Symbol (USER_DATA) |
 | [**userCommissionRate()**](AccountApi.md#userCommissionRate) | **GET** /dapi/v1/commissionRate | User Commission Rate (USER_DATA) |
 
 
@@ -27,7 +29,7 @@ accountInformation($recvWindow): \Binance\Client\DerivativesTradingCoinFutures\M
 
 Account Information (USER_DATA)
 
-Get current account information.  * for One-way Mode user, the \"positions\" will only show the \"BOTH\" positions * for Hedge Mode user, the \"positions\" will show \"BOTH\", \"LONG\", and \"SHORT\" positions.  Weight: 5
+Get current account information.  Weight(IP): 5  Security Type: USER_DATA  Notes: - for One-way Mode user, the \"positions\" will only show the \"BOTH\" positions - for Hedge Mode user, the \"positions\" will show \"BOTH\", \"LONG\", and \"SHORT\" positions.
 
 ### Example
 
@@ -42,7 +44,7 @@ $apiInstance = new Binance\Client\DerivativesTradingCoinFutures\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->accountInformation($recvWindow);
@@ -83,7 +85,7 @@ futuresAccountBalance($recvWindow): \Binance\Client\DerivativesTradingCoinFuture
 
 Futures Account Balance (USER_DATA)
 
-Check futures account balance  Weight: 1
+Check futures account balance  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -98,7 +100,7 @@ $apiInstance = new Binance\Client\DerivativesTradingCoinFutures\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->futuresAccountBalance($recvWindow);
@@ -137,9 +139,9 @@ No authorization required
 getCurrentPositionMode($recvWindow): \Binance\Client\DerivativesTradingCoinFutures\Model\GetCurrentPositionModeResponse
 ```
 
-Get Current Position Mode(USER_DATA)
+Get Current Position Mode (USER_DATA)
 
-Get user's position mode (Hedge Mode or One-way Mode ) on ***EVERY symbol***  Weight: 30
+Get user's position mode (Hedge Mode or One-way Mode ) on ***EVERY symbol***  Weight(IP): 30  Security Type: USER_DATA
 
 ### Example
 
@@ -154,7 +156,7 @@ $apiInstance = new Binance\Client\DerivativesTradingCoinFutures\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getCurrentPositionMode($recvWindow);
@@ -195,7 +197,7 @@ getDownloadIdForFuturesOrderHistory($startTime, $endTime, $recvWindow): \Binance
 
 Get Download Id For Futures Order History (USER_DATA)
 
-Get Download Id For Futures Order History  * Request Limitation is 10 times per month, shared by front end download page and rest api * The time between `startTime` and `endTime` can not be longer than 1 year  Weight: 5
+Get Download Id For Futures Order History  Weight(IP): 1000  Security Type: USER_DATA  Notes: - Request Limitation is 8 times per month, shared by front end download page and rest api - This endpoint uses the IP rate limit bucket and costs 1000 weight per call. The maximum is 2 calls per minute; the 3rd call within the same minute will trigger a ban. - The time between `startTime` and `endTime` can not be longer than 1 year
 
 ### Example
 
@@ -210,9 +212,9 @@ $apiInstance = new Binance\Client\DerivativesTradingCoinFutures\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$startTime = 56; // int | Timestamp in ms
-$endTime = 56; // int | Timestamp in ms
-$recvWindow = 56; // int
+$startTime = 1623319461670; // int | Timestamp in ms
+$endTime = 1641782889000; // int | Timestamp in ms
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getDownloadIdForFuturesOrderHistory($startTime, $endTime, $recvWindow);
@@ -255,7 +257,7 @@ getDownloadIdForFuturesTradeHistory($startTime, $endTime, $recvWindow): \Binance
 
 Get Download Id For Futures Trade History (USER_DATA)
 
-Get download id for futures trade history  * Request Limitation is 5 times per month, shared by front end download page and rest api * The time between `startTime` and `endTime` can not be longer than 1 year  Weight: 5
+Get download id for futures trade history  Weight(IP): 1000  Security Type: USER_DATA  Notes: - Request Limitation is 8 times per month, shared by front end download page and rest api - This endpoint uses the IP rate limit bucket and costs 1000 weight per call. The maximum is 2 calls per minute; the 3rd call within the same minute will trigger a ban. - The time between `startTime` and `endTime` can not be longer than 1 year
 
 ### Example
 
@@ -270,9 +272,9 @@ $apiInstance = new Binance\Client\DerivativesTradingCoinFutures\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$startTime = 56; // int | Timestamp in ms
-$endTime = 56; // int | Timestamp in ms
-$recvWindow = 56; // int
+$startTime = 1623319461670; // int | Timestamp in ms
+$endTime = 1641782889000; // int | Timestamp in ms
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getDownloadIdForFuturesTradeHistory($startTime, $endTime, $recvWindow);
@@ -313,9 +315,9 @@ No authorization required
 getDownloadIdForFuturesTransactionHistory($startTime, $endTime, $recvWindow): \Binance\Client\DerivativesTradingCoinFutures\Model\GetDownloadIdForFuturesTransactionHistoryResponse
 ```
 
-Get Download Id For Futures Transaction History(USER_DATA)
+Get Download Id For Futures Transaction History (USER_DATA)
 
-Get download id for futures transaction history  * Request Limitation is 5 times per month, shared by front end download page and rest api * The time between `startTime` and `endTime` can not be longer than 1 year  Weight: 5
+Get download id for futures transaction history  Weight(IP): 1000  Security Type: USER_DATA  Notes: - Request Limitation is 8 times per month, shared by front end download page and rest api - This endpoint uses the IP rate limit bucket and costs 1000 weight per call. The maximum is 2 calls per minute; the 3rd call within the same minute will trigger a ban. - The time between `startTime` and `endTime` can not be longer than 1 year
 
 ### Example
 
@@ -330,9 +332,9 @@ $apiInstance = new Binance\Client\DerivativesTradingCoinFutures\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$startTime = 56; // int | Timestamp in ms
-$endTime = 56; // int | Timestamp in ms
-$recvWindow = 56; // int
+$startTime = 1623319461670; // int | Timestamp in ms
+$endTime = 1641782889000; // int | Timestamp in ms
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getDownloadIdForFuturesTransactionHistory($startTime, $endTime, $recvWindow);
@@ -375,7 +377,7 @@ getFuturesOrderHistoryDownloadLinkById($downloadId, $recvWindow): \Binance\Clien
 
 Get Futures Order History Download Link by Id (USER_DATA)
 
-Get futures order history download link by Id  * Download link expiration: 24h  Weight: 5
+Get futures order history download link by Id  Weight(IP): 5  Security Type: USER_DATA  Notes: - Download link expiration: 7 days
 
 ### Example
 
@@ -390,8 +392,8 @@ $apiInstance = new Binance\Client\DerivativesTradingCoinFutures\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$downloadId = 'downloadId_example'; // string | get by download id api
-$recvWindow = 56; // int
+$downloadId = 545923594199212032; // string | get by download id api
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getFuturesOrderHistoryDownloadLinkById($downloadId, $recvWindow);
@@ -431,9 +433,9 @@ No authorization required
 getFuturesTradeDownloadLinkById($downloadId, $recvWindow): \Binance\Client\DerivativesTradingCoinFutures\Model\GetFuturesTradeDownloadLinkByIdResponse
 ```
 
-Get Futures Trade Download Link by Id(USER_DATA)
+Get Futures Trade Download Link by Id (USER_DATA)
 
-Get futures trade download link by Id  * Download link expiration: 24h  Weight: 5
+Get futures trade download link by Id  Weight(IP): 5  Security Type: USER_DATA  Notes: - Download link expiration: 7 days
 
 ### Example
 
@@ -448,8 +450,8 @@ $apiInstance = new Binance\Client\DerivativesTradingCoinFutures\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$downloadId = 'downloadId_example'; // string | get by download id api
-$recvWindow = 56; // int
+$downloadId = 545923594199212032; // string | get by download id api
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getFuturesTradeDownloadLinkById($downloadId, $recvWindow);
@@ -491,7 +493,7 @@ getFuturesTransactionHistoryDownloadLinkById($downloadId, $recvWindow): \Binance
 
 Get Futures Transaction History Download Link by Id (USER_DATA)
 
-Get futures transaction history download link by Id  * Download link expiration: 24h  Weight: 5
+Get futures transaction history download link by Id  Weight(IP): 5  Security Type: USER_DATA  Notes: - Download link expiration: 7 days
 
 ### Example
 
@@ -506,8 +508,8 @@ $apiInstance = new Binance\Client\DerivativesTradingCoinFutures\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$downloadId = 'downloadId_example'; // string | get by download id api
-$recvWindow = 56; // int
+$downloadId = 545923594199212032; // string | get by download id api
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getFuturesTransactionHistoryDownloadLinkById($downloadId, $recvWindow);
@@ -547,9 +549,9 @@ No authorization required
 getIncomeHistory($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow): \Binance\Client\DerivativesTradingCoinFutures\Model\GetIncomeHistoryResponse
 ```
 
-Get Income History(USER_DATA)
+Get Income History (USER_DATA)
 
-Get income history  * If `incomeType ` is not sent, all kinds of flow will be returned * \"trandId\" is unique in the same \"incomeType\" for a user * The time between `startTime` and `endTime` can not be longer than 1 year  Weight: 20
+Get income history  Weight(IP): 20  Security Type: USER_DATA  Notes: - If `incomeType ` is not sent, all kinds of flow will be returned - \"trandId\" is unique in the same \"incomeType\" for a user - The time between `startTime` and `endTime` can not be longer than 1 year
 
 ### Example
 
@@ -564,13 +566,13 @@ $apiInstance = new Binance\Client\DerivativesTradingCoinFutures\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$incomeType = 'incomeType_example'; // string | \"TRANSFER\",\"WELCOME_BONUS\", \"FUNDING_FEE\", \"REALIZED_PNL\", \"COMMISSION\", \"INSURANCE_CLEAR\", and \"DELIVERED_SETTELMENT\"
-$startTime = 56; // int
-$endTime = 56; // int
-$page = 56; // int
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$incomeType = new \Binance\Client\DerivativesTradingCoinFutures\Model\\Binance\Client\DerivativesTradingCoinFutures\Model\IncomeType(); // \Binance\Client\DerivativesTradingCoinFutures\Model\IncomeType | Income type.
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$page = 1; // int | Page number
+$limit = 30; // int | Maximum number of records to return.
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getIncomeHistory($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
@@ -584,12 +586,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | [optional] |
-| **incomeType** | **string**| \&quot;TRANSFER\&quot;,\&quot;WELCOME_BONUS\&quot;, \&quot;FUNDING_FEE\&quot;, \&quot;REALIZED_PNL\&quot;, \&quot;COMMISSION\&quot;, \&quot;INSURANCE_CLEAR\&quot;, and \&quot;DELIVERED_SETTELMENT\&quot; | [optional] |
-| **startTime** | **int**|  | [optional] |
-| **endTime** | **int**|  | [optional] |
-| **page** | **int**|  | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **symbol** | **string**| Symbol | [optional] |
+| **incomeType** | [**\Binance\Client\DerivativesTradingCoinFutures\Model\IncomeType**](../Model/.md)| Income type. | [optional] |
+| **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
+| **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
+| **page** | **int**| Page number | [optional] |
+| **limit** | **int**| Maximum number of records to return. | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -615,9 +617,9 @@ No authorization required
 notionalBracketForPair($pair, $recvWindow): \Binance\Client\DerivativesTradingCoinFutures\Model\NotionalBracketForPairResponse
 ```
 
-Notional Bracket for Pair(USER_DATA)
+Notional Bracket for Pair (USER_DATA)
 
-**Not recommended to continue using this v1 endpoint**  Get the pair's default notional bracket list, may return ambiguous values when there have been multiple different `symbol` brackets under the `pair`, suggest using the following `GET /dapi/v2/leverageBracket` query instead to get the specific `symbol` notional bracket list.  Weight: 1
+**Not recommended to continue using this v1 endpoint**  Get the pair's default notional bracket list, may return ambiguous values when there have been multiple different `symbol` brackets under the `pair`, suggest using the following `GET /dapi/v2/leverageBracket` query instead to get the specific `symbol` notional bracket list.  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -632,8 +634,8 @@ $apiInstance = new Binance\Client\DerivativesTradingCoinFutures\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$pair = 'pair_example'; // string
-$recvWindow = 56; // int
+$pair = BTCUSD; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->notionalBracketForPair($pair, $recvWindow);
@@ -673,9 +675,9 @@ No authorization required
 notionalBracketForSymbol($symbol, $recvWindow): \Binance\Client\DerivativesTradingCoinFutures\Model\NotionalBracketForSymbolResponse
 ```
 
-Notional Bracket for Symbol(USER_DATA)
+Notional Bracket for Symbol (USER_DATA)
 
-Get the symbol's notional bracket list.  Weight: 1
+Get the symbol's notional bracket list.  Weight: 1 (after CM migration: 1 with `symbol` / 2 without `symbol`)  Security Type: USER_DATA
 
 ### Example
 
@@ -690,8 +692,8 @@ $apiInstance = new Binance\Client\DerivativesTradingCoinFutures\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSD_PERP; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->notionalBracketForSymbol($symbol, $recvWindow);
@@ -733,7 +735,7 @@ userCommissionRate($symbol, $recvWindow): \Binance\Client\DerivativesTradingCoin
 
 User Commission Rate (USER_DATA)
 
-Query user commission rate  Weight: 20
+Query user commission rate  Weight(IP): 20  Security Type: USER_DATA
 
 ### Example
 
@@ -748,8 +750,8 @@ $apiInstance = new Binance\Client\DerivativesTradingCoinFutures\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSD_PERP; // string | Symbol
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->userCommissionRate($symbol, $recvWindow);
@@ -763,7 +765,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type

@@ -16,48 +16,50 @@ use Binance\Common\Dtos\ApiResponse;
 class FiatRestApi
 {
     /**
-     * @var FiatApi
+     * @var DefaultApi
      */
-    private $fiatApi;
+    private $defaultApi;
 
     public function __construct(
         ?ClientConfiguration $clientConfig = new ClientConfiguration(),
     ) {
-        $this->fiatApi = new FiatApi($clientConfig);
+        $this->defaultApi = new DefaultApi($clientConfig);
     }
 
     /**
      * Operation deposit.
      *
-     * Deposit(TRADE)
+     * Deposit (TRADE)
      *
      * @param DepositRequest $depositRequest depositRequest (required)
+     * @param null|int       $recvWindow     Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<DepositResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function deposit($depositRequest): ApiResponse
+    public function deposit($depositRequest, $recvWindow = null): ApiResponse
     {
-        return $this->fiatApi->deposit($depositRequest);
+        return $this->defaultApi->deposit($depositRequest, $recvWindow);
     }
 
     /**
      * Operation fiatWithdraw.
      *
-     * Fiat Withdraw(WITHDRAW)
+     * Fiat Withdraw (TRADE)
      *
      * @param FiatWithdrawRequest $fiatWithdrawRequest fiatWithdrawRequest (required)
+     * @param null|int            $recvWindow          Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<FiatWithdrawResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function fiatWithdraw($fiatWithdrawRequest): ApiResponse
+    public function fiatWithdraw($fiatWithdrawRequest, $recvWindow = null): ApiResponse
     {
-        return $this->fiatApi->fiatWithdraw($fiatWithdrawRequest);
+        return $this->defaultApi->fiatWithdraw($fiatWithdrawRequest, $recvWindow);
     }
 
     /**
@@ -65,11 +67,11 @@ class FiatRestApi
      *
      * Get Fiat Deposit/Withdraw History (USER_DATA)
      *
-     * @param string   $transactionType 0-buy,1-sell (required)
+     * @param string   $transactionType 0: deposit, 1: withdraw (required)
      * @param null|int $beginTime       beginTime (optional)
      * @param null|int $endTime         endTime (optional)
-     * @param null|int $page            default 1 (optional)
-     * @param null|int $rows            default 100, max 500 (optional)
+     * @param null|int $page            page (optional)
+     * @param null|int $rows            rows (optional)
      * @param null|int $recvWindow      recvWindow (optional)
      *
      * @return ApiResponse<GetFiatDepositWithdrawHistoryResponse>
@@ -79,7 +81,7 @@ class FiatRestApi
      */
     public function getFiatDepositWithdrawHistory($transactionType, $beginTime = null, $endTime = null, $page = null, $rows = null, $recvWindow = null): ApiResponse
     {
-        return $this->fiatApi->getFiatDepositWithdrawHistory($transactionType, $beginTime, $endTime, $page, $rows, $recvWindow);
+        return $this->defaultApi->getFiatDepositWithdrawHistory($transactionType, $beginTime, $endTime, $page, $rows, $recvWindow);
     }
 
     /**
@@ -87,11 +89,11 @@ class FiatRestApi
      *
      * Get Fiat Payments History (USER_DATA)
      *
-     * @param string   $transactionType 0-buy,1-sell (required)
+     * @param string   $transactionType 0: buy, 1: sell (required)
      * @param null|int $beginTime       beginTime (optional)
      * @param null|int $endTime         endTime (optional)
-     * @param null|int $page            default 1 (optional)
-     * @param null|int $rows            default 100, max 500 (optional)
+     * @param null|int $page            page (optional)
+     * @param null|int $rows            rows (optional)
      * @param null|int $recvWindow      recvWindow (optional)
      *
      * @return ApiResponse<GetFiatPaymentsHistoryResponse>
@@ -101,15 +103,15 @@ class FiatRestApi
      */
     public function getFiatPaymentsHistory($transactionType, $beginTime = null, $endTime = null, $page = null, $rows = null, $recvWindow = null): ApiResponse
     {
-        return $this->fiatApi->getFiatPaymentsHistory($transactionType, $beginTime, $endTime, $page, $rows, $recvWindow);
+        return $this->defaultApi->getFiatPaymentsHistory($transactionType, $beginTime, $endTime, $page, $rows, $recvWindow);
     }
 
     /**
      * Operation getOrderDetail.
      *
-     * Get Order Detail(USER_DATA)
+     * Get Order Detail (USER_DATA)
      *
-     * @param string   $orderNo    order id retrieved from the api call of withdrawal (required)
+     * @param string   $orderNo    Order ID retrieved from the withdrawal API (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetOrderDetailResponse>
@@ -119,6 +121,6 @@ class FiatRestApi
      */
     public function getOrderDetail($orderNo, $recvWindow = null): ApiResponse
     {
-        return $this->fiatApi->getOrderDetail($orderNo, $recvWindow);
+        return $this->defaultApi->getOrderDetail($orderNo, $recvWindow);
     }
 }

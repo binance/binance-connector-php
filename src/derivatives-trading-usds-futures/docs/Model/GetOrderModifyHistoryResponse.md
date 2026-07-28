@@ -1,4 +1,4 @@
-# # GetOrderModifyHistoryResponse
+# GetOrderModifyHistoryResponse
 
 ## Properties
 

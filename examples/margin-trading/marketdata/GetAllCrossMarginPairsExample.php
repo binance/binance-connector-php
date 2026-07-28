@@ -9,7 +9,7 @@ function getAllCrossMarginPairsExample()
 {
     $configurationBuilder = MarginTradingRestApiUtil::getConfigurationBuilder();
     $api = new MarginTradingRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BNBBTC';
     $response = $api->getAllCrossMarginPairs($symbol);
     print_r($response);
 }

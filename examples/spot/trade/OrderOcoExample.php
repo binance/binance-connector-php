@@ -15,9 +15,9 @@ function orderOcoExample()
     $orderOcoRequest = new OrderOcoRequest();
     $orderOcoRequest->setSymbol('BNBUSDT');
     $orderOcoRequest->setSide(Side::BUY);
-    $orderOcoRequest->setQuantity(1.0);
-    $orderOcoRequest->setPrice(1.0);
-    $orderOcoRequest->setStopPrice(1.0);
+    $orderOcoRequest->setQuantity(1);
+    $orderOcoRequest->setPrice(1);
+    $orderOcoRequest->setStopPrice(1);
     $response = $api->orderOco($orderOcoRequest);
     print_r($response);
 }

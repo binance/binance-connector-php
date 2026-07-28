@@ -1,4 +1,4 @@
-# # GetTradesResponse
+# GetTradesResponse
 
 ## Properties
 

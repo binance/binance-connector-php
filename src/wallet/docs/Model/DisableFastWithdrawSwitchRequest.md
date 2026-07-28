@@ -1,4 +1,4 @@
-# # DisableFastWithdrawSwitchRequest
+# DisableFastWithdrawSwitchRequest
 
 ## Properties
 

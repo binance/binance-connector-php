@@ -1,14 +1,14 @@
 ## MarketData
 
-[/sapi/v1/giftcard/buyCode](https://developers.binance.com/docs/gift_card/market-data/Create-a-dual-token-gift-card) - createADualTokenGiftCard - [CreateADualTokenGiftCardExample.php:29](/examples/gift-card/marketdata/CreateADualTokenGiftCardExample.php#L29)
+[/sapi/v1/giftcard/buyCode](https://developers.binance.com/en/docs/catalog/investment-and-services-gift-card/api/rest-api/market-data#create-adual-token-gift-card) - createADualTokenGiftCard - [CreateADualTokenGiftCardExample.php:18](/examples/gift-card/marketdata/CreateADualTokenGiftCardExample.php#L18)
 
-[/sapi/v1/giftcard/createCode](https://developers.binance.com/docs/gift_card/market-data/Create-a-single-token-gift-card) - createASingleTokenGiftCard - [CreateASingleTokenGiftCardExample.php:28](/examples/gift-card/marketdata/CreateASingleTokenGiftCardExample.php#L28)
+[/sapi/v1/giftcard/createCode](https://developers.binance.com/en/docs/catalog/investment-and-services-gift-card/api/rest-api/market-data#create-asingle-token-gift-card) - createASingleTokenGiftCard - [CreateASingleTokenGiftCardExample.php:17](/examples/gift-card/marketdata/CreateASingleTokenGiftCardExample.php#L17)
 
-[/sapi/v1/giftcard/cryptography/rsa-public-key](https://developers.binance.com/docs/gift_card/market-data/Fetch-RSA-Public-Key) - fetchRsaPublicKey - [FetchRsaPublicKeyExample.php:25](/examples/gift-card/marketdata/FetchRsaPublicKeyExample.php#L25)
+[/sapi/v1/giftcard/cryptography/rsa-public-key](https://developers.binance.com/en/docs/catalog/investment-and-services-gift-card/api/rest-api/market-data#fetch-rsa-public-key) - fetchRsaPublicKey - [FetchRsaPublicKeyExample.php:14](/examples/gift-card/marketdata/FetchRsaPublicKeyExample.php#L14)
 
-[/sapi/v1/giftcard/buyCode/token-limit](https://developers.binance.com/docs/gift_card/market-data/Fetch-Token-Limit) - fetchTokenLimit - [FetchTokenLimitExample.php:26](/examples/gift-card/marketdata/FetchTokenLimitExample.php#L26)
+[/sapi/v1/giftcard/buyCode/token-limit](https://developers.binance.com/en/docs/catalog/investment-and-services-gift-card/api/rest-api/market-data#fetch-token-limit) - fetchTokenLimit - [FetchTokenLimitExample.php:15](/examples/gift-card/marketdata/FetchTokenLimitExample.php#L15)
 
-[/sapi/v1/giftcard/redeemCode](https://developers.binance.com/docs/gift_card/market-data/Redeem-a-Binance-Gift-Card) - redeemABinanceGiftCard - [RedeemABinanceGiftCardExample.php:27](/examples/gift-card/marketdata/RedeemABinanceGiftCardExample.php#L27)
+[/sapi/v1/giftcard/redeemCode](https://developers.binance.com/en/docs/catalog/investment-and-services-gift-card/api/rest-api/market-data#redeem-abinance-gift-card) - redeemABinanceGiftCard - [RedeemABinanceGiftCardExample.php:16](/examples/gift-card/marketdata/RedeemABinanceGiftCardExample.php#L16)
 
-[/sapi/v1/giftcard/verify](https://developers.binance.com/docs/gift_card/market-data/Verify-Binance-Gift-Card-by-Gift-Card-Number) - verifyBinanceGiftCardByGiftCardNumber - [VerifyBinanceGiftCardByGiftCardNumberExample.php:26](/examples/gift-card/marketdata/VerifyBinanceGiftCardByGiftCardNumberExample.php#L26)
+[/sapi/v1/giftcard/verify](https://developers.binance.com/en/docs/catalog/investment-and-services-gift-card/api/rest-api/market-data#verify-binance-gift-card-by-gift-card-number) - verifyBinanceGiftCardByGiftCardNumber - [VerifyBinanceGiftCardByGiftCardNumberExample.php:15](/examples/gift-card/marketdata/VerifyBinanceGiftCardByGiftCardNumberExample.php#L15)
 

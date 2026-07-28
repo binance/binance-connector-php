@@ -1,4 +1,4 @@
-# # KeepaliveUserDataStreamResponse
+# KeepaliveUserDataStreamResponse
 
 ## Properties
 

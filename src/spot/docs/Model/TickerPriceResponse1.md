@@ -1,4 +1,4 @@
-# # TickerPriceResponse1
+# TickerPriceResponse1
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # VaspListResponse
+# VaspListResponse
 
 ## Properties
 

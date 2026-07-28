@@ -1,5 +1,7 @@
 # Binance\Client\DerivativesTradingUsdsFutures\TradeApi
 
+
+
 All URIs are relative to https://fapi.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -12,29 +14,29 @@ All URIs are relative to https://fapi.binance.com, except if the operation defin
 | [**cancelAllOpenOrders()**](TradeApi.md#cancelAllOpenOrders) | **DELETE** /fapi/v1/allOpenOrders | Cancel All Open Orders (TRADE) |
 | [**cancelMultipleOrders()**](TradeApi.md#cancelMultipleOrders) | **DELETE** /fapi/v1/batchOrders | Cancel Multiple Orders (TRADE) |
 | [**cancelOrder()**](TradeApi.md#cancelOrder) | **DELETE** /fapi/v1/order | Cancel Order (TRADE) |
-| [**changeInitialLeverage()**](TradeApi.md#changeInitialLeverage) | **POST** /fapi/v1/leverage | Change Initial Leverage(TRADE) |
-| [**changeMarginType()**](TradeApi.md#changeMarginType) | **POST** /fapi/v1/marginType | Change Margin Type(TRADE) |
+| [**changeInitialLeverage()**](TradeApi.md#changeInitialLeverage) | **POST** /fapi/v1/leverage | Change Initial Leverage (TRADE) |
+| [**changeMarginType()**](TradeApi.md#changeMarginType) | **POST** /fapi/v1/marginType | Change Margin Type (TRADE) |
 | [**changeMultiAssetsMode()**](TradeApi.md#changeMultiAssetsMode) | **POST** /fapi/v1/multiAssetsMargin | Change Multi-Assets Mode (TRADE) |
-| [**changePositionMode()**](TradeApi.md#changePositionMode) | **POST** /fapi/v1/positionSide/dual | Change Position Mode(TRADE) |
+| [**changePositionMode()**](TradeApi.md#changePositionMode) | **POST** /fapi/v1/positionSide/dual | Change Position Mode (TRADE) |
 | [**currentAllAlgoOpenOrders()**](TradeApi.md#currentAllAlgoOpenOrders) | **GET** /fapi/v1/openAlgoOrders | Current All Algo Open Orders (USER_DATA) |
 | [**currentAllOpenOrders()**](TradeApi.md#currentAllOpenOrders) | **GET** /fapi/v1/openOrders | Current All Open Orders (USER_DATA) |
-| [**futuresTradfiPerpsContract()**](TradeApi.md#futuresTradfiPerpsContract) | **POST** /fapi/v1/stock/contract | Futures TradFi Perps Contract(USER_DATA) |
+| [**futuresTradfiPerpsContract()**](TradeApi.md#futuresTradfiPerpsContract) | **POST** /fapi/v1/stock/contract | Futures TradFi Perps Contract (USER_DATA) |
 | [**getOrderModifyHistory()**](TradeApi.md#getOrderModifyHistory) | **GET** /fapi/v1/orderAmendment | Get Order Modify History (USER_DATA) |
 | [**getPositionMarginChangeHistory()**](TradeApi.md#getPositionMarginChangeHistory) | **GET** /fapi/v1/positionMargin/history | Get Position Margin Change History (TRADE) |
-| [**modifyIsolatedPositionMargin()**](TradeApi.md#modifyIsolatedPositionMargin) | **POST** /fapi/v1/positionMargin | Modify Isolated Position Margin(TRADE) |
-| [**modifyMultipleOrders()**](TradeApi.md#modifyMultipleOrders) | **PUT** /fapi/v1/batchOrders | Modify Multiple Orders(TRADE) |
+| [**modifyIsolatedPositionMargin()**](TradeApi.md#modifyIsolatedPositionMargin) | **POST** /fapi/v1/positionMargin | Modify Isolated Position Margin (TRADE) |
+| [**modifyMultipleOrders()**](TradeApi.md#modifyMultipleOrders) | **PUT** /fapi/v1/batchOrders | Modify Multiple Orders (TRADE) |
 | [**modifyOrder()**](TradeApi.md#modifyOrder) | **PUT** /fapi/v1/order | Modify Order (TRADE) |
-| [**newAlgoOrder()**](TradeApi.md#newAlgoOrder) | **POST** /fapi/v1/algoOrder | New Algo Order(TRADE) |
-| [**newOrder()**](TradeApi.md#newOrder) | **POST** /fapi/v1/order | New Order(TRADE) |
-| [**placeMultipleOrders()**](TradeApi.md#placeMultipleOrders) | **POST** /fapi/v1/batchOrders | Place Multiple Orders(TRADE) |
-| [**positionAdlQuantileEstimation()**](TradeApi.md#positionAdlQuantileEstimation) | **GET** /fapi/v1/adlQuantile | Position ADL Quantile Estimation(USER_DATA) |
+| [**newAlgoOrder()**](TradeApi.md#newAlgoOrder) | **POST** /fapi/v1/algoOrder | New Algo Order (TRADE) |
+| [**newOrder()**](TradeApi.md#newOrder) | **POST** /fapi/v1/order | New Order (TRADE) |
+| [**placeMultipleOrders()**](TradeApi.md#placeMultipleOrders) | **POST** /fapi/v1/batchOrders | Place Multiple Orders (TRADE) |
+| [**positionAdlQuantileEstimation()**](TradeApi.md#positionAdlQuantileEstimation) | **GET** /fapi/v1/adlQuantile | Position ADL Quantile Estimation (USER_DATA) |
 | [**positionInformationV2()**](TradeApi.md#positionInformationV2) | **GET** /fapi/v2/positionRisk | Position Information V2 (USER_DATA) |
 | [**positionInformationV3()**](TradeApi.md#positionInformationV3) | **GET** /fapi/v3/positionRisk | Position Information V3 (USER_DATA) |
 | [**queryAlgoOrder()**](TradeApi.md#queryAlgoOrder) | **GET** /fapi/v1/algoOrder | Query Algo Order (USER_DATA) |
 | [**queryAllAlgoOrders()**](TradeApi.md#queryAllAlgoOrders) | **GET** /fapi/v1/allAlgoOrders | Query All Algo Orders (USER_DATA) |
 | [**queryCurrentOpenOrder()**](TradeApi.md#queryCurrentOpenOrder) | **GET** /fapi/v1/openOrder | Query Current Open Order (USER_DATA) |
 | [**queryOrder()**](TradeApi.md#queryOrder) | **GET** /fapi/v1/order | Query Order (USER_DATA) |
-| [**testOrder()**](TradeApi.md#testOrder) | **POST** /fapi/v1/order/test | Test Order(TRADE) |
+| [**testOrder()**](TradeApi.md#testOrder) | **POST** /fapi/v1/order/test | Test Order (TRADE) |
 | [**usersForceOrders()**](TradeApi.md#usersForceOrders) | **GET** /fapi/v1/forceOrders | User&#39;s Force Orders (USER_DATA) |
 
 
@@ -46,7 +48,7 @@ accountTradeList($symbol, $orderId, $startTime, $endTime, $fromId, $limit, $recv
 
 Account Trade List (USER_DATA)
 
-Get trades for a specific account and symbol.  * If `startTime` and `endTime` are both not sent, then the last 7 days' data will be returned. * The time between `startTime` and `endTime` cannot be longer than 7 days. * The parameter `fromId` cannot be sent with `startTime` or `endTime`. * Only support querying trade in the past 6 months  Weight: 5
+Get trades for a specific account and symbol.  Weight(IP): 5  Security Type: USER_DATA  Notes: - If `startTime` and `endTime` are both not sent, then the last 7 days' data will be returned. - The time between `startTime` and `endTime` cannot be longer than 7 days. - The parameter `fromId` cannot be sent with `startTime` or `endTime`. - Only support querying trade in the past 6 months
 
 ### Example
 
@@ -61,13 +63,13 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$startTime = 56; // int
-$endTime = 56; // int
-$fromId = 56; // int | ID to get aggregate trades from INCLUSIVE.
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$orderId = 25851813; // int | Must be used together with parameter `symbol`.
+$startTime = 1623319461670; // int | Start time
+$endTime = 1641782889000; // int | End time
+$fromId = 1; // int | Trade id to fetch from. Default gets most recent trades.
+$limit = 50; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->accountTradeList($symbol, $orderId, $startTime, $endTime, $fromId, $limit, $recvWindow);
@@ -82,11 +84,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **orderId** | **int**|  | [optional] |
-| **startTime** | **int**|  | [optional] |
-| **endTime** | **int**|  | [optional] |
-| **fromId** | **int**| ID to get aggregate trades from INCLUSIVE. | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **orderId** | **int**| Must be used together with parameter &#x60;symbol&#x60;. | [optional] |
+| **startTime** | **int**| Start time | [optional] |
+| **endTime** | **int**| End time | [optional] |
+| **fromId** | **int**| Trade id to fetch from. Default gets most recent trades. | [optional] |
+| **limit** | **int**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -114,7 +116,7 @@ allOrders($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow): \Binanc
 
 All Orders (USER_DATA)
 
-Get all account orders; active, canceled, or filled.  * These orders will not be found: * order status is `CANCELED` or `EXPIRED` **AND** order has NO filled trade **AND** created time + 3 days < current time * order create time + 90 days < current time  * If `orderId` is set, it will get orders >= that `orderId`. Otherwise most recent orders are returned. * The query time period must be less then 7 days( default as the recent 7 days).  Weight: 5
+Get all account orders; active, canceled, or filled.  - These orders will not be found:   - order status is `CANCELED` or `EXPIRED` **AND** order has NO filled trade **AND** created time + 3 days < current time   - order create time + 90 days < current time  Weight(IP): 5  Security Type: USER_DATA  Notes: - If `orderId` is set, it will get orders >= that `orderId`. Otherwise most recent orders are returned. - The query time period must be less then 7 days( default as the recent 7 days).
 
 ### Example
 
@@ -129,12 +131,12 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$startTime = 56; // int
-$endTime = 56; // int
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$orderId = 1917641; // int
+$startTime = 1623319461670; // int | Start time
+$endTime = 1641782889000; // int | End time
+$limit = 50; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->allOrders($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
@@ -150,9 +152,9 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
 | **orderId** | **int**|  | [optional] |
-| **startTime** | **int**|  | [optional] |
-| **endTime** | **int**|  | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **startTime** | **int**| Start time | [optional] |
+| **endTime** | **int**| End time | [optional] |
+| **limit** | **int**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -180,7 +182,7 @@ autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest): \Binance\Client\Deriva
 
 Auto-Cancel All Open Orders (TRADE)
 
-Cancel all open orders of the specified symbol at the end of the specified countdown. The endpoint should be called repeatedly as heartbeats so that the existing countdown time can be canceled and replaced by a new one.  * Example usage: Call this endpoint at 30s intervals with an countdownTime of 120000 (120s). If this endpoint is not called within 120 seconds, all your orders of the specified symbol will be automatically canceled. If this endpoint is called with an countdownTime of 0, the countdown timer will be stopped.  The system will check all countdowns **approximately every 10 milliseconds**, so please note that sufficient redundancy should be considered when using this function. We do not recommend setting the countdown time to be too precise or too small.  Weight: 10
+Cancel all open orders of the specified symbol at the end of the specified countdown.  The endpoint should be called repeatedly as heartbeats so that the existing countdown time can be canceled and replaced by a new one.  Example usage:  Call this endpoint at 30s intervals with an countdownTime of 120000 (120s). If this endpoint is not called within 120 seconds, all your orders of the specified symbol will be automatically canceled. If this endpoint is called with an countdownTime of 0, the countdown timer will be stopped.  The system will check all countdowns **approximately every 10 milliseconds**, so please note that sufficient redundancy should be considered when using this function. We do not recommend setting the countdown time to be too precise or too small.  Weight(IP): 10  Security Type: TRADE
 
 ### Example
 
@@ -231,12 +233,12 @@ No authorization required
 ## `cancelAlgoOrder()`
 
 ```php
-cancelAlgoOrder($algoid, $clientalgoid, $recvWindow): \Binance\Client\DerivativesTradingUsdsFutures\Model\CancelAlgoOrderResponse
+cancelAlgoOrder($algoId, $clientAlgoId, $recvWindow): \Binance\Client\DerivativesTradingUsdsFutures\Model\CancelAlgoOrderResponse
 ```
 
 Cancel Algo Order (TRADE)
 
-Cancel an active algo order.  * Either `algoid` or `clientalgoid` must be sent.  Weight: 1
+Cancel an active algo (conditional) order, including TP/SL (Take Profit / Stop Loss) and trailing stop orders on USD-M Futures.  Weight(IP): 1  Security Type: TRADE  Notes: - Either `algoId` or `clientAlgoId` must be sent.
 
 ### Example
 
@@ -251,12 +253,12 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$algoid = 56; // int
-$clientalgoid = 'clientalgoid_example'; // string
-$recvWindow = 56; // int
+$algoId = 2146760; // int
+$clientAlgoId = 6B2I9XVcJpCjqPAJ4YoFX7; // string
+$recvWindow = 5000; // int
 
 try {
-    $result = $apiInstance->cancelAlgoOrder($algoid, $clientalgoid, $recvWindow);
+    $result = $apiInstance->cancelAlgoOrder($algoId, $clientAlgoId, $recvWindow);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TradeApi->cancelAlgoOrder: ', $e->getMessage(), PHP_EOL;
@@ -267,8 +269,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **algoid** | **int**|  | [optional] |
-| **clientalgoid** | **string**|  | [optional] |
+| **algoId** | **int**|  | [optional] |
+| **clientAlgoId** | **string**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -296,7 +298,7 @@ cancelAllAlgoOpenOrders($symbol, $recvWindow): \Binance\Client\DerivativesTradin
 
 Cancel All Algo Open Orders (TRADE)
 
-Cancel All Algo Open Orders  Weight: 1
+Cancel all open algo (conditional) orders on a symbol, including TP/SL (Take Profit / Stop Loss) and trailing stop orders on USD-M Futures.  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -311,8 +313,8 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->cancelAllAlgoOpenOrders($symbol, $recvWindow);
@@ -354,7 +356,7 @@ cancelAllOpenOrders($symbol, $recvWindow): \Binance\Client\DerivativesTradingUsd
 
 Cancel All Open Orders (TRADE)
 
-Cancel All Open Orders  Weight: 1
+Cancel All Open Orders  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -369,8 +371,8 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->cancelAllOpenOrders($symbol, $recvWindow);
@@ -412,7 +414,7 @@ cancelMultipleOrders($symbol, $orderIdList, $origClientOrderIdList, $recvWindow)
 
 Cancel Multiple Orders (TRADE)
 
-Cancel Multiple Orders  * Either `orderIdList` or `origClientOrderIdList ` must be sent.  Weight: 1
+Cancel Multiple Orders  Weight(IP): 1  Security Type: TRADE  Notes: - Either `orderIdList` or `origClientOrderIdList ` must be sent.
 
 ### Example
 
@@ -427,10 +429,10 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderIdList = array(56); // \Binance\Client\DerivativesTradingUsdsFutures\Model\OrderIdList | max length 10 <br /> e.g. [1234567,2345678]
-$origClientOrderIdList = array('origClientOrderIdList_example'); // \Binance\Client\DerivativesTradingUsdsFutures\Model\OrigClientOrderIdList | max length 10<br /> e.g. [\"my_id_1\",\"my_id_2\"], encode the double quotes. No space after comma.
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$orderIdList = array(56); // \Binance\Client\DerivativesTradingUsdsFutures\Model\OrderIdList
+$origClientOrderIdList = array('origClientOrderIdList_example'); // \Binance\Client\DerivativesTradingUsdsFutures\Model\OrigClientOrderIdList
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->cancelMultipleOrders($symbol, $orderIdList, $origClientOrderIdList, $recvWindow);
@@ -445,8 +447,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **orderIdList** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\OrderIdList**](../Model/int.md)| max length 10 &lt;br /&gt; e.g. [1234567,2345678] | [optional] |
-| **origClientOrderIdList** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\OrigClientOrderIdList**](../Model/string.md)| max length 10&lt;br /&gt; e.g. [\&quot;my_id_1\&quot;,\&quot;my_id_2\&quot;], encode the double quotes. No space after comma. | [optional] |
+| **orderIdList** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\OrderIdList**](../Model/int.md)|  | [optional] |
+| **origClientOrderIdList** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\OrigClientOrderIdList**](../Model/string.md)|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -474,7 +476,7 @@ cancelOrder($symbol, $orderId, $origClientOrderId, $recvWindow): \Binance\Client
 
 Cancel Order (TRADE)
 
-Cancel an active order.  * Either `orderId` or `origClientOrderId` must be sent.  Weight: 1
+Cancel an active order.  Weight(IP): 1  Security Type: TRADE  Notes: - Either `orderId` or `origClientOrderId` must be sent.
 
 ### Example
 
@@ -489,10 +491,10 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$origClientOrderId = 'origClientOrderId_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$orderId = 283194212; // int
+$origClientOrderId = myOrder1; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->cancelOrder($symbol, $orderId, $origClientOrderId, $recvWindow);
@@ -534,9 +536,9 @@ No authorization required
 changeInitialLeverage($changeInitialLeverageRequest): \Binance\Client\DerivativesTradingUsdsFutures\Model\ChangeInitialLeverageResponse
 ```
 
-Change Initial Leverage(TRADE)
+Change Initial Leverage (TRADE)
 
-Change user's initial leverage of specific symbol market.  Weight: 1
+Change user's initial leverage of specific symbol market.  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -590,9 +592,9 @@ No authorization required
 changeMarginType($changeMarginTypeRequest): \Binance\Client\DerivativesTradingUsdsFutures\Model\ChangeMarginTypeResponse
 ```
 
-Change Margin Type(TRADE)
+Change Margin Type (TRADE)
 
-Change symbol level margin type  Weight: 1
+Change symbol level margin type  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -648,7 +650,7 @@ changeMultiAssetsMode($changeMultiAssetsModeRequest): \Binance\Client\Derivative
 
 Change Multi-Assets Mode (TRADE)
 
-Change user's Multi-Assets mode (Multi-Assets Mode or Single-Asset Mode) on ***Every symbol***  Weight: 1
+Change user's Multi-Assets mode (Multi-Assets Mode or Single-Asset Mode) on ***Every symbol***  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -702,9 +704,9 @@ No authorization required
 changePositionMode($changePositionModeRequest): \Binance\Client\DerivativesTradingUsdsFutures\Model\ChangePositionModeResponse
 ```
 
-Change Position Mode(TRADE)
+Change Position Mode (TRADE)
 
-Change user's position mode (Hedge Mode or One-way Mode ) on ***EVERY symbol***  Weight: 1
+Change user's position mode (Hedge Mode or One-way Mode ) on ***EVERY symbol***.  **After CM migration**, UM and CM share the **same** `dualSidePosition` setting. Calling this endpoint flips both UM and CM at once. If either side has any open order or open position, the change is rejected: - `-4067` (open orders exist) - `-4068` (open position exists)  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -760,7 +762,7 @@ currentAllAlgoOpenOrders($algoType, $symbol, $algoId, $recvWindow): \Binance\Cli
 
 Current All Algo Open Orders (USER_DATA)
 
-Get all algo open orders on a symbol.  * If the symbol is not sent, orders for all symbols will be returned in an array.  Weight: 1 for a single symbol; 40 when the symbol parameter is omitted Careful when accessing this with no symbol.
+Get all open algo (conditional) orders on a symbol, including TP/SL (Take Profit / Stop Loss) and trailing stop orders on USD-M Futures.  Weight: **1** for a single symbol; **40** when the symbol parameter is omitted  **Careful** when accessing this with no symbol.  Security Type: USER_DATA  Notes: - If the symbol is not sent, orders for all symbols will be returned in an array.
 
 ### Example
 
@@ -775,10 +777,10 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$algoType = 'algoType_example'; // string
-$symbol = 'symbol_example'; // string
-$algoId = 56; // int
-$recvWindow = 56; // int
+$algoType = CONDITIONAL; // string
+$symbol = BTCUSDT; // string
+$algoId = 2148627; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->currentAllAlgoOpenOrders($algoType, $symbol, $algoId, $recvWindow);
@@ -822,7 +824,7 @@ currentAllOpenOrders($symbol, $recvWindow): \Binance\Client\DerivativesTradingUs
 
 Current All Open Orders (USER_DATA)
 
-Get all open orders on a symbol.  * If the symbol is not sent, orders for all symbols will be returned in an array.  Weight: 1 for a single symbol; 40 when the symbol parameter is omitted Careful when accessing this with no symbol.
+Get all open orders on a symbol.  Weight: **1** for a single symbol; **40** when the symbol parameter is omitted  **Careful** when accessing this with no symbol.  Security Type: USER_DATA  Notes: - If the symbol is not sent, orders for all symbols will be returned in an array.
 
 ### Example
 
@@ -837,8 +839,8 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->currentAllOpenOrders($symbol, $recvWindow);
@@ -878,9 +880,9 @@ No authorization required
 futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest): \Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractResponse
 ```
 
-Futures TradFi Perps Contract(USER_DATA)
+Futures TradFi Perps Contract (USER_DATA)
 
-Sign TradFi-Perps agreement contract  Weight: 0
+Sign TradFi-Perps agreement contract  Weight(IP): 50  Security Type: USER_DATA
 
 ### Example
 
@@ -909,7 +911,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **futuresTradfiPerpsContractRequest** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractRequest**](../Model/FuturesTradfiPerpsContractRequest.md)|  | |
+| **futuresTradfiPerpsContractRequest** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractRequest**](../Model/FuturesTradfiPerpsContractRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -936,7 +938,7 @@ getOrderModifyHistory($symbol, $orderId, $origClientOrderId, $startTime, $endTim
 
 Get Order Modify History (USER_DATA)
 
-Get order modification history  * Either `orderId` or `origClientOrderId` must be sent, and the `orderId` will prevail if both are sent. * Order modify history longer than 3 month is not avaliable  Weight: 1
+Get order modification history  Weight(IP): 1  Security Type: USER_DATA  Notes: - Either `orderId` or `origClientOrderId` must be sent, and the `orderId` will prevail if both are sent.  - Order modify history longer than 3 month is not avaliable
 
 ### Example
 
@@ -951,13 +953,13 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$origClientOrderId = 'origClientOrderId_example'; // string
-$startTime = 56; // int
-$endTime = 56; // int
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$orderId = 20072994037; // int
+$origClientOrderId = LJ9R4QZDihCaS8UAOOLpgW; // string
+$startTime = 1623319461670; // int | Timestamp in ms to get modification history from INCLUSIVE
+$endTime = 1641782889000; // int | Timestamp in ms to get modification history until INCLUSIVE
+$limit = 50; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getOrderModifyHistory($symbol, $orderId, $origClientOrderId, $startTime, $endTime, $limit, $recvWindow);
@@ -974,9 +976,9 @@ try {
 | **symbol** | **string**|  | |
 | **orderId** | **int**|  | [optional] |
 | **origClientOrderId** | **string**|  | [optional] |
-| **startTime** | **int**|  | [optional] |
-| **endTime** | **int**|  | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **startTime** | **int**| Timestamp in ms to get modification history from INCLUSIVE | [optional] |
+| **endTime** | **int**| Timestamp in ms to get modification history until INCLUSIVE | [optional] |
+| **limit** | **int**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -1004,7 +1006,7 @@ getPositionMarginChangeHistory($symbol, $type, $startTime, $endTime, $limit, $re
 
 Get Position Margin Change History (TRADE)
 
-Get Position Margin Change History  * Support querying future histories that are not older than 30 days * The time between `startTime` and `endTime`can't be more than 30 days  Weight: 1
+Get Position Margin Change History  Weight(IP): 1  Security Type: TRADE  Notes: - Support querying future histories that are not older than 30 days - The time between `startTime` and `endTime`can't be more than 30 days
 
 ### Example
 
@@ -1019,12 +1021,12 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$type = 'type_example'; // string | 1: Add position margin，2: Reduce position margin
-$startTime = 56; // int
-$endTime = 56; // int
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$type = 1; // string | 1: Add position margin，2: Reduce position margin
+$startTime = 1623319461670; // int | Start time
+$endTime = 1641782889000; // int | time if not pass
+$limit = 50; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getPositionMarginChangeHistory($symbol, $type, $startTime, $endTime, $limit, $recvWindow);
@@ -1040,9 +1042,9 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
 | **type** | **string**| 1: Add position margin，2: Reduce position margin | [optional] |
-| **startTime** | **int**|  | [optional] |
-| **endTime** | **int**|  | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **startTime** | **int**| Start time | [optional] |
+| **endTime** | **int**| time if not pass | [optional] |
+| **limit** | **int**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -1068,9 +1070,9 @@ No authorization required
 modifyIsolatedPositionMargin($modifyIsolatedPositionMarginRequest): \Binance\Client\DerivativesTradingUsdsFutures\Model\ModifyIsolatedPositionMarginResponse
 ```
 
-Modify Isolated Position Margin(TRADE)
+Modify Isolated Position Margin (TRADE)
 
-Modify Isolated Position Margin   * Only for isolated symbol  Weight: 1
+Modify Isolated Position Margin  Weight(IP): 1  Security Type: TRADE  Notes: - Only for isolated symbol
 
 ### Example
 
@@ -1124,9 +1126,9 @@ No authorization required
 modifyMultipleOrders($modifyMultipleOrdersRequest): \Binance\Client\DerivativesTradingUsdsFutures\Model\ModifyMultipleOrdersResponse
 ```
 
-Modify Multiple Orders(TRADE)
+Modify Multiple Orders (TRADE)
 
-Modify Multiple Orders (TRADE)  * Parameter rules are same with `Modify Order` * Batch modify orders are processed concurrently, and the order of matching is not guaranteed. * The order of returned contents for batch modify orders is the same as the order of the order list. * One order can only be modfied for less than 10000 times  Weight: 5 on 10s order rate limit(X-MBX-ORDER-COUNT-10S); 1 on 1min order rate limit(X-MBX-ORDER-COUNT-1M); 5 on IP rate limit(x-mbx-used-weight-1m);
+Modify Multiple Orders (TRADE)  Weight: 5 on 10s order rate limit(X-MBX-ORDER-COUNT-10S); 1 on 1min order rate limit(X-MBX-ORDER-COUNT-1M); 5 on IP rate limit(x-mbx-used-weight-1m);  Security Type: TRADE  Notes: - Parameter rules are same with `Modify Order` - Batch modify orders are processed concurrently, and the order of matching is not guaranteed. - The order of returned contents for batch modify orders is the same as the order of the order list. - One order can only be modfied for less than 10000 times
 
 ### Example
 
@@ -1182,7 +1184,7 @@ modifyOrder($modifyOrderRequest): \Binance\Client\DerivativesTradingUsdsFutures\
 
 Modify Order (TRADE)
 
-Order modify function, currently only LIMIT order modification is supported, modified orders will be reordered in the match queue   * Either `orderId` or `origClientOrderId` must be sent, and the `orderId` will prevail if both are sent. * Both `quantity` and `price` must be sent, which is different from dapi modify order endpoint. * When the new `quantity` or `price` doesn't satisfy PRICE_FILTER / PERCENT_FILTER / LOT_SIZE, amendment will be rejected and the order will stay as it is. * However the order will be cancelled by the amendment in the following situations: * when the order is in partially filled status and the new `quantity` <= `executedQty` * When the order is `GTX` and the new price will cause it to be executed immediately * One order can only be modfied for less than 10000 times  Weight: 1 on 10s order rate limit(X-MBX-ORDER-COUNT-10S); 1 on 1min order rate limit(X-MBX-ORDER-COUNT-1M); 0 on IP rate limit(x-mbx-used-weight-1m)
+Order modify function, currently only LIMIT order modification is supported, modified orders will be reordered in the match queue  Weight: 1 on 10s order rate limit(X-MBX-ORDER-COUNT-10S); 1 on 1min order rate limit(X-MBX-ORDER-COUNT-1M); 0 on IP rate limit(x-mbx-used-weight-1m)  Security Type: TRADE  Notes: - Either `orderId` or `origClientOrderId` must be sent, and the `orderId` will prevail if both are sent. - Both `quantity` and `price` must be sent, which is different from dapi modify order endpoint. - When the new `quantity` or `price` doesn't satisfy PRICE_FILTER / PERCENT_FILTER / LOT_SIZE, amendment will be rejected and the order will stay as it is. - However the order will be cancelled by the amendment in the following situations:   - when the order is in partially filled status and the new `quantity` <= `executedQty`   - When the order is `GTX` and the new price will cause it to be executed immediately - One order can only be modfied for less than 10000 times
 
 ### Example
 
@@ -1236,9 +1238,9 @@ No authorization required
 newAlgoOrder($newAlgoOrderRequest): \Binance\Client\DerivativesTradingUsdsFutures\Model\NewAlgoOrderResponse
 ```
 
-New Algo Order(TRADE)
+New Algo Order (TRADE)
 
-Send in a new Algo order.  * Algo order with type `STOP`,  parameter `timeInForce` can be sent ( default `GTC`). * Algo order with type `TAKE_PROFIT`,  parameter `timeInForce` can be sent ( default `GTC`). * Condition orders will be triggered when:  * If parameter`priceProtect`is sent as true: * when price reaches the `triggerPrice` ，the difference rate between \"MARK_PRICE\" and \"CONTRACT_PRICE\" cannot be larger than the \"triggerProtect\" of the symbol * \"triggerProtect\" of a symbol can be got from `GET /fapi/v1/exchangeInfo`  * `STOP`, `STOP_MARKET`: * BUY: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") >= `triggerPrice` * SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") <= `triggerPrice` * `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`: * BUY: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") <= `triggerPrice` * SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") >= `triggerPrice` * `TRAILING_STOP_MARKET`: * BUY: the lowest price after order placed <= `activatePrice`, and the latest price >= the lowest price * (1 + `callbackRate`) * SELL: the highest price after order placed >= `activatePrice`, and the latest price <= the highest price * (1 - `callbackRate`)  * For `TRAILING_STOP_MARKET`, if you got such error code. ``{\"code\": -2021, \"msg\": \"Order would immediately trigger.\"}`` means that the parameters you send do not meet the following requirements: * BUY: `activatePrice` should be smaller than latest price. * SELL: `activatePrice` should be larger than latest price.  * `STOP_MARKET`, `TAKE_PROFIT_MARKET` with `closePosition`=`true`: * Follow the same rules for condition orders. * If triggered，**close all** current long position( if `SELL`) or current short position( if `BUY`). * Cannot be used with `quantity` paremeter * Cannot be used with `reduceOnly` parameter * In Hedge Mode,cannot be used with `BUY` orders in `LONG` position side. and cannot be used with `SELL` orders in `SHORT` position side * `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`.  Weight: 0 on IP rate limit(x-mbx-used-weight-1m)
+Send in a new algo (conditional) order. Use this endpoint to place **TP/SL (Take Profit / Stop Loss)** and trailing stop orders on USD-M Futures. Supported order types under `algoType=CONDITIONAL` are `STOP_MARKET`, `TAKE_PROFIT_MARKET`, `STOP`, `TAKE_PROFIT`, and `TRAILING_STOP_MARKET`.  Weight: 1 on 10s order rate limit(X-MBX-ORDER-COUNT-10S); 1 on 1min order rate limit(X-MBX-ORDER-COUNT-1M); 0 on IP rate limit(x-mbx-used-weight-1m)  Security Type: TRADE  Notes: - Algo order with type `STOP`, parameter `timeInForce` can be sent (default `GTC`). - Algo order with type `TAKE_PROFIT`, parameter `timeInForce` can be sent ( default `GTC`). - Condition orders will be triggered when:   - If parameter`priceProtect`is sent as true:     - when price reaches the `triggerPrice` ，the difference rate between \"MARK_PRICE\" and \"CONTRACT_PRICE\" cannot be larger than the \"triggerProtect\" of the symbol     - \"triggerProtect\" of a symbol can be got from `GET /fapi/v1/exchangeInfo`   - `STOP`, `STOP_MARKET`:     - BUY: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") >= `triggerPrice`     - SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\")   - `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`:     - BUY: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\")     - SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") >= `triggerPrice`   - `TRAILING_STOP_MARKET`:     - BUY: the lowest price after order placed = the lowest price * (1 + `callbackRate`)     - SELL: the highest price after order placed >= `activatePrice`, and the latest price - For `TRAILING_STOP_MARKET`, if you got such error code. > `{\"code\": -2021, \"msg\": \"Order would immediately trigger.\"}` > means that the parameters you send do not meet the following requirements:   - BUY: `activatePrice` should be smaller than latest price.   - SELL: `activatePrice` should be larger than latest price. - `STOP_MARKET`, `TAKE_PROFIT_MARKET` with `closePosition`=`true`:   - Follow the same rules for condition orders.   - If triggered，**close all** current long position( if `SELL`) or current short position( if `BUY`).   - Cannot be used with `quantity` paremeter   - Cannot be used with `reduceOnly` parameter   - In Hedge Mode,cannot be used with `BUY` orders in `LONG` position side. and cannot be used with `SELL` orders in `SHORT` position side - `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`.
 
 ### Example
 
@@ -1292,9 +1294,9 @@ No authorization required
 newOrder($newOrderRequest): \Binance\Client\DerivativesTradingUsdsFutures\Model\NewOrderResponse
 ```
 
-New Order(TRADE)
+New Order (TRADE)
 
-Send in a new order.  * If `newOrderRespType ` is sent as `RESULT` : * `MARKET` order: the final FILLED result of the order will be return directly. * `LIMIT` order with special `timeInForce`: the final status result of the order(FILLED or EXPIRED) will be returned directly.  * `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`. * In extreme market conditions, timeInForce `GTD` order auto cancel time might be delayed comparing to `goodTillDate`  Weight: 1 on 10s order rate limit(X-MBX-ORDER-COUNT-10S); 1 on 1min order rate limit(X-MBX-ORDER-COUNT-1M); 0 on IP rate limit(x-mbx-used-weight-1m)
+Send in a new order.  Weight: 1 on 10s order rate limit(X-MBX-ORDER-COUNT-10S); 1 on 1min order rate limit(X-MBX-ORDER-COUNT-1M); 0 on IP rate limit(x-mbx-used-weight-1m)  Security Type: TRADE  Notes: Additional mandatory parameters based on `type`:  | Type | Additional mandatory parameters | |------|----------------------------------| | `LIMIT` | `timeInForce`, `quantity`, `price` | | `MARKET` | `quantity` |  - If `newOrderRespType` is sent as `RESULT`:   - `MARKET` order: the final FILLED result of the order will be returned directly.   - `LIMIT` order with special `timeInForce`: the final status result of the order (FILLED or EXPIRED) will be returned directly. - `selfTradePreventionMode` is only effective when `timeInForce` is set to `IOC`, `GTC`, or `GTD`. - In extreme market conditions, `timeInForce` `GTD` order auto-cancel time might be delayed compared to `goodTillDate`.
 
 ### Example
 
@@ -1348,9 +1350,9 @@ No authorization required
 placeMultipleOrders($placeMultipleOrdersRequest): \Binance\Client\DerivativesTradingUsdsFutures\Model\PlaceMultipleOrdersResponse
 ```
 
-Place Multiple Orders(TRADE)
+Place Multiple Orders (TRADE)
 
-Place Multiple Orders  * Paremeter rules are same with `New Order` * Batch orders are processed concurrently, and the order of matching is not guaranteed. * The order of returned contents for batch orders is the same as the order of the order list.  Weight: 5 on 10s order rate limit(X-MBX-ORDER-COUNT-10S); 1 on 1min order rate limit(X-MBX-ORDER-COUNT-1M); 5 on IP rate limit(x-mbx-used-weight-1m);
+Place Multiple Orders  Weight: 5 on 10s order rate limit(X-MBX-ORDER-COUNT-10S); 1 on 1min order rate limit(X-MBX-ORDER-COUNT-1M); 5 on IP rate limit(x-mbx-used-weight-1m);  Security Type: TRADE  Notes: - Paremeter rules are same with `New Order` - Batch orders are processed concurrently, and the order of matching is not guaranteed. - The order of returned contents for batch orders is the same as the order of the order list.
 
 ### Example
 
@@ -1404,9 +1406,9 @@ No authorization required
 positionAdlQuantileEstimation($symbol, $recvWindow): \Binance\Client\DerivativesTradingUsdsFutures\Model\PositionAdlQuantileEstimationResponse
 ```
 
-Position ADL Quantile Estimation(USER_DATA)
+Position ADL Quantile Estimation (USER_DATA)
 
-Position ADL Quantile Estimation  * Values update every 30s. * Values 0, 1, 2, 3, 4 shows the queue position and possibility of ADL from low to high. * For positions of the symbol are in One-way Mode or isolated margined in Hedge Mode, \"LONG\", \"SHORT\", and \"BOTH\" will be returned to show the positions' adl quantiles of different position sides. * If the positions of the symbol are crossed margined in Hedge Mode: * \"HEDGE\" as a sign will be returned instead of \"BOTH\"; * A same value caculated on unrealized pnls on long and short sides' positions will be shown for \"LONG\" and \"SHORT\" when there are positions in both of long and short sides.  Weight: 5
+Position ADL Quantile Estimation  * Values update every 30s. * Values 0, 1, 2, 3, 4 shows the queue position and possibility of ADL from low to high. * For positions of the symbol are in One-way Mode or isolated margined in Hedge Mode, \"LONG\", \"SHORT\", and \"BOTH\" will be returned to show the positions' adl quantiles of different position sides. * If the positions of the symbol are crossed margined in Hedge Mode:   * \"HEDGE\" as a sign will be returned instead of \"BOTH\";   * A same value caculated on unrealized pnls on long and short sides' positions will be shown for \"LONG\" and \"SHORT\" when there are positions in both of long and short sides.  Weight(IP): 5  Security Type: USER_DATA
 
 ### Example
 
@@ -1421,8 +1423,8 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->positionAdlQuantileEstimation($symbol, $recvWindow);
@@ -1464,7 +1466,7 @@ positionInformationV2($symbol, $recvWindow): \Binance\Client\DerivativesTradingU
 
 Position Information V2 (USER_DATA)
 
-Get current position information.  Please use with user data stream `ACCOUNT_UPDATE` to meet your timeliness and accuracy needs.  Weight: 5
+Get current position information.  Weight(IP): 5  Security Type: USER_DATA  Notes: - Please use with user data stream `ACCOUNT_UPDATE` to meet your timeliness and accuracy needs.
 
 ### Example
 
@@ -1479,8 +1481,8 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->positionInformationV2($symbol, $recvWindow);
@@ -1522,7 +1524,7 @@ positionInformationV3($symbol, $recvWindow): \Binance\Client\DerivativesTradingU
 
 Position Information V3 (USER_DATA)
 
-Get current position information(only symbol that has position or open orders will be returned).  Please use with user data stream `ACCOUNT_UPDATE` to meet your timeliness and accuracy needs.  Weight: 5
+Get current position information(only symbol that has position or open orders will be returned).  Weight(IP): 5  Security Type: USER_DATA  Notes: - Please use with user data stream `ACCOUNT_UPDATE` to meet your timeliness and accuracy needs.
 
 ### Example
 
@@ -1537,8 +1539,8 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->positionInformationV3($symbol, $recvWindow);
@@ -1580,7 +1582,7 @@ queryAlgoOrder($algoId, $clientAlgoId, $recvWindow): \Binance\Client\Derivatives
 
 Query Algo Order (USER_DATA)
 
-Check an algo order's status.  * These orders will not be found: * order status is `CANCELED` or `EXPIRED` **AND** order has NO filled trade **AND** created time + 3 days < current time * order create time + 90 days < current time  * Either `algoId` or `clientAlgoId` must be sent. * `algoId` is self-increment for each specific `symbol`  Weight: 1
+Check the status of an algo (conditional) order, such as TP/SL (Take Profit / Stop Loss) or trailing stop orders on USD-M Futures.  * These orders will not be found:   * order status is `CANCELED` or `EXPIRED` **AND** order has NO filled trade **AND** created time + 3 days < current time   * order create time + 90 days < current time  Weight(IP): 1  Security Type: USER_DATA  Notes: - Either `algoId` or `clientAlgoId` must be sent. - `algoId` is self-increment for each specific `symbol`
 
 ### Example
 
@@ -1595,9 +1597,9 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$algoId = 56; // int
-$clientAlgoId = 'clientAlgoId_example'; // string
-$recvWindow = 56; // int
+$algoId = 1; // int | Order ID
+$clientAlgoId = 1; // string | Client order ID
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryAlgoOrder($algoId, $clientAlgoId, $recvWindow);
@@ -1611,8 +1613,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **algoId** | **int**|  | [optional] |
-| **clientAlgoId** | **string**|  | [optional] |
+| **algoId** | **int**| Order ID | [optional] |
+| **clientAlgoId** | **string**| Client order ID | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -1635,12 +1637,12 @@ No authorization required
 ## `queryAllAlgoOrders()`
 
 ```php
-queryAllAlgoOrders($symbol, $algoId, $startTime, $endTime, $page, $limit, $recvWindow): \Binance\Client\DerivativesTradingUsdsFutures\Model\QueryAllAlgoOrdersResponse
+queryAllAlgoOrders($symbol, $algoId, $startTime, $endTime, $limit, $recvWindow): \Binance\Client\DerivativesTradingUsdsFutures\Model\QueryAllAlgoOrdersResponse
 ```
 
 Query All Algo Orders (USER_DATA)
 
-Get all algo orders; active, CANCELED, TRIGGERED or FINISHED .  * These orders will not be found: * order status is `CANCELED` or `EXPIRED` **AND** order has NO filled trade **AND** created time + 3 days < current time * order create time + 90 days < current time  * If `algoId` is set, it will get orders >= that `algoId`. Otherwise most recent orders are returned. * The query time period must be less then 7 days( default as the recent 7 days).  Weight: 5
+Get all algo (conditional) orders — active, CANCELED, TRIGGERED, or FINISHED — including TP/SL (Take Profit / Stop Loss) and trailing stop orders on USD-M Futures.  * These orders will not be found:   * order status is `CANCELED` or `EXPIRED` **AND** order has NO filled trade **AND** created time + 3 days < current time   * order create time + 90 days < current time  Weight(IP): 5  Security Type: USER_DATA  Notes: - If `algoId` is set, it will get orders >= that `algoId`. Otherwise most recent orders are returned. - The query time period must be less then 7 days( default as the recent 7 days).
 
 ### Example
 
@@ -1655,16 +1657,15 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$algoId = 56; // int
-$startTime = 56; // int
-$endTime = 56; // int
-$page = 56; // int
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$algoId = 2146760; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$limit = 50; // int
+$recvWindow = 5000; // int
 
 try {
-    $result = $apiInstance->queryAllAlgoOrders($symbol, $algoId, $startTime, $endTime, $page, $limit, $recvWindow);
+    $result = $apiInstance->queryAllAlgoOrders($symbol, $algoId, $startTime, $endTime, $limit, $recvWindow);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TradeApi->queryAllAlgoOrders: ', $e->getMessage(), PHP_EOL;
@@ -1675,12 +1676,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **algoId** | **int**|  | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **page** | **int**|  | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **limit** | **int**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -1708,7 +1708,7 @@ queryCurrentOpenOrder($symbol, $orderId, $origClientOrderId, $recvWindow): \Bina
 
 Query Current Open Order (USER_DATA)
 
-Query open order   * Either`orderId` or `origClientOrderId` must be sent * If the queried order has been filled or cancelled, the error message \"Order does not exist\" will be returned.  Weight: 1
+Query open order  Weight(IP): 1  Security Type: USER_DATA  Notes: - Either`orderId` or `origClientOrderId` must be sent - If the queried order has been filled or cancelled, the error message \"Order does not exist\" will be returned.
 
 ### Example
 
@@ -1723,10 +1723,10 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$origClientOrderId = 'origClientOrderId_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$orderId = 1917641; // int
+$origClientOrderId = abc; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryCurrentOpenOrder($symbol, $orderId, $origClientOrderId, $recvWindow);
@@ -1770,7 +1770,7 @@ queryOrder($symbol, $orderId, $origClientOrderId, $recvWindow): \Binance\Client\
 
 Query Order (USER_DATA)
 
-Check an order's status.  * These orders will not be found: * order status is `CANCELED` or `EXPIRED` **AND** order has NO filled trade **AND** created time + 3 days < current time * order create time + 90 days < current time  * Either `orderId` or `origClientOrderId` must be sent. * `orderId` is self-increment for each specific `symbol`  Weight: 1
+Check an order's status.  * These orders will not be found:   * order status is `CANCELED` or `EXPIRED` **AND** order has NO filled trade **AND** created time + 3 days < current time   * order create time + 90 days < current time  Weight(IP): 1  Security Type: USER_DATA  Notes: - Either `orderId` or `origClientOrderId` must be sent. - `orderId` is self-increment for each specific `symbol`
 
 ### Example
 
@@ -1785,10 +1785,10 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$origClientOrderId = 'origClientOrderId_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$orderId = 1917641; // int
+$origClientOrderId = abc; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryOrder($symbol, $orderId, $origClientOrderId, $recvWindow);
@@ -1830,9 +1830,9 @@ No authorization required
 testOrder($testOrderRequest): \Binance\Client\DerivativesTradingUsdsFutures\Model\TestOrderResponse
 ```
 
-Test Order(TRADE)
+Test Order (TRADE)
 
-Testing order request, this order will not be submitted to matching engine  * Order with type `STOP`,  parameter `timeInForce` can be sent ( default `GTC`). * Order with type `TAKE_PROFIT`,  parameter `timeInForce` can be sent ( default `GTC`). * Condition orders will be triggered when:  * If parameter`priceProtect`is sent as true: * when price reaches the `stopPrice` ，the difference rate between \"MARK_PRICE\" and \"CONTRACT_PRICE\" cannot be larger than the \"triggerProtect\" of the symbol * \"triggerProtect\" of a symbol can be got from `GET /fapi/v1/exchangeInfo`  * `STOP`, `STOP_MARKET`: * BUY: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") >= `stopPrice` * SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") <= `stopPrice` * `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`: * BUY: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") <= `stopPrice` * SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") >= `stopPrice` * `TRAILING_STOP_MARKET`: * BUY: the lowest price after order placed `<= `activationPrice`, and the latest price >`= the lowest price * (1 + `callbackRate`) * SELL: the highest price after order placed >= `activationPrice`, and the latest price <= the highest price * (1 - `callbackRate`)  * For `TRAILING_STOP_MARKET`, if you got such error code. ``{\"code\": -2021, \"msg\": \"Order would immediately trigger.\"}`` means that the parameters you send do not meet the following requirements: * BUY: `activationPrice` should be smaller than latest price. * SELL: `activationPrice` should be larger than latest price.  * If `newOrderRespType ` is sent as `RESULT` : * `MARKET` order: the final FILLED result of the order will be return directly. * `LIMIT` order with special `timeInForce`: the final status result of the order(FILLED or EXPIRED) will be returned directly.  * `STOP_MARKET`, `TAKE_PROFIT_MARKET` with `closePosition`=`true`: * Follow the same rules for condition orders. * If triggered，**close all** current long position( if `SELL`) or current short position( if `BUY`). * Cannot be used with `quantity` paremeter * Cannot be used with `reduceOnly` parameter * In Hedge Mode,cannot be used with `BUY` orders in `LONG` position side. and cannot be used with `SELL` orders in `SHORT` position side * `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`. * In extreme market conditions, timeInForce `GTD` order auto cancel time might be delayed comparing to `goodTillDate`  Weight: 0
+Testing order request, this order will not be submitted to matching engine  Security Type: TRADE  Notes: Additional mandatory parameters based on `type`:  | Type                             | Additional mandatory parameters    | | -------------------------------- | ---------------------------------- | | `LIMIT`                          | `timeInForce`, `quantity`, `price` | | `MARKET`                         | `quantity`                         | | `STOP/TAKE_PROFIT`               | `quantity`,  `price`, `stopPrice`  | | `STOP_MARKET/TAKE_PROFIT_MARKET` | `stopPrice`                        | | `TRAILING_STOP_MARKET`           | `callbackRate`                     |  - Order with type `STOP`, parameter `timeInForce` can be sent ( default `GTC`). - Order with type `TAKE_PROFIT`, parameter `timeInForce` can be sent (default `GTC`). - Condition orders will be triggered when:   - If parameter`priceProtect`is sent as true:     - when price reaches the `stopPrice` ，the difference rate between \"MARK_PRICE\" and \"CONTRACT_PRICE\" cannot be larger than the \"triggerProtect\" of the symbol     - \"triggerProtect\" of a symbol can be got from `GET /fapi/v1/exchangeInfo`   - `STOP`, `STOP_MARKET`:     - BUY: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") >= `stopPrice`     - SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\")   - `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`:     - BUY: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\")     - SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") >= `stopPrice`   - `TRAILING_STOP_MARKET`:     - BUY: the lowest price after order placed ``= the lowest price * (1 + `callbackRate`)     - SELL: the highest price after order placed >= `activationPrice`, and the latest price - For `TRAILING_STOP_MARKET`, if you got such error code. > `{\"code\": -2021, \"msg\": \"Order would immediately trigger.\"}` > means that the parameters you send do not meet the following requirements:   - BUY: `activationPrice` should be smaller than latest price.   - SELL: `activationPrice` should be larger than latest price. - If `newOrderRespType ` is sent as `RESULT` :   - `MARKET` order: the final FILLED result of the order will be return directly.   - `LIMIT` order with special `timeInForce`: the final status result of the order(FILLED or EXPIRED) will be returned directly. - `STOP_MARKET`, `TAKE_PROFIT_MARKET` with `closePosition`=`true`:   - Follow the same rules for condition orders.   - If triggered，**close all** current long position( if `SELL`) or current short position( if `BUY`).   - Cannot be used with `quantity` paremeter   - Cannot be used with `reduceOnly` parameter   - In Hedge Mode,cannot be used with `BUY` orders in `LONG` position side. and cannot be used with `SELL` orders in `SHORT` position side - `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`. - In extreme market conditions, timeInForce `GTD` order auto cancel time might be delayed comparing to `goodTillDate`
 
 ### Example
 
@@ -1888,7 +1888,7 @@ usersForceOrders($symbol, $autoCloseType, $startTime, $endTime, $limit, $recvWin
 
 User's Force Orders (USER_DATA)
 
-Query user's Force Orders  * If \"autoCloseType\" is not sent, orders with both of the types will be returned * If \"startTime\" is not sent, data within 7 days before \"endTime\" can be queried  Weight: 20 with symbol, 50 without symbol
+Query user's Force Orders  Weight: **20** with symbol, **50** without symbol  Security Type: USER_DATA  Notes: - If \"autoCloseType\" is not sent, orders with both of the types will be returned - If \"startTime\" is not sent, data within 7 days before \"endTime\" can be queried
 
 ### Example
 
@@ -1903,12 +1903,12 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = BTCUSDT; // string
 $autoCloseType = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\AutoCloseType(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\AutoCloseType | \"LIQUIDATION\" for liquidation orders, \"ADL\" for ADL orders.
-$startTime = 56; // int
-$endTime = 56; // int
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$limit = 50; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->usersForceOrders($symbol, $autoCloseType, $startTime, $endTime, $limit, $recvWindow);
@@ -1926,7 +1926,7 @@ try {
 | **autoCloseType** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\AutoCloseType**](../Model/.md)| \&quot;LIQUIDATION\&quot; for liquidation orders, \&quot;ADL\&quot; for ADL orders. | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **limit** | **int**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type

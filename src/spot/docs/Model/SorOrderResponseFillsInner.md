@@ -1,4 +1,4 @@
-# # SorOrderResponseFillsInner
+# SorOrderResponseFillsInner
 
 ## Properties
 

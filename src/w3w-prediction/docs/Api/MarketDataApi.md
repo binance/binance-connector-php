@@ -1,4 +1,4 @@
-# Binance\Client\W3wPrediction\MarketDataApi
+# Binance\Client\W3WPrediction\MarketDataApi
 
 
 
@@ -17,7 +17,7 @@ All URIs are relative to https://api.binance.com, except if the operation define
 ## `getMarketDetail()`
 
 ```php
-getMarketDetail($marketTopicId): \Binance\Client\W3wPrediction\Model\GetMarketDetailResponse
+getMarketDetail($marketTopicId): \Binance\Client\W3WPrediction\Model\GetMarketDetailResponse
 ```
 
 Get Market Detail
@@ -32,7 +32,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\MarketDataApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\MarketDataApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -55,7 +55,7 @@ try {
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\GetMarketDetailResponse**](../Model/GetMarketDetailResponse.md)
+[**\Binance\Client\W3WPrediction\Model\GetMarketDetailResponse**](../Model/GetMarketDetailResponse.md)
 
 ### Authorization
 
@@ -73,7 +73,7 @@ No authorization required
 ## `listPredictionCategories()`
 
 ```php
-listPredictionCategories(): \Binance\Client\W3wPrediction\Model\ListPredictionCategoriesResponse
+listPredictionCategories(): \Binance\Client\W3WPrediction\Model\ListPredictionCategoriesResponse
 ```
 
 List Prediction Categories
@@ -88,7 +88,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\MarketDataApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\MarketDataApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -108,7 +108,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\ListPredictionCategoriesResponse**](../Model/ListPredictionCategoriesResponse.md)
+[**\Binance\Client\W3WPrediction\Model\ListPredictionCategoriesResponse**](../Model/ListPredictionCategoriesResponse.md)
 
 ### Authorization
 
@@ -126,7 +126,7 @@ No authorization required
 ## `listPredictionMarkets()`
 
 ```php
-listPredictionMarkets($l1Category, $l2Category, $sortBy, $orderBy, $offset, $limit): \Binance\Client\W3wPrediction\Model\ListPredictionMarketsResponse
+listPredictionMarkets($l1Category, $l2Category, $sortBy, $orderBy, $offset, $limit): \Binance\Client\W3WPrediction\Model\ListPredictionMarketsResponse
 ```
 
 List Prediction Markets
@@ -141,15 +141,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\MarketDataApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\MarketDataApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
 $l1Category = crypto; // string | Level-1 category filter
 $l2Category = up-down; // string | Level-2 category filter
-$sortBy = new \Binance\Client\W3wPrediction\Model\\Binance\Client\W3wPrediction\Model\SortBy(); // \Binance\Client\W3wPrediction\Model\SortBy | Sort field. Enum: `RECOMMENDED`, `VOLUME`, `PARTICIPANTS`, `CREATED_TIME`, `END_DATE`
-$orderBy = new \Binance\Client\W3wPrediction\Model\\Binance\Client\W3wPrediction\Model\OrderBy(); // \Binance\Client\W3wPrediction\Model\OrderBy | Sort direction. Enum: `ASC`, `DESC`
+$sortBy = new \Binance\Client\W3WPrediction\Model\\Binance\Client\W3WPrediction\Model\SortBy(); // \Binance\Client\W3WPrediction\Model\SortBy | Sort field. Enum: `RECOMMENDED`, `VOLUME`, `PARTICIPANTS`, `CREATED_TIME`, `END_DATE`
+$orderBy = new \Binance\Client\W3WPrediction\Model\\Binance\Client\W3WPrediction\Model\OrderBy(); // \Binance\Client\W3WPrediction\Model\OrderBy | Sort direction. Enum: `ASC`, `DESC`
 $offset = 0; // int | Pagination offset. Default `0`
 $limit = 20; // int | Page size. Default `20`, range 1–100
 
@@ -167,14 +167,14 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **l1Category** | **string**| Level-1 category filter | [optional] |
 | **l2Category** | **string**| Level-2 category filter | [optional] |
-| **sortBy** | [**\Binance\Client\W3wPrediction\Model\SortBy**](../Model/.md)| Sort field. Enum: &#x60;RECOMMENDED&#x60;, &#x60;VOLUME&#x60;, &#x60;PARTICIPANTS&#x60;, &#x60;CREATED_TIME&#x60;, &#x60;END_DATE&#x60; | [optional] |
-| **orderBy** | [**\Binance\Client\W3wPrediction\Model\OrderBy**](../Model/.md)| Sort direction. Enum: &#x60;ASC&#x60;, &#x60;DESC&#x60; | [optional] |
+| **sortBy** | [**\Binance\Client\W3WPrediction\Model\SortBy**](../Model/.md)| Sort field. Enum: &#x60;RECOMMENDED&#x60;, &#x60;VOLUME&#x60;, &#x60;PARTICIPANTS&#x60;, &#x60;CREATED_TIME&#x60;, &#x60;END_DATE&#x60; | [optional] |
+| **orderBy** | [**\Binance\Client\W3WPrediction\Model\OrderBy**](../Model/.md)| Sort direction. Enum: &#x60;ASC&#x60;, &#x60;DESC&#x60; | [optional] |
 | **offset** | **int**| Pagination offset. Default &#x60;0&#x60; | [optional] |
 | **limit** | **int**| Page size. Default &#x60;20&#x60;, range 1–100 | [optional] |
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\ListPredictionMarketsResponse**](../Model/ListPredictionMarketsResponse.md)
+[**\Binance\Client\W3WPrediction\Model\ListPredictionMarketsResponse**](../Model/ListPredictionMarketsResponse.md)
 
 ### Authorization
 
@@ -192,7 +192,7 @@ No authorization required
 ## `marketSearch()`
 
 ```php
-marketSearch($query, $topK): \Binance\Client\W3wPrediction\Model\MarketSearchResponse
+marketSearch($query, $topK): \Binance\Client\W3WPrediction\Model\MarketSearchResponse
 ```
 
 Market Search
@@ -207,7 +207,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\MarketDataApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\MarketDataApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -232,7 +232,7 @@ try {
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\MarketSearchResponse**](../Model/MarketSearchResponse.md)
+[**\Binance\Client\W3WPrediction\Model\MarketSearchResponse**](../Model/MarketSearchResponse.md)
 
 ### Authorization
 
@@ -250,7 +250,7 @@ No authorization required
 ## `queryLastTradePrice()`
 
 ```php
-queryLastTradePrice($marketId): \Binance\Client\W3wPrediction\Model\QueryLastTradePriceResponse
+queryLastTradePrice($marketId): \Binance\Client\W3WPrediction\Model\QueryLastTradePriceResponse
 ```
 
 Query Last Trade Price
@@ -265,7 +265,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\MarketDataApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\MarketDataApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -288,7 +288,7 @@ try {
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\QueryLastTradePriceResponse**](../Model/QueryLastTradePriceResponse.md)
+[**\Binance\Client\W3WPrediction\Model\QueryLastTradePriceResponse**](../Model/QueryLastTradePriceResponse.md)
 
 ### Authorization
 
@@ -306,7 +306,7 @@ No authorization required
 ## `queryOrderBook()`
 
 ```php
-queryOrderBook($vendor, $marketId, $tokenId): \Binance\Client\W3wPrediction\Model\QueryOrderBookResponse
+queryOrderBook($vendor, $marketId, $tokenId): \Binance\Client\W3WPrediction\Model\QueryOrderBookResponse
 ```
 
 Query Order Book
@@ -321,7 +321,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\MarketDataApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\MarketDataApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -348,7 +348,7 @@ try {
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\QueryOrderBookResponse**](../Model/QueryOrderBookResponse.md)
+[**\Binance\Client\W3WPrediction\Model\QueryOrderBookResponse**](../Model/QueryOrderBookResponse.md)
 
 ### Authorization
 

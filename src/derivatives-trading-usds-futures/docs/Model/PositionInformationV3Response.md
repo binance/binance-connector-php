@@ -1,4 +1,4 @@
-# # PositionInformationV3Response
+# PositionInformationV3Response
 
 ## Properties
 

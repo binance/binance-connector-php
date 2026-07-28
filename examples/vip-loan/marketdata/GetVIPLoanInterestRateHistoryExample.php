@@ -10,7 +10,7 @@ function getVIPLoanInterestRateHistoryExample()
     $configurationBuilder = VipLoanRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new VipLoanRestApi($configurationBuilder->build());
-    $coin = '';
+    $coin = 'USDT';
     $recvWindow = 5000;
     $startTime = 1623319461670;
     $endTime = 1641782889000;

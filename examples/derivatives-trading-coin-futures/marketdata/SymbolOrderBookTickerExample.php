@@ -9,8 +9,8 @@ function symbolOrderBookTickerExample()
 {
     $configurationBuilder = DerivativesTradingCoinFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
-    $pair = '';
+    $symbol = 'BTCUSD_200626';
+    $pair = 'BTCUSD';
     $response = $api->symbolOrderBookTicker($symbol, $pair);
     print_r($response);
 }

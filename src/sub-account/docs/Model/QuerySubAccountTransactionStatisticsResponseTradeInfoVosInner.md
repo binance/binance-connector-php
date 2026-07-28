@@ -1,4 +1,4 @@
-# # QuerySubAccountTransactionStatisticsResponseTradeInfoVosInner
+# QuerySubAccountTransactionStatisticsResponseTradeInfoVosInner
 
 ## Properties
 

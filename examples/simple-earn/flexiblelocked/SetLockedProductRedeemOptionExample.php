@@ -3,6 +3,7 @@
 require_once __DIR__.'/../vendor/autoload.php';
 
 use Binance\Client\SimpleEarn\Api\SimpleEarnRestApi;
+use Binance\Client\SimpleEarn\Model\RedeemTo;
 use Binance\Client\SimpleEarn\Model\SetLockedProductRedeemOptionRequest;
 use Binance\Client\SimpleEarn\SimpleEarnRestApiUtil;
 
@@ -13,7 +14,7 @@ function setLockedProductRedeemOptionExample()
     $api = new SimpleEarnRestApi($configurationBuilder->build());
     $setLockedProductRedeemOptionRequest = new SetLockedProductRedeemOptionRequest();
     $setLockedProductRedeemOptionRequest->setPositionId('1');
-    $setLockedProductRedeemOptionRequest->setRedeemTo('SPOT');
+    $setLockedProductRedeemOptionRequest->setRedeemTo(RedeemTo::SPOT);
     $response = $api->setLockedProductRedeemOption($setLockedProductRedeemOptionRequest);
     print_r($response);
 }

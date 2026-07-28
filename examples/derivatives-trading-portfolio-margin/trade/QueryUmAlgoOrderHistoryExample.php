@@ -10,11 +10,11 @@ function queryUmAlgoOrderHistoryExample()
     $configurationBuilder = DerivativesTradingPortfolioMarginRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
-    $symbol = '';
-    $algoId = 1;
-    $startTime = 1623319461670;
-    $endTime = 1641782889000;
-    $limit = 100;
+    $symbol = 'BNBUSDT';
+    $algoId = 2146760;
+    $startTime = 1770130294138;
+    $endTime = 1770736694138;
+    $limit = 500;
     $recvWindow = 5000;
     $response = $api->queryUmAlgoOrderHistory($symbol, $algoId, $startTime, $endTime, $limit, $recvWindow);
     print_r($response);

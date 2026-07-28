@@ -1,4 +1,4 @@
-# # QuerySubAccountSpotAssetsSummaryResponse
+# QuerySubAccountSpotAssetsSummaryResponse
 
 ## Properties
 

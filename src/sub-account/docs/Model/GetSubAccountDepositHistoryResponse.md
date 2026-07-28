@@ -1,4 +1,4 @@
-# # GetSubAccountDepositHistoryResponse
+# GetSubAccountDepositHistoryResponse
 
 ## Properties
 

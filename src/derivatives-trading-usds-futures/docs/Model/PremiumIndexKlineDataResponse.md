@@ -1,4 +1,4 @@
-# # PremiumIndexKlineDataResponse
+# PremiumIndexKlineDataResponse
 
 ## Properties
 

@@ -9,8 +9,8 @@ function ticker24hrPriceChangeStatisticsExample()
 {
     $configurationBuilder = DerivativesTradingCoinFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
-    $pair = '';
+    $symbol = 'BTCUSD_200925';
+    $pair = 'BTCUSD';
     $response = $api->ticker24hrPriceChangeStatistics($symbol, $pair);
     print_r($response);
 }

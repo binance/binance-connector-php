@@ -1,4 +1,4 @@
-# # TradingScheduleResponseMarketSchedulesEQUITYSessionsInner
+# TradingScheduleResponseMarketSchedulesEQUITYSessionsInner
 
 ## Properties
 

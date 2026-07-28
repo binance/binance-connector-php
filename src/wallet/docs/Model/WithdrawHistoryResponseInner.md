@@ -1,4 +1,4 @@
-# # WithdrawHistoryResponseInner
+# WithdrawHistoryResponseInner
 
 ## Properties
 

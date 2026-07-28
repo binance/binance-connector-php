@@ -1,4 +1,4 @@
-# # GetUnclaimedRewardsResponseInner
+# GetUnclaimedRewardsResponseInner
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # PositionInformationResponse
+# PositionInformationResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # TickerResponse2
+# TickerResponse2
 
 ## Properties
 

@@ -10,7 +10,7 @@ function getEthRedemptionHistoryExample()
     $configurationBuilder = StakingRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new StakingRestApi($configurationBuilder->build());
-    $redeemId = 1;
+    $redeemId = 1234567;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $current = 1;

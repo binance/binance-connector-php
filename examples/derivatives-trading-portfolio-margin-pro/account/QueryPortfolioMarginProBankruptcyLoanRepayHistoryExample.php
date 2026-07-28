@@ -12,10 +12,10 @@ function queryPortfolioMarginProBankruptcyLoanRepayHistoryExample()
     $api = new DerivativesTradingPortfolioMarginProRestApi($configurationBuilder->build());
     $startTime = 1623319461670;
     $endTime = 1641782889000;
-    $current = 1;
     $size = 10;
+    $current = 1;
     $recvWindow = 5000;
-    $response = $api->queryPortfolioMarginProBankruptcyLoanRepayHistory($startTime, $endTime, $current, $size, $recvWindow);
+    $response = $api->queryPortfolioMarginProBankruptcyLoanRepayHistory($startTime, $endTime, $size, $current, $recvWindow);
     print_r($response);
 }
 

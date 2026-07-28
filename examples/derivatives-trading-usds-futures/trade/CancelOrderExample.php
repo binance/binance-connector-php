@@ -10,9 +10,9 @@ function cancelOrderExample()
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
-    $orderId = 1;
-    $origClientOrderId = '1';
+    $symbol = 'BTCUSDT';
+    $orderId = 283194212;
+    $origClientOrderId = 'myOrder1';
     $recvWindow = 5000;
     $response = $api->cancelOrder($symbol, $orderId, $origClientOrderId, $recvWindow);
     print_r($response);

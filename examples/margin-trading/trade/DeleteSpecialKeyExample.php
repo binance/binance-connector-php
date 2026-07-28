@@ -10,8 +10,8 @@ function deleteSpecialKeyExample()
     $configurationBuilder = MarginTradingRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new MarginTradingRestApi($configurationBuilder->build());
-    $apiName = '';
-    $symbol = '';
+    $apiName = 'apiName';
+    $symbol = 'BTCUSDT';
     $recvWindow = 5000;
     $api->deleteSpecialKey($apiName, $symbol, $recvWindow);
 }

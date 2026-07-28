@@ -1,10 +1,10 @@
-# # NewBlockTradeOrderRequest
+# NewBlockTradeOrderRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**liquidity** | **string** |  |
+**liquidity** | [**\Binance\Client\DerivativesTradingOptions\Model\Liquidity**](Liquidity.md) |  |
 **legs** | [**\Binance\Client\DerivativesTradingOptions\Model\Legs**](Legs.md) |  |
 **recvWindow** | **int** |  | [optional]
 

@@ -12,8 +12,8 @@ function transferToSubAccountOfSameMasterExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
     $transferToSubAccountOfSameMasterRequest = new TransferToSubAccountOfSameMasterRequest();
-    $transferToSubAccountOfSameMasterRequest->setToEmail('');
-    $transferToSubAccountOfSameMasterRequest->setAsset('');
+    $transferToSubAccountOfSameMasterRequest->setToEmail('abc@test.com');
+    $transferToSubAccountOfSameMasterRequest->setAsset('BTC');
     $transferToSubAccountOfSameMasterRequest->setAmount(1.0);
     $response = $api->transferToSubAccountOfSameMaster($transferToSubAccountOfSameMasterRequest);
     print_r($response);

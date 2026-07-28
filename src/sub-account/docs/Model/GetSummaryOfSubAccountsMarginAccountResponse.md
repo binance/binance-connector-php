@@ -1,4 +1,4 @@
-# # GetSummaryOfSubAccountsMarginAccountResponse
+# GetSummaryOfSubAccountsMarginAccountResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetBoostRewardsHistoryResponse
+# GetBoostRewardsHistoryResponse
 
 ## Properties
 

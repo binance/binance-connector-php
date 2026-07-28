@@ -1,4 +1,4 @@
-# # QueryUserRateLimitResponseInner
+# QueryUserRateLimitResponseInner
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # Legs
+# Legs
 
 ## Properties
 

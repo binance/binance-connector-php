@@ -1,4 +1,4 @@
-# # IndexPriceKlineCandlestickDataResponse
+# IndexPriceKlineCandlestickDataResponse
 
 ## Properties
 

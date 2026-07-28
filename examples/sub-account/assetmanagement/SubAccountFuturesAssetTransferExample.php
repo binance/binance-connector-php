@@ -12,10 +12,10 @@ function subAccountFuturesAssetTransferExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
     $subAccountFuturesAssetTransferRequest = new SubAccountFuturesAssetTransferRequest();
-    $subAccountFuturesAssetTransferRequest->setFromEmail('');
-    $subAccountFuturesAssetTransferRequest->setToEmail('');
-    $subAccountFuturesAssetTransferRequest->setFuturesType(null);
-    $subAccountFuturesAssetTransferRequest->setAsset('');
+    $subAccountFuturesAssetTransferRequest->setFromEmail('abc@test.com');
+    $subAccountFuturesAssetTransferRequest->setToEmail('def@test.com');
+    $subAccountFuturesAssetTransferRequest->setFuturesType(1);
+    $subAccountFuturesAssetTransferRequest->setAsset('BTC');
     $subAccountFuturesAssetTransferRequest->setAmount(1.0);
     $response = $api->subAccountFuturesAssetTransfer($subAccountFuturesAssetTransferRequest);
     print_r($response);

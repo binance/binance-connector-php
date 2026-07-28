@@ -1,4 +1,4 @@
-# # QueryMarginAccountsOpenOrdersResponse
+# QueryMarginAccountsOpenOrdersResponse
 
 ## Properties
 

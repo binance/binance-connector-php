@@ -1,4 +1,4 @@
-# # EarningsListResponse
+# EarningsListResponse
 
 ## Properties
 

@@ -10,7 +10,7 @@ function cancelCmConditionalOrderExample()
     $configurationBuilder = DerivativesTradingPortfolioMarginRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTCUSDT';
     $strategyId = 1;
     $newClientStrategyId = '1';
     $recvWindow = 5000;

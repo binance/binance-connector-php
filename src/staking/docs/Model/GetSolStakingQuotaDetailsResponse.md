@@ -1,4 +1,4 @@
-# # GetSolStakingQuotaDetailsResponse
+# GetSolStakingQuotaDetailsResponse
 
 ## Properties
 

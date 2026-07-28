@@ -1,4 +1,4 @@
-# # SubscribeDualInvestmentProductsResponse
+# SubscribeDualInvestmentProductsResponse
 
 ## Properties
 
@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **exercisedCoin** | **string** |  | [optional]
 **subscriptionAmount** | **string** |  | [optional]
 **duration** | **int** |  | [optional]
-**autoCompoundPlan** | **string** |  | [optional]
+**autoCompoundPlan** | **string** | STANDARD, ADVANCED, this field won&#39;t display when autocompound is set to None | [optional]
 **strikePrice** | **string** |  | [optional]
 **settleDate** | **int** |  | [optional]
 **purchaseStatus** | **string** |  | [optional]

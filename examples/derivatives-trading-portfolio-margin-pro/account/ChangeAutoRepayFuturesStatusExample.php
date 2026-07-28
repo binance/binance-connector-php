@@ -4,6 +4,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Api\DerivativesTradingPortfolioMarginProRestApi;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\DerivativesTradingPortfolioMarginProRestApiUtil;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\AutoRepay;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\ChangeAutoRepayFuturesStatusRequest;
 
 function changeAutoRepayFuturesStatusExample()
@@ -12,7 +13,7 @@ function changeAutoRepayFuturesStatusExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginProRestApi($configurationBuilder->build());
     $changeAutoRepayFuturesStatusRequest = new ChangeAutoRepayFuturesStatusRequest();
-    $changeAutoRepayFuturesStatusRequest->setAutoRepay('true');
+    $changeAutoRepayFuturesStatusRequest->setAutoRepay(AutoRepay::TRUE);
     $response = $api->changeAutoRepayFuturesStatus($changeAutoRepayFuturesStatusRequest);
     print_r($response);
 }

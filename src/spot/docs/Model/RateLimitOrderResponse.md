@@ -1,4 +1,4 @@
-# # RateLimitOrderResponse
+# RateLimitOrderResponse
 
 ## Properties
 

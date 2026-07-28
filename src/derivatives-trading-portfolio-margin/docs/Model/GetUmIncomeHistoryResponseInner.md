@@ -1,16 +1,16 @@
-# # GetUmIncomeHistoryResponseInner
+# GetUmIncomeHistoryResponseInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**symbol** | **string** |  | [optional]
-**incomeType** | **string** |  | [optional]
-**income** | **string** |  | [optional]
-**asset** | **string** |  | [optional]
-**info** | **string** |  | [optional]
-**time** | **int** |  | [optional]
-**tranId** | **string** |  | [optional]
-**tradeId** | **string** |  | [optional]
+**symbol** | **string** | Trade symbol, if existing. | [optional]
+**incomeType** | **string** | Income type. | [optional]
+**income** | **string** | Income amount. | [optional]
+**asset** | **string** | Income asset. | [optional]
+**info** | **string** | Extra information. | [optional]
+**time** | **int** | Event time. | [optional]
+**tranId** | **string** | Transaction ID. | [optional]
+**tradeId** | **string** | Trade ID, if existing. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

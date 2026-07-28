@@ -10,8 +10,8 @@ function getOpenOrdersExample()
     $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SpotRestApi($configurationBuilder->build());
-    $symbol = 'BNBUSDT';
-    $recvWindow = 5000.0;
+    $symbol = 'LTCBTC';
+    $recvWindow = 5000;
     $response = $api->getOpenOrders($symbol, $recvWindow);
     print_r($response);
 }

@@ -10,7 +10,7 @@ function queryOrderExample()
     $configurationBuilder = DerivativesTradingCoinFuturesRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTCUSD_200925';
     $orderId = 1;
     $origClientOrderId = '1';
     $recvWindow = 5000;

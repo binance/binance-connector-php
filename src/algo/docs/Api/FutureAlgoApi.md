@@ -1,15 +1,17 @@
 # Binance\Client\Algo\FutureAlgoApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**cancelAlgoOrderFutureAlgo()**](FutureAlgoApi.md#cancelAlgoOrderFutureAlgo) | **DELETE** /sapi/v1/algo/futures/order | Cancel Algo Order(TRADE) |
-| [**queryCurrentAlgoOpenOrdersFutureAlgo()**](FutureAlgoApi.md#queryCurrentAlgoOpenOrdersFutureAlgo) | **GET** /sapi/v1/algo/futures/openOrders | Query Current Algo Open Orders(USER_DATA) |
-| [**queryHistoricalAlgoOrdersFutureAlgo()**](FutureAlgoApi.md#queryHistoricalAlgoOrdersFutureAlgo) | **GET** /sapi/v1/algo/futures/historicalOrders | Query Historical Algo Orders(USER_DATA) |
-| [**querySubOrdersFutureAlgo()**](FutureAlgoApi.md#querySubOrdersFutureAlgo) | **GET** /sapi/v1/algo/futures/subOrders | Query Sub Orders(USER_DATA) |
-| [**timeWeightedAveragePriceFutureAlgo()**](FutureAlgoApi.md#timeWeightedAveragePriceFutureAlgo) | **POST** /sapi/v1/algo/futures/newOrderTwap | Time-Weighted Average Price(Twap) New Order(TRADE) |
-| [**volumeParticipationFutureAlgo()**](FutureAlgoApi.md#volumeParticipationFutureAlgo) | **POST** /sapi/v1/algo/futures/newOrderVp | Volume Participation(VP) New Order (TRADE) |
+| [**cancelAlgoOrderFutureAlgo()**](FutureAlgoApi.md#cancelAlgoOrderFutureAlgo) | **DELETE** /sapi/v1/algo/futures/order | Cancel Futures Algo Order (TRADE) |
+| [**queryCurrentAlgoOpenOrdersFutureAlgo()**](FutureAlgoApi.md#queryCurrentAlgoOpenOrdersFutureAlgo) | **GET** /sapi/v1/algo/futures/openOrders | Query Current Futures Algo Open Orders (USER_DATA) |
+| [**queryHistoricalAlgoOrdersFutureAlgo()**](FutureAlgoApi.md#queryHistoricalAlgoOrdersFutureAlgo) | **GET** /sapi/v1/algo/futures/historicalOrders | Query Historical Futures Algo Orders (USER_DATA) |
+| [**querySubOrdersFutureAlgo()**](FutureAlgoApi.md#querySubOrdersFutureAlgo) | **GET** /sapi/v1/algo/futures/subOrders | Query Futures Sub Orders (USER_DATA) |
+| [**timeWeightedAveragePriceFutureAlgo()**](FutureAlgoApi.md#timeWeightedAveragePriceFutureAlgo) | **POST** /sapi/v1/algo/futures/newOrderTwap | Time-Weighted Futures Average Price (Twap) New Order (TRADE) |
+| [**volumeParticipationFutureAlgo()**](FutureAlgoApi.md#volumeParticipationFutureAlgo) | **POST** /sapi/v1/algo/futures/newOrderVp | Volume Participation (VP) New Order (TRADE) |
 
 
 ## `cancelAlgoOrderFutureAlgo()`
@@ -18,9 +20,9 @@ All URIs are relative to https://api.binance.com, except if the operation define
 cancelAlgoOrderFutureAlgo($algoId, $recvWindow): \Binance\Client\Algo\Model\CancelAlgoOrderFutureAlgoResponse
 ```
 
-Cancel Algo Order(TRADE)
+Cancel Futures Algo Order (TRADE)
 
-Cancel an active order.  * You need to enable `Futures Trading Permission` for the api key which requests this endpoint. * Base URL: https://api.binance.com  Weight: 1
+Cancel an active order.  Weight(IP): 1  Security Type: TRADE  Notes: - You need to enable `Futures Trading Permission` for the API key that requests this endpoint. - Base URL: `https://api.binance.com`
 
 ### Example
 
@@ -35,8 +37,8 @@ $apiInstance = new Binance\Client\Algo\Api\FutureAlgoApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$algoId = 56; // int | eg. 14511
-$recvWindow = 56; // int
+$algoId = 1; // int | eg. 14511
+$recvWindow = 5000; // int | Request validity window in milliseconds
 
 try {
     $result = $apiInstance->cancelAlgoOrderFutureAlgo($algoId, $recvWindow);
@@ -51,7 +53,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **algoId** | **int**| eg. 14511 | |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds | [optional] |
 
 ### Return type
 
@@ -76,9 +78,9 @@ No authorization required
 queryCurrentAlgoOpenOrdersFutureAlgo($recvWindow): \Binance\Client\Algo\Model\QueryCurrentAlgoOpenOrdersFutureAlgoResponse
 ```
 
-Query Current Algo Open Orders(USER_DATA)
+Query Current Futures Algo Open Orders (USER_DATA)
 
-Query Current Algo Open Orders  * You need to enable `Futures Trading Permission` for the api key which requests this endpoint. * Base URL: https://api.binance.com  Weight: 1
+Query Current Algo Open Orders  Weight(IP): 1  Security Type: USER_DATA  Notes: - You need to enable `Futures Trading Permission` for the API key that requests this endpoint. - Base URL: `https://api.binance.com`
 
 ### Example
 
@@ -93,7 +95,7 @@ $apiInstance = new Binance\Client\Algo\Api\FutureAlgoApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int | Request validity window in milliseconds
 
 try {
     $result = $apiInstance->queryCurrentAlgoOpenOrdersFutureAlgo($recvWindow);
@@ -107,7 +109,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds | [optional] |
 
 ### Return type
 
@@ -132,9 +134,9 @@ No authorization required
 queryHistoricalAlgoOrdersFutureAlgo($symbol, $side, $startTime, $endTime, $page, $pageSize, $recvWindow): \Binance\Client\Algo\Model\QueryHistoricalAlgoOrdersFutureAlgoResponse
 ```
 
-Query Historical Algo Orders(USER_DATA)
+Query Historical Futures Algo Orders (USER_DATA)
 
-Query Historical Algo Order  * You need to enable `Futures Trading Permission` for the api key which requests this endpoint. * Base URL: https://api.binance.com  Weight: 1
+Query Historical Algo Order  Weight(IP): 1  Security Type: USER_DATA  Notes: - You need to enable `Futures Trading Permission` for the API key that requests this endpoint. - Base URL: `https://api.binance.com`
 
 ### Example
 
@@ -149,13 +151,13 @@ $apiInstance = new Binance\Client\Algo\Api\FutureAlgoApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string | Trading symbol eg. BTCUSDT
-$side = 'side_example'; // string | BUY or SELL
-$startTime = 56; // int | in milliseconds  eg.1641522717552
-$endTime = 56; // int | in milliseconds  eg.1641522526562
-$page = 56; // int | Default is 1
-$pageSize = 56; // int | MIN 1, MAX 100; Default 100
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Trading symbol eg. BTCUSDT
+$side = new \Binance\Client\Algo\Model\\Binance\Client\Algo\Model\Side(); // \Binance\Client\Algo\Model\Side | BUY or SELL
+$startTime = 1623319461670; // int | in milliseconds  eg.1641522717552
+$endTime = 1641782889000; // int | in milliseconds  eg.1641522526562
+$page = 1; // int | Page number
+$pageSize = 100; // int | Records per page
+$recvWindow = 5000; // int | Request validity window in milliseconds
 
 try {
     $result = $apiInstance->queryHistoricalAlgoOrdersFutureAlgo($symbol, $side, $startTime, $endTime, $page, $pageSize, $recvWindow);
@@ -170,12 +172,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**| Trading symbol eg. BTCUSDT | [optional] |
-| **side** | **string**| BUY or SELL | [optional] |
+| **side** | [**\Binance\Client\Algo\Model\Side**](../Model/.md)| BUY or SELL | [optional] |
 | **startTime** | **int**| in milliseconds  eg.1641522717552 | [optional] |
 | **endTime** | **int**| in milliseconds  eg.1641522526562 | [optional] |
-| **page** | **int**| Default is 1 | [optional] |
-| **pageSize** | **int**| MIN 1, MAX 100; Default 100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **page** | **int**| Page number | [optional] |
+| **pageSize** | **int**| Records per page | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds | [optional] |
 
 ### Return type
 
@@ -200,9 +202,9 @@ No authorization required
 querySubOrdersFutureAlgo($algoId, $page, $pageSize, $recvWindow): \Binance\Client\Algo\Model\QuerySubOrdersFutureAlgoResponse
 ```
 
-Query Sub Orders(USER_DATA)
+Query Futures Sub Orders (USER_DATA)
 
-Get respective sub orders for a specified algoId  * You need to enable `Futures Trading Permission` for the api key which requests this endpoint. * Base URL: https://api.binance.com  Weight: 1
+Get respective sub orders for a specified algoId  Weight(IP): 1  Security Type: USER_DATA  Notes: - You need to enable `Futures Trading Permission` for the API key that requests this endpoint. - Base URL: `https://api.binance.com`
 
 ### Example
 
@@ -217,10 +219,10 @@ $apiInstance = new Binance\Client\Algo\Api\FutureAlgoApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$algoId = 56; // int | eg. 14511
-$page = 56; // int | Default is 1
-$pageSize = 56; // int | MIN 1, MAX 100; Default 100
-$recvWindow = 56; // int
+$algoId = 1; // int | eg. 14511
+$page = 1; // int | Page number
+$pageSize = 100; // int | Records per page
+$recvWindow = 5000; // int | Request validity window in milliseconds
 
 try {
     $result = $apiInstance->querySubOrdersFutureAlgo($algoId, $page, $pageSize, $recvWindow);
@@ -235,9 +237,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **algoId** | **int**| eg. 14511 | |
-| **page** | **int**| Default is 1 | [optional] |
-| **pageSize** | **int**| MIN 1, MAX 100; Default 100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **page** | **int**| Page number | [optional] |
+| **pageSize** | **int**| Records per page | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds | [optional] |
 
 ### Return type
 
@@ -262,9 +264,9 @@ No authorization required
 timeWeightedAveragePriceFutureAlgo($timeWeightedAveragePriceFutureAlgoRequest): \Binance\Client\Algo\Model\TimeWeightedAveragePriceFutureAlgoResponse
 ```
 
-Time-Weighted Average Price(Twap) New Order(TRADE)
+Time-Weighted Futures Average Price (Twap) New Order (TRADE)
 
-Send in a Twap new order. Only support on USDⓈ-M Contracts.  * Total Algo open orders max allowed: `30` orders. * Leverage of symbols and position mode will be the same as your futures account settings. You can set up through the trading page or fapi. * Receiving `\"success\": true` does not mean that your order will be executed. Please use the query order endpoints（`GET sapi/v1/algo/futures/openOrders` or `GET sapi/v1/algo/futures/historicalOrders`） to check the order status. For example: Your futures balance is insufficient, or open position with reduce only or position side is inconsistent with your own setting. In these cases you will receive `\"success\": true`, but the order status will be `expired` after we check it. * `quantity` * 60 / `duration` should be larger than minQty * `duration` cannot be less than 5 mins or more than 24 hours. * For delivery contracts, TWAP end time should be one hour earlier than the delivery time of the symbol. * You need to enable `Futures Trading Permission` for the api key which requests this endpoint. * Base URL: https://api.binance.com  Weight: 3000
+Send in a Twap new order. Only support on USDⓈ-M Contracts.  Weight(UID): 3000  Security Type: TRADE  Notes: - Other info:   - Total Algo open orders max allowed: `30` orders.   - Leverage and position mode follow your futures account settings.   - Receiving `\"success\": true` does not guarantee execution; query order endpoints for final status.   - If balance/position constraints fail, response may still return success but order status becomes `expired`.   - `quantity * 60 / duration` must be greater than `minQty`.   - `duration` cannot be less than 5 minutes or greater than 24 hours.   - For delivery contracts, TWAP end time should be one hour earlier than symbol delivery time.   - You need to enable the corresponding permission for the API key requesting this endpoint:     - `Futures Trading Permission` — for Classic Trading Account mode     - `Portfolio Margin Trading Permission` — for Portfolio Margin Account mode   - Base URL: `https://api.binance.com`
 
 ### Example
 
@@ -318,9 +320,9 @@ No authorization required
 volumeParticipationFutureAlgo($volumeParticipationFutureAlgoRequest): \Binance\Client\Algo\Model\VolumeParticipationFutureAlgoResponse
 ```
 
-Volume Participation(VP) New Order (TRADE)
+Volume Participation (VP) New Order (TRADE)
 
-Send in a VP new order. Only support on USDⓈ-M Contracts.  * Total Algo open orders max allowed: `10` orders. * Leverage of symbols and position mode will be the same as your futures account settings. You can set up through the trading page or fapi. * Receiving `\"success\": true` does not mean that your order will be executed. Please use the query order endpoints（`GET sapi/v1/algo/futures/openOrders` or `GET sapi/v1/algo/futures/historicalOrders`） to check the order status. For example: Your futures balance is insufficient, or open position with reduce only or position side is inconsistent with your own setting. In these cases you will receive `\"success\": true`, but the order status will be `expired` after we check it. * You need to enable `Futures Trading Permission` for the api key which requests this endpoint. * Base URL: https://api.binance.com  Weight: 300
+Send in a VP new order. Only support on USDⓈ-M Contracts.  Weight(UID): 300  Security Type: TRADE  Notes: - Other info:   - Total Algo open orders max allowed: `10` orders.   - Leverage and position mode follow your futures account settings.   - Receiving `\"success\": true` does not guarantee execution; query order endpoints for final status.   - If balance/position constraints fail, response may still return success but order status becomes `expired`.   - You need to enable the corresponding permission for the API key requesting this endpoint:     - `Futures Trading Permission` — for Classic Trading Account mode     - `Portfolio Margin Trading Permission` — for Portfolio Margin Account mode   - Base URL: `https://api.binance.com`
 
 ### Example
 

@@ -1,4 +1,4 @@
-# # TickerTradingDayResponse2
+# TickerTradingDayResponse2
 
 ## Properties
 

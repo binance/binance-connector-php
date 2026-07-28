@@ -1,4 +1,4 @@
-# # UniversalTransferRequest
+# UniversalTransferRequest
 
 ## Properties
 
@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **fromEmail** | **string** |  | [optional]
 **toEmail** | **string** |  | [optional]
-**fromAccountType** | **string** |  |
-**toAccountType** | **string** |  |
-**clientTranId** | **string** |  | [optional]
-**symbol** | **string** |  | [optional]
+**fromAccountType** | [**\Binance\Client\SubAccount\Model\FromAccountType**](FromAccountType.md) |  |
+**toAccountType** | [**\Binance\Client\SubAccount\Model\ToAccountType**](ToAccountType.md) |  |
+**clientTranId** | **string** | Must be unique | [optional]
+**symbol** | **string** | Only supported under ISOLATED_MARGIN type | [optional]
 **asset** | **string** |  |
 **amount** | **float** |  |
 **recvWindow** | **int** |  | [optional]

@@ -1,4 +1,4 @@
-# # GetFundingRateInfoResponseInner
+# GetFundingRateInfoResponseInner
 
 ## Properties
 
@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **adjustedFundingRateCap** | **string** |  | [optional]
 **adjustedFundingRateFloor** | **string** |  | [optional]
 **fundingIntervalHours** | **int** |  | [optional]
-**disclaimer** | **bool** |  | [optional]
+**disclaimer** | **bool** | ingore | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

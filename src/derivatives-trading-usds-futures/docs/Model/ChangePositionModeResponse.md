@@ -1,4 +1,4 @@
-# # ChangePositionModeResponse
+# ChangePositionModeResponse
 
 ## Properties
 

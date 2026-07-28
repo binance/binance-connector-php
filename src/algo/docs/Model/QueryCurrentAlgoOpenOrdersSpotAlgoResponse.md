@@ -1,4 +1,4 @@
-# # QueryCurrentAlgoOpenOrdersSpotAlgoResponse
+# QueryCurrentAlgoOpenOrdersSpotAlgoResponse
 
 ## Properties
 

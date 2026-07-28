@@ -1,4 +1,4 @@
-# # DeleteOpenOrdersResponse
+# DeleteOpenOrdersResponse
 
 ## Properties
 

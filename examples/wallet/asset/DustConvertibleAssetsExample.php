@@ -12,7 +12,7 @@ function dustConvertibleAssetsExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
     $dustConvertibleAssetsRequest = new DustConvertibleAssetsRequest();
-    $dustConvertibleAssetsRequest->setTargetAsset('');
+    $dustConvertibleAssetsRequest->setTargetAsset('BTC');
     $response = $api->dustConvertibleAssets($dustConvertibleAssetsRequest);
     print_r($response);
 }

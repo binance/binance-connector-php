@@ -10,7 +10,7 @@ function queryIsolatedMarginAccountInfoExample()
     $configurationBuilder = MarginTradingRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new MarginTradingRestApi($configurationBuilder->build());
-    $symbols = '';
+    $symbols = 'BTCUSDT,BNBUSDT,ADAUSDT';
     $recvWindow = 5000;
     $response = $api->queryIsolatedMarginAccountInfo($symbols, $recvWindow);
     print_r($response);

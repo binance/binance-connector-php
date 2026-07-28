@@ -1,11 +1,13 @@
 # Binance\Client\Staking\SoftStakingApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**getSoftStakingProductList()**](SoftStakingApi.md#getSoftStakingProductList) | **GET** /sapi/v1/soft-staking/list | Get Soft Staking Product List (USER_DATA) |
-| [**getSoftStakingRewardsHistory()**](SoftStakingApi.md#getSoftStakingRewardsHistory) | **GET** /sapi/v1/soft-staking/history/rewardsRecord | Get Soft Staking Rewards History(USER_DATA) |
+| [**getSoftStakingRewardsHistory()**](SoftStakingApi.md#getSoftStakingRewardsHistory) | **GET** /sapi/v1/soft-staking/history/rewardsRecord | Get Soft Staking Rewards History (USER_DATA) |
 | [**setSoftStaking()**](SoftStakingApi.md#setSoftStaking) | **GET** /sapi/v1/soft-staking/set | Set Soft Staking (USER_DATA) |
 
 
@@ -17,7 +19,7 @@ getSoftStakingProductList($asset, $current, $size, $recvWindow): \Binance\Client
 
 Get Soft Staking Product List (USER_DATA)
 
-Get the available Soft Staking product list.  Weight: 50
+Get the available Soft Staking product list.  Weight(IP): 50  Security Type: USER_DATA
 
 ### Example
 
@@ -32,10 +34,10 @@ $apiInstance = new Binance\Client\Staking\Api\SoftStakingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$asset = BTC; // string
+$current = 1; // int | Currently querying page
+$size = 10; // int
+$recvWindow = 5000; // int | Request validity window in milliseconds.
 
 try {
     $result = $apiInstance->getSoftStakingProductList($asset, $current, $size, $recvWindow);
@@ -50,9 +52,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **asset** | **string**|  | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page | [optional] |
+| **size** | **int**|  | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds. | [optional] |
 
 ### Return type
 
@@ -77,9 +79,9 @@ No authorization required
 getSoftStakingRewardsHistory($asset, $startTime, $endTime, $current, $size, $recvWindow): \Binance\Client\Staking\Model\GetSoftStakingRewardsHistoryResponse
 ```
 
-Get Soft Staking Rewards History(USER_DATA)
+Get Soft Staking Rewards History (USER_DATA)
 
-* The time between `startTime` and `endTime` cannot be longer than 3 months. * If `startTime` and `endTime` are both not sent, then the last 30 days' data will be returned. * If `startTime` is sent but `endTime` is not sent, the next 30 days' data beginning from `startTime` will be returned. * If `endTime` is sent but `startTime` is not sent, the 30 days' data before `endTime` will be returned.  Weight: 50
+Get Soft Staking Rewards History  Weight(IP): 50  Security Type: USER_DATA  Notes: - The time between `startTime` and `endTime` cannot be longer than 3 months. - If `startTime` and `endTime`   are both not sent, then the last 30 days' data will be returned. - If `startTime` is sent but `endTime` is not   sent, the next 30 days' data beginning from `startTime` will be returned. - If `endTime` is sent but   `startTime` is not sent, the 30 days' data before `endTime` will be returned.
 
 ### Example
 
@@ -94,12 +96,12 @@ $apiInstance = new Binance\Client\Staking\Api\SoftStakingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
-$startTime = 56; // int
-$endTime = 56; // int
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$asset = BTC; // string
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$current = 1; // int | Currently querying page
+$size = 10; // int
+$recvWindow = 5000; // int | Request validity window in milliseconds.
 
 try {
     $result = $apiInstance->getSoftStakingRewardsHistory($asset, $startTime, $endTime, $current, $size, $recvWindow);
@@ -116,9 +118,9 @@ try {
 | **asset** | **string**|  | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page | [optional] |
+| **size** | **int**|  | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds. | [optional] |
 
 ### Return type
 
@@ -145,7 +147,7 @@ setSoftStaking($softStaking, $recvWindow): \Binance\Client\Staking\Model\SetSoft
 
 Set Soft Staking (USER_DATA)
 
-Enable or disable Soft Staking.  Weight: 50
+Enable or disable Soft Staking.  Weight(IP): 50  Security Type: USER_DATA
 
 ### Example
 
@@ -160,8 +162,8 @@ $apiInstance = new Binance\Client\Staking\Api\SoftStakingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$softStaking = True; // bool | true or false
-$recvWindow = 56; // int
+$softStaking = true; // bool
+$recvWindow = 5000; // int | Request validity window in milliseconds.
 
 try {
     $result = $apiInstance->setSoftStaking($softStaking, $recvWindow);
@@ -175,8 +177,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **softStaking** | **bool**| true or false | |
-| **recvWindow** | **int**|  | [optional] |
+| **softStaking** | **bool**|  | |
+| **recvWindow** | **int**| Request validity window in milliseconds. | [optional] |
 
 ### Return type
 

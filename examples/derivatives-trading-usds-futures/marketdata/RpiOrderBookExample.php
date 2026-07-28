@@ -9,8 +9,8 @@ function rpiOrderBookExample()
 {
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
-    $limit = 100;
+    $symbol = 'BTCUSDT';
+    $limit = 1000;
     $response = $api->rpiOrderBook($symbol, $limit);
     print_r($response);
 }

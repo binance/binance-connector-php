@@ -17,7 +17,7 @@ function sorOrderTestExample()
     $sorOrderTestRequest->setSymbol('BNBUSDT');
     $sorOrderTestRequest->setSide(Side::BUY);
     $sorOrderTestRequest->setType(OrderType::MARKET);
-    $sorOrderTestRequest->setQuantity(1.0);
+    $sorOrderTestRequest->setQuantity(1);
     $response = $api->sorOrderTest($sorOrderTestRequest);
     print_r($response);
 }

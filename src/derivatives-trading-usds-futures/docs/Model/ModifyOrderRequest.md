@@ -1,4 +1,4 @@
-# # ModifyOrderRequest
+# ModifyOrderRequest
 
 ## Properties
 
@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **origClientOrderId** | **string** |  | [optional]
 **symbol** | **string** |  |
 **side** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Side**](Side.md) |  |
-**quantity** | **float** |  |
+**quantity** | **float** | Order quantity, cannot be sent with &#x60;closePosition&#x3D;true&#x60; |
 **price** | **float** |  |
 **priceMatch** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\PriceMatch**](PriceMatch.md) |  | [optional]
 **recvWindow** | **int** |  | [optional]

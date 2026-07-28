@@ -1,4 +1,4 @@
-# # MarkPriceKlineCandlestickDataResponse
+# MarkPriceKlineCandlestickDataResponse
 
 ## Properties
 

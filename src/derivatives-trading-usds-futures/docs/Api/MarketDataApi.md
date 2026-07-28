@@ -1,10 +1,13 @@
 # Binance\Client\DerivativesTradingUsdsFutures\MarketDataApi
 
+
+
 All URIs are relative to https://fapi.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**adlRisk()**](MarketDataApi.md#adlRisk) | **GET** /fapi/v1/symbolAdlRisk | ADL Risk |
+| [**assetIndex()**](MarketDataApi.md#assetIndex) | **GET** /fapi/v1/assetIndex | Multi-Assets Mode Asset Index |
 | [**basis()**](MarketDataApi.md#basis) | **GET** /futures/data/basis | Basis |
 | [**checkServerTime()**](MarketDataApi.md#checkServerTime) | **GET** /fapi/v1/time | Check Server Time |
 | [**compositeIndexSymbolInformation()**](MarketDataApi.md#compositeIndexSymbolInformation) | **GET** /fapi/v1/indexInfo | Composite Index Symbol Information |
@@ -18,7 +21,6 @@ All URIs are relative to https://fapi.binance.com, except if the operation defin
 | [**longShortRatio()**](MarketDataApi.md#longShortRatio) | **GET** /futures/data/globalLongShortAccountRatio | Long/Short Ratio |
 | [**markPrice()**](MarketDataApi.md#markPrice) | **GET** /fapi/v1/premiumIndex | Mark Price |
 | [**markPriceKlineCandlestickData()**](MarketDataApi.md#markPriceKlineCandlestickData) | **GET** /fapi/v1/markPriceKlines | Mark Price Kline/Candlestick Data |
-| [**multiAssetsModeAssetIndex()**](MarketDataApi.md#multiAssetsModeAssetIndex) | **GET** /fapi/v1/assetIndex | Multi-Assets Mode Asset Index |
 | [**oldTradesLookup()**](MarketDataApi.md#oldTradesLookup) | **GET** /fapi/v1/historicalTrades | Old Trades Lookup (MARKET_DATA) |
 | [**openInterest()**](MarketDataApi.md#openInterest) | **GET** /fapi/v1/openInterest | Open Interest |
 | [**openInterestStatistics()**](MarketDataApi.md#openInterestStatistics) | **GET** /futures/data/openInterestHist | Open Interest Statistics |
@@ -35,8 +37,8 @@ All URIs are relative to https://fapi.binance.com, except if the operation defin
 | [**takerBuySellVolume()**](MarketDataApi.md#takerBuySellVolume) | **GET** /futures/data/takerlongshortRatio | Taker Buy/Sell Volume |
 | [**testConnectivity()**](MarketDataApi.md#testConnectivity) | **GET** /fapi/v1/ping | Test Connectivity |
 | [**ticker24hrPriceChangeStatistics()**](MarketDataApi.md#ticker24hrPriceChangeStatistics) | **GET** /fapi/v1/ticker/24hr | 24hr Ticker Price Change Statistics |
-| [**topTraderLongShortRatioAccounts()**](MarketDataApi.md#topTraderLongShortRatioAccounts) | **GET** /futures/data/topLongShortAccountRatio | Top Trader Long/Short Ratio (Accounts) |
-| [**topTraderLongShortRatioPositions()**](MarketDataApi.md#topTraderLongShortRatioPositions) | **GET** /futures/data/topLongShortPositionRatio | Top Trader Long/Short Ratio (Positions) |
+| [**topTraderLongShortRatioAccounts()**](MarketDataApi.md#topTraderLongShortRatioAccounts) | **GET** /futures/data/topLongShortAccountRatio | Top Trader Long/Short Account Ratio (MARKET_DATA) |
+| [**topTraderLongShortRatioPositions()**](MarketDataApi.md#topTraderLongShortRatioPositions) | **GET** /futures/data/topLongShortPositionRatio | Top Trader Long/Short Position Ratio (MARKET_DATA) |
 | [**tradingSchedule()**](MarketDataApi.md#tradingSchedule) | **GET** /fapi/v1/tradingSchedule | Trading Schedule |
 
 
@@ -48,7 +50,7 @@ adlRisk($symbol): \Binance\Client\DerivativesTradingUsdsFutures\Model\AdlRiskRes
 
 ADL Risk
 
-Query the symbol-level ADL risk rating. The ADL risk rating measures the likelihood of ADL during liquidation, and the rating takes into account the insurance fund balance, position concentration on the symbol, order book depth, price volatility, average leverage, unrealized PnL, and margin utilization at the symbol level. The rating can be high, medium and low, and is updated every 30 minutes.  Weight: 1
+Query the symbol-level ADL risk rating.  The ADL risk rating measures the likelihood of ADL during liquidation, and the rating takes into account the insurance fund balance, position concentration on the symbol, order book depth, price volatility, average leverage, unrealized PnL, and margin utilization at the symbol level.  The rating can be high, medium and low, and is updated every 30 minutes.  Weight(IP): 1
 
 ### Example
 
@@ -63,7 +65,7 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = BTCUSDT; // string | Symbol
 
 try {
     $result = $apiInstance->adlRisk($symbol);
@@ -77,11 +79,67 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | [optional] |
+| **symbol** | **string**| Symbol | [optional] |
 
 ### Return type
 
 [**\Binance\Client\DerivativesTradingUsdsFutures\Model\AdlRiskResponse**](../Model/AdlRiskResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `assetIndex()`
+
+```php
+assetIndex($symbol): \Binance\Client\DerivativesTradingUsdsFutures\Model\AssetIndexResponse
+```
+
+Multi-Assets Mode Asset Index
+
+Asset index price.  > **CM-UM Integration (Effective 2026-06-30):** Renamed from *Multi-Assets Mode Asset Index*. The response now additionally pushes COIN-M settlement-asset price index entries (e.g., `BTCUSD`, `ETHUSD`, `BNBUSD`). The endpoint path `/fapi/v1/assetIndex` is unchanged.  Weight: **1** for a single symbol; **10** when the symbol parameter is omitted
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$symbol = ADAUSD; // string | Asset pair
+
+try {
+    $result = $apiInstance->assetIndex($symbol);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MarketDataApi->assetIndex: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **symbol** | **string**| Asset pair | [optional] |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingUsdsFutures\Model\AssetIndexResponse**](../Model/AssetIndexResponse.md)
 
 ### Authorization
 
@@ -104,7 +162,7 @@ basis($pair, $contractType, $period, $limit, $startTime, $endTime): \Binance\Cli
 
 Basis
 
-Query future basis  * If startTime and endTime are not sent, the most recent data is returned. * Only the data of the latest 30 days is available.  Weight: 0
+Query future basis  Weight(IP): 0  Notes: - If startTime and endTime are not sent, the most recent data is returned. - Only the data of the latest 30 days is available.
 
 ### Example
 
@@ -119,12 +177,12 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$pair = 'pair_example'; // string
+$pair = BTCUSDT; // string
 $contractType = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\ContractType(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\ContractType
-$period = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Period(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Period | \"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\"
-$limit = 56; // int | Default 30,Max 500
-$startTime = 56; // int
-$endTime = 56; // int
+$period = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Period(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Period
+$limit = 30; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
 
 try {
     $result = $apiInstance->basis($pair, $contractType, $period, $limit, $startTime, $endTime);
@@ -140,8 +198,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **pair** | **string**|  | |
 | **contractType** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\ContractType**](../Model/.md)|  | |
-| **period** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Period**](../Model/.md)| \&quot;5m\&quot;,\&quot;15m\&quot;,\&quot;30m\&quot;,\&quot;1h\&quot;,\&quot;2h\&quot;,\&quot;4h\&quot;,\&quot;6h\&quot;,\&quot;12h\&quot;,\&quot;1d\&quot; | |
-| **limit** | **int**| Default 30,Max 500 | |
+| **period** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Period**](../Model/.md)|  | |
+| **limit** | **int**|  | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
 
@@ -170,7 +228,7 @@ checkServerTime(): \Binance\Client\DerivativesTradingUsdsFutures\Model\CheckServ
 
 Check Server Time
 
-Test connectivity to the Rest API and get the current server time.  Weight: 1
+Test connectivity to the Rest API and get the current server time.  Weight(IP): 1
 
 ### Example
 
@@ -223,7 +281,7 @@ compositeIndexSymbolInformation($symbol): \Binance\Client\DerivativesTradingUsds
 
 Composite Index Symbol Information
 
-Query composite index symbol information  * Only for composite index symbols  Weight: 1
+Query composite index symbol information  Weight(IP): 1  Notes: - Only for composite index symbols
 
 ### Example
 
@@ -238,7 +296,7 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = DEFIUSDT; // string
 
 try {
     $result = $apiInstance->compositeIndexSymbolInformation($symbol);
@@ -279,7 +337,7 @@ compressedAggregateTradesList($symbol, $fromId, $startTime, $endTime, $limit): \
 
 Compressed/Aggregate Trades List
 
-Get compressed, aggregate market trades. Market trades that fill in 100ms with the same price and the same taking side will have the quantity aggregated.   Retail Price Improvement(RPI) orders are aggregated and without special tags to be distinguished. * support querying futures trade histories that are not older than one year * If both `startTime` and `endTime` are sent, time between `startTime` and `endTime` must be less than 1 hour. * If `fromId`, `startTime`, and `endTime` are not sent, the most recent aggregate trades will be returned. * Only market trades will be aggregated and returned, which means the insurance fund trades and ADL trades won't be aggregated. * Sending both `startTime`/`endTime` and `fromId` might cause response timeout, please send either `fromId` or `startTime`/`endTime`  Weight: 20
+Get compressed, aggregate market trades. Market trades that fill in 100ms with the same price and the same taking side will have the quantity aggregated.  Retail Price Improvement(RPI) orders are aggregated and without special tags to be distinguished.  Weight(IP): 20  Notes: - support querying futures trade histories that are not older than 24 hours - If both `startTime` and `endTime` are sent, time between `startTime` and `endTime` must be less than 1 hour. - If `fromId`, `startTime`, and `endTime` are not sent, the most recent aggregate trades will be returned. - Only market trades will be aggregated and returned, which means the insurance fund trades and ADL trades won't be aggregated. - Sending both `startTime`/`endTime` and `fromId` might cause response timeout, please send either `fromId` or `startTime`/`endTime`
 
 ### Example
 
@@ -294,11 +352,11 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$fromId = 56; // int | ID to get aggregate trades from INCLUSIVE.
-$startTime = 56; // int
-$endTime = 56; // int
-$limit = 56; // int | Default 100; max 1000
+$symbol = BTCUSDT; // string | Symbol
+$fromId = 1; // int | ID to get aggregate trades from INCLUSIVE.
+$startTime = 1623319461670; // int | Timestamp in ms to get aggregate trades from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get aggregate trades until INCLUSIVE.
+$limit = 50; // int
 
 try {
     $result = $apiInstance->compressedAggregateTradesList($symbol, $fromId, $startTime, $endTime, $limit);
@@ -312,11 +370,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **fromId** | **int**| ID to get aggregate trades from INCLUSIVE. | [optional] |
-| **startTime** | **int**|  | [optional] |
-| **endTime** | **int**|  | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **startTime** | **int**| Timestamp in ms to get aggregate trades from INCLUSIVE. | [optional] |
+| **endTime** | **int**| Timestamp in ms to get aggregate trades until INCLUSIVE. | [optional] |
+| **limit** | **int**|  | [optional] |
 
 ### Return type
 
@@ -343,7 +401,7 @@ continuousContractKlineCandlestickData($pair, $contractType, $interval, $startTi
 
 Continuous Contract Kline/Candlestick Data
 
-Kline/candlestick bars for a specific contract type. Klines are uniquely identified by their open time.  * If startTime and endTime are not sent, the most recent klines are returned. * Contract type: * PERPETUAL * CURRENT_QUARTER * NEXT_QUARTER * TRADIFI_PERPETUAL  Weight: based on parameter LIMIT | LIMIT       | weight | | ----------- | ------ | | [1,100)     | 1      | | [100, 500)  | 2      | | [500, 1000] | 5      | | > 1000      | 10     |
+Kline/candlestick bars for a specific contract type. Klines are uniquely identified by their open time.  Weight: based on parameter `LIMIT`  | LIMIT       | weight | | ----------- | ------ | | [1,100)     | 1      | | [100, 500)  | 2      | | [500, 1000] | 5      | | > 1000      | 10     |  Notes: - If startTime and endTime are not sent, the most recent klines are returned.
 
 ### Example
 
@@ -358,12 +416,12 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$pair = 'pair_example'; // string
-$contractType = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\ContractType(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\ContractType
+$pair = BTCUSDT; // string | After CM migration, accepts both UM and CM pair values.
+$contractType = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\ContractType(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\ContractType | Futurestype
 $interval = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Interval(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Interval
-$startTime = 56; // int
-$endTime = 56; // int
-$limit = 56; // int | Default 100; max 1000
+$startTime = 1623319461670; // int | Start time
+$endTime = 1641782889000; // int | End time
+$limit = 50; // int
 
 try {
     $result = $apiInstance->continuousContractKlineCandlestickData($pair, $contractType, $interval, $startTime, $endTime, $limit);
@@ -377,12 +435,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pair** | **string**|  | |
-| **contractType** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\ContractType**](../Model/.md)|  | |
+| **pair** | **string**| After CM migration, accepts both UM and CM pair values. | |
+| **contractType** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\ContractType**](../Model/.md)| Futurestype | |
 | **interval** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Interval**](../Model/.md)|  | |
-| **startTime** | **int**|  | [optional] |
-| **endTime** | **int**|  | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **startTime** | **int**| Start time | [optional] |
+| **endTime** | **int**| End time | [optional] |
+| **limit** | **int**|  | [optional] |
 
 ### Return type
 
@@ -409,7 +467,7 @@ exchangeInformation(): \Binance\Client\DerivativesTradingUsdsFutures\Model\Excha
 
 Exchange Information
 
-Current exchange trading rules and symbol information  Weight: 1
+Current exchange trading rules and symbol information  Weight(IP): 1
 
 ### Example
 
@@ -462,7 +520,7 @@ getFundingRateHistory($symbol, $startTime, $endTime, $limit): \Binance\Client\De
 
 Get Funding Rate History
 
-Get Funding Rate History   * If `startTime` and `endTime` are not sent, the most recent 200 records are returned. * If the number of data between `startTime` and `endTime` is larger than `limit`, return as `startTime` + `limit`. * In ascending order.  Weight: share 500/5min/IP rate limit with GET /fapi/v1/fundingInfo
+Get Funding Rate History  Weight: share 500/5min/IP rate limit with GET /fapi/v1/fundingInfo  Notes: - If `startTime` and `endTime` are not sent, the most recent 200 records are returned. - If the number of data between `startTime` and `endTime` is larger than `limit`, return as `startTime` + `limit`. - In ascending order.
 
 ### Example
 
@@ -477,10 +535,10 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$startTime = 56; // int
-$endTime = 56; // int
-$limit = 56; // int | Default 100; max 1000
+$symbol = BTCUSDT; // string
+$startTime = 1623319461670; // int | Timestamp in ms to get funding rate from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding rate until INCLUSIVE.
+$limit = 50; // int
 
 try {
     $result = $apiInstance->getFundingRateHistory($symbol, $startTime, $endTime, $limit);
@@ -495,9 +553,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | [optional] |
-| **startTime** | **int**|  | [optional] |
-| **endTime** | **int**|  | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **startTime** | **int**| Timestamp in ms to get funding rate from INCLUSIVE. | [optional] |
+| **endTime** | **int**| Timestamp in ms to get funding rate until INCLUSIVE. | [optional] |
+| **limit** | **int**|  | [optional] |
 
 ### Return type
 
@@ -524,7 +582,7 @@ getFundingRateInfo(): \Binance\Client\DerivativesTradingUsdsFutures\Model\GetFun
 
 Get Funding Rate Info
 
-Query funding rate info for symbols that had FundingRateCap/ FundingRateFloor / fundingIntervalHours adjustment  Weight: 0 share 500/5min/IP rate limit with GET /fapi/v1/fundingInfo
+Query funding rate info for symbols that had FundingRateCap/FundingRateFloor / fundingIntervalHours adjustment  Weight: **0**  share 500/5min/IP rate limit with `GET /fapi/v1/fundingRate`
 
 ### Example
 
@@ -577,7 +635,7 @@ indexPriceKlineCandlestickData($pair, $interval, $startTime, $endTime, $limit): 
 
 Index Price Kline/Candlestick Data
 
-Kline/candlestick bars for the index price of a pair. Klines are uniquely identified by their open time.   * If startTime and endTime are not sent, the most recent klines are returned.  Weight: based on parameter LIMIT | LIMIT       | weight | | ----------- | ------ | | [1,100)     | 1      | | [100, 500)  | 2      | | [500, 1000] | 5      | | > 1000      | 10     |
+Kline/candlestick bars for the index price of a pair. Klines are uniquely identified by their open time.  Weight: based on parameter `LIMIT`  | LIMIT       | weight | | ----------- | ------ | | [1,100)     | 1      | | [100, 500)  | 2      | | [500, 1000] | 5      | | > 1000      | 10     |  Notes: - If startTime and endTime are not sent, the most recent klines are returned.
 
 ### Example
 
@@ -592,11 +650,11 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$pair = 'pair_example'; // string
+$pair = BTCUSDT; // string | After CM migration, accepts both UM and CM pair values.
 $interval = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Interval(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Interval
-$startTime = 56; // int
-$endTime = 56; // int
-$limit = 56; // int | Default 100; max 1000
+$startTime = 1623319461670; // int | Start time
+$endTime = 1641782889000; // int | End time
+$limit = 50; // int
 
 try {
     $result = $apiInstance->indexPriceKlineCandlestickData($pair, $interval, $startTime, $endTime, $limit);
@@ -610,11 +668,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pair** | **string**|  | |
+| **pair** | **string**| After CM migration, accepts both UM and CM pair values. | |
 | **interval** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Interval**](../Model/.md)|  | |
-| **startTime** | **int**|  | [optional] |
-| **endTime** | **int**|  | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **startTime** | **int**| Start time | [optional] |
+| **endTime** | **int**| End time | [optional] |
+| **limit** | **int**|  | [optional] |
 
 ### Return type
 
@@ -641,7 +699,7 @@ klineCandlestickData($symbol, $interval, $startTime, $endTime, $limit): \Binance
 
 Kline/Candlestick Data
 
-Kline/candlestick bars for a symbol. Klines are uniquely identified by their open time.  * If startTime and endTime are not sent, the most recent klines are returned.  Weight: based on parameter LIMIT | LIMIT       | weight | | ----------- | ------ | | [1,100)     | 1      | | [100, 500)  | 2      | | [500, 1000] | 5      | | > 1000      | 10     |
+Kline/candlestick bars for a symbol. Klines are uniquely identified by their open time.  Weight: based on parameter `LIMIT`  | LIMIT       | weight | | ----------- | ------ | | [1,100)     | 1      | | [100, 500)  | 2      | | [500, 1000] | 5      | | > 1000      | 10     |  Notes: - If startTime and endTime are not sent, the most recent klines are returned.
 
 ### Example
 
@@ -656,11 +714,11 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = BTCUSDT; // string | After CM migration, accepts both UM and CM symbols.
 $interval = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Interval(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Interval
-$startTime = 56; // int
-$endTime = 56; // int
-$limit = 56; // int | Default 100; max 1000
+$startTime = 1623319461670; // int | Start time
+$endTime = 1641782889000; // int | End time
+$limit = 50; // int
 
 try {
     $result = $apiInstance->klineCandlestickData($symbol, $interval, $startTime, $endTime, $limit);
@@ -674,11 +732,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| After CM migration, accepts both UM and CM symbols. | |
 | **interval** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Interval**](../Model/.md)|  | |
-| **startTime** | **int**|  | [optional] |
-| **endTime** | **int**|  | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **startTime** | **int**| Start time | [optional] |
+| **endTime** | **int**| End time | [optional] |
+| **limit** | **int**|  | [optional] |
 
 ### Return type
 
@@ -705,7 +763,7 @@ longShortRatio($symbol, $period, $limit, $startTime, $endTime): \Binance\Client\
 
 Long/Short Ratio
 
-Query symbol Long/Short Ratio  * If startTime and endTime are not sent, the most recent data is returned. * Only the data of the latest 30 days is available. * IP rate limit 1000 requests/5min  Weight: 0
+Query symbol Long/Short Ratio  Weight(IP): 0  Notes: - If startTime and endTime are not sent, the most recent data is returned. - Only the data of the latest 30 days is available. - IP rate limit 1000 requests/5min
 
 ### Example
 
@@ -720,11 +778,11 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$period = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Period(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Period | \"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\"
-$limit = 56; // int | Default 100; max 1000
-$startTime = 56; // int
-$endTime = 56; // int
+$symbol = BTCUSDT; // string
+$period = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Period(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Period
+$limit = 50; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
 
 try {
     $result = $apiInstance->longShortRatio($symbol, $period, $limit, $startTime, $endTime);
@@ -739,8 +797,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **period** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Period**](../Model/.md)| \&quot;5m\&quot;,\&quot;15m\&quot;,\&quot;30m\&quot;,\&quot;1h\&quot;,\&quot;2h\&quot;,\&quot;4h\&quot;,\&quot;6h\&quot;,\&quot;12h\&quot;,\&quot;1d\&quot; | |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **period** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Period**](../Model/.md)|  | |
+| **limit** | **int**|  | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
 
@@ -769,7 +827,7 @@ markPrice($symbol): \Binance\Client\DerivativesTradingUsdsFutures\Model\MarkPric
 
 Mark Price
 
-Mark Price and Funding Rate  Weight: 1 with symbol, 10 without symbol
+Mark Price and Funding Rate  Weight: **1** with symbol, **10** without symbol
 
 ### Example
 
@@ -784,7 +842,7 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = BTCUSDT; // string
 
 try {
     $result = $apiInstance->markPrice($symbol);
@@ -825,7 +883,7 @@ markPriceKlineCandlestickData($symbol, $interval, $startTime, $endTime, $limit):
 
 Mark Price Kline/Candlestick Data
 
-Kline/candlestick bars for the mark price of a symbol. Klines are uniquely identified by their open time.  * If startTime and endTime are not sent, the most recent klines are returned.  Weight: based on parameter LIMIT | LIMIT       | weight | | ----------- | ------ | | [1,100)     | 1      | | [100, 500)  | 2      | | [500, 1000] | 5      | | > 1000      | 10     |
+Kline/candlestick bars for the mark price of a symbol. Klines are uniquely identified by their open time.  Weight: based on parameter `LIMIT`  | LIMIT       | weight | | ----------- | ------ | | [1,100)     | 1      | | [100, 500)  | 2      | | [500, 1000] | 5      | | > 1000      | 10     |  Notes: - If startTime and endTime are not sent, the most recent klines are returned.
 
 ### Example
 
@@ -840,11 +898,11 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = BTCUSDT; // string | After CM migration, accepts both UM and CM symbols.
 $interval = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Interval(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Interval
-$startTime = 56; // int
-$endTime = 56; // int
-$limit = 56; // int | Default 100; max 1000
+$startTime = 1623319461670; // int | Start time
+$endTime = 1641782889000; // int | End time
+$limit = 50; // int
 
 try {
     $result = $apiInstance->markPriceKlineCandlestickData($symbol, $interval, $startTime, $endTime, $limit);
@@ -858,71 +916,15 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| After CM migration, accepts both UM and CM symbols. | |
 | **interval** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Interval**](../Model/.md)|  | |
-| **startTime** | **int**|  | [optional] |
-| **endTime** | **int**|  | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **startTime** | **int**| Start time | [optional] |
+| **endTime** | **int**| End time | [optional] |
+| **limit** | **int**|  | [optional] |
 
 ### Return type
 
 [**\Binance\Client\DerivativesTradingUsdsFutures\Model\MarkPriceKlineCandlestickDataResponse**](../Model/MarkPriceKlineCandlestickDataResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `multiAssetsModeAssetIndex()`
-
-```php
-multiAssetsModeAssetIndex($symbol): \Binance\Client\DerivativesTradingUsdsFutures\Model\MultiAssetsModeAssetIndexResponse
-```
-
-Multi-Assets Mode Asset Index
-
-asset index for Multi-Assets mode  Weight: 1 for a single symbol; 10 when the symbol parameter is omitted
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$symbol = 'symbol_example'; // string
-
-try {
-    $result = $apiInstance->multiAssetsModeAssetIndex($symbol);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling MarketDataApi->multiAssetsModeAssetIndex: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | [optional] |
-
-### Return type
-
-[**\Binance\Client\DerivativesTradingUsdsFutures\Model\MultiAssetsModeAssetIndexResponse**](../Model/MultiAssetsModeAssetIndexResponse.md)
 
 ### Authorization
 
@@ -945,7 +947,7 @@ oldTradesLookup($symbol, $limit, $fromId): \Binance\Client\DerivativesTradingUsd
 
 Old Trades Lookup (MARKET_DATA)
 
-Get older market historical trades.  * Market trades means trades filled in the order book. Only market trades will be returned, which means the insurance fund trades and ADL trades won't be returned. * Only supports data from within the last three months  Weight: 20
+Get older market historical trades.  Weight(IP): 20  Security Type: MARKET_DATA  Notes: - Market trades means trades filled in the order book. Only market trades will be returned, which means the insurance fund trades and ADL trades won't be returned. - Only supports data from within the last one month
 
 ### Example
 
@@ -960,9 +962,9 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$limit = 56; // int | Default 100; max 1000
-$fromId = 56; // int | ID to get aggregate trades from INCLUSIVE.
+$symbol = BTCUSDT; // string
+$limit = 50; // int
+$fromId = 1; // int | TradeId to fetch from. Default gets most recent trades.
 
 try {
     $result = $apiInstance->oldTradesLookup($symbol, $limit, $fromId);
@@ -977,8 +979,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
-| **fromId** | **int**| ID to get aggregate trades from INCLUSIVE. | [optional] |
+| **limit** | **int**|  | [optional] |
+| **fromId** | **int**| TradeId to fetch from. Default gets most recent trades. | [optional] |
 
 ### Return type
 
@@ -1005,7 +1007,7 @@ openInterest($symbol): \Binance\Client\DerivativesTradingUsdsFutures\Model\OpenI
 
 Open Interest
 
-Get present open interest of a specific symbol.  Weight: 1
+Get present open interest of a specific symbol.  Weight(IP): 1
 
 ### Example
 
@@ -1020,7 +1022,7 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = BTCUSDT; // string
 
 try {
     $result = $apiInstance->openInterest($symbol);
@@ -1061,7 +1063,7 @@ openInterestStatistics($symbol, $period, $limit, $startTime, $endTime): \Binance
 
 Open Interest Statistics
 
-Open Interest Statistics  * If startTime and endTime are not sent, the most recent data is returned. * Only the data of the latest 1 month is available. * IP rate limit 1000 requests/5min  Weight: 0
+Open Interest Statistics  Weight(IP): 0  Notes: - If startTime and endTime are not sent, the most recent data is returned. - Only the data of the latest 1 month is available. - IP rate limit 1000 requests/5min
 
 ### Example
 
@@ -1076,11 +1078,11 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$period = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Period(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Period | \"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\"
-$limit = 56; // int | Default 100; max 1000
-$startTime = 56; // int
-$endTime = 56; // int
+$symbol = BTCUSDT; // string
+$period = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Period(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Period
+$limit = 50; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
 
 try {
     $result = $apiInstance->openInterestStatistics($symbol, $period, $limit, $startTime, $endTime);
@@ -1095,8 +1097,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **period** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Period**](../Model/.md)| \&quot;5m\&quot;,\&quot;15m\&quot;,\&quot;30m\&quot;,\&quot;1h\&quot;,\&quot;2h\&quot;,\&quot;4h\&quot;,\&quot;6h\&quot;,\&quot;12h\&quot;,\&quot;1d\&quot; | |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **period** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Period**](../Model/.md)|  | |
+| **limit** | **int**|  | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
 
@@ -1125,7 +1127,7 @@ orderBook($symbol, $limit): \Binance\Client\DerivativesTradingUsdsFutures\Model\
 
 Order Book
 
-Query symbol orderbook  Retail Price Improvement(RPI) orders are not visible and excluded in the response message.  Weight: Adjusted based on the limit: | Limit         | Weight | | ------------- | ------ | | 5, 10, 20, 50 | 2      | | 100           | 5      | | 500           | 10     | | 1000          | 20     |
+Query symbol orderbook  Retail Price Improvement(RPI) orders are not visible and excluded in the response message.  Weight: Adjusted based on the limit:  | Limit         | Weight | | ------------- | ------ | | 5, 10, 20, 50 | 2      | | 100           | 5      | | 500           | 10     | | 1000          | 20     |
 
 ### Example
 
@@ -1140,8 +1142,8 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$limit = 56; // int | Default 100; max 1000
+$symbol = BTCUSDT; // string
+$limit = 50; // int | Valid limits:[5, 10, 20, 50, 100, 500, 1000]
 
 try {
     $result = $apiInstance->orderBook($symbol, $limit);
@@ -1156,7 +1158,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **limit** | **int**| Valid limits:[5, 10, 20, 50, 100, 500, 1000] | [optional] |
 
 ### Return type
 
@@ -1183,7 +1185,7 @@ premiumIndexKlineData($symbol, $interval, $startTime, $endTime, $limit): \Binanc
 
 Premium index Kline Data
 
-Premium index kline bars of a symbol. Klines are uniquely identified by their open time.   * If startTime and endTime are not sent, the most recent klines are returned.  Weight: based on parameter LIMIT | LIMIT       | weight | | ----------- | ------ | | [1,100)     | 1      | | [100, 500)  | 2      | | [500, 1000] | 5      | | > 1000      | 10     |
+Premium index kline bars of a symbol. Klines are uniquely identified by their open time.  Weight: based on parameter `LIMIT`  | LIMIT       | weight | | ----------- | ------ | | [1,100)     | 1      | | [100, 500)  | 2      | | [500, 1000] | 5      | | > 1000      | 10     |  Notes: - If startTime and endTime are not sent, the most recent klines are returned.
 
 ### Example
 
@@ -1198,11 +1200,11 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = BTCUSDT; // string | After CM migration, accepts both UM and CM symbols.
 $interval = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Interval(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Interval
-$startTime = 56; // int
-$endTime = 56; // int
-$limit = 56; // int | Default 100; max 1000
+$startTime = 1623319461670; // int | Start time
+$endTime = 1641782889000; // int | End time
+$limit = 50; // int
 
 try {
     $result = $apiInstance->premiumIndexKlineData($symbol, $interval, $startTime, $endTime, $limit);
@@ -1216,11 +1218,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| After CM migration, accepts both UM and CM symbols. | |
 | **interval** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Interval**](../Model/.md)|  | |
-| **startTime** | **int**|  | [optional] |
-| **endTime** | **int**|  | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **startTime** | **int**| Start time | [optional] |
+| **endTime** | **int**| End time | [optional] |
+| **limit** | **int**|  | [optional] |
 
 ### Return type
 
@@ -1247,7 +1249,7 @@ quarterlyContractSettlementPrice($pair): \Binance\Client\DerivativesTradingUsdsF
 
 Quarterly Contract Settlement Price
 
-Latest price for a symbol or symbols.  Weight: 0
+Latest price for a symbol or symbols.  Weight(IP): 0
 
 ### Example
 
@@ -1262,7 +1264,7 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$pair = 'pair_example'; // string
+$pair = BTCUSDT; // string
 
 try {
     $result = $apiInstance->quarterlyContractSettlementPrice($pair);
@@ -1303,7 +1305,7 @@ queryIndexPriceConstituents($symbol): \Binance\Client\DerivativesTradingUsdsFutu
 
 Query Index Price Constituents
 
-Query index price constituents   **Note**:  Prices from constituents of TradFi perps will be hiden and displayed as -1.  Weight: 2
+Query index price constituents  **Note**: Prices from constituents of TradFi perps will be hiden and displayed as -1.  Weight(IP): 2
 
 ### Example
 
@@ -1318,7 +1320,7 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = BTCUSDT; // string
 
 try {
     $result = $apiInstance->queryIndexPriceConstituents($symbol);
@@ -1359,7 +1361,7 @@ queryInsuranceFundBalanceSnapshot($symbol): \Binance\Client\DerivativesTradingUs
 
 Query Insurance Fund Balance Snapshot
 
-Query Insurance Fund Balance Snapshot  Weight: 1
+Query Insurance Fund Balance Snapshot  Weight(IP): 1
 
 ### Example
 
@@ -1374,7 +1376,7 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = BNBUSDT; // string | Symbol
 
 try {
     $result = $apiInstance->queryInsuranceFundBalanceSnapshot($symbol);
@@ -1388,7 +1390,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | [optional] |
+| **symbol** | **string**| Symbol | [optional] |
 
 ### Return type
 
@@ -1415,7 +1417,7 @@ recentTradesList($symbol, $limit): \Binance\Client\DerivativesTradingUsdsFutures
 
 Recent Trades List
 
-Get recent market trades  * Market trades means trades filled in the order book. Only market trades will be returned, which means the insurance fund trades and ADL trades won't be returned.  Weight: 5
+Get recent market trades  Weight(IP): 5  Notes: - Market trades means trades filled in the order book. Only market trades will be returned, which means the insurance fund trades and ADL trades won't be returned.
 
 ### Example
 
@@ -1430,8 +1432,8 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$limit = 56; // int | Default 100; max 1000
+$symbol = BTCUSDT; // string
+$limit = 50; // int
 
 try {
     $result = $apiInstance->recentTradesList($symbol, $limit);
@@ -1446,7 +1448,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **limit** | **int**|  | [optional] |
 
 ### Return type
 
@@ -1473,7 +1475,7 @@ rpiOrderBook($symbol, $limit): \Binance\Client\DerivativesTradingUsdsFutures\Mod
 
 RPI Order Book
 
-Query symbol orderbook with RPI orders  RPI(Retail Price Improvement) orders are included and aggreated in the response message. Crossed price levels are hidden and invisible.  Weight: Adjusted based on the limit: | Limit         | Weight | | ------------- | ------ | | 1000          | 20     |
+Query symbol orderbook with RPI orders  RPI(Retail Price Improvement) orders are included and aggreated in the response message. Crossed price levels are hidden and invisible.  Weight: Adjusted based on the limit:  | Limit         | Weight | | ------------- | ------ | | 1000          | 20     |
 
 ### Example
 
@@ -1488,8 +1490,8 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$limit = 56; // int | Default 100; max 1000
+$symbol = BTCUSDT; // string
+$limit = 1000; // int | Valid limits:[1000]
 
 try {
     $result = $apiInstance->rpiOrderBook($symbol, $limit);
@@ -1504,7 +1506,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **limit** | **int**| Valid limits:[1000] | [optional] |
 
 ### Return type
 
@@ -1531,7 +1533,7 @@ symbolOrderBookTicker($symbol): \Binance\Client\DerivativesTradingUsdsFutures\Mo
 
 Symbol Order Book Ticker
 
-Best price/qty on the order book for a symbol or symbols.  Retail Price Improvement(RPI) orders are not visible and excluded in the response message. * If the symbol is not sent, bookTickers for all symbols will be returned in an array. * The field `X-MBX-USED-WEIGHT-1M` in response header is not accurate from this endpoint, please ignore.  Weight: 2 for a single symbol; 5 when the symbol parameter is omitted
+Best price/qty on the order book for a symbol or symbols.  Retail Price Improvement(RPI) orders are not visible and excluded in the response message.  Weight: **2** for a single symbol; **5** when the symbol parameter is omitted  Notes: - If the symbol is not sent, bookTickers for all symbols will be returned in an array. - The field `X-MBX-USED-WEIGHT-1M` in response header is not accurate from this endpoint, please ignore.
 
 ### Example
 
@@ -1546,7 +1548,7 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = BTCUSDT; // string
 
 try {
     $result = $apiInstance->symbolOrderBookTicker($symbol);
@@ -1587,7 +1589,7 @@ symbolPriceTicker($symbol): \Binance\Client\DerivativesTradingUsdsFutures\Model\
 
 Symbol Price Ticker
 
-Latest price for a symbol or symbols.  * If the symbol is not sent, prices for all symbols will be returned in an array.  Weight: 1 for a single symbol; 2 when the symbol parameter is omitted
+Latest price for a symbol or symbols.  Weight: 1 for a single symbol; 2 when the symbol parameter is omitted  Notes: - If the symbol is not sent, prices for all symbols will be returned in an array.
 
 ### Example
 
@@ -1602,7 +1604,7 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = BTCUSDT; // string
 
 try {
     $result = $apiInstance->symbolPriceTicker($symbol);
@@ -1643,7 +1645,7 @@ symbolPriceTickerV2($symbol): \Binance\Client\DerivativesTradingUsdsFutures\Mode
 
 Symbol Price Ticker V2
 
-Latest price for a symbol or symbols.  * If the symbol is not sent, prices for all symbols will be returned in an array. * The field `X-MBX-USED-WEIGHT-1M` in response header is not accurate from this endpoint, please ignore.  Weight: 1 for a single symbol; 2 when the symbol parameter is omitted
+Latest price for a symbol or symbols.  Weight: 1 for a single symbol; 2 when the symbol parameter is omitted  Notes: - If the symbol is not sent, prices for all symbols will be returned in an array. - The field `X-MBX-USED-WEIGHT-1M` in response header is not accurate from this endpoint, please ignore.
 
 ### Example
 
@@ -1658,7 +1660,7 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = BTCUSDT; // string
 
 try {
     $result = $apiInstance->symbolPriceTickerV2($symbol);
@@ -1699,7 +1701,7 @@ takerBuySellVolume($symbol, $period, $limit, $startTime, $endTime): \Binance\Cli
 
 Taker Buy/Sell Volume
 
-Taker Buy/Sell Volume  * If startTime and endTime are not sent, the most recent data is returned. * Only the data of the latest 30 days is available. * IP rate limit 1000 requests/5min  Weight: 0
+Taker Buy/Sell Volume  Weight(IP): 0  Notes: - If startTime and endTime are not sent, the most recent data is returned. - Only the data of the latest 30 days is available. - IP rate limit 1000 requests/5min
 
 ### Example
 
@@ -1714,11 +1716,11 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$period = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Period(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Period | \"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\"
-$limit = 56; // int | Default 100; max 1000
-$startTime = 56; // int
-$endTime = 56; // int
+$symbol = BTCUSDT; // string
+$period = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Period(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Period
+$limit = 50; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
 
 try {
     $result = $apiInstance->takerBuySellVolume($symbol, $period, $limit, $startTime, $endTime);
@@ -1733,8 +1735,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **period** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Period**](../Model/.md)| \&quot;5m\&quot;,\&quot;15m\&quot;,\&quot;30m\&quot;,\&quot;1h\&quot;,\&quot;2h\&quot;,\&quot;4h\&quot;,\&quot;6h\&quot;,\&quot;12h\&quot;,\&quot;1d\&quot; | |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **period** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Period**](../Model/.md)|  | |
+| **limit** | **int**|  | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
 
@@ -1763,7 +1765,7 @@ testConnectivity()
 
 Test Connectivity
 
-Test connectivity to the Rest API.  Weight: 1
+Test connectivity to the Rest API.  Weight(IP): 1
 
 ### Example
 
@@ -1815,7 +1817,7 @@ ticker24hrPriceChangeStatistics($symbol): \Binance\Client\DerivativesTradingUsds
 
 24hr Ticker Price Change Statistics
 
-24 hour rolling window price change statistics. **Careful** when accessing this with no symbol.  * If the symbol is not sent, tickers for all symbols will be returned in an array.  Weight: 1 for a single symbol; 40 when the symbol parameter is omitted
+24 hour rolling window price change statistics. **Careful** when accessing this with no symbol.  Weight: **1** for a single symbol; **40** when the symbol parameter is omitted  Notes: - If the symbol is not sent, tickers for all symbols will be returned in an array.
 
 ### Example
 
@@ -1830,7 +1832,7 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = BTCUSDT; // string
 
 try {
     $result = $apiInstance->ticker24hrPriceChangeStatistics($symbol);
@@ -1869,9 +1871,9 @@ No authorization required
 topTraderLongShortRatioAccounts($symbol, $period, $limit, $startTime, $endTime): \Binance\Client\DerivativesTradingUsdsFutures\Model\TopTraderLongShortRatioAccountsResponse
 ```
 
-Top Trader Long/Short Ratio (Accounts)
+Top Trader Long/Short Account Ratio (MARKET_DATA)
 
-The proportion of net long and net short accounts to total accounts of the top 20% users with the highest margin balance. Each account is counted once only. Long Account % = Accounts of top traders with net long positions / Total accounts of top traders with open positions Short Account % = Accounts of top traders with net short positions / Total accounts of top traders with open positions Long/Short Ratio (Accounts) = Long Account % / Short Account %  * If startTime and endTime are not sent, the most recent data is returned. * Only the data of the latest 30 days is available. * IP rate limit 1000 requests/5min  Weight: 0
+The proportion of net long and net short accounts to total accounts of the top 20% users with the highest margin balance. Each account is counted once only.  Long Account % = Accounts of top traders with net long positions / Total accounts of top traders with open positions  Short Account % = Accounts of top traders with net short positions / Total accounts of top traders with open positions  Long/Short Ratio (Accounts) = Long Account % / Short Account %  Security Type: MARKET_DATA  Notes: - If startTime and endTime are not sent, the most recent data is returned. - Only the data of the latest 30 days is available. - IP rate limit 1000 requests/5min
 
 ### Example
 
@@ -1886,11 +1888,11 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$period = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Period(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Period | \"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\"
-$limit = 56; // int | Default 100; max 1000
-$startTime = 56; // int
-$endTime = 56; // int
+$symbol = BTCUSDT; // string
+$period = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Period(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Period
+$limit = 50; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
 
 try {
     $result = $apiInstance->topTraderLongShortRatioAccounts($symbol, $period, $limit, $startTime, $endTime);
@@ -1905,8 +1907,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **period** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Period**](../Model/.md)| \&quot;5m\&quot;,\&quot;15m\&quot;,\&quot;30m\&quot;,\&quot;1h\&quot;,\&quot;2h\&quot;,\&quot;4h\&quot;,\&quot;6h\&quot;,\&quot;12h\&quot;,\&quot;1d\&quot; | |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **period** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Period**](../Model/.md)|  | |
+| **limit** | **int**|  | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
 
@@ -1933,9 +1935,9 @@ No authorization required
 topTraderLongShortRatioPositions($symbol, $period, $limit, $startTime, $endTime): \Binance\Client\DerivativesTradingUsdsFutures\Model\TopTraderLongShortRatioPositionsResponse
 ```
 
-Top Trader Long/Short Ratio (Positions)
+Top Trader Long/Short Position Ratio (MARKET_DATA)
 
-The proportion of net long and net short positions to total open positions of the top 20% users with the highest margin balance. Long Position % = Long positions of top traders / Total open positions of top traders Short Position % = Short positions of top traders / Total open positions of top traders Long/Short Ratio (Positions) = Long Position % / Short Position %  * If startTime and endTime are not sent, the most recent data is returned. * Only the data of the latest 30 days is available. * IP rate limit 1000 requests/5min  Weight: 0
+The proportion of net long and net short positions to total open positions of the top 20% users with the highest margin balance.  Long Position % = Long positions of top traders / Total open positions of top traders  Short Position % = Short positions of top traders / Total open positions of top traders  Long/Short Ratio (Positions) = Long Position % / Short Position %  Weight(IP): 0  Security Type: MARKET_DATA  Notes: - If startTime and endTime are not sent, the most recent data is returned. - Only the data of the latest 30 days is available. - IP rate limit 1000 requests/5min
 
 ### Example
 
@@ -1950,11 +1952,11 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\MarketDataAp
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$period = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Period(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Period | \"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\"
-$limit = 56; // int | Default 100; max 1000
-$startTime = 56; // int
-$endTime = 56; // int
+$symbol = BTCUSDT; // string
+$period = new \Binance\Client\DerivativesTradingUsdsFutures\Model\\Binance\Client\DerivativesTradingUsdsFutures\Model\Period(); // \Binance\Client\DerivativesTradingUsdsFutures\Model\Period
+$limit = 50; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
 
 try {
     $result = $apiInstance->topTraderLongShortRatioPositions($symbol, $period, $limit, $startTime, $endTime);
@@ -1969,8 +1971,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **period** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Period**](../Model/.md)| \&quot;5m\&quot;,\&quot;15m\&quot;,\&quot;30m\&quot;,\&quot;1h\&quot;,\&quot;2h\&quot;,\&quot;4h\&quot;,\&quot;6h\&quot;,\&quot;12h\&quot;,\&quot;1d\&quot; | |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **period** | [**\Binance\Client\DerivativesTradingUsdsFutures\Model\Period**](../Model/.md)|  | |
+| **limit** | **int**|  | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
 
@@ -1999,7 +2001,7 @@ tradingSchedule(): \Binance\Client\DerivativesTradingUsdsFutures\Model\TradingSc
 
 Trading Schedule
 
-Trading session schedules for the underlying assets of TradFi Perps are provided for a one-week period starting from the day prior to the query time, covering both the U.S. equity and commodity markets. Equity market session types include \"PRE_MARKET\", \"REGULAR\", \"AFTER_MARKET\", \"OVERNIGHT\", and \"NO_TRADING\", while commodity market session types include \"REGULAR\" and \"NO_TRADING\".  Weight: 5
+Trading session schedules for the underlying assets of TradFi Perps are provided for a one-week period forward and one-week period backward starting from the day prior to the query time, covering the U.S. equity market, Korean equity market and the commodity market.  Session types per market: - U.S. equity market: \"PRE_MARKET\", \"REGULAR\", \"AFTER_MARKET\", \"OVERNIGHT\", \"NO_TRADING\". - Commodity market: \"REGULAR\", \"NO_TRADING\". - Korean equity market: \"REGULAR\", \"NO_TRADING\".  Weight(IP): 5
 
 ### Example
 

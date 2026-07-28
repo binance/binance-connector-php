@@ -1,4 +1,4 @@
-# # GetLoanableAssetsDataResponse
+# GetLoanableAssetsDataResponse
 
 ## Properties
 

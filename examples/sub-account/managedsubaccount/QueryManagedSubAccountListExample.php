@@ -10,9 +10,9 @@ function queryManagedSubAccountListExample()
     $configurationBuilder = SubAccountRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
-    $email = '';
+    $email = 'abc@test.com';
     $page = 1;
-    $limit = 1;
+    $limit = 10;
     $recvWindow = 5000;
     $response = $api->queryManagedSubAccountList($email, $page, $limit, $recvWindow);
     print_r($response);

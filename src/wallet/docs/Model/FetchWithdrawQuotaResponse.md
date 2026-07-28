@@ -1,4 +1,4 @@
-# # FetchWithdrawQuotaResponse
+# FetchWithdrawQuotaResponse
 
 ## Properties
 

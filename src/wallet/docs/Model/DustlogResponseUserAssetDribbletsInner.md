@@ -1,4 +1,4 @@
-# # DustlogResponseUserAssetDribbletsInner
+# DustlogResponseUserAssetDribbletsInner
 
 ## Properties
 

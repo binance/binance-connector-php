@@ -1,4 +1,4 @@
-# # Side
+# Side
 
 ## Properties
 

@@ -9,8 +9,8 @@ function listAllConvertPairsExample()
 {
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $fromAsset = '';
-    $toAsset = '';
+    $fromAsset = 'BTC';
+    $toAsset = 'USDT';
     $response = $api->listAllConvertPairs($fromAsset, $toAsset);
     print_r($response);
 }

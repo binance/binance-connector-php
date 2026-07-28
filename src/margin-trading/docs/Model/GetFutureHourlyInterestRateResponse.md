@@ -1,4 +1,4 @@
-# # GetFutureHourlyInterestRateResponse
+# GetFutureHourlyInterestRateResponse
 
 ## Properties
 

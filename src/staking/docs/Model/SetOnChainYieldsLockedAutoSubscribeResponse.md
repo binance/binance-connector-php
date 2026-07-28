@@ -1,4 +1,4 @@
-# # SetOnChainYieldsLockedAutoSubscribeResponse
+# SetOnChainYieldsLockedAutoSubscribeResponse
 
 ## Properties
 

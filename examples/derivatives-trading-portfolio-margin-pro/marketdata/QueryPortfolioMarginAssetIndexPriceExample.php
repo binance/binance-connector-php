@@ -9,7 +9,7 @@ function queryPortfolioMarginAssetIndexPriceExample()
 {
     $configurationBuilder = DerivativesTradingPortfolioMarginProRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingPortfolioMarginProRestApi($configurationBuilder->build());
-    $asset = '';
+    $asset = 'BTC';
     $response = $api->queryPortfolioMarginAssetIndexPrice($asset);
     print_r($response);
 }

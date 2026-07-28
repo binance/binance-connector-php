@@ -1,4 +1,4 @@
-# # QueryUniversalTransferHistoryResponseResultInner
+# QueryUniversalTransferHistoryResponseResultInner
 
 ## Properties
 

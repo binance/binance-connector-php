@@ -9,8 +9,8 @@ function indexPriceAndMarkPriceExample()
 {
     $configurationBuilder = DerivativesTradingCoinFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
-    $pair = '';
+    $symbol = 'BTCUSD_PERP';
+    $pair = 'BTCUSD';
     $response = $api->indexPriceAndMarkPrice($symbol, $pair);
     print_r($response);
 }

@@ -15,6 +15,6 @@ Name | Type | Description | Notes
 **tradeVolume** | **string** |  | [optional]
 **liquidity** | **string** |  | [optional]
 **decimalPrecision** | **int** |  | [optional]
-**outcomes** | [**\Binance\Client\W3wPrediction\Model\GetMarketDetailResponseMarketsInnerOutcomesInner[]**](GetMarketDetailResponseMarketsInnerOutcomesInner.md) |  | [optional]
+**outcomes** | [**\Binance\Client\W3WPrediction\Model\GetMarketDetailResponseMarketsInnerOutcomesInner[]**](GetMarketDetailResponseMarketsInnerOutcomesInner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

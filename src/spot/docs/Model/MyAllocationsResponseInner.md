@@ -1,4 +1,4 @@
-# # MyAllocationsResponseInner
+# MyAllocationsResponseInner
 
 ## Properties
 

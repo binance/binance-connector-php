@@ -1,4 +1,4 @@
-# # DailyAccountSnapshotResponseSnapshotVosInnerDataPositionInner
+# DailyAccountSnapshotResponseSnapshotVosInnerDataPositionInner
 
 ## Properties
 

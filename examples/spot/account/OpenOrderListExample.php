@@ -10,7 +10,7 @@ function openOrderListExample()
     $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SpotRestApi($configurationBuilder->build());
-    $recvWindow = 5000.0;
+    $recvWindow = 5000;
     $response = $api->openOrderList($recvWindow);
     print_r($response);
 }

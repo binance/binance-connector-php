@@ -10,9 +10,9 @@ function currentAllAlgoOpenOrdersExample()
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $algoType = '';
-    $symbol = '';
-    $algoId = 1;
+    $algoType = 'CONDITIONAL';
+    $symbol = 'BTCUSDT';
+    $algoId = 2148627;
     $recvWindow = 5000;
     $response = $api->currentAllAlgoOpenOrders($algoType, $symbol, $algoId, $recvWindow);
     print_r($response);

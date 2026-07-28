@@ -1,4 +1,4 @@
-# # DeleteIpListForASubAccountApiKeyResponse
+# DeleteIpListForASubAccountApiKeyResponse
 
 ## Properties
 

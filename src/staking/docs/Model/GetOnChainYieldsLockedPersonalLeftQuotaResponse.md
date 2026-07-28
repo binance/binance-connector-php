@@ -1,4 +1,4 @@
-# # GetOnChainYieldsLockedPersonalLeftQuotaResponse
+# GetOnChainYieldsLockedPersonalLeftQuotaResponse
 
 ## Properties
 

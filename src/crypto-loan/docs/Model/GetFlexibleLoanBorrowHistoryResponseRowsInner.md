@@ -1,4 +1,4 @@
-# # GetFlexibleLoanBorrowHistoryResponseRowsInner
+# GetFlexibleLoanBorrowHistoryResponseRowsInner
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # Ticker24hrResponse2
+# Ticker24hrResponse2
 
 ## Properties
 

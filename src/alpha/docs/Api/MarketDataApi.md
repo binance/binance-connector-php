@@ -1,13 +1,16 @@
 # Binance\Client\Alpha\MarketDataApi
 
+
+
 All URIs are relative to https://www.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**aggregatedTrades()**](MarketDataApi.md#aggregatedTrades) | **GET** /bapi/defi/v1/public/alpha-trade/agg-trades | Aggregated Trades |
+| [**fullDepth()**](MarketDataApi.md#fullDepth) | **GET** /bapi/defi/v1/public/alpha-trade/fullDepth | Full Depth |
 | [**getExchangeInfo()**](MarketDataApi.md#getExchangeInfo) | **GET** /bapi/defi/v1/public/alpha-trade/get-exchange-info | Get Exchange Info |
-| [**klines()**](MarketDataApi.md#klines) | **GET** /bapi/defi/v1/public/alpha-trade/klines | Klines (Candlestick Data) |
-| [**ticker()**](MarketDataApi.md#ticker) | **GET** /bapi/defi/v1/public/alpha-trade/ticker | Ticker (24hr Price Statistics) |
+| [**klines()**](MarketDataApi.md#klines) | **GET** /bapi/defi/v1/public/alpha-trade/klines | Klines |
+| [**ticker()**](MarketDataApi.md#ticker) | **GET** /bapi/defi/v1/public/alpha-trade/ticker | Ticker |
 | [**tokenList()**](MarketDataApi.md#tokenList) | **GET** /bapi/defi/v1/public/wallet-direct/buw/wallet/cex/alpha/all/token/list | Token List |
 
 
@@ -19,7 +22,7 @@ aggregatedTrades($symbol, $fromId, $startTime, $endTime, $limit): \Binance\Clien
 
 Aggregated Trades
 
-Retrieves compressed, aggregated historical trades for a specific symbol. Useful for recent trade history.  Weight: 0
+Retrieves compressed, aggregated historical trades for a specific symbol. Useful for recent trade history.
 
 ### Example
 
@@ -34,11 +37,11 @@ $apiInstance = new Binance\Client\Alpha\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string | e.g., \"ALPHA_175USDT\" – use token ID from Token List
-$fromId = 56; // int | starting trade ID to fetch from
-$startTime = 56; // int | start timestamp (milliseconds)
-$endTime = 56; // int | end timestamp (milliseconds)
-$limit = 56; // int | number of results to return (default 500, max 1000)
+$symbol = ALPHA_118USDC; // string | Trading pair symbol, e.g. ALPHA_118USDC (use token ID from Token List).
+$fromId = 58470; // int | Starting aggregate trade ID to fetch from.
+$startTime = 1752568680000; // int | Start timestamp in milliseconds.
+$endTime = 1752572280000; // int | End timestamp in milliseconds.
+$limit = 500; // int | Number of results to return.
 
 try {
     $result = $apiInstance->aggregatedTrades($symbol, $fromId, $startTime, $endTime, $limit);
@@ -52,15 +55,73 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**| e.g., \&quot;ALPHA_175USDT\&quot; – use token ID from Token List | |
-| **fromId** | **int**| starting trade ID to fetch from | [optional] |
-| **startTime** | **int**| start timestamp (milliseconds) | [optional] |
-| **endTime** | **int**| end timestamp (milliseconds) | [optional] |
-| **limit** | **int**| number of results to return (default 500, max 1000) | [optional] |
+| **symbol** | **string**| Trading pair symbol, e.g. ALPHA_118USDC (use token ID from Token List). | |
+| **fromId** | **int**| Starting aggregate trade ID to fetch from. | [optional] |
+| **startTime** | **int**| Start timestamp in milliseconds. | [optional] |
+| **endTime** | **int**| End timestamp in milliseconds. | [optional] |
+| **limit** | **int**| Number of results to return. | [optional] |
 
 ### Return type
 
 [**\Binance\Client\Alpha\Model\AggregatedTradesResponse**](../Model/AggregatedTradesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `fullDepth()`
+
+```php
+fullDepth($symbol, $limit): \Binance\Client\Alpha\Model\FullDepthResponse
+```
+
+Full Depth
+
+Fetches the full order book depth (UI & API orders) for a symbol, including bid and ask orders with their prices and quantities.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\Alpha\Api\MarketDataApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$symbol = ALPHA_175USDT; // string | Trading pair symbol, e.g. ALPHA_175USDT (use token ID from Token List).
+$limit = new \Binance\Client\Alpha\Model\\Binance\Client\Alpha\Model\Limit(); // \Binance\Client\Alpha\Model\Limit | Number of price levels to return. Valid values: 5, 10, 20, 50, 100, 500, 1000.
+
+try {
+    $result = $apiInstance->fullDepth($symbol, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MarketDataApi->fullDepth: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **symbol** | **string**| Trading pair symbol, e.g. ALPHA_175USDT (use token ID from Token List). | |
+| **limit** | [**\Binance\Client\Alpha\Model\Limit**](../Model/.md)| Number of price levels to return. Valid values: 5, 10, 20, 50, 100, 500, 1000. | [optional] |
+
+### Return type
+
+[**\Binance\Client\Alpha\Model\FullDepthResponse**](../Model/FullDepthResponse.md)
 
 ### Authorization
 
@@ -83,7 +144,7 @@ getExchangeInfo(): \Binance\Client\Alpha\Model\GetExchangeInfoResponse
 
 Get Exchange Info
 
-Fetches general exchange information, such as supported symbols, rate limits, and server time.  Weight: 0
+Fetches general exchange information, such as supported symbols, rate limits, and server time.
 
 ### Example
 
@@ -134,9 +195,9 @@ No authorization required
 klines($symbol, $interval, $limit, $startTime, $endTime): \Binance\Client\Alpha\Model\KlinesResponse
 ```
 
-Klines (Candlestick Data)
+Klines
 
-Fetches Kline/candlestick bars for a symbol, which include open/high/low/close prices and volume over intervals. Useful for charting and analysis.  Weight: 0
+Fetches Kline/candlestick bars for a symbol, which include open/high/low/close prices and volume over intervals. Useful for charting and analysis.
 
 ### Example
 
@@ -151,11 +212,11 @@ $apiInstance = new Binance\Client\Alpha\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string | e.g., \"ALPHA_175USDT\" – use token ID from Token List
-$interval = 'interval_example'; // string | e.g., \"1h\" – supported intervals: 1s, 15s, 1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h, 8h, 12h, 1d, 3d, 1w, 1M
-$limit = 56; // int | number of results to return (default 500, max 1000)
-$startTime = 56; // int | start timestamp (milliseconds)
-$endTime = 56; // int | end timestamp (milliseconds)
+$symbol = ALPHA_175USDT; // string | Trading pair symbol, e.g. ALPHA_175USDT (use token ID from Token List).
+$interval = new \Binance\Client\Alpha\Model\\Binance\Client\Alpha\Model\Interval(); // \Binance\Client\Alpha\Model\Interval | Kline interval.
+$limit = 500; // int | Number of klines to return.
+$startTime = 1752642000000; // int | Start timestamp in milliseconds.
+$endTime = 1752645599999; // int | End timestamp in milliseconds.
 
 try {
     $result = $apiInstance->klines($symbol, $interval, $limit, $startTime, $endTime);
@@ -169,11 +230,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**| e.g., \&quot;ALPHA_175USDT\&quot; – use token ID from Token List | |
-| **interval** | **string**| e.g., \&quot;1h\&quot; – supported intervals: 1s, 15s, 1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h, 8h, 12h, 1d, 3d, 1w, 1M | |
-| **limit** | **int**| number of results to return (default 500, max 1000) | [optional] |
-| **startTime** | **int**| start timestamp (milliseconds) | [optional] |
-| **endTime** | **int**| end timestamp (milliseconds) | [optional] |
+| **symbol** | **string**| Trading pair symbol, e.g. ALPHA_175USDT (use token ID from Token List). | |
+| **interval** | [**\Binance\Client\Alpha\Model\Interval**](../Model/.md)| Kline interval. | |
+| **limit** | **int**| Number of klines to return. | [optional] |
+| **startTime** | **int**| Start timestamp in milliseconds. | [optional] |
+| **endTime** | **int**| End timestamp in milliseconds. | [optional] |
 
 ### Return type
 
@@ -198,9 +259,9 @@ No authorization required
 ticker($symbol): \Binance\Client\Alpha\Model\TickerResponse
 ```
 
-Ticker (24hr Price Statistics)
+Ticker
 
-Gets the 24-hour rolling window price change statistics for a symbol, including volume and price changes.  Weight: 0
+Gets the 24-hour rolling window price change statistics for a symbol, including volume and price changes.
 
 ### Example
 
@@ -215,7 +276,7 @@ $apiInstance = new Binance\Client\Alpha\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string | e.g., \"ALPHA_175USDT\" – use token ID from Token List
+$symbol = ALPHA_175USDT; // string | Trading pair symbol, e.g. ALPHA_175USDT (use token ID from Token List).
 
 try {
     $result = $apiInstance->ticker($symbol);
@@ -229,7 +290,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**| e.g., \&quot;ALPHA_175USDT\&quot; – use token ID from Token List | |
+| **symbol** | **string**| Trading pair symbol, e.g. ALPHA_175USDT (use token ID from Token List). | |
 
 ### Return type
 
@@ -256,7 +317,7 @@ tokenList(): \Binance\Client\Alpha\Model\TokenListResponse
 
 Token List
 
-Retrieves a list of all available ALPHA tokens, including their IDs and symbols. Use this to find the token ID for constructing symbols in other endpoints.  Weight: 0
+Retrieves a list of all available ALPHA tokens, including their IDs and symbols. Use this to find the token ID for constructing symbols in other endpoints.
 
 ### Example
 

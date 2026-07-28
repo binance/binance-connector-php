@@ -1,4 +1,4 @@
-# # NewOrderRespType
+# NewOrderRespType
 
 ## Properties
 

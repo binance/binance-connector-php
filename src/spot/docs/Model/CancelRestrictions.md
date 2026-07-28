@@ -1,4 +1,4 @@
-# # CancelRestrictions
+# CancelRestrictions
 
 ## Properties
 

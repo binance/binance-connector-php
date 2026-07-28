@@ -1,4 +1,4 @@
-# # LongShortRatioResponse
+# LongShortRatioResponse
 
 ## Properties
 

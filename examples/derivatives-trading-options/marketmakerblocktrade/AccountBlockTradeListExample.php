@@ -12,7 +12,7 @@ function accountBlockTradeListExample()
     $api = new DerivativesTradingOptionsRestApi($configurationBuilder->build());
     $endTime = 1641782889000;
     $startTime = 1623319461670;
-    $underlying = '';
+    $underlying = 'BTCUSDT';
     $recvWindow = 5000;
     $response = $api->accountBlockTradeList($endTime, $startTime, $underlying, $recvWindow);
     print_r($response);

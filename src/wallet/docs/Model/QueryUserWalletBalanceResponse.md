@@ -1,4 +1,4 @@
-# # QueryUserWalletBalanceResponse
+# QueryUserWalletBalanceResponse
 
 ## Properties
 

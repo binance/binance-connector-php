@@ -1,4 +1,4 @@
-# # GetVIPLoanOngoingOrdersResponse
+# GetVIPLoanOngoingOrdersResponse
 
 ## Properties
 

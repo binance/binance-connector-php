@@ -12,7 +12,7 @@ function marginAccountRepayDebtExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
     $marginAccountRepayDebtRequest = new MarginAccountRepayDebtRequest();
-    $marginAccountRepayDebtRequest->setAsset('');
+    $marginAccountRepayDebtRequest->setAsset('USDT');
     $response = $api->marginAccountRepayDebt($marginAccountRepayDebtRequest);
     print_r($response);
 }

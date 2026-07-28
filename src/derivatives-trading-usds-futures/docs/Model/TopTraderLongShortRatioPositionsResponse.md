@@ -1,4 +1,4 @@
-# # TopTraderLongShortRatioPositionsResponse
+# TopTraderLongShortRatioPositionsResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CheckQuestionnaireRequirementsResponse
+# CheckQuestionnaireRequirementsResponse
 
 ## Properties
 

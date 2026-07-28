@@ -1,4 +1,4 @@
-# # AcquiringAlgorithmResponse
+# AcquiringAlgorithmResponse
 
 ## Properties
 

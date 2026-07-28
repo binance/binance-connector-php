@@ -11,7 +11,7 @@ function queryIsolatedMarginFeeDataExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new MarginTradingRestApi($configurationBuilder->build());
     $vipLevel = 1;
-    $symbol = '';
+    $symbol = 'BTCUSDT';
     $recvWindow = 5000;
     $response = $api->queryIsolatedMarginFeeData($vipLevel, $symbol, $recvWindow);
     print_r($response);

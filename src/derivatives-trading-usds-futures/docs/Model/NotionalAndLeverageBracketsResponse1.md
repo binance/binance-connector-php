@@ -1,4 +1,4 @@
-# # NotionalAndLeverageBracketsResponse1
+# NotionalAndLeverageBracketsResponse1
 
 ## Properties
 

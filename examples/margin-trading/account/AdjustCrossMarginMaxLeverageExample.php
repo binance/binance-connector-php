@@ -12,7 +12,7 @@ function adjustCrossMarginMaxLeverageExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new MarginTradingRestApi($configurationBuilder->build());
     $adjustCrossMarginMaxLeverageRequest = new AdjustCrossMarginMaxLeverageRequest();
-    $adjustCrossMarginMaxLeverageRequest->setMaxLeverage(null);
+    $adjustCrossMarginMaxLeverageRequest->setMaxLeverage(3);
     $response = $api->adjustCrossMarginMaxLeverage($adjustCrossMarginMaxLeverageRequest);
     print_r($response);
 }

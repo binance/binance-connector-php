@@ -1,4 +1,4 @@
-# # GetFuturesPositionRiskOfSubAccountV2ResponseDeliveryPositionRiskVosInner
+# GetFuturesPositionRiskOfSubAccountV2ResponseDeliveryPositionRiskVosInner
 
 ## Properties
 

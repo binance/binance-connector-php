@@ -1,4 +1,4 @@
-# # FuturesTradingQuantitativeRulesIndicatorsResponseIndicators
+# FuturesTradingQuantitativeRulesIndicatorsResponseIndicators
 
 ## Properties
 

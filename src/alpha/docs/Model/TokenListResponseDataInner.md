@@ -1,20 +1,20 @@
-# # TokenListResponseDataInner
+# TokenListResponseDataInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tokenId** | **string** |  | [optional]
-**chainId** | **string** |  | [optional]
-**chainIconUrl** | **string** |  | [optional]
-**chainName** | **string** |  | [optional]
-**contractAddress** | **string** |  | [optional]
-**name** | **string** |  | [optional]
-**symbol** | **string** |  | [optional]
-**iconUrl** | **string** |  | [optional]
-**price** | **string** |  | [optional]
-**percentChange24h** | **string** |  | [optional]
-**volume24h** | **string** |  | [optional]
+**tokenId** | **string** | Unique token identifier. | [optional]
+**chainId** | **string** | Chain ID. | [optional]
+**chainIconUrl** | **string** | Chain icon URL. | [optional]
+**chainName** | **string** | Chain name. | [optional]
+**contractAddress** | **string** | Token contract address. | [optional]
+**name** | **string** | Token name. | [optional]
+**symbol** | **string** | Token symbol. | [optional]
+**iconUrl** | **string** | Token icon URL. | [optional]
+**price** | **string** | Latest token price. | [optional]
+**percentChange24h** | **string** | 24-hour price change percentage. | [optional]
+**volume24h** | **string** | 24-hour trading volume. | [optional]
 **marketCap** | **string** |  | [optional]
 **fdv** | **string** |  | [optional]
 **liquidity** | **string** |  | [optional]
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **denomination** | **int** |  | [optional]
 **offline** | **bool** |  | [optional]
 **tradeDecimal** | **int** |  | [optional]
-**alphaId** | **string** |  | [optional]
+**alphaId** | **string** | ALPHA token ID, e.g. ALPHA_175. | [optional]
 **offsell** | **bool** |  | [optional]
 **priceHigh24h** | **string** |  | [optional]
 **priceLow24h** | **string** |  | [optional]

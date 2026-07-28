@@ -10,7 +10,7 @@ function notionalAndLeverageBracketsExample()
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'ETHUSDT';
     $recvWindow = 5000;
     $response = $api->notionalAndLeverageBrackets($symbol, $recvWindow);
     print_r($response);

@@ -1,4 +1,4 @@
-# # DepositAddressResponse
+# DepositAddressResponse
 
 ## Properties
 

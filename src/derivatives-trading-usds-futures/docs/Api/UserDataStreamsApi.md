@@ -1,5 +1,7 @@
 # Binance\Client\DerivativesTradingUsdsFutures\UserDataStreamsApi
 
+
+
 All URIs are relative to https://fapi.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -17,7 +19,7 @@ closeUserDataStream()
 
 Close User Data Stream (USER_STREAM)
 
-Close out a user data stream.  Weight: 1
+Close out a user data stream.  Weight(IP): 1  Security Type: USER_STREAM
 
 ### Example
 
@@ -69,7 +71,7 @@ keepaliveUserDataStream(): \Binance\Client\DerivativesTradingUsdsFutures\Model\K
 
 Keepalive User Data Stream (USER_STREAM)
 
-Keepalive a user data stream to prevent a time out. User data streams will close after 60 minutes. It's recommended to send a ping about every 60 minutes.  Weight: 1
+Keepalive a user data stream to prevent a time out. User data streams will close after 60 minutes. It's recommended to send a ping about every 60 minutes.  Weight(IP): 1  Security Type: USER_STREAM
 
 ### Example
 
@@ -122,7 +124,7 @@ startUserDataStream(): \Binance\Client\DerivativesTradingUsdsFutures\Model\Start
 
 Start User Data Stream (USER_STREAM)
 
-Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent. If the account has an active `listenKey`, that `listenKey` will be returned and its validity will be extended for 60 minutes.  Weight: 1
+Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent. If the account has an active `listenKey`, that `listenKey` will be returned and its validity will be extended for 60 minutes.  Weight(IP): 1  Security Type: USER_STREAM
 
 ### Example
 

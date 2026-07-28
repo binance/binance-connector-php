@@ -1,4 +1,4 @@
-# # QueryManagedSubAccountMarginAssetDetailsResponse
+# QueryManagedSubAccountMarginAssetDetailsResponse
 
 ## Properties
 

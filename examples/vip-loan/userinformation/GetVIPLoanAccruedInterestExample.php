@@ -11,7 +11,7 @@ function getVIPLoanAccruedInterestExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new VipLoanRestApi($configurationBuilder->build());
     $orderId = 1;
-    $loanCoin = '';
+    $loanCoin = 'BTC';
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $current = 1;

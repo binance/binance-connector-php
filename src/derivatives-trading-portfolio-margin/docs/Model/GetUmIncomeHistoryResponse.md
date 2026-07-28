@@ -1,4 +1,4 @@
-# # GetUmIncomeHistoryResponse
+# GetUmIncomeHistoryResponse
 
 ## Properties
 

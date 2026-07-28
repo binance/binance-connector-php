@@ -19,6 +19,7 @@ use Binance\Client\Spot\Model\GetOpenOrdersResponse;
 use Binance\Client\Spot\Model\GetOrderListResponse;
 use Binance\Client\Spot\Model\GetOrderResponse;
 use Binance\Client\Spot\Model\GetTradesResponse;
+use Binance\Client\Spot\Model\HistoricalBlockTradesResponse;
 use Binance\Client\Spot\Model\HistoricalTradesResponse;
 use Binance\Client\Spot\Model\Interval;
 use Binance\Client\Spot\Model\KlinesResponse;
@@ -105,7 +106,7 @@ class SpotRestApi
     /**
      * Operation accountCommission.
      *
-     * Query Commission Rates
+     * Query Commission Rates (USER_DATA)
      *
      * @param string $symbol symbol (required)
      *
@@ -122,13 +123,13 @@ class SpotRestApi
     /**
      * Operation allOrderList.
      *
-     * Query all Order lists
+     * Query all Order lists (USER_DATA)
      *
-     * @param null|int   $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int   $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int   $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int   $limit      Default: 500; Maximum: 1000. (optional)
-     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     * @param null|int   $fromId     If supplied, neither startTime or endTime can be provided (optional)
+     * @param null|int   $startTime  startTime (optional)
+     * @param null|int   $endTime    endTime (optional)
+     * @param null|int   $limit      limit (optional)
+     * @param null|float $recvWindow Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<AllOrderListResponse>
      *
@@ -143,13 +144,13 @@ class SpotRestApi
     /**
      * Operation allOrders.
      *
-     * All orders
+     * All orders (USER_DATA)
      *
      * @param string     $symbol     symbol (required)
      * @param null|int   $orderId    orderId (optional)
-     * @param null|int   $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int   $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int   $limit      Default: 500; Maximum: 1000. (optional)
+     * @param null|int   $startTime  startTime (optional)
+     * @param null|int   $endTime    endTime (optional)
+     * @param null|int   $limit      limit (optional)
      * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<AllOrdersResponse>
@@ -165,10 +166,10 @@ class SpotRestApi
     /**
      * Operation getAccount.
      *
-     * Account information
+     * Account information (USER_DATA)
      *
-     * @param null|bool  $omitZeroBalances When set to &#x60;true&#x60;, emits only the non-zero balances of an account. &lt;br&gt;Default value: &#x60;false&#x60; (optional)
-     * @param null|float $recvWindow       The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     * @param null|bool  $omitZeroBalances When set to &#x60;true&#x60;, emits only the non-zero balances of an account. (optional)
+     * @param null|float $recvWindow       Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<GetAccountResponse>
      *
@@ -183,10 +184,10 @@ class SpotRestApi
     /**
      * Operation getOpenOrders.
      *
-     * Current open orders
+     * Current open orders (USER_DATA)
      *
-     * @param null|string $symbol     Symbol to query (optional)
-     * @param null|float  $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     * @param null|string $symbol     symbol (optional)
+     * @param null|float  $recvWindow Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<GetOpenOrdersResponse>
      *
@@ -201,12 +202,12 @@ class SpotRestApi
     /**
      * Operation getOrder.
      *
-     * Query order
+     * Query order (USER_DATA)
      *
      * @param string      $symbol            symbol (required)
      * @param null|int    $orderId           orderId (optional)
      * @param null|string $origClientOrderId origClientOrderId (optional)
-     * @param null|float  $recvWindow        The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     * @param null|float  $recvWindow        Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<GetOrderResponse>
      *
@@ -221,11 +222,11 @@ class SpotRestApi
     /**
      * Operation getOrderList.
      *
-     * Query Order list
+     * Query Order list (USER_DATA)
      *
-     * @param null|int    $orderListId       Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
-     * @param null|string $origClientOrderId origClientOrderId (optional)
-     * @param null|float  $recvWindow        The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     * @param null|int    $orderListId       Query order list by &#x60;orderListId&#x60;. &#x60;orderListId&#x60; or &#x60;origClientOrderId&#x60; must be provided. (optional)
+     * @param null|string $origClientOrderId Query order list by &#x60;listClientOrderId&#x60;. &#x60;orderListId&#x60; or &#x60;origClientOrderId&#x60; must be provided. (optional)
+     * @param null|float  $recvWindow        Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<GetOrderListResponse>
      *
@@ -240,15 +241,15 @@ class SpotRestApi
     /**
      * Operation myAllocations.
      *
-     * Query Allocations
+     * Query Allocations (USER_DATA)
      *
      * @param string     $symbol           symbol (required)
-     * @param null|int   $startTime        Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int   $endTime          Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int   $startTime        startTime (optional)
+     * @param null|int   $endTime          endTime (optional)
      * @param null|int   $fromAllocationId fromAllocationId (optional)
-     * @param null|int   $limit            Default: 500; Maximum: 1000. (optional)
+     * @param null|int   $limit            limit (optional)
      * @param null|int   $orderId          orderId (optional)
-     * @param null|float $recvWindow       The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     * @param null|float $recvWindow       Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<MyAllocationsResponse>
      *
@@ -263,10 +264,10 @@ class SpotRestApi
     /**
      * Operation myFilters.
      *
-     * Query relevant filters
+     * Query relevant filters (USER_DATA)
      *
      * @param string     $symbol     symbol (required)
-     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     * @param null|float $recvWindow Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<MyFiltersResponse>
      *
@@ -281,14 +282,14 @@ class SpotRestApi
     /**
      * Operation myPreventedMatches.
      *
-     * Query Prevented Matches
+     * Query Prevented Matches (USER_DATA)
      *
      * @param string     $symbol               symbol (required)
      * @param null|int   $preventedMatchId     preventedMatchId (optional)
      * @param null|int   $orderId              orderId (optional)
      * @param null|int   $fromPreventedMatchId fromPreventedMatchId (optional)
-     * @param null|int   $limit                Default: 500; Maximum: 1000. (optional)
-     * @param null|float $recvWindow           The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     * @param null|int   $limit                limit (optional)
+     * @param null|float $recvWindow           Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<MyPreventedMatchesResponse>
      *
@@ -303,15 +304,15 @@ class SpotRestApi
     /**
      * Operation myTrades.
      *
-     * Account trade list
+     * Account trade list (USER_DATA)
      *
      * @param string     $symbol     symbol (required)
-     * @param null|int   $orderId    orderId (optional)
-     * @param null|int   $startTime  Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int   $endTime    Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int   $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int   $limit      Default: 500; Maximum: 1000. (optional)
-     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     * @param null|int   $orderId    This can only be used in combination with &#x60;symbol&#x60;. (optional)
+     * @param null|int   $startTime  startTime (optional)
+     * @param null|int   $endTime    endTime (optional)
+     * @param null|int   $fromId     TradeId to fetch from. Default gets most recent trades. (optional)
+     * @param null|int   $limit      limit (optional)
+     * @param null|float $recvWindow Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<MyTradesResponse>
      *
@@ -326,9 +327,9 @@ class SpotRestApi
     /**
      * Operation openOrderList.
      *
-     * Query Open Order lists
+     * Query Open Order lists (USER_DATA)
      *
-     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     * @param null|float $recvWindow Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<OpenOrderListResponse>
      *
@@ -343,13 +344,13 @@ class SpotRestApi
     /**
      * Operation orderAmendments.
      *
-     * Query Order Amendments
+     * Query Order Amendments (USER_DATA)
      *
      * @param string     $symbol          symbol (required)
      * @param int        $orderId         orderId (required)
      * @param null|int   $fromExecutionId fromExecutionId (optional)
-     * @param null|int   $limit           Default:500; Maximum: 1000 (optional)
-     * @param null|float $recvWindow      The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     * @param null|int   $limit           limit (optional)
+     * @param null|float $recvWindow      Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<OrderAmendmentsResponse>
      *
@@ -364,9 +365,9 @@ class SpotRestApi
     /**
      * Operation rateLimitOrder.
      *
-     * Query Unfilled Order Count
+     * Query Unfilled Order Count (USER_DATA)
      *
-     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     * @param null|float $recvWindow Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<RateLimitOrderResponse>
      *
@@ -383,11 +384,11 @@ class SpotRestApi
      *
      * Exchange information
      *
-     * @param null|string       $symbol             Symbol to query (optional)
-     * @param null|Symbols      $symbols            List of symbols to query (optional)
-     * @param null|Permissions  $permissions        List of permissions to query (optional)
-     * @param null|bool         $showPermissionSets Controls whether the content of the &#x60;permissionSets&#x60; field is populated or not. Defaults to &#x60;true&#x60; (optional)
-     * @param null|SymbolStatus $symbolStatus       symbolStatus (optional)
+     * @param null|string       $symbol             Example: curl -X GET \&quot;https://api.binance.com/api/v3/exchangeInfo?symbol&#x3D;BNBBTC\&quot; (optional)
+     * @param null|Symbols      $symbols            Examples: curl -X GET \&quot;https://api.binance.com/api/v3/exchangeInfo?symbols&#x3D;%5B%22BNBBTC%22,%22BTCUSDT%22%5D\&quot; or curl -g -X GET &#39;https://api.binance.com/api/v3/exchangeInfo?symbols&#x3D;[\&quot;BTCUSDT\&quot;,\&quot;BNBBTC\&quot;]&#39; (optional)
+     * @param null|Permissions  $permissions        Examples: curl -X GET \&quot;https://api.binance.com/api/v3/exchangeInfo?permissions&#x3D;SPOT\&quot;  curl -X GET \&quot;https://api.binance.com/api/v3/exchangeInfo?permissions&#x3D;%5B%22MARGIN%22%2C%22LEVERAGED%22%5D\&quot; or curl -g -X GET &#39;https://api.binance.com/api/v3/exchangeInfo?permissions&#x3D;[\&quot;MARGIN\&quot;,\&quot;LEVERAGED\&quot;]&#39; (optional)
+     * @param null|bool         $showPermissionSets Controls whether the content of the &#x60;permissionSets&#x60; field is populated or not. (optional)
+     * @param null|SymbolStatus $symbolStatus       Filters for symbols that have this &#x60;tradingStatus&#x60;. Cannot be used in combination with &#x60;symbols&#x60; or &#x60;symbol&#x60;. (optional)
      *
      * @return ApiResponse<ExchangeInfoResponse>
      *
@@ -404,9 +405,9 @@ class SpotRestApi
      *
      * Query Execution Rules
      *
-     * @param null|string       $symbol       Symbol to query (optional)
-     * @param null|Symbols      $symbols      List of symbols to query (optional)
-     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
+     * @param null|string       $symbol       Query for specified symbol. (optional)
+     * @param null|Symbols      $symbols      Query for multiple symbols. (optional)
+     * @param null|SymbolStatus $symbolStatus Query for all symbols with the specified status. (optional)
      *
      * @return ApiResponse<ExecutionRulesResponse>
      *
@@ -455,7 +456,7 @@ class SpotRestApi
      * @param null|int $fromId    ID to get aggregate trades from INCLUSIVE. (optional)
      * @param null|int $startTime Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
      * @param null|int $endTime   Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
-     * @param null|int $limit     Default: 500; Maximum: 1000. (optional)
+     * @param null|int $limit     limit (optional)
      *
      * @return ApiResponse<AggTradesResponse>
      *
@@ -490,8 +491,8 @@ class SpotRestApi
      * Order book
      *
      * @param string            $symbol       symbol (required)
-     * @param null|int          $limit        Default: 500; Maximum: 1000. (optional)
-     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
+     * @param null|int          $limit        If limit &gt; 5000, only 5000 entries will be returned. (optional)
+     * @param null|SymbolStatus $symbolStatus Filters for symbols that have this &#x60;tradingStatus&#x60;. A status mismatch returns error &#x60;-1220 SYMBOL_DOES_NOT_MATCH_STATUS&#x60;. (optional)
      *
      * @return ApiResponse<DepthResponse>
      *
@@ -509,7 +510,7 @@ class SpotRestApi
      * Recent trades list
      *
      * @param string   $symbol symbol (required)
-     * @param null|int $limit  Default: 500; Maximum: 1000. (optional)
+     * @param null|int $limit  limit (optional)
      *
      * @return ApiResponse<GetTradesResponse>
      *
@@ -522,13 +523,32 @@ class SpotRestApi
     }
 
     /**
+     * Operation historicalBlockTrades.
+     *
+     * Historical Block Trades (MARKET_DATA)
+     *
+     * @param string   $symbol symbol (required)
+     * @param int      $fromId Block trade ID to fetch from (required)
+     * @param null|int $limit  Default: 500; Maximum: 1000 (optional)
+     *
+     * @return ApiResponse<HistoricalBlockTradesResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function historicalBlockTrades($symbol, $fromId, $limit = null): ApiResponse
+    {
+        return $this->marketApi->historicalBlockTrades($symbol, $fromId, $limit);
+    }
+
+    /**
      * Operation historicalTrades.
      *
      * Old trade lookup
      *
      * @param string   $symbol symbol (required)
-     * @param null|int $limit  Default: 500; Maximum: 1000. (optional)
-     * @param null|int $fromId ID to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int $limit  limit (optional)
+     * @param null|int $fromId TradeId to fetch from. Default gets most recent trades. (optional)
      *
      * @return ApiResponse<HistoricalTradesResponse>
      *
@@ -547,10 +567,10 @@ class SpotRestApi
      *
      * @param string      $symbol    symbol (required)
      * @param Interval    $interval  interval (required)
-     * @param null|int    $startTime Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int    $endTime   Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int    $startTime startTime (optional)
+     * @param null|int    $endTime   endTime (optional)
      * @param null|string $timeZone  Default: 0 (UTC) (optional)
-     * @param null|int    $limit     Default: 500; Maximum: 1000. (optional)
+     * @param null|int    $limit     limit (optional)
      *
      * @return ApiResponse<KlinesResponse>
      *
@@ -585,7 +605,7 @@ class SpotRestApi
      * Query Reference Price Calculation
      *
      * @param string            $symbol       symbol (required)
-     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
+     * @param null|SymbolStatus $symbolStatus Supported values: &#x60;TRADING&#x60;, &#x60;HALT&#x60;, &#x60;BREAK&#x60; (optional)
      *
      * @return ApiResponse<ReferencePriceCalculationResponse>
      *
@@ -602,9 +622,9 @@ class SpotRestApi
      *
      * Rolling window price change statistics
      *
-     * @param null|string       $symbol       Symbol to query (optional)
-     * @param null|Symbols      $symbols      List of symbols to query (optional)
-     * @param null|WindowSize   $windowSize   windowSize (optional)
+     * @param null|string       $symbol       Either &#x60;symbol&#x60; or &#x60;symbols&#x60; must be provided (optional)
+     * @param null|Symbols      $symbols      Either &#x60;symbol&#x60; or &#x60;symbols&#x60; must be provided  Examples of accepted format for the &#x60;symbols&#x60; parameter: [\&quot;BTCUSDT\&quot;,\&quot;BNBUSDT\&quot;] or %5B%22BTCUSDT%22,%22BNBUSDT%22%5D  The maximum number of symbols allowed in a request is 100. (optional)
+     * @param null|WindowSize   $windowSize   Units cannot be combined (e.g. &#x60;1d2h&#x60; is not allowed). (optional)
      * @param null|TickerType   $type         type (optional)
      * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
      *
@@ -623,8 +643,8 @@ class SpotRestApi
      *
      * 24hr ticker price change statistics
      *
-     * @param null|string       $symbol       Symbol to query (optional)
-     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|string       $symbol       Either &#x60;symbol&#x60; or &#x60;symbols&#x60; must be provided (optional)
+     * @param null|Symbols      $symbols      Either &#x60;symbol&#x60; or &#x60;symbols&#x60; must be provided  Examples of accepted format for the &#x60;symbols&#x60; parameter: [\&quot;BTCUSDT\&quot;,\&quot;BNBUSDT\&quot;] or %5B%22BTCUSDT%22,%22BNBUSDT%22%5D  The maximum number of symbols allowed in a request is 100. (optional)
      * @param null|TickerType   $type         type (optional)
      * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
      *
@@ -643,9 +663,9 @@ class SpotRestApi
      *
      * Symbol order book ticker
      *
-     * @param null|string       $symbol       Symbol to query (optional)
-     * @param null|Symbols      $symbols      List of symbols to query (optional)
-     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
+     * @param null|string       $symbol       Parameter symbol and symbols cannot be used in combination. If neither parameter is sent, &#x60;bookTickers&#x60; for all symbols will be returned in an array. (optional)
+     * @param null|Symbols      $symbols      Parameter symbol and symbols cannot be used in combination. If neither parameter is sent, &#x60;bookTickers&#x60; for all symbols will be returned in an array. Examples of accepted format for the symbols parameter: [\&quot;BTCUSDT\&quot;,\&quot;BNBUSDT\&quot;] or %5B%22BTCUSDT%22,%22BNBUSDT%22%5D (optional)
+     * @param null|SymbolStatus $symbolStatus Filters for symbols that have this &#x60;tradingStatus&#x60;. For a single symbol, a status mismatch returns error &#x60;-1220 SYMBOL_DOES_NOT_MATCH_STATUS&#x60;. For multiple or all symbols, non-matching ones are simply excluded from the response. (optional)
      *
      * @return ApiResponse<TickerBookTickerResponse>
      *
@@ -662,9 +682,9 @@ class SpotRestApi
      *
      * Symbol price ticker
      *
-     * @param null|string       $symbol       Symbol to query (optional)
-     * @param null|Symbols      $symbols      List of symbols to query (optional)
-     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
+     * @param null|string       $symbol       Parameter symbol and symbols cannot be used in combination. If neither parameter is sent, prices for all symbols will be returned in an array. (optional)
+     * @param null|Symbols      $symbols      Parameter symbol and symbols cannot be used in combination. If neither parameter is sent, prices for all symbols will be returned in an array. Examples of accepted format for the symbols parameter: [\&quot;BTCUSDT\&quot;,\&quot;BNBUSDT\&quot;] or %5B%22BTCUSDT%22,%22BNBUSDT%22%5D (optional)
+     * @param null|SymbolStatus $symbolStatus Filters for symbols that have this &#x60;tradingStatus&#x60;. For a single symbol, a status mismatch returns error &#x60;-1220 SYMBOL_DOES_NOT_MATCH_STATUS&#x60;. For multiple or all symbols, non-matching ones are simply excluded from the response. (optional)
      *
      * @return ApiResponse<TickerPriceResponse>
      *
@@ -681,11 +701,11 @@ class SpotRestApi
      *
      * Trading Day Ticker
      *
-     * @param null|string       $symbol       Symbol to query (optional)
-     * @param null|Symbols      $symbols      List of symbols to query (optional)
+     * @param null|string       $symbol       Either &#x60;symbol&#x60; or &#x60;symbols&#x60; must be provided. (optional)
+     * @param null|Symbols      $symbols      Either &#x60;symbol&#x60; or &#x60;symbols&#x60; must be provided. Examples of accepted format for the &#x60;symbols&#x60; parameter: [\&quot;BTCUSDT\&quot;,\&quot;BNBUSDT\&quot;] or %5B%22BTCUSDT%22,%22BNBUSDT%22%5D. The maximum number of &#x60;symbols&#x60; allowed in a request is 100. (optional)
      * @param null|string       $timeZone     Default: 0 (UTC) (optional)
      * @param null|TickerType   $type         type (optional)
-     * @param null|SymbolStatus $symbolStatus symbolStatus (optional)
+     * @param null|SymbolStatus $symbolStatus Filters for symbols that have this &#x60;tradingStatus&#x60;. For a single symbol, a status mismatch returns error &#x60;-1220 SYMBOL_DOES_NOT_MATCH_STATUS&#x60;. For multiple symbols, non-matching ones are simply excluded from the response. (optional)
      *
      * @return ApiResponse<TickerTradingDayResponse>
      *
@@ -704,10 +724,10 @@ class SpotRestApi
      *
      * @param string      $symbol    symbol (required)
      * @param Interval    $interval  interval (required)
-     * @param null|int    $startTime Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int    $endTime   Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int    $startTime startTime (optional)
+     * @param null|int    $endTime   endTime (optional)
      * @param null|string $timeZone  Default: 0 (UTC) (optional)
-     * @param null|int    $limit     Default: 500; Maximum: 1000. (optional)
+     * @param null|int    $limit     limit (optional)
      *
      * @return ApiResponse<UiKlinesResponse>
      *
@@ -722,10 +742,10 @@ class SpotRestApi
     /**
      * Operation deleteOpenOrders.
      *
-     * Cancel All Open Orders on a Symbol
+     * Cancel All Open Orders on a Symbol (TRADE)
      *
      * @param string     $symbol     symbol (required)
-     * @param null|float $recvWindow The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     * @param null|float $recvWindow Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<DeleteOpenOrdersResponse>
      *
@@ -740,14 +760,14 @@ class SpotRestApi
     /**
      * Operation deleteOrder.
      *
-     * Cancel order
+     * Cancel order (TRADE)
      *
      * @param string                  $symbol             symbol (required)
      * @param null|int                $orderId            orderId (optional)
      * @param null|string             $origClientOrderId  origClientOrderId (optional)
-     * @param null|string             $newClientOrderId   A unique id among open orders. Automatically generated if not sent.&lt;br/&gt; Orders with the same &#x60;newClientOrderID&#x60; can be accepted only when the previous one is filled, otherwise the order will be rejected. (optional)
-     * @param null|CancelRestrictions $cancelRestrictions cancelRestrictions (optional)
-     * @param null|float              $recvWindow         The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     * @param null|string             $newClientOrderId   Used to uniquely identify this cancel. Automatically generated by default. (optional)
+     * @param null|CancelRestrictions $cancelRestrictions Supported values: &lt;br&gt;&#x60;ONLY_NEW&#x60; - Cancel will succeed if the order status is &#x60;NEW&#x60;.&lt;br&gt; &#x60;ONLY_PARTIALLY_FILLED&#x60; - Cancel will succeed if order status is &#x60;PARTIALLY_FILLED&#x60;. (optional)
+     * @param null|float              $recvWindow         Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<DeleteOrderResponse>
      *
@@ -762,13 +782,13 @@ class SpotRestApi
     /**
      * Operation deleteOrderList.
      *
-     * Cancel Order list
+     * Cancel Order list (TRADE)
      *
      * @param string      $symbol            symbol (required)
      * @param null|int    $orderListId       Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
-     * @param null|string $listClientOrderId A unique Id for the entire orderList (optional)
-     * @param null|string $newClientOrderId  A unique id among open orders. Automatically generated if not sent.&lt;br/&gt; Orders with the same &#x60;newClientOrderID&#x60; can be accepted only when the previous one is filled, otherwise the order will be rejected. (optional)
-     * @param null|float  $recvWindow        The value cannot be greater than &#x60;60000&#x60;. &lt;br&gt; Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
+     * @param null|string $listClientOrderId Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
+     * @param null|string $newClientOrderId  Used to uniquely identify this cancel. Automatically generated by default. (optional)
+     * @param null|float  $recvWindow        Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified. (optional)
      *
      * @return ApiResponse<DeleteOrderListResponse>
      *
@@ -783,7 +803,7 @@ class SpotRestApi
     /**
      * Operation newOrder.
      *
-     * New order
+     * New order (TRADE)
      *
      * @param NewOrderRequest $newOrderRequest newOrderRequest (required)
      *
@@ -800,7 +820,7 @@ class SpotRestApi
     /**
      * Operation orderAmendKeepPriority.
      *
-     * Order Amend Keep Priority
+     * Order Amend Keep Priority (TRADE)
      *
      * @param OrderAmendKeepPriorityRequest $orderAmendKeepPriorityRequest orderAmendKeepPriorityRequest (required)
      *
@@ -817,7 +837,7 @@ class SpotRestApi
     /**
      * Operation orderCancelReplace.
      *
-     * Cancel an Existing Order and Send a New Order
+     * Cancel an Existing Order and Send a New Order (TRADE)
      *
      * @param OrderCancelReplaceRequest $orderCancelReplaceRequest orderCancelReplaceRequest (required)
      *
@@ -834,7 +854,7 @@ class SpotRestApi
     /**
      * Operation orderListOco.
      *
-     * New Order list - OCO
+     * New Order list - OCO (TRADE)
      *
      * @param OrderListOcoRequest $orderListOcoRequest orderListOcoRequest (required)
      *
@@ -851,7 +871,7 @@ class SpotRestApi
     /**
      * Operation orderListOpo.
      *
-     * New Order List - OPO
+     * New Order List - OPO (TRADE)
      *
      * @param OrderListOpoRequest $orderListOpoRequest orderListOpoRequest (required)
      *
@@ -868,7 +888,7 @@ class SpotRestApi
     /**
      * Operation orderListOpoco.
      *
-     * New Order List - OPOCO
+     * New Order List - OPOCO (TRADE)
      *
      * @param OrderListOpocoRequest $orderListOpocoRequest orderListOpocoRequest (required)
      *
@@ -885,7 +905,7 @@ class SpotRestApi
     /**
      * Operation orderListOto.
      *
-     * New Order list - OTO
+     * New Order list - OTO (TRADE)
      *
      * @param OrderListOtoRequest $orderListOtoRequest orderListOtoRequest (required)
      *
@@ -902,7 +922,7 @@ class SpotRestApi
     /**
      * Operation orderListOtoco.
      *
-     * New Order list - OTOCO
+     * New Order list - OTOCO (TRADE)
      *
      * @param OrderListOtocoRequest $orderListOtocoRequest orderListOtocoRequest (required)
      *
@@ -919,7 +939,7 @@ class SpotRestApi
     /**
      * Operation orderOco.
      *
-     * New OCO - Deprecated
+     * New OCO - Deprecated (TRADE)
      *
      * @param OrderOcoRequest $orderOcoRequest orderOcoRequest (required)
      *
@@ -938,7 +958,7 @@ class SpotRestApi
     /**
      * Operation orderTest.
      *
-     * Test new order
+     * Test new order (TRADE)
      *
      * @param OrderTestRequest $orderTestRequest orderTestRequest (required)
      *
@@ -955,7 +975,7 @@ class SpotRestApi
     /**
      * Operation sorOrder.
      *
-     * New order using SOR
+     * New order using SOR (TRADE)
      *
      * @param SorOrderRequest $sorOrderRequest sorOrderRequest (required)
      *
@@ -972,7 +992,7 @@ class SpotRestApi
     /**
      * Operation sorOrderTest.
      *
-     * Test new order using SOR
+     * Test new order using SOR (TRADE)
      *
      * @param SorOrderTestRequest $sorOrderTestRequest sorOrderTestRequest (required)
      *

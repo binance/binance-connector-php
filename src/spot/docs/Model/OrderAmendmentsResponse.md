@@ -1,4 +1,4 @@
-# # OrderAmendmentsResponse
+# OrderAmendmentsResponse
 
 ## Properties
 

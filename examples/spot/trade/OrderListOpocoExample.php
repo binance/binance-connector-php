@@ -19,8 +19,8 @@ function orderListOpocoExample()
     $orderListOpocoRequest->setSymbol('BNBUSDT');
     $orderListOpocoRequest->setWorkingType(WorkingType::LIMIT);
     $orderListOpocoRequest->setWorkingSide(WorkingSide::BUY);
-    $orderListOpocoRequest->setWorkingPrice(1.0);
-    $orderListOpocoRequest->setWorkingQuantity(1.0);
+    $orderListOpocoRequest->setWorkingPrice(1);
+    $orderListOpocoRequest->setWorkingQuantity(1);
     $orderListOpocoRequest->setPendingSide(PendingSide::BUY);
     $orderListOpocoRequest->setPendingAboveType(PendingAboveType::STOP_LOSS_LIMIT);
     $response = $api->orderListOpoco($orderListOpocoRequest);

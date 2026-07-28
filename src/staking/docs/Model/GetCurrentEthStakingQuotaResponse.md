@@ -1,11 +1,11 @@
-# # GetCurrentEthStakingQuotaResponse
+# GetCurrentEthStakingQuotaResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**leftStakingPersonalQuota** | **string** |  | [optional]
-**leftRedemptionPersonalQuota** | **string** |  | [optional]
+**leftStakingPersonalQuota** | **string** | Show min (Daily available limit, total personal staking quota) | [optional]
+**leftRedemptionPersonalQuota** | **string** | Show min (Daily personal redeem quota, total redemption limit) | [optional]
 **minStakeAmount** | **string** |  | [optional]
 **minRedeemAmount** | **string** |  | [optional]
 **redeemPeriod** | **int** |  | [optional]

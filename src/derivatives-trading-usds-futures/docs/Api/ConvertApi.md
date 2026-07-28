@@ -1,13 +1,15 @@
 # Binance\Client\DerivativesTradingUsdsFutures\ConvertApi
 
+
+
 All URIs are relative to https://fapi.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**acceptTheOfferedQuote()**](ConvertApi.md#acceptTheOfferedQuote) | **POST** /fapi/v1/convert/acceptQuote | Accept the offered quote (USER_DATA) |
 | [**listAllConvertPairs()**](ConvertApi.md#listAllConvertPairs) | **GET** /fapi/v1/convert/exchangeInfo | List All Convert Pairs |
-| [**orderStatus()**](ConvertApi.md#orderStatus) | **GET** /fapi/v1/convert/orderStatus | Order status(USER_DATA) |
-| [**sendQuoteRequest()**](ConvertApi.md#sendQuoteRequest) | **POST** /fapi/v1/convert/getQuote | Send Quote Request(USER_DATA) |
+| [**orderStatus()**](ConvertApi.md#orderStatus) | **GET** /fapi/v1/convert/orderStatus | Order status (USER_DATA) |
+| [**sendQuoteRequest()**](ConvertApi.md#sendQuoteRequest) | **POST** /fapi/v1/convert/getQuote | Send Quote Request (USER_DATA) |
 
 
 ## `acceptTheOfferedQuote()`
@@ -18,7 +20,7 @@ acceptTheOfferedQuote($acceptTheOfferedQuoteRequest): \Binance\Client\Derivative
 
 Accept the offered quote (USER_DATA)
 
-Accept the offered quote by quote ID.  Weight: 200(IP)
+Accept the offered quote by quote ID.  Weight(IP): 200  Security Type: USER_DATA
 
 ### Example
 
@@ -74,7 +76,7 @@ listAllConvertPairs($fromAsset, $toAsset): \Binance\Client\DerivativesTradingUsd
 
 List All Convert Pairs
 
-Query for all convertible token pairs and the tokens’ respective upper/lower limits  * User needs to supply either or both of the input parameter * If not defined for both fromAsset and toAsset, only partial token pairs will be returned * Asset BNFCR is only available to convert for MICA region users.  Weight: 20(IP)
+Query for all convertible token pairs and the tokens’ respective upper/lower limits  Weight(IP): 20  Notes: - User needs to supply either or both of the input parameter - If not defined for both fromAsset and toAsset, only partial token pairs will be returned - Asset BNFCR is only available to convert for MICA region users.
 
 ### Example
 
@@ -89,8 +91,8 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\ConvertApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$fromAsset = 'fromAsset_example'; // string | User spends coin
-$toAsset = 'toAsset_example'; // string | User receives coin
+$fromAsset = BTC; // string | User spends coin
+$toAsset = USDT; // string | User receives coin
 
 try {
     $result = $apiInstance->listAllConvertPairs($fromAsset, $toAsset);
@@ -130,9 +132,9 @@ No authorization required
 orderStatus($orderId, $quoteId): \Binance\Client\DerivativesTradingUsdsFutures\Model\OrderStatusResponse
 ```
 
-Order status(USER_DATA)
+Order status (USER_DATA)
 
-Query order status by order ID.  Weight: 50(IP)
+Query order status by order ID.  Weight(IP): 50  Security Type: USER_DATA
 
 ### Example
 
@@ -147,8 +149,8 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\ConvertApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$orderId = 56; // int | Either orderId or quoteId is required
-$quoteId = 'quoteId_example'; // string | Either orderId or quoteId is required
+$orderId = 933256278426274400; // string | Either orderId or quoteId is required
+$quoteId = 1; // string | Either orderId or quoteId is required
 
 try {
     $result = $apiInstance->orderStatus($orderId, $quoteId);
@@ -162,7 +164,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **orderId** | **int**| Either orderId or quoteId is required | [optional] |
+| **orderId** | **string**| Either orderId or quoteId is required | [optional] |
 | **quoteId** | **string**| Either orderId or quoteId is required | [optional] |
 
 ### Return type
@@ -188,9 +190,9 @@ No authorization required
 sendQuoteRequest($sendQuoteRequestRequest): \Binance\Client\DerivativesTradingUsdsFutures\Model\SendQuoteRequestResponse
 ```
 
-Send Quote Request(USER_DATA)
+Send Quote Request (USER_DATA)
 
-Request a quote for the requested token pairs  * Either fromAmount or toAmount should be sent * `quoteId` will be returned only if you have enough funds to convert  Weight: 50(IP)
+Request a quote for the requested token pairs  Weight: 50(IP) 360/hour, 500/day  Security Type: USER_DATA  Notes: - Either fromAmount or toAmount should be sent - `quoteId` will be returned only if you have enough funds to convert
 
 ### Example
 

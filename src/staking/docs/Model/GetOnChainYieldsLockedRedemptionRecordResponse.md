@@ -1,4 +1,4 @@
-# # GetOnChainYieldsLockedRedemptionRecordResponse
+# GetOnChainYieldsLockedRedemptionRecordResponse
 
 ## Properties
 

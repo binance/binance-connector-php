@@ -1,4 +1,4 @@
-# # GetSolStakingHistoryResponse
+# GetSolStakingHistoryResponse
 
 ## Properties
 

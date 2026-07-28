@@ -1,4 +1,4 @@
-# # SymbolStatus
+# SymbolStatus
 
 ## Properties
 

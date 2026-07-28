@@ -10,7 +10,7 @@ function getCollateralAssetDataExample()
     $configurationBuilder = VipLoanRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new VipLoanRestApi($configurationBuilder->build());
-    $collateralCoin = '';
+    $collateralCoin = 'BUSD';
     $recvWindow = 5000;
     $response = $api->getCollateralAssetData($collateralCoin, $recvWindow);
     print_r($response);

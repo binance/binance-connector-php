@@ -1,11 +1,11 @@
-# # GetDelistScheduleResponseInner
+# GetDelistScheduleResponseInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**delistTime** | **int** |  | [optional]
-**crossMarginAssets** | **string[]** |  | [optional]
-**isolatedMarginSymbols** | **string[]** |  | [optional]
+**delistTime** | **int** | delist Time. | [optional]
+**crossMarginAssets** | **string[]** | cross Margin Assets list. | [optional]
+**isolatedMarginSymbols** | **string[]** | isolated Margin Symbols list. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

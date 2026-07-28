@@ -105,6 +105,7 @@ class OthersApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/spot/delist-schedule', $request->getUri()->getPath());
         self::assertTrue(!isset($queryMap['signature']));
@@ -120,6 +121,7 @@ class OthersApiTest extends TestCase
         $response = $this->getApiMock($request)->systemStatus();
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/system/status', $request->getUri()->getPath());

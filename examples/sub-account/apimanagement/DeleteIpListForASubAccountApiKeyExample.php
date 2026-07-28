@@ -10,9 +10,9 @@ function deleteIpListForASubAccountApiKeyExample()
     $configurationBuilder = SubAccountRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
-    $email = 'sub-account-email@email.com';
-    $subAccountApiKey = '';
-    $ipAddress = '';
+    $email = '123@test.com';
+    $subAccountApiKey = 'k5V49ldtn4tszj6W3hystegdfvmGbqDzjmkCtpTvC0G74WhK7yd4rfCTo4lShf';
+    $ipAddress = '69.210.67.14';
     $recvWindow = 5000;
     $response = $api->deleteIpListForASubAccountApiKey($email, $subAccountApiKey, $ipAddress, $recvWindow);
     print_r($response);

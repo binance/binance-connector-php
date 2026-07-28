@@ -1,13 +1,13 @@
-# # OpenInterestStatisticsResponseInner
+# OpenInterestStatisticsResponseInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pair** | **string** |  | [optional]
-**contractType** | **string** |  | [optional]
-**sumOpenInterest** | **string** |  | [optional]
-**sumOpenInterestValue** | **string** |  | [optional]
-**timestamp** | **int** |  | [optional]
+**pair** | **string** | Pair | [optional]
+**contractType** | **string** | Contract type. | [optional]
+**sumOpenInterest** | **string** | unit: cont | [optional]
+**sumOpenInterestValue** | **string** | unit: base asset | [optional]
+**timestamp** | **int** | Timestamp in milliseconds. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

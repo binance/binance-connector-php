@@ -10,11 +10,11 @@ function allOrdersExample()
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
-    $orderId = 1;
+    $symbol = 'BTCUSDT';
+    $orderId = 1917641;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
-    $limit = 100;
+    $limit = 50;
     $recvWindow = 5000;
     $response = $api->allOrders($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
     print_r($response);

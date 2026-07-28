@@ -1,4 +1,4 @@
-# # ToggleBnbBurnOnSpotTradeAndMarginInterestResponse
+# ToggleBnbBurnOnSpotTradeAndMarginInterestResponse
 
 ## Properties
 

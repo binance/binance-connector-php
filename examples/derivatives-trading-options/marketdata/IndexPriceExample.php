@@ -9,7 +9,7 @@ function indexPriceExample()
 {
     $configurationBuilder = DerivativesTradingOptionsRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingOptionsRestApi($configurationBuilder->build());
-    $underlying = '';
+    $underlying = 'BTCUSDT';
     $response = $api->indexPrice($underlying);
     print_r($response);
 }

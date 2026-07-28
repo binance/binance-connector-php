@@ -1,4 +1,4 @@
-# # GetBorrowInterestRateResponse
+# GetBorrowInterestRateResponse
 
 ## Properties
 

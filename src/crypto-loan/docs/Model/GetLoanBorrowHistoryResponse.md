@@ -1,4 +1,4 @@
-# # GetLoanBorrowHistoryResponse
+# GetLoanBorrowHistoryResponse
 
 ## Properties
 

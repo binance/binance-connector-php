@@ -1,4 +1,4 @@
-# # RepayFuturesNegativeBalanceRequest
+# RepayFuturesNegativeBalanceRequest
 
 ## Properties
 

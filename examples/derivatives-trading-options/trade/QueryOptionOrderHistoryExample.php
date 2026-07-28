@@ -10,11 +10,11 @@ function queryOptionOrderHistoryExample()
     $configurationBuilder = DerivativesTradingOptionsRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingOptionsRestApi($configurationBuilder->build());
-    $symbol = '';
-    $orderId = 1;
+    $symbol = 'BTC-200730-9000-C';
+    $orderId = 4611875134427365000;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
-    $limit = 100;
+    $limit = 20;
     $recvWindow = 5000;
     $response = $api->queryOptionOrderHistory($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
     print_r($response);

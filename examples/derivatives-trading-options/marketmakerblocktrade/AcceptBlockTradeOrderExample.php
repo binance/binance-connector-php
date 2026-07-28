@@ -12,7 +12,7 @@ function acceptBlockTradeOrderExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingOptionsRestApi($configurationBuilder->build());
     $acceptBlockTradeOrderRequest = new AcceptBlockTradeOrderRequest();
-    $acceptBlockTradeOrderRequest->setBlockOrderMatchingKey('');
+    $acceptBlockTradeOrderRequest->setBlockOrderMatchingKey('7d046e6e-a429-4335-ab9d-6a681febcde5');
     $response = $api->acceptBlockTradeOrder($acceptBlockTradeOrderRequest);
     print_r($response);
 }

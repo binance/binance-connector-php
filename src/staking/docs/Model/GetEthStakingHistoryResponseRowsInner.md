@@ -1,4 +1,4 @@
-# # GetEthStakingHistoryResponseRowsInner
+# GetEthStakingHistoryResponseRowsInner
 
 ## Properties
 

@@ -17,7 +17,7 @@ function orderListOcoExample()
     $orderListOcoRequest = new OrderListOcoRequest();
     $orderListOcoRequest->setSymbol('BNBUSDT');
     $orderListOcoRequest->setSide(Side::BUY);
-    $orderListOcoRequest->setQuantity(1.0);
+    $orderListOcoRequest->setQuantity(1);
     $orderListOcoRequest->setAboveType(AboveType::STOP_LOSS_LIMIT);
     $orderListOcoRequest->setBelowType(BelowType::STOP_LOSS);
     $response = $api->orderListOco($orderListOcoRequest);

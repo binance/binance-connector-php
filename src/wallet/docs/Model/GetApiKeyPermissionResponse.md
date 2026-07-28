@@ -1,4 +1,4 @@
-# # GetApiKeyPermissionResponse
+# GetApiKeyPermissionResponse
 
 ## Properties
 

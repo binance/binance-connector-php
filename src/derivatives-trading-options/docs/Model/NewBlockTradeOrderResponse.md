@@ -1,13 +1,13 @@
-# # NewBlockTradeOrderResponse
+# NewBlockTradeOrderResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**blockTradeSettlementKey** | **string** |  | [optional]
-**expireTime** | **int** |  | [optional]
-**liquidity** | **string** |  | [optional]
-**status** | **string** |  | [optional]
-**legs** | [**\Binance\Client\DerivativesTradingOptions\Model\ExtendBlockTradeOrderResponseLegsInner[]**](ExtendBlockTradeOrderResponseLegsInner.md) |  | [optional]
+**blockTradeSettlementKey** | **string** | block Trade Settlement Key | [optional]
+**expireTime** | **int** | expire Time | [optional]
+**liquidity** | **string** | liquidity | [optional]
+**status** | **string** | status | [optional]
+**legs** | [**\Binance\Client\DerivativesTradingOptions\Model\ExtendBlockTradeOrderResponseLegsInner[]**](ExtendBlockTradeOrderResponseLegsInner.md) | legs | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

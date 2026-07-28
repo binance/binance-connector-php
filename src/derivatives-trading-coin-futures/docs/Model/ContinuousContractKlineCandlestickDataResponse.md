@@ -1,4 +1,4 @@
-# # ContinuousContractKlineCandlestickDataResponse
+# ContinuousContractKlineCandlestickDataResponse
 
 ## Properties
 

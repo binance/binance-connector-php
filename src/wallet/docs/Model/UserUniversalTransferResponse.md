@@ -1,4 +1,4 @@
-# # UserUniversalTransferResponse
+# UserUniversalTransferResponse
 
 ## Properties
 

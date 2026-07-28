@@ -1,4 +1,4 @@
-# # MarginAccountBorrowRequest
+# MarginAccountBorrowRequest
 
 ## Properties
 

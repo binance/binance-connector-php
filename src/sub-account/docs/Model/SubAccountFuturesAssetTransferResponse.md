@@ -1,4 +1,4 @@
-# # SubAccountFuturesAssetTransferResponse
+# SubAccountFuturesAssetTransferResponse
 
 ## Properties
 

@@ -121,7 +121,7 @@ class TransferApi
     /**
      * Operation createInboundTransfer.
      *
-     * Create Inbound Transfer
+     * Create Inbound Transfer (TRADE)
      *
      * @param CreateInboundTransferRequest $createInboundTransferRequest createInboundTransferRequest (required)
      *
@@ -138,7 +138,7 @@ class TransferApi
     /**
      * Operation createInboundTransferWithHttpInfo.
      *
-     * Create Inbound Transfer
+     * Create Inbound Transfer (TRADE)
      *
      * @param CreateInboundTransferRequest $createInboundTransferRequest (required)
      *
@@ -321,7 +321,7 @@ class TransferApi
     /**
      * Operation createOutboundTransfer.
      *
-     * Create Outbound Transfer
+     * Create Outbound Transfer (TRADE)
      *
      * @param CreateOutboundTransferRequest $createOutboundTransferRequest createOutboundTransferRequest (required)
      *
@@ -338,7 +338,7 @@ class TransferApi
     /**
      * Operation createOutboundTransferWithHttpInfo.
      *
-     * Create Outbound Transfer
+     * Create Outbound Transfer (TRADE)
      *
      * @param CreateOutboundTransferRequest $createOutboundTransferRequest (required)
      *
@@ -521,7 +521,7 @@ class TransferApi
     /**
      * Operation queryTransferList.
      *
-     * Query Transfer List
+     * Query Transfer List (USER_DATA)
      *
      * @param string         $walletAddress User&#39;s prediction wallet address (required)
      * @param string         $startDate     Start date. Format: &#x60;yyyy-MM-dd&#x60;. Must be ≤ &#x60;endDate&#x60; (required)
@@ -545,7 +545,7 @@ class TransferApi
     /**
      * Operation queryTransferListWithHttpInfo.
      *
-     * Query Transfer List
+     * Query Transfer List (USER_DATA)
      *
      * @param string         $walletAddress User&#39;s prediction wallet address (required)
      * @param string         $startDate     Start date. Format: &#x60;yyyy-MM-dd&#x60;. Must be ≤ &#x60;endDate&#x60; (required)
@@ -804,7 +804,7 @@ class TransferApi
     /**
      * Operation queryTransferStatus.
      *
-     * Query Transfer Status
+     * Query Transfer Status (USER_DATA)
      *
      * @param string   $transferId Transfer ID returned from outbound/inbound transfer (required)
      * @param null|int $recvWindow Request validity window in milliseconds (optional)
@@ -822,7 +822,7 @@ class TransferApi
     /**
      * Operation queryTransferStatusWithHttpInfo.
      *
-     * Query Transfer Status
+     * Query Transfer Status (USER_DATA)
      *
      * @param string   $transferId Transfer ID returned from outbound/inbound transfer (required)
      * @param null|int $recvWindow Request validity window in milliseconds (optional)

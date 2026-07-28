@@ -1,24 +1,24 @@
-# # GetExchangeInfoResponseDataSymbolsInnerFiltersInner
+# GetExchangeInfoResponseDataSymbolsInnerFiltersInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filterType** | **string** |  | [optional]
-**minPrice** | **string** |  | [optional]
-**maxPrice** | **string** |  | [optional]
-**tickSize** | **string** |  | [optional]
-**stepSize** | **string** |  | [optional]
-**maxQty** | **string** |  | [optional]
-**minQty** | **string** |  | [optional]
-**limit** | **int** |  | [optional]
-**minNotional** | **string** |  | [optional]
-**maxNotional** | **string** |  | [optional]
-**multiplierDown** | **string** |  | [optional]
-**multiplierUp** | **string** |  | [optional]
-**bidMultiplierUp** | **string** |  | [optional]
-**askMultiplierUp** | **string** |  | [optional]
-**bidMultiplierDown** | **string** |  | [optional]
-**askMultiplierDown** | **string** |  | [optional]
+**filterType** | **string** | Filter type. | [optional]
+**minPrice** | **string** | Minimum price. | [optional]
+**maxPrice** | **string** | Maximum price. | [optional]
+**tickSize** | **string** | Tick size. | [optional]
+**stepSize** | **string** | Step size. | [optional]
+**maxQty** | **string** | Maximum quantity. | [optional]
+**minQty** | **string** | Minimum quantity. | [optional]
+**limit** | **int** | Maximum allowed orders for this rule. | [optional]
+**minNotional** | **string** | Minimum notional value. | [optional]
+**maxNotional** | **string** | Maximum notional value. | [optional]
+**multiplierDown** | **string** | Lower multiplier bound. | [optional]
+**multiplierUp** | **string** | Upper multiplier bound. | [optional]
+**bidMultiplierUp** | **string** | Upper multiplier bound for bids. | [optional]
+**askMultiplierUp** | **string** | Upper multiplier bound for asks. | [optional]
+**bidMultiplierDown** | **string** | Lower multiplier bound for bids. | [optional]
+**askMultiplierDown** | **string** | Lower multiplier bound for asks. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

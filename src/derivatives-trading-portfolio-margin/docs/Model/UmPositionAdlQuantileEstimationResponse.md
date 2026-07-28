@@ -1,4 +1,4 @@
-# # UmPositionAdlQuantileEstimationResponse
+# UmPositionAdlQuantileEstimationResponse
 
 ## Properties
 

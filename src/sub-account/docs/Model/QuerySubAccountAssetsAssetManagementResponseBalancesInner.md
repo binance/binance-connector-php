@@ -1,4 +1,4 @@
-# # QuerySubAccountAssetsAssetManagementResponseBalancesInner
+# QuerySubAccountAssetsAssetManagementResponseBalancesInner
 
 ## Properties
 

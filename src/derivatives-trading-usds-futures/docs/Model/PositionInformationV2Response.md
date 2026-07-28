@@ -1,4 +1,4 @@
-# # PositionInformationV2Response
+# PositionInformationV2Response
 
 ## Properties
 

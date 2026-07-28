@@ -1,4 +1,4 @@
-# # GetAllIsolatedMarginSymbolResponse
+# GetAllIsolatedMarginSymbolResponse
 
 ## Properties
 

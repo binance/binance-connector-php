@@ -1,4 +1,4 @@
-# # QueryAllCmConditionalOrdersResponse
+# QueryAllCmConditionalOrdersResponse
 
 ## Properties
 

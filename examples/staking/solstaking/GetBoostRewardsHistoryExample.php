@@ -3,6 +3,7 @@
 require_once __DIR__.'/../vendor/autoload.php';
 
 use Binance\Client\Staking\Api\StakingRestApi;
+use Binance\Client\Staking\Model\OrderType;
 use Binance\Client\Staking\StakingRestApiUtil;
 
 function getBoostRewardsHistoryExample()
@@ -10,7 +11,7 @@ function getBoostRewardsHistoryExample()
     $configurationBuilder = StakingRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new StakingRestApi($configurationBuilder->build());
-    $type = 'CLAIM';
+    $type = OrderType::CLAIM;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $current = 1;

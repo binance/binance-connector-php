@@ -1,4 +1,4 @@
-# # AccountFundingFlowResponse
+# AccountFundingFlowResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetCollateralAssetDataResponse
+# GetCollateralAssetDataResponse
 
 ## Properties
 

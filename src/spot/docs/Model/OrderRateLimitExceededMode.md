@@ -1,4 +1,4 @@
-# # OrderRateLimitExceededMode
+# OrderRateLimitExceededMode
 
 ## Properties
 

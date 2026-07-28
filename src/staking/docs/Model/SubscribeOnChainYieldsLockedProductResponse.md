@@ -1,4 +1,4 @@
-# # SubscribeOnChainYieldsLockedProductResponse
+# SubscribeOnChainYieldsLockedProductResponse
 
 ## Properties
 

@@ -10,11 +10,11 @@ function queryAllAlgoOrdersExample()
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
-    $algoId = 1;
+    $symbol = 'BTCUSDT';
+    $algoId = 2146760;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
-    $limit = 100;
+    $limit = 50;
     $recvWindow = 5000;
     $response = $api->queryAllAlgoOrders($symbol, $algoId, $startTime, $endTime, $limit, $recvWindow);
     print_r($response);

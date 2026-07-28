@@ -12,8 +12,8 @@ function withdrawlAssetsFromTheManagedSubAccountExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
     $withdrawlAssetsFromTheManagedSubAccountRequest = new WithdrawlAssetsFromTheManagedSubAccountRequest();
-    $withdrawlAssetsFromTheManagedSubAccountRequest->setFromEmail('');
-    $withdrawlAssetsFromTheManagedSubAccountRequest->setAsset('');
+    $withdrawlAssetsFromTheManagedSubAccountRequest->setFromEmail('from@test.com');
+    $withdrawlAssetsFromTheManagedSubAccountRequest->setAsset('BTC');
     $withdrawlAssetsFromTheManagedSubAccountRequest->setAmount(1.0);
     $response = $api->withdrawlAssetsFromTheManagedSubAccount($withdrawlAssetsFromTheManagedSubAccountRequest);
     print_r($response);

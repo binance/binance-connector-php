@@ -12,7 +12,7 @@ function changePositionModeExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
     $changePositionModeRequest = new ChangePositionModeRequest();
-    $changePositionModeRequest->setDualSidePosition('');
+    $changePositionModeRequest->setDualSidePosition('true');
     $response = $api->changePositionMode($changePositionModeRequest);
     print_r($response);
 }

@@ -19,10 +19,10 @@ function orderListOtocoExample()
     $orderListOtocoRequest->setSymbol('BNBUSDT');
     $orderListOtocoRequest->setWorkingType(WorkingType::LIMIT);
     $orderListOtocoRequest->setWorkingSide(WorkingSide::BUY);
-    $orderListOtocoRequest->setWorkingPrice(1.0);
-    $orderListOtocoRequest->setWorkingQuantity(1.0);
+    $orderListOtocoRequest->setWorkingPrice(1);
+    $orderListOtocoRequest->setWorkingQuantity(1);
     $orderListOtocoRequest->setPendingSide(PendingSide::BUY);
-    $orderListOtocoRequest->setPendingQuantity(1.0);
+    $orderListOtocoRequest->setPendingQuantity(1);
     $orderListOtocoRequest->setPendingAboveType(PendingAboveType::STOP_LOSS_LIMIT);
     $response = $api->orderListOtoco($orderListOtocoRequest);
     print_r($response);

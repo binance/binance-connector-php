@@ -1,4 +1,4 @@
-# # RedeemEthResponse
+# RedeemEthResponse
 
 ## Properties
 
@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **success** | **bool** |  | [optional]
 **ethAmount** | **string** |  | [optional]
+**redeemId** | **int** |  | [optional]
 **conversionRatio** | **string** |  | [optional]
 **arrivalTime** | **int** |  | [optional]
 

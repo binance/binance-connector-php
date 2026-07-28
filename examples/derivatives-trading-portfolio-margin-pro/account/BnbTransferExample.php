@@ -5,6 +5,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Api\DerivativesTradingPortfolioMarginProRestApi;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\DerivativesTradingPortfolioMarginProRestApiUtil;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\BnbTransferRequest;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferSide;
 
 function bnbTransferExample()
 {
@@ -13,7 +14,7 @@ function bnbTransferExample()
     $api = new DerivativesTradingPortfolioMarginProRestApi($configurationBuilder->build());
     $bnbTransferRequest = new BnbTransferRequest();
     $bnbTransferRequest->setAmount(1.0);
-    $bnbTransferRequest->setTransferSide('');
+    $bnbTransferRequest->setTransferSide(TransferSide::TO_UM);
     $response = $api->bnbTransfer($bnbTransferRequest);
     print_r($response);
 }

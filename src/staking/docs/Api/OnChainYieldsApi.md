@@ -1,5 +1,7 @@
 # Binance\Client\Staking\OnChainYieldsApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -13,9 +15,9 @@ All URIs are relative to https://api.binance.com, except if the operation define
 | [**getOnChainYieldsLockedSubscriptionRecord()**](OnChainYieldsApi.md#getOnChainYieldsLockedSubscriptionRecord) | **GET** /sapi/v1/onchain-yields/locked/history/subscriptionRecord | Get On-chain Yields Locked Subscription Record (USER_DATA) |
 | [**onChainYieldsAccount()**](OnChainYieldsApi.md#onChainYieldsAccount) | **GET** /sapi/v1/onchain-yields/account | On-chain Yields Account (USER_DATA) |
 | [**redeemOnChainYieldsLockedProduct()**](OnChainYieldsApi.md#redeemOnChainYieldsLockedProduct) | **POST** /sapi/v1/onchain-yields/locked/redeem | Redeem On-chain Yields Locked Product (TRADE) |
-| [**setOnChainYieldsLockedAutoSubscribe()**](OnChainYieldsApi.md#setOnChainYieldsLockedAutoSubscribe) | **POST** /sapi/v1/onchain-yields/locked/setAutoSubscribe | Set On-chain Yields Locked Auto Subscribe(USER_DATA) |
-| [**setOnChainYieldsLockedProductRedeemOption()**](OnChainYieldsApi.md#setOnChainYieldsLockedProductRedeemOption) | **POST** /sapi/v1/onchain-yields/locked/setRedeemOption | Set On-chain Yields Locked Product Redeem Option(USER_DATA) |
-| [**subscribeOnChainYieldsLockedProduct()**](OnChainYieldsApi.md#subscribeOnChainYieldsLockedProduct) | **POST** /sapi/v1/onchain-yields/locked/subscribe | Subscribe On-chain Yields Locked Product(TRADE) |
+| [**setOnChainYieldsLockedAutoSubscribe()**](OnChainYieldsApi.md#setOnChainYieldsLockedAutoSubscribe) | **POST** /sapi/v1/onchain-yields/locked/setAutoSubscribe | Set On-chain Yields Locked Auto Subscribe (USER_DATA) |
+| [**setOnChainYieldsLockedProductRedeemOption()**](OnChainYieldsApi.md#setOnChainYieldsLockedProductRedeemOption) | **POST** /sapi/v1/onchain-yields/locked/setRedeemOption | Set On-chain Yields Locked Product Redeem Option (USER_DATA) |
+| [**subscribeOnChainYieldsLockedProduct()**](OnChainYieldsApi.md#subscribeOnChainYieldsLockedProduct) | **POST** /sapi/v1/onchain-yields/locked/subscribe | Subscribe On-chain Yields Locked Product (TRADE) |
 
 
 ## `getOnChainYieldsLockedPersonalLeftQuota()`
@@ -26,7 +28,7 @@ getOnChainYieldsLockedPersonalLeftQuota($projectId, $recvWindow): \Binance\Clien
 
 Get On-chain Yields Locked Personal Left Quota (USER_DATA)
 
-Get On-chain Yields Locked Personal Left Quota  Weight: 50
+Get On-chain Yields Locked Personal Left Quota  Weight(IP): 50  Security Type: USER_DATA
 
 ### Example
 
@@ -41,8 +43,8 @@ $apiInstance = new Binance\Client\Staking\Api\OnChainYieldsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$projectId = 'projectId_example'; // string
-$recvWindow = 56; // int
+$projectId = 1; // string
+$recvWindow = 5000; // int | Request validity window in milliseconds.
 
 try {
     $result = $apiInstance->getOnChainYieldsLockedPersonalLeftQuota($projectId, $recvWindow);
@@ -57,7 +59,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **projectId** | **string**|  | |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds. | [optional] |
 
 ### Return type
 
@@ -84,7 +86,7 @@ getOnChainYieldsLockedProductList($asset, $current, $size, $recvWindow): \Binanc
 
 Get On-chain Yields Locked Product List (USER_DATA)
 
-Get available On-chain Yields Locked product list  * Get available On-chain Yields Locked product list  Weight: 50
+Get available On-chain Yields Locked product list  Weight(IP): 50  Security Type: USER_DATA  Notes: - Get available On-chain Yields Locked product list
 
 ### Example
 
@@ -99,10 +101,10 @@ $apiInstance = new Binance\Client\Staking\Api\OnChainYieldsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$asset = SOL; // string
+$current = 1; // int | Currently querying page
+$size = 10; // int | Number of results per page.
+$recvWindow = 5000; // int | Request validity window in milliseconds.
 
 try {
     $result = $apiInstance->getOnChainYieldsLockedProductList($asset, $current, $size, $recvWindow);
@@ -117,9 +119,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **asset** | **string**|  | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page | [optional] |
+| **size** | **int**| Number of results per page. | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds. | [optional] |
 
 ### Return type
 
@@ -146,7 +148,7 @@ getOnChainYieldsLockedProductPosition($asset, $positionId, $projectId, $current,
 
 Get On-chain Yields Locked Product Position (USER_DATA)
 
-Get On-chain Yields Locked Product Position  Weight: 50
+Get On-chain Yields Locked Product Position  Weight(IP): 50  Security Type: USER_DATA
 
 ### Example
 
@@ -161,12 +163,12 @@ $apiInstance = new Binance\Client\Staking\Api\OnChainYieldsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
-$positionId = 'positionId_example'; // string
-$projectId = 'projectId_example'; // string
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$asset = BTC; // string
+$positionId = 1; // string
+$projectId = 1; // string
+$current = 1; // int | Currently querying page
+$size = 10; // int | Number of results per page.
+$recvWindow = 5000; // int | Request validity window in milliseconds.
 
 try {
     $result = $apiInstance->getOnChainYieldsLockedProductPosition($asset, $positionId, $projectId, $current, $size, $recvWindow);
@@ -183,9 +185,9 @@ try {
 | **asset** | **string**|  | [optional] |
 | **positionId** | **string**|  | [optional] |
 | **projectId** | **string**|  | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page | [optional] |
+| **size** | **int**| Number of results per page. | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds. | [optional] |
 
 ### Return type
 
@@ -212,7 +214,7 @@ getOnChainYieldsLockedRedemptionRecord($positionId, $redeemId, $asset, $startTim
 
 Get On-chain Yields Locked Redemption Record (USER_DATA)
 
-Get On-chain Yields Locked Redemption Record  * The time between `startTime` and `endTime` cannot be longer than 3 months. * If `startTime` and `endTime` are both not sent, then the last 30 days' data will be returned. * If `startTime` is sent but `endTime` is not sent, the next 30 days' data beginning from `startTime` will be returned. * If `endTime` is sent but `startTime` is not sent, the 30 days' data before `endTime` will be returned.  Weight: 50
+Get On-chain Yields Locked Redemption Record  Weight(IP): 50  Security Type: USER_DATA  Notes: - The time between `startTime` and `endTime` cannot be longer than 3 months. - If `startTime` and `endTime`   are both not sent, then the last 30 days' data will be returned. - If `startTime` is sent but `endTime` is not   sent, the next 30 days' data beginning from `startTime` will be returned. - If `endTime` is sent but   `startTime` is not sent, the 30 days' data before `endTime` will be returned.
 
 ### Example
 
@@ -227,14 +229,14 @@ $apiInstance = new Binance\Client\Staking\Api\OnChainYieldsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$positionId = 'positionId_example'; // string
-$redeemId = 'redeemId_example'; // string
-$asset = 'asset_example'; // string
-$startTime = 56; // int
-$endTime = 56; // int
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$positionId = 1; // string
+$redeemId = 1; // string
+$asset = BTC; // string
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$current = 1; // int | Currently querying page
+$size = 10; // int
+$recvWindow = 5000; // int | Request validity window in milliseconds.
 
 try {
     $result = $apiInstance->getOnChainYieldsLockedRedemptionRecord($positionId, $redeemId, $asset, $startTime, $endTime, $current, $size, $recvWindow);
@@ -253,9 +255,9 @@ try {
 | **asset** | **string**|  | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page | [optional] |
+| **size** | **int**|  | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds. | [optional] |
 
 ### Return type
 
@@ -282,7 +284,7 @@ getOnChainYieldsLockedRewardsHistory($positionId, $asset, $startTime, $endTime, 
 
 Get On-chain Yields Locked Rewards History (USER_DATA)
 
-Get On-chain Yields Locked Rewards History  * The time between `startTime` and `endTime` cannot be longer than 3 months. * If `startTime` and `endTime` are both not sent, then the last 30 days' data will be returned. * If `startTime` is sent but `endTime` is not sent, the next 30 days' data beginning from `startTime` will be returned. * If `endTime` is sent but `startTime` is not sent, the 30 days' data before `endTime` will be returned.  Weight: 50
+Get On-chain Yields Locked Rewards History  Weight(IP): 50  Security Type: USER_DATA  Notes: - The time between `startTime` and `endTime` cannot be longer than 3 months. - If `startTime` and `endTime`   are both not sent, then the last 30 days' data will be returned. - If `startTime` is sent but `endTime` is not   sent, the next 30 days' data beginning from `startTime` will be returned. - If `endTime` is sent but   `startTime` is not sent, the 30 days' data before `endTime` will be returned.
 
 ### Example
 
@@ -297,13 +299,13 @@ $apiInstance = new Binance\Client\Staking\Api\OnChainYieldsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$positionId = 'positionId_example'; // string
-$asset = 'asset_example'; // string
-$startTime = 56; // int
-$endTime = 56; // int
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$positionId = 1; // string
+$asset = BTC; // string
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$current = 1; // int | Currently querying page
+$size = 10; // int
+$recvWindow = 5000; // int | Request validity window in milliseconds.
 
 try {
     $result = $apiInstance->getOnChainYieldsLockedRewardsHistory($positionId, $asset, $startTime, $endTime, $current, $size, $recvWindow);
@@ -321,9 +323,9 @@ try {
 | **asset** | **string**|  | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page | [optional] |
+| **size** | **int**|  | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds. | [optional] |
 
 ### Return type
 
@@ -350,7 +352,7 @@ getOnChainYieldsLockedSubscriptionPreview($projectId, $amount, $autoSubscribe, $
 
 Get On-chain Yields Locked Subscription Preview (USER_DATA)
 
-Get On-chain Yields Locked Subscription Preview  Weight: 50
+Get On-chain Yields Locked Subscription Preview  Weight(IP): 50  Security Type: USER_DATA
 
 ### Example
 
@@ -365,10 +367,10 @@ $apiInstance = new Binance\Client\Staking\Api\OnChainYieldsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$projectId = 'projectId_example'; // string
-$amount = 3.4; // float
-$autoSubscribe = True; // bool | true or false, default true.
-$recvWindow = 56; // int
+$projectId = 1; // string
+$amount = 1.0; // float
+$autoSubscribe = true; // bool
+$recvWindow = 5000; // int | Request validity window in milliseconds.
 
 try {
     $result = $apiInstance->getOnChainYieldsLockedSubscriptionPreview($projectId, $amount, $autoSubscribe, $recvWindow);
@@ -384,8 +386,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **projectId** | **string**|  | |
 | **amount** | **float**|  | |
-| **autoSubscribe** | **bool**| true or false, default true. | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **autoSubscribe** | **bool**|  | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds. | [optional] |
 
 ### Return type
 
@@ -412,7 +414,7 @@ getOnChainYieldsLockedSubscriptionRecord($purchaseId, $clientId, $asset, $startT
 
 Get On-chain Yields Locked Subscription Record (USER_DATA)
 
-Get On-chain Yields Locked Subscription Record  * The time between `startTime` and `endTime` cannot be longer than 3 months. * If `startTime` and `endTime` are both not sent, then the last 30 days' data will be returned. * If `startTime` is sent but `endTime` is not sent, the next 30 days' data beginning from `startTime` will be returned. * If `endTime` is sent but `startTime` is not sent, the 30 days' data before `endTime` will be returned.  Weight: 50
+Get On-chain Yields Locked Subscription Record  Weight(IP): 50  Security Type: USER_DATA  Notes: - The time between `startTime` and `endTime` cannot be longer than 3 months. - If `startTime` and `endTime`   are both not sent, then the last 30 days' data will be returned. - If `startTime` is sent but `endTime` is not   sent, the next 30 days' data beginning from `startTime` will be returned. - If `endTime` is sent but   `startTime` is not sent, the 30 days' data before `endTime` will be returned.
 
 ### Example
 
@@ -427,14 +429,14 @@ $apiInstance = new Binance\Client\Staking\Api\OnChainYieldsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$purchaseId = 'purchaseId_example'; // string
-$clientId = 'clientId_example'; // string
-$asset = 'asset_example'; // string
-$startTime = 56; // int
-$endTime = 56; // int
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$purchaseId = 1; // string
+$clientId = 1; // string
+$asset = BTC; // string
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$current = 1; // int | Currently querying page
+$size = 10; // int
+$recvWindow = 5000; // int | Request validity window in milliseconds.
 
 try {
     $result = $apiInstance->getOnChainYieldsLockedSubscriptionRecord($purchaseId, $clientId, $asset, $startTime, $endTime, $current, $size, $recvWindow);
@@ -453,9 +455,9 @@ try {
 | **asset** | **string**|  | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page | [optional] |
+| **size** | **int**|  | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds. | [optional] |
 
 ### Return type
 
@@ -482,7 +484,7 @@ onChainYieldsAccount($recvWindow): \Binance\Client\Staking\Model\OnChainYieldsAc
 
 On-chain Yields Account (USER_DATA)
 
-On-chain Yields Account query  Weight: 50
+On-chain Yields Account query  Weight(IP): 50  Security Type: USER_DATA
 
 ### Example
 
@@ -497,7 +499,7 @@ $apiInstance = new Binance\Client\Staking\Api\OnChainYieldsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int | The value cannot be greater than `60000`
 
 try {
     $result = $apiInstance->onChainYieldsAccount($recvWindow);
@@ -511,7 +513,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
 
 ### Return type
 
@@ -538,7 +540,7 @@ redeemOnChainYieldsLockedProduct($redeemOnChainYieldsLockedProductRequest): \Bin
 
 Redeem On-chain Yields Locked Product (TRADE)
 
-Redeem On-chain Yields Locked Product  * You need to open `Enable Spot & Margin Trading` permission for the API Key which requests this endpoint.  Weight: 1/3s per account
+Redeem On-chain Yields Locked Product  Weight(IP): 200  Security Type: TRADE  Notes: - You need to open `Enable Spot & Margin Trading` permission for the API Key which requests this endpoint.
 
 ### Example
 
@@ -592,9 +594,9 @@ No authorization required
 setOnChainYieldsLockedAutoSubscribe($setOnChainYieldsLockedAutoSubscribeRequest): \Binance\Client\Staking\Model\SetOnChainYieldsLockedAutoSubscribeResponse
 ```
 
-Set On-chain Yields Locked Auto Subscribe(USER_DATA)
+Set On-chain Yields Locked Auto Subscribe (USER_DATA)
 
-Set On-chain Yield locked auto subscribe  Weight: 50
+Set On-chain Yield locked auto subscribe  Weight(IP): 50  Security Type: USER_DATA
 
 ### Example
 
@@ -648,9 +650,9 @@ No authorization required
 setOnChainYieldsLockedProductRedeemOption($setOnChainYieldsLockedProductRedeemOptionRequest): \Binance\Client\Staking\Model\SetOnChainYieldsLockedProductRedeemOptionResponse
 ```
 
-Set On-chain Yields Locked Product Redeem Option(USER_DATA)
+Set On-chain Yields Locked Product Redeem Option (USER_DATA)
 
-Set On-chain Yields redeem option for Locked product  Weight: 50
+Set On-chain Yields redeem option for Locked product  Weight(IP): 50  Security Type: USER_DATA
 
 ### Example
 
@@ -704,9 +706,9 @@ No authorization required
 subscribeOnChainYieldsLockedProduct($subscribeOnChainYieldsLockedProductRequest): \Binance\Client\Staking\Model\SubscribeOnChainYieldsLockedProductResponse
 ```
 
-Subscribe On-chain Yields Locked Product(TRADE)
+Subscribe On-chain Yields Locked Product (TRADE)
 
-Subscribe On-chain Yields Locked Product  * You need to open `Enable Spot & Margin Trading` permission for the API Key which requests this endpoint.  Weight: 200
+Subscribe On-chain Yields Locked Product  Weight(IP): 200  Security Type: TRADE  Notes: - You need to open `Enable Spot & Margin Trading` permission for the API Key which requests this endpoint.
 
 ### Example
 

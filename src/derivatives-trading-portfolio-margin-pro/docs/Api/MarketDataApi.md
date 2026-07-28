@@ -1,12 +1,14 @@
 # Binance\Client\DerivativesTradingPortfolioMarginPro\MarketDataApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getPortfolioMarginAssetLeverage()**](MarketDataApi.md#getPortfolioMarginAssetLeverage) | **GET** /sapi/v1/portfolio/margin-asset-leverage | Get Portfolio Margin Asset Leverage(USER_DATA) |
-| [**portfolioMarginCollateralRate()**](MarketDataApi.md#portfolioMarginCollateralRate) | **GET** /sapi/v1/portfolio/collateralRate | Portfolio Margin Collateral Rate(MARKET_DATA) |
-| [**portfolioMarginProTieredCollateralRate()**](MarketDataApi.md#portfolioMarginProTieredCollateralRate) | **GET** /sapi/v2/portfolio/collateralRate | Portfolio Margin Pro Tiered Collateral Rate(USER_DATA) |
+| [**getPortfolioMarginAssetLeverage()**](MarketDataApi.md#getPortfolioMarginAssetLeverage) | **GET** /sapi/v1/portfolio/margin-asset-leverage | Get Portfolio Margin Asset Leverage (USER_DATA) |
+| [**portfolioMarginCollateralRate()**](MarketDataApi.md#portfolioMarginCollateralRate) | **GET** /sapi/v1/portfolio/collateralRate | Portfolio Margin Collateral Rate (MARKET_DATA) |
+| [**portfolioMarginProTieredCollateralRate()**](MarketDataApi.md#portfolioMarginProTieredCollateralRate) | **GET** /sapi/v2/portfolio/collateralRate | Portfolio Margin Pro Tiered Collateral Rate (USER_DATA) |
 | [**queryPortfolioMarginAssetIndexPrice()**](MarketDataApi.md#queryPortfolioMarginAssetIndexPrice) | **GET** /sapi/v1/portfolio/asset-index-price | Query Portfolio Margin Asset Index Price (MARKET_DATA) |
 
 
@@ -16,9 +18,9 @@ All URIs are relative to https://api.binance.com, except if the operation define
 getPortfolioMarginAssetLeverage(): \Binance\Client\DerivativesTradingPortfolioMarginPro\Model\GetPortfolioMarginAssetLeverageResponse
 ```
 
-Get Portfolio Margin Asset Leverage(USER_DATA)
+Get Portfolio Margin Asset Leverage (USER_DATA)
 
-Get Portfolio Margin Asset Leverage  Weight: 50
+Get Portfolio Margin Asset Leverage  Weight(IP): 50  Security Type: USER_DATA
 
 ### Example
 
@@ -69,9 +71,9 @@ No authorization required
 portfolioMarginCollateralRate(): \Binance\Client\DerivativesTradingPortfolioMarginPro\Model\PortfolioMarginCollateralRateResponse
 ```
 
-Portfolio Margin Collateral Rate(MARKET_DATA)
+Portfolio Margin Collateral Rate (MARKET_DATA)
 
-Portfolio Margin Collateral Rate  Weight: 50
+Portfolio Margin Collateral Rate  Weight(IP): 50  Security Type: MARKET_DATA
 
 ### Example
 
@@ -122,9 +124,9 @@ No authorization required
 portfolioMarginProTieredCollateralRate($recvWindow): \Binance\Client\DerivativesTradingPortfolioMarginPro\Model\PortfolioMarginProTieredCollateralRateResponse
 ```
 
-Portfolio Margin Pro Tiered Collateral Rate(USER_DATA)
+Portfolio Margin Pro Tiered Collateral Rate (USER_DATA)
 
-Portfolio Margin PRO Tiered Collateral Rate  Weight: 50
+Portfolio Margin PRO Tiered Collateral Rate  Weight(IP): 50  Security Type: USER_DATA
 
 ### Example
 
@@ -139,7 +141,7 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMarginPro\Api\Marke
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->portfolioMarginProTieredCollateralRate($recvWindow);
@@ -180,7 +182,7 @@ queryPortfolioMarginAssetIndexPrice($asset): \Binance\Client\DerivativesTradingP
 
 Query Portfolio Margin Asset Index Price (MARKET_DATA)
 
-Query Portfolio Margin Asset Index Price  Weight: 1 if send asset or 50 if not send asset
+Query Portfolio Margin Asset Index Price  Weight: - 1 if `asset` is sent - 50 if `asset` is not sent  Security Type: MARKET_DATA
 
 ### Example
 
@@ -195,7 +197,7 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMarginPro\Api\Marke
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
+$asset = BTC; // string
 
 try {
     $result = $apiInstance->queryPortfolioMarginAssetIndexPrice($asset);

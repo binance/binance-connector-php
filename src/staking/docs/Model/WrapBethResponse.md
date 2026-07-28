@@ -1,4 +1,4 @@
-# # WrapBethResponse
+# WrapBethResponse
 
 ## Properties
 

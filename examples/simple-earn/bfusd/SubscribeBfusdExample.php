@@ -12,7 +12,7 @@ function subscribeBfusdExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SimpleEarnRestApi($configurationBuilder->build());
     $subscribeBfusdRequest = new SubscribeBfusdRequest();
-    $subscribeBfusdRequest->setAsset('');
+    $subscribeBfusdRequest->setAsset('USDT');
     $subscribeBfusdRequest->setAmount(1.0);
     $response = $api->subscribeBfusd($subscribeBfusdRequest);
     print_r($response);

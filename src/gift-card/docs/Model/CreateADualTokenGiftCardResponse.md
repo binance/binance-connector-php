@@ -1,4 +1,4 @@
-# # CreateADualTokenGiftCardResponse
+# CreateADualTokenGiftCardResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CmNotionalAndLeverageBracketsResponse
+# CmNotionalAndLeverageBracketsResponse
 
 ## Properties
 

@@ -1,5 +1,7 @@
 # Binance\Client\DerivativesTradingOptions\AccountApi
 
+
+
 All URIs are relative to https://eapi.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -16,7 +18,7 @@ accountFundingFlow($currency, $recordId, $startTime, $endTime, $limit, $recvWind
 
 Account Funding Flow (USER_DATA)
 
-Query account funding flows.  Weight: 1
+Query account funding flows.  Weight(IP): 1  Security Type: USER_DATA  Notes: - Only support querying data in the past 3 months
 
 ### Example
 
@@ -31,12 +33,12 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$currency = 'currency_example'; // string | Asset type, only support USDT  as of now
-$recordId = 56; // int | Return the recordId and subsequent data, the latest data is returned by default, e.g 100000
-$startTime = 56; // int | Start Time, e.g 1593511200000
-$endTime = 56; // int | End Time, e.g 1593512200000
-$limit = 56; // int | Number of result sets returned Default:100 Max:1000
-$recvWindow = 56; // int
+$currency = new \Binance\Client\DerivativesTradingOptions\Model\\Binance\Client\DerivativesTradingOptions\Model\Currency(); // \Binance\Client\DerivativesTradingOptions\Model\Currency | Asset type, only support USDT  as of now
+$recordId = 100000; // int | Return the recordId and subsequent data, the latest data is returned by default
+$startTime = 1623319461670; // int | Start Time, e.g 1593511200000
+$endTime = 1641782889000; // int | End Time, e.g 1593512200000
+$limit = 20; // int | Number of result sets returned
+$recvWindow = 5000; // int | Recv Window.
 
 try {
     $result = $apiInstance->accountFundingFlow($currency, $recordId, $startTime, $endTime, $limit, $recvWindow);
@@ -50,12 +52,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **currency** | **string**| Asset type, only support USDT  as of now | |
-| **recordId** | **int**| Return the recordId and subsequent data, the latest data is returned by default, e.g 100000 | [optional] |
+| **currency** | [**\Binance\Client\DerivativesTradingOptions\Model\Currency**](../Model/.md)| Asset type, only support USDT  as of now | |
+| **recordId** | **int**| Return the recordId and subsequent data, the latest data is returned by default | [optional] |
 | **startTime** | **int**| Start Time, e.g 1593511200000 | [optional] |
 | **endTime** | **int**| End Time, e.g 1593512200000 | [optional] |
-| **limit** | **int**| Number of result sets returned Default:100 Max:1000 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **limit** | **int**| Number of result sets returned | [optional] |
+| **recvWindow** | **int**| Recv Window. | [optional] |
 
 ### Return type
 
@@ -82,7 +84,7 @@ optionMarginAccountInformation($recvWindow): \Binance\Client\DerivativesTradingO
 
 Option Margin Account Information (USER_DATA)
 
-Get current account information.  Weight: 3
+Get current account information.  Weight(IP): 3  Security Type: USER_DATA
 
 ### Example
 
@@ -97,7 +99,7 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int | Recv Window.
 
 try {
     $result = $apiInstance->optionMarginAccountInformation($recvWindow);
@@ -111,7 +113,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| Recv Window. | [optional] |
 
 ### Return type
 

@@ -1,4 +1,4 @@
-# # AssetDetailResponseCTR
+# AssetDetailResponseCTR
 
 ## Properties
 

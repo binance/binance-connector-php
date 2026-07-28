@@ -9,7 +9,7 @@ function queryMarginPriceindexExample()
 {
     $configurationBuilder = MarginTradingRestApiUtil::getConfigurationBuilder();
     $api = new MarginTradingRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BNBBTC';
     $response = $api->queryMarginPriceindex($symbol);
     print_r($response);
 }

@@ -4,14 +4,15 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 use Binance\Client\CryptoLoan\Api\CryptoLoanRestApi;
 use Binance\Client\CryptoLoan\CryptoLoanRestApiUtil;
+use Binance\Client\CryptoLoan\Model\OrderType;
 
 function getCryptoLoansIncomeHistoryExample()
 {
     $configurationBuilder = CryptoLoanRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new CryptoLoanRestApi($configurationBuilder->build());
-    $asset = '';
-    $type = '0';
+    $asset = 'BUSD';
+    $type = OrderType::BORROW_IN;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $limit = 10;

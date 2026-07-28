@@ -1,5 +1,7 @@
 # Binance\Client\DerivativesTradingPortfolioMargin\MarketDataApi
 
+
+
 All URIs are relative to https://papi.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -15,7 +17,7 @@ testConnectivity()
 
 Test Connectivity
 
-Test connectivity to the Rest API.  Weight: 1
+Test connectivity to the Rest API.  Weight(IP): 1
 
 ### Example
 

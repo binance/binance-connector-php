@@ -1,4 +1,4 @@
-# # GetSpotRebateHistoryRecordsResponse
+# GetSpotRebateHistoryRecordsResponse
 
 ## Properties
 

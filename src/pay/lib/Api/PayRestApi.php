@@ -10,14 +10,14 @@ use Binance\Common\Dtos\ApiResponse;
 class PayRestApi
 {
     /**
-     * @var PayApi
+     * @var DefaultApi
      */
-    private $payApi;
+    private $defaultApi;
 
     public function __construct(
         ?ClientConfiguration $clientConfig = new ClientConfiguration(),
     ) {
-        $this->payApi = new PayApi($clientConfig);
+        $this->defaultApi = new DefaultApi($clientConfig);
     }
 
     /**
@@ -25,10 +25,10 @@ class PayRestApi
      *
      * Get Pay Trade History
      *
-     * @param null|int $startTime  startTime (optional)
-     * @param null|int $endTime    endTime (optional)
-     * @param null|int $limit      default 100, max 100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $startTime  Start time in milliseconds. (optional)
+     * @param null|int $endTime    End time in milliseconds. (optional)
+     * @param null|int $limit      Number of records to return. (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetPayTradeHistoryResponse>
      *
@@ -37,6 +37,6 @@ class PayRestApi
      */
     public function getPayTradeHistory($startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
-        return $this->payApi->getPayTradeHistory($startTime, $endTime, $limit, $recvWindow);
+        return $this->defaultApi->getPayTradeHistory($startTime, $endTime, $limit, $recvWindow);
     }
 }

@@ -1,4 +1,4 @@
-# # QueryUmPositionInformationResponse
+# QueryUmPositionInformationResponse
 
 ## Properties
 

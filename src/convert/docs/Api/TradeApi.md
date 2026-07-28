@@ -1,16 +1,18 @@
 # Binance\Client\Convert\TradeApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**acceptQuote()**](TradeApi.md#acceptQuote) | **POST** /sapi/v1/convert/acceptQuote | Accept Quote (TRADE) |
-| [**cancelLimitOrder()**](TradeApi.md#cancelLimitOrder) | **POST** /sapi/v1/convert/limit/cancelOrder | Cancel limit order (USER_DATA) |
-| [**getConvertTradeHistory()**](TradeApi.md#getConvertTradeHistory) | **GET** /sapi/v1/convert/tradeFlow | Get Convert Trade History(USER_DATA) |
-| [**orderStatus()**](TradeApi.md#orderStatus) | **GET** /sapi/v1/convert/orderStatus | Order status(USER_DATA) |
-| [**placeLimitOrder()**](TradeApi.md#placeLimitOrder) | **POST** /sapi/v1/convert/limit/placeOrder | Place limit order (USER_DATA) |
+| [**cancelLimitOrder()**](TradeApi.md#cancelLimitOrder) | **POST** /sapi/v1/convert/limit/cancelOrder | Cancel limit order (TRADE) |
+| [**getConvertTradeHistory()**](TradeApi.md#getConvertTradeHistory) | **GET** /sapi/v1/convert/tradeFlow | Get Convert Trade History (USER_DATA) |
+| [**orderStatus()**](TradeApi.md#orderStatus) | **GET** /sapi/v1/convert/orderStatus | Order status (USER_DATA) |
+| [**placeLimitOrder()**](TradeApi.md#placeLimitOrder) | **POST** /sapi/v1/convert/limit/placeOrder | Place limit order (TRADE) |
 | [**queryLimitOpenOrders()**](TradeApi.md#queryLimitOpenOrders) | **GET** /sapi/v1/convert/limit/queryOpenOrders | Query limit open orders (USER_DATA) |
-| [**sendQuoteRequest()**](TradeApi.md#sendQuoteRequest) | **POST** /sapi/v1/convert/getQuote | Send Quote Request(USER_DATA) |
+| [**sendQuoteRequest()**](TradeApi.md#sendQuoteRequest) | **POST** /sapi/v1/convert/getQuote | Send Quote Request (TRADE) |
 
 
 ## `acceptQuote()`
@@ -21,7 +23,7 @@ acceptQuote($acceptQuoteRequest): \Binance\Client\Convert\Model\AcceptQuoteRespo
 
 Accept Quote (TRADE)
 
-Accept the offered quote by quote ID.  Weight: 500(UID)
+Accept the offered quote by quote ID.  Weight(UID): 500  Security Type: TRADE
 
 ### Example
 
@@ -75,9 +77,9 @@ No authorization required
 cancelLimitOrder($cancelLimitOrderRequest): \Binance\Client\Convert\Model\CancelLimitOrderResponse
 ```
 
-Cancel limit order (USER_DATA)
+Cancel limit order (TRADE)
 
-Enable users to cancel a limit order  Weight: 200(UID)
+Enable users to cancel a limit order  Weight(UID): 200  Security Type: TRADE
 
 ### Example
 
@@ -131,9 +133,9 @@ No authorization required
 getConvertTradeHistory($startTime, $endTime, $limit, $recvWindow): \Binance\Client\Convert\Model\GetConvertTradeHistoryResponse
 ```
 
-Get Convert Trade History(USER_DATA)
+Get Convert Trade History (USER_DATA)
 
-Get Convert Trade History  * The max interval between startTime and endTime is 30 days.  Weight: 3000
+Get Convert Trade History  Weight(UID): 3000  Security Type: USER_DATA  Notes: - The max interval between `startTime` and `endTime` is 30 days.
 
 ### Example
 
@@ -148,10 +150,10 @@ $apiInstance = new Binance\Client\Convert\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$startTime = 56; // int
-$endTime = 56; // int
-$limit = 56; // int | Default 100, Max 1000
-$recvWindow = 56; // int | The value cannot be greater than 60000
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$limit = 100; // int | Number of records to return
+$recvWindow = 5000; // int | Request validity window in milliseconds
 
 try {
     $result = $apiInstance->getConvertTradeHistory($startTime, $endTime, $limit, $recvWindow);
@@ -167,8 +169,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **startTime** | **int**|  | |
 | **endTime** | **int**|  | |
-| **limit** | **int**| Default 100, Max 1000 | [optional] |
-| **recvWindow** | **int**| The value cannot be greater than 60000 | [optional] |
+| **limit** | **int**| Number of records to return | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds | [optional] |
 
 ### Return type
 
@@ -193,9 +195,9 @@ No authorization required
 orderStatus($orderId, $quoteId): \Binance\Client\Convert\Model\OrderStatusResponse
 ```
 
-Order status(USER_DATA)
+Order status (USER_DATA)
 
-Query order status by order ID.  Weight: 100(UID)
+Query order status by order ID.  Weight(UID): 100  Security Type: USER_DATA
 
 ### Example
 
@@ -210,8 +212,8 @@ $apiInstance = new Binance\Client\Convert\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$orderId = 'orderId_example'; // string | Either orderId or quoteId is required
-$quoteId = 'quoteId_example'; // string | Either orderId or quoteId is required
+$orderId = 1; // string | Either orderId or quoteId is required
+$quoteId = 1; // string | Either orderId or quoteId is required
 
 try {
     $result = $apiInstance->orderStatus($orderId, $quoteId);
@@ -251,9 +253,9 @@ No authorization required
 placeLimitOrder($placeLimitOrderRequest): \Binance\Client\Convert\Model\PlaceLimitOrderResponse
 ```
 
-Place limit order (USER_DATA)
+Place limit order (TRADE)
 
-Enable users to place a limit order  * `baseAsset` or `quoteAsset` can be determined via `exchangeInfo` endpoint. * Limit price is defined from `baseAsset` to `quoteAsset`. * Either `baseAmount` or `quoteAmount` is used.  Weight: 500(UID)
+Enable users to place a limit order  Weight(UID): 500  Security Type: TRADE  Notes: - `baseAsset` and `quoteAsset` can be determined via the `exchangeInfo` endpoint. - Limit price is defined from `baseAsset` to `quoteAsset`. - Exactly one of `baseAmount` or `quoteAmount` should be sent.
 
 ### Example
 
@@ -309,7 +311,7 @@ queryLimitOpenOrders($recvWindow): \Binance\Client\Convert\Model\QueryLimitOpenO
 
 Query limit open orders (USER_DATA)
 
-Request a quote for the requested token pairs  Weight: 3000(UID)
+Query current open limit orders  Weight(UID): 3000  Security Type: USER_DATA
 
 ### Example
 
@@ -324,7 +326,7 @@ $apiInstance = new Binance\Client\Convert\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int | The value cannot be greater than 60000
+$recvWindow = 5000; // int | Request validity window in milliseconds
 
 try {
     $result = $apiInstance->queryLimitOpenOrders($recvWindow);
@@ -338,7 +340,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**| The value cannot be greater than 60000 | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds | [optional] |
 
 ### Return type
 
@@ -363,9 +365,9 @@ No authorization required
 sendQuoteRequest($sendQuoteRequestRequest): \Binance\Client\Convert\Model\SendQuoteRequestResponse
 ```
 
-Send Quote Request(USER_DATA)
+Send Quote Request (TRADE)
 
-Request a quote for the requested token pairs  * Either fromAmount or toAmount should be sent * `quoteId` will be returned only if you have enough funds to convert  Weight: 200(UID)
+Request a quote for the requested token pairs  Weight(UID): 200  Security Type: TRADE  Notes: - Either `fromAmount` or `toAmount` should be sent. - `quoteId` is returned only if you have enough funds to convert.
 
 ### Example
 

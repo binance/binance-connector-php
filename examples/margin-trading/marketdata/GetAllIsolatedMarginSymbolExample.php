@@ -9,7 +9,7 @@ function getAllIsolatedMarginSymbolExample()
 {
     $configurationBuilder = MarginTradingRestApiUtil::getConfigurationBuilder();
     $api = new MarginTradingRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BNBBTC';
     $recvWindow = 5000;
     $response = $api->getAllIsolatedMarginSymbol($symbol, $recvWindow);
     print_r($response);

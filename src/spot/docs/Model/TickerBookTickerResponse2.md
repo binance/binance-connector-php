@@ -1,4 +1,4 @@
-# # TickerBookTickerResponse2
+# TickerBookTickerResponse2
 
 ## Properties
 

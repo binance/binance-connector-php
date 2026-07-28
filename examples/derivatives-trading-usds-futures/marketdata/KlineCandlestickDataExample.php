@@ -10,11 +10,11 @@ function klineCandlestickDataExample()
 {
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
-    $interval = Interval::INTERVAL_1S;
+    $symbol = 'BTCUSDT';
+    $interval = Interval::INTERVAL_1M;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
-    $limit = 100;
+    $limit = 50;
     $response = $api->klineCandlestickData($symbol, $interval, $startTime, $endTime, $limit);
     print_r($response);
 }

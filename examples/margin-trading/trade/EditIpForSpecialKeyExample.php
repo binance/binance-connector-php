@@ -12,7 +12,7 @@ function editIpForSpecialKeyExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new MarginTradingRestApi($configurationBuilder->build());
     $editIpForSpecialKeyRequest = new EditIpForSpecialKeyRequest();
-    $editIpForSpecialKeyRequest->setIp('');
+    $editIpForSpecialKeyRequest->setIp('24.156.99.202');
     $api->editIpForSpecialKey($editIpForSpecialKeyRequest);
 }
 

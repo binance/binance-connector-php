@@ -29,6 +29,7 @@
 
 namespace Binance\Client\Mining\Test\Api;
 
+use Binance\Client\Mining\Api\DefaultApi;
 use Binance\Client\Mining\Api\MiningApi;
 use Binance\Client\Mining\Configuration;
 use Binance\Client\Mining\Model\CancelHashrateResaleConfigurationRequest;
@@ -85,7 +86,7 @@ class MiningApiTest extends TestCase
             }))
         ;
 
-        $apiMock = $this->getMockBuilder(MiningApi::class)
+        $apiMock = $this->getMockBuilder(DefaultApi::class)
             ->setConstructorArgs([$clientConfig, $clientMock])
             ->onlyMethods(['getTimestamp'])
             ->getMock()
@@ -223,17 +224,16 @@ class MiningApiTest extends TestCase
     public function testHashrateResaleDetail()
     {
         $configId = 1;
-        $userName = '';
         $pageIndex = 1;
-        $pageSize = null;
+        $pageSize = 10;
         $recvWindow = 5000;
-        $response = $this->getApiMock($request)->hashrateResaleDetail($configId, $userName, $pageIndex, $pageSize, $recvWindow);
+        $response = $this->getApiMock($request)->hashrateResaleDetail($configId, $pageIndex, $pageSize, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/mining/hash-transfer/profit/details', $request->getUri()->getPath());
-        self::assertEquals('a696c96ceb92dd583b16d09c9ae524d17cd14816667f58269c9ee88f174e79b7', $queryMap['signature']);
+        self::assertEquals('246bd97019f10e370218889d8a2e4fe03eac751b4c449b274379f069590220c3', $queryMap['signature']);
     }
 
     /**

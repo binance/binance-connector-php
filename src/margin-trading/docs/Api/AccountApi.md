@@ -1,5 +1,7 @@
 # Binance\Client\MarginTrading\AccountApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -25,7 +27,7 @@ adjustCrossMarginMaxLeverage($adjustCrossMarginMaxLeverageRequest): \Binance\Cli
 
 Adjust cross margin max leverage (USER_DATA)
 
-Adjust cross margin max leverage  * The margin level need higher than the initial risk ratio of adjusted leverage, the initial risk ratio of 3x is 1.5 , the initial risk ratio of 5x is 1.25;  The detail conditions on how to switch between Cross Margin Classic and Cross Margin Pro can refer to [the FAQ](https://www.binance.com/en/support/faq/how-to-activate-the-cross-margin-pro-mode-on-binance-e27786da05e743a694b8c625b3bc475d).  Weight: 3000
+Adjust cross margin max leverage  Weight(UID): 3000, 1 times/min per IP  Security Type: USER_DATA  Notes: - The margin level need higher than the initial risk ratio of adjusted leverage, the initial risk ratio of 3x is 1.5 , the initial risk ratio of 5x is 1.25; The detail conditions on how to switch between Cross Margin Classic and Cross Margin Pro can refer to [the FAQ](https://www.binance.com/en/support/faq/how-to-activate-the-cross-margin-pro-mode-on-binance-e27786da05e743a694b8c625b3bc475d).
 
 ### Example
 
@@ -81,7 +83,7 @@ disableIsolatedMarginAccount($symbol, $recvWindow): \Binance\Client\MarginTradin
 
 Disable Isolated Margin Account (TRADE)
 
-Disable isolated margin account for a specific symbol. Each trading pair can only be deactivated once every 24 hours.  Weight: 300(UID)
+Disable isolated margin account for a specific symbol. Each trading pair can only be deactivated once every 24 hours.  Weight(UID): 300  Security Type: TRADE
 
 ### Example
 
@@ -96,8 +98,8 @@ $apiInstance = new Binance\Client\MarginTrading\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int | No more than 60000
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->disableIsolatedMarginAccount($symbol, $recvWindow);
@@ -112,7 +114,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -139,7 +141,7 @@ enableIsolatedMarginAccount($enableIsolatedMarginAccountRequest): \Binance\Clien
 
 Enable Isolated Margin Account (TRADE)
 
-Enable isolated margin account for a specific symbol(Only supports activation of previously disabled accounts).  Weight: 300(UID)
+Enable isolated margin account for a specific symbol(Only supports activation of previously disabled accounts).  Weight(UID): 300  Security Type: TRADE
 
 ### Example
 
@@ -195,7 +197,7 @@ getBnbBurnStatus($recvWindow): \Binance\Client\MarginTrading\Model\GetBnbBurnSta
 
 Get BNB Burn Status (USER_DATA)
 
-Get BNB Burn Status  Weight: 1(IP)
+Get BNB Burn Status  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -210,7 +212,7 @@ $apiInstance = new Binance\Client\MarginTrading\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int | No more than 60000
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getBnbBurnStatus($recvWindow);
@@ -224,7 +226,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -251,7 +253,7 @@ getSummaryOfMarginAccount($recvWindow): \Binance\Client\MarginTrading\Model\GetS
 
 Get Summary of Margin account (USER_DATA)
 
-Get personal margin level information  Weight: 10(IP)
+Get personal margin level information  Weight(IP): 10  Security Type: USER_DATA
 
 ### Example
 
@@ -266,7 +268,7 @@ $apiInstance = new Binance\Client\MarginTrading\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int | No more than 60000
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getSummaryOfMarginAccount($recvWindow);
@@ -280,7 +282,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -307,7 +309,7 @@ queryCrossIsolatedMarginCapitalFlow($asset, $symbol, $type, $startTime, $endTime
 
 Query Cross Isolated Margin Capital Flow (USER_DATA)
 
-Query Cross Isolated Margin Capital Flow  Weight: 100(IP)
+Query Cross Isolated Margin Capital Flow  Weight(IP): 100  Security Type: USER_DATA  Notes: - Only supports querying the data of the last 90 days  - The time between startTime and endTime cannot be longer than 7 days.  - If fromId is set, the data with id > fromId will be returned. Otherwise the latest data will be returned  - To query isolated data, Symbol needs to be entered.
 
 ### Example
 
@@ -322,14 +324,14 @@ $apiInstance = new Binance\Client\MarginTrading\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
-$symbol = 'symbol_example'; // string | isolated margin pair
-$type = 'type_example'; // string | Transfer Type: ROLL_IN, ROLL_OUT
-$startTime = 56; // int | 只支持查询最近90天的数据
-$endTime = 56; // int
-$fromId = 56; // int | 如设置fromId, 将返回id > fromId的数据。否则将返回最新数据
-$limit = 56; // int | Default Value: 500; Max Value: 1000
-$recvWindow = 56; // int | No more than 60000
+$asset = USDT; // string
+$symbol = BTCUSDT; // string | Mandatory for Isolated data
+$type = new \Binance\Client\MarginTrading\Model\\Binance\Client\MarginTrading\Model\OrderType(); // \Binance\Client\MarginTrading\Model\OrderType
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$fromId = 1; // int
+$limit = 500; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryCrossIsolatedMarginCapitalFlow($asset, $symbol, $type, $startTime, $endTime, $fromId, $limit, $recvWindow);
@@ -344,13 +346,13 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **asset** | **string**|  | [optional] |
-| **symbol** | **string**| isolated margin pair | [optional] |
-| **type** | **string**| Transfer Type: ROLL_IN, ROLL_OUT | [optional] |
-| **startTime** | **int**| 只支持查询最近90天的数据 | [optional] |
+| **symbol** | **string**| Mandatory for Isolated data | [optional] |
+| **type** | [**\Binance\Client\MarginTrading\Model\OrderType**](../Model/.md)|  | [optional] |
+| **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **fromId** | **int**| 如设置fromId, 将返回id &gt; fromId的数据。否则将返回最新数据 | [optional] |
-| **limit** | **int**| Default Value: 500; Max Value: 1000 | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **fromId** | **int**|  | [optional] |
+| **limit** | **int**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -377,7 +379,7 @@ queryCrossMarginAccountDetails($recvWindow): \Binance\Client\MarginTrading\Model
 
 Query Cross Margin Account Details (USER_DATA)
 
-Query Cross Margin Account Details  Weight: 10(IP)
+Query Cross Margin Account Details  Weight(IP): 10  Security Type: USER_DATA
 
 ### Example
 
@@ -392,7 +394,7 @@ $apiInstance = new Binance\Client\MarginTrading\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int | No more than 60000
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryCrossMarginAccountDetails($recvWindow);
@@ -406,7 +408,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -433,7 +435,7 @@ queryCrossMarginFeeData($vipLevel, $coin, $recvWindow): \Binance\Client\MarginTr
 
 Query Cross Margin Fee Data (USER_DATA)
 
-Get cross margin fee data collection with any vip level or user's current specific data as https://www.binance.com/en/margin-fee  Weight: 1 when coin is specified;(IP)
+Get cross margin fee data collection with any vip level or user's current specific data as https://www.binance.com/en/margin-fee  Weight: 1 when coin is specified;(IP) 5 when the coin parameter is omitted(IP)  Security Type: USER_DATA
 
 ### Example
 
@@ -448,9 +450,9 @@ $apiInstance = new Binance\Client\MarginTrading\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$vipLevel = 56; // int | User's current specific margin data will be returned if vipLevel is omitted
-$coin = 'coin_example'; // string
-$recvWindow = 56; // int | No more than 60000
+$vipLevel = 1; // int | User's current specific margin data will be returned if vipLevel is omitted
+$coin = BTC; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryCrossMarginFeeData($vipLevel, $coin, $recvWindow);
@@ -466,7 +468,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **vipLevel** | **int**| User&#39;s current specific margin data will be returned if vipLevel is omitted | [optional] |
 | **coin** | **string**|  | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -493,7 +495,7 @@ queryEnabledIsolatedMarginAccountLimit($recvWindow): \Binance\Client\MarginTradi
 
 Query Enabled Isolated Margin Account Limit (USER_DATA)
 
-Query enabled isolated margin account limit.  Weight: 1(IP)
+Query enabled isolated margin account limit.  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -508,7 +510,7 @@ $apiInstance = new Binance\Client\MarginTrading\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int | No more than 60000
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryEnabledIsolatedMarginAccountLimit($recvWindow);
@@ -522,7 +524,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -549,7 +551,7 @@ queryIsolatedMarginAccountInfo($symbols, $recvWindow): \Binance\Client\MarginTra
 
 Query Isolated Margin Account Info (USER_DATA)
 
-Query Isolated Margin Account Info  * If \"symbols\" is not sent, all isolated assets will be returned. * If \"symbols\" is sent, only the isolated assets of the sent symbols will be returned.  Weight: 10(IP)
+Query Isolated Margin Account Info  Weight(IP): 10  Security Type: USER_DATA  Notes: - If \"symbols\" is not sent, all isolated assets will be returned.  - If \"symbols\" is sent, only the isolated assets of the sent symbols will be returned.
 
 ### Example
 
@@ -564,8 +566,8 @@ $apiInstance = new Binance\Client\MarginTrading\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbols = 'symbols_example'; // string | Max 5 symbols can be sent; separated by \",\". e.g. \"BTCUSDT,BNBUSDT,ADAUSDT\"
-$recvWindow = 56; // int | No more than 60000
+$symbols = BTCUSDT,BNBUSDT,ADAUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryIsolatedMarginAccountInfo($symbols, $recvWindow);
@@ -579,8 +581,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbols** | **string**| Max 5 symbols can be sent; separated by \&quot;,\&quot;. e.g. \&quot;BTCUSDT,BNBUSDT,ADAUSDT\&quot; | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **symbols** | **string**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -607,7 +609,7 @@ queryIsolatedMarginFeeData($vipLevel, $symbol, $recvWindow): \Binance\Client\Mar
 
 Query Isolated Margin Fee Data (USER_DATA)
 
-Get isolated margin fee data collection with any vip level or user's current specific data as https://www.binance.com/en/margin-fee  Weight: 1 when a single is specified;(IP)
+Get isolated margin fee data collection with any vip level or user's current specific data as https://www.binance.com/en/margin-fee  Weight: 1 when a single is specified;(IP) 10 when the symbol parameter is omitted(IP)  Security Type: USER_DATA
 
 ### Example
 
@@ -622,9 +624,9 @@ $apiInstance = new Binance\Client\MarginTrading\Api\AccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$vipLevel = 56; // int | User's current specific margin data will be returned if vipLevel is omitted
-$symbol = 'symbol_example'; // string | isolated margin pair
-$recvWindow = 56; // int | No more than 60000
+$vipLevel = 1; // int
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryIsolatedMarginFeeData($vipLevel, $symbol, $recvWindow);
@@ -638,9 +640,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **vipLevel** | **int**| User&#39;s current specific margin data will be returned if vipLevel is omitted | [optional] |
-| **symbol** | **string**| isolated margin pair | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **vipLevel** | **int**|  | [optional] |
+| **symbol** | **string**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 

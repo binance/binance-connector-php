@@ -1,10 +1,12 @@
 # Binance\Client\DerivativesTradingCoinFutures\UserDataStreamsApi
 
+
+
 All URIs are relative to https://dapi.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**closeUserDataStream()**](UserDataStreamsApi.md#closeUserDataStream) | **DELETE** /dapi/v1/listenKey | Close User Data Stream(USER_STREAM) |
+| [**closeUserDataStream()**](UserDataStreamsApi.md#closeUserDataStream) | **DELETE** /dapi/v1/listenKey | Close User Data Stream (USER_STREAM) |
 | [**keepaliveUserDataStream()**](UserDataStreamsApi.md#keepaliveUserDataStream) | **PUT** /dapi/v1/listenKey | Keepalive User Data Stream (USER_STREAM) |
 | [**startUserDataStream()**](UserDataStreamsApi.md#startUserDataStream) | **POST** /dapi/v1/listenKey | Start User Data Stream (USER_STREAM) |
 
@@ -15,9 +17,9 @@ All URIs are relative to https://dapi.binance.com, except if the operation defin
 closeUserDataStream()
 ```
 
-Close User Data Stream(USER_STREAM)
+Close User Data Stream (USER_STREAM)
 
-Close out a user data stream.  Weight: 1
+Close out a user data stream.  Weight(IP): 1  Security Type: USER_STREAM
 
 ### Example
 
@@ -69,7 +71,7 @@ keepaliveUserDataStream(): \Binance\Client\DerivativesTradingCoinFutures\Model\K
 
 Keepalive User Data Stream (USER_STREAM)
 
-Keepalive a user data stream to prevent a time out. User data streams will close after 60 minutes.  Weight: 1
+Keepalive a user data stream to prevent a time out. User data streams will close after 60 minutes.  Weight(IP): 1  Security Type: USER_STREAM
 
 ### Example
 
@@ -122,7 +124,7 @@ startUserDataStream(): \Binance\Client\DerivativesTradingCoinFutures\Model\Start
 
 Start User Data Stream (USER_STREAM)
 
-Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent. If the account has an active `listenKey`, that `listenKey` will be returned and its validity will be extended for 60 minutes.  Weight: 1
+Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent. If the account has an active `listenKey`, that `listenKey` will be returned and its validity will be extended for 60 minutes.  Weight(IP): 1  Security Type: USER_STREAM
 
 ### Example
 

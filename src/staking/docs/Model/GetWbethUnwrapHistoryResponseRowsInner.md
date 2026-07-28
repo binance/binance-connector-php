@@ -1,4 +1,4 @@
-# # GetWbethUnwrapHistoryResponseRowsInner
+# GetWbethUnwrapHistoryResponseRowsInner
 
 ## Properties
 

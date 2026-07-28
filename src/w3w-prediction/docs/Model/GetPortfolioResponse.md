@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **totalPnl** | **string** |  | [optional]
 **totalCostBasis** | **string** |  | [optional]
 **totalCurrentValue** | **string** |  | [optional]
-**positions** | [**\Binance\Client\W3wPrediction\Model\GetPortfolioResponsePositionsInner[]**](GetPortfolioResponsePositionsInner.md) |  | [optional]
+**positions** | [**\Binance\Client\W3WPrediction\Model\GetPortfolioResponsePositionsInner[]**](GetPortfolioResponsePositionsInner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

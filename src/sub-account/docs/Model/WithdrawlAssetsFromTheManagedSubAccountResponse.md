@@ -1,4 +1,4 @@
-# # WithdrawlAssetsFromTheManagedSubAccountResponse
+# WithdrawlAssetsFromTheManagedSubAccountResponse
 
 ## Properties
 

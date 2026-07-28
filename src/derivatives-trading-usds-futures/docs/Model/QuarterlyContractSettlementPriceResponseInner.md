@@ -1,4 +1,4 @@
-# # QuarterlyContractSettlementPriceResponseInner
+# QuarterlyContractSettlementPriceResponseInner
 
 ## Properties
 

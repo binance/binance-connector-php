@@ -1,4 +1,4 @@
-# # GetCmIncomeHistoryResponse
+# GetCmIncomeHistoryResponse
 
 ## Properties
 

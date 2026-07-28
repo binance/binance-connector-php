@@ -1,4 +1,4 @@
-## Pay
+## Default
 
-[/sapi/v1/pay/transactions](https://developers.binance.com/docs/pay/rest-api/Get-Pay-Trade-History) - getPayTradeHistory - [GetPayTradeHistoryExample.php:28](/examples/pay/pay/GetPayTradeHistoryExample.php#L28)
+[/sapi/v1/pay/transactions](https://developers.binance.com/en/docs/catalog/investment-and-services-pay/api/rest-api/~#get-pay-trade-history) - getPayTradeHistory - [GetPayTradeHistoryExample.php:17](/examples/pay/default/GetPayTradeHistoryExample.php#L17)
 

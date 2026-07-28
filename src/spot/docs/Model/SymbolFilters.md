@@ -1,4 +1,4 @@
-# # SymbolFilters
+# SymbolFilters
 
 ## Properties
 

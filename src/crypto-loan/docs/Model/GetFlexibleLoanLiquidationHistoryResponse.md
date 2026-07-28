@@ -1,4 +1,4 @@
-# # GetFlexibleLoanLiquidationHistoryResponse
+# GetFlexibleLoanLiquidationHistoryResponse
 
 ## Properties
 

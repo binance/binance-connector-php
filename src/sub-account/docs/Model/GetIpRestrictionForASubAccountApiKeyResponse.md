@@ -1,4 +1,4 @@
-# # GetIpRestrictionForASubAccountApiKeyResponse
+# GetIpRestrictionForASubAccountApiKeyResponse
 
 ## Properties
 

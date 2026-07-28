@@ -12,8 +12,8 @@ function sendQuoteRequestExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new ConvertRestApi($configurationBuilder->build());
     $sendQuoteRequestRequest = new SendQuoteRequestRequest();
-    $sendQuoteRequestRequest->setFromAsset('');
-    $sendQuoteRequestRequest->setToAsset('');
+    $sendQuoteRequestRequest->setFromAsset('BTC');
+    $sendQuoteRequestRequest->setToAsset('USDT');
     $response = $api->sendQuoteRequest($sendQuoteRequestRequest);
     print_r($response);
 }

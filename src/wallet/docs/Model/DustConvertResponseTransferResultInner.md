@@ -1,4 +1,4 @@
-# # DustConvertResponseTransferResultInner
+# DustConvertResponseTransferResultInner
 
 ## Properties
 

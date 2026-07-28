@@ -1,4 +1,4 @@
-# # KlinesResponse
+# KlinesResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # TickerType
+# TickerType
 
 ## Properties
 

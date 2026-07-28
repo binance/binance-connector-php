@@ -29,6 +29,7 @@
 
 namespace Binance\Client\Rebate\Test\Api;
 
+use Binance\Client\Rebate\Api\DefaultApi;
 use Binance\Client\Rebate\Api\RebateApi;
 use Binance\Common\Configuration\ClientConfiguration;
 use Binance\Common\Configuration\SignatureConfiguration;
@@ -82,7 +83,7 @@ class RebateApiTest extends TestCase
             }))
         ;
 
-        $apiMock = $this->getMockBuilder(RebateApi::class)
+        $apiMock = $this->getMockBuilder(DefaultApi::class)
             ->setConstructorArgs([$clientConfig, $clientMock])
             ->onlyMethods(['getTimestamp'])
             ->getMock()

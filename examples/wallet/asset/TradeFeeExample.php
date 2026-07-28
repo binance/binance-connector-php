@@ -10,7 +10,7 @@ function tradeFeeExample()
     $configurationBuilder = WalletRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'ADABNB';
     $recvWindow = 5000;
     $response = $api->tradeFee($symbol, $recvWindow);
     print_r($response);

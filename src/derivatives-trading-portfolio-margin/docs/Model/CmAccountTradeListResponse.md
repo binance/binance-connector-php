@@ -1,4 +1,4 @@
-# # CmAccountTradeListResponse
+# CmAccountTradeListResponse
 
 ## Properties
 

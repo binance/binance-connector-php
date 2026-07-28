@@ -1,4 +1,4 @@
-# # WorkingPegOffsetType
+# WorkingPegOffsetType
 
 ## Properties
 

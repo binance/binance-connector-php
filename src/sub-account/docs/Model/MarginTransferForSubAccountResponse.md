@@ -1,4 +1,4 @@
-# # MarginTransferForSubAccountResponse
+# MarginTransferForSubAccountResponse
 
 ## Properties
 

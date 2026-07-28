@@ -11,7 +11,7 @@ function tickerPriceExample()
     $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
     $api = new SpotRestApi($configurationBuilder->build());
     $symbol = 'BNBUSDT';
-    $symbols = null;
+    $symbols = ['BTCUSDT', 'BNBUSDT'];
     $symbolStatus = SymbolStatus::TRADING;
     $response = $api->tickerPrice($symbol, $symbols, $symbolStatus);
     print_r($response);

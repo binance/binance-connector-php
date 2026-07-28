@@ -1,4 +1,4 @@
-# # SelfTradePreventionMode
+# SelfTradePreventionMode
 
 ## Properties
 

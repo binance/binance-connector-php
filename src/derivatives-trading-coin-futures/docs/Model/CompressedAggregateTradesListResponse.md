@@ -1,4 +1,4 @@
-# # CompressedAggregateTradesListResponse
+# CompressedAggregateTradesListResponse
 
 ## Properties
 

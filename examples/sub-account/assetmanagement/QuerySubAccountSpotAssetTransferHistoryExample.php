@@ -10,12 +10,12 @@ function querySubAccountSpotAssetTransferHistoryExample()
     $configurationBuilder = SubAccountRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
-    $fromEmail = '';
-    $toEmail = '';
+    $fromEmail = 'aaa@test.com';
+    $toEmail = 'bbb@test.com';
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $page = 1;
-    $limit = 1;
+    $limit = 10;
     $recvWindow = 5000;
     $response = $api->querySubAccountSpotAssetTransferHistory($fromEmail, $toEmail, $startTime, $endTime, $page, $limit, $recvWindow);
     print_r($response);

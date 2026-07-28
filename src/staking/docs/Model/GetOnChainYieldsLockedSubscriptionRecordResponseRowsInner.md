@@ -1,4 +1,4 @@
-# # GetOnChainYieldsLockedSubscriptionRecordResponseRowsInner
+# GetOnChainYieldsLockedSubscriptionRecordResponseRowsInner
 
 ## Properties
 

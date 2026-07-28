@@ -1,4 +1,4 @@
-# # ExchangeInfoResponseSymbolsInner
+# ExchangeInfoResponseSymbolsInner
 
 ## Properties
 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **pegInstructionsAllowed** | **bool** |  | [optional]
 **isSpotTradingAllowed** | **bool** |  | [optional]
 **isMarginTradingAllowed** | **bool** |  | [optional]
-**filters** | [**\Binance\Client\Spot\Model\SymbolFilters[]**](SymbolFilters.md) |  | [optional]
+**filters** | [**\Binance\Client\Spot\Model\MyFiltersResponseSymbolFiltersInner[]**](MyFiltersResponseSymbolFiltersInner.md) |  | [optional]
 **permissions** | **string[]** |  | [optional]
 **permissionSets** | **string[][]** |  | [optional]
 **defaultSelfTradePreventionMode** | **string** |  | [optional]

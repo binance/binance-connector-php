@@ -3,8 +3,11 @@
 namespace Binance\Client\Alpha\Api;
 
 use Binance\Client\Alpha\Model\AggregatedTradesResponse;
+use Binance\Client\Alpha\Model\FullDepthResponse;
 use Binance\Client\Alpha\Model\GetExchangeInfoResponse;
+use Binance\Client\Alpha\Model\Interval;
 use Binance\Client\Alpha\Model\KlinesResponse;
+use Binance\Client\Alpha\Model\Limit;
 use Binance\Client\Alpha\Model\TickerResponse;
 use Binance\Client\Alpha\Model\TokenListResponse;
 use Binance\Common\ApiException;
@@ -29,11 +32,11 @@ class AlphaRestApi
      *
      * Aggregated Trades
      *
-     * @param string   $symbol    e.g., \&quot;ALPHA_175USDT\&quot; – use token ID from Token List (required)
-     * @param null|int $fromId    starting trade ID to fetch from (optional)
-     * @param null|int $startTime start timestamp (milliseconds) (optional)
-     * @param null|int $endTime   end timestamp (milliseconds) (optional)
-     * @param null|int $limit     number of results to return (default 500, max 1000) (optional)
+     * @param string   $symbol    Trading pair symbol, e.g. ALPHA_118USDC (use token ID from Token List). (required)
+     * @param null|int $fromId    Starting aggregate trade ID to fetch from. (optional)
+     * @param null|int $startTime Start timestamp in milliseconds. (optional)
+     * @param null|int $endTime   End timestamp in milliseconds. (optional)
+     * @param null|int $limit     Number of results to return. (optional)
      *
      * @return ApiResponse<AggregatedTradesResponse>
      *
@@ -43,6 +46,24 @@ class AlphaRestApi
     public function aggregatedTrades($symbol, $fromId = null, $startTime = null, $endTime = null, $limit = null): ApiResponse
     {
         return $this->marketDataApi->aggregatedTrades($symbol, $fromId, $startTime, $endTime, $limit);
+    }
+
+    /**
+     * Operation fullDepth.
+     *
+     * Full Depth
+     *
+     * @param string     $symbol Trading pair symbol, e.g. ALPHA_175USDT (use token ID from Token List). (required)
+     * @param null|Limit $limit  Number of price levels to return. Valid values: 5, 10, 20, 50, 100, 500, 1000. (optional)
+     *
+     * @return ApiResponse<FullDepthResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function fullDepth($symbol, $limit = null): ApiResponse
+    {
+        return $this->marketDataApi->fullDepth($symbol, $limit);
     }
 
     /**
@@ -63,13 +84,13 @@ class AlphaRestApi
     /**
      * Operation klines.
      *
-     * Klines (Candlestick Data)
+     * Klines
      *
-     * @param string   $symbol    e.g., \&quot;ALPHA_175USDT\&quot; – use token ID from Token List (required)
-     * @param string   $interval  e.g., \&quot;1h\&quot; – supported intervals: 1s, 15s, 1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h, 8h, 12h, 1d, 3d, 1w, 1M (required)
-     * @param null|int $limit     number of results to return (default 500, max 1000) (optional)
-     * @param null|int $startTime start timestamp (milliseconds) (optional)
-     * @param null|int $endTime   end timestamp (milliseconds) (optional)
+     * @param string   $symbol    Trading pair symbol, e.g. ALPHA_175USDT (use token ID from Token List). (required)
+     * @param Interval $interval  Kline interval. (required)
+     * @param null|int $limit     Number of klines to return. (optional)
+     * @param null|int $startTime Start timestamp in milliseconds. (optional)
+     * @param null|int $endTime   End timestamp in milliseconds. (optional)
      *
      * @return ApiResponse<KlinesResponse>
      *
@@ -84,9 +105,9 @@ class AlphaRestApi
     /**
      * Operation ticker.
      *
-     * Ticker (24hr Price Statistics)
+     * Ticker
      *
-     * @param string $symbol e.g., \&quot;ALPHA_175USDT\&quot; – use token ID from Token List (required)
+     * @param string $symbol Trading pair symbol, e.g. ALPHA_175USDT (use token ID from Token List). (required)
      *
      * @return ApiResponse<TickerResponse>
      *

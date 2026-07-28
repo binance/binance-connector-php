@@ -13,8 +13,8 @@ function allOrderListExample()
     $fromId = 1;
     $startTime = 1735693200000;
     $endTime = 1735693200000;
-    $limit = 500;
-    $recvWindow = 5000.0;
+    $limit = 1;
+    $recvWindow = 5000;
     $response = $api->allOrderList($fromId, $startTime, $endTime, $limit, $recvWindow);
     print_r($response);
 }

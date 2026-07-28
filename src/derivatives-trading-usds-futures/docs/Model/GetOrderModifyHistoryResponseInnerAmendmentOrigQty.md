@@ -1,4 +1,4 @@
-# # GetOrderModifyHistoryResponseInnerAmendmentOrigQty
+# GetOrderModifyHistoryResponseInnerAmendmentOrigQty
 
 ## Properties
 

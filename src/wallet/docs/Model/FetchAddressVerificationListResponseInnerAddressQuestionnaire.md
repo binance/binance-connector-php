@@ -1,4 +1,4 @@
-# # FetchAddressVerificationListResponseInnerAddressQuestionnaire
+# FetchAddressVerificationListResponseInnerAddressQuestionnaire
 
 ## Properties
 

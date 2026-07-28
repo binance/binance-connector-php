@@ -29,7 +29,7 @@
 
 namespace Binance\Client\C2c\Test\Api;
 
-use Binance\Client\C2c\Api\C2CApi;
+use Binance\Client\C2c\Api\DefaultApi;
 use Binance\Common\Configuration\ClientConfiguration;
 use Binance\Common\Configuration\SignatureConfiguration;
 use Binance\Common\HttpClient;
@@ -82,7 +82,7 @@ class C2CApiTest extends TestCase
             }))
         ;
 
-        $apiMock = $this->getMockBuilder(C2CApi::class)
+        $apiMock = $this->getMockBuilder(DefaultApi::class)
             ->setConstructorArgs([$clientConfig, $clientMock])
             ->onlyMethods(['getTimestamp'])
             ->getMock()
@@ -112,6 +112,6 @@ class C2CApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/c2c/orderMatch/listUserOrderHistory', $request->getUri()->getPath());
-        self::assertEquals('8bba938bf28f55f2d3a9f429170f85a892988a10ef672cf57195b93f701aa467', $queryMap['signature']);
+        self::assertTrue(!isset($queryMap['signature']));
     }
 }

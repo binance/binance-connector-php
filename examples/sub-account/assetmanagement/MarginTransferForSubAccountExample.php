@@ -12,10 +12,10 @@ function marginTransferForSubAccountExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
     $marginTransferForSubAccountRequest = new MarginTransferForSubAccountRequest();
-    $marginTransferForSubAccountRequest->setEmail('sub-account-email@email.com');
-    $marginTransferForSubAccountRequest->setAsset('');
+    $marginTransferForSubAccountRequest->setEmail('123@test.com');
+    $marginTransferForSubAccountRequest->setAsset('BTC');
     $marginTransferForSubAccountRequest->setAmount(1.0);
-    $marginTransferForSubAccountRequest->setType(null);
+    $marginTransferForSubAccountRequest->setType(1);
     $response = $api->marginTransferForSubAccount($marginTransferForSubAccountRequest);
     print_r($response);
 }

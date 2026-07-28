@@ -1,4 +1,4 @@
-# # ExchangeFilters
+# ExchangeFilters
 
 ## Properties
 

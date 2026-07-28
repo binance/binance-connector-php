@@ -1,4 +1,4 @@
-# # QuerySubAccountSpotAssetTransferHistoryResponseInner
+# QuerySubAccountSpotAssetTransferHistoryResponseInner
 
 ## Properties
 

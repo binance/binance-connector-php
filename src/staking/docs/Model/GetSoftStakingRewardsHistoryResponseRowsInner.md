@@ -1,4 +1,4 @@
-# # GetSoftStakingRewardsHistoryResponseRowsInner
+# GetSoftStakingRewardsHistoryResponseRowsInner
 
 ## Properties
 

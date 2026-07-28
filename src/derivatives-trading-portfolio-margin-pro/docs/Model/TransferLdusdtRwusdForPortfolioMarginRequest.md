@@ -1,11 +1,11 @@
-# # TransferLdusdtRwusdForPortfolioMarginRequest
+# TransferLdusdtRwusdForPortfolioMarginRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**asset** | **string** |  |
-**transferType** | **string** |  |
+**asset** | [**\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\Asset**](Asset.md) |  |
+**transferType** | [**\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferType**](TransferType.md) |  |
 **amount** | **float** |  |
 **recvWindow** | **int** |  | [optional]
 

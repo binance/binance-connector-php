@@ -1,4 +1,4 @@
-# # NotionalBracketForSymbolResponse
+# NotionalBracketForSymbolResponse
 
 ## Properties
 

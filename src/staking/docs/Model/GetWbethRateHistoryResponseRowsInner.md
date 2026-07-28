@@ -1,4 +1,4 @@
-# # GetWbethRateHistoryResponseRowsInner
+# GetWbethRateHistoryResponseRowsInner
 
 ## Properties
 

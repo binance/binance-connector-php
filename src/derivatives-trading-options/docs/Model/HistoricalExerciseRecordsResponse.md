@@ -1,4 +1,4 @@
-# # HistoricalExerciseRecordsResponse
+# HistoricalExerciseRecordsResponse
 
 ## Properties
 

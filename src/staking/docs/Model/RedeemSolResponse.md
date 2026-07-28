@@ -1,4 +1,4 @@
-# # RedeemSolResponse
+# RedeemSolResponse
 
 ## Properties
 
@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **success** | **bool** |  | [optional]
 **solAmount** | **string** |  | [optional]
+**redeemId** | **int** |  | [optional]
 **exchangeRate** | **string** |  | [optional]
 **arrivalTime** | **int** |  | [optional]
 

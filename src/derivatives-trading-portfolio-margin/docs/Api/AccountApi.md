@@ -1,50 +1,52 @@
 # Binance\Client\DerivativesTradingPortfolioMargin\AccountApi
 
+
+
 All URIs are relative to https://papi.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**accountBalance()**](AccountApi.md#accountBalance) | **GET** /papi/v1/balance | Account Balance(USER_DATA) |
-| [**accountInformation()**](AccountApi.md#accountInformation) | **GET** /papi/v1/account | Account Information(USER_DATA) |
+| [**accountBalance()**](AccountApi.md#accountBalance) | **GET** /papi/v1/balance | Account Balance (USER_DATA) |
+| [**accountInformation()**](AccountApi.md#accountInformation) | **GET** /papi/v1/account | Account Information (USER_DATA) |
 | [**bnbTransfer()**](AccountApi.md#bnbTransfer) | **POST** /papi/v1/bnb-transfer | BNB transfer (TRADE) |
-| [**changeAutoRepayFuturesStatus()**](AccountApi.md#changeAutoRepayFuturesStatus) | **POST** /papi/v1/repay-futures-switch | Change Auto-repay-futures Status(TRADE) |
+| [**changeAutoRepayFuturesStatus()**](AccountApi.md#changeAutoRepayFuturesStatus) | **POST** /papi/v1/repay-futures-switch | Change Auto-repay-futures Status (TRADE) |
 | [**changeCmInitialLeverage()**](AccountApi.md#changeCmInitialLeverage) | **POST** /papi/v1/cm/leverage | Change CM Initial Leverage (TRADE) |
-| [**changeCmPositionMode()**](AccountApi.md#changeCmPositionMode) | **POST** /papi/v1/cm/positionSide/dual | Change CM Position Mode(TRADE) |
-| [**changeUmInitialLeverage()**](AccountApi.md#changeUmInitialLeverage) | **POST** /papi/v1/um/leverage | Change UM Initial Leverage(TRADE) |
-| [**changeUmPositionMode()**](AccountApi.md#changeUmPositionMode) | **POST** /papi/v1/um/positionSide/dual | Change UM Position Mode(TRADE) |
-| [**cmNotionalAndLeverageBrackets()**](AccountApi.md#cmNotionalAndLeverageBrackets) | **GET** /papi/v1/cm/leverageBracket | CM Notional and Leverage Brackets(USER_DATA) |
-| [**fundAutoCollection()**](AccountApi.md#fundAutoCollection) | **POST** /papi/v1/auto-collection | Fund Auto-collection(TRADE) |
-| [**fundCollectionByAsset()**](AccountApi.md#fundCollectionByAsset) | **POST** /papi/v1/asset-collection | Fund Collection by Asset(TRADE) |
-| [**getAutoRepayFuturesStatus()**](AccountApi.md#getAutoRepayFuturesStatus) | **GET** /papi/v1/repay-futures-switch | Get Auto-repay-futures Status(USER_DATA) |
-| [**getCmAccountDetail()**](AccountApi.md#getCmAccountDetail) | **GET** /papi/v1/cm/account | Get CM Account Detail(USER_DATA) |
-| [**getCmCurrentPositionMode()**](AccountApi.md#getCmCurrentPositionMode) | **GET** /papi/v1/cm/positionSide/dual | Get CM Current Position Mode(USER_DATA) |
-| [**getCmIncomeHistory()**](AccountApi.md#getCmIncomeHistory) | **GET** /papi/v1/cm/income | Get CM Income History(USER_DATA) |
+| [**changeCmPositionMode()**](AccountApi.md#changeCmPositionMode) | **POST** /papi/v1/cm/positionSide/dual | Change CM Position Mode (TRADE) |
+| [**changeUmInitialLeverage()**](AccountApi.md#changeUmInitialLeverage) | **POST** /papi/v1/um/leverage | Change UM Initial Leverage (TRADE) |
+| [**changeUmPositionMode()**](AccountApi.md#changeUmPositionMode) | **POST** /papi/v1/um/positionSide/dual | Change UM Position Mode (TRADE) |
+| [**cmNotionalAndLeverageBrackets()**](AccountApi.md#cmNotionalAndLeverageBrackets) | **GET** /papi/v1/cm/leverageBracket | CM Notional and Leverage Brackets (USER_DATA) |
+| [**fundAutoCollection()**](AccountApi.md#fundAutoCollection) | **POST** /papi/v1/auto-collection | Fund Auto-collection (TRADE) |
+| [**fundCollectionByAsset()**](AccountApi.md#fundCollectionByAsset) | **POST** /papi/v1/asset-collection | Fund Collection by Asset (TRADE) |
+| [**getAutoRepayFuturesStatus()**](AccountApi.md#getAutoRepayFuturesStatus) | **GET** /papi/v1/repay-futures-switch | Get Auto-repay-futures Status (USER_DATA) |
+| [**getCmAccountDetail()**](AccountApi.md#getCmAccountDetail) | **GET** /papi/v1/cm/account | Get CM Account Detail (USER_DATA) |
+| [**getCmCurrentPositionMode()**](AccountApi.md#getCmCurrentPositionMode) | **GET** /papi/v1/cm/positionSide/dual | Get CM Current Position Mode (USER_DATA) |
+| [**getCmIncomeHistory()**](AccountApi.md#getCmIncomeHistory) | **GET** /papi/v1/cm/income | Get CM Income History (USER_DATA) |
 | [**getDownloadIdForUmFuturesOrderHistory()**](AccountApi.md#getDownloadIdForUmFuturesOrderHistory) | **GET** /papi/v1/um/order/asyn | Get Download Id For UM Futures Order History (USER_DATA) |
 | [**getDownloadIdForUmFuturesTradeHistory()**](AccountApi.md#getDownloadIdForUmFuturesTradeHistory) | **GET** /papi/v1/um/trade/asyn | Get Download Id For UM Futures Trade History (USER_DATA) |
 | [**getDownloadIdForUmFuturesTransactionHistory()**](AccountApi.md#getDownloadIdForUmFuturesTransactionHistory) | **GET** /papi/v1/um/income/asyn | Get Download Id For UM Futures Transaction History (USER_DATA) |
-| [**getMarginBorrowLoanInterestHistory()**](AccountApi.md#getMarginBorrowLoanInterestHistory) | **GET** /papi/v1/margin/marginInterestHistory | Get Margin Borrow/Loan Interest History(USER_DATA) |
-| [**getUmAccountDetail()**](AccountApi.md#getUmAccountDetail) | **GET** /papi/v1/um/account | Get UM Account Detail(USER_DATA) |
-| [**getUmAccountDetailV2()**](AccountApi.md#getUmAccountDetailV2) | **GET** /papi/v2/um/account | Get UM Account Detail V2(USER_DATA) |
-| [**getUmCurrentPositionMode()**](AccountApi.md#getUmCurrentPositionMode) | **GET** /papi/v1/um/positionSide/dual | Get UM Current Position Mode(USER_DATA) |
-| [**getUmFuturesOrderDownloadLinkById()**](AccountApi.md#getUmFuturesOrderDownloadLinkById) | **GET** /papi/v1/um/order/asyn/id | Get UM Futures Order Download Link by Id(USER_DATA) |
-| [**getUmFuturesTradeDownloadLinkById()**](AccountApi.md#getUmFuturesTradeDownloadLinkById) | **GET** /papi/v1/um/trade/asyn/id | Get UM Futures Trade Download Link by Id(USER_DATA) |
-| [**getUmFuturesTransactionDownloadLinkById()**](AccountApi.md#getUmFuturesTransactionDownloadLinkById) | **GET** /papi/v1/um/income/asyn/id | Get UM Futures Transaction Download Link by Id(USER_DATA) |
-| [**getUmIncomeHistory()**](AccountApi.md#getUmIncomeHistory) | **GET** /papi/v1/um/income | Get UM Income History(USER_DATA) |
-| [**getUserCommissionRateForCm()**](AccountApi.md#getUserCommissionRateForCm) | **GET** /papi/v1/cm/commissionRate | Get User Commission Rate for CM(USER_DATA) |
-| [**getUserCommissionRateForUm()**](AccountApi.md#getUserCommissionRateForUm) | **GET** /papi/v1/um/commissionRate | Get User Commission Rate for UM(USER_DATA) |
-| [**marginMaxBorrow()**](AccountApi.md#marginMaxBorrow) | **GET** /papi/v1/margin/maxBorrowable | Margin Max Borrow(USER_DATA) |
-| [**portfolioMarginUmTradingQuantitativeRulesIndicators()**](AccountApi.md#portfolioMarginUmTradingQuantitativeRulesIndicators) | **GET** /papi/v1/um/apiTradingStatus | Portfolio Margin UM Trading Quantitative Rules Indicators(USER_DATA) |
-| [**queryCmPositionInformation()**](AccountApi.md#queryCmPositionInformation) | **GET** /papi/v1/cm/positionRisk | Query CM Position Information(USER_DATA) |
-| [**queryMarginLoanRecord()**](AccountApi.md#queryMarginLoanRecord) | **GET** /papi/v1/margin/marginLoan | Query Margin Loan Record(USER_DATA) |
-| [**queryMarginMaxWithdraw()**](AccountApi.md#queryMarginMaxWithdraw) | **GET** /papi/v1/margin/maxWithdraw | Query Margin Max Withdraw(USER_DATA) |
-| [**queryMarginRepayRecord()**](AccountApi.md#queryMarginRepayRecord) | **GET** /papi/v1/margin/repayLoan | Query Margin repay Record(USER_DATA) |
-| [**queryPortfolioMarginNegativeBalanceInterestHistory()**](AccountApi.md#queryPortfolioMarginNegativeBalanceInterestHistory) | **GET** /papi/v1/portfolio/interest-history | Query Portfolio Margin Negative Balance Interest History(USER_DATA) |
-| [**queryUmPositionInformation()**](AccountApi.md#queryUmPositionInformation) | **GET** /papi/v1/um/positionRisk | Query UM Position Information(USER_DATA) |
+| [**getMarginBorrowLoanInterestHistory()**](AccountApi.md#getMarginBorrowLoanInterestHistory) | **GET** /papi/v1/margin/marginInterestHistory | Get Margin Borrow/Loan Interest History (USER_DATA) |
+| [**getUmAccountDetail()**](AccountApi.md#getUmAccountDetail) | **GET** /papi/v1/um/account | Get UM Account Detail (USER_DATA) |
+| [**getUmAccountDetailV2()**](AccountApi.md#getUmAccountDetailV2) | **GET** /papi/v2/um/account | Get UM Account Detail V2 (USER_DATA) |
+| [**getUmCurrentPositionMode()**](AccountApi.md#getUmCurrentPositionMode) | **GET** /papi/v1/um/positionSide/dual | Get UM Current Position Mode (USER_DATA) |
+| [**getUmFuturesOrderDownloadLinkById()**](AccountApi.md#getUmFuturesOrderDownloadLinkById) | **GET** /papi/v1/um/order/asyn/id | Get UM Futures Order Download Link by Id (USER_DATA) |
+| [**getUmFuturesTradeDownloadLinkById()**](AccountApi.md#getUmFuturesTradeDownloadLinkById) | **GET** /papi/v1/um/trade/asyn/id | Get UM Futures Trade Download Link by Id (USER_DATA) |
+| [**getUmFuturesTransactionDownloadLinkById()**](AccountApi.md#getUmFuturesTransactionDownloadLinkById) | **GET** /papi/v1/um/income/asyn/id | Get UM Futures Transaction Download Link by Id (USER_DATA) |
+| [**getUmIncomeHistory()**](AccountApi.md#getUmIncomeHistory) | **GET** /papi/v1/um/income | Get UM Income History (USER_DATA) |
+| [**getUserCommissionRateForCm()**](AccountApi.md#getUserCommissionRateForCm) | **GET** /papi/v1/cm/commissionRate | Get User Commission Rate for CM (USER_DATA) |
+| [**getUserCommissionRateForUm()**](AccountApi.md#getUserCommissionRateForUm) | **GET** /papi/v1/um/commissionRate | Get User Commission Rate for UM (USER_DATA) |
+| [**marginMaxBorrow()**](AccountApi.md#marginMaxBorrow) | **GET** /papi/v1/margin/maxBorrowable | Margin Max Borrow (USER_DATA) |
+| [**portfolioMarginUmTradingQuantitativeRulesIndicators()**](AccountApi.md#portfolioMarginUmTradingQuantitativeRulesIndicators) | **GET** /papi/v1/um/apiTradingStatus | Portfolio Margin UM Trading Quantitative Rules Indicators (USER_DATA) |
+| [**queryCmPositionInformation()**](AccountApi.md#queryCmPositionInformation) | **GET** /papi/v1/cm/positionRisk | Query CM Position Information (USER_DATA) |
+| [**queryMarginLoanRecord()**](AccountApi.md#queryMarginLoanRecord) | **GET** /papi/v1/margin/marginLoan | Query Margin Loan Record (USER_DATA) |
+| [**queryMarginMaxWithdraw()**](AccountApi.md#queryMarginMaxWithdraw) | **GET** /papi/v1/margin/maxWithdraw | Query Margin Max Withdraw (USER_DATA) |
+| [**queryMarginRepayRecord()**](AccountApi.md#queryMarginRepayRecord) | **GET** /papi/v1/margin/repayLoan | Query Margin repay Record (USER_DATA) |
+| [**queryPortfolioMarginNegativeBalanceInterestHistory()**](AccountApi.md#queryPortfolioMarginNegativeBalanceInterestHistory) | **GET** /papi/v1/portfolio/interest-history | Query Portfolio Margin Negative Balance Interest History (USER_DATA) |
+| [**queryUmPositionInformation()**](AccountApi.md#queryUmPositionInformation) | **GET** /papi/v1/um/positionRisk | Query UM Position Information (USER_DATA) |
 | [**queryUserNegativeBalanceAutoExchangeRecord()**](AccountApi.md#queryUserNegativeBalanceAutoExchangeRecord) | **GET** /papi/v1/portfolio/negative-balance-exchange-record | Query User Negative Balance Auto Exchange Record (USER_DATA) |
 | [**queryUserRateLimit()**](AccountApi.md#queryUserRateLimit) | **GET** /papi/v1/rateLimit/order | Query User Rate Limit (USER_DATA) |
-| [**repayFuturesNegativeBalance()**](AccountApi.md#repayFuturesNegativeBalance) | **POST** /papi/v1/repay-futures-negative-balance | Repay futures Negative Balance(USER_DATA) |
-| [**umFuturesAccountConfiguration()**](AccountApi.md#umFuturesAccountConfiguration) | **GET** /papi/v1/um/accountConfig | UM Futures Account Configuration(USER_DATA) |
-| [**umFuturesSymbolConfiguration()**](AccountApi.md#umFuturesSymbolConfiguration) | **GET** /papi/v1/um/symbolConfig | UM Futures Symbol Configuration(USER_DATA) |
+| [**repayFuturesNegativeBalance()**](AccountApi.md#repayFuturesNegativeBalance) | **POST** /papi/v1/repay-futures-negative-balance | Repay futures Negative Balance (USER_DATA) |
+| [**umFuturesAccountConfiguration()**](AccountApi.md#umFuturesAccountConfiguration) | **GET** /papi/v1/um/accountConfig | UM Futures Account Configuration (USER_DATA) |
+| [**umFuturesSymbolConfiguration()**](AccountApi.md#umFuturesSymbolConfiguration) | **GET** /papi/v1/um/symbolConfig | UM Futures Symbol Configuration (USER_DATA) |
 | [**umNotionalAndLeverageBrackets()**](AccountApi.md#umNotionalAndLeverageBrackets) | **GET** /papi/v1/um/leverageBracket | UM Notional and Leverage Brackets (USER_DATA) |
 
 
@@ -54,9 +56,9 @@ All URIs are relative to https://papi.binance.com, except if the operation defin
 accountBalance($asset, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\AccountBalanceResponse
 ```
 
-Account Balance(USER_DATA)
+Account Balance (USER_DATA)
 
-Query account balance  Weight: 20
+Query account balance  Weight(IP): 20  Security Type: USER_DATA
 
 ### Example
 
@@ -71,8 +73,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
-$recvWindow = 56; // int
+$asset = USDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->accountBalance($asset, $recvWindow);
@@ -112,9 +114,9 @@ No authorization required
 accountInformation($recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\AccountInformationResponse
 ```
 
-Account Information(USER_DATA)
+Account Information (USER_DATA)
 
-Query account information  Weight: 20
+Query account information  Weight(IP): 20  Security Type: USER_DATA
 
 ### Example
 
@@ -129,7 +131,7 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->accountInformation($recvWindow);
@@ -170,7 +172,7 @@ bnbTransfer($bnbTransferRequest): \Binance\Client\DerivativesTradingPortfolioMar
 
 BNB transfer (TRADE)
 
-Transfer BNB in and out of UM  * The endpoint can only be called 10 times per 10 minutes in a rolling manner  Weight: 750
+Transfer BNB in and out of UM  Weight(IP): 750  Security Type: TRADE  Notes: - The endpoint can only be called 10 times per 10 minutes in a rolling manner
 
 ### Example
 
@@ -224,9 +226,9 @@ No authorization required
 changeAutoRepayFuturesStatus($changeAutoRepayFuturesStatusRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\ChangeAutoRepayFuturesStatusResponse
 ```
 
-Change Auto-repay-futures Status(TRADE)
+Change Auto-repay-futures Status (TRADE)
 
-Change Auto-repay-futures Status  Weight: 750
+Change Auto-repay-futures Status  Weight(IP): 750  Security Type: TRADE
 
 ### Example
 
@@ -282,7 +284,7 @@ changeCmInitialLeverage($changeCmInitialLeverageRequest): \Binance\Client\Deriva
 
 Change CM Initial Leverage (TRADE)
 
-Change user's initial leverage of specific symbol in CM.  Weight: 1
+Change user's initial leverage of specific symbol in CM.  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -336,9 +338,9 @@ No authorization required
 changeCmPositionMode($changeCmPositionModeRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\ChangeCmPositionModeResponse
 ```
 
-Change CM Position Mode(TRADE)
+Change CM Position Mode (TRADE)
 
-Change user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol in CM  Weight: 1
+Change user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol in CM  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -392,9 +394,9 @@ No authorization required
 changeUmInitialLeverage($changeUmInitialLeverageRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\ChangeUmInitialLeverageResponse
 ```
 
-Change UM Initial Leverage(TRADE)
+Change UM Initial Leverage (TRADE)
 
-Change user's initial leverage of specific symbol in UM.  Weight: 1
+Change user's initial leverage of specific symbol in UM.  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -448,9 +450,9 @@ No authorization required
 changeUmPositionMode($changeUmPositionModeRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\ChangeUmPositionModeResponse
 ```
 
-Change UM Position Mode(TRADE)
+Change UM Position Mode (TRADE)
 
-Change user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol in UM  Weight: 1
+Change user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol in UM  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -504,9 +506,9 @@ No authorization required
 cmNotionalAndLeverageBrackets($symbol, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\CmNotionalAndLeverageBracketsResponse
 ```
 
-CM Notional and Leverage Brackets(USER_DATA)
+CM Notional and Leverage Brackets (USER_DATA)
 
-Query CM notional and leverage brackets  Weight: 1
+Query CM notional and leverage brackets  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -521,8 +523,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSD_PERP; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->cmNotionalAndLeverageBrackets($symbol, $recvWindow);
@@ -562,9 +564,9 @@ No authorization required
 fundAutoCollection($fundAutoCollectionRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\FundAutoCollectionResponse
 ```
 
-Fund Auto-collection(TRADE)
+Fund Auto-collection (TRADE)
 
-Fund collection for Portfolio Margin  * The BNB would not be collected from UM-PM account to the Portfolio Margin account. * You can only use this function 500 times per hour in a rolling manner.  Weight: 750
+Fund collection for Portfolio Margin  Weight(IP): 750  Security Type: TRADE  Notes: - BNB assets will not be auto-collected. - Rolling window endpoint can be called at most 500 times per hour.
 
 ### Example
 
@@ -593,7 +595,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fundAutoCollectionRequest** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\FundAutoCollectionRequest**](../Model/FundAutoCollectionRequest.md)|  | |
+| **fundAutoCollectionRequest** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\FundAutoCollectionRequest**](../Model/FundAutoCollectionRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -618,9 +620,9 @@ No authorization required
 fundCollectionByAsset($fundCollectionByAssetRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\FundCollectionByAssetResponse
 ```
 
-Fund Collection by Asset(TRADE)
+Fund Collection by Asset (TRADE)
 
-Transfers specific asset from Futures Account to Margin account  * The BNB transfer is not be supported  Weight: 30
+Transfers specific asset from Futures Account to Margin account  Weight(IP): 30  Security Type: TRADE  Notes: - The BNB transfer is not be supported
 
 ### Example
 
@@ -674,9 +676,9 @@ No authorization required
 getAutoRepayFuturesStatus($recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\GetAutoRepayFuturesStatusResponse
 ```
 
-Get Auto-repay-futures Status(USER_DATA)
+Get Auto-repay-futures Status (USER_DATA)
 
-Query Auto-repay-futures Status  Weight: 30
+Query Auto-repay-futures Status  Weight(IP): 30  Security Type: USER_DATA
 
 ### Example
 
@@ -691,7 +693,7 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getAutoRepayFuturesStatus($recvWindow);
@@ -730,9 +732,9 @@ No authorization required
 getCmAccountDetail($recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\GetCmAccountDetailResponse
 ```
 
-Get CM Account Detail(USER_DATA)
+Get CM Account Detail (USER_DATA)
 
-Get current CM account asset and position information.  Weight: 5
+Get current CM account asset and position information.  Weight(IP): 5  Security Type: USER_DATA
 
 ### Example
 
@@ -747,7 +749,7 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getCmAccountDetail($recvWindow);
@@ -786,9 +788,9 @@ No authorization required
 getCmCurrentPositionMode($recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\GetCmCurrentPositionModeResponse
 ```
 
-Get CM Current Position Mode(USER_DATA)
+Get CM Current Position Mode (USER_DATA)
 
-Get user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol in CM  Weight: 30
+Get user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol in CM  Weight(IP): 30  Security Type: USER_DATA
 
 ### Example
 
@@ -803,7 +805,7 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getCmCurrentPositionMode($recvWindow);
@@ -842,9 +844,9 @@ No authorization required
 getCmIncomeHistory($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\GetCmIncomeHistoryResponse
 ```
 
-Get CM Income History(USER_DATA)
+Get CM Income History (USER_DATA)
 
-Get CM Income History   * If `incomeType` is not sent, all kinds of flow will be returned * \"trandId\" is unique in the same \"incomeType\" for a user * The interval between `startTime` and `endTime` can not exceed 200 days: * If `startTime` and `endTime` are not sent, the last 200 days will be returned  Weight: 30
+Get CM Income History.  Weight(IP): 30  Security Type: USER_DATA  Notes: - If `incomeType` is not sent, all kinds of flow will be returned - \"trandId\" is unique in the same \"incomeType\" for a user - The interval between `startTime` and `endTime` can not exceed 200 days:   - If `startTime` and `endTime` are not sent, the last 200 days will be returned
 
 ### Example
 
@@ -859,13 +861,13 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$incomeType = 'incomeType_example'; // string | TRANSFER, WELCOME_BONUS, REALIZED_PNL, FUNDING_FEE, COMMISSION, INSURANCE_CLEAR, REFERRAL_KICKBACK, COMMISSION_REBATE, API_REBATE, CONTEST_REWARD, CROSS_COLLATERAL_TRANSFER, OPTIONS_PREMIUM_FEE, OPTIONS_SETTLE_PROFIT, INTERNAL_TRANSFER, AUTO_EXCHANGE, DELIVERED_SETTELMENT, COIN_SWAP_DEPOSIT, COIN_SWAP_WITHDRAW, POSITION_LIMIT_INCREASE_FEE
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$page = 56; // int
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSD_200925; // string
+$incomeType = new \Binance\Client\DerivativesTradingPortfolioMargin\Model\\Binance\Client\DerivativesTradingPortfolioMargin\Model\IncomeType(); // \Binance\Client\DerivativesTradingPortfolioMargin\Model\IncomeType
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$page = 1; // int
+$limit = 100; // int | Number of results returned.
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getCmIncomeHistory($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
@@ -880,11 +882,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | [optional] |
-| **incomeType** | **string**| TRANSFER, WELCOME_BONUS, REALIZED_PNL, FUNDING_FEE, COMMISSION, INSURANCE_CLEAR, REFERRAL_KICKBACK, COMMISSION_REBATE, API_REBATE, CONTEST_REWARD, CROSS_COLLATERAL_TRANSFER, OPTIONS_PREMIUM_FEE, OPTIONS_SETTLE_PROFIT, INTERNAL_TRANSFER, AUTO_EXCHANGE, DELIVERED_SETTELMENT, COIN_SWAP_DEPOSIT, COIN_SWAP_WITHDRAW, POSITION_LIMIT_INCREASE_FEE | [optional] |
+| **incomeType** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\IncomeType**](../Model/.md)|  | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
 | **page** | **int**|  | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **limit** | **int**| Number of results returned. | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -912,7 +914,7 @@ getDownloadIdForUmFuturesOrderHistory($startTime, $endTime, $recvWindow): \Binan
 
 Get Download Id For UM Futures Order History (USER_DATA)
 
-Get download id for UM futures order history  * Request Limitation is 10 times per month, shared by front end download page and rest api * The time between `startTime` and `endTime` can not be longer than 1 year  Weight: 1500
+Get download id for UM futures order history  Weight(IP): 1500  Security Type: USER_DATA  Notes: - Request Limitation is 10 times per month, shared by front end download page and rest api - The time between `startTime` and `endTime` can not be longer than 1 year
 
 ### Example
 
@@ -927,9 +929,9 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$startTime = 56; // int
-$endTime = 56; // int
-$recvWindow = 56; // int
+$startTime = 1623319461670; // int | Timestamp in ms
+$endTime = 1641782889000; // int | Timestamp in ms
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getDownloadIdForUmFuturesOrderHistory($startTime, $endTime, $recvWindow);
@@ -943,8 +945,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **startTime** | **int**|  | |
-| **endTime** | **int**|  | |
+| **startTime** | **int**| Timestamp in ms | |
+| **endTime** | **int**| Timestamp in ms | |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -972,7 +974,7 @@ getDownloadIdForUmFuturesTradeHistory($startTime, $endTime, $recvWindow): \Binan
 
 Get Download Id For UM Futures Trade History (USER_DATA)
 
-Get download id for UM futures trade history  * Request Limitation is 5 times per month, shared by front end download page and rest api * The time between `startTime` and `endTime` can not be longer than 1 year  Weight: 1500
+Get download id for UM futures trade history  Weight(IP): 1500  Security Type: USER_DATA  Notes: - Request Limitation is 5 times per month, shared by front end download page and rest api - The time between `startTime` and `endTime` can not be longer than 1 year
 
 ### Example
 
@@ -987,9 +989,9 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$startTime = 56; // int
-$endTime = 56; // int
-$recvWindow = 56; // int
+$startTime = 1623319461670; // int | Timestamp in ms
+$endTime = 1641782889000; // int | Timestamp in ms
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getDownloadIdForUmFuturesTradeHistory($startTime, $endTime, $recvWindow);
@@ -1003,8 +1005,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **startTime** | **int**|  | |
-| **endTime** | **int**|  | |
+| **startTime** | **int**| Timestamp in ms | |
+| **endTime** | **int**| Timestamp in ms | |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -1032,7 +1034,7 @@ getDownloadIdForUmFuturesTransactionHistory($startTime, $endTime, $recvWindow): 
 
 Get Download Id For UM Futures Transaction History (USER_DATA)
 
-Get download id for UM futures transaction history  * Request Limitation is 5 times per month, shared by front end download page and rest api * The time between `startTime` and `endTime` can not be longer than 1 year  Weight: 1500
+Get download id for UM futures transaction history  Weight(IP): 1500  Security Type: USER_DATA  Notes: - Request Limitation is 5 times per month, shared by front end download page and rest api - The time between `startTime` and `endTime` can not be longer than 1 year
 
 ### Example
 
@@ -1047,9 +1049,9 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$startTime = 56; // int
-$endTime = 56; // int
-$recvWindow = 56; // int
+$startTime = 1623319461670; // int | Timestamp in ms
+$endTime = 1641782889000; // int | Timestamp in ms
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getDownloadIdForUmFuturesTransactionHistory($startTime, $endTime, $recvWindow);
@@ -1063,8 +1065,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **startTime** | **int**|  | |
-| **endTime** | **int**|  | |
+| **startTime** | **int**| Timestamp in ms | |
+| **endTime** | **int**| Timestamp in ms | |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -1090,9 +1092,9 @@ No authorization required
 getMarginBorrowLoanInterestHistory($asset, $startTime, $endTime, $current, $size, $archived, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\GetMarginBorrowLoanInterestHistoryResponse
 ```
 
-Get Margin Borrow/Loan Interest History(USER_DATA)
+Get Margin Borrow/Loan Interest History (USER_DATA)
 
-Get Margin Borrow/Loan Interest History   * Response in descending order * The max interval between startTime and endTime is 30 days. It is a MUST to ensure data correctness. * If `startTime` and `endTime` not sent, return records of the last 7 days by default * If `startTime` is sent and `endTime` is not sent, the records from `startTime` to the present will be returned; if `startTime` is more than 30 days ago, the records of the past 30 days will be returned. * If `startTime` is not sent and `endTime` is sent, the records of the 7 days before `endTime` is returned. * Type in response has 5 enums: * `PERIODIC` interest charged per hour * `ON_BORROW` first interest charged on borrow * `PERIODIC_CONVERTED` interest charged per hour converted into BNB * `ON_BORROW_CONVERTED` first interest charged on borrow converted into BNB * `PORTFOLIO` Portfolio Margin negative balance daily interest  Weight: 1
+Get Margin Borrow/Loan Interest History  Weight(IP): 1  Security Type: USER_DATA  Notes: - Response in descending order - The max interval between startTime and endTime is 30 days. It is a MUST to ensure data correctness. - If `startTime` and `endTime` not sent, return records of the last 7 days by default - If `startTime` is sent and `endTime` is not sent, the records from `startTime` to the present will be returned; if `startTime` is more than 30 days ago, the records of the past 30 days will be returned. - If `startTime` is not sent and `endTime` is sent, the records of the 7 days before `endTime` is returned. - Type in response has 5 enums:   - `PERIODIC` interest charged per hour   - `ON_BORROW` first interest charged on borrow   - `PERIODIC_CONVERTED` interest charged per hour converted into BNB   - `ON_BORROW_CONVERTED` first interest charged on borrow converted into BNB   - `PORTFOLIO` Portfolio Margin negative balance daily interest
 
 ### Example
 
@@ -1107,13 +1109,13 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10 Max:100
-$archived = 'archived_example'; // string | Default: `false`. Set to `true` for archived data from 6 months ago
-$recvWindow = 56; // int
+$asset = USDT; // string
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$current = 1; // int | Current page number.
+$size = 10; // int | Number of results returned.
+$archived = new \Binance\Client\DerivativesTradingPortfolioMargin\Model\\Binance\Client\DerivativesTradingPortfolioMargin\Model\Archived(); // \Binance\Client\DerivativesTradingPortfolioMargin\Model\Archived | Set to true to query archived data from 6 months ago.
+$recvWindow = 5000; // int | The value cannot be greater than `60000`
 
 try {
     $result = $apiInstance->getMarginBorrowLoanInterestHistory($asset, $startTime, $endTime, $current, $size, $archived, $recvWindow);
@@ -1130,10 +1132,10 @@ try {
 | **asset** | **string**|  | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10 Max:100 | [optional] |
-| **archived** | **string**| Default: &#x60;false&#x60;. Set to &#x60;true&#x60; for archived data from 6 months ago | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Current page number. | [optional] |
+| **size** | **int**| Number of results returned. | [optional] |
+| **archived** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\Archived**](../Model/.md)| Set to true to query archived data from 6 months ago. | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
 
 ### Return type
 
@@ -1158,9 +1160,9 @@ No authorization required
 getUmAccountDetail($recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\GetUmAccountDetailResponse
 ```
 
-Get UM Account Detail(USER_DATA)
+Get UM Account Detail (USER_DATA)
 
-Get current UM account asset and position information.  Weight: 5
+Get current UM account asset and position information.  Weight(IP): 5  Security Type: USER_DATA
 
 ### Example
 
@@ -1175,7 +1177,7 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getUmAccountDetail($recvWindow);
@@ -1214,9 +1216,9 @@ No authorization required
 getUmAccountDetailV2($recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\GetUmAccountDetailV2Response
 ```
 
-Get UM Account Detail V2(USER_DATA)
+Get UM Account Detail V2 (USER_DATA)
 
-Get current UM account asset and position information.  Weight: 5
+Get current UM account asset and position information.  Weight(IP): 5  Security Type: USER_DATA
 
 ### Example
 
@@ -1231,7 +1233,7 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getUmAccountDetailV2($recvWindow);
@@ -1270,9 +1272,9 @@ No authorization required
 getUmCurrentPositionMode($recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\GetUmCurrentPositionModeResponse
 ```
 
-Get UM Current Position Mode(USER_DATA)
+Get UM Current Position Mode (USER_DATA)
 
-Get user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol in UM  Weight: 30
+Get user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol in UM  Weight(IP): 30  Security Type: USER_DATA
 
 ### Example
 
@@ -1287,7 +1289,7 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getUmCurrentPositionMode($recvWindow);
@@ -1326,9 +1328,9 @@ No authorization required
 getUmFuturesOrderDownloadLinkById($downloadId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\GetUmFuturesOrderDownloadLinkByIdResponse
 ```
 
-Get UM Futures Order Download Link by Id(USER_DATA)
+Get UM Futures Order Download Link by Id (USER_DATA)
 
-Get UM futures order download link by Id  * Download link expiration: 24h  Weight: 10
+Get UM futures order download link by Id  Weight(IP): 10  Security Type: USER_DATA  Notes: - Download link expiration: 7 days
 
 ### Example
 
@@ -1343,8 +1345,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$downloadId = 'downloadId_example'; // string | get by download id api
-$recvWindow = 56; // int
+$downloadId = 545923594199212032; // string | get by download id api
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getUmFuturesOrderDownloadLinkById($downloadId, $recvWindow);
@@ -1384,9 +1386,9 @@ No authorization required
 getUmFuturesTradeDownloadLinkById($downloadId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\GetUmFuturesTradeDownloadLinkByIdResponse
 ```
 
-Get UM Futures Trade Download Link by Id(USER_DATA)
+Get UM Futures Trade Download Link by Id (USER_DATA)
 
-Get UM futures trade download link by Id  * Download link expiration: 24h  Weight: 10
+Get UM futures trade download link by Id  Weight(IP): 10  Security Type: USER_DATA  Notes: - Download link expiration: 7 days
 
 ### Example
 
@@ -1401,8 +1403,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$downloadId = 'downloadId_example'; // string | get by download id api
-$recvWindow = 56; // int
+$downloadId = 545923594199212032; // string | get by download id api
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getUmFuturesTradeDownloadLinkById($downloadId, $recvWindow);
@@ -1442,9 +1444,9 @@ No authorization required
 getUmFuturesTransactionDownloadLinkById($downloadId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\GetUmFuturesTransactionDownloadLinkByIdResponse
 ```
 
-Get UM Futures Transaction Download Link by Id(USER_DATA)
+Get UM Futures Transaction Download Link by Id (USER_DATA)
 
-Get UM futures Transaction download link by Id  * Download link expiration: 24h  Weight: 10
+Get UM futures Transaction download link by Id  Weight(IP): 10  Security Type: USER_DATA  Notes: - Download link expiration: 7 days
 
 ### Example
 
@@ -1459,8 +1461,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$downloadId = 'downloadId_example'; // string | get by download id api
-$recvWindow = 56; // int
+$downloadId = 1; // string | get by download id api
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getUmFuturesTransactionDownloadLinkById($downloadId, $recvWindow);
@@ -1500,9 +1502,9 @@ No authorization required
 getUmIncomeHistory($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\GetUmIncomeHistoryResponse
 ```
 
-Get UM Income History(USER_DATA)
+Get UM Income History (USER_DATA)
 
-Get UM Income History  * If neither `startTime` nor `endTime` is sent, the recent 7-day data will be returned. * If `incomeType` is not sent, all kinds of flow will be returned * \"trandId\" is unique in the same incomeType for a user * Income history only contains data for the last three months  Weight: 30
+Get UM Income History.  Weight(IP): 30  Security Type: USER_DATA  Notes: - If neither `startTime` nor `endTime` is sent, the recent 7-day data will be returned. - If `incomeType` is not sent, all kinds of flow will be returned - \"trandId\" is unique in the same incomeType for a user - Income history only contains data for the last three months
 
 ### Example
 
@@ -1518,12 +1520,12 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     new GuzzleHttp\Client()
 );
 $symbol = 'symbol_example'; // string
-$incomeType = 'incomeType_example'; // string | TRANSFER, WELCOME_BONUS, REALIZED_PNL, FUNDING_FEE, COMMISSION, INSURANCE_CLEAR, REFERRAL_KICKBACK, COMMISSION_REBATE, API_REBATE, CONTEST_REWARD, CROSS_COLLATERAL_TRANSFER, OPTIONS_PREMIUM_FEE, OPTIONS_SETTLE_PROFIT, INTERNAL_TRANSFER, AUTO_EXCHANGE, DELIVERED_SETTELMENT, COIN_SWAP_DEPOSIT, COIN_SWAP_WITHDRAW, POSITION_LIMIT_INCREASE_FEE
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$page = 56; // int
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$incomeType = new \Binance\Client\DerivativesTradingPortfolioMargin\Model\\Binance\Client\DerivativesTradingPortfolioMargin\Model\IncomeType(); // \Binance\Client\DerivativesTradingPortfolioMargin\Model\IncomeType | Income type.
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$page = 1; // int | Page number.
+$limit = 100; // int | Number of results returned.
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getUmIncomeHistory($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
@@ -1538,11 +1540,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | [optional] |
-| **incomeType** | **string**| TRANSFER, WELCOME_BONUS, REALIZED_PNL, FUNDING_FEE, COMMISSION, INSURANCE_CLEAR, REFERRAL_KICKBACK, COMMISSION_REBATE, API_REBATE, CONTEST_REWARD, CROSS_COLLATERAL_TRANSFER, OPTIONS_PREMIUM_FEE, OPTIONS_SETTLE_PROFIT, INTERNAL_TRANSFER, AUTO_EXCHANGE, DELIVERED_SETTELMENT, COIN_SWAP_DEPOSIT, COIN_SWAP_WITHDRAW, POSITION_LIMIT_INCREASE_FEE | [optional] |
+| **incomeType** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\IncomeType**](../Model/.md)| Income type. | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **page** | **int**|  | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **page** | **int**| Page number. | [optional] |
+| **limit** | **int**| Number of results returned. | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -1568,9 +1570,9 @@ No authorization required
 getUserCommissionRateForCm($symbol, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\GetUserCommissionRateForCmResponse
 ```
 
-Get User Commission Rate for CM(USER_DATA)
+Get User Commission Rate for CM (USER_DATA)
 
-Get User Commission Rate for CM  Weight: 20
+Get User Commission Rate for CM  Weight(IP): 20  Security Type: USER_DATA
 
 ### Example
 
@@ -1585,8 +1587,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSD_PERP; // string | Symbol
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getUserCommissionRateForCm($symbol, $recvWindow);
@@ -1600,7 +1602,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -1626,9 +1628,9 @@ No authorization required
 getUserCommissionRateForUm($symbol, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\GetUserCommissionRateForUmResponse
 ```
 
-Get User Commission Rate for UM(USER_DATA)
+Get User Commission Rate for UM (USER_DATA)
 
-Get User Commission Rate for UM  Weight: 20
+Get User Commission Rate for UM  Weight(IP): 20  Security Type: USER_DATA
 
 ### Example
 
@@ -1643,8 +1645,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getUserCommissionRateForUm($symbol, $recvWindow);
@@ -1658,7 +1660,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -1684,9 +1686,9 @@ No authorization required
 marginMaxBorrow($asset, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\MarginMaxBorrowResponse
 ```
 
-Margin Max Borrow(USER_DATA)
+Margin Max Borrow (USER_DATA)
 
-Query margin max borrow  Weight: 5
+Query margin max borrow  Weight(IP): 5  Security Type: USER_DATA
 
 ### Example
 
@@ -1701,8 +1703,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
-$recvWindow = 56; // int
+$asset = USDT; // string
+$recvWindow = 5000; // int | The value cannot be greater than `60000`
 
 try {
     $result = $apiInstance->marginMaxBorrow($asset, $recvWindow);
@@ -1717,7 +1719,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **asset** | **string**|  | |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
 
 ### Return type
 
@@ -1742,9 +1744,9 @@ No authorization required
 portfolioMarginUmTradingQuantitativeRulesIndicators($symbol, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\PortfolioMarginUmTradingQuantitativeRulesIndicatorsResponse
 ```
 
-Portfolio Margin UM Trading Quantitative Rules Indicators(USER_DATA)
+Portfolio Margin UM Trading Quantitative Rules Indicators (USER_DATA)
 
-Portfolio Margin UM Trading Quantitative Rules Indicators  Weight: 1 for a single symbol 10 when the symbol parameter is omitted
+Portfolio Margin UM Trading Quantitative Rules Indicators  Weight: - 1 for a single `symbol` - 10 when `symbol` is omitted  Security Type: USER_DATA
 
 ### Example
 
@@ -1759,8 +1761,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->portfolioMarginUmTradingQuantitativeRulesIndicators($symbol, $recvWindow);
@@ -1800,9 +1802,9 @@ No authorization required
 queryCmPositionInformation($marginAsset, $pair, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCmPositionInformationResponse
 ```
 
-Query CM Position Information(USER_DATA)
+Query CM Position Information (USER_DATA)
 
-Get current CM position information.  * If neither `marginAsset` nor `pair` is sent, positions of all symbols with `TRADING` status will be returned. * for One-way Mode user, the response will only show the \"BOTH\" positions * for Hedge Mode user, the response will show \"LONG\", and \"SHORT\" positions. * Please use with user data stream `ACCOUNT_UPDATE` to meet your timeliness and accuracy needs.  Weight: 1
+Get current CM position information.  Weight(IP): 1  Security Type: USER_DATA  Notes: - If neither `marginAsset` nor `pair` is sent, positions of all symbols with `TRADING` status will be returned. - for One-way Mode user, the response will only show the \"BOTH\" positions - for Hedge Mode user, the response will show \"LONG\", and \"SHORT\" positions. **Note** - Please use with user data stream `ACCOUNT_UPDATE` to meet your timeliness and accuracy needs.
 
 ### Example
 
@@ -1817,9 +1819,9 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$marginAsset = 'marginAsset_example'; // string
-$pair = 'pair_example'; // string
-$recvWindow = 56; // int
+$marginAsset = USDT; // string
+$pair = BTCUSD_201225; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryCmPositionInformation($marginAsset, $pair, $recvWindow);
@@ -1860,9 +1862,9 @@ No authorization required
 queryMarginLoanRecord($asset, $txId, $startTime, $endTime, $current, $size, $archived, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryMarginLoanRecordResponse
 ```
 
-Query Margin Loan Record(USER_DATA)
+Query Margin Loan Record (USER_DATA)
 
-Query margin loan record  * txId or startTime must be sent. txId takes precedence. * Response in descending order * The max interval between `startTime` and `endTime` is 30 days. * If `startTime` and `endTime` not sent, return records of the last 7 days by default * Set `archived` to `true` to query data from 6 months ago  Weight: 10
+Query margin loan record  Weight(IP): 10  Security Type: USER_DATA  Notes: - txId or startTime must be sent. txId takes precedence. - Response in descending order - The max interval between `startTime` and `endTime` is 30 days. - If `startTime` and `endTime` not sent, return records of the last 7 days by default - Set `archived` to `true` to query data from 6 months ago
 
 ### Example
 
@@ -1877,14 +1879,14 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
-$txId = 56; // int | the `tranId` in `POST/papi/v1/marginLoan`
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10 Max:100
-$archived = 'archived_example'; // string | Default: `false`. Set to `true` for archived data from 6 months ago
-$recvWindow = 56; // int
+$asset = USDT; // string
+$txId = 1; // int | the `tranId` in `POST/papi/v1/marginLoan`
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$current = 1; // int | Current page number.
+$size = 10; // int | Number of results returned.
+$archived = new \Binance\Client\DerivativesTradingPortfolioMargin\Model\\Binance\Client\DerivativesTradingPortfolioMargin\Model\Archived(); // \Binance\Client\DerivativesTradingPortfolioMargin\Model\Archived | Set to true to query archived data from 6 months ago.
+$recvWindow = 5000; // int | The value cannot be greater than 60000
 
 try {
     $result = $apiInstance->queryMarginLoanRecord($asset, $txId, $startTime, $endTime, $current, $size, $archived, $recvWindow);
@@ -1902,10 +1904,10 @@ try {
 | **txId** | **int**| the &#x60;tranId&#x60; in &#x60;POST/papi/v1/marginLoan&#x60; | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10 Max:100 | [optional] |
-| **archived** | **string**| Default: &#x60;false&#x60;. Set to &#x60;true&#x60; for archived data from 6 months ago | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Current page number. | [optional] |
+| **size** | **int**| Number of results returned. | [optional] |
+| **archived** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\Archived**](../Model/.md)| Set to true to query archived data from 6 months ago. | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 | [optional] |
 
 ### Return type
 
@@ -1930,9 +1932,9 @@ No authorization required
 queryMarginMaxWithdraw($asset, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryMarginMaxWithdrawResponse
 ```
 
-Query Margin Max Withdraw(USER_DATA)
+Query Margin Max Withdraw (USER_DATA)
 
-Query Margin Max Withdraw  Weight: 5
+Query Margin Max Withdraw  Weight(IP): 5  Security Type: USER_DATA
 
 ### Example
 
@@ -1947,8 +1949,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
-$recvWindow = 56; // int
+$asset = USDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryMarginMaxWithdraw($asset, $recvWindow);
@@ -1988,9 +1990,9 @@ No authorization required
 queryMarginRepayRecord($asset, $txId, $startTime, $endTime, $current, $size, $archived, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryMarginRepayRecordResponse
 ```
 
-Query Margin repay Record(USER_DATA)
+Query Margin repay Record (USER_DATA)
 
-Query margin repay record.  * txId or startTime must be sent. txId takes precedence. * Response in descending order * The max interval between `startTime` and `endTime` is 30 days. * If `startTime` and `endTime` not sent, return records of the last 7 days by default * Set `archived` to `true` to query data from 6 months ago  Weight: 10
+Query margin repay record.  Weight(IP): 10  Security Type: USER_DATA  Notes: - txId or startTime must be sent. txId takes precedence. - Response in descending order - The max interval between `startTime` and `endTime` is 30 days. - If `startTime` and `endTime` not sent, return records of the last 7 days by default - Set `archived` to `true` to query data from 6 months ago
 
 ### Example
 
@@ -2005,14 +2007,14 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
-$txId = 56; // int | the `tranId` in `POST/papi/v1/marginLoan`
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10 Max:100
-$archived = 'archived_example'; // string | Default: `false`. Set to `true` for archived data from 6 months ago
-$recvWindow = 56; // int
+$asset = USDT; // string
+$txId = 1; // int | the `tranId` in `POST /papi/v1/repayLoan`
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$current = 1; // int | Current page number.
+$size = 10; // int | Number of results returned.
+$archived = new \Binance\Client\DerivativesTradingPortfolioMargin\Model\\Binance\Client\DerivativesTradingPortfolioMargin\Model\Archived(); // \Binance\Client\DerivativesTradingPortfolioMargin\Model\Archived | Set to true to query archived data from 6 months ago.
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryMarginRepayRecord($asset, $txId, $startTime, $endTime, $current, $size, $archived, $recvWindow);
@@ -2027,12 +2029,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **asset** | **string**|  | |
-| **txId** | **int**| the &#x60;tranId&#x60; in &#x60;POST/papi/v1/marginLoan&#x60; | [optional] |
+| **txId** | **int**| the &#x60;tranId&#x60; in &#x60;POST /papi/v1/repayLoan&#x60; | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10 Max:100 | [optional] |
-| **archived** | **string**| Default: &#x60;false&#x60;. Set to &#x60;true&#x60; for archived data from 6 months ago | [optional] |
+| **current** | **int**| Current page number. | [optional] |
+| **size** | **int**| Number of results returned. | [optional] |
+| **archived** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\Archived**](../Model/.md)| Set to true to query archived data from 6 months ago. | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -2058,9 +2060,9 @@ No authorization required
 queryPortfolioMarginNegativeBalanceInterestHistory($asset, $startTime, $endTime, $size, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryPortfolioMarginNegativeBalanceInterestHistoryResponse
 ```
 
-Query Portfolio Margin Negative Balance Interest History(USER_DATA)
+Query Portfolio Margin Negative Balance Interest History (USER_DATA)
 
-Query interest history of negative balance for portfolio margin.  * Response in descending order * The max interval between startTime and endTime is 30 days. It is a MUST to ensure data correctness. * If `startTime` and `endTime` not sent, return records of the last 7 days by default * If `startTime` is sent and `endTime` is not sent, the records from `startTime` to the present will be returned; if `startTime` is more than 30 days ago, the records of the past 30 days will be returned. * If `startTime` is not sent and `endTime` is sent, the records of the 7 days before `endTime` is returned.  Weight: 50
+Query interest history of negative balance for portfolio margin.  Weight(IP): 50  Security Type: USER_DATA  Notes: - Results are returned in descending order. - The query range cannot exceed 30 days to ensure data correctness. - If both `startTime` and `endTime` are omitted, the most recent 7 days are returned by default. - If `startTime` is provided but `endTime` is omitted, records from `startTime` to now are returned; if that exceeds 30 days, only the most recent 30 days are returned. - If `endTime` is provided but `startTime` is omitted, records from the 7 days before `endTime` are returned.
 
 ### Example
 
@@ -2075,11 +2077,11 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$size = 56; // int | Default:10 Max:100
-$recvWindow = 56; // int
+$asset = USDT; // string
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$size = 10; // int | Number of results returned.
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryPortfolioMarginNegativeBalanceInterestHistory($asset, $startTime, $endTime, $size, $recvWindow);
@@ -2096,7 +2098,7 @@ try {
 | **asset** | **string**|  | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **size** | **int**| Default:10 Max:100 | [optional] |
+| **size** | **int**| Number of results returned. | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -2122,9 +2124,9 @@ No authorization required
 queryUmPositionInformation($symbol, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUmPositionInformationResponse
 ```
 
-Query UM Position Information(USER_DATA)
+Query UM Position Information (USER_DATA)
 
-Get current UM position information.  * Please use with user data stream `ACCOUNT_UPDATE` to meet your timeliness and accuracy needs. * for One-way Mode user, the response will only show the \"BOTH\" positions * for Hedge Mode user, the response will show \"LONG\", and \"SHORT\" positions.  Weight: 5
+Get current UM position information.  Weight(IP): 5  Security Type: USER_DATA  Notes: - Please use with account push event `ACCOUNT_UPDATE` for timeliness and accuracy. - In One-way Mode, only positions with side `BOTH` are shown. - In Hedge Mode, positions with sides `BOTH`, `LONG`, and `SHORT` are shown.
 
 ### Example
 
@@ -2139,8 +2141,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryUmPositionInformation($symbol, $recvWindow);
@@ -2182,7 +2184,7 @@ queryUserNegativeBalanceAutoExchangeRecord($startTime, $endTime, $recvWindow): \
 
 Query User Negative Balance Auto Exchange Record (USER_DATA)
 
-Query user negative balance auto exchange record  * Response in descending order * The max interval between `startTime` and `endTime` is 3 months.  Weight: 100
+Query user negative balance auto exchange record  Weight(IP): 100  Security Type: USER_DATA  Notes: - Response in descending order - The max interval between `startTime` and `endTime` is 3 months.
 
 ### Example
 
@@ -2197,9 +2199,9 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$startTime = 56; // int
-$endTime = 56; // int
-$recvWindow = 56; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryUserNegativeBalanceAutoExchangeRecord($startTime, $endTime, $recvWindow);
@@ -2242,7 +2244,7 @@ queryUserRateLimit($recvWindow): \Binance\Client\DerivativesTradingPortfolioMarg
 
 Query User Rate Limit (USER_DATA)
 
-Query User Rate Limit  Weight: 1
+Query User Rate Limit  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -2257,7 +2259,7 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryUserRateLimit($recvWindow);
@@ -2296,9 +2298,9 @@ No authorization required
 repayFuturesNegativeBalance($repayFuturesNegativeBalanceRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\RepayFuturesNegativeBalanceResponse
 ```
 
-Repay futures Negative Balance(USER_DATA)
+Repay futures Negative Balance (USER_DATA)
 
-Repay futures Negative Balance  Weight: 750
+Repay futures Negative Balance  Weight(IP): 750  Security Type: USER_DATA
 
 ### Example
 
@@ -2327,7 +2329,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **repayFuturesNegativeBalanceRequest** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\RepayFuturesNegativeBalanceRequest**](../Model/RepayFuturesNegativeBalanceRequest.md)|  | |
+| **repayFuturesNegativeBalanceRequest** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\RepayFuturesNegativeBalanceRequest**](../Model/RepayFuturesNegativeBalanceRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -2352,9 +2354,9 @@ No authorization required
 umFuturesAccountConfiguration($recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\UmFuturesAccountConfigurationResponse
 ```
 
-UM Futures Account Configuration(USER_DATA)
+UM Futures Account Configuration (USER_DATA)
 
-Query UM Futures account configuration  Weight: 5
+Query UM Futures account configuration  Weight(IP): 5  Security Type: USER_DATA
 
 ### Example
 
@@ -2369,7 +2371,7 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->umFuturesAccountConfiguration($recvWindow);
@@ -2408,9 +2410,9 @@ No authorization required
 umFuturesSymbolConfiguration($symbol, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\UmFuturesSymbolConfigurationResponse
 ```
 
-UM Futures Symbol Configuration(USER_DATA)
+UM Futures Symbol Configuration (USER_DATA)
 
-Get current UM account symbol configuration.  Weight: 5
+Get current UM account symbol configuration.  Weight(IP): 5  Security Type: USER_DATA
 
 ### Example
 
@@ -2425,8 +2427,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->umFuturesSymbolConfiguration($symbol, $recvWindow);
@@ -2440,7 +2442,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | [optional] |
+| **symbol** | **string**| Symbol | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -2468,7 +2470,7 @@ umNotionalAndLeverageBrackets($symbol, $recvWindow): \Binance\Client\Derivatives
 
 UM Notional and Leverage Brackets (USER_DATA)
 
-Query UM notional and leverage brackets  Weight: 1
+Query UM notional and leverage brackets  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -2483,8 +2485,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\AccountA
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = ETHUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->umNotionalAndLeverageBrackets($symbol, $recvWindow);

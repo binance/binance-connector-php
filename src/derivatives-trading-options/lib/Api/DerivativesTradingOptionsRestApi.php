@@ -15,6 +15,7 @@ use Binance\Client\DerivativesTradingOptions\Model\CancelMultipleOptionOrdersRes
 use Binance\Client\DerivativesTradingOptions\Model\CancelOptionOrderResponse;
 use Binance\Client\DerivativesTradingOptions\Model\CheckServerTimeResponse;
 use Binance\Client\DerivativesTradingOptions\Model\ClientOrderIds;
+use Binance\Client\DerivativesTradingOptions\Model\Currency;
 use Binance\Client\DerivativesTradingOptions\Model\ExchangeInformationResponse;
 use Binance\Client\DerivativesTradingOptions\Model\ExtendBlockTradeOrderRequest;
 use Binance\Client\DerivativesTradingOptions\Model\ExtendBlockTradeOrderResponse;
@@ -22,6 +23,7 @@ use Binance\Client\DerivativesTradingOptions\Model\GetAutoCancelAllOpenOrdersRes
 use Binance\Client\DerivativesTradingOptions\Model\GetMarketMakerProtectionConfigResponse;
 use Binance\Client\DerivativesTradingOptions\Model\HistoricalExerciseRecordsResponse;
 use Binance\Client\DerivativesTradingOptions\Model\IndexPriceResponse;
+use Binance\Client\DerivativesTradingOptions\Model\Interval;
 use Binance\Client\DerivativesTradingOptions\Model\KlineCandlestickDataResponse;
 use Binance\Client\DerivativesTradingOptions\Model\NewBlockTradeOrderRequest;
 use Binance\Client\DerivativesTradingOptions\Model\NewBlockTradeOrderResponse;
@@ -50,6 +52,8 @@ use Binance\Client\DerivativesTradingOptions\Model\SetMarketMakerProtectionConfi
 use Binance\Client\DerivativesTradingOptions\Model\SetMarketMakerProtectionConfigResponse;
 use Binance\Client\DerivativesTradingOptions\Model\StartUserDataStreamResponse;
 use Binance\Client\DerivativesTradingOptions\Model\Ticker24hrPriceChangeStatisticsResponse;
+use Binance\Client\DerivativesTradingOptions\Model\TradfiOptionsContractRequest;
+use Binance\Client\DerivativesTradingOptions\Model\TradfiOptionsContractResponse;
 use Binance\Client\DerivativesTradingOptions\Model\UserCommissionResponse;
 use Binance\Client\DerivativesTradingOptions\Model\UserExerciseRecordResponse;
 use Binance\Common\ApiException;
@@ -104,12 +108,12 @@ class DerivativesTradingOptionsRestApi
      *
      * Account Funding Flow (USER_DATA)
      *
-     * @param string   $currency   Asset type, only support USDT  as of now (required)
-     * @param null|int $recordId   Return the recordId and subsequent data, the latest data is returned by default, e.g 100000 (optional)
+     * @param Currency $currency   Asset type, only support USDT  as of now (required)
+     * @param null|int $recordId   Return the recordId and subsequent data, the latest data is returned by default (optional)
      * @param null|int $startTime  Start Time, e.g 1593511200000 (optional)
      * @param null|int $endTime    End Time, e.g 1593512200000 (optional)
-     * @param null|int $limit      Number of result sets returned Default:100 Max:1000 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $limit      Number of result sets returned (optional)
+     * @param null|int $recvWindow Recv Window. (optional)
      *
      * @return ApiResponse<AccountFundingFlowResponse>
      *
@@ -126,7 +130,7 @@ class DerivativesTradingOptionsRestApi
      *
      * Option Margin Account Information (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow Recv Window. (optional)
      *
      * @return ApiResponse<OptionMarginAccountInformationResponse>
      *
@@ -173,10 +177,10 @@ class DerivativesTradingOptionsRestApi
      *
      * Historical Exercise Records
      *
-     * @param null|string $underlying underlying, e.g BTCUSDT (optional)
+     * @param null|string $underlying Underlying asset. (optional)
      * @param null|int    $startTime  Start Time, e.g 1593511200000 (optional)
      * @param null|int    $endTime    End Time, e.g 1593512200000 (optional)
-     * @param null|int    $limit      Number of result sets returned Default:100 Max:1000 (optional)
+     * @param null|int    $limit      Number of result sets returned (optional)
      *
      * @return ApiResponse<HistoricalExerciseRecordsResponse>
      *
@@ -193,7 +197,7 @@ class DerivativesTradingOptionsRestApi
      *
      * Index Price
      *
-     * @param string $underlying Option underlying, e.g BTCUSDT (required)
+     * @param string $underlying Underlying asset. (required)
      *
      * @return ApiResponse<IndexPriceResponse>
      *
@@ -210,11 +214,11 @@ class DerivativesTradingOptionsRestApi
      *
      * Kline/Candlestick Data
      *
-     * @param string   $symbol    Option trading pair, e.g BTC-200730-9000-C (required)
-     * @param string   $interval  Time interval (required)
+     * @param string   $symbol    Option trading pair (required)
+     * @param Interval $interval  Time interval (required)
      * @param null|int $startTime Start Time, e.g 1593511200000 (optional)
      * @param null|int $endTime   End Time, e.g 1593512200000 (optional)
-     * @param null|int $limit     Number of result sets returned Default:100 Max:1000 (optional)
+     * @param null|int $limit     Number of result sets returned (optional)
      *
      * @return ApiResponse<KlineCandlestickDataResponse>
      *
@@ -231,8 +235,8 @@ class DerivativesTradingOptionsRestApi
      *
      * Open Interest
      *
-     * @param string $underlyingAsset underlying asset, e.g ETH/BTC (required)
-     * @param string $expiration      expiration date, e.g 221225 (required)
+     * @param string $underlyingAsset Underlying asset. (required)
+     * @param string $expiration      expiration date (required)
      *
      * @return ApiResponse<OpenInterestResponse>
      *
@@ -249,7 +253,7 @@ class DerivativesTradingOptionsRestApi
      *
      * Option Mark Price
      *
-     * @param null|string $symbol Option trading pair, e.g BTC-200730-9000-C (optional)
+     * @param null|string $symbol Option trading pair (optional)
      *
      * @return ApiResponse<OptionMarkPriceResponse>
      *
@@ -266,8 +270,8 @@ class DerivativesTradingOptionsRestApi
      *
      * Order Book
      *
-     * @param string   $symbol Option trading pair, e.g BTC-200730-9000-C (required)
-     * @param null|int $limit  Number of result sets returned Default:100 Max:1000 (optional)
+     * @param string   $symbol Option trading pair (required)
+     * @param null|int $limit  Default:100 Max:1000.Optional value:[10, 20, 50, 100, 500, 1000] (optional)
      *
      * @return ApiResponse<OrderBookResponse>
      *
@@ -284,8 +288,8 @@ class DerivativesTradingOptionsRestApi
      *
      * Recent Block Trades List
      *
-     * @param null|string $symbol Option trading pair, e.g BTC-200730-9000-C (optional)
-     * @param null|int    $limit  Number of result sets returned Default:100 Max:1000 (optional)
+     * @param null|string $symbol Option trading pair (optional)
+     * @param null|int    $limit  Number of records (optional)
      *
      * @return ApiResponse<RecentBlockTradesListResponse>
      *
@@ -302,8 +306,8 @@ class DerivativesTradingOptionsRestApi
      *
      * Recent Trades List
      *
-     * @param string   $symbol Option trading pair, e.g BTC-200730-9000-C (required)
-     * @param null|int $limit  Number of result sets returned Default:100 Max:1000 (optional)
+     * @param string   $symbol Option trading pair (required)
+     * @param null|int $limit  Number of result sets returned (optional)
      *
      * @return ApiResponse<RecentTradesListResponse>
      *
@@ -333,7 +337,7 @@ class DerivativesTradingOptionsRestApi
      *
      * 24hr Ticker Price Change Statistics
      *
-     * @param null|string $symbol Option trading pair, e.g BTC-200730-9000-C (optional)
+     * @param null|string $symbol Option trading pair (optional)
      *
      * @return ApiResponse<Ticker24hrPriceChangeStatisticsResponse>
      *
@@ -369,8 +373,8 @@ class DerivativesTradingOptionsRestApi
      *
      * @param null|int    $endTime    End Time, e.g 1593512200000 (optional)
      * @param null|int    $startTime  Start Time, e.g 1593511200000 (optional)
-     * @param null|string $underlying underlying, e.g BTCUSDT (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|string $underlying Underlying asset. (optional)
+     * @param null|int    $recvWindow Recv Window. (optional)
      *
      * @return ApiResponse<AccountBlockTradeListResponse>
      *
@@ -387,8 +391,8 @@ class DerivativesTradingOptionsRestApi
      *
      * Cancel Block Trade Order (TRADE)
      *
-     * @param string   $blockOrderMatchingKey blockOrderMatchingKey (required)
-     * @param null|int $recvWindow            recvWindow (optional)
+     * @param string   $blockOrderMatchingKey Block trade matching key. (required)
+     * @param null|int $recvWindow            Recv Window. (optional)
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
@@ -437,8 +441,8 @@ class DerivativesTradingOptionsRestApi
      *
      * Query Block Trade Details (USER_DATA)
      *
-     * @param string   $blockOrderMatchingKey blockOrderMatchingKey (required)
-     * @param null|int $recvWindow            recvWindow (optional)
+     * @param string   $blockOrderMatchingKey Block trade matching key. (required)
+     * @param null|int $recvWindow            Recv Window. (optional)
      *
      * @return ApiResponse<QueryBlockTradeDetailsResponse>
      *
@@ -458,8 +462,8 @@ class DerivativesTradingOptionsRestApi
      * @param null|string $blockOrderMatchingKey If specified, returns the specific block trade associated with the blockOrderMatchingKey (optional)
      * @param null|int    $endTime               End Time, e.g 1593512200000 (optional)
      * @param null|int    $startTime             Start Time, e.g 1593511200000 (optional)
-     * @param null|string $underlying            underlying, e.g BTCUSDT (optional)
-     * @param null|int    $recvWindow            recvWindow (optional)
+     * @param null|string $underlying            Underlying asset. (optional)
+     * @param null|int    $recvWindow            Recv Window. (optional)
      *
      * @return ApiResponse<QueryBlockTradeOrderResponse>
      *
@@ -493,8 +497,8 @@ class DerivativesTradingOptionsRestApi
      *
      * Get Auto-Cancel All Open Orders (Kill-Switch) Config (TRADE)
      *
-     * @param null|string $underlying underlying, e.g BTCUSDT (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|string $underlying Underlying asset. (optional)
+     * @param null|int    $recvWindow Recv Window. (optional)
      *
      * @return ApiResponse<GetAutoCancelAllOpenOrdersResponse>
      *
@@ -511,15 +515,15 @@ class DerivativesTradingOptionsRestApi
      *
      * Get Market Maker Protection Config (TRADE)
      *
-     * @param null|string $underlying underlying, e.g BTCUSDT (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param string   $underlying Underlying asset. (required)
+     * @param null|int $recvWindow Recv Window. (optional)
      *
      * @return ApiResponse<GetMarketMakerProtectionConfigResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getMarketMakerProtectionConfig($underlying = null, $recvWindow = null): ApiResponse
+    public function getMarketMakerProtectionConfig($underlying, $recvWindow = null): ApiResponse
     {
         return $this->marketMakerEndpointsApi->getMarketMakerProtectionConfig($underlying, $recvWindow);
     }
@@ -580,19 +584,19 @@ class DerivativesTradingOptionsRestApi
      *
      * Account Trade List (USER_DATA)
      *
-     * @param null|string $symbol     Option trading pair, e.g BTC-200730-9000-C (optional)
-     * @param null|int    $fromId     Trade id to fetch from. Default gets most recent trades, e.g 4611875134427365376 (optional)
-     * @param null|int    $startTime  Start Time, e.g 1593511200000 (optional)
-     * @param null|int    $endTime    End Time, e.g 1593512200000 (optional)
-     * @param null|int    $limit      Number of result sets returned Default:100 Max:1000 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param string   $symbol     Option trading pair. (required)
+     * @param null|int $fromId     Trade id to fetch from. Default gets most recent trades, e.g 4611875134427365376 (optional)
+     * @param null|int $startTime  Start Time, e.g 1593511200000 (optional)
+     * @param null|int $endTime    End Time, e.g 1593512200000 (optional)
+     * @param null|int $limit      Number of result sets returned. (optional)
+     * @param null|int $recvWindow Recv Window. (optional)
      *
      * @return ApiResponse<AccountTradeListResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function accountTradeList($symbol = null, $fromId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
+    public function accountTradeList($symbol, $fromId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
         return $this->tradeApi->accountTradeList($symbol, $fromId, $startTime, $endTime, $limit, $recvWindow);
     }
@@ -602,8 +606,8 @@ class DerivativesTradingOptionsRestApi
      *
      * Cancel All Option Orders By Underlying (TRADE)
      *
-     * @param string   $underlying Option underlying, e.g BTCUSDT (required)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param string   $underlying Underlying asset. (required)
+     * @param null|int $recvWindow Recv Window. (optional)
      *
      * @return ApiResponse<CancelAllOptionOrdersByUnderlyingResponse>
      *
@@ -620,8 +624,8 @@ class DerivativesTradingOptionsRestApi
      *
      * Cancel all Option orders on specific symbol (TRADE)
      *
-     * @param string   $symbol     Option trading pair, e.g BTC-200730-9000-C (required)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param string   $symbol     Option trading pair. (required)
+     * @param null|int $recvWindow Recv Window. (optional)
      *
      * @return ApiResponse<CancelAllOptionOrdersOnSpecificSymbolResponse>
      *
@@ -638,10 +642,10 @@ class DerivativesTradingOptionsRestApi
      *
      * Cancel Multiple Option Orders (TRADE)
      *
-     * @param string              $symbol         Option trading pair, e.g BTC-200730-9000-C (required)
-     * @param null|OrderIds       $orderIds       Order ID, e.g [4611875134427365377,4611875134427365378] (optional)
-     * @param null|ClientOrderIds $clientOrderIds User-defined order ID, e.g [\&quot;my_id_1\&quot;,\&quot;my_id_2\&quot;] (optional)
-     * @param null|int            $recvWindow     recvWindow (optional)
+     * @param string              $symbol         Option trading pair. (required)
+     * @param null|OrderIds       $orderIds       Order ID list. (optional)
+     * @param null|ClientOrderIds $clientOrderIds Client order ID list. (optional)
+     * @param null|int            $recvWindow     Recv Window. (optional)
      *
      * @return ApiResponse<CancelMultipleOptionOrdersResponse>
      *
@@ -658,10 +662,10 @@ class DerivativesTradingOptionsRestApi
      *
      * Cancel Option Order (TRADE)
      *
-     * @param string      $symbol        Option trading pair, e.g BTC-200730-9000-C (required)
-     * @param null|int    $orderId       Order ID, e.g 4611875134427365377 (optional)
-     * @param null|string $clientOrderId User-defined order ID, e.g 10000 (optional)
-     * @param null|int    $recvWindow    recvWindow (optional)
+     * @param string      $symbol        Option trading pair. (required)
+     * @param null|int    $orderId       Order ID. (optional)
+     * @param null|string $clientOrderId clientOrderId (optional)
+     * @param null|int    $recvWindow    Recv Window. (optional)
      *
      * @return ApiResponse<CancelOptionOrderResponse>
      *
@@ -695,8 +699,8 @@ class DerivativesTradingOptionsRestApi
      *
      * Option Position Information (USER_DATA)
      *
-     * @param null|string $symbol     Option trading pair, e.g BTC-200730-9000-C (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|string $symbol     Option trading pair. (optional)
+     * @param null|int    $recvWindow Recv Window. (optional)
      *
      * @return ApiResponse<OptionPositionInformationResponse>
      *
@@ -711,7 +715,7 @@ class DerivativesTradingOptionsRestApi
     /**
      * Operation placeMultipleOrders.
      *
-     * Place Multiple Orders(TRADE)
+     * Place Multiple Orders (TRADE)
      *
      * @param PlaceMultipleOrdersRequest $placeMultipleOrdersRequest placeMultipleOrdersRequest (required)
      *
@@ -730,11 +734,11 @@ class DerivativesTradingOptionsRestApi
      *
      * Query Current Open Option Orders (USER_DATA)
      *
-     * @param null|string $symbol     Option trading pair, e.g BTC-200730-9000-C (optional)
-     * @param null|int    $orderId    Order ID, e.g 4611875134427365377 (optional)
+     * @param null|string $symbol     Option trading pair. (optional)
+     * @param null|int    $orderId    Order ID. (optional)
      * @param null|int    $startTime  Start Time, e.g 1593511200000 (optional)
      * @param null|int    $endTime    End Time, e.g 1593512200000 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $recvWindow Recv Window. (optional)
      *
      * @return ApiResponse<QueryCurrentOpenOptionOrdersResponse>
      *
@@ -751,12 +755,12 @@ class DerivativesTradingOptionsRestApi
      *
      * Query Option Order History (TRADE)
      *
-     * @param string   $symbol     Option trading pair, e.g BTC-200730-9000-C (required)
-     * @param null|int $orderId    Order ID, e.g 4611875134427365377 (optional)
+     * @param string   $symbol     Option trading pair. (required)
+     * @param null|int $orderId    Order ID. (optional)
      * @param null|int $startTime  Start Time, e.g 1593511200000 (optional)
      * @param null|int $endTime    End Time, e.g 1593512200000 (optional)
-     * @param null|int $limit      Number of result sets returned Default:100 Max:1000 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $limit      Number of result sets returned (optional)
+     * @param null|int $recvWindow Recv Window. (optional)
      *
      * @return ApiResponse<QueryOptionOrderHistoryResponse>
      *
@@ -773,10 +777,10 @@ class DerivativesTradingOptionsRestApi
      *
      * Query Single Order (TRADE)
      *
-     * @param string      $symbol        Option trading pair, e.g BTC-200730-9000-C (required)
-     * @param null|int    $orderId       Order ID, e.g 4611875134427365377 (optional)
-     * @param null|string $clientOrderId User-defined order ID, e.g 10000 (optional)
-     * @param null|int    $recvWindow    recvWindow (optional)
+     * @param string      $symbol        Option trading pair. (required)
+     * @param null|int    $orderId       Order ID. (optional)
+     * @param null|string $clientOrderId User-defined order ID; cannot be duplicated among open orders. (optional)
+     * @param null|int    $recvWindow    Recv Window. (optional)
      *
      * @return ApiResponse<QuerySingleOrderResponse>
      *
@@ -789,11 +793,28 @@ class DerivativesTradingOptionsRestApi
     }
 
     /**
+     * Operation tradfiOptionsContract.
+     *
+     * TradFi Options Contract (USER_DATA)
+     *
+     * @param null|TradfiOptionsContractRequest $tradfiOptionsContractRequest tradfiOptionsContractRequest (optional)
+     *
+     * @return ApiResponse<TradfiOptionsContractResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function tradfiOptionsContract($tradfiOptionsContractRequest = null): ApiResponse
+    {
+        return $this->tradeApi->tradfiOptionsContract($tradfiOptionsContractRequest);
+    }
+
+    /**
      * Operation userCommission.
      *
      * User Commission (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow Recv Window. (optional)
      *
      * @return ApiResponse<UserCommissionResponse>
      *
@@ -810,11 +831,11 @@ class DerivativesTradingOptionsRestApi
      *
      * User Exercise Record (USER_DATA)
      *
-     * @param null|string $symbol     Option trading pair, e.g BTC-200730-9000-C (optional)
+     * @param null|string $symbol     Option trading pair. (optional)
      * @param null|int    $startTime  Start Time, e.g 1593511200000 (optional)
      * @param null|int    $endTime    End Time, e.g 1593512200000 (optional)
-     * @param null|int    $limit      Number of result sets returned Default:100 Max:1000 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $limit      Number of result sets returned. (optional)
+     * @param null|int    $recvWindow Recv Window. (optional)
      *
      * @return ApiResponse<UserExerciseRecordResponse>
      *

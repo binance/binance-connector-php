@@ -1,4 +1,4 @@
-# # StartUserDataStreamResponse
+# StartUserDataStreamResponse
 
 ## Properties
 

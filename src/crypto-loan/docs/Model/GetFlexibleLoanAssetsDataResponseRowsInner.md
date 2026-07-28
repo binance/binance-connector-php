@@ -1,4 +1,4 @@
-# # GetFlexibleLoanAssetsDataResponseRowsInner
+# GetFlexibleLoanAssetsDataResponseRowsInner
 
 ## Properties
 

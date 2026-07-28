@@ -1,4 +1,4 @@
-# # GetLoanLtvAdjustmentHistoryResponse
+# GetLoanLtvAdjustmentHistoryResponse
 
 ## Properties
 

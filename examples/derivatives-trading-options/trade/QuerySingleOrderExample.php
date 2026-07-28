@@ -10,9 +10,9 @@ function querySingleOrderExample()
     $configurationBuilder = DerivativesTradingOptionsRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingOptionsRestApi($configurationBuilder->build());
-    $symbol = '';
-    $orderId = 1;
-    $clientOrderId = '1';
+    $symbol = 'BTC-200730-9000-C';
+    $orderId = 4611875134427365000;
+    $clientOrderId = 'abc123';
     $recvWindow = 5000;
     $response = $api->querySingleOrder($symbol, $orderId, $clientOrderId, $recvWindow);
     print_r($response);

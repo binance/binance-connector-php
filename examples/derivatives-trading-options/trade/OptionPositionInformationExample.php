@@ -10,7 +10,7 @@ function optionPositionInformationExample()
     $configurationBuilder = DerivativesTradingOptionsRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingOptionsRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTC-200730-9000-C';
     $recvWindow = 5000;
     $response = $api->optionPositionInformation($symbol, $recvWindow);
     print_r($response);

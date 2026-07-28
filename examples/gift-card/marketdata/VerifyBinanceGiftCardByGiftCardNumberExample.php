@@ -10,7 +10,7 @@ function verifyBinanceGiftCardByGiftCardNumberExample()
     $configurationBuilder = GiftCardRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new GiftCardRestApi($configurationBuilder->build());
-    $referenceNo = '';
+    $referenceNo = '0033002328060227';
     $recvWindow = 5000;
     $response = $api->verifyBinanceGiftCardByGiftCardNumber($referenceNo, $recvWindow);
     print_r($response);

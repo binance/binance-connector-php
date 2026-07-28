@@ -10,7 +10,7 @@ function accountBalanceExample()
     $configurationBuilder = DerivativesTradingPortfolioMarginRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
-    $asset = '';
+    $asset = 'USDT';
     $recvWindow = 5000;
     $response = $api->accountBalance($asset, $recvWindow);
     print_r($response);

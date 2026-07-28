@@ -1,4 +1,4 @@
-# # DailyAccountSnapshotResponse
+# DailyAccountSnapshotResponse
 
 ## Properties
 

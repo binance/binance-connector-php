@@ -1,4 +1,4 @@
-# # MyTradesResponseInner
+# MyTradesResponseInner
 
 ## Properties
 

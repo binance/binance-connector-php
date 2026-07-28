@@ -12,7 +12,7 @@ function ticker24hrExample()
     $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
     $api = new SpotRestApi($configurationBuilder->build());
     $symbol = 'BNBUSDT';
-    $symbols = null;
+    $symbols = ['BTCUSDT', 'BNBUSDT'];
     $type = TickerType::FULL;
     $symbolStatus = SymbolStatus::TRADING;
     $response = $api->ticker24hr($symbol, $symbols, $type, $symbolStatus);

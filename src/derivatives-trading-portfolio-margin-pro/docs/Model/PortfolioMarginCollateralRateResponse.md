@@ -1,4 +1,4 @@
-# # PortfolioMarginCollateralRateResponse
+# PortfolioMarginCollateralRateResponse
 
 ## Properties
 

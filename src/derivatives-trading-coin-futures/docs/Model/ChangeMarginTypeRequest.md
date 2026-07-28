@@ -1,10 +1,10 @@
-# # ChangeMarginTypeRequest
+# ChangeMarginTypeRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**symbol** | **string** |  |
+**symbol** | **string** | Symbol |
 **marginType** | [**\Binance\Client\DerivativesTradingCoinFutures\Model\MarginType**](MarginType.md) |  |
 **recvWindow** | **int** |  | [optional]
 

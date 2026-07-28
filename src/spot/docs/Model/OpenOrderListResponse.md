@@ -1,4 +1,4 @@
-# # OpenOrderListResponse
+# OpenOrderListResponse
 
 ## Properties
 

@@ -107,6 +107,7 @@ class CapitalApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/capital/config/getall', $request->getUri()->getPath());
         self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
@@ -126,6 +127,7 @@ class CapitalApiTest extends TestCase
         $response = $this->getApiMock($request)->depositAddress($coin, $network, $amount, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/capital/deposit/address', $request->getUri()->getPath());
@@ -152,6 +154,7 @@ class CapitalApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/capital/deposit/hisrec', $request->getUri()->getPath());
         self::assertEquals('d65fd9948f848f6bd287bbc02e0c1a7a9d1a7be0238139656d6e7c042a80e0cc', $queryMap['signature']);
@@ -170,6 +173,7 @@ class CapitalApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/capital/deposit/address/list', $request->getUri()->getPath());
         self::assertEquals('399ff2c0a698751b1e85f405352a125d21d35fe10bd8efadc6cb6ab74891f672', $queryMap['signature']);
@@ -186,6 +190,7 @@ class CapitalApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/capital/withdraw/address/list', $request->getUri()->getPath());
         self::assertEquals('53668e00dc92eb93de0b253c301e9fc0c20042b13db384a0ad94b38688a5a84c', $queryMap['signature']);
@@ -201,6 +206,7 @@ class CapitalApiTest extends TestCase
         $response = $this->getApiMock($request)->fetchWithdrawQuota();
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/capital/withdraw/quota', $request->getUri()->getPath());
@@ -219,6 +225,7 @@ class CapitalApiTest extends TestCase
         $response = $this->getApiMock($request)->oneClickArrivalDepositApply($oneClickArrivalDepositApplyRequest);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/capital/deposit/credit-apply', $request->getUri()->getPath());
@@ -240,6 +247,7 @@ class CapitalApiTest extends TestCase
         $response = $this->getApiMock($request)->withdraw($withdrawRequest);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/capital/withdraw/apply', $request->getUri()->getPath());
@@ -265,6 +273,7 @@ class CapitalApiTest extends TestCase
         $response = $this->getApiMock($request)->withdrawHistory($coin, $withdrawOrderId, $status, $offset, $limit, $idList, $startTime, $endTime, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/capital/withdraw/history', $request->getUri()->getPath());

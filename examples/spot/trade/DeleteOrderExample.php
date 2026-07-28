@@ -13,10 +13,10 @@ function deleteOrderExample()
     $api = new SpotRestApi($configurationBuilder->build());
     $symbol = 'BNBUSDT';
     $orderId = 1;
-    $origClientOrderId = '';
-    $newClientOrderId = '';
+    $origClientOrderId = 'myOrder1';
+    $newClientOrderId = 'cancelMyOrder1';
     $cancelRestrictions = CancelRestrictions::ONLY_NEW;
-    $recvWindow = 5000.0;
+    $recvWindow = 5000;
     $response = $api->deleteOrder($symbol, $orderId, $origClientOrderId, $newClientOrderId, $cancelRestrictions, $recvWindow);
     print_r($response);
 }

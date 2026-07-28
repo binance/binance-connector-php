@@ -1,22 +1,22 @@
-# # PositionInformationResponseInner
+# PositionInformationResponseInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**symbol** | **string** |  | [optional]
-**positionAmt** | **string** |  | [optional]
-**entryPrice** | **string** |  | [optional]
-**breakEvenPrice** | **string** |  | [optional]
-**markPrice** | **string** |  | [optional]
-**unRealizedProfit** | **string** |  | [optional]
-**liquidationPrice** | **string** |  | [optional]
-**leverage** | **string** |  | [optional]
-**maxQty** | **string** |  | [optional]
-**marginType** | **string** |  | [optional]
-**isolatedMargin** | **string** |  | [optional]
-**isAutoAddMargin** | **string** |  | [optional]
-**positionSide** | **string** |  | [optional]
-**updateTime** | **int** |  | [optional]
+**symbol** | **string** | Trading symbol | [optional]
+**positionAmt** | **string** | position amount | [optional]
+**entryPrice** | **string** | Position entry price. | [optional]
+**breakEvenPrice** | **string** | break-even price | [optional]
+**markPrice** | **string** | mark price | [optional]
+**unRealizedProfit** | **string** | Unrealized profit. | [optional]
+**liquidationPrice** | **string** | Liquidation price. | [optional]
+**leverage** | **string** | Leverage value. | [optional]
+**maxQty** | **string** | maximum quantity of base asset | [optional]
+**marginType** | **string** | Margin type. | [optional]
+**isolatedMargin** | **string** | Isolated margin amount. | [optional]
+**isAutoAddMargin** | **string** | Whether auto-add margin is enabled. | [optional]
+**positionSide** | **string** | Position side | [optional]
+**updateTime** | **int** | update time | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

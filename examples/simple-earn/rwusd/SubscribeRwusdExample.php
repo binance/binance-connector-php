@@ -3,6 +3,7 @@
 require_once __DIR__.'/../vendor/autoload.php';
 
 use Binance\Client\SimpleEarn\Api\SimpleEarnRestApi;
+use Binance\Client\SimpleEarn\Model\Asset;
 use Binance\Client\SimpleEarn\Model\SubscribeRwusdRequest;
 use Binance\Client\SimpleEarn\SimpleEarnRestApiUtil;
 
@@ -12,7 +13,7 @@ function subscribeRwusdExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SimpleEarnRestApi($configurationBuilder->build());
     $subscribeRwusdRequest = new SubscribeRwusdRequest();
-    $subscribeRwusdRequest->setAsset('');
+    $subscribeRwusdRequest->setAsset(Asset::USDT);
     $subscribeRwusdRequest->setAmount(1.0);
     $response = $api->subscribeRwusd($subscribeRwusdRequest);
     print_r($response);

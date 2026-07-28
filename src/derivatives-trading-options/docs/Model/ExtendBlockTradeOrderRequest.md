@@ -1,4 +1,4 @@
-# # ExtendBlockTradeOrderRequest
+# ExtendBlockTradeOrderRequest
 
 ## Properties
 

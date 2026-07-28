@@ -9,7 +9,7 @@ function optionMarkPriceExample()
 {
     $configurationBuilder = DerivativesTradingOptionsRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingOptionsRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTC-200730-9000-C';
     $response = $api->optionMarkPrice($symbol);
     print_r($response);
 }

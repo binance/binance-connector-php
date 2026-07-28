@@ -1,4 +1,4 @@
-# # AssetDividendRecordResponseRowsInner
+# AssetDividendRecordResponseRowsInner
 
 ## Properties
 
@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **divTime** | **int** |  | [optional]
 **enInfo** | **string** |  | [optional]
 **tranId** | **int** |  | [optional]
+**direction** | **int** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

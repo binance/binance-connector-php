@@ -1,4 +1,4 @@
-# # QuerySubOrdersFutureAlgoResponse
+# QuerySubOrdersFutureAlgoResponse
 
 ## Properties
 

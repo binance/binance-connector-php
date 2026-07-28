@@ -9,9 +9,13 @@ use Binance\Client\VipLoan\Model\GetLoanableAssetsDataResponse;
 use Binance\Client\VipLoan\Model\GetVIPLoanAccruedInterestResponse;
 use Binance\Client\VipLoan\Model\GetVIPLoanInterestRateHistoryResponse;
 use Binance\Client\VipLoan\Model\GetVIPLoanOngoingOrdersResponse;
+use Binance\Client\VipLoan\Model\GetVIPLoanRepaymentHistoryResponse;
 use Binance\Client\VipLoan\Model\QueryApplicationStatusResponse;
+use Binance\Client\VipLoan\Model\QueryVIPLoanFixedRateMarketResponse;
 use Binance\Client\VipLoan\Model\VipLoanBorrowRequest;
 use Binance\Client\VipLoan\Model\VipLoanBorrowResponse;
+use Binance\Client\VipLoan\Model\VipLoanFixedRateBorrowRequest;
+use Binance\Client\VipLoan\Model\VipLoanFixedRateBorrowResponse;
 use Binance\Client\VipLoan\Model\VipLoanRenewRequest;
 use Binance\Client\VipLoan\Model\VipLoanRenewResponse;
 use Binance\Client\VipLoan\Model\VipLoanRepayRequest;
@@ -48,7 +52,7 @@ class VipLoanRestApi
     /**
      * Operation getBorrowInterestRate.
      *
-     * Get Borrow Interest Rate(USER_DATA)
+     * Get Borrow Interest Rate (USER_DATA)
      *
      * @param string   $loanCoin   Max 10 assets, Multiple split by \&quot;,\&quot; (required)
      * @param null|int $recvWindow recvWindow (optional)
@@ -66,7 +70,7 @@ class VipLoanRestApi
     /**
      * Operation getCollateralAssetData.
      *
-     * Get Collateral Asset Data(USER_DATA)
+     * Get Collateral Asset Data (USER_DATA)
      *
      * @param null|string $collateralCoin collateralCoin (optional)
      * @param null|int    $recvWindow     recvWindow (optional)
@@ -84,10 +88,10 @@ class VipLoanRestApi
     /**
      * Operation getLoanableAssetsData.
      *
-     * Get Loanable Assets Data(USER_DATA)
+     * Get Loanable Assets Data (USER_DATA)
      *
      * @param null|string $loanCoin   loanCoin (optional)
-     * @param null|int    $vipLevel   default:user&#39;s vip level (optional)
+     * @param null|int    $vipLevel   Defaults to the user&#39;s VIP level. (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetLoanableAssetsDataResponse>
@@ -107,10 +111,10 @@ class VipLoanRestApi
      *
      * @param string   $coin       coin (required)
      * @param int      $recvWindow recvWindow (required)
-     * @param null|int $startTime  startTime (optional)
-     * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Current querying page. Start from 1; default: 1; max: 1000 (optional)
-     * @param null|int $limit      Default: 10; max: 100 (optional)
+     * @param null|int $startTime  If both startTime and endTime are omitted, the most recent 90 days are returned. (optional)
+     * @param null|int $endTime    Maximum interval between startTime and endTime is 180 days. Time is based on UTC+0. (optional)
+     * @param null|int $current    Current page number, starting from 1. (optional)
+     * @param null|int $limit      Number of records per page. (optional)
      *
      * @return ApiResponse<GetVIPLoanInterestRateHistoryResponse>
      *
@@ -123,9 +127,30 @@ class VipLoanRestApi
     }
 
     /**
+     * Operation queryVIPLoanFixedRateMarket.
+     *
+     * Query VIP Loan Fixed Rate Market (USER_DATA)
+     *
+     * @param string   $loanCoin   Loan coin (required)
+     * @param null|int $duration   Duration in days, minimum 1 (optional)
+     * @param null|int $current    Page number, default 1, minimum 1 (optional)
+     * @param null|int $size       Page size, default 10, range [1, 100] (optional)
+     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
+     *
+     * @return ApiResponse<QueryVIPLoanFixedRateMarketResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function queryVIPLoanFixedRateMarket($loanCoin, $duration = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    {
+        return $this->marketDataApi->queryVIPLoanFixedRateMarket($loanCoin, $duration, $current, $size, $recvWindow);
+    }
+
+    /**
      * Operation vipLoanBorrow.
      *
-     * VIP Loan Borrow(TRADE)
+     * VIP Loan Borrow (TRADE)
      *
      * @param VipLoanBorrowRequest $vipLoanBorrowRequest vipLoanBorrowRequest (required)
      *
@@ -140,9 +165,26 @@ class VipLoanRestApi
     }
 
     /**
+     * Operation vipLoanFixedRateBorrow.
+     *
+     * VIP Loan Fixed Rate Borrow (TRADE)
+     *
+     * @param VipLoanFixedRateBorrowRequest $vipLoanFixedRateBorrowRequest vipLoanFixedRateBorrowRequest (required)
+     *
+     * @return ApiResponse<VipLoanFixedRateBorrowResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function vipLoanFixedRateBorrow($vipLoanFixedRateBorrowRequest): ApiResponse
+    {
+        return $this->tradeApi->vipLoanFixedRateBorrow($vipLoanFixedRateBorrowRequest);
+    }
+
+    /**
      * Operation vipLoanRenew.
      *
-     * VIP Loan Renew(TRADE)
+     * VIP Loan Renew (TRADE)
      *
      * @param VipLoanRenewRequest $vipLoanRenewRequest vipLoanRenewRequest (required)
      *
@@ -159,7 +201,7 @@ class VipLoanRestApi
     /**
      * Operation vipLoanRepay.
      *
-     * VIP Loan Repay(TRADE)
+     * VIP Loan Repay (TRADE)
      *
      * @param VipLoanRepayRequest $vipLoanRepayRequest vipLoanRepayRequest (required)
      *
@@ -199,10 +241,10 @@ class VipLoanRestApi
      *
      * @param null|int    $orderId    orderId (optional)
      * @param null|string $loanCoin   loanCoin (optional)
-     * @param null|int    $startTime  startTime (optional)
-     * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Current querying page. Start from 1; default: 1; max: 1000 (optional)
-     * @param null|int    $limit      Default: 10; max: 100 (optional)
+     * @param null|int    $startTime  If both startTime and endTime are omitted, the most recent 90 days are returned. (optional)
+     * @param null|int    $endTime    Maximum interval between startTime and endTime is 90 days. (optional)
+     * @param null|int    $current    Current page number, starting from 1. (optional)
+     * @param null|int    $limit      Number of records per page. (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetVIPLoanAccruedInterestResponse>
@@ -218,14 +260,14 @@ class VipLoanRestApi
     /**
      * Operation getVIPLoanOngoingOrders.
      *
-     * Get VIP Loan Ongoing Orders(USER_DATA)
+     * Get VIP Loan Ongoing Orders (USER_DATA)
      *
      * @param null|int    $orderId             orderId (optional)
      * @param null|int    $collateralAccountId collateralAccountId (optional)
      * @param null|string $loanCoin            loanCoin (optional)
      * @param null|string $collateralCoin      collateralCoin (optional)
-     * @param null|int    $current             Current querying page. Start from 1; default: 1; max: 1000 (optional)
-     * @param null|int    $limit               Default: 10; max: 100 (optional)
+     * @param null|int    $current             current (optional)
+     * @param null|int    $limit               limit (optional)
      * @param null|int    $recvWindow          recvWindow (optional)
      *
      * @return ApiResponse<GetVIPLoanOngoingOrdersResponse>
@@ -239,12 +281,35 @@ class VipLoanRestApi
     }
 
     /**
+     * Operation getVIPLoanRepaymentHistory.
+     *
+     * Get VIP Loan Repayment History (USER_DATA)
+     *
+     * @param null|int    $orderId    orderId (optional)
+     * @param null|string $loanCoin   loanCoin (optional)
+     * @param null|int    $startTime  If both startTime and endTime are omitted, the most recent 90 days are returned. (optional)
+     * @param null|int    $endTime    Maximum interval between startTime and endTime is 180 days. (optional)
+     * @param null|int    $current    Current page number, starting from 1. (optional)
+     * @param null|int    $limit      Number of records per page. (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<GetVIPLoanRepaymentHistoryResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getVIPLoanRepaymentHistory($orderId = null, $loanCoin = null, $startTime = null, $endTime = null, $current = null, $limit = null, $recvWindow = null): ApiResponse
+    {
+        return $this->userInformationApi->getVIPLoanRepaymentHistory($orderId, $loanCoin, $startTime, $endTime, $current, $limit, $recvWindow);
+    }
+
+    /**
      * Operation queryApplicationStatus.
      *
-     * Query Application Status(USER_DATA)
+     * Query Application Status (USER_DATA)
      *
-     * @param null|int $current    Current querying page. Start from 1; default: 1; max: 1000 (optional)
-     * @param null|int $limit      Default: 10; max: 100 (optional)
+     * @param null|int $current    Current page number, starting from 1. (optional)
+     * @param null|int $limit      limit (optional)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryApplicationStatusResponse>

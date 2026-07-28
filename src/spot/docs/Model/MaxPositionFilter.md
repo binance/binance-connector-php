@@ -1,4 +1,4 @@
-# # MaxPositionFilter
+# MaxPositionFilter
 
 ## Properties
 

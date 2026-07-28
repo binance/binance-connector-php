@@ -1,5 +1,7 @@
 # Binance\Client\DerivativesTradingOptions\MarketMakerBlockTradeApi
 
+
+
 All URIs are relative to https://eapi.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -21,7 +23,7 @@ acceptBlockTradeOrder($acceptBlockTradeOrderRequest): \Binance\Client\Derivative
 
 Accept Block Trade Order (TRADE)
 
-Accept a block trade order  Weight: 5
+Accept a block trade order  Weight(IP): 5  Security Type: TRADE
 
 ### Example
 
@@ -77,7 +79,7 @@ accountBlockTradeList($endTime, $startTime, $underlying, $recvWindow): \Binance\
 
 Account Block Trade List (USER_DATA)
 
-Gets block trades for a specific account.  Weight: 5
+Gets block trades for a specific account.  Weight(IP): 5  Security Type: USER_DATA
 
 ### Example
 
@@ -92,10 +94,10 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketMakerBlock
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$endTime = 56; // int | End Time, e.g 1593512200000
-$startTime = 56; // int | Start Time, e.g 1593511200000
-$underlying = 'underlying_example'; // string | underlying, e.g BTCUSDT
-$recvWindow = 56; // int
+$endTime = 1641782889000; // int | End Time, e.g 1593512200000
+$startTime = 1623319461670; // int | Start Time, e.g 1593511200000
+$underlying = BTCUSDT; // string | Underlying asset.
+$recvWindow = 5000; // int | Recv Window.
 
 try {
     $result = $apiInstance->accountBlockTradeList($endTime, $startTime, $underlying, $recvWindow);
@@ -111,8 +113,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **endTime** | **int**| End Time, e.g 1593512200000 | [optional] |
 | **startTime** | **int**| Start Time, e.g 1593511200000 | [optional] |
-| **underlying** | **string**| underlying, e.g BTCUSDT | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **underlying** | **string**| Underlying asset. | [optional] |
+| **recvWindow** | **int**| Recv Window. | [optional] |
 
 ### Return type
 
@@ -139,7 +141,7 @@ cancelBlockTradeOrder($blockOrderMatchingKey, $recvWindow)
 
 Cancel Block Trade Order (TRADE)
 
-Cancel a block trade order.  Weight: 5
+Cancel a block trade order.  Weight(IP): 5  Security Type: TRADE
 
 ### Example
 
@@ -154,8 +156,8 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketMakerBlock
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$blockOrderMatchingKey = 'blockOrderMatchingKey_example'; // string
-$recvWindow = 56; // int
+$blockOrderMatchingKey = 7d046e6e-a429-4335-ab9d-6a681febcde5; // string | Block trade matching key.
+$recvWindow = 5000; // int | Recv Window.
 
 try {
     $apiInstance->cancelBlockTradeOrder($blockOrderMatchingKey, $recvWindow);
@@ -168,8 +170,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **blockOrderMatchingKey** | **string**|  | |
-| **recvWindow** | **int**|  | [optional] |
+| **blockOrderMatchingKey** | **string**| Block trade matching key. | |
+| **recvWindow** | **int**| Recv Window. | [optional] |
 
 ### Return type
 
@@ -196,7 +198,7 @@ extendBlockTradeOrder($extendBlockTradeOrderRequest): \Binance\Client\Derivative
 
 Extend Block Trade Order (TRADE)
 
-Extends a block trade expire time by 30 mins from the current time.  Weight: 5
+Extends a block trade expire time by 30 mins from the current time.  Weight(IP): 5  Security Type: TRADE
 
 ### Example
 
@@ -252,7 +254,7 @@ newBlockTradeOrder($newBlockTradeOrderRequest): \Binance\Client\DerivativesTradi
 
 New Block Trade Order (TRADE)
 
-Send in a new block trade order.  Weight: 5
+Send in a new block trade order.  Weight(IP): 5  Security Type: TRADE
 
 ### Example
 
@@ -308,7 +310,7 @@ queryBlockTradeDetails($blockOrderMatchingKey, $recvWindow): \Binance\Client\Der
 
 Query Block Trade Details (USER_DATA)
 
-Query block trade details; returns block trade details from counterparty's perspective.  Weight: 5
+Query block trade details; returns block trade details from counterparty's perspective.  Weight(IP): 5  Security Type: USER_DATA
 
 ### Example
 
@@ -323,8 +325,8 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketMakerBlock
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$blockOrderMatchingKey = 'blockOrderMatchingKey_example'; // string
-$recvWindow = 56; // int
+$blockOrderMatchingKey = 12b96c28-ba05-8906-c89t-703215cfb2e6; // string | Block trade matching key.
+$recvWindow = 5000; // int | Recv Window.
 
 try {
     $result = $apiInstance->queryBlockTradeDetails($blockOrderMatchingKey, $recvWindow);
@@ -338,8 +340,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **blockOrderMatchingKey** | **string**|  | |
-| **recvWindow** | **int**|  | [optional] |
+| **blockOrderMatchingKey** | **string**| Block trade matching key. | |
+| **recvWindow** | **int**| Recv Window. | [optional] |
 
 ### Return type
 
@@ -366,7 +368,7 @@ queryBlockTradeOrder($blockOrderMatchingKey, $endTime, $startTime, $underlying, 
 
 Query Block Trade Order (TRADE)
 
-Check block trade order status.  Weight: 5
+Check block trade order status.  Weight(IP): 5  Security Type: TRADE
 
 ### Example
 
@@ -381,11 +383,11 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketMakerBlock
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$blockOrderMatchingKey = 'blockOrderMatchingKey_example'; // string | If specified, returns the specific block trade associated with the blockOrderMatchingKey
-$endTime = 56; // int | End Time, e.g 1593512200000
-$startTime = 56; // int | Start Time, e.g 1593511200000
-$underlying = 'underlying_example'; // string | underlying, e.g BTCUSDT
-$recvWindow = 56; // int
+$blockOrderMatchingKey = 7d046e6e-a429-4335-ab9d-6a681febcde5; // string | If specified, returns the specific block trade associated with the blockOrderMatchingKey
+$endTime = 1641782889000; // int | End Time, e.g 1593512200000
+$startTime = 1623319461670; // int | Start Time, e.g 1593511200000
+$underlying = BTCUSDT; // string | Underlying asset.
+$recvWindow = 5000; // int | Recv Window.
 
 try {
     $result = $apiInstance->queryBlockTradeOrder($blockOrderMatchingKey, $endTime, $startTime, $underlying, $recvWindow);
@@ -402,8 +404,8 @@ try {
 | **blockOrderMatchingKey** | **string**| If specified, returns the specific block trade associated with the blockOrderMatchingKey | [optional] |
 | **endTime** | **int**| End Time, e.g 1593512200000 | [optional] |
 | **startTime** | **int**| Start Time, e.g 1593511200000 | [optional] |
-| **underlying** | **string**| underlying, e.g BTCUSDT | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **underlying** | **string**| Underlying asset. | [optional] |
+| **recvWindow** | **int**| Recv Window. | [optional] |
 
 ### Return type
 

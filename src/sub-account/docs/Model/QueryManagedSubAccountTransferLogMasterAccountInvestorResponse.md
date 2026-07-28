@@ -1,4 +1,4 @@
-# # QueryManagedSubAccountTransferLogMasterAccountInvestorResponse
+# QueryManagedSubAccountTransferLogMasterAccountInvestorResponse
 
 ## Properties
 

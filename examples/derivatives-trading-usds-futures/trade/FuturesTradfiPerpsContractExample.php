@@ -12,7 +12,8 @@ function futuresTradfiPerpsContractExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
     $futuresTradfiPerpsContractRequest = new FuturesTradfiPerpsContractRequest();
-    $api->futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest);
+    $response = $api->futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest);
+    print_r($response);
 }
 
 futuresTradfiPerpsContractExample();

@@ -1,5 +1,7 @@
 # Binance\Client\MarginTrading\TransferApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -16,7 +18,7 @@ getCrossMarginTransferHistory($asset, $type, $startTime, $endTime, $current, $si
 
 Get Cross Margin Transfer History (USER_DATA)
 
-Get Cross Margin Transfer History  * Response in descending order * The max interval between `startTime` and `endTime` is 30 days. * Returns data for last 7 days by default  Weight: 1(IP)
+Get Cross Margin Transfer History  Weight(IP): 1  Security Type: USER_DATA  Notes: - Response in descending order - The max interval between `startTime` and `endTime` is 30 days. - Returns data for last 7 days by default
 
 ### Example
 
@@ -31,14 +33,14 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TransferApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
-$type = 'type_example'; // string | Transfer Type: ROLL_IN, ROLL_OUT
-$startTime = 56; // int | 只支持查询最近90天的数据
-$endTime = 56; // int
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10 Max:100
-$isolatedSymbol = 'isolatedSymbol_example'; // string | isolated symbol
-$recvWindow = 56; // int | No more than 60000
+$asset = BNB; // string
+$type = new \Binance\Client\MarginTrading\Model\\Binance\Client\MarginTrading\Model\OrderType(); // \Binance\Client\MarginTrading\Model\OrderType
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$current = 1; // int
+$size = 10; // int
+$isolatedSymbol = BNBUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getCrossMarginTransferHistory($asset, $type, $startTime, $endTime, $current, $size, $isolatedSymbol, $recvWindow);
@@ -53,13 +55,13 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **asset** | **string**|  | [optional] |
-| **type** | **string**| Transfer Type: ROLL_IN, ROLL_OUT | [optional] |
-| **startTime** | **int**| 只支持查询最近90天的数据 | [optional] |
+| **type** | [**\Binance\Client\MarginTrading\Model\OrderType**](../Model/.md)|  | [optional] |
+| **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10 Max:100 | [optional] |
-| **isolatedSymbol** | **string**| isolated symbol | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **current** | **int**|  | [optional] |
+| **size** | **int**|  | [optional] |
+| **isolatedSymbol** | **string**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -86,7 +88,7 @@ queryMaxTransferOutAmount($asset, $isolatedSymbol, $recvWindow): \Binance\Client
 
 Query Max Transfer-Out Amount (USER_DATA)
 
-Query Max Transfer-Out Amount  * If isolatedSymbol is not sent, crossed margin data will be sent.  Weight: 50(IP)
+Query Max Transfer-Out Amount  Weight(IP): 50  Security Type: USER_DATA  Notes: - If isolatedSymbol is not sent, crossed margin data will be sent.
 
 ### Example
 
@@ -101,9 +103,9 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TransferApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
-$isolatedSymbol = 'isolatedSymbol_example'; // string | isolated symbol
-$recvWindow = 56; // int | No more than 60000
+$asset = BTC; // string
+$isolatedSymbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryMaxTransferOutAmount($asset, $isolatedSymbol, $recvWindow);
@@ -118,8 +120,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **asset** | **string**|  | |
-| **isolatedSymbol** | **string**| isolated symbol | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **isolatedSymbol** | **string**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 

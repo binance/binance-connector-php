@@ -1,4 +1,4 @@
-# # Interval
+# Interval
 
 ## Properties
 

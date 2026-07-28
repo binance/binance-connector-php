@@ -1,4 +1,4 @@
-# # QuerySubOrdersSpotAlgoResponse
+# QuerySubOrdersSpotAlgoResponse
 
 ## Properties
 

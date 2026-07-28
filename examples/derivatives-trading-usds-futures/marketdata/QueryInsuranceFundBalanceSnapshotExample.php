@@ -9,7 +9,7 @@ function queryInsuranceFundBalanceSnapshotExample()
 {
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BNBUSDT';
     $response = $api->queryInsuranceFundBalanceSnapshot($symbol);
     print_r($response);
 }

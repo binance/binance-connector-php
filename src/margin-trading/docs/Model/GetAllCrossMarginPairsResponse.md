@@ -1,4 +1,4 @@
-# # GetAllCrossMarginPairsResponse
+# GetAllCrossMarginPairsResponse
 
 ## Properties
 

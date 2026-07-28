@@ -1,15 +1,19 @@
 # Binance\Client\MarginTrading\TradeApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createSpecialKey()**](TradeApi.md#createSpecialKey) | **POST** /sapi/v1/margin/apiKey | Create Special Key(Low-Latency Trading)(TRADE) |
-| [**deleteSpecialKey()**](TradeApi.md#deleteSpecialKey) | **DELETE** /sapi/v1/margin/apiKey | Delete Special Key(Low-Latency Trading)(TRADE) |
-| [**editIpForSpecialKey()**](TradeApi.md#editIpForSpecialKey) | **PUT** /sapi/v1/margin/apiKey/ip | Edit ip for Special Key(Low-Latency Trading)(TRADE) |
+| [**createSpecialKey()**](TradeApi.md#createSpecialKey) | **POST** /sapi/v1/margin/apiKey | Create Special Key(Low-Latency Trading) (TRADE) |
+| [**deleteSpecialKey()**](TradeApi.md#deleteSpecialKey) | **DELETE** /sapi/v1/margin/apiKey | Delete Special Key(Low-Latency Trading) (TRADE) |
+| [**editIpForSpecialKey()**](TradeApi.md#editIpForSpecialKey) | **PUT** /sapi/v1/margin/apiKey/ip | Edit ip for Special Key(Low-Latency Trading) (TRADE) |
+| [**exitSpecialKeyMode()**](TradeApi.md#exitSpecialKeyMode) | **POST** /sapi/v1/margin/exit-special-key-mode | Exit Special Key Mode (TRADE) |
 | [**getForceLiquidationRecord()**](TradeApi.md#getForceLiquidationRecord) | **GET** /sapi/v1/margin/forceLiquidationRec | Get Force Liquidation Record (USER_DATA) |
 | [**getSmallLiabilityExchangeCoinList()**](TradeApi.md#getSmallLiabilityExchangeCoinList) | **GET** /sapi/v1/margin/exchange-small-liability | Get Small Liability Exchange Coin List (USER_DATA) |
 | [**getSmallLiabilityExchangeHistory()**](TradeApi.md#getSmallLiabilityExchangeHistory) | **GET** /sapi/v1/margin/exchange-small-liability-history | Get Small Liability Exchange History (USER_DATA) |
+| [**liquidationLoanRepay()**](TradeApi.md#liquidationLoanRepay) | **POST** /sapi/v1/margin/liquidation-loan/repay | Liquidation Loan Repay (MARGIN) |
 | [**marginAccountCancelAllOpenOrdersOnASymbol()**](TradeApi.md#marginAccountCancelAllOpenOrdersOnASymbol) | **DELETE** /sapi/v1/margin/openOrders | Margin Account Cancel all Open Orders on a Symbol (TRADE) |
 | [**marginAccountCancelOco()**](TradeApi.md#marginAccountCancelOco) | **DELETE** /sapi/v1/margin/orderList | Margin Account Cancel OCO (TRADE) |
 | [**marginAccountCancelOrder()**](TradeApi.md#marginAccountCancelOrder) | **DELETE** /sapi/v1/margin/order | Margin Account Cancel Order (TRADE) |
@@ -17,8 +21,10 @@ All URIs are relative to https://api.binance.com, except if the operation define
 | [**marginAccountNewOrder()**](TradeApi.md#marginAccountNewOrder) | **POST** /sapi/v1/margin/order | Margin Account New Order (TRADE) |
 | [**marginAccountNewOto()**](TradeApi.md#marginAccountNewOto) | **POST** /sapi/v1/margin/order/oto | Margin Account New OTO (TRADE) |
 | [**marginAccountNewOtoco()**](TradeApi.md#marginAccountNewOtoco) | **POST** /sapi/v1/margin/order/otoco | Margin Account New OTOCO (TRADE) |
-| [**marginManualLiquidation()**](TradeApi.md#marginManualLiquidation) | **POST** /sapi/v1/margin/manual-liquidation | Margin Manual Liquidation(MARGIN) |
+| [**marginManualLiquidation()**](TradeApi.md#marginManualLiquidation) | **POST** /sapi/v1/margin/manual-liquidation | Margin Manual Liquidation (TRADE) |
 | [**queryCurrentMarginOrderCountUsage()**](TradeApi.md#queryCurrentMarginOrderCountUsage) | **GET** /sapi/v1/margin/rateLimit/order | Query Current Margin Order Count Usage (TRADE) |
+| [**queryLiquidationLoan()**](TradeApi.md#queryLiquidationLoan) | **GET** /sapi/v1/margin/liquidation-loan | Query Liquidation Loan (USER_DATA) |
+| [**queryLiquidationLoanRepayHistory()**](TradeApi.md#queryLiquidationLoanRepayHistory) | **GET** /sapi/v1/margin/liquidation-loan/repay-history | Query Liquidation Loan Repay History (USER_DATA) |
 | [**queryMarginAccountsAllOco()**](TradeApi.md#queryMarginAccountsAllOco) | **GET** /sapi/v1/margin/allOrderList | Query Margin Account&#39;s all OCO (USER_DATA) |
 | [**queryMarginAccountsAllOrders()**](TradeApi.md#queryMarginAccountsAllOrders) | **GET** /sapi/v1/margin/allOrders | Query Margin Account&#39;s All Orders (USER_DATA) |
 | [**queryMarginAccountsOco()**](TradeApi.md#queryMarginAccountsOco) | **GET** /sapi/v1/margin/orderList | Query Margin Account&#39;s OCO (USER_DATA) |
@@ -26,8 +32,9 @@ All URIs are relative to https://api.binance.com, except if the operation define
 | [**queryMarginAccountsOpenOrders()**](TradeApi.md#queryMarginAccountsOpenOrders) | **GET** /sapi/v1/margin/openOrders | Query Margin Account&#39;s Open Orders (USER_DATA) |
 | [**queryMarginAccountsOrder()**](TradeApi.md#queryMarginAccountsOrder) | **GET** /sapi/v1/margin/order | Query Margin Account&#39;s Order (USER_DATA) |
 | [**queryMarginAccountsTradeList()**](TradeApi.md#queryMarginAccountsTradeList) | **GET** /sapi/v1/margin/myTrades | Query Margin Account&#39;s Trade List (USER_DATA) |
-| [**querySpecialKey()**](TradeApi.md#querySpecialKey) | **GET** /sapi/v1/margin/apiKey | Query Special key(Low Latency Trading)(TRADE) |
-| [**querySpecialKeyList()**](TradeApi.md#querySpecialKeyList) | **GET** /sapi/v1/margin/api-key-list | Query Special key List(Low Latency Trading)(TRADE) |
+| [**queryPreventedMatches()**](TradeApi.md#queryPreventedMatches) | **GET** /sapi/v1/margin/myPreventedMatches | Query Prevented Matches (USER_DATA) |
+| [**querySpecialKey()**](TradeApi.md#querySpecialKey) | **GET** /sapi/v1/margin/apiKey | Query Special key(Low Latency Trading) (TRADE) |
+| [**querySpecialKeyList()**](TradeApi.md#querySpecialKeyList) | **GET** /sapi/v1/margin/api-key-list | Query Special key List(Low Latency Trading) (TRADE) |
 | [**smallLiabilityExchange()**](TradeApi.md#smallLiabilityExchange) | **POST** /sapi/v1/margin/exchange-small-liability | Small Liability Exchange (MARGIN) |
 
 
@@ -37,9 +44,9 @@ All URIs are relative to https://api.binance.com, except if the operation define
 createSpecialKey($createSpecialKeyRequest): \Binance\Client\MarginTrading\Model\CreateSpecialKeyResponse
 ```
 
-Create Special Key(Low-Latency Trading)(TRADE)
+Create Special Key(Low-Latency Trading) (TRADE)
 
-- Binance Margin offers low-latency trading through a [special key](https://www.binance.com/en/support/faq/frequently-asked-questions-on-margin-special-api-key-3208663e900d4d2e9fec4140e1832f4e), available exclusively to users with VIP level 4 or higher. - If you are VIP level 3 or below, please contact your VIP manager for eligibility criterias.**  **Supported Products:**  - Cross Margin - Isolated Margin - Portfolio Margin Pro - Cross Margin Pro (Additional agreement required and subject to meeting eligibility criteria)  **Unsupported Products:**  - Portfolio Margin  We support several types of API keys:  * Ed25519 (recommended) * HMAC * RSA  We recommend to **use Ed25519 API keys** as it should provide the best performance and security out of all supported key types. We accept PKCS#8 (BEGIN PUBLIC KEY). For how to generate an RSA key pair to send API requests on Binance. Please refer to the document below [FAQ](https://www.binance.com/en/support/faq/how-to-generate-an-rsa-key-pair-to-send-api-requests-on-binance-2b79728f331e43079b27440d9d15c5db) .  Weight: 1(UID)
+**Eligibility**  - Binance Margin offers low-latency trading through a [special key](https://www.binance.com/en/support/faq/frequently-asked-questions-on-margin-special-api-key-3208663e900d4d2e9fec4140e1832f4e), available exclusively to users with VIP level 7 or higher. - If you are VIP level 6 or below, please contact your VIP manager for eligibility criterias. - All new Margin Special Key users are required to read, understand, and agree to the Margin Special Key Supplemental Product Terms at the master account level before creating a Margin Special Key. - Once signed at the master account level, the agreement applies to all sub-accounts. The master account and all sub-accounts (Cross Margin Classic and Portfolio Margin Pro) are authorized to create a Margin Special Key and are subject to the LiquidationLoan policy.  For more information, please refer to [FAQ](https://www.binance.com/en/support/faq/detail/3208663e900d4d2e9fec4140e1832f4e).  **Supported Products:**  - Cross Margin - Isolated Margin - Portfolio Margin Pro  **Unsupported Products:**  - Portfolio Margin  We support several types of API keys:  * Ed25519 (recommended) * HMAC * RSA  We recommend to **use Ed25519 API keys** as it should provide the best performance and security out of all supported key types. We accept PKCS#8 (BEGIN PUBLIC KEY). For how to generate an RSA key pair to send API requests on Binance. Please refer to the document below [FAQ](https://www.binance.com/en/support/faq/how-to-generate-an-rsa-key-pair-to-send-api-requests-on-binance-2b79728f331e43079b27440d9d15c5db) .  **How to use the Margin Special Key** - Use the below `sapi` endpoint to create your margin special API Key. - For accessing the Cross Margin account, do not send the `symbol` parameter. - For accessing the Isolated Margin account(s), pass the relevant `symbol` parameter in the API Key creation request. - Use the generated API Key (and Secret key, if applicable) to perform margin trading and listenKey generation via **Spot** REST API (`https://api.binance.com/api/v3/_*`) endpoints.  Read [REST API](/products/spot/rest-api#signed-trade-and-user_data-endpoint-security) or [WebSocket API](/products/spot/web-socket-api#request-security) documentation to learn how to use different API keys  You need to enable Permits “Enable Spot & Margin Trading” option for the API Key which requests this endpoint.  Weight(UID): 1  Security Type: TRADE  Response Notes: - Error Code Description  - **UNSUPPORTED_OPERATION** : Portfolio Margin is an unsupported product, please change the account type to a supported margin product.  - **Forbidden**:  Cross Margin Pro accounts require additional agreements, please contact your relationship manager.
 
 ### Example
 
@@ -93,9 +100,9 @@ No authorization required
 deleteSpecialKey($apiName, $symbol, $recvWindow)
 ```
 
-Delete Special Key(Low-Latency Trading)(TRADE)
+Delete Special Key(Low-Latency Trading) (TRADE)
 
-This only applies to Special Key for Low Latency Trading.  If apiKey is given, apiName will be ignored. If apiName is given with no apiKey, all apikeys with given apiName will be deleted.  You need to enable Permits “Enable Spot & Margin Trading” option for the API Key which requests this endpoint.  Weight: 1(UID)
+Deleting your Margin Special Key alone does not exit you from the Margin Special Key framework or discharge your obligations under the Margin Special Key Supplemental Product Terms. To fully exit, you must:  1. Delete your Margin Special Key. 2. Ensure there are no outstanding liabilities on the account. 3. Call the Exit Margin Special Key API endpoint. 4. Confirm the exit status via the API response.  Only after step 4 is completed and the exit status is confirmed by Binance will your account revert to standard liquidation logic and no longer be subject to the Margin Special Key Supplemental Product Terms.  If apiKey is given, apiName will be ignored. If apiName is given with no apiKey, all apikeys with given apiName will be deleted.  You need to enable Permits “Enable Spot & Margin” option for the API Key which requests this endpoint.  Weight(UID): 1  Security Type: TRADE
 
 ### Example
 
@@ -110,9 +117,9 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$apiName = 'apiName_example'; // string
-$symbol = 'symbol_example'; // string | isolated margin pair
-$recvWindow = 56; // int | No more than 60000
+$apiName = apiName; // string
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $apiInstance->deleteSpecialKey($apiName, $symbol, $recvWindow);
@@ -126,8 +133,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **apiName** | **string**|  | [optional] |
-| **symbol** | **string**| isolated margin pair | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **symbol** | **string**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -152,9 +159,9 @@ No authorization required
 editIpForSpecialKey($editIpForSpecialKeyRequest)
 ```
 
-Edit ip for Special Key(Low-Latency Trading)(TRADE)
+Edit ip for Special Key(Low-Latency Trading) (TRADE)
 
-Edit ip restriction. This only applies to Special Key for Low Latency Trading.  You need to enable Permits “Enable Spot & Margin Trading” option for the API Key which requests this endpoint.  Weight: 1(UID)
+Edit ip restriction. This only applies to Special Key for Low Latency Trading.  You need to enable Permits “Enable Spot & Margin” option for the API Key which requests this endpoint.  Weight(UID): 1  Security Type: TRADE
 
 ### Example
 
@@ -201,15 +208,15 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getForceLiquidationRecord()`
+## `exitSpecialKeyMode()`
 
 ```php
-getForceLiquidationRecord($startTime, $endTime, $isolatedSymbol, $current, $size, $recvWindow): \Binance\Client\MarginTrading\Model\GetForceLiquidationRecordResponse
+exitSpecialKeyMode($exitSpecialKeyModeRequest): object
 ```
 
-Get Force Liquidation Record (USER_DATA)
+Exit Special Key Mode (TRADE)
 
-Get Force Liquidation Record  * Response in descending order  Weight: 1(IP)
+Exit the Margin Special Key mode for Cross Margin Classic accounts.  **All outstanding liabilities under the Cross Margin Classic account must be fully repaid before calling this endpoint.** Deleting the Margin Special Key alone does not constitute a valid exit.  When a user creates a Margin Special API Key, the account enters \"Special Key Mode\". Upon a successful request, the following actions will be performed atomically:  1. All existing Margin Special API Keys under the Cross Margin Classic mode account will be deleted. 2. All pre-execution margin checks (including Open-order-loss calculation) will revert to standard mode. 3. A cooldown period (default: 24 hours) will be enforced, during which the account will not be permitted to create new Margin Special API Keys.  For more information, please refer to [FAQ](https://www.binance.com/en/support/faq/detail/3208663e900d4d2e9fec4140e1832f4e).  **Preconditions:**  The following conditions must be met; otherwise the request will be rejected:  - Account type must be **Cross Margin Classic**. - Account must currently be in **Special Key Mode**. If not, the request silently succeeds. - Account must **not be in liquidation**. - Account must **have no liability**.  You need to enable \"Permits Enable Spot & Margin Trading\" option for the API Key which requests this endpoint.  Weight(UID): 10  Security Type: TRADE
 
 ### Example
 
@@ -224,12 +231,68 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$startTime = 56; // int | 只支持查询最近90天的数据
-$endTime = 56; // int
-$isolatedSymbol = 'isolatedSymbol_example'; // string | isolated symbol
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10 Max:100
-$recvWindow = 56; // int | No more than 60000
+$exitSpecialKeyModeRequest = new \Binance\Client\MarginTrading\Model\ExitSpecialKeyModeRequest(); // \Binance\Client\MarginTrading\Model\ExitSpecialKeyModeRequest
+
+try {
+    $result = $apiInstance->exitSpecialKeyMode($exitSpecialKeyModeRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->exitSpecialKeyMode: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **exitSpecialKeyModeRequest** | [**\Binance\Client\MarginTrading\Model\ExitSpecialKeyModeRequest**](../Model/ExitSpecialKeyModeRequest.md)|  | [optional] |
+
+### Return type
+
+**object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getForceLiquidationRecord()`
+
+```php
+getForceLiquidationRecord($startTime, $endTime, $isolatedSymbol, $current, $size, $recvWindow): \Binance\Client\MarginTrading\Model\GetForceLiquidationRecordResponse
+```
+
+Get Force Liquidation Record (USER_DATA)
+
+Get Force Liquidation Record  Weight(IP): 1  Security Type: USER_DATA  Notes: - Response in descending order
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$isolatedSymbol = BTCUSDT; // string
+$current = 1; // int
+$size = 10; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getForceLiquidationRecord($startTime, $endTime, $isolatedSymbol, $current, $size, $recvWindow);
@@ -243,12 +306,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **startTime** | **int**| 只支持查询最近90天的数据 | [optional] |
+| **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **isolatedSymbol** | **string**| isolated symbol | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10 Max:100 | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **isolatedSymbol** | **string**|  | [optional] |
+| **current** | **int**|  | [optional] |
+| **size** | **int**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -275,7 +338,7 @@ getSmallLiabilityExchangeCoinList($recvWindow): \Binance\Client\MarginTrading\Mo
 
 Get Small Liability Exchange Coin List (USER_DATA)
 
-Query the coins which can be small liability exchange  Weight: 100
+Query the coins which can be small liability exchange  Weight(IP): 100  Security Type: USER_DATA
 
 ### Example
 
@@ -290,7 +353,7 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int | No more than 60000
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getSmallLiabilityExchangeCoinList($recvWindow);
@@ -304,7 +367,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -331,7 +394,7 @@ getSmallLiabilityExchangeHistory($current, $size, $startTime, $endTime, $recvWin
 
 Get Small Liability Exchange History (USER_DATA)
 
-Get Small liability Exchange History  Weight: 100(UID)
+Get Small liability Exchange History  Weight(UID): 100  Security Type: USER_DATA
 
 ### Example
 
@@ -346,11 +409,11 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$startTime = 56; // int | 只支持查询最近90天的数据
-$endTime = 56; // int
-$recvWindow = 56; // int | No more than 60000
+$current = 1; // int
+$size = 10; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getSmallLiabilityExchangeHistory($current, $size, $startTime, $endTime, $recvWindow);
@@ -364,11 +427,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | |
-| **size** | **int**| Default:10, Max:100 | |
-| **startTime** | **int**| 只支持查询最近90天的数据 | [optional] |
+| **current** | **int**|  | |
+| **size** | **int**|  | |
+| **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -387,15 +450,15 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `marginAccountCancelAllOpenOrdersOnASymbol()`
+## `liquidationLoanRepay()`
 
 ```php
-marginAccountCancelAllOpenOrdersOnASymbol($symbol, $isIsolated, $recvWindow): \Binance\Client\MarginTrading\Model\MarginAccountCancelAllOpenOrdersOnASymbolResponse
+liquidationLoanRepay($liquidationLoanRepayRequest): \Binance\Client\MarginTrading\Model\LiquidationLoanRepayResponse
 ```
 
-Margin Account Cancel all Open Orders on a Symbol (TRADE)
+Liquidation Loan Repay (MARGIN)
 
-Cancels all active orders on a symbol for margin account.<br></br> This includes OCO orders.  Weight: 1
+Repays the outstanding cross-margin liquidation loan from the user's spot wallet. A liquidation loan represents the account deficit incurred when account equity turns negative during liquidation (bankruptcy). The repayment amount must be greater than 0 and cannot exceed the remaining loan balance. If the Spot Account has insufficient USDC balance, the repayment will fail.  Weight(UID): 100  Security Type: MARGIN
 
 ### Example
 
@@ -410,9 +473,65 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$isIsolated = 'isIsolated_example'; // string | for isolated margin or not, \"TRUE\", \"FALSE\"，default \"FALSE\"
-$recvWindow = 56; // int | No more than 60000
+$liquidationLoanRepayRequest = new \Binance\Client\MarginTrading\Model\LiquidationLoanRepayRequest(); // \Binance\Client\MarginTrading\Model\LiquidationLoanRepayRequest
+
+try {
+    $result = $apiInstance->liquidationLoanRepay($liquidationLoanRepayRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->liquidationLoanRepay: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **liquidationLoanRepayRequest** | [**\Binance\Client\MarginTrading\Model\LiquidationLoanRepayRequest**](../Model/LiquidationLoanRepayRequest.md)|  | |
+
+### Return type
+
+[**\Binance\Client\MarginTrading\Model\LiquidationLoanRepayResponse**](../Model/LiquidationLoanRepayResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `marginAccountCancelAllOpenOrdersOnASymbol()`
+
+```php
+marginAccountCancelAllOpenOrdersOnASymbol($symbol, $isIsolated, $recvWindow): \Binance\Client\MarginTrading\Model\MarginAccountCancelAllOpenOrdersOnASymbolResponse
+```
+
+Margin Account Cancel all Open Orders on a Symbol (TRADE)
+
+Cancels all active orders on a symbol for margin account.<br></br> This includes OCO orders.  Weight(IP): 1  Security Type: TRADE
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$symbol = BTCUSDT; // string
+$isIsolated = new \Binance\Client\MarginTrading\Model\\Binance\Client\MarginTrading\Model\IsIsolated(); // \Binance\Client\MarginTrading\Model\IsIsolated
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->marginAccountCancelAllOpenOrdersOnASymbol($symbol, $isIsolated, $recvWindow);
@@ -427,8 +546,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **isIsolated** | **string**| for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **isIsolated** | [**\Binance\Client\MarginTrading\Model\IsIsolated**](../Model/.md)|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -455,7 +574,7 @@ marginAccountCancelOco($symbol, $isIsolated, $orderListId, $listClientOrderId, $
 
 Margin Account Cancel OCO (TRADE)
 
-Cancel an entire Order List for a margin account.  * Canceling an individual leg will cancel the entire OCO  Weight: 1(UID)
+Cancel an entire Order List for a margin account.  Weight(UID): 1  Security Type: TRADE  Notes: - Canceling an individual leg will cancel the entire OCO
 
 ### Example
 
@@ -470,12 +589,12 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$isIsolated = 'isIsolated_example'; // string | for isolated margin or not, \"TRUE\", \"FALSE\"，default \"FALSE\"
-$orderListId = 56; // int | Either `orderListId` or `listClientOrderId` must be provided
-$listClientOrderId = 'listClientOrderId_example'; // string | Either `orderListId` or `listClientOrderId` must be provided
-$newClientOrderId = 'newClientOrderId_example'; // string | Used to uniquely identify this cancel. Automatically generated by default
-$recvWindow = 56; // int | No more than 60000
+$symbol = BTCUSDT; // string
+$isIsolated = new \Binance\Client\MarginTrading\Model\\Binance\Client\MarginTrading\Model\IsIsolated(); // \Binance\Client\MarginTrading\Model\IsIsolated
+$orderListId = 1; // int
+$listClientOrderId = 1; // string
+$newClientOrderId = 1; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->marginAccountCancelOco($symbol, $isIsolated, $orderListId, $listClientOrderId, $newClientOrderId, $recvWindow);
@@ -490,11 +609,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **isIsolated** | **string**| for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; | [optional] |
-| **orderListId** | **int**| Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided | [optional] |
-| **listClientOrderId** | **string**| Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided | [optional] |
-| **newClientOrderId** | **string**| Used to uniquely identify this cancel. Automatically generated by default | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **isIsolated** | [**\Binance\Client\MarginTrading\Model\IsIsolated**](../Model/.md)|  | [optional] |
+| **orderListId** | **int**|  | [optional] |
+| **listClientOrderId** | **string**|  | [optional] |
+| **newClientOrderId** | **string**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -521,7 +640,7 @@ marginAccountCancelOrder($symbol, $isIsolated, $orderId, $origClientOrderId, $ne
 
 Margin Account Cancel Order (TRADE)
 
-Cancel an active order for margin account.  * Either orderId or origClientOrderId must be sent.  Weight: 10(IP)
+Cancel an active order for margin account.  Weight(IP): 10  Security Type: TRADE  Notes: - Either orderId or origClientOrderId must be sent.
 
 ### Example
 
@@ -536,12 +655,12 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$isIsolated = 'isIsolated_example'; // string | for isolated margin or not, \"TRUE\", \"FALSE\"，default \"FALSE\"
-$orderId = 56; // int
-$origClientOrderId = 'origClientOrderId_example'; // string
-$newClientOrderId = 'newClientOrderId_example'; // string | Used to uniquely identify this cancel. Automatically generated by default
-$recvWindow = 56; // int | No more than 60000
+$symbol = LTCBTC; // string
+$isIsolated = new \Binance\Client\MarginTrading\Model\\Binance\Client\MarginTrading\Model\IsIsolated(); // \Binance\Client\MarginTrading\Model\IsIsolated
+$orderId = 1; // int
+$origClientOrderId = 1; // string
+$newClientOrderId = 1; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->marginAccountCancelOrder($symbol, $isIsolated, $orderId, $origClientOrderId, $newClientOrderId, $recvWindow);
@@ -556,11 +675,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **isIsolated** | **string**| for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; | [optional] |
+| **isIsolated** | [**\Binance\Client\MarginTrading\Model\IsIsolated**](../Model/.md)|  | [optional] |
 | **orderId** | **int**|  | [optional] |
 | **origClientOrderId** | **string**|  | [optional] |
-| **newClientOrderId** | **string**| Used to uniquely identify this cancel. Automatically generated by default | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **newClientOrderId** | **string**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -587,7 +706,7 @@ marginAccountNewOco($marginAccountNewOcoRequest): \Binance\Client\MarginTrading\
 
 Margin Account New OCO (TRADE)
 
-Send in a new OCO for a margin account  * autoRepayAtCancel is suggested to set as “FALSE” to keep liability unrepaid under high frequent new order/cancel order execution  Weight: 6(UID)
+Send in a new OCO for a margin account  Weight: 6(UID) or 1500(UID) when sideEffectType is MARGIN_BUY or AUTO_BORROW_REPAY  Security Type: TRADE  Notes: - autoRepayAtCancel is suggested to set as “FALSE” to keep liability unrepaid under high frequent new order/cancel order execution
 
 ### Example
 
@@ -643,7 +762,7 @@ marginAccountNewOrder($marginAccountNewOrderRequest): \Binance\Client\MarginTrad
 
 Margin Account New Order (TRADE)
 
-Post a new order for margin account.  * autoRepayAtCancel is suggested to set as “FALSE” to keep liability unrepaid under high frequent new order/cancel order execution  Weight: 6(UID)
+Post a new order for margin account.  Weight: 6(UID) or 1500(UID) when sideEffectType is MARGIN_BUY or AUTO_BORROW_REPAY  Security Type: TRADE  Notes: - autoRepayAtCancel is suggested to set as “FALSE” to keep liability unrepaid under high frequent new order/cancel order execution
 
 ### Example
 
@@ -699,7 +818,7 @@ marginAccountNewOto($marginAccountNewOtoRequest): \Binance\Client\MarginTrading\
 
 Margin Account New OTO (TRADE)
 
-Post a new OTO order for margin account:  - An OTO (One-Triggers-the-Other) is an order list comprised of 2 orders. - The first order is called the **working order** and must be `LIMIT` or `LIMIT_MAKER`. Initially, only the working order goes on the order book. - The second order is called the **pending order**. It can be any order type except for `MARKET` orders using parameter `quoteOrderQty`. The pending order is only placed on the order book when the working order gets **fully filled**. - If either the working order or the pending order is cancelled individually, the other order in the order list will also be canceled or expired. - When the order list is placed, if the working order gets **immediately fully filled**, the placement response will show the working order as `FILLED` but the pending order will still appear as `PENDING_NEW`. You need to query the status of the pending order again to see its updated status. - OTOs add **2 orders** to the unfilled order count, `EXCHANGE_MAX_NUM_ORDERS` filter and `MAX_NUM_ORDERS` filter.  * autoRepayAtCancel is suggested to set as “FALSE” to keep liability unrepaid under high frequent new order/cancel order execution * Depending on the `pendingType` or `workingType`, some optional parameters will become mandatory:  Weight: 6(UID)
+Post a new OTO order for margin account:  - An OTO (One-Triggers-the-Other) is an order list comprised of 2 orders.  - The first order is called the **working order** and must be `LIMIT` or `LIMIT_MAKER`. Initially, only the working order goes on the order book.  - The second order is called the **pending order**. It can be any order type except for `MARKET` orders using parameter `quoteOrderQty`. The pending order is only placed on the order book when the working order gets **fully filled**.  - If either the working order or the pending order is cancelled individually, the other order in the order list will also be canceled or expired.  - When the order list is placed, if the working order gets **immediately fully filled**, the placement response will show the working order as `FILLED` but the pending order will still appear as `PENDING_NEW`. You need to query the status of the pending order again to see its updated status.  - OTOs add **2 orders** to the unfilled order count, `EXCHANGE_MAX_NUM_ORDERS` filter and `MAX_NUM_ORDERS` filter.  Weight: 6(UID) or 1500(UID) when sideEffectType is MARGIN_BUY or AUTO_BORROW_REPAY  Security Type: TRADE  Notes: - autoRepayAtCancel is suggested to set as “FALSE” to keep liability unrepaid under high frequent new order/cancel order execution - Depending on the `pendingType` or `workingType`, some optional - parameters will become mandatory: | Type                                                     | Additional mandatory parameters                              | Additional information | | -------------------------------------------------------- | ------------------------------------------------------------ | ---------------------- | | `workingType` = `LIMIT`                                  | `workingTimeInForce`                                         |                        | | `pendingType` = `LIMIT`                                  | `pendingPrice`, `pendingTimeInForce`                         |                        | | `pendingType` = `STOP_LOSS` or `TAKE_PROFIT`             | `pendingStopPrice` and/or `pendingTrailingDelta`             |                        | | `pendingType` = `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT` | `pendingPrice`, `pendingStopPrice` and/or `pendingTrailingDelta`, `pendingTimeInForce` |                        | | `pendingTrailingDelta` is provided | `pendingPrice` |                        |
 
 ### Example
 
@@ -755,7 +874,7 @@ marginAccountNewOtoco($marginAccountNewOtocoRequest): \Binance\Client\MarginTrad
 
 Margin Account New OTOCO (TRADE)
 
-Post a new OTOCO order for margin account：  - An OTOCO (One-Triggers-One-Cancels-the-Other) is an order list comprised of 3 orders. - The first order is called the **working order** and must be `LIMIT` or `LIMIT_MAKER`. Initially, only the working order goes on the order book. - The behavior of the working order is the same as the OTO. - OTOCO has 2 pending orders (pending above and pending below), forming an OCO pair. The pending orders are only placed on the order book when the working order gets **fully filled**. - The rules of the pending above and pending below follow the same rules as the [Order List OCO](https://developers.binance.com/docs/margin_trading/trade/Margin-Account-New-OCO). - OTOCOs add **3 orders** against the unfilled order count, `EXCHANGE_MAX_NUM_ORDERS` filter, and `MAX_NUM_ORDERS` filter.  * autoRepayAtCancel is suggested to set as “FALSE” to keep liability unrepaid under high frequent new order/cancel order execution * Depending on the `pendingAboveType`/`pendingBelowType` or `workingType`, some optional parameters will become mandatory:  Weight: 6(UID)
+Post a new OTOCO order for margin account：   - An OTOCO (One-Triggers-One-Cancels-the-Other) is an order list comprised of 3 orders.  - The first order is called the **working order** and must be `LIMIT` or `LIMIT_MAKER`. Initially, only the working order goes on the order book.   - The behavior of the working order is the same as the OTO. - OTOCO has 2 pending orders (pending above and pending below), forming an OCO pair. The pending orders are only placed on the order book when the working order gets **fully filled**.   - The rules of the pending above and pending below follow the same rules as the [Order List OCO](https://developers.binance.com/en/docs/catalog/core-trading-margin-trading/api/rest-api/trade#margin-account-new-oco). - OTOCOs add **3 orders** against the unfilled order count, `EXCHANGE_MAX_NUM_ORDERS` filter, and `MAX_NUM_ORDERS` filter.  Weight: 6(UID) or 1500(UID) when sideEffectType is MARGIN_BUY or AUTO_BORROW_REPAY  Security Type: TRADE  Notes: - autoRepayAtCancel is suggested to set as “FALSE” to keep liability unrepaid under high frequent new order/cancel order execution - Depending on the `pendingAboveType`/`pendingBelowType` or `workingType`, some optional parameters will become mandatory: | Type                                 | Additional mandatory parameters                              | Additional information | | ------------------------------------ | ------------------------------------------------------------ | ---------------------- | | `workingType` = `LIMIT`              | `workingTimeInForce`                                         |                        | | `pendingAboveType`= `LIMIT_MAKER`    | `pendingAbovePrice`                                          |                        | | `pendingAboveType`= `STOP_LOSS`      | `pendingAboveStopPrice` and/or `pendingAboveTrailingDelta`   |                        | | `pendingAboveType`=`STOP_LOSS_LIMIT` | `pendingAbovePrice`, `pendingAboveStopPrice` and/or `pendingAboveTrailingDelta`, `pendingAboveTimeInForce` |                        | | `pendingBelowType`= `LIMIT_MAKER`    | `pendingBelowPrice`                                          |                        | | `pendingBelowType`= `STOP_LOSS`      | `pendingBelowStopPrice` and/or `pendingBelowTrailingDelta`   |                        | | `pendingBelowType`=`STOP_LOSS_LIMIT` | `pendingBelowPrice`, `pendingBelowStopPrice` and/or `pendingBelowTrailingDelta`, `pendingBelowTimeInForce` |                        | | `pendingAboveTrailingDelta` is provided | `pendingAbovePrice` |                        | | `pendingBelowTrailingDelta` is provided | `pendingBelowPrice` |                        |
 
 ### Example
 
@@ -809,9 +928,9 @@ No authorization required
 marginManualLiquidation($marginManualLiquidationRequest): \Binance\Client\MarginTrading\Model\MarginManualLiquidationResponse
 ```
 
-Margin Manual Liquidation(MARGIN)
+Margin Manual Liquidation (TRADE)
 
-Margin Manual Liquidation  * This endpoint can support Cross Margin Classic Mode and Pro Mode. * And only support Isolated Margin for restricted region.  Weight: 3000
+Margin Manual Liquidation  Weight(UID): 3000  Security Type: TRADE  Notes: - This endpoint supports Cross Margin Classic Mode and Pro Mode. - Isolated Margin is only supported in restricted regions.
 
 ### Example
 
@@ -867,7 +986,7 @@ queryCurrentMarginOrderCountUsage($isIsolated, $symbol, $recvWindow): \Binance\C
 
 Query Current Margin Order Count Usage (TRADE)
 
-Displays the user's current margin order count usage for all intervals.  Weight: 20(IP)
+Displays the user's current margin order count usage for all intervals.  Weight(IP): 20  Security Type: TRADE
 
 ### Example
 
@@ -882,9 +1001,9 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$isIsolated = 'isIsolated_example'; // string | for isolated margin or not, \"TRUE\", \"FALSE\"，default \"FALSE\"
-$symbol = 'symbol_example'; // string | isolated margin pair
-$recvWindow = 56; // int | No more than 60000
+$isIsolated = new \Binance\Client\MarginTrading\Model\\Binance\Client\MarginTrading\Model\IsIsolated(); // \Binance\Client\MarginTrading\Model\IsIsolated
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryCurrentMarginOrderCountUsage($isIsolated, $symbol, $recvWindow);
@@ -898,13 +1017,133 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **isIsolated** | **string**| for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; | [optional] |
-| **symbol** | **string**| isolated margin pair | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **isIsolated** | [**\Binance\Client\MarginTrading\Model\IsIsolated**](../Model/.md)|  | [optional] |
+| **symbol** | **string**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
 [**\Binance\Client\MarginTrading\Model\QueryCurrentMarginOrderCountUsageResponse**](../Model/QueryCurrentMarginOrderCountUsageResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `queryLiquidationLoan()`
+
+```php
+queryLiquidationLoan($recvWindow): \Binance\Client\MarginTrading\Model\QueryLiquidationLoanResponse
+```
+
+Query Liquidation Loan (USER_DATA)
+
+Query the current user's cross-margin liquidation loan information, including the original loan amount, repaid amount, and remaining amount. When a cross-margin account is liquidated and the account equity turns negative (bankruptcy), the system generates a liquidation loan record representing the deficit. This represents the shortfall amount denominated in USDC.  Weight(UID): 100  Security Type: USER_DATA
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$recvWindow = 5000; // int
+
+try {
+    $result = $apiInstance->queryLiquidationLoan($recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->queryLiquidationLoan: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\MarginTrading\Model\QueryLiquidationLoanResponse**](../Model/QueryLiquidationLoanResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `queryLiquidationLoanRepayHistory()`
+
+```php
+queryLiquidationLoanRepayHistory($startTime, $endTime, $current, $size, $recvWindow): \Binance\Client\MarginTrading\Model\QueryLiquidationLoanRepayHistoryResponse
+```
+
+Query Liquidation Loan Repay History (USER_DATA)
+
+Query the repayment history of cross-margin liquidation loans (deficit caused by bankruptcy during liquidation). Supports time-range filtering and pagination.  Weight(UID): 100  Security Type: USER_DATA  Notes: - The maximum query range is 90 days. If `startTime` is earlier than 90 days ago, it will be clamped to 90 days ago. - Only records with status `SUCCESS` or `PENDING` are returned. Failed repayment records are excluded.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$startTime = 1714492800000; // int | Start time in Unix timestamp (milliseconds). Defaults to 7 days ago if not specified
+$endTime = 1714579200000; // int | End time in Unix timestamp (milliseconds). Defaults to now if not specified
+$current = 1; // int | Current page number, default `1`
+$size = 50; // int | Page size, default `50`
+$recvWindow = 5000; // int
+
+try {
+    $result = $apiInstance->queryLiquidationLoanRepayHistory($startTime, $endTime, $current, $size, $recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->queryLiquidationLoanRepayHistory: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **startTime** | **int**| Start time in Unix timestamp (milliseconds). Defaults to 7 days ago if not specified | [optional] |
+| **endTime** | **int**| End time in Unix timestamp (milliseconds). Defaults to now if not specified | [optional] |
+| **current** | **int**| Current page number, default &#x60;1&#x60; | [optional] |
+| **size** | **int**| Page size, default &#x60;50&#x60; | [optional] |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\MarginTrading\Model\QueryLiquidationLoanRepayHistoryResponse**](../Model/QueryLiquidationLoanRepayHistoryResponse.md)
 
 ### Authorization
 
@@ -927,7 +1166,7 @@ queryMarginAccountsAllOco($isIsolated, $symbol, $fromId, $startTime, $endTime, $
 
 Query Margin Account's all OCO (USER_DATA)
 
-Retrieves all OCO for a specific margin account based on provided optional parameters  Weight: 200(IP)
+Retrieves all OCO for a specific margin account based on provided optional parameters  Weight(IP): 200  Security Type: USER_DATA
 
 ### Example
 
@@ -942,13 +1181,13 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$isIsolated = 'isIsolated_example'; // string | for isolated margin or not, \"TRUE\", \"FALSE\"，default \"FALSE\"
-$symbol = 'symbol_example'; // string | isolated margin pair
-$fromId = 56; // int | 如设置fromId, 将返回id > fromId的数据。否则将返回最新数据
-$startTime = 56; // int | 只支持查询最近90天的数据
-$endTime = 56; // int
-$limit = 56; // int | Default Value: 500; Max Value: 1000
-$recvWindow = 56; // int | No more than 60000
+$isIsolated = new \Binance\Client\MarginTrading\Model\\Binance\Client\MarginTrading\Model\IsIsolated(); // \Binance\Client\MarginTrading\Model\IsIsolated
+$symbol = LTCBTC; // string
+$fromId = 1; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$limit = 100; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryMarginAccountsAllOco($isIsolated, $symbol, $fromId, $startTime, $endTime, $limit, $recvWindow);
@@ -962,13 +1201,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **isIsolated** | **string**| for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; | [optional] |
-| **symbol** | **string**| isolated margin pair | [optional] |
-| **fromId** | **int**| 如设置fromId, 将返回id &gt; fromId的数据。否则将返回最新数据 | [optional] |
-| **startTime** | **int**| 只支持查询最近90天的数据 | [optional] |
+| **isIsolated** | [**\Binance\Client\MarginTrading\Model\IsIsolated**](../Model/.md)|  | [optional] |
+| **symbol** | **string**|  | [optional] |
+| **fromId** | **int**|  | [optional] |
+| **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **limit** | **int**| Default Value: 500; Max Value: 1000 | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **limit** | **int**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -995,7 +1234,7 @@ queryMarginAccountsAllOrders($symbol, $isIsolated, $orderId, $startTime, $endTim
 
 Query Margin Account's All Orders (USER_DATA)
 
-Query Margin Account's All Orders  * If orderId is set, it will get orders >= that orderId. Otherwise the orders within 24 hours are returned. * For some historical orders cummulativeQuoteQty will be < 0, meaning the data is not available at this time. * Less than 24 hours between startTime and endTime.  Weight: 200(IP)
+Query Margin Account's All Orders  Weight(IP): 200  Security Type: USER_DATA  Notes: - If orderId is set, it will get orders >= that orderId. Otherwise the orders within 24 hours are returned.  - For some historical orders cummulativeQuoteQty will be < 0, meaning the data is not available at this time.  - Less than 24 hours between startTime and endTime.
 
 ### Example
 
@@ -1010,13 +1249,13 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$isIsolated = 'isIsolated_example'; // string | for isolated margin or not, \"TRUE\", \"FALSE\"，default \"FALSE\"
-$orderId = 56; // int
-$startTime = 56; // int | 只支持查询最近90天的数据
-$endTime = 56; // int
-$limit = 56; // int | Default Value: 500; Max Value: 1000
-$recvWindow = 56; // int | No more than 60000
+$symbol = BNBBTC; // string
+$isIsolated = new \Binance\Client\MarginTrading\Model\\Binance\Client\MarginTrading\Model\IsIsolated(); // \Binance\Client\MarginTrading\Model\IsIsolated
+$orderId = 1; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$limit = 100; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryMarginAccountsAllOrders($symbol, $isIsolated, $orderId, $startTime, $endTime, $limit, $recvWindow);
@@ -1031,12 +1270,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **isIsolated** | **string**| for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; | [optional] |
+| **isIsolated** | [**\Binance\Client\MarginTrading\Model\IsIsolated**](../Model/.md)|  | [optional] |
 | **orderId** | **int**|  | [optional] |
-| **startTime** | **int**| 只支持查询最近90天的数据 | [optional] |
+| **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **limit** | **int**| Default Value: 500; Max Value: 1000 | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **limit** | **int**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -1063,7 +1302,7 @@ queryMarginAccountsOco($isIsolated, $symbol, $orderListId, $origClientOrderId, $
 
 Query Margin Account's OCO (USER_DATA)
 
-Retrieves a specific OCO based on provided optional parameters  Weight: 10(IP)
+Retrieves a specific OCO based on provided optional parameters  Weight(IP): 10  Security Type: USER_DATA
 
 ### Example
 
@@ -1078,11 +1317,11 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$isIsolated = 'isIsolated_example'; // string | for isolated margin or not, \"TRUE\", \"FALSE\"，default \"FALSE\"
-$symbol = 'symbol_example'; // string | isolated margin pair
-$orderListId = 56; // int | Either `orderListId` or `listClientOrderId` must be provided
-$origClientOrderId = 'origClientOrderId_example'; // string
-$recvWindow = 56; // int | No more than 60000
+$isIsolated = new \Binance\Client\MarginTrading\Model\\Binance\Client\MarginTrading\Model\IsIsolated(); // \Binance\Client\MarginTrading\Model\IsIsolated
+$symbol = LTCBTC; // string
+$orderListId = 1; // int
+$origClientOrderId = 1; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryMarginAccountsOco($isIsolated, $symbol, $orderListId, $origClientOrderId, $recvWindow);
@@ -1096,11 +1335,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **isIsolated** | **string**| for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; | [optional] |
-| **symbol** | **string**| isolated margin pair | [optional] |
-| **orderListId** | **int**| Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided | [optional] |
+| **isIsolated** | [**\Binance\Client\MarginTrading\Model\IsIsolated**](../Model/.md)|  | [optional] |
+| **symbol** | **string**|  | [optional] |
+| **orderListId** | **int**|  | [optional] |
 | **origClientOrderId** | **string**|  | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -1127,7 +1366,7 @@ queryMarginAccountsOpenOco($isIsolated, $symbol, $recvWindow): \Binance\Client\M
 
 Query Margin Account's Open OCO (USER_DATA)
 
-Query Margin Account's Open OCO  Weight: 10(IP)
+Query Margin Account's Open OCO  Weight(IP): 10  Security Type: USER_DATA
 
 ### Example
 
@@ -1142,9 +1381,9 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$isIsolated = 'isIsolated_example'; // string | for isolated margin or not, \"TRUE\", \"FALSE\"，default \"FALSE\"
-$symbol = 'symbol_example'; // string | isolated margin pair
-$recvWindow = 56; // int | No more than 60000
+$isIsolated = new \Binance\Client\MarginTrading\Model\\Binance\Client\MarginTrading\Model\IsIsolated(); // \Binance\Client\MarginTrading\Model\IsIsolated
+$symbol = LTCBTC; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryMarginAccountsOpenOco($isIsolated, $symbol, $recvWindow);
@@ -1158,9 +1397,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **isIsolated** | **string**| for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; | [optional] |
-| **symbol** | **string**| isolated margin pair | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **isIsolated** | [**\Binance\Client\MarginTrading\Model\IsIsolated**](../Model/.md)|  | [optional] |
+| **symbol** | **string**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -1187,7 +1426,7 @@ queryMarginAccountsOpenOrders($symbol, $isIsolated, $recvWindow): \Binance\Clien
 
 Query Margin Account's Open Orders (USER_DATA)
 
-Query Margin Account's Open Orders  * If the symbol is not sent, orders for all symbols will be returned in an array. * When all symbols are returned, the number of requests counted against the rate limiter is equal to the number of symbols currently trading on the exchange. * If isIsolated =\"TRUE\", symbol must be sent.  Weight: 10(IP)
+Query Margin Account's Open Orders  Weight(IP): 10  Security Type: USER_DATA  Notes: - If the symbol is not sent, orders for all symbols will be returned in an array.  - When all symbols are returned, the number of requests counted against the rate limiter is equal to the number of symbols currently trading on the exchange.  - If isIsolated =\"TRUE\", symbol must be sent.
 
 ### Example
 
@@ -1202,9 +1441,9 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string | isolated margin pair
-$isIsolated = 'isIsolated_example'; // string | for isolated margin or not, \"TRUE\", \"FALSE\"，default \"FALSE\"
-$recvWindow = 56; // int | No more than 60000
+$symbol = BNBBTC; // string | isolated margin pair
+$isIsolated = new \Binance\Client\MarginTrading\Model\\Binance\Client\MarginTrading\Model\IsIsolated(); // \Binance\Client\MarginTrading\Model\IsIsolated
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryMarginAccountsOpenOrders($symbol, $isIsolated, $recvWindow);
@@ -1219,8 +1458,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**| isolated margin pair | [optional] |
-| **isIsolated** | **string**| for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **isIsolated** | [**\Binance\Client\MarginTrading\Model\IsIsolated**](../Model/.md)|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -1247,7 +1486,7 @@ queryMarginAccountsOrder($symbol, $isIsolated, $orderId, $origClientOrderId, $re
 
 Query Margin Account's Order (USER_DATA)
 
-Query Margin Account's Order  * Either orderId or origClientOrderId must be sent. * For some historical orders cummulativeQuoteQty will be < 0, meaning the data is not available at this time.  Weight: 10(IP)
+Query Margin Account's Order  Weight(IP): 10  Security Type: USER_DATA  Notes: - Either orderId or origClientOrderId must be sent.  - For some historical orders cummulativeQuoteQty will be < 0, meaning the data is not available at this time.
 
 ### Example
 
@@ -1262,11 +1501,11 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$isIsolated = 'isIsolated_example'; // string | for isolated margin or not, \"TRUE\", \"FALSE\"，default \"FALSE\"
-$orderId = 56; // int
-$origClientOrderId = 'origClientOrderId_example'; // string
-$recvWindow = 56; // int | No more than 60000
+$symbol = BNBBTC; // string
+$isIsolated = new \Binance\Client\MarginTrading\Model\\Binance\Client\MarginTrading\Model\IsIsolated(); // \Binance\Client\MarginTrading\Model\IsIsolated
+$orderId = 1; // int
+$origClientOrderId = 1; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryMarginAccountsOrder($symbol, $isIsolated, $orderId, $origClientOrderId, $recvWindow);
@@ -1281,10 +1520,10 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **isIsolated** | **string**| for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; | [optional] |
+| **isIsolated** | [**\Binance\Client\MarginTrading\Model\IsIsolated**](../Model/.md)|  | [optional] |
 | **orderId** | **int**|  | [optional] |
 | **origClientOrderId** | **string**|  | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -1311,7 +1550,7 @@ queryMarginAccountsTradeList($symbol, $isIsolated, $orderId, $startTime, $endTim
 
 Query Margin Account's Trade List (USER_DATA)
 
-Query Margin Account's Trade List  * If fromId is set, it will get trades >= that fromId. Otherwise the trades within 24 hours are returned. * Less than 24 hours between startTime and endTime.  Weight: 10(IP)
+Query Margin Account's Trade List  Weight(IP): 10  Security Type: USER_DATA  Notes: - If fromId is set, it will get trades >= that fromId. Otherwise the trades within 24 hours are returned.  - Less than 24 hours between startTime and endTime.
 
 ### Example
 
@@ -1326,14 +1565,14 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$isIsolated = 'isIsolated_example'; // string | for isolated margin or not, \"TRUE\", \"FALSE\"，default \"FALSE\"
-$orderId = 56; // int
-$startTime = 56; // int | 只支持查询最近90天的数据
-$endTime = 56; // int
-$fromId = 56; // int | 如设置fromId, 将返回id > fromId的数据。否则将返回最新数据
-$limit = 56; // int | Default Value: 500; Max Value: 1000
-$recvWindow = 56; // int | No more than 60000
+$symbol = BNBBTC; // string
+$isIsolated = new \Binance\Client\MarginTrading\Model\\Binance\Client\MarginTrading\Model\IsIsolated(); // \Binance\Client\MarginTrading\Model\IsIsolated
+$orderId = 1; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$fromId = 1; // int
+$limit = 500; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryMarginAccountsTradeList($symbol, $isIsolated, $orderId, $startTime, $endTime, $fromId, $limit, $recvWindow);
@@ -1348,17 +1587,83 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **isIsolated** | **string**| for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;，default \&quot;FALSE\&quot; | [optional] |
+| **isIsolated** | [**\Binance\Client\MarginTrading\Model\IsIsolated**](../Model/.md)|  | [optional] |
 | **orderId** | **int**|  | [optional] |
-| **startTime** | **int**| 只支持查询最近90天的数据 | [optional] |
+| **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **fromId** | **int**| 如设置fromId, 将返回id &gt; fromId的数据。否则将返回最新数据 | [optional] |
-| **limit** | **int**| Default Value: 500; Max Value: 1000 | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **fromId** | **int**|  | [optional] |
+| **limit** | **int**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
 [**\Binance\Client\MarginTrading\Model\QueryMarginAccountsTradeListResponse**](../Model/QueryMarginAccountsTradeListResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `queryPreventedMatches()`
+
+```php
+queryPreventedMatches($symbol, $preventedMatchId, $orderId, $fromPreventedMatchId, $isIsolated, $recvWindow): \Binance\Client\MarginTrading\Model\QueryPreventedMatchesResponse
+```
+
+Query Prevented Matches (USER_DATA)
+
+Displays the list of orders that were expired due to STP. (Self-Trade Prevention).  Weight(IP): 10  Security Type: USER_DATA  Notes: - Supported parameter combinations:  - `symbol` + `preventedMatchId`  - `symbol` + `orderId`  - `symbol` + `orderId` + `fromPreventedMatchId`  - If `orderId` is provided, all prevented matches for that order will be returned.  - If `preventedMatchId` is provided, the specific prevented match will be returned.  - A single request returns a maximum of 500 records. If there are more than 500 records, use `symbol` + `orderId` + `fromPreventedMatchId` combination for pagination.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$symbol = BTCUSDT; // string
+$preventedMatchId = 1; // int
+$orderId = 1; // int
+$fromPreventedMatchId = 1; // int
+$isIsolated = new \Binance\Client\MarginTrading\Model\\Binance\Client\MarginTrading\Model\IsIsolated(); // \Binance\Client\MarginTrading\Model\IsIsolated
+$recvWindow = 5000; // int
+
+try {
+    $result = $apiInstance->queryPreventedMatches($symbol, $preventedMatchId, $orderId, $fromPreventedMatchId, $isIsolated, $recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->queryPreventedMatches: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **symbol** | **string**|  | |
+| **preventedMatchId** | **int**|  | [optional] |
+| **orderId** | **int**|  | [optional] |
+| **fromPreventedMatchId** | **int**|  | [optional] |
+| **isIsolated** | [**\Binance\Client\MarginTrading\Model\IsIsolated**](../Model/.md)|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\MarginTrading\Model\QueryPreventedMatchesResponse**](../Model/QueryPreventedMatchesResponse.md)
 
 ### Authorization
 
@@ -1379,9 +1684,9 @@ No authorization required
 querySpecialKey($symbol, $recvWindow): \Binance\Client\MarginTrading\Model\QuerySpecialKeyResponse
 ```
 
-Query Special key(Low Latency Trading)(TRADE)
+Query Special key(Low Latency Trading) (TRADE)
 
-Query Special Key Information.  This only applies to Special Key for Low Latency Trading.  Weight: 1(UID)
+Query Special Key Information.  This only applies to Special Key for Low Latency Trading.  Weight(UID): 1  Security Type: TRADE
 
 ### Example
 
@@ -1396,8 +1701,8 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string | isolated margin pair
-$recvWindow = 56; // int | No more than 60000
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->querySpecialKey($symbol, $recvWindow);
@@ -1411,8 +1716,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**| isolated margin pair | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **symbol** | **string**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -1437,9 +1742,9 @@ No authorization required
 querySpecialKeyList($symbol, $recvWindow): \Binance\Client\MarginTrading\Model\QuerySpecialKeyListResponse
 ```
 
-Query Special key List(Low Latency Trading)(TRADE)
+Query Special key List(Low Latency Trading) (TRADE)
 
-This only applies to Special Key for Low Latency Trading.  Weight: 1(UID)
+This only applies to Special Key for Low Latency Trading.  Weight(UID): 1  Security Type: TRADE
 
 ### Example
 
@@ -1454,8 +1759,8 @@ $apiInstance = new Binance\Client\MarginTrading\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string | isolated margin pair
-$recvWindow = 56; // int | No more than 60000
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->querySpecialKeyList($symbol, $recvWindow);
@@ -1469,8 +1774,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**| isolated margin pair | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **symbol** | **string**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -1497,7 +1802,7 @@ smallLiabilityExchange($smallLiabilityExchangeRequest)
 
 Small Liability Exchange (MARGIN)
 
-Small Liability Exchange  * Only convert once within 6 hours * Only liability valuation less than 10 USDT are supported * The maximum number of coin is 10  Weight: 3000(UID)
+Small Liability Exchange  Weight(UID): 3000  Security Type: MARGIN  Notes: - Only convert once within 6 hours - Only liability valuation less than 10 USDT are supported - The maximum number of coin is 10
 
 ### Example
 

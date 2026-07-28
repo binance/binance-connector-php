@@ -1,4 +1,4 @@
-# # FetchDepositAddressListWithNetworkResponse
+# FetchDepositAddressListWithNetworkResponse
 
 ## Properties
 

@@ -12,10 +12,10 @@ function futuresTransferForSubAccountExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
     $futuresTransferForSubAccountRequest = new FuturesTransferForSubAccountRequest();
-    $futuresTransferForSubAccountRequest->setEmail('sub-account-email@email.com');
-    $futuresTransferForSubAccountRequest->setAsset('');
+    $futuresTransferForSubAccountRequest->setEmail('123@test.com');
+    $futuresTransferForSubAccountRequest->setAsset('USDT');
     $futuresTransferForSubAccountRequest->setAmount(1.0);
-    $futuresTransferForSubAccountRequest->setType(null);
+    $futuresTransferForSubAccountRequest->setType(1);
     $response = $api->futuresTransferForSubAccount($futuresTransferForSubAccountRequest);
     print_r($response);
 }

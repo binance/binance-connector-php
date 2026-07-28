@@ -1,4 +1,4 @@
-# # TPlusSellFilter
+# TPlusSellFilter
 
 ## Properties
 

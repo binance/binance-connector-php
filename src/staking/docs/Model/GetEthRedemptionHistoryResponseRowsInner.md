@@ -1,4 +1,4 @@
-# # GetEthRedemptionHistoryResponseRowsInner
+# GetEthRedemptionHistoryResponseRowsInner
 
 ## Properties
 

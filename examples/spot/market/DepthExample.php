@@ -11,7 +11,7 @@ function depthExample()
     $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
     $api = new SpotRestApi($configurationBuilder->build());
     $symbol = 'BNBUSDT';
-    $limit = 500;
+    $limit = 1;
     $symbolStatus = SymbolStatus::TRADING;
     $response = $api->depth($symbol, $limit, $symbolStatus);
     print_r($response);

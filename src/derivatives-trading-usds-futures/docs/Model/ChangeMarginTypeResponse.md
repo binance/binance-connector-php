@@ -1,4 +1,4 @@
-# # ChangeMarginTypeResponse
+# ChangeMarginTypeResponse
 
 ## Properties
 

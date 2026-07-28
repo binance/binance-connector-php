@@ -1,4 +1,4 @@
-# # GetSubAccountsStatusOnMarginOrFuturesResponseInner
+# GetSubAccountsStatusOnMarginOrFuturesResponseInner
 
 ## Properties
 

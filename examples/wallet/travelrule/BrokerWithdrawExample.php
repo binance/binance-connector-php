@@ -13,12 +13,11 @@ function brokerWithdrawExample()
     $api = new WalletRestApi($configurationBuilder->build());
     $brokerWithdrawRequest = new BrokerWithdrawRequest();
     $brokerWithdrawRequest->setAddress('');
-    $brokerWithdrawRequest->setCoin('');
+    $brokerWithdrawRequest->setCoin('BTC');
     $brokerWithdrawRequest->setAmount(1.0);
     $brokerWithdrawRequest->setWithdrawOrderId('1');
     $brokerWithdrawRequest->setQuestionnaire('');
     $brokerWithdrawRequest->setOriginatorPii('');
-    $brokerWithdrawRequest->setSignature('');
     $response = $api->brokerWithdraw($brokerWithdrawRequest);
     print_r($response);
 }

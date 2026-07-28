@@ -1,4 +1,4 @@
-# # GetVIPLoanAccruedInterestResponse
+# GetVIPLoanAccruedInterestResponse
 
 ## Properties
 

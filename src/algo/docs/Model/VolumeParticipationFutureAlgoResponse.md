@@ -1,4 +1,4 @@
-# # VolumeParticipationFutureAlgoResponse
+# VolumeParticipationFutureAlgoResponse
 
 ## Properties
 

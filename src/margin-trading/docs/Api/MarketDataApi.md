@@ -1,19 +1,23 @@
 # Binance\Client\MarginTrading\MarketDataApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**crossMarginCollateralRatio()**](MarketDataApi.md#crossMarginCollateralRatio) | **GET** /sapi/v1/margin/crossMarginCollateralRatio | Cross margin collateral ratio (MARKET_DATA) |
 | [**getAllCrossMarginPairs()**](MarketDataApi.md#getAllCrossMarginPairs) | **GET** /sapi/v1/margin/allPairs | Get All Cross Margin Pairs (MARKET_DATA) |
-| [**getAllIsolatedMarginSymbol()**](MarketDataApi.md#getAllIsolatedMarginSymbol) | **GET** /sapi/v1/margin/isolated/allPairs | Get All Isolated Margin Symbol(MARKET_DATA) |
+| [**getAllIsolatedMarginSymbol()**](MarketDataApi.md#getAllIsolatedMarginSymbol) | **GET** /sapi/v1/margin/isolated/allPairs | Get All Isolated Margin Symbol (MARKET_DATA) |
 | [**getAllMarginAssets()**](MarketDataApi.md#getAllMarginAssets) | **GET** /sapi/v1/margin/allAssets | Get All Margin Assets (MARKET_DATA) |
 | [**getDelistSchedule()**](MarketDataApi.md#getDelistSchedule) | **GET** /sapi/v1/margin/delist-schedule | Get Delist Schedule (MARKET_DATA) |
-| [**getLimitPricePairs()**](MarketDataApi.md#getLimitPricePairs) | **GET** /sapi/v1/margin/limit-price-pairs | Get Limit Price Pairs(MARKET_DATA) |
+| [**getLimitPricePairs()**](MarketDataApi.md#getLimitPricePairs) | **GET** /sapi/v1/margin/limit-price-pairs | Get Limit Price Pairs (MARKET_DATA) |
 | [**getListSchedule()**](MarketDataApi.md#getListSchedule) | **GET** /sapi/v1/margin/list-schedule | Get list Schedule (MARKET_DATA) |
+| [**getMarginAssetRiskBasedLiquidationRatio()**](MarketDataApi.md#getMarginAssetRiskBasedLiquidationRatio) | **GET** /sapi/v1/margin/risk-based-liquidation-ratio | Get Margin Asset Risk-Based Liquidation Ratio (MARKET_DATA) |
+| [**getMarginRestrictedAssets()**](MarketDataApi.md#getMarginRestrictedAssets) | **GET** /sapi/v1/margin/restricted-asset | Get Margin Restricted Assets (MARKET_DATA) |
 | [**queryIsolatedMarginTierData()**](MarketDataApi.md#queryIsolatedMarginTierData) | **GET** /sapi/v1/margin/isolatedMarginTier | Query Isolated Margin Tier Data (USER_DATA) |
-| [**queryLiabilityCoinLeverageBracketInCrossMarginProMode()**](MarketDataApi.md#queryLiabilityCoinLeverageBracketInCrossMarginProMode) | **GET** /sapi/v1/margin/leverageBracket | Query Liability Coin Leverage Bracket in Cross Margin Pro Mode(MARKET_DATA) |
-| [**queryMarginAvailableInventory()**](MarketDataApi.md#queryMarginAvailableInventory) | **GET** /sapi/v1/margin/available-inventory | Query Margin Available Inventory(USER_DATA) |
+| [**queryLiabilityCoinLeverageBracketInCrossMarginProMode()**](MarketDataApi.md#queryLiabilityCoinLeverageBracketInCrossMarginProMode) | **GET** /sapi/v1/margin/leverageBracket | Query Liability Coin Leverage Bracket in Cross Margin Pro Mode (MARKET_DATA) |
+| [**queryMarginAvailableInventory()**](MarketDataApi.md#queryMarginAvailableInventory) | **GET** /sapi/v1/margin/available-inventory | Query Margin Available Inventory (USER_DATA) |
 | [**queryMarginPriceindex()**](MarketDataApi.md#queryMarginPriceindex) | **GET** /sapi/v1/margin/priceIndex | Query Margin PriceIndex (MARKET_DATA) |
 
 
@@ -25,7 +29,7 @@ crossMarginCollateralRatio(): \Binance\Client\MarginTrading\Model\CrossMarginCol
 
 Cross margin collateral ratio (MARKET_DATA)
 
-Cross margin collateral ratio  Weight: 100(IP)
+Cross margin collateral ratio  Weight(IP): 100  Security Type: MARKET_DATA
 
 ### Example
 
@@ -78,7 +82,7 @@ getAllCrossMarginPairs($symbol): \Binance\Client\MarginTrading\Model\GetAllCross
 
 Get All Cross Margin Pairs (MARKET_DATA)
 
-Get All Cross Margin Pairs  Weight: 1(IP)
+Get All Cross Margin Pairs  Weight(IP): 1  Security Type: MARKET_DATA
 
 ### Example
 
@@ -93,7 +97,7 @@ $apiInstance = new Binance\Client\MarginTrading\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string | isolated margin pair
+$symbol = BNBBTC; // string
 
 try {
     $result = $apiInstance->getAllCrossMarginPairs($symbol);
@@ -107,7 +111,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**| isolated margin pair | [optional] |
+| **symbol** | **string**|  | [optional] |
 
 ### Return type
 
@@ -132,9 +136,9 @@ No authorization required
 getAllIsolatedMarginSymbol($symbol, $recvWindow): \Binance\Client\MarginTrading\Model\GetAllIsolatedMarginSymbolResponse
 ```
 
-Get All Isolated Margin Symbol(MARKET_DATA)
+Get All Isolated Margin Symbol (MARKET_DATA)
 
-Get All Isolated Margin Symbol  Weight: 10(IP)
+Get All Isolated Margin Symbol  Weight(IP): 10  Security Type: MARKET_DATA
 
 ### Example
 
@@ -149,8 +153,8 @@ $apiInstance = new Binance\Client\MarginTrading\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string | isolated margin pair
-$recvWindow = 56; // int | No more than 60000
+$symbol = BNBBTC; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getAllIsolatedMarginSymbol($symbol, $recvWindow);
@@ -164,8 +168,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**| isolated margin pair | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **symbol** | **string**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -192,7 +196,7 @@ getAllMarginAssets($asset): \Binance\Client\MarginTrading\Model\GetAllMarginAsse
 
 Get All Margin Assets (MARKET_DATA)
 
-Get All Margin Assets.  Weight: 1(IP)
+Get All Margin Assets.  Weight(IP): 1  Security Type: MARKET_DATA
 
 ### Example
 
@@ -207,7 +211,7 @@ $apiInstance = new Binance\Client\MarginTrading\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
+$asset = USDC; // string
 
 try {
     $result = $apiInstance->getAllMarginAssets($asset);
@@ -248,7 +252,7 @@ getDelistSchedule($recvWindow): \Binance\Client\MarginTrading\Model\GetDelistSch
 
 Get Delist Schedule (MARKET_DATA)
 
-Get tokens or symbols delist schedule for cross margin and isolated margin  Weight: 100
+Get tokens or symbols delist schedule for cross margin and isolated margin  Weight(IP): 100  Security Type: MARKET_DATA
 
 ### Example
 
@@ -263,7 +267,7 @@ $apiInstance = new Binance\Client\MarginTrading\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int | No more than 60000
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getDelistSchedule($recvWindow);
@@ -277,7 +281,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -302,9 +306,9 @@ No authorization required
 getLimitPricePairs(): \Binance\Client\MarginTrading\Model\GetLimitPricePairsResponse
 ```
 
-Get Limit Price Pairs(MARKET_DATA)
+Get Limit Price Pairs (MARKET_DATA)
 
-Query trading pairs with restriction on limit price range. In margin trading, you can place orders with limit price. Limit price should be within (-15%, 15%) of current index price for a list of margin trading pairs. This rule only impacts limit sell orders with limit price that is lower than current index price and limit buy orders with limit price that is higher than current index price.  - Buy order: Your order will be rejected with an error message notification if the limit price is 15% above the index price. - Sell order: Your order will be rejected with an error message notification if the limit price is 15% below the index price. Please review the limit price order placing strategy, backtest and calibrate the planned order size with the trading volume and order book depth to prevent trading loss.  Weight: 1
+Query trading pairs with restriction on limit price range.  In margin trading, you can place orders with limit price. Limit price should be within (-15%, 15%) of current index price for a list of margin trading pairs. This rule only impacts limit sell orders with limit price that is lower than current index price and limit buy orders with limit price that is higher than current index price.  - Buy order: Your order will be rejected with an error message notification if the limit price is 15% above the index price.  - Sell order: Your order will be rejected with an error message notification if the limit price is 15% below the index price.  Please review the limit price order placing strategy, backtest and calibrate the planned order size with the trading volume and order book depth to prevent trading loss.  Weight(IP): 1  Security Type: MARKET_DATA
 
 ### Example
 
@@ -357,7 +361,7 @@ getListSchedule($recvWindow): \Binance\Client\MarginTrading\Model\GetListSchedul
 
 Get list Schedule (MARKET_DATA)
 
-Get the upcoming tokens or symbols listing schedule for Cross Margin and Isolated Margin.  Weight: 100
+Get the upcoming tokens or symbols listing schedule for Cross Margin and Isolated Margin.  Weight(IP): 100  Security Type: MARKET_DATA
 
 ### Example
 
@@ -372,7 +376,7 @@ $apiInstance = new Binance\Client\MarginTrading\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int | No more than 60000
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getListSchedule($recvWindow);
@@ -386,11 +390,117 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
 [**\Binance\Client\MarginTrading\Model\GetListScheduleResponse**](../Model/GetListScheduleResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getMarginAssetRiskBasedLiquidationRatio()`
+
+```php
+getMarginAssetRiskBasedLiquidationRatio(): \Binance\Client\MarginTrading\Model\GetMarginAssetRiskBasedLiquidationRatioResponse
+```
+
+Get Margin Asset Risk-Based Liquidation Ratio (MARKET_DATA)
+
+Get Margin Asset Risk-Based Liquidation Ratio  Weight(IP): 1  Security Type: MARKET_DATA
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\MarginTrading\Api\MarketDataApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+
+try {
+    $result = $apiInstance->getMarginAssetRiskBasedLiquidationRatio();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MarketDataApi->getMarginAssetRiskBasedLiquidationRatio: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Binance\Client\MarginTrading\Model\GetMarginAssetRiskBasedLiquidationRatioResponse**](../Model/GetMarginAssetRiskBasedLiquidationRatioResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getMarginRestrictedAssets()`
+
+```php
+getMarginRestrictedAssets(): \Binance\Client\MarginTrading\Model\GetMarginRestrictedAssetsResponse
+```
+
+Get Margin Restricted Assets (MARKET_DATA)
+
+Get the list of margin-restricted assets.  Weight(IP): 1  Security Type: MARKET_DATA
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\MarginTrading\Api\MarketDataApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+
+try {
+    $result = $apiInstance->getMarginRestrictedAssets();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MarketDataApi->getMarginRestrictedAssets: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Binance\Client\MarginTrading\Model\GetMarginRestrictedAssetsResponse**](../Model/GetMarginRestrictedAssetsResponse.md)
 
 ### Authorization
 
@@ -413,7 +523,7 @@ queryIsolatedMarginTierData($symbol, $tier, $recvWindow): \Binance\Client\Margin
 
 Query Isolated Margin Tier Data (USER_DATA)
 
-Get isolated margin tier data collection with any tier as https://www.binance.com/en/margin-data  Weight: 1(IP)
+Get isolated margin tier data collection with any tier as https://www.binance.com/en/margin-data  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -428,9 +538,9 @@ $apiInstance = new Binance\Client\MarginTrading\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$tier = 56; // int | All margin tier data will be returned if tier is omitted
-$recvWindow = 56; // int | No more than 60000
+$symbol = BTCUSDT; // string
+$tier = 1; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryIsolatedMarginTierData($symbol, $tier, $recvWindow);
@@ -445,8 +555,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **symbol** | **string**|  | |
-| **tier** | **int**| All margin tier data will be returned if tier is omitted | [optional] |
-| **recvWindow** | **int**| No more than 60000 | [optional] |
+| **tier** | **int**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
@@ -471,9 +581,9 @@ No authorization required
 queryLiabilityCoinLeverageBracketInCrossMarginProMode(): \Binance\Client\MarginTrading\Model\QueryLiabilityCoinLeverageBracketInCrossMarginProModeResponse
 ```
 
-Query Liability Coin Leverage Bracket in Cross Margin Pro Mode(MARKET_DATA)
+Query Liability Coin Leverage Bracket in Cross Margin Pro Mode (MARKET_DATA)
 
-Liability Coin Leverage Bracket in Cross Margin Pro Mode  Weight: 1
+Liability Coin Leverage Bracket in Cross Margin Pro Mode  Weight(IP): 1  Security Type: MARKET_DATA
 
 ### Example
 
@@ -524,9 +634,9 @@ No authorization required
 queryMarginAvailableInventory($type): \Binance\Client\MarginTrading\Model\QueryMarginAvailableInventoryResponse
 ```
 
-Query Margin Available Inventory(USER_DATA)
+Query Margin Available Inventory (USER_DATA)
 
-Margin available Inventory query  Weight: 50
+Margin available Inventory query  Weight(UID): 50  Security Type: USER_DATA
 
 ### Example
 
@@ -541,7 +651,7 @@ $apiInstance = new Binance\Client\MarginTrading\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$type = 'type_example'; // string | MARGIN,ISOLATED
+$type = new \Binance\Client\MarginTrading\Model\\Binance\Client\MarginTrading\Model\OrderType(); // \Binance\Client\MarginTrading\Model\OrderType
 
 try {
     $result = $apiInstance->queryMarginAvailableInventory($type);
@@ -555,7 +665,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **type** | **string**| MARGIN,ISOLATED | |
+| **type** | [**\Binance\Client\MarginTrading\Model\OrderType**](../Model/.md)|  | |
 
 ### Return type
 
@@ -582,7 +692,7 @@ queryMarginPriceindex($symbol): \Binance\Client\MarginTrading\Model\QueryMarginP
 
 Query Margin PriceIndex (MARKET_DATA)
 
-Query Margin PriceIndex  Weight: 10(IP)
+Query Margin PriceIndex  Weight(IP): 10  Security Type: MARKET_DATA
 
 ### Example
 
@@ -597,7 +707,7 @@ $apiInstance = new Binance\Client\MarginTrading\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = BNBBTC; // string
 
 try {
     $result = $apiInstance->queryMarginPriceindex($symbol);

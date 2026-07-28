@@ -1,4 +1,4 @@
-# # TradingScheduleResponse
+# TradingScheduleResponse
 
 ## Properties
 

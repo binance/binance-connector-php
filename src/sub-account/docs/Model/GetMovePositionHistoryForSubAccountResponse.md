@@ -1,4 +1,4 @@
-# # GetMovePositionHistoryForSubAccountResponse
+# GetMovePositionHistoryForSubAccountResponse
 
 ## Properties
 

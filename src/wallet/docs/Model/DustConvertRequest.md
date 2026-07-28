@@ -1,11 +1,12 @@
-# # DustConvertRequest
+# DustConvertRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **asset** | **string** |  |
-**clientId** | **string** |  | [optional]
+**accountType** | **string** | &#x60;SPOT&#x60; or &#x60;MARGIN&#x60;, default &#x60;SPOT&#x60; | [optional]
+**clientId** | **string** | A unique id for the request | [optional]
 **targetAsset** | **string** |  | [optional]
 **thirdPartyClientId** | **string** |  | [optional]
 **dustQuotaAssetToTargetAssetPrice** | **float** |  | [optional]

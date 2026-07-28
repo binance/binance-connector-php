@@ -1,4 +1,4 @@
-# # GetIncomeHistoryResponse
+# GetIncomeHistoryResponse
 
 ## Properties
 

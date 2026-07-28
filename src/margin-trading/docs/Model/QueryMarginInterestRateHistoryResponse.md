@@ -1,4 +1,4 @@
-# # QueryMarginInterestRateHistoryResponse
+# QueryMarginInterestRateHistoryResponse
 
 ## Properties
 

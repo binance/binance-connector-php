@@ -1,4 +1,4 @@
-# # OnChainYieldsAccountResponse
+# OnChainYieldsAccountResponse
 
 ## Properties
 

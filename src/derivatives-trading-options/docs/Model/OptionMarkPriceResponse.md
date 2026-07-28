@@ -1,4 +1,4 @@
-# # OptionMarkPriceResponse
+# OptionMarkPriceResponse
 
 ## Properties
 

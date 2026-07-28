@@ -10,14 +10,14 @@ use Binance\Common\Dtos\ApiResponse;
 class RebateRestApi
 {
     /**
-     * @var RebateApi
+     * @var DefaultApi
      */
-    private $rebateApi;
+    private $defaultApi;
 
     public function __construct(
         ?ClientConfiguration $clientConfig = new ClientConfiguration(),
     ) {
-        $this->rebateApi = new RebateApi($clientConfig);
+        $this->defaultApi = new DefaultApi($clientConfig);
     }
 
     /**
@@ -25,10 +25,10 @@ class RebateRestApi
      *
      * Get Spot Rebate History Records (USER_DATA)
      *
-     * @param null|int $startTime  startTime (optional)
-     * @param null|int $endTime    endTime (optional)
-     * @param null|int $page       Default 1 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $startTime  Start time in milliseconds. (optional)
+     * @param null|int $endTime    End time in milliseconds. (optional)
+     * @param null|int $page       Page number. (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetSpotRebateHistoryRecordsResponse>
      *
@@ -37,6 +37,6 @@ class RebateRestApi
      */
     public function getSpotRebateHistoryRecords($startTime = null, $endTime = null, $page = null, $recvWindow = null): ApiResponse
     {
-        return $this->rebateApi->getSpotRebateHistoryRecords($startTime, $endTime, $page, $recvWindow);
+        return $this->defaultApi->getSpotRebateHistoryRecords($startTime, $endTime, $page, $recvWindow);
     }
 }

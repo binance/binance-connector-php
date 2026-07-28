@@ -1,4 +1,4 @@
-# # BelowType
+# BelowType
 
 ## Properties
 

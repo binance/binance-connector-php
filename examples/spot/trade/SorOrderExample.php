@@ -17,7 +17,7 @@ function sorOrderExample()
     $sorOrderRequest->setSymbol('BNBUSDT');
     $sorOrderRequest->setSide(Side::BUY);
     $sorOrderRequest->setType(OrderType::MARKET);
-    $sorOrderRequest->setQuantity(1.0);
+    $sorOrderRequest->setQuantity(1);
     $response = $api->sorOrder($sorOrderRequest);
     print_r($response);
 }

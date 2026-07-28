@@ -1,10 +1,10 @@
-# # VipLoanBorrowResponse
+# VipLoanBorrowResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**loanAccountId** | **string** |  | [optional]
+**loanAccountId** | **string** | Loan receiving account. | [optional]
 **requestId** | **string** |  | [optional]
 **loanCoin** | **string** |  | [optional]
 **isFlexibleRate** | **string** |  | [optional]

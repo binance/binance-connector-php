@@ -1,4 +1,4 @@
-# # OldTradesLookupResponse
+# OldTradesLookupResponse
 
 ## Properties
 

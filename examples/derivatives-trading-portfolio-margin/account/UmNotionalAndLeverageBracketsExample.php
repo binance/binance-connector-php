@@ -10,7 +10,7 @@ function umNotionalAndLeverageBracketsExample()
     $configurationBuilder = DerivativesTradingPortfolioMarginRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'ETHUSDT';
     $recvWindow = 5000;
     $response = $api->umNotionalAndLeverageBrackets($symbol, $recvWindow);
     print_r($response);

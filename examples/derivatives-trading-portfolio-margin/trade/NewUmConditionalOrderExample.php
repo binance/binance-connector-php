@@ -14,7 +14,7 @@ function newUmConditionalOrderExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
     $newUmConditionalOrderRequest = new NewUmConditionalOrderRequest();
-    $newUmConditionalOrderRequest->setSymbol('');
+    $newUmConditionalOrderRequest->setSymbol('BTCUSDT');
     $newUmConditionalOrderRequest->setSide(Side::BUY);
     $newUmConditionalOrderRequest->setStrategyType(StrategyType::STOP);
     $response = $api->newUmConditionalOrder($newUmConditionalOrderRequest);

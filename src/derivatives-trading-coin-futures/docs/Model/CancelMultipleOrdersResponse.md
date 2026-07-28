@@ -1,4 +1,4 @@
-# # CancelMultipleOrdersResponse
+# CancelMultipleOrdersResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # AccountApiTradingStatusResponseDataTriggerCondition
+# AccountApiTradingStatusResponseDataTriggerCondition
 
 ## Properties
 

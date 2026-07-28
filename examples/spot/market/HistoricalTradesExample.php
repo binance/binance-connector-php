@@ -10,7 +10,7 @@ function historicalTradesExample()
     $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
     $api = new SpotRestApi($configurationBuilder->build());
     $symbol = 'BNBUSDT';
-    $limit = 500;
+    $limit = 1;
     $fromId = 1;
     $response = $api->historicalTrades($symbol, $limit, $fromId);
     print_r($response);

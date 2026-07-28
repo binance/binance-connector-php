@@ -12,7 +12,7 @@ function createSpecialKeyExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new MarginTradingRestApi($configurationBuilder->build());
     $createSpecialKeyRequest = new CreateSpecialKeyRequest();
-    $createSpecialKeyRequest->setApiName('');
+    $createSpecialKeyRequest->setApiName('apiName');
     $response = $api->createSpecialKey($createSpecialKeyRequest);
     print_r($response);
 }

@@ -1,4 +1,4 @@
-# # TradeFeeResponse
+# TradeFeeResponse
 
 ## Properties
 

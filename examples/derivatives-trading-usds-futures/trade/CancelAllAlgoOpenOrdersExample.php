@@ -10,7 +10,7 @@ function cancelAllAlgoOpenOrdersExample()
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTCUSDT';
     $recvWindow = 5000;
     $response = $api->cancelAllAlgoOpenOrders($symbol, $recvWindow);
     print_r($response);

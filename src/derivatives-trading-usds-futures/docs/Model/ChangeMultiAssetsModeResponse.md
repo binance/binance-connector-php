@@ -1,4 +1,4 @@
-# # ChangeMultiAssetsModeResponse
+# ChangeMultiAssetsModeResponse
 
 ## Properties
 

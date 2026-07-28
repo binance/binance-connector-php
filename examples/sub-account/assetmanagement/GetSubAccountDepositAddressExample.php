@@ -10,8 +10,8 @@ function getSubAccountDepositAddressExample()
     $configurationBuilder = SubAccountRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
-    $email = 'sub-account-email@email.com';
-    $coin = '';
+    $email = '123@test.com';
+    $coin = 'BTC';
     $network = '';
     $amount = 1.0;
     $recvWindow = 5000;

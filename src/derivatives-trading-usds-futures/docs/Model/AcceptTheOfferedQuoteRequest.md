@@ -1,4 +1,4 @@
-# # AcceptTheOfferedQuoteRequest
+# AcceptTheOfferedQuoteRequest
 
 ## Properties
 

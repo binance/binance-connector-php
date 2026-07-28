@@ -10,9 +10,9 @@ function getOrderListExample()
     $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SpotRestApi($configurationBuilder->build());
-    $orderListId = 1;
-    $origClientOrderId = '';
-    $recvWindow = 5000.0;
+    $orderListId = 27;
+    $origClientOrderId = '1';
+    $recvWindow = 5000;
     $response = $api->getOrderList($orderListId, $origClientOrderId, $recvWindow);
     print_r($response);
 }

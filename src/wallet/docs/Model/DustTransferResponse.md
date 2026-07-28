@@ -1,4 +1,4 @@
-# # DustTransferResponse
+# DustTransferResponse
 
 ## Properties
 

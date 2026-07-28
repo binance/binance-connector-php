@@ -1,4 +1,4 @@
-# # UserExerciseRecordResponse
+# UserExerciseRecordResponse
 
 ## Properties
 

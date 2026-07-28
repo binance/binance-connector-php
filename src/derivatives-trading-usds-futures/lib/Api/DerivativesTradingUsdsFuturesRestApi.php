@@ -9,6 +9,7 @@ use Binance\Client\DerivativesTradingUsdsFutures\Model\AccountInformationV3Respo
 use Binance\Client\DerivativesTradingUsdsFutures\Model\AccountTradeListResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\AdlRiskResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\AllOrdersResponse;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\AssetIndexResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\AutoCancelAllOpenOrdersRequest;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\AutoCancelAllOpenOrdersResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\AutoCloseType;
@@ -39,6 +40,7 @@ use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesAccountBalanceV2Re
 use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesAccountBalanceV3Response;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesAccountConfigurationResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractRequest;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradfiPerpsContractResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\FuturesTradingQuantitativeRulesIndicatorsResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\GetBnbBurnStatusResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\GetCurrentMultiAssetsModeResponse;
@@ -54,6 +56,7 @@ use Binance\Client\DerivativesTradingUsdsFutures\Model\GetFuturesTransactionHist
 use Binance\Client\DerivativesTradingUsdsFutures\Model\GetIncomeHistoryResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\GetOrderModifyHistoryResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\GetPositionMarginChangeHistoryResponse;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\IncomeType;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\IndexPriceKlineCandlestickDataResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\Interval;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\KeepaliveUserDataStreamResponse;
@@ -68,7 +71,6 @@ use Binance\Client\DerivativesTradingUsdsFutures\Model\ModifyMultipleOrdersReque
 use Binance\Client\DerivativesTradingUsdsFutures\Model\ModifyMultipleOrdersResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\ModifyOrderRequest;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\ModifyOrderResponse;
-use Binance\Client\DerivativesTradingUsdsFutures\Model\MultiAssetsModeAssetIndexResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\NewAlgoOrderRequest;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\NewAlgoOrderResponse;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\NewOrderRequest;
@@ -166,7 +168,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation accountInformationV2.
      *
-     * Account Information V2(USER_DATA)
+     * Account Information V2 (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -183,7 +185,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation accountInformationV3.
      *
-     * Account Information V3(USER_DATA)
+     * Account Information V3 (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -234,7 +236,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation futuresAccountConfiguration.
      *
-     * Futures Account Configuration(USER_DATA)
+     * Futures Account Configuration (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -303,7 +305,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation getCurrentPositionMode.
      *
-     * Get Current Position Mode(USER_DATA)
+     * Get Current Position Mode (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -358,7 +360,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation getDownloadIdForFuturesTransactionHistory.
      *
-     * Get Download Id For Futures Transaction History(USER_DATA)
+     * Get Download Id For Futures Transaction History (USER_DATA)
      *
      * @param int      $startTime  Timestamp in ms (required)
      * @param int      $endTime    Timestamp in ms (required)
@@ -395,7 +397,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation getFuturesTradeDownloadLinkById.
      *
-     * Get Futures Trade Download Link by Id(USER_DATA)
+     * Get Futures Trade Download Link by Id (USER_DATA)
      *
      * @param string   $downloadId get by download id api (required)
      * @param null|int $recvWindow recvWindow (optional)
@@ -433,13 +435,13 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * Get Income History (USER_DATA)
      *
-     * @param null|string $symbol     symbol (optional)
-     * @param null|string $incomeType TRANSFER, WELCOME_BONUS, REALIZED_PNL, FUNDING_FEE, COMMISSION, INSURANCE_CLEAR, REFERRAL_KICKBACK, COMMISSION_REBATE, API_REBATE, CONTEST_REWARD, CROSS_COLLATERAL_TRANSFER, OPTIONS_PREMIUM_FEE, OPTIONS_SETTLE_PROFIT, INTERNAL_TRANSFER, AUTO_EXCHANGE, DELIVERED_SETTELMENT, COIN_SWAP_DEPOSIT, COIN_SWAP_WITHDRAW, POSITION_LIMIT_INCREASE_FEE, STRATEGY_UMFUTURES_TRANSFER，FEE_RETURN，BFUSD_REWARD (optional)
-     * @param null|int    $startTime  startTime (optional)
-     * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $page       page (optional)
-     * @param null|int    $limit      Default 100; max 1000 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|string     $symbol     Trading symbol. (optional)
+     * @param null|IncomeType $incomeType Income type. (optional)
+     * @param null|int        $startTime  Timestamp in milliseconds (inclusive start). (optional)
+     * @param null|int        $endTime    Timestamp in milliseconds (inclusive end). (optional)
+     * @param null|int        $page       Pagination page number. (optional)
+     * @param null|int        $limit      Maximum number of records to return. (optional)
+     * @param null|int        $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetIncomeHistoryResponse>
      *
@@ -489,9 +491,9 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation symbolConfiguration.
      *
-     * Symbol Configuration(USER_DATA)
+     * Symbol Configuration (USER_DATA)
      *
-     * @param null|string $symbol     symbol (optional)
+     * @param null|string $symbol     Symbol (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<SymbolConfigurationResponse>
@@ -526,7 +528,7 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * User Commission Rate (USER_DATA)
      *
-     * @param string   $symbol     symbol (required)
+     * @param string   $symbol     Symbol (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<UserCommissionRateResponse>
@@ -577,9 +579,9 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation orderStatus.
      *
-     * Order status(USER_DATA)
+     * Order status (USER_DATA)
      *
-     * @param null|int    $orderId Either orderId or quoteId is required (optional)
+     * @param null|string $orderId Either orderId or quoteId is required (optional)
      * @param null|string $quoteId Either orderId or quoteId is required (optional)
      *
      * @return ApiResponse<OrderStatusResponse>
@@ -595,7 +597,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation sendQuoteRequest.
      *
-     * Send Quote Request(USER_DATA)
+     * Send Quote Request (USER_DATA)
      *
      * @param SendQuoteRequestRequest $sendQuoteRequestRequest sendQuoteRequestRequest (required)
      *
@@ -614,7 +616,7 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * ADL Risk
      *
-     * @param null|string $symbol symbol (optional)
+     * @param null|string $symbol Symbol (optional)
      *
      * @return ApiResponse<AdlRiskResponse>
      *
@@ -627,14 +629,31 @@ class DerivativesTradingUsdsFuturesRestApi
     }
 
     /**
+     * Operation assetIndex.
+     *
+     * Multi-Assets Mode Asset Index
+     *
+     * @param null|string $symbol Asset pair (optional)
+     *
+     * @return ApiResponse<AssetIndexResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function assetIndex($symbol = null): ApiResponse
+    {
+        return $this->marketDataApi->assetIndex($symbol);
+    }
+
+    /**
      * Operation basis.
      *
      * Basis
      *
      * @param string       $pair         pair (required)
      * @param ContractType $contractType contractType (required)
-     * @param Period       $period       \&quot;5m\&quot;,\&quot;15m\&quot;,\&quot;30m\&quot;,\&quot;1h\&quot;,\&quot;2h\&quot;,\&quot;4h\&quot;,\&quot;6h\&quot;,\&quot;12h\&quot;,\&quot;1d\&quot; (required)
-     * @param null|int     $limit        Default 100; max 1000 (optional)
+     * @param Period       $period       period (required)
+     * @param null|int     $limit        limit (optional)
      * @param null|int     $startTime    startTime (optional)
      * @param null|int     $endTime      endTime (optional)
      *
@@ -685,11 +704,11 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * Compressed/Aggregate Trades List
      *
-     * @param string   $symbol    symbol (required)
+     * @param string   $symbol    Symbol (required)
      * @param null|int $fromId    ID to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $startTime startTime (optional)
-     * @param null|int $endTime   endTime (optional)
-     * @param null|int $limit     Default 100; max 1000 (optional)
+     * @param null|int $startTime Timestamp in ms to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int $endTime   Timestamp in ms to get aggregate trades until INCLUSIVE. (optional)
+     * @param null|int $limit     limit (optional)
      *
      * @return ApiResponse<CompressedAggregateTradesListResponse>
      *
@@ -706,12 +725,12 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * Continuous Contract Kline/Candlestick Data
      *
-     * @param string       $pair         pair (required)
-     * @param ContractType $contractType contractType (required)
+     * @param string       $pair         After CM migration, accepts both UM and CM pair values. (required)
+     * @param ContractType $contractType Futurestype (required)
      * @param Interval     $interval     interval (required)
-     * @param null|int     $startTime    startTime (optional)
-     * @param null|int     $endTime      endTime (optional)
-     * @param null|int     $limit        Default 100; max 1000 (optional)
+     * @param null|int     $startTime    Start time (optional)
+     * @param null|int     $endTime      End time (optional)
+     * @param null|int     $limit        limit (optional)
      *
      * @return ApiResponse<ContinuousContractKlineCandlestickDataResponse>
      *
@@ -744,9 +763,9 @@ class DerivativesTradingUsdsFuturesRestApi
      * Get Funding Rate History
      *
      * @param null|string $symbol    symbol (optional)
-     * @param null|int    $startTime startTime (optional)
-     * @param null|int    $endTime   endTime (optional)
-     * @param null|int    $limit     Default 100; max 1000 (optional)
+     * @param null|int    $startTime Timestamp in ms to get funding rate from INCLUSIVE. (optional)
+     * @param null|int    $endTime   Timestamp in ms to get funding rate until INCLUSIVE. (optional)
+     * @param null|int    $limit     limit (optional)
      *
      * @return ApiResponse<GetFundingRateHistoryResponse>
      *
@@ -778,11 +797,11 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * Index Price Kline/Candlestick Data
      *
-     * @param string   $pair      pair (required)
+     * @param string   $pair      After CM migration, accepts both UM and CM pair values. (required)
      * @param Interval $interval  interval (required)
-     * @param null|int $startTime startTime (optional)
-     * @param null|int $endTime   endTime (optional)
-     * @param null|int $limit     Default 100; max 1000 (optional)
+     * @param null|int $startTime Start time (optional)
+     * @param null|int $endTime   End time (optional)
+     * @param null|int $limit     limit (optional)
      *
      * @return ApiResponse<IndexPriceKlineCandlestickDataResponse>
      *
@@ -799,11 +818,11 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * Kline/Candlestick Data
      *
-     * @param string   $symbol    symbol (required)
+     * @param string   $symbol    After CM migration, accepts both UM and CM symbols. (required)
      * @param Interval $interval  interval (required)
-     * @param null|int $startTime startTime (optional)
-     * @param null|int $endTime   endTime (optional)
-     * @param null|int $limit     Default 100; max 1000 (optional)
+     * @param null|int $startTime Start time (optional)
+     * @param null|int $endTime   End time (optional)
+     * @param null|int $limit     limit (optional)
      *
      * @return ApiResponse<KlineCandlestickDataResponse>
      *
@@ -821,8 +840,8 @@ class DerivativesTradingUsdsFuturesRestApi
      * Long/Short Ratio
      *
      * @param string   $symbol    symbol (required)
-     * @param Period   $period    \&quot;5m\&quot;,\&quot;15m\&quot;,\&quot;30m\&quot;,\&quot;1h\&quot;,\&quot;2h\&quot;,\&quot;4h\&quot;,\&quot;6h\&quot;,\&quot;12h\&quot;,\&quot;1d\&quot; (required)
-     * @param null|int $limit     Default 100; max 1000 (optional)
+     * @param Period   $period    period (required)
+     * @param null|int $limit     limit (optional)
      * @param null|int $startTime startTime (optional)
      * @param null|int $endTime   endTime (optional)
      *
@@ -858,11 +877,11 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * Mark Price Kline/Candlestick Data
      *
-     * @param string   $symbol    symbol (required)
+     * @param string   $symbol    After CM migration, accepts both UM and CM symbols. (required)
      * @param Interval $interval  interval (required)
-     * @param null|int $startTime startTime (optional)
-     * @param null|int $endTime   endTime (optional)
-     * @param null|int $limit     Default 100; max 1000 (optional)
+     * @param null|int $startTime Start time (optional)
+     * @param null|int $endTime   End time (optional)
+     * @param null|int $limit     limit (optional)
      *
      * @return ApiResponse<MarkPriceKlineCandlestickDataResponse>
      *
@@ -875,30 +894,13 @@ class DerivativesTradingUsdsFuturesRestApi
     }
 
     /**
-     * Operation multiAssetsModeAssetIndex.
-     *
-     * Multi-Assets Mode Asset Index
-     *
-     * @param null|string $symbol symbol (optional)
-     *
-     * @return ApiResponse<MultiAssetsModeAssetIndexResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function multiAssetsModeAssetIndex($symbol = null): ApiResponse
-    {
-        return $this->marketDataApi->multiAssetsModeAssetIndex($symbol);
-    }
-
-    /**
      * Operation oldTradesLookup.
      *
      * Old Trades Lookup (MARKET_DATA)
      *
      * @param string   $symbol symbol (required)
-     * @param null|int $limit  Default 100; max 1000 (optional)
-     * @param null|int $fromId ID to get aggregate trades from INCLUSIVE. (optional)
+     * @param null|int $limit  limit (optional)
+     * @param null|int $fromId TradeId to fetch from. Default gets most recent trades. (optional)
      *
      * @return ApiResponse<OldTradesLookupResponse>
      *
@@ -933,8 +935,8 @@ class DerivativesTradingUsdsFuturesRestApi
      * Open Interest Statistics
      *
      * @param string   $symbol    symbol (required)
-     * @param Period   $period    \&quot;5m\&quot;,\&quot;15m\&quot;,\&quot;30m\&quot;,\&quot;1h\&quot;,\&quot;2h\&quot;,\&quot;4h\&quot;,\&quot;6h\&quot;,\&quot;12h\&quot;,\&quot;1d\&quot; (required)
-     * @param null|int $limit     Default 100; max 1000 (optional)
+     * @param Period   $period    period (required)
+     * @param null|int $limit     limit (optional)
      * @param null|int $startTime startTime (optional)
      * @param null|int $endTime   endTime (optional)
      *
@@ -954,7 +956,7 @@ class DerivativesTradingUsdsFuturesRestApi
      * Order Book
      *
      * @param string   $symbol symbol (required)
-     * @param null|int $limit  Default 100; max 1000 (optional)
+     * @param null|int $limit  Valid limits:[5, 10, 20, 50, 100, 500, 1000] (optional)
      *
      * @return ApiResponse<OrderBookResponse>
      *
@@ -971,11 +973,11 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * Premium index Kline Data
      *
-     * @param string   $symbol    symbol (required)
+     * @param string   $symbol    After CM migration, accepts both UM and CM symbols. (required)
      * @param Interval $interval  interval (required)
-     * @param null|int $startTime startTime (optional)
-     * @param null|int $endTime   endTime (optional)
-     * @param null|int $limit     Default 100; max 1000 (optional)
+     * @param null|int $startTime Start time (optional)
+     * @param null|int $endTime   End time (optional)
+     * @param null|int $limit     limit (optional)
      *
      * @return ApiResponse<PremiumIndexKlineDataResponse>
      *
@@ -1026,7 +1028,7 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * Query Insurance Fund Balance Snapshot
      *
-     * @param null|string $symbol symbol (optional)
+     * @param null|string $symbol Symbol (optional)
      *
      * @return ApiResponse<QueryInsuranceFundBalanceSnapshotResponse>
      *
@@ -1044,7 +1046,7 @@ class DerivativesTradingUsdsFuturesRestApi
      * Recent Trades List
      *
      * @param string   $symbol symbol (required)
-     * @param null|int $limit  Default 100; max 1000 (optional)
+     * @param null|int $limit  limit (optional)
      *
      * @return ApiResponse<RecentTradesListResponse>
      *
@@ -1062,7 +1064,7 @@ class DerivativesTradingUsdsFuturesRestApi
      * RPI Order Book
      *
      * @param string   $symbol symbol (required)
-     * @param null|int $limit  Default 100; max 1000 (optional)
+     * @param null|int $limit  Valid limits:[1000] (optional)
      *
      * @return ApiResponse<RpiOrderBookResponse>
      *
@@ -1133,8 +1135,8 @@ class DerivativesTradingUsdsFuturesRestApi
      * Taker Buy/Sell Volume
      *
      * @param string   $symbol    symbol (required)
-     * @param Period   $period    \&quot;5m\&quot;,\&quot;15m\&quot;,\&quot;30m\&quot;,\&quot;1h\&quot;,\&quot;2h\&quot;,\&quot;4h\&quot;,\&quot;6h\&quot;,\&quot;12h\&quot;,\&quot;1d\&quot; (required)
-     * @param null|int $limit     Default 100; max 1000 (optional)
+     * @param Period   $period    period (required)
+     * @param null|int $limit     limit (optional)
      * @param null|int $startTime startTime (optional)
      * @param null|int $endTime   endTime (optional)
      *
@@ -1181,11 +1183,11 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation topTraderLongShortRatioAccounts.
      *
-     * Top Trader Long/Short Ratio (Accounts)
+     * Top Trader Long/Short Account Ratio (MARKET_DATA)
      *
      * @param string   $symbol    symbol (required)
-     * @param Period   $period    \&quot;5m\&quot;,\&quot;15m\&quot;,\&quot;30m\&quot;,\&quot;1h\&quot;,\&quot;2h\&quot;,\&quot;4h\&quot;,\&quot;6h\&quot;,\&quot;12h\&quot;,\&quot;1d\&quot; (required)
-     * @param null|int $limit     Default 100; max 1000 (optional)
+     * @param Period   $period    period (required)
+     * @param null|int $limit     limit (optional)
      * @param null|int $startTime startTime (optional)
      * @param null|int $endTime   endTime (optional)
      *
@@ -1202,11 +1204,11 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation topTraderLongShortRatioPositions.
      *
-     * Top Trader Long/Short Ratio (Positions)
+     * Top Trader Long/Short Position Ratio (MARKET_DATA)
      *
      * @param string   $symbol    symbol (required)
-     * @param Period   $period    \&quot;5m\&quot;,\&quot;15m\&quot;,\&quot;30m\&quot;,\&quot;1h\&quot;,\&quot;2h\&quot;,\&quot;4h\&quot;,\&quot;6h\&quot;,\&quot;12h\&quot;,\&quot;1d\&quot; (required)
-     * @param null|int $limit     Default 100; max 1000 (optional)
+     * @param Period   $period    period (required)
+     * @param null|int $limit     limit (optional)
      * @param null|int $startTime startTime (optional)
      * @param null|int $endTime   endTime (optional)
      *
@@ -1259,11 +1261,11 @@ class DerivativesTradingUsdsFuturesRestApi
      * Account Trade List (USER_DATA)
      *
      * @param string   $symbol     symbol (required)
-     * @param null|int $orderId    orderId (optional)
-     * @param null|int $startTime  startTime (optional)
-     * @param null|int $endTime    endTime (optional)
-     * @param null|int $fromId     ID to get aggregate trades from INCLUSIVE. (optional)
-     * @param null|int $limit      Default 100; max 1000 (optional)
+     * @param null|int $orderId    Must be used together with parameter &#x60;symbol&#x60;. (optional)
+     * @param null|int $startTime  Start time (optional)
+     * @param null|int $endTime    End time (optional)
+     * @param null|int $fromId     Trade id to fetch from. Default gets most recent trades. (optional)
+     * @param null|int $limit      limit (optional)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<AccountTradeListResponse>
@@ -1283,9 +1285,9 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * @param string   $symbol     symbol (required)
      * @param null|int $orderId    orderId (optional)
-     * @param null|int $startTime  startTime (optional)
-     * @param null|int $endTime    endTime (optional)
-     * @param null|int $limit      Default 100; max 1000 (optional)
+     * @param null|int $startTime  Start time (optional)
+     * @param null|int $endTime    End time (optional)
+     * @param null|int $limit      limit (optional)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<AllOrdersResponse>
@@ -1376,8 +1378,8 @@ class DerivativesTradingUsdsFuturesRestApi
      * Cancel Multiple Orders (TRADE)
      *
      * @param string                     $symbol                symbol (required)
-     * @param null|OrderIdList           $orderIdList           max length 10 &lt;br /&gt; e.g. [1234567,2345678] (optional)
-     * @param null|OrigClientOrderIdList $origClientOrderIdList max length 10&lt;br /&gt; e.g. [\&quot;my_id_1\&quot;,\&quot;my_id_2\&quot;], encode the double quotes. No space after comma. (optional)
+     * @param null|OrderIdList           $orderIdList           orderIdList (optional)
+     * @param null|OrigClientOrderIdList $origClientOrderIdList origClientOrderIdList (optional)
      * @param null|int                   $recvWindow            recvWindow (optional)
      *
      * @return ApiResponse<CancelMultipleOrdersResponse>
@@ -1413,7 +1415,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation changeInitialLeverage.
      *
-     * Change Initial Leverage(TRADE)
+     * Change Initial Leverage (TRADE)
      *
      * @param ChangeInitialLeverageRequest $changeInitialLeverageRequest changeInitialLeverageRequest (required)
      *
@@ -1430,7 +1432,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation changeMarginType.
      *
-     * Change Margin Type(TRADE)
+     * Change Margin Type (TRADE)
      *
      * @param ChangeMarginTypeRequest $changeMarginTypeRequest changeMarginTypeRequest (required)
      *
@@ -1464,7 +1466,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation changePositionMode.
      *
-     * Change Position Mode(TRADE)
+     * Change Position Mode (TRADE)
      *
      * @param ChangePositionModeRequest $changePositionModeRequest changePositionModeRequest (required)
      *
@@ -1519,16 +1521,18 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation futuresTradfiPerpsContract.
      *
-     * Futures TradFi Perps Contract(USER_DATA)
+     * Futures TradFi Perps Contract (USER_DATA)
      *
-     * @param FuturesTradfiPerpsContractRequest $futuresTradfiPerpsContractRequest futuresTradfiPerpsContractRequest (required)
+     * @param null|FuturesTradfiPerpsContractRequest $futuresTradfiPerpsContractRequest futuresTradfiPerpsContractRequest (optional)
+     *
+     * @return ApiResponse<FuturesTradfiPerpsContractResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest)
+    public function futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest = null): ApiResponse
     {
-        $this->tradeApi->futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest);
+        return $this->tradeApi->futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest);
     }
 
     /**
@@ -1539,9 +1543,9 @@ class DerivativesTradingUsdsFuturesRestApi
      * @param string      $symbol            symbol (required)
      * @param null|int    $orderId           orderId (optional)
      * @param null|string $origClientOrderId origClientOrderId (optional)
-     * @param null|int    $startTime         startTime (optional)
-     * @param null|int    $endTime           endTime (optional)
-     * @param null|int    $limit             Default 100; max 1000 (optional)
+     * @param null|int    $startTime         Timestamp in ms to get modification history from INCLUSIVE (optional)
+     * @param null|int    $endTime           Timestamp in ms to get modification history until INCLUSIVE (optional)
+     * @param null|int    $limit             limit (optional)
      * @param null|int    $recvWindow        recvWindow (optional)
      *
      * @return ApiResponse<GetOrderModifyHistoryResponse>
@@ -1561,9 +1565,9 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * @param string      $symbol     symbol (required)
      * @param null|string $type       1: Add position margin，2: Reduce position margin (optional)
-     * @param null|int    $startTime  startTime (optional)
-     * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $limit      Default 100; max 1000 (optional)
+     * @param null|int    $startTime  Start time (optional)
+     * @param null|int    $endTime    time if not pass (optional)
+     * @param null|int    $limit      limit (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetPositionMarginChangeHistoryResponse>
@@ -1579,7 +1583,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation modifyIsolatedPositionMargin.
      *
-     * Modify Isolated Position Margin(TRADE)
+     * Modify Isolated Position Margin (TRADE)
      *
      * @param ModifyIsolatedPositionMarginRequest $modifyIsolatedPositionMarginRequest modifyIsolatedPositionMarginRequest (required)
      *
@@ -1596,7 +1600,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation modifyMultipleOrders.
      *
-     * Modify Multiple Orders(TRADE)
+     * Modify Multiple Orders (TRADE)
      *
      * @param ModifyMultipleOrdersRequest $modifyMultipleOrdersRequest modifyMultipleOrdersRequest (required)
      *
@@ -1630,7 +1634,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation newAlgoOrder.
      *
-     * New Algo Order(TRADE)
+     * New Algo Order (TRADE)
      *
      * @param NewAlgoOrderRequest $newAlgoOrderRequest newAlgoOrderRequest (required)
      *
@@ -1647,7 +1651,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation newOrder.
      *
-     * New Order(TRADE)
+     * New Order (TRADE)
      *
      * @param NewOrderRequest $newOrderRequest newOrderRequest (required)
      *
@@ -1664,7 +1668,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation placeMultipleOrders.
      *
-     * Place Multiple Orders(TRADE)
+     * Place Multiple Orders (TRADE)
      *
      * @param PlaceMultipleOrdersRequest $placeMultipleOrdersRequest placeMultipleOrdersRequest (required)
      *
@@ -1681,7 +1685,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation positionAdlQuantileEstimation.
      *
-     * Position ADL Quantile Estimation(USER_DATA)
+     * Position ADL Quantile Estimation (USER_DATA)
      *
      * @param null|string $symbol     symbol (optional)
      * @param null|int    $recvWindow recvWindow (optional)
@@ -1737,8 +1741,8 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * Query Algo Order (USER_DATA)
      *
-     * @param null|int    $algoId       algoId (optional)
-     * @param null|string $clientAlgoId clientAlgoId (optional)
+     * @param null|int    $algoId       Order ID (optional)
+     * @param null|string $clientAlgoId Client order ID (optional)
      * @param null|int    $recvWindow   recvWindow (optional)
      *
      * @return ApiResponse<QueryAlgoOrderResponse>
@@ -1756,11 +1760,11 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * Query All Algo Orders (USER_DATA)
      *
-     * @param string   $symbol     symbol (required)
+     * @param string   $symbol     Symbol (required)
      * @param null|int $algoId     algoId (optional)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $limit      Default 100; max 1000 (optional)
+     * @param null|int $limit      limit (optional)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryAllAlgoOrdersResponse>
@@ -1816,7 +1820,7 @@ class DerivativesTradingUsdsFuturesRestApi
     /**
      * Operation testOrder.
      *
-     * Test Order(TRADE)
+     * Test Order (TRADE)
      *
      * @param TestOrderRequest $testOrderRequest testOrderRequest (required)
      *
@@ -1839,7 +1843,7 @@ class DerivativesTradingUsdsFuturesRestApi
      * @param null|AutoCloseType $autoCloseType \&quot;LIQUIDATION\&quot; for liquidation orders, \&quot;ADL\&quot; for ADL orders. (optional)
      * @param null|int           $startTime     startTime (optional)
      * @param null|int           $endTime       endTime (optional)
-     * @param null|int           $limit         Default 100; max 1000 (optional)
+     * @param null|int           $limit         limit (optional)
      * @param null|int           $recvWindow    recvWindow (optional)
      *
      * @return ApiResponse<UsersForceOrdersResponse>

@@ -10,7 +10,7 @@ function getOnChainYieldsLockedProductListExample()
     $configurationBuilder = StakingRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new StakingRestApi($configurationBuilder->build());
-    $asset = '';
+    $asset = 'SOL';
     $current = 1;
     $size = 10;
     $recvWindow = 5000;

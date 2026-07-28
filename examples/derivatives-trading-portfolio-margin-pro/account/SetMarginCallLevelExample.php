@@ -12,7 +12,7 @@ function setMarginCallLevelExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginProRestApi($configurationBuilder->build());
     $setMarginCallLevelRequest = new SetMarginCallLevelRequest();
-    $setMarginCallLevelRequest->setMarginCallLevel(5000.0);
+    $setMarginCallLevelRequest->setMarginCallLevel(1.5);
     $response = $api->setMarginCallLevel($setMarginCallLevelRequest);
     print_r($response);
 }

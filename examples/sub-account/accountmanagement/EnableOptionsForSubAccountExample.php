@@ -12,7 +12,7 @@ function enableOptionsForSubAccountExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
     $enableOptionsForSubAccountRequest = new EnableOptionsForSubAccountRequest();
-    $enableOptionsForSubAccountRequest->setEmail('sub-account-email@email.com');
+    $enableOptionsForSubAccountRequest->setEmail('123@test.com');
     $response = $api->enableOptionsForSubAccount($enableOptionsForSubAccountRequest);
     print_r($response);
 }

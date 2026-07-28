@@ -1,4 +1,4 @@
-# # GetOnChainYieldsLockedSubscriptionPreviewResponse
+# GetOnChainYieldsLockedSubscriptionPreviewResponse
 
 ## Properties
 

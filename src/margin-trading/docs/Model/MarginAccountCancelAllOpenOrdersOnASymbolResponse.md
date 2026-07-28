@@ -1,4 +1,4 @@
-# # MarginAccountCancelAllOpenOrdersOnASymbolResponse
+# MarginAccountCancelAllOpenOrdersOnASymbolResponse
 
 ## Properties
 

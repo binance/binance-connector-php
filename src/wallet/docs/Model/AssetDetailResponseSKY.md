@@ -1,4 +1,4 @@
-# # AssetDetailResponseSKY
+# AssetDetailResponseSKY
 
 ## Properties
 

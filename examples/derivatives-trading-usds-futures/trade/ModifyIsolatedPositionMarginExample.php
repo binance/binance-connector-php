@@ -12,9 +12,9 @@ function modifyIsolatedPositionMarginExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
     $modifyIsolatedPositionMarginRequest = new ModifyIsolatedPositionMarginRequest();
-    $modifyIsolatedPositionMarginRequest->setSymbol('');
+    $modifyIsolatedPositionMarginRequest->setSymbol('BTCUSDT');
     $modifyIsolatedPositionMarginRequest->setAmount(1.0);
-    $modifyIsolatedPositionMarginRequest->setType('');
+    $modifyIsolatedPositionMarginRequest->setType(1);
     $response = $api->modifyIsolatedPositionMargin($modifyIsolatedPositionMarginRequest);
     print_r($response);
 }

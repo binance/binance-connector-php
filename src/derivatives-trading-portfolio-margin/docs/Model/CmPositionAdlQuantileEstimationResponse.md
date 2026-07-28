@@ -1,4 +1,4 @@
-# # CmPositionAdlQuantileEstimationResponse
+# CmPositionAdlQuantileEstimationResponse
 
 ## Properties
 

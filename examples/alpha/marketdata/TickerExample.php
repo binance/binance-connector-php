@@ -9,7 +9,7 @@ function tickerExample()
 {
     $configurationBuilder = AlphaRestApiUtil::getConfigurationBuilder();
     $api = new AlphaRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'ALPHA_175USDT';
     $response = $api->ticker($symbol);
     print_r($response);
 }

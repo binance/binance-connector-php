@@ -1,4 +1,4 @@
-# # UmNotionalAndLeverageBracketsResponse
+# UmNotionalAndLeverageBracketsResponse
 
 ## Properties
 

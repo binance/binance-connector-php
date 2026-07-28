@@ -1,4 +1,4 @@
-# # AutoCancelAllOpenOrdersRequest
+# AutoCancelAllOpenOrdersRequest
 
 ## Properties
 

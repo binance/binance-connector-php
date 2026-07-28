@@ -1,4 +1,4 @@
-# # GetAssetsThatCanBeConvertedIntoBnbResponse
+# GetAssetsThatCanBeConvertedIntoBnbResponse
 
 ## Properties
 

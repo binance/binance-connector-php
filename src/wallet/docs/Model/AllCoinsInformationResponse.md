@@ -1,4 +1,4 @@
-# # AllCoinsInformationResponse
+# AllCoinsInformationResponse
 
 ## Properties
 

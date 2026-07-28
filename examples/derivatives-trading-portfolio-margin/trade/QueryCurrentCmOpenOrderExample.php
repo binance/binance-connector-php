@@ -10,9 +10,9 @@ function queryCurrentCmOpenOrderExample()
     $configurationBuilder = DerivativesTradingPortfolioMarginRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
-    $symbol = '';
-    $orderId = 1;
-    $origClientOrderId = '1';
+    $symbol = 'BTCUSDT';
+    $orderId = 1917641;
+    $origClientOrderId = 'abc';
     $recvWindow = 5000;
     $response = $api->queryCurrentCmOpenOrder($symbol, $orderId, $origClientOrderId, $recvWindow);
     print_r($response);

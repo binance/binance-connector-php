@@ -14,13 +14,13 @@ function depositHistoryTravelRuleExample()
     $txId = '1';
     $tranId = '1';
     $network = '';
-    $coin = '';
-    $travelRuleStatus = null;
-    $pendingQuestionnaire = null;
+    $coin = 'BTC';
+    $travelRuleStatus = 0;
+    $pendingQuestionnaire = true;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
-    $offset = 0;
-    $limit = 7;
+    $offset = null;
+    $limit = 1000;
     $response = $api->depositHistoryTravelRule($trId, $txId, $tranId, $network, $coin, $travelRuleStatus, $pendingQuestionnaire, $startTime, $endTime, $offset, $limit);
     print_r($response);
 }

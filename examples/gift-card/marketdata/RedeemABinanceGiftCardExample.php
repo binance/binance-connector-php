@@ -12,7 +12,7 @@ function redeemABinanceGiftCardExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new GiftCardRestApi($configurationBuilder->build());
     $redeemABinanceGiftCardRequest = new RedeemABinanceGiftCardRequest();
-    $redeemABinanceGiftCardRequest->setCode('');
+    $redeemABinanceGiftCardRequest->setCode('6H9EKF5ECCWFBHGE');
     $response = $api->redeemABinanceGiftCard($redeemABinanceGiftCardRequest);
     print_r($response);
 }

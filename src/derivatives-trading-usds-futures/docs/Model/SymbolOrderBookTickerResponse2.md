@@ -1,4 +1,4 @@
-# # SymbolOrderBookTickerResponse2
+# SymbolOrderBookTickerResponse2
 
 ## Properties
 

@@ -13,7 +13,7 @@ function setOnChainYieldsLockedAutoSubscribeExample()
     $api = new StakingRestApi($configurationBuilder->build());
     $setOnChainYieldsLockedAutoSubscribeRequest = new SetOnChainYieldsLockedAutoSubscribeRequest();
     $setOnChainYieldsLockedAutoSubscribeRequest->setPositionId('1');
-    $setOnChainYieldsLockedAutoSubscribeRequest->setAutoSubscribe(false);
+    $setOnChainYieldsLockedAutoSubscribeRequest->setAutoSubscribe(true);
     $response = $api->setOnChainYieldsLockedAutoSubscribe($setOnChainYieldsLockedAutoSubscribeRequest);
     print_r($response);
 }

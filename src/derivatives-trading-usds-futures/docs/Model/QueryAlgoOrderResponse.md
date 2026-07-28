@@ -1,4 +1,4 @@
-# # QueryAlgoOrderResponse
+# QueryAlgoOrderResponse
 
 ## Properties
 
@@ -14,15 +14,13 @@ Name | Type | Description | Notes
 **timeInForce** | **string** |  | [optional]
 **quantity** | **string** |  | [optional]
 **algoStatus** | **string** |  | [optional]
-**actualOrderId** | **string** |  | [optional]
-**actualPrice** | **string** |  | [optional]
+**actualOrderId** | **string** | Empty string if not triggered; orderId if triggered. | [optional]
+**actualPrice** | **string** | 0 if not triggered; average price if filled/partially filled. | [optional]
+**actualType** | **string** | Optional field, only present when triggered. | [optional]
+**actualQty** | **string** | Optional field, only present when filled/partially filled. | [optional]
 **triggerPrice** | **string** |  | [optional]
 **price** | **string** |  | [optional]
 **icebergQuantity** | **string** |  | [optional]
-**tpTriggerPrice** | **string** |  | [optional]
-**tpPrice** | **string** |  | [optional]
-**slTriggerPrice** | **string** |  | [optional]
-**slPrice** | **string** |  | [optional]
 **tpOrderType** | **string** |  | [optional]
 **selfTradePreventionMode** | **string** |  | [optional]
 **workingType** | **string** |  | [optional]

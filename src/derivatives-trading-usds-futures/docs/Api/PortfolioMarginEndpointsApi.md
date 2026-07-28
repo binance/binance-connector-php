@@ -1,5 +1,7 @@
 # Binance\Client\DerivativesTradingUsdsFutures\PortfolioMarginEndpointsApi
 
+
+
 All URIs are relative to https://fapi.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -15,7 +17,7 @@ classicPortfolioMarginAccountInformation($asset, $recvWindow): \Binance\Client\D
 
 Classic Portfolio Margin Account Information (USER_DATA)
 
-Get Classic Portfolio Margin current account information.   * maxWithdrawAmount is for asset transfer out to the spot wallet.  Weight: 5
+Get Classic Portfolio Margin current account information.  Weight(IP): 5  Security Type: USER_DATA  Notes: - maxWithdrawAmount is for asset transfer out to the spot wallet.
 
 ### Example
 
@@ -30,8 +32,8 @@ $apiInstance = new Binance\Client\DerivativesTradingUsdsFutures\Api\PortfolioMar
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$asset = 'asset_example'; // string
-$recvWindow = 56; // int
+$asset = BTC; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->classicPortfolioMarginAccountInformation($asset, $recvWindow);

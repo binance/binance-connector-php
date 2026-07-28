@@ -10,7 +10,7 @@ function cancelAllUmOpenOrdersExample()
     $configurationBuilder = DerivativesTradingPortfolioMarginRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTCUSDT';
     $recvWindow = 5000;
     $response = $api->cancelAllUmOpenOrders($symbol, $recvWindow);
     print_r($response);

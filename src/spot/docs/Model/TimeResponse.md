@@ -1,4 +1,4 @@
-# # TimeResponse
+# TimeResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CancelLimitOrderResponse
+# CancelLimitOrderResponse
 
 ## Properties
 

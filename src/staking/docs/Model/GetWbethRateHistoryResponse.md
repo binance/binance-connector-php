@@ -1,4 +1,4 @@
-# # GetWbethRateHistoryResponse
+# GetWbethRateHistoryResponse
 
 ## Properties
 

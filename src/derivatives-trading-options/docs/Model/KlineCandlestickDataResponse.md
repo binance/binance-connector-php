@@ -1,4 +1,4 @@
-# # KlineCandlestickDataResponse
+# KlineCandlestickDataResponse
 
 ## Properties
 

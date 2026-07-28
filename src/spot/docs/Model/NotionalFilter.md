@@ -1,4 +1,4 @@
-# # NotionalFilter
+# NotionalFilter
 
 ## Properties
 

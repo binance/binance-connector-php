@@ -1,4 +1,4 @@
-# # OrderListOcoResponseOrdersInner
+# OrderListOcoResponseOrdersInner
 
 ## Properties
 

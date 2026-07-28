@@ -1,20 +1,20 @@
-# # OptionMarkPriceResponseInner
+# OptionMarkPriceResponseInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**symbol** | **string** |  | [optional]
-**markPrice** | **string** |  | [optional]
-**bidIV** | **string** |  | [optional]
-**askIV** | **string** |  | [optional]
-**markIV** | **string** |  | [optional]
-**delta** | **string** |  | [optional]
-**theta** | **string** |  | [optional]
-**gamma** | **string** |  | [optional]
-**vega** | **string** |  | [optional]
-**highPriceLimit** | **string** |  | [optional]
-**lowPriceLimit** | **string** |  | [optional]
-**riskFreeInterest** | **string** |  | [optional]
+**symbol** | **string** | symbol | [optional]
+**markPrice** | **string** | Mark price | [optional]
+**bidIV** | **string** | Implied volatility Buy | [optional]
+**askIV** | **string** | Implied volatility Sell | [optional]
+**markIV** | **string** | Implied volatility mark | [optional]
+**delta** | **string** | delta | [optional]
+**theta** | **string** | theta | [optional]
+**gamma** | **string** | gamma | [optional]
+**vega** | **string** | vega | [optional]
+**highPriceLimit** | **string** | Current highest buy price | [optional]
+**lowPriceLimit** | **string** | Current lowest sell price | [optional]
+**riskFreeInterest** | **string** | risk free rate | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

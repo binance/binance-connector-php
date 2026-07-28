@@ -1,4 +1,4 @@
-# # MarginAccountTradeListResponse
+# MarginAccountTradeListResponse
 
 ## Properties
 

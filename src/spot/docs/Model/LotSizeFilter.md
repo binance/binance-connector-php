@@ -1,4 +1,4 @@
-# # LotSizeFilter
+# LotSizeFilter
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # TakerBuySellVolumeResponse
+# TakerBuySellVolumeResponse
 
 ## Properties
 

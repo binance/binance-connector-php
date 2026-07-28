@@ -1,4 +1,4 @@
-# # DustlogResponse
+# DustlogResponse
 
 ## Properties
 

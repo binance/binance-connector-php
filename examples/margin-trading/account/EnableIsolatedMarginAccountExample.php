@@ -12,7 +12,7 @@ function enableIsolatedMarginAccountExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new MarginTradingRestApi($configurationBuilder->build());
     $enableIsolatedMarginAccountRequest = new EnableIsolatedMarginAccountRequest();
-    $enableIsolatedMarginAccountRequest->setSymbol('');
+    $enableIsolatedMarginAccountRequest->setSymbol('BTCUSDT');
     $response = $api->enableIsolatedMarginAccount($enableIsolatedMarginAccountRequest);
     print_r($response);
 }

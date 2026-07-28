@@ -9,8 +9,8 @@ function recentTradesListExample()
 {
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
-    $limit = 100;
+    $symbol = 'BTCUSDT';
+    $limit = 50;
     $response = $api->recentTradesList($symbol, $limit);
     print_r($response);
 }

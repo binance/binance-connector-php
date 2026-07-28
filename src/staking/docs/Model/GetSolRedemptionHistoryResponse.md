@@ -1,4 +1,4 @@
-# # GetSolRedemptionHistoryResponse
+# GetSolRedemptionHistoryResponse
 
 ## Properties
 

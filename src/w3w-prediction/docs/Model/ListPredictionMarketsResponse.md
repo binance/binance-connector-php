@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**marketTopics** | [**\Binance\Client\W3wPrediction\Model\ListPredictionMarketsResponseMarketTopicsInner[]**](ListPredictionMarketsResponseMarketTopicsInner.md) |  | [optional]
+**marketTopics** | [**\Binance\Client\W3WPrediction\Model\ListPredictionMarketsResponseMarketTopicsInner[]**](ListPredictionMarketsResponseMarketTopicsInner.md) |  | [optional]
 **total** | **int** |  | [optional]
 **offset** | **int** |  | [optional]
 **limit** | **int** |  | [optional]

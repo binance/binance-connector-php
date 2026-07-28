@@ -1,4 +1,4 @@
-# # KlinesItemInner
+# KlinesItemInner
 
 ## Properties
 

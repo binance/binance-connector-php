@@ -1,4 +1,4 @@
-# # NewOrderResponse
+# NewOrderResponse
 
 ## Properties
 
@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **symbol** | **string** |  | [optional]
 **orderId** | **int** |  | [optional]
-**orderListId** | **int** |  | [optional]
+**orderListId** | **int** | Unless it&#39;s part of an order list, value will be -1 | [optional]
 **clientOrderId** | **string** |  | [optional]
 **transactTime** | **int** |  | [optional]
 **price** | **string** |  | [optional]

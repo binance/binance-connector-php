@@ -10,7 +10,7 @@ function getLoanableAssetsDataExample()
     $configurationBuilder = VipLoanRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new VipLoanRestApi($configurationBuilder->build());
-    $loanCoin = '';
+    $loanCoin = 'BUSD';
     $vipLevel = 1;
     $recvWindow = 5000;
     $response = $api->getLoanableAssetsData($loanCoin, $vipLevel, $recvWindow);

@@ -13,7 +13,7 @@ function compressedAggregateTradesListExample()
     $fromId = 1;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
-    $limit = 100;
+    $limit = 30;
     $response = $api->compressedAggregateTradesList($symbol, $fromId, $startTime, $endTime, $limit);
     print_r($response);
 }

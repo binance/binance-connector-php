@@ -1,23 +1,23 @@
-# # MarginAccountCancelOcoResponseOrderReportsInner
+# MarginAccountCancelOcoResponseOrderReportsInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**symbol** | **string** |  | [optional]
-**origClientOrderId** | **string** |  | [optional]
-**orderId** | **int** |  | [optional]
-**orderListId** | **int** |  | [optional]
-**clientOrderId** | **string** |  | [optional]
-**price** | **string** |  | [optional]
-**origQty** | **string** |  | [optional]
-**executedQty** | **string** |  | [optional]
-**cummulativeQuoteQty** | **string** |  | [optional]
-**status** | **string** |  | [optional]
-**timeInForce** | **string** |  | [optional]
-**type** | **string** |  | [optional]
-**side** | **string** |  | [optional]
-**stopPrice** | **string** |  | [optional]
-**selfTradePreventionMode** | **string** |  | [optional]
+**symbol** | **string** | symbol. | [optional]
+**origClientOrderId** | **string** | orig Client Order Id. | [optional]
+**orderId** | **int** | order Id. | [optional]
+**orderListId** | **int** | order List Id. | [optional]
+**clientOrderId** | **string** | client Order Id. | [optional]
+**price** | **string** | price. | [optional]
+**origQty** | **string** | orig Qty. | [optional]
+**executedQty** | **string** | executed Qty. | [optional]
+**cummulativeQuoteQty** | **string** | cummulative Quote Qty. | [optional]
+**status** | **string** | status. | [optional]
+**timeInForce** | **string** | time In Force. | [optional]
+**type** | **string** | type. | [optional]
+**side** | **string** | side. | [optional]
+**stopPrice** | **string** | stop Price. | [optional]
+**selfTradePreventionMode** | **string** | self Trade Prevention Mode. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
