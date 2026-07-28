@@ -1,4 +1,4 @@
-# # QueryManagedSubAccountSnapshotResponseSnapshotVosInnerData
+# QueryManagedSubAccountSnapshotResponseSnapshotVosInnerData
 
 ## Properties
 

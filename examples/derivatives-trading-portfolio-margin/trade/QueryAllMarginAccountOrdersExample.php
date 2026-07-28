@@ -10,11 +10,11 @@ function queryAllMarginAccountOrdersExample()
     $configurationBuilder = DerivativesTradingPortfolioMarginRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTCUSDT';
     $orderId = 1;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
-    $limit = 100;
+    $limit = 500;
     $recvWindow = 5000;
     $response = $api->queryAllMarginAccountOrders($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
     print_r($response);

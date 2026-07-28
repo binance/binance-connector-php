@@ -1,4 +1,4 @@
-# # QueryAllUmConditionalOrdersResponse
+# QueryAllUmConditionalOrdersResponse
 
 ## Properties
 

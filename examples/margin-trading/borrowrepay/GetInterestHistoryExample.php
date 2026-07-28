@@ -10,8 +10,8 @@ function getInterestHistoryExample()
     $configurationBuilder = MarginTradingRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new MarginTradingRestApi($configurationBuilder->build());
-    $asset = '';
-    $isolatedSymbol = '';
+    $asset = 'USDT';
+    $isolatedSymbol = 'BNBUSDT';
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $current = 1;

@@ -1,4 +1,4 @@
-# # QuerySubAccountTransactionStatisticsResponse
+# QuerySubAccountTransactionStatisticsResponse
 
 ## Properties
 

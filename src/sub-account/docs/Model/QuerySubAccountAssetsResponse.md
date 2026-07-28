@@ -1,4 +1,4 @@
-# # QuerySubAccountAssetsResponse
+# QuerySubAccountAssetsResponse
 
 ## Properties
 

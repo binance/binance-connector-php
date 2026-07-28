@@ -1,21 +1,21 @@
-# # QueryCurrentAlgoOpenOrdersSpotAlgoResponseOrdersInner
+# QueryCurrentAlgoOpenOrdersSpotAlgoResponseOrdersInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**algoId** | **int** |  | [optional]
-**symbol** | **string** |  | [optional]
-**side** | **string** |  | [optional]
-**totalQty** | **string** |  | [optional]
-**executedQty** | **string** |  | [optional]
-**executedAmt** | **string** |  | [optional]
-**avgPrice** | **string** |  | [optional]
-**clientAlgoId** | **string** |  | [optional]
-**bookTime** | **int** |  | [optional]
-**endTime** | **int** |  | [optional]
-**algoStatus** | **string** |  | [optional]
-**algoType** | **string** |  | [optional]
-**urgency** | **string** |  | [optional]
+**algoId** | **int** | Algo order ID | [optional]
+**symbol** | **string** | Trading symbol | [optional]
+**side** | **string** | Trading side | [optional]
+**totalQty** | **string** | Total order quantity | [optional]
+**executedQty** | **string** | Executed quantity | [optional]
+**executedAmt** | **string** | Executed amount | [optional]
+**avgPrice** | **string** | Average execution price | [optional]
+**clientAlgoId** | **string** | Client-defined algo order ID | [optional]
+**bookTime** | **int** | Order creation time | [optional]
+**endTime** | **int** | End time | [optional]
+**algoStatus** | **string** | Algo order status | [optional]
+**algoType** | **string** | Algo order type | [optional]
+**urgency** | **string** | Execution urgency | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

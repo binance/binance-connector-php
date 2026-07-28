@@ -10,7 +10,7 @@ function notionalBracketForPairExample()
     $configurationBuilder = DerivativesTradingCoinFuturesRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
-    $pair = '';
+    $pair = 'BTCUSD';
     $recvWindow = 5000;
     $response = $api->notionalBracketForPair($pair, $recvWindow);
     print_r($response);

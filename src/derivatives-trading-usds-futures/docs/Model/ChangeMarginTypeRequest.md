@@ -1,4 +1,4 @@
-# # ChangeMarginTypeRequest
+# ChangeMarginTypeRequest
 
 ## Properties
 

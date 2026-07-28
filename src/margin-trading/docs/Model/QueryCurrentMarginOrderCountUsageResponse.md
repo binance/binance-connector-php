@@ -1,4 +1,4 @@
-# # QueryCurrentMarginOrderCountUsageResponse
+# QueryCurrentMarginOrderCountUsageResponse
 
 ## Properties
 

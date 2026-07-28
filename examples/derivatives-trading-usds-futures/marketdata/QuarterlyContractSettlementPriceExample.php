@@ -9,7 +9,7 @@ function quarterlyContractSettlementPriceExample()
 {
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $pair = '';
+    $pair = 'BTCUSDT';
     $response = $api->quarterlyContractSettlementPrice($pair);
     print_r($response);
 }

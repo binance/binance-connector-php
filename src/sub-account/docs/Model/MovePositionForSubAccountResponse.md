@@ -1,4 +1,4 @@
-# # MovePositionForSubAccountResponse
+# MovePositionForSubAccountResponse
 
 ## Properties
 

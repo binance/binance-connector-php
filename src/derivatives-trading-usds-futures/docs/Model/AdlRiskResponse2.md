@@ -1,4 +1,4 @@
-# # AdlRiskResponse2
+# AdlRiskResponse2
 
 ## Properties
 

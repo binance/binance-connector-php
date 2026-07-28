@@ -1,15 +1,17 @@
 # Binance\Client\GiftCard\MarketDataApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createADualTokenGiftCard()**](MarketDataApi.md#createADualTokenGiftCard) | **POST** /sapi/v1/giftcard/buyCode | Create a dual-token gift card(fixed value, discount feature)(TRADE) |
+| [**createADualTokenGiftCard()**](MarketDataApi.md#createADualTokenGiftCard) | **POST** /sapi/v1/giftcard/buyCode | Create a dual-token gift card (fixed value, discount feature) (TRADE) |
 | [**createASingleTokenGiftCard()**](MarketDataApi.md#createASingleTokenGiftCard) | **POST** /sapi/v1/giftcard/createCode | Create a single-token gift card (USER_DATA) |
-| [**fetchRsaPublicKey()**](MarketDataApi.md#fetchRsaPublicKey) | **GET** /sapi/v1/giftcard/cryptography/rsa-public-key | Fetch RSA Public Key(USER_DATA) |
-| [**fetchTokenLimit()**](MarketDataApi.md#fetchTokenLimit) | **GET** /sapi/v1/giftcard/buyCode/token-limit | Fetch Token Limit(USER_DATA) |
-| [**redeemABinanceGiftCard()**](MarketDataApi.md#redeemABinanceGiftCard) | **POST** /sapi/v1/giftcard/redeemCode | Redeem a Binance Gift Card(USER_DATA) |
-| [**verifyBinanceGiftCardByGiftCardNumber()**](MarketDataApi.md#verifyBinanceGiftCardByGiftCardNumber) | **GET** /sapi/v1/giftcard/verify | Verify Binance Gift Card by Gift Card Number(USER_DATA) |
+| [**fetchRsaPublicKey()**](MarketDataApi.md#fetchRsaPublicKey) | **GET** /sapi/v1/giftcard/cryptography/rsa-public-key | Fetch RSA Public Key (USER_DATA) |
+| [**fetchTokenLimit()**](MarketDataApi.md#fetchTokenLimit) | **GET** /sapi/v1/giftcard/buyCode/token-limit | Fetch Token Limit (USER_DATA) |
+| [**redeemABinanceGiftCard()**](MarketDataApi.md#redeemABinanceGiftCard) | **POST** /sapi/v1/giftcard/redeemCode | Redeem a Binance Gift Card (USER_DATA) |
+| [**verifyBinanceGiftCardByGiftCardNumber()**](MarketDataApi.md#verifyBinanceGiftCardByGiftCardNumber) | **GET** /sapi/v1/giftcard/verify | Verify Binance Gift Card by Gift Card Number (USER_DATA) |
 
 
 ## `createADualTokenGiftCard()`
@@ -18,9 +20,9 @@ All URIs are relative to https://api.binance.com, except if the operation define
 createADualTokenGiftCard($createADualTokenGiftCardRequest): \Binance\Client\GiftCard\Model\CreateADualTokenGiftCardResponse
 ```
 
-Create a dual-token gift card(fixed value, discount feature)(TRADE)
+Create a dual-token gift card (fixed value, discount feature) (TRADE)
 
-* This API is for creating a dual-token ( stablecoin-denominated) Binance Gift Card. You may create a gift card using USDT as baseToken, that is redeemable to another designated token (faceToken). For example, you can create a fixed-value BTC gift card and pay with 100 USDT plus minting fee. This gift card can keep the value fixed at 100 USDT before redemption, and will be redeemable to BTC equivalent to 100 USDT upon redemption. * Once successfully created, the amount of baseToken (e.g. USDT) in the fixed-value gift card along with the fee would be deducted from your funding wallet.   * To get started with, please make sure: * You have a Binance account * You have passed KYB * You have a sufﬁcient balance(Gift Card amount and fee amount) in your Binance funding wallet * You need Enable Withdrawals for the API Key which requests this endpoint.  Weight: 1
+* This API is for creating a dual-token ( stablecoin-denominated) Binance Gift Card. You may create a gift card using USDT as baseToken, that is redeemable to another designated token (faceToken). For example, you can create a fixed-value BTC gift card and pay with 100 USDT plus minting fee. This gift card can keep the value fixed at 100 USDT before redemption, and will be redeemable to BTC equivalent to 100 USDT upon redemption.  * Once successfully created, the amount of baseToken (e.g. USDT) in the fixed-value gift card along with the fee would be deducted from your funding wallet.   * To get started with, please make sure:   * You have a Binance account   * You have passed KYB   * You have a sufﬁcient balance(Gift Card amount and fee amount) in your Binance funding wallet   * You need Enable Withdrawals for the API Key which requests this endpoint.  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -76,7 +78,7 @@ createASingleTokenGiftCard($createASingleTokenGiftCardRequest): \Binance\Client\
 
 Create a single-token gift card (USER_DATA)
 
-This API is for creating a Binance Gift Card.  To get started with, please make sure:  * You have a Binance account * You have passed KYB * You have a sufﬁcient balance(Gift Card amount and fee amount) in your Binance funding wallet * You need `Enable Withdrawals` for the API Key which requests this endpoint.  Weight: 1
+This API is for creating a Binance Gift Card.  To get started with, please make sure:   * You have a Binance account   * You have passed KYB   * You have a sufﬁcient balance(Gift Card amount and fee amount) in your Binance funding wallet   * You need `Enable Withdrawals` for the API Key which requests this endpoint.  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -130,9 +132,9 @@ No authorization required
 fetchRsaPublicKey($recvWindow): \Binance\Client\GiftCard\Model\FetchRsaPublicKeyResponse
 ```
 
-Fetch RSA Public Key(USER_DATA)
+Fetch RSA Public Key (USER_DATA)
 
-This API is for fetching the RSA Public Key. This RSA Public key will be used to encrypt the card code.  **Please note that the RSA Public key fetched is valid only for the current day.**  Weight: 1
+This API is for fetching the RSA Public Key. This RSA Public key will be used to encrypt the card code.  **Please note that the RSA Public key fetched is valid only for the current day.**  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -147,7 +149,7 @@ $apiInstance = new Binance\Client\GiftCard\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->fetchRsaPublicKey($recvWindow);
@@ -186,9 +188,9 @@ No authorization required
 fetchTokenLimit($baseToken, $recvWindow): \Binance\Client\GiftCard\Model\FetchTokenLimitResponse
 ```
 
-Fetch Token Limit(USER_DATA)
+Fetch Token Limit (USER_DATA)
 
-This API is to help you verify which tokens are available for you to create Stablecoin-Denominated gift cards as mentioned in section 2 and its’ limitation.  Weight: 1
+This API is to help you verify which tokens are available for you to create Stablecoin-Denominated gift cards as mentioned in section 2 and its’ limitation.  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -203,8 +205,8 @@ $apiInstance = new Binance\Client\GiftCard\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$baseToken = 'baseToken_example'; // string | The token you want to pay, example: BUSD
-$recvWindow = 56; // int
+$baseToken = BUSD; // string | The token you want to pay, example: BUSD
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->fetchTokenLimit($baseToken, $recvWindow);
@@ -244,9 +246,9 @@ No authorization required
 redeemABinanceGiftCard($redeemABinanceGiftCardRequest): \Binance\Client\GiftCard\Model\RedeemABinanceGiftCardResponse
 ```
 
-Redeem a Binance Gift Card(USER_DATA)
+Redeem a Binance Gift Card (USER_DATA)
 
-This API is for redeeming a Binance Gift Card Once redeemed, the coins will be deposited in your funding wallet.  * Parameter code can be sent in two formats: * Plaintext * Encrypted  * Sending code in Encrypted format provides more security than sending it as a plaintext. To send card code in encrypted format the following steps must be followed: * Fetch RSA public key from api stated below. * Use the below algorithm to encrypt the card code using the RSA public key fetched above: `RSA/ECB/OAEPWithSHA-256AndMGF1Padding` **A sample code snippet (JAVA) is stated below for reference, the same approach can be used for different languages like C#, PERL, PYTHON, SHELL etc.:**  Weight: 1
+This API is for redeeming a Binance Gift Card. Once redeemed, the coins will be deposited in your funding wallet.  Weight(IP): 1  Security Type: USER_DATA  Notes: - Parameter `code` can be sent in two formats: `Plaintext` and `Encrypted`. - Sending `code` in encrypted format is more secure than plaintext. - To send encrypted `code`:   - Fetch RSA public key from `GET /sapi/v1/giftcard/cryptography/rsa-public-key`.   - Encrypt card code using `RSA/ECB/OAEPWithSHA-256AndMGF1Padding`. - If you enter the wrong redemption code 5 times within 24 hours, you will no longer be able to redeem any Binance Gift Cards that day.
 
 ### Example
 
@@ -300,9 +302,9 @@ No authorization required
 verifyBinanceGiftCardByGiftCardNumber($referenceNo, $recvWindow): \Binance\Client\GiftCard\Model\VerifyBinanceGiftCardByGiftCardNumberResponse
 ```
 
-Verify Binance Gift Card by Gift Card Number(USER_DATA)
+Verify Binance Gift Card by Gift Card Number (USER_DATA)
 
-This API is for verifying whether the Binance Gift Card is valid or not by entering Gift Card Number.  **Please note that if you enter the wrong Gift Card Number 5 times within an hour, you will no longer be able to verify any Gift Card Number for that hour.**  Weight: 1
+This API is for verifying whether the Binance Gift Card is valid or not by entering Gift Card Number.  **Please note that if you enter the wrong Gift Card Number 5 times within an hour, you will no longer be able to verify any Gift Card Number for that hour.**  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -317,8 +319,8 @@ $apiInstance = new Binance\Client\GiftCard\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$referenceNo = 'referenceNo_example'; // string | Enter the Gift Card Number
-$recvWindow = 56; // int
+$referenceNo = 0033002328060227; // string | Enter the Gift Card Number
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->verifyBinanceGiftCardByGiftCardNumber($referenceNo, $recvWindow);

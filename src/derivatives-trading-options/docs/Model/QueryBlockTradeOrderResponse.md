@@ -1,4 +1,4 @@
-# # QueryBlockTradeOrderResponse
+# QueryBlockTradeOrderResponse
 
 ## Properties
 

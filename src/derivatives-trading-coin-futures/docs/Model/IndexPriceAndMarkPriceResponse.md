@@ -1,4 +1,4 @@
-# # IndexPriceAndMarkPriceResponse
+# IndexPriceAndMarkPriceResponse
 
 ## Properties
 

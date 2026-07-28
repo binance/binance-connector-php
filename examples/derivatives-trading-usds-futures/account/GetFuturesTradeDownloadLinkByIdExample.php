@@ -10,7 +10,7 @@ function getFuturesTradeDownloadLinkByIdExample()
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $downloadId = '1';
+    $downloadId = '545923594199212032';
     $recvWindow = 5000;
     $response = $api->getFuturesTradeDownloadLinkById($downloadId, $recvWindow);
     print_r($response);

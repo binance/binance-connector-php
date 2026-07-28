@@ -1,11 +1,13 @@
 # Binance\Client\Wallet\OthersApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getSymbolsDelistScheduleForSpot()**](OthersApi.md#getSymbolsDelistScheduleForSpot) | **GET** /sapi/v1/spot/delist-schedule | Get symbols delist schedule for spot (MARKET_DATA) |
-| [**systemStatus()**](OthersApi.md#systemStatus) | **GET** /sapi/v1/system/status | System Status (System) |
+| [**getSymbolsDelistScheduleForSpot()**](OthersApi.md#getSymbolsDelistScheduleForSpot) | **GET** /sapi/v1/spot/delist-schedule | Get Spot Delist Schedule (MARKET_DATA) |
+| [**systemStatus()**](OthersApi.md#systemStatus) | **GET** /sapi/v1/system/status | System Status |
 
 
 ## `getSymbolsDelistScheduleForSpot()`
@@ -14,9 +16,9 @@ All URIs are relative to https://api.binance.com, except if the operation define
 getSymbolsDelistScheduleForSpot($recvWindow): \Binance\Client\Wallet\Model\GetSymbolsDelistScheduleForSpotResponse
 ```
 
-Get symbols delist schedule for spot (MARKET_DATA)
+Get Spot Delist Schedule (MARKET_DATA)
 
-Get symbols delist schedule for spot  Weight: 100
+Get symbols delist schedule for spot  Weight(IP): 100  Security Type: MARKET_DATA
 
 ### Example
 
@@ -31,7 +33,7 @@ $apiInstance = new Binance\Client\Wallet\Api\OthersApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getSymbolsDelistScheduleForSpot($recvWindow);
@@ -70,9 +72,9 @@ No authorization required
 systemStatus(): \Binance\Client\Wallet\Model\SystemStatusResponse
 ```
 
-System Status (System)
+System Status
 
-Fetch system status.  Weight: 1
+Fetch system status.  Weight(IP): 1  Security Type: System
 
 ### Example
 

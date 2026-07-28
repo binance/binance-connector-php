@@ -1,4 +1,4 @@
-# # DepositHistoryV2ResponseInnerQuestionnaire
+# DepositHistoryV2ResponseInnerQuestionnaire
 
 ## Properties
 

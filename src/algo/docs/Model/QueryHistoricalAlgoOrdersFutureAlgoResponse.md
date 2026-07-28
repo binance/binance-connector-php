@@ -1,4 +1,4 @@
-# # QueryHistoricalAlgoOrdersFutureAlgoResponse
+# QueryHistoricalAlgoOrdersFutureAlgoResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # MovePositionForSubAccountRequest
+# MovePositionForSubAccountRequest
 
 ## Properties
 
@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **fromUserEmail** | **string** |  |
 **toUserEmail** | **string** |  |
-**productType** | **string** |  |
+**productType** | [**\Binance\Client\SubAccount\Model\ProductType**](ProductType.md) |  |
 **orderArgs** | [**\Binance\Client\SubAccount\Model\OrderArgs**](OrderArgs.md) |  |
 **recvWindow** | **int** |  | [optional]
 

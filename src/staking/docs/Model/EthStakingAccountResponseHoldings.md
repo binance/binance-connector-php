@@ -1,4 +1,4 @@
-# # EthStakingAccountResponseHoldings
+# EthStakingAccountResponseHoldings
 
 ## Properties
 

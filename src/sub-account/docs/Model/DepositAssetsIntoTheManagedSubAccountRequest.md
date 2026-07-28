@@ -1,4 +1,4 @@
-# # DepositAssetsIntoTheManagedSubAccountRequest
+# DepositAssetsIntoTheManagedSubAccountRequest
 
 ## Properties
 

@@ -5,7 +5,6 @@ require_once __DIR__.'/../vendor/autoload.php';
 use Binance\Client\DerivativesTradingCoinFutures\Api\DerivativesTradingCoinFuturesRestApi;
 use Binance\Client\DerivativesTradingCoinFutures\DerivativesTradingCoinFuturesRestApiUtil;
 use Binance\Client\DerivativesTradingCoinFutures\Model\ModifyIsolatedPositionMarginRequest;
-use Binance\Client\DerivativesTradingCoinFutures\Model\Type;
 
 function modifyIsolatedPositionMarginExample()
 {
@@ -13,9 +12,9 @@ function modifyIsolatedPositionMarginExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
     $modifyIsolatedPositionMarginRequest = new ModifyIsolatedPositionMarginRequest();
-    $modifyIsolatedPositionMarginRequest->setSymbol('');
+    $modifyIsolatedPositionMarginRequest->setSymbol('BTCUSDT');
     $modifyIsolatedPositionMarginRequest->setAmount(1.0);
-    $modifyIsolatedPositionMarginRequest->setType(Type::LIMIT);
+    $modifyIsolatedPositionMarginRequest->setType(1);
     $response = $api->modifyIsolatedPositionMargin($modifyIsolatedPositionMarginRequest);
     print_r($response);
 }

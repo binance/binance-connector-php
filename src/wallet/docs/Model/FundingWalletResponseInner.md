@@ -1,4 +1,4 @@
-# # FundingWalletResponseInner
+# FundingWalletResponseInner
 
 ## Properties
 

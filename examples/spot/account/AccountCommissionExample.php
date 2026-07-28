@@ -10,7 +10,7 @@ function accountCommissionExample()
     $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SpotRestApi($configurationBuilder->build());
-    $symbol = 'BNBUSDT';
+    $symbol = 'BTCUSDT';
     $response = $api->accountCommission($symbol);
     print_r($response);
 }

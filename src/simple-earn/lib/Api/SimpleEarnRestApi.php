@@ -2,6 +2,8 @@
 
 namespace Binance\Client\SimpleEarn\Api;
 
+use Binance\Client\SimpleEarn\Model\AprPeriod;
+use Binance\Client\SimpleEarn\Model\Asset;
 use Binance\Client\SimpleEarn\Model\GetBfusdAccountResponse;
 use Binance\Client\SimpleEarn\Model\GetBfusdQuotaDetailsResponse;
 use Binance\Client\SimpleEarn\Model\GetBfusdRateHistoryResponse;
@@ -30,6 +32,8 @@ use Binance\Client\SimpleEarn\Model\GetRwusdRewardsHistoryResponse;
 use Binance\Client\SimpleEarn\Model\GetRwusdSubscriptionHistoryResponse;
 use Binance\Client\SimpleEarn\Model\GetSimpleEarnFlexibleProductListResponse;
 use Binance\Client\SimpleEarn\Model\GetSimpleEarnLockedProductListResponse;
+use Binance\Client\SimpleEarn\Model\GetYieldArenaActivitiesResponse;
+use Binance\Client\SimpleEarn\Model\OrderType;
 use Binance\Client\SimpleEarn\Model\RedeemBfusdRequest;
 use Binance\Client\SimpleEarn\Model\RedeemBfusdResponse;
 use Binance\Client\SimpleEarn\Model\RedeemFlexibleProductRequest;
@@ -74,12 +78,18 @@ class SimpleEarnRestApi
      */
     private $rwusdApi;
 
+    /**
+     * @var YieldArenaApi
+     */
+    private $yieldArenaApi;
+
     public function __construct(
         ?ClientConfiguration $clientConfig = new ClientConfiguration(),
     ) {
         $this->bfusdApi = new BfusdApi($clientConfig);
         $this->flexibleLockedApi = new FlexibleLockedApi($clientConfig);
         $this->rwusdApi = new RwusdApi($clientConfig);
+        $this->yieldArenaApi = new YieldArenaApi($clientConfig);
     }
 
     /**
@@ -87,7 +97,7 @@ class SimpleEarnRestApi
      *
      * Get BFUSD Account (USER_DATA)
      *
-     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetBfusdAccountResponse>
      *
@@ -104,7 +114,7 @@ class SimpleEarnRestApi
      *
      * Get BFUSD Quota Details (USER_DATA)
      *
-     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetBfusdQuotaDetailsResponse>
      *
@@ -123,9 +133,9 @@ class SimpleEarnRestApi
      *
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int $size       Number of results per page. Default: 10, Max: 100 (optional)
-     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
+     * @param null|int $current    Currently querying page. Starts from 1. (optional)
+     * @param null|int $size       Number of results per page. (optional)
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetBfusdRateHistoryResponse>
      *
@@ -144,9 +154,9 @@ class SimpleEarnRestApi
      *
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int $size       Number of results per page. Default: 10, Max: 100 (optional)
-     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
+     * @param null|int $current    Currently querying page. (optional)
+     * @param null|int $size       Number of results per page. (optional)
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetBfusdRedemptionHistoryResponse>
      *
@@ -165,9 +175,9 @@ class SimpleEarnRestApi
      *
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int $size       Number of results per page. Default: 10, Max: 100 (optional)
-     * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
+     * @param null|int $current    Currently querying page. (optional)
+     * @param null|int $size       Number of results per page. (optional)
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetBfusdRewardsHistoryResponse>
      *
@@ -182,14 +192,14 @@ class SimpleEarnRestApi
     /**
      * Operation getBfusdSubscriptionHistory.
      *
-     * Get BFUSD subscription history(USER_DATA)
+     * Get BFUSD subscription history (USER_DATA)
      *
-     * @param null|string $asset      USDC or USDT (optional)
-     * @param null|int    $startTime  startTime (optional)
-     * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
-     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
+     * @param null|Asset $asset      asset (optional)
+     * @param null|int   $startTime  startTime (optional)
+     * @param null|int   $endTime    endTime (optional)
+     * @param null|int   $current    Currently querying page. (optional)
+     * @param null|int   $size       Number of results per page. (optional)
+     * @param null|int   $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetBfusdSubscriptionHistoryResponse>
      *
@@ -204,7 +214,7 @@ class SimpleEarnRestApi
     /**
      * Operation redeemBfusd.
      *
-     * Redeem BFUSD(TRADE)
+     * Redeem BFUSD (TRADE)
      *
      * @param RedeemBfusdRequest $redeemBfusdRequest redeemBfusdRequest (required)
      *
@@ -221,7 +231,7 @@ class SimpleEarnRestApi
     /**
      * Operation subscribeBfusd.
      *
-     * Subscribe BFUSD(TRADE)
+     * Subscribe BFUSD (TRADE)
      *
      * @param SubscribeBfusdRequest $subscribeBfusdRequest subscribeBfusdRequest (required)
      *
@@ -238,13 +248,13 @@ class SimpleEarnRestApi
     /**
      * Operation getCollateralRecord.
      *
-     * Get Collateral Record(USER_DATA)
+     * Get Collateral Record (USER_DATA)
      *
      * @param null|string $productId  productId (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $current    Currently querying page. (optional)
+     * @param null|int    $size       Number of results per page. (optional)
      * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetCollateralRecordResponse>
@@ -260,7 +270,7 @@ class SimpleEarnRestApi
     /**
      * Operation getFlexiblePersonalLeftQuota.
      *
-     * Get Flexible Personal Left Quota(USER_DATA)
+     * Get Flexible Personal Left Quota (USER_DATA)
      *
      * @param string   $productId  productId (required)
      * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
@@ -278,12 +288,12 @@ class SimpleEarnRestApi
     /**
      * Operation getFlexibleProductPosition.
      *
-     * Get Flexible Product Position(USER_DATA)
+     * Get Flexible Product Position (USER_DATA)
      *
-     * @param null|string $asset      USDC or USDT (optional)
+     * @param null|string $asset      asset (optional)
      * @param null|string $productId  productId (optional)
-     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. (optional)
+     * @param null|int    $size       Number of results per page. (optional)
      * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetFlexibleProductPositionResponse>
@@ -299,15 +309,15 @@ class SimpleEarnRestApi
     /**
      * Operation getFlexibleRedemptionRecord.
      *
-     * Get Flexible Redemption Record(USER_DATA)
+     * Get Flexible Redemption Record (USER_DATA)
      *
      * @param null|string $productId  productId (optional)
      * @param null|string $redeemId   redeemId (optional)
-     * @param null|string $asset      USDC or USDT (optional)
+     * @param null|string $asset      asset (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. (optional)
+     * @param null|int    $size       Number of results per page. (optional)
      * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetFlexibleRedemptionRecordResponse>
@@ -323,31 +333,31 @@ class SimpleEarnRestApi
     /**
      * Operation getFlexibleRewardsHistory.
      *
-     * Get Flexible Rewards History(USER_DATA)
+     * Get Flexible Rewards History (USER_DATA)
      *
-     * @param string      $type       &#x60;BONUS&#x60; - Bonus tiered APR, &#x60;REALTIME&#x60; Real-time APR, &#x60;REWARDS&#x60; Historical rewards,&#x60;ALL&#x60;(set to default) (required)
-     * @param null|string $productId  productId (optional)
-     * @param null|string $asset      USDC or USDT (optional)
-     * @param null|int    $startTime  startTime (optional)
-     * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
-     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
+     * @param null|string    $productId  productId (optional)
+     * @param null|string    $asset      asset (optional)
+     * @param null|int       $startTime  startTime (optional)
+     * @param null|int       $endTime    endTime (optional)
+     * @param null|OrderType $type       &#x60;BONUS&#x60; - Bonus tiered APR, &#x60;REALTIME&#x60; - Real-time APR, &#x60;REWARDS&#x60; - Historical rewards, &#x60;ALL&#x60; - All types. Default: &#x60;ALL&#x60; (optional)
+     * @param null|int       $current    Currently querying page. Starts from 1. (optional)
+     * @param null|int       $size       Number of results per page. (optional)
+     * @param null|int       $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetFlexibleRewardsHistoryResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getFlexibleRewardsHistory($type, $productId = null, $asset = null, $startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    public function getFlexibleRewardsHistory($productId = null, $asset = null, $startTime = null, $endTime = null, $type = null, $current = null, $size = null, $recvWindow = null): ApiResponse
     {
-        return $this->flexibleLockedApi->getFlexibleRewardsHistory($type, $productId, $asset, $startTime, $endTime, $current, $size, $recvWindow);
+        return $this->flexibleLockedApi->getFlexibleRewardsHistory($productId, $asset, $startTime, $endTime, $type, $current, $size, $recvWindow);
     }
 
     /**
      * Operation getFlexibleSubscriptionPreview.
      *
-     * Get Flexible Subscription Preview(USER_DATA)
+     * Get Flexible Subscription Preview (USER_DATA)
      *
      * @param string   $productId  productId (required)
      * @param float    $amount     amount (required)
@@ -366,15 +376,15 @@ class SimpleEarnRestApi
     /**
      * Operation getFlexibleSubscriptionRecord.
      *
-     * Get Flexible Subscription Record(USER_DATA)
+     * Get Flexible Subscription Record (USER_DATA)
      *
      * @param null|string $productId  productId (optional)
      * @param null|string $purchaseId purchaseId (optional)
-     * @param null|string $asset      USDC or USDT (optional)
+     * @param null|string $asset      asset (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. (optional)
+     * @param null|int    $size       Number of results per page. (optional)
      * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetFlexibleSubscriptionRecordResponse>
@@ -390,7 +400,7 @@ class SimpleEarnRestApi
     /**
      * Operation getLockedPersonalLeftQuota.
      *
-     * Get Locked Personal Left Quota(USER_DATA)
+     * Get Locked Personal Left Quota (USER_DATA)
      *
      * @param string   $projectId  projectId (required)
      * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
@@ -408,13 +418,13 @@ class SimpleEarnRestApi
     /**
      * Operation getLockedProductPosition.
      *
-     * Get Locked Product Position
+     * Get Locked Product Position (USER_DATA)
      *
-     * @param null|string $asset      USDC or USDT (optional)
+     * @param null|string $asset      asset (optional)
      * @param null|string $positionId positionId (optional)
      * @param null|string $projectId  projectId (optional)
-     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. (optional)
+     * @param null|int    $size       Number of results per page. (optional)
      * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedProductPositionResponse>
@@ -430,15 +440,15 @@ class SimpleEarnRestApi
     /**
      * Operation getLockedRedemptionRecord.
      *
-     * Get Locked Redemption Record(USER_DATA)
+     * Get Locked Redemption Record (USER_DATA)
      *
      * @param null|string $positionId positionId (optional)
      * @param null|string $redeemId   redeemId (optional)
-     * @param null|string $asset      USDC or USDT (optional)
+     * @param null|string $asset      asset (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. (optional)
+     * @param null|int    $size       Number of results per page. (optional)
      * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedRedemptionRecordResponse>
@@ -454,14 +464,14 @@ class SimpleEarnRestApi
     /**
      * Operation getLockedRewardsHistory.
      *
-     * Get Locked Rewards History(USER_DATA)
+     * Get Locked Rewards History (USER_DATA)
      *
      * @param null|string $positionId positionId (optional)
-     * @param null|string $asset      USDC or USDT (optional)
+     * @param null|string $asset      asset (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. (optional)
+     * @param null|int    $size       Number of results per page. (optional)
      * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedRewardsHistoryResponse>
@@ -477,11 +487,11 @@ class SimpleEarnRestApi
     /**
      * Operation getLockedSubscriptionPreview.
      *
-     * Get Locked Subscription Preview(USER_DATA)
+     * Get Locked Subscription Preview (USER_DATA)
      *
      * @param string    $projectId     projectId (required)
      * @param float     $amount        amount (required)
-     * @param null|bool $autoSubscribe true or false, default true. (optional)
+     * @param null|bool $autoSubscribe default true. (optional)
      * @param null|int  $recvWindow    The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedSubscriptionPreviewResponse>
@@ -497,14 +507,14 @@ class SimpleEarnRestApi
     /**
      * Operation getLockedSubscriptionRecord.
      *
-     * Get Locked Subscription Record(USER_DATA)
+     * Get Locked Subscription Record (USER_DATA)
      *
      * @param null|string $purchaseId purchaseId (optional)
-     * @param null|string $asset      USDC or USDT (optional)
+     * @param null|string $asset      asset (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. (optional)
+     * @param null|int    $size       Number of results per page. (optional)
      * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetLockedSubscriptionRecordResponse>
@@ -520,15 +530,15 @@ class SimpleEarnRestApi
     /**
      * Operation getRateHistory.
      *
-     * Get Rate History(USER_DATA)
+     * Get Rate History (USER_DATA)
      *
-     * @param string      $productId  productId (required)
-     * @param null|string $aprPeriod  \&quot;DAY\&quot;,\&quot;YEAR\&quot;,default\&quot;DAY\&quot; (optional)
-     * @param null|int    $startTime  startTime (optional)
-     * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
-     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
+     * @param string         $productId  productId (required)
+     * @param null|AprPeriod $aprPeriod  aprPeriod (optional)
+     * @param null|int       $startTime  startTime (optional)
+     * @param null|int       $endTime    endTime (optional)
+     * @param null|int       $current    Currently querying page (optional)
+     * @param null|int       $size       Number of results per page (optional)
+     * @param null|int       $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRateHistoryResponse>
      *
@@ -543,11 +553,11 @@ class SimpleEarnRestApi
     /**
      * Operation getSimpleEarnFlexibleProductList.
      *
-     * Get Simple Earn Flexible Product List(USER_DATA)
+     * Get Simple Earn Flexible Product List (USER_DATA)
      *
-     * @param null|string $asset      USDC or USDT (optional)
-     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|string $asset      asset (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. (optional)
+     * @param null|int    $size       Number of results per page. (optional)
      * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetSimpleEarnFlexibleProductListResponse>
@@ -563,11 +573,11 @@ class SimpleEarnRestApi
     /**
      * Operation getSimpleEarnLockedProductList.
      *
-     * Get Simple Earn Locked Product List(USER_DATA)
+     * Get Simple Earn Locked Product List (USER_DATA)
      *
-     * @param null|string $asset      USDC or USDT (optional)
-     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|string $asset      asset (optional)
+     * @param null|int    $current    Currently querying page. Starts from 1. (optional)
+     * @param null|int    $size       Number of results per page. (optional)
      * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetSimpleEarnLockedProductListResponse>
@@ -583,7 +593,7 @@ class SimpleEarnRestApi
     /**
      * Operation redeemFlexibleProduct.
      *
-     * Redeem Flexible Product(TRADE)
+     * Redeem Flexible Product (TRADE)
      *
      * @param RedeemFlexibleProductRequest $redeemFlexibleProductRequest redeemFlexibleProductRequest (required)
      *
@@ -600,7 +610,7 @@ class SimpleEarnRestApi
     /**
      * Operation redeemLockedProduct.
      *
-     * Redeem Locked Product(TRADE)
+     * Redeem Locked Product (TRADE)
      *
      * @param RedeemLockedProductRequest $redeemLockedProductRequest redeemLockedProductRequest (required)
      *
@@ -617,7 +627,7 @@ class SimpleEarnRestApi
     /**
      * Operation setFlexibleAutoSubscribe.
      *
-     * Set Flexible Auto Subscribe(USER_DATA)
+     * Set Flexible Auto Subscribe (USER_DATA)
      *
      * @param SetFlexibleAutoSubscribeRequest $setFlexibleAutoSubscribeRequest setFlexibleAutoSubscribeRequest (required)
      *
@@ -634,7 +644,7 @@ class SimpleEarnRestApi
     /**
      * Operation setLockedAutoSubscribe.
      *
-     * Set Locked Auto Subscribe(USER_DATA)
+     * Set Locked Auto Subscribe (USER_DATA)
      *
      * @param SetLockedAutoSubscribeRequest $setLockedAutoSubscribeRequest setLockedAutoSubscribeRequest (required)
      *
@@ -651,7 +661,7 @@ class SimpleEarnRestApi
     /**
      * Operation setLockedProductRedeemOption.
      *
-     * Set Locked Product Redeem Option(USER_DATA)
+     * Set Locked Product Redeem Option (USER_DATA)
      *
      * @param SetLockedProductRedeemOptionRequest $setLockedProductRedeemOptionRequest setLockedProductRedeemOptionRequest (required)
      *
@@ -668,7 +678,7 @@ class SimpleEarnRestApi
     /**
      * Operation simpleAccount.
      *
-     * Simple Account(USER_DATA)
+     * Simple Account (USER_DATA)
      *
      * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
@@ -685,7 +695,7 @@ class SimpleEarnRestApi
     /**
      * Operation subscribeFlexibleProduct.
      *
-     * Subscribe Flexible Product(TRADE)
+     * Subscribe Flexible Product (TRADE)
      *
      * @param SubscribeFlexibleProductRequest $subscribeFlexibleProductRequest subscribeFlexibleProductRequest (required)
      *
@@ -702,7 +712,7 @@ class SimpleEarnRestApi
     /**
      * Operation subscribeLockedProduct.
      *
-     * Subscribe Locked Product(TRADE)
+     * Subscribe Locked Product (TRADE)
      *
      * @param SubscribeLockedProductRequest $subscribeLockedProductRequest subscribeLockedProductRequest (required)
      *
@@ -757,8 +767,8 @@ class SimpleEarnRestApi
      *
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int $current    Currently querying page (optional)
+     * @param null|int $size       Number of results per page (optional)
      * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRwusdRateHistoryResponse>
@@ -778,8 +788,8 @@ class SimpleEarnRestApi
      *
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int $current    Currently querying page (optional)
+     * @param null|int $size       Number of results per page (optional)
      * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRwusdRedemptionHistoryResponse>
@@ -799,8 +809,8 @@ class SimpleEarnRestApi
      *
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int $size       Number of results per page. Default: 10, Max: 100 (optional)
+     * @param null|int $current    Currently querying page (optional)
+     * @param null|int $size       Number of results per page (optional)
      * @param null|int $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRwusdRewardsHistoryResponse>
@@ -816,14 +826,14 @@ class SimpleEarnRestApi
     /**
      * Operation getRwusdSubscriptionHistory.
      *
-     * Get RWUSD subscription history(USER_DATA)
+     * Get RWUSD subscription history (USER_DATA)
      *
-     * @param null|string $asset      USDC or USDT (optional)
-     * @param null|int    $startTime  startTime (optional)
-     * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying page. Starts from 1. Default: 1 (optional)
-     * @param null|int    $size       Number of results per page. Default: 10, Max: 100 (optional)
-     * @param null|int    $recvWindow The value cannot be greater than 60000 (ms) (optional)
+     * @param null|Asset $asset      asset (optional)
+     * @param null|int   $startTime  startTime (optional)
+     * @param null|int   $endTime    endTime (optional)
+     * @param null|int   $current    Currently querying page (optional)
+     * @param null|int   $size       Number of results per page (optional)
+     * @param null|int   $recvWindow The value cannot be greater than 60000 (ms) (optional)
      *
      * @return ApiResponse<GetRwusdSubscriptionHistoryResponse>
      *
@@ -838,7 +848,7 @@ class SimpleEarnRestApi
     /**
      * Operation redeemRwusd.
      *
-     * Redeem RWUSD(TRADE)
+     * Redeem RWUSD (TRADE)
      *
      * @param RedeemRwusdRequest $redeemRwusdRequest redeemRwusdRequest (required)
      *
@@ -855,7 +865,7 @@ class SimpleEarnRestApi
     /**
      * Operation subscribeRwusd.
      *
-     * Subscribe RWUSD(TRADE)
+     * Subscribe RWUSD (TRADE)
      *
      * @param SubscribeRwusdRequest $subscribeRwusdRequest subscribeRwusdRequest (required)
      *
@@ -867,5 +877,23 @@ class SimpleEarnRestApi
     public function subscribeRwusd($subscribeRwusdRequest): ApiResponse
     {
         return $this->rwusdApi->subscribeRwusd($subscribeRwusdRequest);
+    }
+
+    /**
+     * Operation getYieldArenaActivities.
+     *
+     * Get Yield Arena Activities (USER_DATA)
+     *
+     * @param null|string $lang       Locale tag for &#x60;title&#x60; and &#x60;description&#x60; (e.g. &#x60;en&#x60;, &#x60;zh-CN&#x60;, &#x60;pt-BR&#x60;). Default: &#x60;en&#x60;. If the value is missing, malformed, or has no translation configured, content is returned in &#x60;en&#x60;. (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<GetYieldArenaActivitiesResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getYieldArenaActivities($lang = null, $recvWindow = null): ApiResponse
+    {
+        return $this->yieldArenaApi->getYieldArenaActivities($lang, $recvWindow);
     }
 }

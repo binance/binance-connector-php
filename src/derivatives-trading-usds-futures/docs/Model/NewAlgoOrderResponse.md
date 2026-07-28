@@ -1,4 +1,4 @@
-# # NewAlgoOrderResponse
+# NewAlgoOrderResponse
 
 ## Properties
 
@@ -23,8 +23,8 @@ Name | Type | Description | Notes
 **closePosition** | **bool** |  | [optional]
 **priceProtect** | **bool** |  | [optional]
 **reduceOnly** | **bool** |  | [optional]
-**activatePrice** | **string** |  | [optional]
-**callbackRate** | **string** |  | [optional]
+**activatePrice** | **string** | TRAILING_STOP_MARKET order | [optional]
+**callbackRate** | **string** | TRAILING_STOP_MARKET order | [optional]
 **createTime** | **int** |  | [optional]
 **updateTime** | **int** |  | [optional]
 **triggerTime** | **int** |  | [optional]

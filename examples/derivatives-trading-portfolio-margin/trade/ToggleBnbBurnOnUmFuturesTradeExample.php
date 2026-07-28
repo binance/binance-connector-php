@@ -4,6 +4,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 use Binance\Client\DerivativesTradingPortfolioMargin\Api\DerivativesTradingPortfolioMarginRestApi;
 use Binance\Client\DerivativesTradingPortfolioMargin\DerivativesTradingPortfolioMarginRestApiUtil;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\FeeBurn;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\ToggleBnbBurnOnUmFuturesTradeRequest;
 
 function toggleBnbBurnOnUmFuturesTradeExample()
@@ -12,7 +13,7 @@ function toggleBnbBurnOnUmFuturesTradeExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
     $toggleBnbBurnOnUmFuturesTradeRequest = new ToggleBnbBurnOnUmFuturesTradeRequest();
-    $toggleBnbBurnOnUmFuturesTradeRequest->setFeeBurn('');
+    $toggleBnbBurnOnUmFuturesTradeRequest->setFeeBurn(FeeBurn::TRUE);
     $response = $api->toggleBnbBurnOnUmFuturesTrade($toggleBnbBurnOnUmFuturesTradeRequest);
     print_r($response);
 }

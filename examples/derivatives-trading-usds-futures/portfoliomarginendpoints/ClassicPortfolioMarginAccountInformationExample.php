@@ -10,7 +10,7 @@ function classicPortfolioMarginAccountInformationExample()
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $asset = '';
+    $asset = 'BTC';
     $recvWindow = 5000;
     $response = $api->classicPortfolioMarginAccountInformation($asset, $recvWindow);
     print_r($response);

@@ -1,4 +1,4 @@
-# # QueryPortfolioMarginAssetIndexPriceResponse
+# QueryPortfolioMarginAssetIndexPriceResponse
 
 ## Properties
 

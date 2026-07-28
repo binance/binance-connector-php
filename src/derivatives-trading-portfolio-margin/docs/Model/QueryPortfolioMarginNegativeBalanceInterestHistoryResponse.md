@@ -1,4 +1,4 @@
-# # QueryPortfolioMarginNegativeBalanceInterestHistoryResponse
+# QueryPortfolioMarginNegativeBalanceInterestHistoryResponse
 
 ## Properties
 

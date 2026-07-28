@@ -1,4 +1,4 @@
-# # HashrateResaleListResponse
+# HashrateResaleListResponse
 
 ## Properties
 

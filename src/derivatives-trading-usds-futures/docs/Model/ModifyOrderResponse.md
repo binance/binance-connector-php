@@ -1,4 +1,4 @@
-# # ModifyOrderResponse
+# ModifyOrderResponse
 
 ## Properties
 
@@ -10,11 +10,9 @@ Name | Type | Description | Notes
 **status** | **string** |  | [optional]
 **clientOrderId** | **string** |  | [optional]
 **price** | **string** |  | [optional]
-**avgPrice** | **string** |  | [optional]
 **origQty** | **string** |  | [optional]
 **executedQty** | **string** |  | [optional]
 **cumQty** | **string** |  | [optional]
-**cumBase** | **string** |  | [optional]
 **timeInForce** | **string** |  | [optional]
 **type** | **string** |  | [optional]
 **reduceOnly** | **bool** |  | [optional]
@@ -25,9 +23,9 @@ Name | Type | Description | Notes
 **workingType** | **string** |  | [optional]
 **priceProtect** | **bool** |  | [optional]
 **origType** | **string** |  | [optional]
-**priceMatch** | **string** |  | [optional]
-**selfTradePreventionMode** | **string** |  | [optional]
-**goodTillDate** | **int** |  | [optional]
+**priceMatch** | **string** | price match mode | [optional]
+**selfTradePreventionMode** | **string** | self trading preventation mode | [optional]
+**goodTillDate** | **int** | order pre-set auot cancel time for TIF GTD order | [optional]
 **updateTime** | **int** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

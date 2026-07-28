@@ -1,11 +1,11 @@
-# # GetDetailOnSubAccountsFuturesAccountV2ResponseFutureAccountResp
+# GetDetailOnSubAccountsFuturesAccountV2ResponseFutureAccountResp
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **email** | **string** |  | [optional]
-**assets** | [**\Binance\Client\SubAccount\Model\GetDetailOnSubAccountsFuturesAccountV2ResponseFutureAccountRespAssetsInner[]**](GetDetailOnSubAccountsFuturesAccountV2ResponseFutureAccountRespAssetsInner.md) |  | [optional]
+**assets** | [**\Binance\Client\SubAccount\Model\GetDetailOnSubAccountsFuturesAccountResponseAssetsInner[]**](GetDetailOnSubAccountsFuturesAccountResponseAssetsInner.md) |  | [optional]
 **canDeposit** | **bool** |  | [optional]
 **canTrade** | **bool** |  | [optional]
 **canWithdraw** | **bool** |  | [optional]

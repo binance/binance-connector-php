@@ -1,4 +1,4 @@
-# # VerifyBinanceGiftCardByGiftCardNumberResponse
+# VerifyBinanceGiftCardByGiftCardNumberResponse
 
 ## Properties
 

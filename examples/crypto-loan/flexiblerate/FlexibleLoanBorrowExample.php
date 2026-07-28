@@ -12,8 +12,8 @@ function flexibleLoanBorrowExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new CryptoLoanRestApi($configurationBuilder->build());
     $flexibleLoanBorrowRequest = new FlexibleLoanBorrowRequest();
-    $flexibleLoanBorrowRequest->setLoanCoin('');
-    $flexibleLoanBorrowRequest->setCollateralCoin('');
+    $flexibleLoanBorrowRequest->setLoanCoin('BUSD');
+    $flexibleLoanBorrowRequest->setCollateralCoin('BNB');
     $response = $api->flexibleLoanBorrow($flexibleLoanBorrowRequest);
     print_r($response);
 }

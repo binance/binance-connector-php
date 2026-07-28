@@ -1,4 +1,4 @@
-# # MinNotionalFilter
+# MinNotionalFilter
 
 ## Properties
 

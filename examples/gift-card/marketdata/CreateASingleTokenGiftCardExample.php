@@ -12,8 +12,8 @@ function createASingleTokenGiftCardExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new GiftCardRestApi($configurationBuilder->build());
     $createASingleTokenGiftCardRequest = new CreateASingleTokenGiftCardRequest();
-    $createASingleTokenGiftCardRequest->setToken('');
-    $createASingleTokenGiftCardRequest->setAmount(1.0);
+    $createASingleTokenGiftCardRequest->setToken('BNB');
+    $createASingleTokenGiftCardRequest->setAmount(1);
     $response = $api->createASingleTokenGiftCard($createASingleTokenGiftCardRequest);
     print_r($response);
 }

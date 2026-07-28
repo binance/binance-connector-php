@@ -1,4 +1,4 @@
-# # TimeWeightedAveragePriceFutureAlgoResponse
+# TimeWeightedAveragePriceFutureAlgoResponse
 
 ## Properties
 

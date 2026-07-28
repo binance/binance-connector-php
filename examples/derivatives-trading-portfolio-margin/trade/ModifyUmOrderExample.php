@@ -13,7 +13,7 @@ function modifyUmOrderExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
     $modifyUmOrderRequest = new ModifyUmOrderRequest();
-    $modifyUmOrderRequest->setSymbol('');
+    $modifyUmOrderRequest->setSymbol('BTCUSDT');
     $modifyUmOrderRequest->setSide(Side::BUY);
     $modifyUmOrderRequest->setQuantity(1.0);
     $modifyUmOrderRequest->setPrice(1.0);

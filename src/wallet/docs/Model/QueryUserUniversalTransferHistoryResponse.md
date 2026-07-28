@@ -1,4 +1,4 @@
-# # QueryUserUniversalTransferHistoryResponse
+# QueryUserUniversalTransferHistoryResponse
 
 ## Properties
 

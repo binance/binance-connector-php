@@ -10,7 +10,7 @@ function cancelMultipleOptionOrdersExample()
     $configurationBuilder = DerivativesTradingOptionsRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingOptionsRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTC-200730-9000-C';
     $orderIds = null;
     $clientOrderIds = null;
     $recvWindow = 5000;

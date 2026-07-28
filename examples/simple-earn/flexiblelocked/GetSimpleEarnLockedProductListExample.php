@@ -10,7 +10,7 @@ function getSimpleEarnLockedProductListExample()
     $configurationBuilder = SimpleEarnRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SimpleEarnRestApi($configurationBuilder->build());
-    $asset = '';
+    $asset = 'USDC';
     $current = 1;
     $size = 10;
     $recvWindow = 5000;

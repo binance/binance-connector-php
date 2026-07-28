@@ -1,4 +1,4 @@
-# # GetBnsolRewardsHistoryResponse
+# GetBnsolRewardsHistoryResponse
 
 ## Properties
 

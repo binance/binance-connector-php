@@ -1,5 +1,7 @@
 # Binance\Client\SubAccount\AccountManagementApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -22,7 +24,7 @@ createAVirtualSubAccount($createAVirtualSubAccountRequest): \Binance\Client\SubA
 
 Create a Virtual Sub-account (For Master Account) (USER_DATA)
 
-Create a Virtual Sub-account  * This request will generate a virtual sub account under your master account. * You need to enable \"trade\" option for the API Key which requests this endpoint.  Weight: 1
+Create a Virtual Sub-account  Weight(IP): 1  Security Type: USER_DATA  Notes: - This request generates a virtual sub-account under your master account. - The API key used to call this endpoint must have the `trade` option enabled.
 
 ### Example
 
@@ -78,7 +80,7 @@ enableFuturesForSubAccount($enableFuturesForSubAccountRequest): \Binance\Client\
 
 Enable Futures for Sub-account (For Master Account) (USER_DATA)
 
-Enable Futures for Sub-account for Master Account  Weight: 1
+Enable Futures for Sub-account for Master Account  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -134,7 +136,7 @@ enableOptionsForSubAccount($enableOptionsForSubAccountRequest): \Binance\Client\
 
 Enable Options for Sub-account (For Master Account) (USER_DATA)
 
-Enable Options for Sub-account (For Master Account).  Weight: 1
+Enable Options for Sub-account (For Master Account).  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -190,7 +192,7 @@ getFuturesPositionRiskOfSubAccount($email, $recvWindow): \Binance\Client\SubAcco
 
 Get Futures Position-Risk of Sub-account (For Master Account) (USER_DATA)
 
-Get Futures Position-Risk of Sub-account  Weight: 10
+Get Futures Position-Risk of Sub-account  Weight(IP): 10  Security Type: USER_DATA
 
 ### Example
 
@@ -205,8 +207,8 @@ $apiInstance = new Binance\Client\SubAccount\Api\AccountManagementApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$email = 'email_example'; // string | [Sub-account email](#email-address)
-$recvWindow = 56; // int
+$email = 123@test.com; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getFuturesPositionRiskOfSubAccount($email, $recvWindow);
@@ -220,7 +222,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| [Sub-account email](#email-address) | |
+| **email** | **string**|  | |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -248,7 +250,7 @@ getFuturesPositionRiskOfSubAccountV2($email, $futuresType, $recvWindow): \Binanc
 
 Get Futures Position-Risk of Sub-account V2 (For Master Account) (USER_DATA)
 
-Get Futures Position-Risk of Sub-account V2  Weight: 1
+Get Futures Position-Risk of Sub-account V2  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -263,9 +265,9 @@ $apiInstance = new Binance\Client\SubAccount\Api\AccountManagementApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$email = 'email_example'; // string | [Sub-account email](#email-address)
-$futuresType = 56; // int | 1:USDT-margined Futures，2: Coin-margined Futures
-$recvWindow = 56; // int
+$email = 123@test.com; // string
+$futuresType = 1; // int | 1:USDT-margined Futures，2: Coin-margined Futures
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getFuturesPositionRiskOfSubAccountV2($email, $futuresType, $recvWindow);
@@ -279,7 +281,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| [Sub-account email](#email-address) | |
+| **email** | **string**|  | |
 | **futuresType** | **int**| 1:USDT-margined Futures，2: Coin-margined Futures | |
 | **recvWindow** | **int**|  | [optional] |
 
@@ -308,7 +310,7 @@ getSubAccountsStatusOnMarginOrFutures($email, $recvWindow): \Binance\Client\SubA
 
 Get Sub-account's Status on Margin Or Futures (For Master Account) (USER_DATA)
 
-Get Sub-account's Status on Margin Or Futures  * If no email sent, all sub-accounts' information will be returned.  Weight: 10
+Get Sub-account's Status on Margin Or Futures  Weight(IP): 10  Security Type: USER_DATA  Notes: - If no email sent, all sub-accounts' information will be returned.
 
 ### Example
 
@@ -323,8 +325,8 @@ $apiInstance = new Binance\Client\SubAccount\Api\AccountManagementApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$email = 'email_example'; // string | Managed sub-account email
-$recvWindow = 56; // int
+$email = 123@test.com; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getSubAccountsStatusOnMarginOrFutures($email, $recvWindow);
@@ -338,7 +340,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| Managed sub-account email | [optional] |
+| **email** | **string**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -366,7 +368,7 @@ querySubAccountList($email, $isFreeze, $page, $limit, $recvWindow): \Binance\Cli
 
 Query Sub-account List (For Master Account) (USER_DATA)
 
-Query Sub-account List  Weight: 1
+Query Sub-account List  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -381,11 +383,11 @@ $apiInstance = new Binance\Client\SubAccount\Api\AccountManagementApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$email = 'email_example'; // string | Managed sub-account email
-$isFreeze = 'isFreeze_example'; // string | true or false
-$page = 56; // int | Default value: 1
-$limit = 56; // int | Default value: 1, Max value: 200
-$recvWindow = 56; // int
+$email = 123@test.com; // string
+$isFreeze = true; // string
+$page = 1; // int
+$limit = 10; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->querySubAccountList($email, $isFreeze, $page, $limit, $recvWindow);
@@ -399,10 +401,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| Managed sub-account email | [optional] |
-| **isFreeze** | **string**| true or false | [optional] |
-| **page** | **int**| Default value: 1 | [optional] |
-| **limit** | **int**| Default value: 1, Max value: 200 | [optional] |
+| **email** | **string**|  | [optional] |
+| **isFreeze** | **string**|  | [optional] |
+| **page** | **int**|  | [optional] |
+| **limit** | **int**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -430,7 +432,7 @@ querySubAccountTransactionStatistics($email, $recvWindow): \Binance\Client\SubAc
 
 Query Sub-account Transaction Statistics (For Master Account) (USER_DATA)
 
-Query Sub-account Transaction statistics (For Master Account).  Weight: 60
+Query Sub-account Transaction statistics (For Master Account).  Weight(IP): 60  Security Type: USER_DATA
 
 ### Example
 
@@ -445,8 +447,8 @@ $apiInstance = new Binance\Client\SubAccount\Api\AccountManagementApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$email = 'email_example'; // string | Managed sub-account email
-$recvWindow = 56; // int
+$email = abc@test.com; // string | Managed sub-account email
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->querySubAccountTransactionStatistics($email, $recvWindow);

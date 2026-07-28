@@ -1,4 +1,4 @@
-# # OrderAmendKeepPriorityResponse
+# OrderAmendKeepPriorityResponse
 
 ## Properties
 

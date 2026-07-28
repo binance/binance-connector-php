@@ -29,6 +29,7 @@
 
 namespace Binance\Client\Pay\Test\Api;
 
+use Binance\Client\Pay\Api\DefaultApi;
 use Binance\Client\Pay\Api\PayApi;
 use Binance\Common\Configuration\ClientConfiguration;
 use Binance\Common\Configuration\SignatureConfiguration;
@@ -82,7 +83,7 @@ class PayApiTest extends TestCase
             }))
         ;
 
-        $apiMock = $this->getMockBuilder(PayApi::class)
+        $apiMock = $this->getMockBuilder(DefaultApi::class)
             ->setConstructorArgs([$clientConfig, $clientMock])
             ->onlyMethods(['getTimestamp'])
             ->getMock()

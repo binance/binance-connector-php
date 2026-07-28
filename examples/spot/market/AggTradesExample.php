@@ -13,7 +13,7 @@ function aggTradesExample()
     $fromId = 1;
     $startTime = 1735693200000;
     $endTime = 1735693200000;
-    $limit = 500;
+    $limit = 1;
     $response = $api->aggTrades($symbol, $fromId, $startTime, $endTime, $limit);
     print_r($response);
 }

@@ -13,10 +13,10 @@ function vipLoanBorrowExample()
     $api = new VipLoanRestApi($configurationBuilder->build());
     $vipLoanBorrowRequest = new VipLoanBorrowRequest();
     $vipLoanBorrowRequest->setLoanAccountId(1);
-    $vipLoanBorrowRequest->setLoanCoin('');
+    $vipLoanBorrowRequest->setLoanCoin('BTC');
     $vipLoanBorrowRequest->setLoanAmount(1.0);
-    $vipLoanBorrowRequest->setCollateralAccountId(1);
-    $vipLoanBorrowRequest->setCollateralCoin('');
+    $vipLoanBorrowRequest->setCollateralAccountId('12345678,12345678,12345678');
+    $vipLoanBorrowRequest->setCollateralCoin('BUSD,USDT,ETH');
     $vipLoanBorrowRequest->setIsFlexibleRate(true);
     $response = $api->vipLoanBorrow($vipLoanBorrowRequest);
     print_r($response);

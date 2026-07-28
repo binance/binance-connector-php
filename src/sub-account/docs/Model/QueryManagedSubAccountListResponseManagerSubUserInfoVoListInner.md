@@ -1,4 +1,4 @@
-# # QueryManagedSubAccountListResponseManagerSubUserInfoVoListInner
+# QueryManagedSubAccountListResponseManagerSubUserInfoVoListInner
 
 ## Properties
 

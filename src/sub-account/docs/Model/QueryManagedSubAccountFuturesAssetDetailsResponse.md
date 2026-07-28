@@ -1,4 +1,4 @@
-# # QueryManagedSubAccountFuturesAssetDetailsResponse
+# QueryManagedSubAccountFuturesAssetDetailsResponse
 
 ## Properties
 

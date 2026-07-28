@@ -1,21 +1,21 @@
-# # UserExerciseRecordResponseInner
+# UserExerciseRecordResponseInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional]
-**currency** | **string** |  | [optional]
-**symbol** | **string** |  | [optional]
-**exercisePrice** | **string** |  | [optional]
-**quantity** | **string** |  | [optional]
-**amount** | **string** |  | [optional]
-**fee** | **string** |  | [optional]
-**createDate** | **int** |  | [optional]
-**priceScale** | **int** |  | [optional]
-**quantityScale** | **int** |  | [optional]
-**optionSide** | **string** |  | [optional]
-**positionSide** | **string** |  | [optional]
-**quoteAsset** | **string** |  | [optional]
+**id** | **string** | id | [optional]
+**currency** | **string** | currency | [optional]
+**symbol** | **string** | symbol | [optional]
+**exercisePrice** | **string** | exercise Price | [optional]
+**quantity** | **string** | quantity | [optional]
+**amount** | **string** | amount | [optional]
+**fee** | **string** | fee | [optional]
+**createDate** | **int** | create Date | [optional]
+**priceScale** | **int** | price Scale | [optional]
+**quantityScale** | **int** | quantity Scale | [optional]
+**optionSide** | **string** | option Side | [optional]
+**positionSide** | **string** | position Side | [optional]
+**quoteAsset** | **string** | quote Asset | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

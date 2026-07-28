@@ -29,6 +29,7 @@ use Binance\Client\Staking\Model\GetWbethRewardsHistoryResponse;
 use Binance\Client\Staking\Model\GetWbethUnwrapHistoryResponse;
 use Binance\Client\Staking\Model\GetWbethWrapHistoryResponse;
 use Binance\Client\Staking\Model\OnChainYieldsAccountResponse;
+use Binance\Client\Staking\Model\OrderType;
 use Binance\Client\Staking\Model\RedeemEthRequest;
 use Binance\Client\Staking\Model\RedeemEthResponse;
 use Binance\Client\Staking\Model\RedeemOnChainYieldsLockedProductRequest;
@@ -87,9 +88,9 @@ class StakingRestApi
     /**
      * Operation ethStakingAccount.
      *
-     * ETH Staking account(USER_DATA)
+     * ETH Staking account (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<EthStakingAccountResponse>
      *
@@ -104,9 +105,9 @@ class StakingRestApi
     /**
      * Operation getCurrentEthStakingQuota.
      *
-     * Get current ETH staking quota(USER_DATA)
+     * Get current ETH staking quota (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetCurrentEthStakingQuotaResponse>
      *
@@ -121,14 +122,14 @@ class StakingRestApi
     /**
      * Operation getEthRedemptionHistory.
      *
-     * Get ETH redemption history(USER_DATA)
+     * Get ETH redemption history (USER_DATA)
      *
      * @param null|int $redeemId   redeemId (optional)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $current    Currently querying page (optional)
+     * @param null|int $size       size (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetEthRedemptionHistoryResponse>
      *
@@ -143,14 +144,14 @@ class StakingRestApi
     /**
      * Operation getEthStakingHistory.
      *
-     * Get ETH staking history(USER_DATA)
+     * Get ETH staking history (USER_DATA)
      *
      * @param null|int $purchaseId purchaseId (optional)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $current    Currently querying page (optional)
+     * @param null|int $size       size (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetEthStakingHistoryResponse>
      *
@@ -165,13 +166,13 @@ class StakingRestApi
     /**
      * Operation getWbethRateHistory.
      *
-     * Get WBETH Rate History(USER_DATA)
+     * Get WBETH Rate History (USER_DATA)
      *
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $current    Currently querying page (optional)
+     * @param null|int $size       size (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetWbethRateHistoryResponse>
      *
@@ -186,13 +187,13 @@ class StakingRestApi
     /**
      * Operation getWbethRewardsHistory.
      *
-     * Get WBETH rewards history(USER_DATA)
+     * Get WBETH rewards history (USER_DATA)
      *
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $current    Currently querying page (optional)
+     * @param null|int $size       size (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetWbethRewardsHistoryResponse>
      *
@@ -207,13 +208,13 @@ class StakingRestApi
     /**
      * Operation getWbethUnwrapHistory.
      *
-     * Get WBETH unwrap history(USER_DATA)
+     * Get WBETH unwrap history (USER_DATA)
      *
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $current    Currently querying page (optional)
+     * @param null|int $size       size (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetWbethUnwrapHistoryResponse>
      *
@@ -228,13 +229,13 @@ class StakingRestApi
     /**
      * Operation getWbethWrapHistory.
      *
-     * Get WBETH wrap history(USER_DATA)
+     * Get WBETH wrap history (USER_DATA)
      *
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $current    Currently querying page (optional)
+     * @param null|int $size       size (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetWbethWrapHistoryResponse>
      *
@@ -249,7 +250,7 @@ class StakingRestApi
     /**
      * Operation redeemEth.
      *
-     * Redeem ETH(TRADE)
+     * Redeem ETH (TRADE)
      *
      * @param RedeemEthRequest $redeemEthRequest redeemEthRequest (required)
      *
@@ -266,7 +267,7 @@ class StakingRestApi
     /**
      * Operation subscribeEthStaking.
      *
-     * Subscribe ETH Staking(TRADE)
+     * Subscribe ETH Staking (TRADE)
      *
      * @param SubscribeEthStakingRequest $subscribeEthStakingRequest subscribeEthStakingRequest (required)
      *
@@ -283,7 +284,7 @@ class StakingRestApi
     /**
      * Operation wrapBeth.
      *
-     * Wrap BETH(TRADE)
+     * Wrap BETH (TRADE)
      *
      * @param WrapBethRequest $wrapBethRequest wrapBethRequest (required)
      *
@@ -303,7 +304,7 @@ class StakingRestApi
      * Get On-chain Yields Locked Personal Left Quota (USER_DATA)
      *
      * @param string   $projectId  projectId (required)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetOnChainYieldsLockedPersonalLeftQuotaResponse>
      *
@@ -321,9 +322,9 @@ class StakingRestApi
      * Get On-chain Yields Locked Product List (USER_DATA)
      *
      * @param null|string $asset      asset (optional)
-     * @param null|int    $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page (optional)
+     * @param null|int    $size       Number of results per page. (optional)
+     * @param null|int    $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetOnChainYieldsLockedProductListResponse>
      *
@@ -343,9 +344,9 @@ class StakingRestApi
      * @param null|string $asset      asset (optional)
      * @param null|string $positionId positionId (optional)
      * @param null|string $projectId  projectId (optional)
-     * @param null|int    $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page (optional)
+     * @param null|int    $size       Number of results per page. (optional)
+     * @param null|int    $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetOnChainYieldsLockedProductPositionResponse>
      *
@@ -367,9 +368,9 @@ class StakingRestApi
      * @param null|string $asset      asset (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page (optional)
+     * @param null|int    $size       size (optional)
+     * @param null|int    $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetOnChainYieldsLockedRedemptionRecordResponse>
      *
@@ -390,9 +391,9 @@ class StakingRestApi
      * @param null|string $asset      asset (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page (optional)
+     * @param null|int    $size       size (optional)
+     * @param null|int    $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetOnChainYieldsLockedRewardsHistoryResponse>
      *
@@ -411,8 +412,8 @@ class StakingRestApi
      *
      * @param string    $projectId     projectId (required)
      * @param float     $amount        amount (required)
-     * @param null|bool $autoSubscribe true or false, default true. (optional)
-     * @param null|int  $recvWindow    recvWindow (optional)
+     * @param null|bool $autoSubscribe autoSubscribe (optional)
+     * @param null|int  $recvWindow    Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetOnChainYieldsLockedSubscriptionPreviewResponse>
      *
@@ -434,9 +435,9 @@ class StakingRestApi
      * @param null|string $asset      asset (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page (optional)
+     * @param null|int    $size       size (optional)
+     * @param null|int    $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetOnChainYieldsLockedSubscriptionRecordResponse>
      *
@@ -453,7 +454,7 @@ class StakingRestApi
      *
      * On-chain Yields Account (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
      *
      * @return ApiResponse<OnChainYieldsAccountResponse>
      *
@@ -485,7 +486,7 @@ class StakingRestApi
     /**
      * Operation setOnChainYieldsLockedAutoSubscribe.
      *
-     * Set On-chain Yields Locked Auto Subscribe(USER_DATA)
+     * Set On-chain Yields Locked Auto Subscribe (USER_DATA)
      *
      * @param SetOnChainYieldsLockedAutoSubscribeRequest $setOnChainYieldsLockedAutoSubscribeRequest setOnChainYieldsLockedAutoSubscribeRequest (required)
      *
@@ -502,7 +503,7 @@ class StakingRestApi
     /**
      * Operation setOnChainYieldsLockedProductRedeemOption.
      *
-     * Set On-chain Yields Locked Product Redeem Option(USER_DATA)
+     * Set On-chain Yields Locked Product Redeem Option (USER_DATA)
      *
      * @param SetOnChainYieldsLockedProductRedeemOptionRequest $setOnChainYieldsLockedProductRedeemOptionRequest setOnChainYieldsLockedProductRedeemOptionRequest (required)
      *
@@ -519,7 +520,7 @@ class StakingRestApi
     /**
      * Operation subscribeOnChainYieldsLockedProduct.
      *
-     * Subscribe On-chain Yields Locked Product(TRADE)
+     * Subscribe On-chain Yields Locked Product (TRADE)
      *
      * @param SubscribeOnChainYieldsLockedProductRequest $subscribeOnChainYieldsLockedProductRequest subscribeOnChainYieldsLockedProductRequest (required)
      *
@@ -539,9 +540,9 @@ class StakingRestApi
      * Get Soft Staking Product List (USER_DATA)
      *
      * @param null|string $asset      asset (optional)
-     * @param null|int    $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page (optional)
+     * @param null|int    $size       size (optional)
+     * @param null|int    $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetSoftStakingProductListResponse>
      *
@@ -556,14 +557,14 @@ class StakingRestApi
     /**
      * Operation getSoftStakingRewardsHistory.
      *
-     * Get Soft Staking Rewards History(USER_DATA)
+     * Get Soft Staking Rewards History (USER_DATA)
      *
      * @param null|string $asset      asset (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10, Max:100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $current    Currently querying page (optional)
+     * @param null|int    $size       size (optional)
+     * @param null|int    $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetSoftStakingRewardsHistoryResponse>
      *
@@ -580,8 +581,8 @@ class StakingRestApi
      *
      * Set Soft Staking (USER_DATA)
      *
-     * @param bool     $softStaking true or false (required)
-     * @param null|int $recvWindow  recvWindow (optional)
+     * @param bool     $softStaking softStaking (required)
+     * @param null|int $recvWindow  Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<SetSoftStakingResponse>
      *
@@ -596,16 +597,16 @@ class StakingRestApi
     /**
      * Operation claimBoostRewards.
      *
-     * Claim Boost Rewards(TRADE)
+     * Claim Boost Rewards (TRADE)
      *
-     * @param ClaimBoostRewardsRequest $claimBoostRewardsRequest claimBoostRewardsRequest (required)
+     * @param null|ClaimBoostRewardsRequest $claimBoostRewardsRequest claimBoostRewardsRequest (optional)
      *
      * @return ApiResponse<ClaimBoostRewardsResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function claimBoostRewards($claimBoostRewardsRequest): ApiResponse
+    public function claimBoostRewards($claimBoostRewardsRequest = null): ApiResponse
     {
         return $this->solStakingApi->claimBoostRewards($claimBoostRewardsRequest);
     }
@@ -613,13 +614,13 @@ class StakingRestApi
     /**
      * Operation getBnsolRateHistory.
      *
-     * Get BNSOL Rate History(USER_DATA)
+     * Get BNSOL Rate History (USER_DATA)
      *
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $current    Currently querying page (optional)
+     * @param null|int $size       size (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<GetBnsolRateHistoryResponse>
      *
@@ -634,13 +635,13 @@ class StakingRestApi
     /**
      * Operation getBnsolRewardsHistory.
      *
-     * Get BNSOL rewards history(USER_DATA)
+     * Get BNSOL rewards history (USER_DATA)
      *
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $current    Currently querying page (optional)
+     * @param null|int $size       size (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetBnsolRewardsHistoryResponse>
      *
@@ -655,14 +656,14 @@ class StakingRestApi
     /**
      * Operation getBoostRewardsHistory.
      *
-     * Get Boost Rewards History(USER_DATA)
+     * Get Boost Rewards History (USER_DATA)
      *
-     * @param string   $type       \&quot;CLAIM\&quot;, \&quot;DISTRIBUTE\&quot;, default \&quot;CLAIM\&quot; (required)
-     * @param null|int $startTime  startTime (optional)
-     * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param OrderType $type       type (required)
+     * @param null|int  $startTime  startTime (optional)
+     * @param null|int  $endTime    endTime (optional)
+     * @param null|int  $current    Currently querying page (optional)
+     * @param null|int  $size       size (optional)
+     * @param null|int  $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetBoostRewardsHistoryResponse>
      *
@@ -677,14 +678,14 @@ class StakingRestApi
     /**
      * Operation getSolRedemptionHistory.
      *
-     * Get SOL redemption history(USER_DATA)
+     * Get SOL redemption history (USER_DATA)
      *
      * @param null|int $redeemId   redeemId (optional)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $current    Currently querying page (optional)
+     * @param null|int $size       size (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetSolRedemptionHistoryResponse>
      *
@@ -699,14 +700,14 @@ class StakingRestApi
     /**
      * Operation getSolStakingHistory.
      *
-     * Get SOL staking history(USER_DATA)
+     * Get SOL staking history (USER_DATA)
      *
      * @param null|int $purchaseId purchaseId (optional)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10, Max:100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $current    Currently querying page (optional)
+     * @param null|int $size       size (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetSolStakingHistoryResponse>
      *
@@ -721,9 +722,9 @@ class StakingRestApi
     /**
      * Operation getSolStakingQuotaDetails.
      *
-     * Get SOL staking quota details(USER_DATA)
+     * Get SOL staking quota details (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<GetSolStakingQuotaDetailsResponse>
      *
@@ -738,9 +739,9 @@ class StakingRestApi
     /**
      * Operation getUnclaimedRewards.
      *
-     * Get Unclaimed Rewards(USER_DATA)
+     * Get Unclaimed Rewards (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds. (optional)
      *
      * @return ApiResponse<GetUnclaimedRewardsResponse>
      *
@@ -755,7 +756,7 @@ class StakingRestApi
     /**
      * Operation redeemSol.
      *
-     * Redeem SOL(TRADE)
+     * Redeem SOL (TRADE)
      *
      * @param RedeemSolRequest $redeemSolRequest redeemSolRequest (required)
      *
@@ -772,9 +773,9 @@ class StakingRestApi
     /**
      * Operation solStakingAccount.
      *
-     * SOL Staking account(USER_DATA)
+     * SOL Staking account (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<SolStakingAccountResponse>
      *
@@ -789,7 +790,7 @@ class StakingRestApi
     /**
      * Operation subscribeSolStaking.
      *
-     * Subscribe SOL Staking(TRADE)
+     * Subscribe SOL Staking (TRADE)
      *
      * @param SubscribeSolStakingRequest $subscribeSolStakingRequest subscribeSolStakingRequest (required)
      *

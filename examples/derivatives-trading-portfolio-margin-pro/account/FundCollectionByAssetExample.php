@@ -12,7 +12,7 @@ function fundCollectionByAssetExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginProRestApi($configurationBuilder->build());
     $fundCollectionByAssetRequest = new FundCollectionByAssetRequest();
-    $fundCollectionByAssetRequest->setAsset('');
+    $fundCollectionByAssetRequest->setAsset('USDT');
     $response = $api->fundCollectionByAsset($fundCollectionByAssetRequest);
     print_r($response);
 }

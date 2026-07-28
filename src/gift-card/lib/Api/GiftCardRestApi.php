@@ -31,7 +31,7 @@ class GiftCardRestApi
     /**
      * Operation createADualTokenGiftCard.
      *
-     * Create a dual-token gift card(fixed value, discount feature)(TRADE)
+     * Create a dual-token gift card (fixed value, discount feature) (TRADE)
      *
      * @param CreateADualTokenGiftCardRequest $createADualTokenGiftCardRequest createADualTokenGiftCardRequest (required)
      *
@@ -65,7 +65,7 @@ class GiftCardRestApi
     /**
      * Operation fetchRsaPublicKey.
      *
-     * Fetch RSA Public Key(USER_DATA)
+     * Fetch RSA Public Key (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -82,7 +82,7 @@ class GiftCardRestApi
     /**
      * Operation fetchTokenLimit.
      *
-     * Fetch Token Limit(USER_DATA)
+     * Fetch Token Limit (USER_DATA)
      *
      * @param string   $baseToken  The token you want to pay, example: BUSD (required)
      * @param null|int $recvWindow recvWindow (optional)
@@ -100,7 +100,7 @@ class GiftCardRestApi
     /**
      * Operation redeemABinanceGiftCard.
      *
-     * Redeem a Binance Gift Card(USER_DATA)
+     * Redeem a Binance Gift Card (USER_DATA)
      *
      * @param RedeemABinanceGiftCardRequest $redeemABinanceGiftCardRequest redeemABinanceGiftCardRequest (required)
      *
@@ -117,7 +117,7 @@ class GiftCardRestApi
     /**
      * Operation verifyBinanceGiftCardByGiftCardNumber.
      *
-     * Verify Binance Gift Card by Gift Card Number(USER_DATA)
+     * Verify Binance Gift Card by Gift Card Number (USER_DATA)
      *
      * @param string   $referenceNo Enter the Gift Card Number (required)
      * @param null|int $recvWindow  recvWindow (optional)

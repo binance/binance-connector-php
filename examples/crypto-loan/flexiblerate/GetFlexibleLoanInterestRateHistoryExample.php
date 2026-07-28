@@ -10,7 +10,7 @@ function getFlexibleLoanInterestRateHistoryExample()
     $configurationBuilder = CryptoLoanRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new CryptoLoanRestApi($configurationBuilder->build());
-    $coin = '';
+    $coin = 'USDT';
     $recvWindow = 5000;
     $startTime = 1623319461670;
     $endTime = 1641782889000;

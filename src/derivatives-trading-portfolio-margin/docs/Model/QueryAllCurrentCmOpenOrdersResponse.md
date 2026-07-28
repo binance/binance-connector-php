@@ -1,4 +1,4 @@
-# # QueryAllCurrentCmOpenOrdersResponse
+# QueryAllCurrentCmOpenOrdersResponse
 
 ## Properties
 

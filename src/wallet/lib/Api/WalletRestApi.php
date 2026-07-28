@@ -5,6 +5,7 @@ namespace Binance\Client\Wallet\Api;
 use Binance\Client\Wallet\Model\AccountApiTradingStatusResponse;
 use Binance\Client\Wallet\Model\AccountInfoResponse;
 use Binance\Client\Wallet\Model\AccountStatusResponse;
+use Binance\Client\Wallet\Model\AccountType;
 use Binance\Client\Wallet\Model\AllCoinsInformationResponse;
 use Binance\Client\Wallet\Model\AssetDetailResponse;
 use Binance\Client\Wallet\Model\AssetDividendRecordResponse;
@@ -29,6 +30,7 @@ use Binance\Client\Wallet\Model\FetchAddressVerificationListResponse;
 use Binance\Client\Wallet\Model\FetchDepositAddressListWithNetworkResponse;
 use Binance\Client\Wallet\Model\FetchWithdrawAddressListResponse;
 use Binance\Client\Wallet\Model\FetchWithdrawQuotaResponse;
+use Binance\Client\Wallet\Model\FromSymbol;
 use Binance\Client\Wallet\Model\FundingWalletRequest;
 use Binance\Client\Wallet\Model\FundingWalletResponse;
 use Binance\Client\Wallet\Model\GetApiKeyPermissionResponse;
@@ -41,9 +43,11 @@ use Binance\Client\Wallet\Model\GetRegionListResponse;
 use Binance\Client\Wallet\Model\GetSymbolsDelistScheduleForSpotResponse;
 use Binance\Client\Wallet\Model\OneClickArrivalDepositApplyRequest;
 use Binance\Client\Wallet\Model\OneClickArrivalDepositApplyResponse;
+use Binance\Client\Wallet\Model\OrderType;
 use Binance\Client\Wallet\Model\QueryUserDelegationHistoryResponse;
 use Binance\Client\Wallet\Model\QueryUserUniversalTransferHistoryResponse;
 use Binance\Client\Wallet\Model\QueryUserWalletBalanceResponse;
+use Binance\Client\Wallet\Model\Status;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireRequest;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireResponse;
 use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireTravelRuleRequest;
@@ -53,6 +57,7 @@ use Binance\Client\Wallet\Model\SubmitDepositQuestionnaireV2Response;
 use Binance\Client\Wallet\Model\SystemStatusResponse;
 use Binance\Client\Wallet\Model\ToggleBnbBurnOnSpotTradeAndMarginInterestRequest;
 use Binance\Client\Wallet\Model\ToggleBnbBurnOnSpotTradeAndMarginInterestResponse;
+use Binance\Client\Wallet\Model\ToSymbol;
 use Binance\Client\Wallet\Model\TradeFeeResponse;
 use Binance\Client\Wallet\Model\UserAssetRequest;
 use Binance\Client\Wallet\Model\UserAssetResponse;
@@ -163,11 +168,11 @@ class WalletRestApi
      *
      * Daily Account Snapshot (USER_DATA)
      *
-     * @param string   $type       type (required)
-     * @param null|int $startTime  startTime (optional)
-     * @param null|int $endTime    endTime (optional)
-     * @param null|int $limit      min 7, max 30, default 7 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param OrderType $type       type (required)
+     * @param null|int  $startTime  startTime (optional)
+     * @param null|int  $endTime    endTime (optional)
+     * @param null|int  $limit      limit (optional)
+     * @param null|int  $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<DailyAccountSnapshotResponse>
      *
@@ -184,12 +189,12 @@ class WalletRestApi
      *
      * Disable Fast Withdraw Switch (USER_DATA)
      *
-     * @param DisableFastWithdrawSwitchRequest $disableFastWithdrawSwitchRequest disableFastWithdrawSwitchRequest (required)
+     * @param null|DisableFastWithdrawSwitchRequest $disableFastWithdrawSwitchRequest disableFastWithdrawSwitchRequest (optional)
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function disableFastWithdrawSwitch($disableFastWithdrawSwitchRequest)
+    public function disableFastWithdrawSwitch($disableFastWithdrawSwitchRequest = null)
     {
         $this->accountApi->disableFastWithdrawSwitch($disableFastWithdrawSwitchRequest);
     }
@@ -199,12 +204,12 @@ class WalletRestApi
      *
      * Enable Fast Withdraw Switch (USER_DATA)
      *
-     * @param EnableFastWithdrawSwitchRequest $enableFastWithdrawSwitchRequest enableFastWithdrawSwitchRequest (required)
+     * @param null|EnableFastWithdrawSwitchRequest $enableFastWithdrawSwitchRequest enableFastWithdrawSwitchRequest (optional)
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function enableFastWithdrawSwitch($enableFastWithdrawSwitchRequest)
+    public function enableFastWithdrawSwitch($enableFastWithdrawSwitchRequest = null)
     {
         $this->accountApi->enableFastWithdrawSwitch($enableFastWithdrawSwitchRequest);
     }
@@ -252,7 +257,7 @@ class WalletRestApi
      * @param null|string $asset      asset (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $limit      min 7, max 30, default 7 (optional)
+     * @param null|int    $limit      limit (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<AssetDividendRecordResponse>
@@ -319,12 +324,12 @@ class WalletRestApi
     /**
      * Operation dustlog.
      *
-     * DustLog(USER_DATA)
+     * DustLog (USER_DATA)
      *
-     * @param null|string $accountType &#x60;SPOT&#x60;or&#x60;MARGIN&#x60;,default&#x60;SPOT&#x60; (optional)
-     * @param null|int    $startTime   startTime (optional)
-     * @param null|int    $endTime     endTime (optional)
-     * @param null|int    $recvWindow  recvWindow (optional)
+     * @param null|AccountType $accountType accountType (optional)
+     * @param null|int         $startTime   startTime (optional)
+     * @param null|int         $endTime     endTime (optional)
+     * @param null|int         $recvWindow  recvWindow (optional)
      *
      * @return ApiResponse<DustlogResponse>
      *
@@ -341,14 +346,14 @@ class WalletRestApi
      *
      * Funding Wallet (USER_DATA)
      *
-     * @param FundingWalletRequest $fundingWalletRequest fundingWalletRequest (required)
+     * @param null|FundingWalletRequest $fundingWalletRequest fundingWalletRequest (optional)
      *
      * @return ApiResponse<FundingWalletResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function fundingWallet($fundingWalletRequest): ApiResponse
+    public function fundingWallet($fundingWalletRequest = null): ApiResponse
     {
         return $this->assetApi->fundingWallet($fundingWalletRequest);
     }
@@ -358,14 +363,14 @@ class WalletRestApi
      *
      * Get Assets That Can Be Converted Into BNB (USER_DATA)
      *
-     * @param GetAssetsThatCanBeConvertedIntoBnbRequest $getAssetsThatCanBeConvertedIntoBnbRequest getAssetsThatCanBeConvertedIntoBnbRequest (required)
+     * @param null|GetAssetsThatCanBeConvertedIntoBnbRequest $getAssetsThatCanBeConvertedIntoBnbRequest getAssetsThatCanBeConvertedIntoBnbRequest (optional)
      *
      * @return ApiResponse<GetAssetsThatCanBeConvertedIntoBnbResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getAssetsThatCanBeConvertedIntoBnb($getAssetsThatCanBeConvertedIntoBnbRequest): ApiResponse
+    public function getAssetsThatCanBeConvertedIntoBnb($getAssetsThatCanBeConvertedIntoBnbRequest = null): ApiResponse
     {
         return $this->assetApi->getAssetsThatCanBeConvertedIntoBnb($getAssetsThatCanBeConvertedIntoBnbRequest);
     }
@@ -375,13 +380,13 @@ class WalletRestApi
      *
      * Get Cloud-Mining payment and refund history (USER_DATA)
      *
-     * @param int         $startTime    startTime (required)
-     * @param int         $endTime      endTime (required)
+     * @param int         $startTime    inclusive, unit: ms (required)
+     * @param int         $endTime      exclusive, unit: ms (required)
      * @param null|int    $tranId       The transaction id (optional)
      * @param null|string $clientTranId The unique flag (optional)
-     * @param null|string $asset        asset (optional)
-     * @param null|int    $current      current page, default 1, the min value is 1 (optional)
-     * @param null|int    $size         page size, default 10, the max value is 100 (optional)
+     * @param null|string $asset        If it is blank, we will query all assets (optional)
+     * @param null|int    $current      current (optional)
+     * @param null|int    $size         size (optional)
      *
      * @return ApiResponse<GetCloudMiningPaymentAndRefundHistoryResponse>
      *
@@ -411,16 +416,16 @@ class WalletRestApi
     /**
      * Operation queryUserDelegationHistory.
      *
-     * Query User Delegation History(For Master Account)(USER_DATA)
+     * Query User Delegation History(For Master Account) (USER_DATA)
      *
-     * @param string      $email      email (required)
-     * @param int         $startTime  startTime (required)
-     * @param int         $endTime    endTime (required)
-     * @param null|string $type       Delegate/Undelegate (optional)
-     * @param null|string $asset      asset (optional)
-     * @param null|int    $current    current page, default 1, the min value is 1 (optional)
-     * @param null|int    $size       page size, default 10, the max value is 100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param string         $email      email (required)
+     * @param int            $startTime  startTime (required)
+     * @param int            $endTime    endTime (required)
+     * @param null|OrderType $type       type (optional)
+     * @param null|string    $asset      asset (optional)
+     * @param null|int       $current    current (optional)
+     * @param null|int       $size       size (optional)
+     * @param null|int       $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryUserDelegationHistoryResponse>
      *
@@ -435,16 +440,16 @@ class WalletRestApi
     /**
      * Operation queryUserUniversalTransferHistory.
      *
-     * Query User Universal Transfer History(USER_DATA)
+     * Query User Universal Transfer History (USER_DATA)
      *
-     * @param string      $type       type (required)
-     * @param null|int    $startTime  startTime (optional)
-     * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $current    current page, default 1, the min value is 1 (optional)
-     * @param null|int    $size       page size, default 10, the max value is 100 (optional)
-     * @param null|string $fromSymbol fromSymbol (optional)
-     * @param null|string $toSymbol   toSymbol (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param string          $type       type (required)
+     * @param null|int        $startTime  startTime (optional)
+     * @param null|int        $endTime    endTime (optional)
+     * @param null|int        $current    current (optional)
+     * @param null|int        $size       size (optional)
+     * @param null|FromSymbol $fromSymbol fromSymbol (optional)
+     * @param null|ToSymbol   $toSymbol   toSymbol (optional)
+     * @param null|int        $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryUserUniversalTransferHistoryResponse>
      *
@@ -461,7 +466,7 @@ class WalletRestApi
      *
      * Query User Wallet Balance (USER_DATA)
      *
-     * @param null|string $quoteAsset &#x60;USDT&#x60;, &#x60;ETH&#x60;, &#x60;USDC&#x60;, &#x60;BNB&#x60;, etc. default &#x60;BTC&#x60; (optional)
+     * @param null|string $quoteAsset quoteAsset (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryUserWalletBalanceResponse>
@@ -479,14 +484,14 @@ class WalletRestApi
      *
      * Toggle BNB Burn On Spot Trade And Margin Interest (USER_DATA)
      *
-     * @param ToggleBnbBurnOnSpotTradeAndMarginInterestRequest $toggleBnbBurnOnSpotTradeAndMarginInterestRequest toggleBnbBurnOnSpotTradeAndMarginInterestRequest (required)
+     * @param null|ToggleBnbBurnOnSpotTradeAndMarginInterestRequest $toggleBnbBurnOnSpotTradeAndMarginInterestRequest toggleBnbBurnOnSpotTradeAndMarginInterestRequest (optional)
      *
      * @return ApiResponse<ToggleBnbBurnOnSpotTradeAndMarginInterestResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function toggleBnbBurnOnSpotTradeAndMarginInterest($toggleBnbBurnOnSpotTradeAndMarginInterestRequest): ApiResponse
+    public function toggleBnbBurnOnSpotTradeAndMarginInterest($toggleBnbBurnOnSpotTradeAndMarginInterestRequest = null): ApiResponse
     {
         return $this->assetApi->toggleBnbBurnOnSpotTradeAndMarginInterest($toggleBnbBurnOnSpotTradeAndMarginInterestRequest);
     }
@@ -514,14 +519,14 @@ class WalletRestApi
      *
      * User Asset (USER_DATA)
      *
-     * @param UserAssetRequest $userAssetRequest userAssetRequest (required)
+     * @param null|UserAssetRequest $userAssetRequest userAssetRequest (optional)
      *
      * @return ApiResponse<UserAssetResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function userAsset($userAssetRequest): ApiResponse
+    public function userAsset($userAssetRequest = null): ApiResponse
     {
         return $this->assetApi->userAsset($userAssetRequest);
     }
@@ -585,13 +590,13 @@ class WalletRestApi
      *
      * Deposit History (supporting network) (USER_DATA)
      *
-     * @param null|bool   $includeSource Default: &#x60;false&#x60;, return &#x60;sourceAddress&#x60;field when set to &#x60;true&#x60; (optional)
+     * @param null|bool   $includeSource return &#x60;sourceAddress&#x60; field when set to &#x60;true&#x60; (optional)
      * @param null|string $coin          coin (optional)
-     * @param null|int    $status        0(0:Email Sent, 2:Awaiting Approval 3:Rejected 4:Processing 6:Completed) (optional)
-     * @param null|int    $startTime     startTime (optional)
-     * @param null|int    $endTime       endTime (optional)
-     * @param null|int    $offset        Default: 0 (optional)
-     * @param null|int    $limit         min 7, max 30, default 7 (optional)
+     * @param null|Status $status        0: pending, 6: credited but cannot withdraw, 7: Wrong Deposit, 8: Waiting User confirm, 1: success (optional)
+     * @param null|int    $startTime     Default: 90 days from current timestamp (optional)
+     * @param null|int    $endTime       Default: present timestamp (optional)
+     * @param null|int    $offset        offset (optional)
+     * @param null|int    $limit         limit (optional)
      * @param null|int    $recvWindow    recvWindow (optional)
      * @param null|string $txId          txId (optional)
      *
@@ -608,10 +613,10 @@ class WalletRestApi
     /**
      * Operation fetchDepositAddressListWithNetwork.
      *
-     * Fetch deposit address list with network(USER_DATA)
+     * Fetch deposit address list with network (USER_DATA)
      *
-     * @param string      $coin    &#x60;coin&#x60; refers to the parent network address format that the address is using (required)
-     * @param null|string $network network (optional)
+     * @param string      $coin    Coin name (required)
+     * @param null|string $network If network is not send, return with default network of the coin. You can get network and isDefault in networkList in the response of &#x60;Get /sapi/v1/capital/config/getall&#x60; (optional)
      *
      * @return ApiResponse<FetchDepositAddressListWithNetworkResponse>
      *
@@ -658,14 +663,14 @@ class WalletRestApi
      *
      * One click arrival deposit apply (for expired address deposit) (USER_DATA)
      *
-     * @param OneClickArrivalDepositApplyRequest $oneClickArrivalDepositApplyRequest oneClickArrivalDepositApplyRequest (required)
+     * @param null|OneClickArrivalDepositApplyRequest $oneClickArrivalDepositApplyRequest oneClickArrivalDepositApplyRequest (optional)
      *
      * @return ApiResponse<OneClickArrivalDepositApplyResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function oneClickArrivalDepositApply($oneClickArrivalDepositApplyRequest): ApiResponse
+    public function oneClickArrivalDepositApply($oneClickArrivalDepositApplyRequest = null): ApiResponse
     {
         return $this->capitalApi->oneClickArrivalDepositApply($oneClickArrivalDepositApplyRequest);
     }
@@ -673,7 +678,7 @@ class WalletRestApi
     /**
      * Operation withdraw.
      *
-     * Withdraw(USER_DATA)
+     * Withdraw (USER_DATA)
      *
      * @param WithdrawRequest $withdrawRequest withdrawRequest (required)
      *
@@ -696,10 +701,10 @@ class WalletRestApi
      * @param null|string $withdrawOrderId client side id for withdrawal, if provided in POST &#x60;/sapi/v1/capital/withdraw/apply&#x60;, can be used here for query. (optional)
      * @param null|int    $status          0(0:Email Sent, 2:Awaiting Approval 3:Rejected 4:Processing 6:Completed) (optional)
      * @param null|int    $offset          Default: 0 (optional)
-     * @param null|int    $limit           min 7, max 30, default 7 (optional)
+     * @param null|int    $limit           limit (optional)
      * @param null|string $idList          id list returned in the response of POST &#x60;/sapi/v1/capital/withdraw/apply&#x60;, separated by &#x60;,&#x60; (optional)
-     * @param null|int    $startTime       startTime (optional)
-     * @param null|int    $endTime         endTime (optional)
+     * @param null|int    $startTime       Default: 90 days from current timestamp (optional)
+     * @param null|int    $endTime         Default: present timestamp (optional)
      * @param null|int    $recvWindow      recvWindow (optional)
      *
      * @return ApiResponse<WithdrawHistoryResponse>
@@ -715,7 +720,7 @@ class WalletRestApi
     /**
      * Operation getSymbolsDelistScheduleForSpot.
      *
-     * Get symbols delist schedule for spot (MARKET_DATA)
+     * Get Spot Delist Schedule (MARKET_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -732,7 +737,7 @@ class WalletRestApi
     /**
      * Operation systemStatus.
      *
-     * System Status (System)
+     * System Status
      *
      * @return ApiResponse<SystemStatusResponse>
      *
@@ -781,19 +786,19 @@ class WalletRestApi
     /**
      * Operation depositHistoryTravelRule.
      *
-     * Deposit History (for local entities that required travel rule) (supporting network) (USER_DATA)
+     * Deposit History Travel Rule (for local entities that required travel rule) (supporting network) (USER_DATA)
      *
      * @param null|string $trId                 Comma(,) separated list of travel rule record Ids. (optional)
-     * @param null|string $txId                 txId (optional)
+     * @param null|string $txId                 Comma(,) separated list of transaction Ids. (optional)
      * @param null|string $tranId               Comma(,) separated list of wallet tran Ids. (optional)
      * @param null|string $network              network (optional)
      * @param null|string $coin                 coin (optional)
      * @param null|int    $travelRuleStatus     0:Completed,1:Pending,2:Failed (optional)
      * @param null|bool   $pendingQuestionnaire true: Only return records that pending deposit questionnaire. false/not provided: return all records. (optional)
-     * @param null|int    $startTime            startTime (optional)
-     * @param null|int    $endTime              endTime (optional)
+     * @param null|int    $startTime            Default: 90 days from current timestamp (optional)
+     * @param null|int    $endTime              Default: present timestamp (optional)
      * @param null|int    $offset               Default: 0 (optional)
-     * @param null|int    $limit                min 7, max 30, default 7 (optional)
+     * @param null|int    $limit                limit (optional)
      *
      * @return ApiResponse<DepositHistoryTravelRuleResponse>
      *
@@ -811,14 +816,14 @@ class WalletRestApi
      * Deposit History V2 (for local entities that required travel rule) (supporting network) (USER_DATA)
      *
      * @param null|int    $depositId             Comma(,) separated list of wallet tran Ids. (optional)
-     * @param null|string $txId                  txId (optional)
+     * @param null|string $txId                  Comma(,) separated list of transaction Ids. (optional)
      * @param null|string $network               network (optional)
      * @param null|string $coin                  coin (optional)
      * @param null|bool   $retrieveQuestionnaire true: return &#x60;questionnaire&#x60; within response. (optional)
-     * @param null|int    $startTime             startTime (optional)
-     * @param null|int    $endTime               endTime (optional)
-     * @param null|int    $offset                Default: 0 (optional)
-     * @param null|int    $limit                 min 7, max 30, default 7 (optional)
+     * @param null|int    $startTime             Default: 90 days from current timestamp (optional)
+     * @param null|int    $endTime               Default: present timestamp (optional)
+     * @param null|int    $offset                offset (optional)
+     * @param null|int    $limit                 limit (optional)
      *
      * @return ApiResponse<DepositHistoryV2Response>
      *
@@ -852,14 +857,16 @@ class WalletRestApi
      *
      * Get Country List (USER_DATA)
      *
+     * @param null|int $recvWindow recvWindow (optional)
+     *
      * @return ApiResponse<GetCountryListResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getCountryList(): ApiResponse
+    public function getCountryList($recvWindow = null): ApiResponse
     {
-        return $this->travelRuleApi->getCountryList();
+        return $this->travelRuleApi->getCountryList($recvWindow);
     }
 
     /**
@@ -867,22 +874,23 @@ class WalletRestApi
      *
      * Get Region List (USER_DATA)
      *
-     * @param string $countryCode ISO 2-digit country code (from &#x60;Country List&#x60; API). (required)
+     * @param string   $countryCode ISO 2-digit country code (from Country List API). (required)
+     * @param null|int $recvWindow  recvWindow (optional)
      *
      * @return ApiResponse<GetRegionListResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getRegionList($countryCode): ApiResponse
+    public function getRegionList($countryCode, $recvWindow = null): ApiResponse
     {
-        return $this->travelRuleApi->getRegionList($countryCode);
+        return $this->travelRuleApi->getRegionList($countryCode, $recvWindow);
     }
 
     /**
      * Operation submitDepositQuestionnaire.
      *
-     * Submit Deposit Questionnaire (For local entities that require travel rule) (supporting network) (USER_DATA)
+     * Submit Deposit Questionnaire Broker (For local entities that require travel rule) (supporting network) (USER_DATA)
      *
      * @param SubmitDepositQuestionnaireRequest $submitDepositQuestionnaireRequest submitDepositQuestionnaireRequest (required)
      *
@@ -950,18 +958,18 @@ class WalletRestApi
     /**
      * Operation withdrawHistoryV1.
      *
-     * Withdraw History (for local entities that require travel rule) (supporting network) (USER_DATA)
+     * Withdraw History Travel Rule (supporting network) (USER_DATA)
      *
      * @param null|string $trId             Comma(,) separated list of travel rule record Ids. (optional)
-     * @param null|string $txId             txId (optional)
+     * @param null|string $txId             Comma(,) separated list of transaction Ids. (optional)
      * @param null|string $withdrawOrderId  client side id for withdrawal, if provided in POST &#x60;/sapi/v1/capital/withdraw/apply&#x60;, can be used here for query. (optional)
      * @param null|string $network          network (optional)
      * @param null|string $coin             coin (optional)
      * @param null|int    $travelRuleStatus 0:Completed,1:Pending,2:Failed (optional)
-     * @param null|int    $offset           Default: 0 (optional)
-     * @param null|int    $limit            min 7, max 30, default 7 (optional)
-     * @param null|int    $startTime        startTime (optional)
-     * @param null|int    $endTime          endTime (optional)
+     * @param null|int    $offset           offset (optional)
+     * @param null|int    $limit            limit (optional)
+     * @param null|int    $startTime        Default: 90 days from current timestamp (optional)
+     * @param null|int    $endTime          Default: present timestamp (optional)
      * @param null|int    $recvWindow       recvWindow (optional)
      *
      * @return ApiResponse<WithdrawHistoryV1Response>
@@ -980,15 +988,15 @@ class WalletRestApi
      * Withdraw History V2 (for local entities that require travel rule) (supporting network) (USER_DATA)
      *
      * @param null|string $trId             Comma(,) separated list of travel rule record Ids. (optional)
-     * @param null|string $txId             txId (optional)
+     * @param null|string $txId             Comma(,) separated list of transaction Ids. (optional)
      * @param null|string $withdrawOrderId  client side id for withdrawal, if provided in POST &#x60;/sapi/v1/capital/withdraw/apply&#x60;, can be used here for query. (optional)
      * @param null|string $network          network (optional)
      * @param null|string $coin             coin (optional)
      * @param null|int    $travelRuleStatus 0:Completed,1:Pending,2:Failed (optional)
-     * @param null|int    $offset           Default: 0 (optional)
-     * @param null|int    $limit            min 7, max 30, default 7 (optional)
-     * @param null|int    $startTime        startTime (optional)
-     * @param null|int    $endTime          endTime (optional)
+     * @param null|int    $offset           offset (optional)
+     * @param null|int    $limit            limit (optional)
+     * @param null|int    $startTime        Default: 90 days from current timestamp (optional)
+     * @param null|int    $endTime          Default: present timestamp (optional)
      * @param null|int    $recvWindow       recvWindow (optional)
      *
      * @return ApiResponse<WithdrawHistoryV2Response>
@@ -1004,7 +1012,7 @@ class WalletRestApi
     /**
      * Operation withdrawTravelRule.
      *
-     * Withdraw (for local entities that require travel rule) (USER_DATA)
+     * Withdraw Travel Rule (USER_DATA)
      *
      * @param WithdrawTravelRuleRequest $withdrawTravelRuleRequest withdrawTravelRuleRequest (required)
      *

@@ -12,7 +12,7 @@ function getLockedSubscriptionPreviewExample()
     $api = new SimpleEarnRestApi($configurationBuilder->build());
     $projectId = '1';
     $amount = 1.0;
-    $autoSubscribe = false;
+    $autoSubscribe = true;
     $recvWindow = 5000;
     $response = $api->getLockedSubscriptionPreview($projectId, $amount, $autoSubscribe, $recvWindow);
     print_r($response);

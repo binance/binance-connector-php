@@ -59,9 +59,9 @@ class ConvertRestApi
     /**
      * Operation queryOrderQuantityPrecisionPerAsset.
      *
-     * Query order quantity precision per asset(USER_DATA)
+     * Query order quantity precision per asset (USER_DATA)
      *
-     * @param null|int $recvWindow The value cannot be greater than 60000 (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<QueryOrderQuantityPrecisionPerAssetResponse>
      *
@@ -93,7 +93,7 @@ class ConvertRestApi
     /**
      * Operation cancelLimitOrder.
      *
-     * Cancel limit order (USER_DATA)
+     * Cancel limit order (TRADE)
      *
      * @param CancelLimitOrderRequest $cancelLimitOrderRequest cancelLimitOrderRequest (required)
      *
@@ -110,12 +110,12 @@ class ConvertRestApi
     /**
      * Operation getConvertTradeHistory.
      *
-     * Get Convert Trade History(USER_DATA)
+     * Get Convert Trade History (USER_DATA)
      *
      * @param int      $startTime  startTime (required)
      * @param int      $endTime    endTime (required)
-     * @param null|int $limit      Default 100, Max 1000 (optional)
-     * @param null|int $recvWindow The value cannot be greater than 60000 (optional)
+     * @param null|int $limit      Number of records to return (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetConvertTradeHistoryResponse>
      *
@@ -130,7 +130,7 @@ class ConvertRestApi
     /**
      * Operation orderStatus.
      *
-     * Order status(USER_DATA)
+     * Order status (USER_DATA)
      *
      * @param null|string $orderId Either orderId or quoteId is required (optional)
      * @param null|string $quoteId Either orderId or quoteId is required (optional)
@@ -148,7 +148,7 @@ class ConvertRestApi
     /**
      * Operation placeLimitOrder.
      *
-     * Place limit order (USER_DATA)
+     * Place limit order (TRADE)
      *
      * @param PlaceLimitOrderRequest $placeLimitOrderRequest placeLimitOrderRequest (required)
      *
@@ -167,7 +167,7 @@ class ConvertRestApi
      *
      * Query limit open orders (USER_DATA)
      *
-     * @param null|int $recvWindow The value cannot be greater than 60000 (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<QueryLimitOpenOrdersResponse>
      *
@@ -182,7 +182,7 @@ class ConvertRestApi
     /**
      * Operation sendQuoteRequest.
      *
-     * Send Quote Request(USER_DATA)
+     * Send Quote Request (TRADE)
      *
      * @param SendQuoteRequestRequest $sendQuoteRequestRequest sendQuoteRequestRequest (required)
      *

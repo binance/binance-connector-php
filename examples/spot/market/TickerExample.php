@@ -13,7 +13,7 @@ function tickerExample()
     $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
     $api = new SpotRestApi($configurationBuilder->build());
     $symbol = 'BNBUSDT';
-    $symbols = null;
+    $symbols = ['BTCUSDT', 'BNBUSDT'];
     $windowSize = WindowSize::WINDOW_SIZE_1M;
     $type = TickerType::FULL;
     $symbolStatus = SymbolStatus::TRADING;

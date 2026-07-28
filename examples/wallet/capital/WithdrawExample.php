@@ -12,7 +12,7 @@ function withdrawExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
     $withdrawRequest = new WithdrawRequest();
-    $withdrawRequest->setCoin('');
+    $withdrawRequest->setCoin('BTC');
     $withdrawRequest->setAddress('');
     $withdrawRequest->setAmount(1.0);
     $response = $api->withdraw($withdrawRequest);

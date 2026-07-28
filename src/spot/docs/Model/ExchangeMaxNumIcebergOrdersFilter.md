@@ -1,4 +1,4 @@
-# # ExchangeMaxNumIcebergOrdersFilter
+# ExchangeMaxNumIcebergOrdersFilter
 
 ## Properties
 

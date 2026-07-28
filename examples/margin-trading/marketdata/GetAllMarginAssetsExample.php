@@ -9,7 +9,7 @@ function getAllMarginAssetsExample()
 {
     $configurationBuilder = MarginTradingRestApiUtil::getConfigurationBuilder();
     $api = new MarginTradingRestApi($configurationBuilder->build());
-    $asset = '';
+    $asset = 'USDC';
     $response = $api->getAllMarginAssets($asset);
     print_r($response);
 }

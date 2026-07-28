@@ -1,4 +1,4 @@
-# # BelowPegPriceType
+# BelowPegPriceType
 
 ## Properties
 

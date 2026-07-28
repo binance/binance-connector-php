@@ -1,4 +1,4 @@
-# # GetDualInvestmentProductListResponse
+# GetDualInvestmentProductListResponse
 
 ## Properties
 

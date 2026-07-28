@@ -1,4 +1,4 @@
-# # TransferToSubAccountOfSameMasterRequest
+# TransferToSubAccountOfSameMasterRequest
 
 ## Properties
 

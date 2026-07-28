@@ -1,4 +1,4 @@
-# # GetOnChainYieldsLockedRewardsHistoryResponse
+# GetOnChainYieldsLockedRewardsHistoryResponse
 
 ## Properties
 

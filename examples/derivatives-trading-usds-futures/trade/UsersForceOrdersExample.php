@@ -11,11 +11,11 @@ function usersForceOrdersExample()
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTCUSDT';
     $autoCloseType = AutoCloseType::LIQUIDATION;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
-    $limit = 100;
+    $limit = 50;
     $recvWindow = 5000;
     $response = $api->usersForceOrders($symbol, $autoCloseType, $startTime, $endTime, $limit, $recvWindow);
     print_r($response);

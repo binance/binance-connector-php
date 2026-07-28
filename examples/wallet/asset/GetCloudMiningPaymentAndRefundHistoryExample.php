@@ -14,7 +14,7 @@ function getCloudMiningPaymentAndRefundHistoryExample()
     $endTime = 1641782889000;
     $tranId = 1;
     $clientTranId = '1';
-    $asset = '';
+    $asset = 'BTC';
     $current = 1;
     $size = 10;
     $response = $api->getCloudMiningPaymentAndRefundHistory($startTime, $endTime, $tranId, $clientTranId, $asset, $current, $size);

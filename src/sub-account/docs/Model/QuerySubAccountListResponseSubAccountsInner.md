@@ -1,4 +1,4 @@
-# # QuerySubAccountListResponseSubAccountsInner
+# QuerySubAccountListResponseSubAccountsInner
 
 ## Properties
 

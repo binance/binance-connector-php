@@ -1,4 +1,4 @@
-# # OneClickArrivalDepositApplyResponse
+# OneClickArrivalDepositApplyResponse
 
 ## Properties
 

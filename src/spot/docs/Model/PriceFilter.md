@@ -1,4 +1,4 @@
-# # PriceFilter
+# PriceFilter
 
 ## Properties
 

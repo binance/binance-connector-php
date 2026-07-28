@@ -1,4 +1,4 @@
-# # AcceptTheOfferedQuoteResponse
+# AcceptTheOfferedQuoteResponse
 
 ## Properties
 

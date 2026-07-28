@@ -1,4 +1,4 @@
-# # GetLoanBorrowHistoryResponseRowsInner
+# GetLoanBorrowHistoryResponseRowsInner
 
 ## Properties
 
@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **collateralCoin** | **string** |  | [optional]
 **initialCollateralAmount** | **string** |  | [optional]
 **borrowTime** | **int** |  | [optional]
-**status** | **string** |  | [optional]
+**status** | **string** | Accruing_Interest, Overdue, Liquidating, Repaying, Repaid, Liquidated, Pending, Failed | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

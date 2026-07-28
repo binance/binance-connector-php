@@ -1,4 +1,4 @@
-# # AcquiringCoinnameResponse
+# AcquiringCoinnameResponse
 
 ## Properties
 

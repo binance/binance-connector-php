@@ -10,7 +10,7 @@ function queryPortfolioMarginProNegativeBalanceInterestHistoryExample()
     $configurationBuilder = DerivativesTradingPortfolioMarginProRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginProRestApi($configurationBuilder->build());
-    $asset = '';
+    $asset = 'USDT';
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $size = 10;

@@ -1,4 +1,4 @@
-# # QueryCurrentMarginOpenOrderResponse
+# QueryCurrentMarginOpenOrderResponse
 
 ## Properties
 

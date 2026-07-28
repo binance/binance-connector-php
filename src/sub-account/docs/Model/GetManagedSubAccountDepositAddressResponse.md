@@ -1,4 +1,4 @@
-# # GetManagedSubAccountDepositAddressResponse
+# GetManagedSubAccountDepositAddressResponse
 
 ## Properties
 

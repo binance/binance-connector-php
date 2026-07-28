@@ -1,65 +1,74 @@
 # Binance\Client\DerivativesTradingPortfolioMargin\TradeApi
 
+
+
 All URIs are relative to https://papi.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**cancelAllCmOpenConditionalOrders()**](TradeApi.md#cancelAllCmOpenConditionalOrders) | **DELETE** /papi/v1/cm/conditional/allOpenOrders | Cancel All CM Open Conditional Orders(TRADE) |
-| [**cancelAllCmOpenOrders()**](TradeApi.md#cancelAllCmOpenOrders) | **DELETE** /papi/v1/cm/allOpenOrders | Cancel All CM Open Orders(TRADE) |
+| [**cancelAllCmOpenConditionalOrders()**](TradeApi.md#cancelAllCmOpenConditionalOrders) | **DELETE** /papi/v1/cm/conditional/allOpenOrders | Cancel All CM Open Conditional Orders (TRADE) |
+| [**cancelAllCmOpenOrders()**](TradeApi.md#cancelAllCmOpenOrders) | **DELETE** /papi/v1/cm/allOpenOrders | Cancel All CM Open Orders (TRADE) |
+| [**cancelAllUmAlgoOpenOrders()**](TradeApi.md#cancelAllUmAlgoOpenOrders) | **DELETE** /papi/v1/um/algo/allOpenOrders | Cancel All UM Algo Open Orders (TRADE) |
 | [**cancelAllUmOpenConditionalOrders()**](TradeApi.md#cancelAllUmOpenConditionalOrders) | **DELETE** /papi/v1/um/conditional/allOpenOrders | Cancel All UM Open Conditional Orders (TRADE) |
-| [**cancelAllUmOpenOrders()**](TradeApi.md#cancelAllUmOpenOrders) | **DELETE** /papi/v1/um/allOpenOrders | Cancel All UM Open Orders(TRADE) |
-| [**cancelCmConditionalOrder()**](TradeApi.md#cancelCmConditionalOrder) | **DELETE** /papi/v1/cm/conditional/order | Cancel CM Conditional Order(TRADE) |
-| [**cancelCmOrder()**](TradeApi.md#cancelCmOrder) | **DELETE** /papi/v1/cm/order | Cancel CM Order(TRADE) |
-| [**cancelMarginAccountAllOpenOrdersOnASymbol()**](TradeApi.md#cancelMarginAccountAllOpenOrdersOnASymbol) | **DELETE** /papi/v1/margin/allOpenOrders | Cancel Margin Account All Open Orders on a Symbol(TRADE) |
-| [**cancelMarginAccountOcoOrders()**](TradeApi.md#cancelMarginAccountOcoOrders) | **DELETE** /papi/v1/margin/orderList | Cancel Margin Account OCO Orders(TRADE) |
-| [**cancelMarginAccountOrder()**](TradeApi.md#cancelMarginAccountOrder) | **DELETE** /papi/v1/margin/order | Cancel Margin Account Order(TRADE) |
-| [**cancelUmConditionalOrder()**](TradeApi.md#cancelUmConditionalOrder) | **DELETE** /papi/v1/um/conditional/order | Cancel UM Conditional Order(TRADE) |
-| [**cancelUmOrder()**](TradeApi.md#cancelUmOrder) | **DELETE** /papi/v1/um/order | Cancel UM Order(TRADE) |
-| [**cmAccountTradeList()**](TradeApi.md#cmAccountTradeList) | **GET** /papi/v1/cm/userTrades | CM Account Trade List(USER_DATA) |
-| [**cmPositionAdlQuantileEstimation()**](TradeApi.md#cmPositionAdlQuantileEstimation) | **GET** /papi/v1/cm/adlQuantile | CM Position ADL Quantile Estimation(USER_DATA) |
+| [**cancelAllUmOpenOrders()**](TradeApi.md#cancelAllUmOpenOrders) | **DELETE** /papi/v1/um/allOpenOrders | Cancel All UM Open Orders (TRADE) |
+| [**cancelCmConditionalOrder()**](TradeApi.md#cancelCmConditionalOrder) | **DELETE** /papi/v1/cm/conditional/order | Cancel CM Conditional Order (TRADE) |
+| [**cancelCmOrder()**](TradeApi.md#cancelCmOrder) | **DELETE** /papi/v1/cm/order | Cancel CM Order (TRADE) |
+| [**cancelMarginAccountAllOpenOrdersOnASymbol()**](TradeApi.md#cancelMarginAccountAllOpenOrdersOnASymbol) | **DELETE** /papi/v1/margin/allOpenOrders | Cancel Margin Account All Open Orders on a Symbol (TRADE) |
+| [**cancelMarginAccountOcoOrders()**](TradeApi.md#cancelMarginAccountOcoOrders) | **DELETE** /papi/v1/margin/orderList | Cancel Margin Account OCO Orders (TRADE) |
+| [**cancelMarginAccountOrder()**](TradeApi.md#cancelMarginAccountOrder) | **DELETE** /papi/v1/margin/order | Cancel Margin Account Order (TRADE) |
+| [**cancelUmAlgoOrder()**](TradeApi.md#cancelUmAlgoOrder) | **DELETE** /papi/v1/um/algo/order | Cancel UM Algo Order (TRADE) |
+| [**cancelUmConditionalOrder()**](TradeApi.md#cancelUmConditionalOrder) | **DELETE** /papi/v1/um/conditional/order | Cancel UM Conditional Order (TRADE) |
+| [**cancelUmOrder()**](TradeApi.md#cancelUmOrder) | **DELETE** /papi/v1/um/order | Cancel UM Order (TRADE) |
+| [**cmAccountTradeList()**](TradeApi.md#cmAccountTradeList) | **GET** /papi/v1/cm/userTrades | CM Account Trade List (USER_DATA) |
+| [**cmPositionAdlQuantileEstimation()**](TradeApi.md#cmPositionAdlQuantileEstimation) | **GET** /papi/v1/cm/adlQuantile | CM Position ADL Quantile Estimation (USER_DATA) |
+| [**futuresTradfiPerpsContract()**](TradeApi.md#futuresTradfiPerpsContract) | **POST** /papi/v1/um/stock/contract | Futures TradFi Perps Contract (USER_DATA) |
 | [**getUmFuturesBnbBurnStatus()**](TradeApi.md#getUmFuturesBnbBurnStatus) | **GET** /papi/v1/um/feeBurn | Get UM Futures BNB Burn Status (USER_DATA) |
-| [**marginAccountBorrow()**](TradeApi.md#marginAccountBorrow) | **POST** /papi/v1/marginLoan | Margin Account Borrow(MARGIN) |
-| [**marginAccountNewOco()**](TradeApi.md#marginAccountNewOco) | **POST** /papi/v1/margin/order/oco | Margin Account New OCO(TRADE) |
-| [**marginAccountRepay()**](TradeApi.md#marginAccountRepay) | **POST** /papi/v1/repayLoan | Margin Account Repay(MARGIN) |
-| [**marginAccountRepayDebt()**](TradeApi.md#marginAccountRepayDebt) | **POST** /papi/v1/margin/repay-debt | Margin Account Repay Debt(TRADE) |
+| [**marginAccountBorrow()**](TradeApi.md#marginAccountBorrow) | **POST** /papi/v1/marginLoan | Margin Account Borrow (MARGIN) |
+| [**marginAccountNewOco()**](TradeApi.md#marginAccountNewOco) | **POST** /papi/v1/margin/order/oco | Margin Account New OCO (TRADE) |
+| [**marginAccountRepay()**](TradeApi.md#marginAccountRepay) | **POST** /papi/v1/repayLoan | Margin Account Repay (MARGIN) |
+| [**marginAccountRepayDebt()**](TradeApi.md#marginAccountRepayDebt) | **POST** /papi/v1/margin/repay-debt | Margin Account Repay Debt (TRADE) |
 | [**marginAccountTradeList()**](TradeApi.md#marginAccountTradeList) | **GET** /papi/v1/margin/myTrades | Margin Account Trade List (USER_DATA) |
-| [**modifyCmOrder()**](TradeApi.md#modifyCmOrder) | **PUT** /papi/v1/cm/order | Modify CM Order(TRADE) |
-| [**modifyUmOrder()**](TradeApi.md#modifyUmOrder) | **PUT** /papi/v1/um/order | Modify UM Order(TRADE) |
-| [**newCmConditionalOrder()**](TradeApi.md#newCmConditionalOrder) | **POST** /papi/v1/cm/conditional/order | New CM Conditional Order(TRADE) |
-| [**newCmOrder()**](TradeApi.md#newCmOrder) | **POST** /papi/v1/cm/order | New CM Order(TRADE) |
-| [**newMarginOrder()**](TradeApi.md#newMarginOrder) | **POST** /papi/v1/margin/order | New Margin Order(TRADE) |
+| [**modifyCmOrder()**](TradeApi.md#modifyCmOrder) | **PUT** /papi/v1/cm/order | Modify CM Order (TRADE) |
+| [**modifyUmOrder()**](TradeApi.md#modifyUmOrder) | **PUT** /papi/v1/um/order | Modify UM Order (TRADE) |
+| [**newCmConditionalOrder()**](TradeApi.md#newCmConditionalOrder) | **POST** /papi/v1/cm/conditional/order | New CM Conditional Order (TRADE) |
+| [**newCmOrder()**](TradeApi.md#newCmOrder) | **POST** /papi/v1/cm/order | New CM Order (TRADE) |
+| [**newMarginOrder()**](TradeApi.md#newMarginOrder) | **POST** /papi/v1/margin/order | New Margin Order (TRADE) |
+| [**newUmAlgoOrder()**](TradeApi.md#newUmAlgoOrder) | **POST** /papi/v1/um/algo/order | New UM Algo Order (TRADE) |
 | [**newUmConditionalOrder()**](TradeApi.md#newUmConditionalOrder) | **POST** /papi/v1/um/conditional/order | New UM Conditional Order (TRADE) |
 | [**newUmOrder()**](TradeApi.md#newUmOrder) | **POST** /papi/v1/um/order | New UM Order (TRADE) |
-| [**queryAllCmConditionalOrders()**](TradeApi.md#queryAllCmConditionalOrders) | **GET** /papi/v1/cm/conditional/allOrders | Query All CM Conditional Orders(USER_DATA) |
+| [**queryAllCmConditionalOrders()**](TradeApi.md#queryAllCmConditionalOrders) | **GET** /papi/v1/cm/conditional/allOrders | Query All CM Conditional Orders (USER_DATA) |
 | [**queryAllCmOrders()**](TradeApi.md#queryAllCmOrders) | **GET** /papi/v1/cm/allOrders | Query All CM Orders (USER_DATA) |
 | [**queryAllCurrentCmOpenConditionalOrders()**](TradeApi.md#queryAllCurrentCmOpenConditionalOrders) | **GET** /papi/v1/cm/conditional/openOrders | Query All Current CM Open Conditional Orders (USER_DATA) |
-| [**queryAllCurrentCmOpenOrders()**](TradeApi.md#queryAllCurrentCmOpenOrders) | **GET** /papi/v1/cm/openOrders | Query All Current CM Open Orders(USER_DATA) |
-| [**queryAllCurrentUmOpenConditionalOrders()**](TradeApi.md#queryAllCurrentUmOpenConditionalOrders) | **GET** /papi/v1/um/conditional/openOrders | Query All Current UM Open Conditional Orders(USER_DATA) |
-| [**queryAllCurrentUmOpenOrders()**](TradeApi.md#queryAllCurrentUmOpenOrders) | **GET** /papi/v1/um/openOrders | Query All Current UM Open Orders(USER_DATA) |
+| [**queryAllCurrentCmOpenOrders()**](TradeApi.md#queryAllCurrentCmOpenOrders) | **GET** /papi/v1/cm/openOrders | Query All Current CM Open Orders (USER_DATA) |
+| [**queryAllCurrentUmOpenAlgoOrders()**](TradeApi.md#queryAllCurrentUmOpenAlgoOrders) | **GET** /papi/v1/um/algo/openAlgoOrders | Query All Current UM Open Algo Orders (USER_DATA) |
+| [**queryAllCurrentUmOpenConditionalOrders()**](TradeApi.md#queryAllCurrentUmOpenConditionalOrders) | **GET** /papi/v1/um/conditional/openOrders | Query All Current UM Open Conditional Orders (USER_DATA) |
+| [**queryAllCurrentUmOpenOrders()**](TradeApi.md#queryAllCurrentUmOpenOrders) | **GET** /papi/v1/um/openOrders | Query All Current UM Open Orders (USER_DATA) |
 | [**queryAllMarginAccountOrders()**](TradeApi.md#queryAllMarginAccountOrders) | **GET** /papi/v1/margin/allOrders | Query All Margin Account Orders (USER_DATA) |
-| [**queryAllUmConditionalOrders()**](TradeApi.md#queryAllUmConditionalOrders) | **GET** /papi/v1/um/conditional/allOrders | Query All UM Conditional Orders(USER_DATA) |
-| [**queryAllUmOrders()**](TradeApi.md#queryAllUmOrders) | **GET** /papi/v1/um/allOrders | Query All UM Orders(USER_DATA) |
-| [**queryCmConditionalOrderHistory()**](TradeApi.md#queryCmConditionalOrderHistory) | **GET** /papi/v1/cm/conditional/orderHistory | Query CM Conditional Order History(USER_DATA) |
-| [**queryCmModifyOrderHistory()**](TradeApi.md#queryCmModifyOrderHistory) | **GET** /papi/v1/cm/orderAmendment | Query CM Modify Order History(TRADE) |
-| [**queryCmOrder()**](TradeApi.md#queryCmOrder) | **GET** /papi/v1/cm/order | Query CM Order(USER_DATA) |
-| [**queryCurrentCmOpenConditionalOrder()**](TradeApi.md#queryCurrentCmOpenConditionalOrder) | **GET** /papi/v1/cm/conditional/openOrder | Query Current CM Open Conditional Order(USER_DATA) |
+| [**queryAllUmConditionalOrders()**](TradeApi.md#queryAllUmConditionalOrders) | **GET** /papi/v1/um/conditional/allOrders | Query All UM Conditional Orders (USER_DATA) |
+| [**queryAllUmOrders()**](TradeApi.md#queryAllUmOrders) | **GET** /papi/v1/um/allOrders | Query All UM Orders (USER_DATA) |
+| [**queryCmConditionalOrderHistory()**](TradeApi.md#queryCmConditionalOrderHistory) | **GET** /papi/v1/cm/conditional/orderHistory | Query CM Conditional Order History (USER_DATA) |
+| [**queryCmModifyOrderHistory()**](TradeApi.md#queryCmModifyOrderHistory) | **GET** /papi/v1/cm/orderAmendment | Query CM Modify Order History (TRADE) |
+| [**queryCmOrder()**](TradeApi.md#queryCmOrder) | **GET** /papi/v1/cm/order | Query CM Order (USER_DATA) |
+| [**queryCurrentCmOpenConditionalOrder()**](TradeApi.md#queryCurrentCmOpenConditionalOrder) | **GET** /papi/v1/cm/conditional/openOrder | Query Current CM Open Conditional Order (USER_DATA) |
 | [**queryCurrentCmOpenOrder()**](TradeApi.md#queryCurrentCmOpenOrder) | **GET** /papi/v1/cm/openOrder | Query Current CM Open Order (USER_DATA) |
 | [**queryCurrentMarginOpenOrder()**](TradeApi.md#queryCurrentMarginOpenOrder) | **GET** /papi/v1/margin/openOrders | Query Current Margin Open Order (USER_DATA) |
-| [**queryCurrentUmOpenConditionalOrder()**](TradeApi.md#queryCurrentUmOpenConditionalOrder) | **GET** /papi/v1/um/conditional/openOrder | Query Current UM Open Conditional Order(USER_DATA) |
-| [**queryCurrentUmOpenOrder()**](TradeApi.md#queryCurrentUmOpenOrder) | **GET** /papi/v1/um/openOrder | Query Current UM Open Order(USER_DATA) |
+| [**queryCurrentUmOpenAlgoOrder()**](TradeApi.md#queryCurrentUmOpenAlgoOrder) | **GET** /papi/v1/um/algo/algoOrder | Query Current UM Open Algo Order (USER_DATA) |
+| [**queryCurrentUmOpenConditionalOrder()**](TradeApi.md#queryCurrentUmOpenConditionalOrder) | **GET** /papi/v1/um/conditional/openOrder | Query Current UM Open Conditional Order (USER_DATA) |
+| [**queryCurrentUmOpenOrder()**](TradeApi.md#queryCurrentUmOpenOrder) | **GET** /papi/v1/um/openOrder | Query Current UM Open Order (USER_DATA) |
 | [**queryMarginAccountOrder()**](TradeApi.md#queryMarginAccountOrder) | **GET** /papi/v1/margin/order | Query Margin Account Order (USER_DATA) |
 | [**queryMarginAccountsAllOco()**](TradeApi.md#queryMarginAccountsAllOco) | **GET** /papi/v1/margin/allOrderList | Query Margin Account&#39;s all OCO (USER_DATA) |
 | [**queryMarginAccountsOco()**](TradeApi.md#queryMarginAccountsOco) | **GET** /papi/v1/margin/orderList | Query Margin Account&#39;s OCO (USER_DATA) |
 | [**queryMarginAccountsOpenOco()**](TradeApi.md#queryMarginAccountsOpenOco) | **GET** /papi/v1/margin/openOrderList | Query Margin Account&#39;s Open OCO (USER_DATA) |
-| [**queryUmConditionalOrderHistory()**](TradeApi.md#queryUmConditionalOrderHistory) | **GET** /papi/v1/um/conditional/orderHistory | Query UM Conditional Order History(USER_DATA) |
-| [**queryUmModifyOrderHistory()**](TradeApi.md#queryUmModifyOrderHistory) | **GET** /papi/v1/um/orderAmendment | Query UM Modify Order History(TRADE) |
+| [**queryUmAlgoOrderHistory()**](TradeApi.md#queryUmAlgoOrderHistory) | **GET** /papi/v1/um/algo/allAlgoOrders | Query UM Algo Order History (USER_DATA) |
+| [**queryUmConditionalOrderHistory()**](TradeApi.md#queryUmConditionalOrderHistory) | **GET** /papi/v1/um/conditional/orderHistory | Query UM Conditional Order History (USER_DATA) |
+| [**queryUmModifyOrderHistory()**](TradeApi.md#queryUmModifyOrderHistory) | **GET** /papi/v1/um/orderAmendment | Query UM Modify Order History (TRADE) |
 | [**queryUmOrder()**](TradeApi.md#queryUmOrder) | **GET** /papi/v1/um/order | Query UM Order (USER_DATA) |
-| [**queryUsersCmForceOrders()**](TradeApi.md#queryUsersCmForceOrders) | **GET** /papi/v1/cm/forceOrders | Query User&#39;s CM Force Orders(USER_DATA) |
-| [**queryUsersMarginForceOrders()**](TradeApi.md#queryUsersMarginForceOrders) | **GET** /papi/v1/margin/forceOrders | Query User&#39;s Margin Force Orders(USER_DATA) |
+| [**queryUsersCmForceOrders()**](TradeApi.md#queryUsersCmForceOrders) | **GET** /papi/v1/cm/forceOrders | Query User&#39;s CM Force Orders (USER_DATA) |
+| [**queryUsersMarginForceOrders()**](TradeApi.md#queryUsersMarginForceOrders) | **GET** /papi/v1/margin/forceOrders | Query User&#39;s Margin Force Orders (USER_DATA) |
 | [**queryUsersUmForceOrders()**](TradeApi.md#queryUsersUmForceOrders) | **GET** /papi/v1/um/forceOrders | Query User&#39;s UM Force Orders (USER_DATA) |
 | [**toggleBnbBurnOnUmFuturesTrade()**](TradeApi.md#toggleBnbBurnOnUmFuturesTrade) | **POST** /papi/v1/um/feeBurn | Toggle BNB Burn On UM Futures Trade (TRADE) |
-| [**umAccountTradeList()**](TradeApi.md#umAccountTradeList) | **GET** /papi/v1/um/userTrades | UM Account Trade List(USER_DATA) |
-| [**umPositionAdlQuantileEstimation()**](TradeApi.md#umPositionAdlQuantileEstimation) | **GET** /papi/v1/um/adlQuantile | UM Position ADL Quantile Estimation(USER_DATA) |
+| [**umAccountTradeList()**](TradeApi.md#umAccountTradeList) | **GET** /papi/v1/um/userTrades | UM Account Trade List (USER_DATA) |
+| [**umPositionAdlQuantileEstimation()**](TradeApi.md#umPositionAdlQuantileEstimation) | **GET** /papi/v1/um/adlQuantile | UM Position ADL Quantile Estimation (USER_DATA) |
 
 
 ## `cancelAllCmOpenConditionalOrders()`
@@ -68,9 +77,9 @@ All URIs are relative to https://papi.binance.com, except if the operation defin
 cancelAllCmOpenConditionalOrders($symbol, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllCmOpenConditionalOrdersResponse
 ```
 
-Cancel All CM Open Conditional Orders(TRADE)
+Cancel All CM Open Conditional Orders (TRADE)
 
-Cancel All CM Open Conditional Orders  Weight: 1
+Cancel All CM Open Conditional Orders  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -85,8 +94,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->cancelAllCmOpenConditionalOrders($symbol, $recvWindow);
@@ -100,7 +109,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -126,9 +135,9 @@ No authorization required
 cancelAllCmOpenOrders($symbol, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllCmOpenOrdersResponse
 ```
 
-Cancel All CM Open Orders(TRADE)
+Cancel All CM Open Orders (TRADE)
 
-Cancel all active LIMIT orders on specific symbol  Weight: 1
+Cancel all active LIMIT orders on specific symbol  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -143,8 +152,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->cancelAllCmOpenOrders($symbol, $recvWindow);
@@ -158,12 +167,70 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
 
 [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllCmOpenOrdersResponse**](../Model/CancelAllCmOpenOrdersResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `cancelAllUmAlgoOpenOrders()`
+
+```php
+cancelAllUmAlgoOpenOrders($symbol, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllUmAlgoOpenOrdersResponse
+```
+
+Cancel All UM Algo Open Orders (TRADE)
+
+Cancel All UM Algo Open Orders  Weight(IP): 1  Security Type: TRADE
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$symbol = BNBUSDT; // string | Symbol
+$recvWindow = 5000; // int
+
+try {
+    $result = $apiInstance->cancelAllUmAlgoOpenOrders($symbol, $recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->cancelAllUmAlgoOpenOrders: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **symbol** | **string**| Symbol | |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllUmAlgoOpenOrdersResponse**](../Model/CancelAllUmAlgoOpenOrdersResponse.md)
 
 ### Authorization
 
@@ -186,7 +253,7 @@ cancelAllUmOpenConditionalOrders($symbol, $recvWindow): \Binance\Client\Derivati
 
 Cancel All UM Open Conditional Orders (TRADE)
 
-Cancel All UM Open Conditional Orders  Weight: 1
+Cancel All UM Open Conditional Orders  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -201,8 +268,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->cancelAllUmOpenConditionalOrders($symbol, $recvWindow);
@@ -216,7 +283,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -242,9 +309,9 @@ No authorization required
 cancelAllUmOpenOrders($symbol, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelAllUmOpenOrdersResponse
 ```
 
-Cancel All UM Open Orders(TRADE)
+Cancel All UM Open Orders (TRADE)
 
-Cancel all active LIMIT orders on specific symbol  Weight: 1
+Cancel all active LIMIT orders on specific symbol  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -259,8 +326,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->cancelAllUmOpenOrders($symbol, $recvWindow);
@@ -274,7 +341,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -300,9 +367,9 @@ No authorization required
 cancelCmConditionalOrder($symbol, $strategyId, $newClientStrategyId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelCmConditionalOrderResponse
 ```
 
-Cancel CM Conditional Order(TRADE)
+Cancel CM Conditional Order (TRADE)
 
-Cancel CM Conditional Order  * Either `strategyId` or `newClientStrategyId` must be sent.  Weight: 1
+Cancel CM Conditional Order  Weight(IP): 1  Security Type: TRADE  Notes: - Either `strategyId` or `newClientStrategyId` must be sent.
 
 ### Example
 
@@ -317,10 +384,10 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$strategyId = 56; // int
-$newClientStrategyId = 'newClientStrategyId_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$strategyId = 1; // int
+$newClientStrategyId = 1; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->cancelCmConditionalOrder($symbol, $strategyId, $newClientStrategyId, $recvWindow);
@@ -334,7 +401,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **strategyId** | **int**|  | [optional] |
 | **newClientStrategyId** | **string**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
@@ -362,9 +429,9 @@ No authorization required
 cancelCmOrder($symbol, $orderId, $origClientOrderId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelCmOrderResponse
 ```
 
-Cancel CM Order(TRADE)
+Cancel CM Order (TRADE)
 
-Cancel an active LIMIT order  * Either `orderId` or `origClientOrderId` must be sent.  Weight: 1
+Cancel an active LIMIT order  Weight(IP): 1  Security Type: TRADE  Notes: - Either `orderId` or `origClientOrderId` must be sent.
 
 ### Example
 
@@ -379,10 +446,10 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$origClientOrderId = 'origClientOrderId_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSD_200925; // string | Symbol
+$orderId = 1; // int
+$origClientOrderId = 1; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->cancelCmOrder($symbol, $orderId, $origClientOrderId, $recvWindow);
@@ -396,7 +463,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **orderId** | **int**|  | [optional] |
 | **origClientOrderId** | **string**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
@@ -424,9 +491,9 @@ No authorization required
 cancelMarginAccountAllOpenOrdersOnASymbol($symbol, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelMarginAccountAllOpenOrdersOnASymbolResponse
 ```
 
-Cancel Margin Account All Open Orders on a Symbol(TRADE)
+Cancel Margin Account All Open Orders on a Symbol (TRADE)
 
-Cancel Margin Account All Open Orders on a Symbol  Weight: 5
+Cancel Margin Account All Open Orders on a Symbol  Weight(IP): 5  Security Type: TRADE
 
 ### Example
 
@@ -441,8 +508,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->cancelMarginAccountAllOpenOrdersOnASymbol($symbol, $recvWindow);
@@ -456,7 +523,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -482,9 +549,9 @@ No authorization required
 cancelMarginAccountOcoOrders($symbol, $orderListId, $listClientOrderId, $newClientOrderId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelMarginAccountOcoOrdersResponse
 ```
 
-Cancel Margin Account OCO Orders(TRADE)
+Cancel Margin Account OCO Orders (TRADE)
 
-Cancel Margin Account OCO Orders  * Additional notes: Canceling an individual leg will cancel the entire OCO  Weight: 2
+Cancel Margin Account OCO Orders  Weight(IP): 2  Security Type: TRADE  Notes: - Additional notes: Canceling an individual leg will cancel the entire OCO
 
 ### Example
 
@@ -499,11 +566,11 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderListId = 56; // int | Either `orderListId` or `listClientOrderId` must be provided
-$listClientOrderId = 'listClientOrderId_example'; // string | Either `orderListId` or `listClientOrderId` must be provided
-$newClientOrderId = 'newClientOrderId_example'; // string | Used to uniquely identify this cancel. Automatically generated by default
-$recvWindow = 56; // int
+$symbol = LTCBTC; // string | Symbol
+$orderListId = 1; // int | Either `orderListId` or `listClientOrderId` must be provided
+$listClientOrderId = 1; // string | Either `orderListId` or `listClientOrderId` must be provided
+$newClientOrderId = 1; // string | Used to uniquely identify this cancel request.
+$recvWindow = 5000; // int | The value cannot be greater than 60000
 
 try {
     $result = $apiInstance->cancelMarginAccountOcoOrders($symbol, $orderListId, $listClientOrderId, $newClientOrderId, $recvWindow);
@@ -517,11 +584,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **orderListId** | **int**| Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided | [optional] |
 | **listClientOrderId** | **string**| Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided | [optional] |
-| **newClientOrderId** | **string**| Used to uniquely identify this cancel. Automatically generated by default | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **newClientOrderId** | **string**| Used to uniquely identify this cancel request. | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 | [optional] |
 
 ### Return type
 
@@ -546,9 +613,9 @@ No authorization required
 cancelMarginAccountOrder($symbol, $orderId, $origClientOrderId, $newClientOrderId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelMarginAccountOrderResponse
 ```
 
-Cancel Margin Account Order(TRADE)
+Cancel Margin Account Order (TRADE)
 
-Cancel Margin Account Order  * Either `orderId` or `origClientOrderId` must be sent.  Weight: 2
+Cancel Margin Account Order  Weight(IP): 2  Security Type: TRADE  Notes: - Either `orderId` or `origClientOrderId` must be sent.
 
 ### Example
 
@@ -563,11 +630,11 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$origClientOrderId = 'origClientOrderId_example'; // string
-$newClientOrderId = 'newClientOrderId_example'; // string | Used to uniquely identify this cancel. Automatically generated by default
-$recvWindow = 56; // int
+$symbol = LTCBTC; // string | Symbol
+$orderId = 1; // int
+$origClientOrderId = 1; // string
+$newClientOrderId = 1; // string | Used to uniquely identify this cancel request.
+$recvWindow = 5000; // int | The value cannot be greater than `60000`
 
 try {
     $result = $apiInstance->cancelMarginAccountOrder($symbol, $orderId, $origClientOrderId, $newClientOrderId, $recvWindow);
@@ -581,15 +648,75 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **orderId** | **int**|  | [optional] |
 | **origClientOrderId** | **string**|  | [optional] |
-| **newClientOrderId** | **string**| Used to uniquely identify this cancel. Automatically generated by default | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **newClientOrderId** | **string**| Used to uniquely identify this cancel request. | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
 
 ### Return type
 
 [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelMarginAccountOrderResponse**](../Model/CancelMarginAccountOrderResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `cancelUmAlgoOrder()`
+
+```php
+cancelUmAlgoOrder($algoId, $clientAlgoId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelUmAlgoOrderResponse
+```
+
+Cancel UM Algo Order (TRADE)
+
+Cancel an active UM algo order  Weight(IP): 1  Security Type: TRADE  Notes: - Either `algoId` or `clientAlgoId` must be sent.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$algoId = 2146760; // int | Algo order ID
+$clientAlgoId = 6B2I9XVcJpCjqPAJ4YoFX7; // string | Client algo order ID
+$recvWindow = 5000; // int
+
+try {
+    $result = $apiInstance->cancelUmAlgoOrder($algoId, $clientAlgoId, $recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->cancelUmAlgoOrder: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **algoId** | **int**| Algo order ID | [optional] |
+| **clientAlgoId** | **string**| Client algo order ID | [optional] |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelUmAlgoOrderResponse**](../Model/CancelUmAlgoOrderResponse.md)
 
 ### Authorization
 
@@ -610,9 +737,9 @@ No authorization required
 cancelUmConditionalOrder($symbol, $strategyId, $newClientStrategyId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelUmConditionalOrderResponse
 ```
 
-Cancel UM Conditional Order(TRADE)
+Cancel UM Conditional Order (TRADE)
 
-Cancel UM Conditional Order  * Either `strategyId` or `newClientStrategyId` must be sent.  Weight: 1
+Cancel UM Conditional Order  Weight(IP): 1  Security Type: TRADE  Notes: - Either `strategyId` or `newClientStrategyId` must be sent.
 
 ### Example
 
@@ -627,10 +754,10 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$strategyId = 56; // int
-$newClientStrategyId = 'newClientStrategyId_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$strategyId = 1; // int
+$newClientStrategyId = 1; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->cancelUmConditionalOrder($symbol, $strategyId, $newClientStrategyId, $recvWindow);
@@ -644,7 +771,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **strategyId** | **int**|  | [optional] |
 | **newClientStrategyId** | **string**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
@@ -672,9 +799,9 @@ No authorization required
 cancelUmOrder($symbol, $orderId, $origClientOrderId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\CancelUmOrderResponse
 ```
 
-Cancel UM Order(TRADE)
+Cancel UM Order (TRADE)
 
-Cancel an active UM LIMIT order  * Either `orderId` or `origClientOrderId` must be sent.  Weight: 1
+Cancel an active UM LIMIT order  Weight(IP): 1  Security Type: TRADE  Notes: - Either `orderId` or `origClientOrderId` must be sent.
 
 ### Example
 
@@ -689,10 +816,10 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$origClientOrderId = 'origClientOrderId_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$orderId = 1; // int
+$origClientOrderId = 1; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->cancelUmOrder($symbol, $orderId, $origClientOrderId, $recvWindow);
@@ -706,7 +833,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **orderId** | **int**|  | [optional] |
 | **origClientOrderId** | **string**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
@@ -734,9 +861,9 @@ No authorization required
 cmAccountTradeList($symbol, $pair, $startTime, $endTime, $fromId, $limit, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\CmAccountTradeListResponse
 ```
 
-CM Account Trade List(USER_DATA)
+CM Account Trade List (USER_DATA)
 
-Get trades for a specific account and CM symbol.  * Either `symbol` or `pair` must be sent * `symbol` and `pair` cannot be sent together * `pair` and `fromId` cannot be sent together * `OrderId` can only be sent together with symbol * If a `pair` is sent, tickers for all symbols of the `pair` will be returned * The parameter `fromId` cannot be sent with `startTime` or `endTime` * If `startTime` and `endTime` are both not sent, then the last '24 hours' data will be returned. * The time between `startTime` and `endTime` cannot be longer than 24 hours.  Weight: 20 with symbol, 40 with pair
+Get trades for a specific account and CM symbol.  Weight: - 20 with `symbol` - 40 with `pair`  Security Type: USER_DATA  Notes: - Either `symbol` or `pair` must be sent - `symbol` and `pair` cannot be sent together - `pair` and `fromId` cannot be sent together - `OrderId` can only be sent together with symbol - If a `pair` is sent, tickers for all symbols of the `pair` will be returned - The parameter `fromId` cannot be sent with `startTime` or `endTime` - If `startTime` and `endTime` are both not sent, then the last '24 hours' data will be returned. - The time between `startTime` and `endTime` cannot be longer than 24 hours.
 
 ### Example
 
@@ -751,13 +878,13 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$pair = 'pair_example'; // string
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$fromId = 56; // int | Trade id to fetch from. Default gets most recent trades.
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSD_200626; // string
+$pair = BTCUSD; // string
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$fromId = 1; // int | Trade ID to fetch from.
+$limit = 50; // int | Number of results returned.
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->cmAccountTradeList($symbol, $pair, $startTime, $endTime, $fromId, $limit, $recvWindow);
@@ -775,8 +902,8 @@ try {
 | **pair** | **string**|  | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **fromId** | **int**| Trade id to fetch from. Default gets most recent trades. | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **fromId** | **int**| Trade ID to fetch from. | [optional] |
+| **limit** | **int**| Number of results returned. | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -802,9 +929,9 @@ No authorization required
 cmPositionAdlQuantileEstimation($symbol, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\CmPositionAdlQuantileEstimationResponse
 ```
 
-CM Position ADL Quantile Estimation(USER_DATA)
+CM Position ADL Quantile Estimation (USER_DATA)
 
-Query CM Position ADL Quantile Estimation * Values update every 30s. * Values 0, 1, 2, 3, 4 shows the queue position and possibility of ADL from low to high. * For positions of the symbol are in One-way Mode or isolated margined in Hedge Mode, \"LONG\", \"SHORT\", and \"BOTH\" will be returned to show the positions' adl quantiles of different position sides. * If the positions of the symbol are crossed margined in Hedge Mode: * \"HEDGE\" as a sign will be returned instead of \"BOTH\"; * A same value caculated on unrealized pnls on long and short sides' positions will be shown for \"LONG\" and \"SHORT\" when there are positions in both of long and short sides.  Weight: 5
+Query CM Position ADL Quantile Estimation * Values update every 30s. * Values 0, 1, 2, 3, 4 shows the queue position and possibility of ADL from low to high. * For positions of the symbol are in One-way Mode or isolated margined in Hedge Mode, \"LONG\", \"SHORT\", and \"BOTH\" will be returned to show the positions' adl quantiles of different position sides. * If the positions of the symbol are crossed margined in Hedge Mode: * \"HEDGE\" as a sign will be returned instead of \"BOTH\"; * A same value caculated on unrealized pnls on long and short sides' positions will be shown for \"LONG\" and \"SHORT\" when there are positions in both of long and short sides.  Weight(IP): 5  Security Type: USER_DATA
 
 ### Example
 
@@ -819,8 +946,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSD_201225; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->cmPositionAdlQuantileEstimation($symbol, $recvWindow);
@@ -854,15 +981,15 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getUmFuturesBnbBurnStatus()`
+## `futuresTradfiPerpsContract()`
 
 ```php
-getUmFuturesBnbBurnStatus($recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\GetUmFuturesBnbBurnStatusResponse
+futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\FuturesTradfiPerpsContractResponse
 ```
 
-Get UM Futures BNB Burn Status (USER_DATA)
+Futures TradFi Perps Contract (USER_DATA)
 
-Get user's BNB Fee Discount for UM Futures (Fee Discount On or Fee Discount Off )  Weight: 30
+Sign TradFi-Perps agreement contract  Weight(IP): 5  Security Type: USER_DATA
 
 ### Example
 
@@ -877,7 +1004,63 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$futuresTradfiPerpsContractRequest = new \Binance\Client\DerivativesTradingPortfolioMargin\Model\FuturesTradfiPerpsContractRequest(); // \Binance\Client\DerivativesTradingPortfolioMargin\Model\FuturesTradfiPerpsContractRequest
+
+try {
+    $result = $apiInstance->futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->futuresTradfiPerpsContract: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **futuresTradfiPerpsContractRequest** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\FuturesTradfiPerpsContractRequest**](../Model/FuturesTradfiPerpsContractRequest.md)|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingPortfolioMargin\Model\FuturesTradfiPerpsContractResponse**](../Model/FuturesTradfiPerpsContractResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getUmFuturesBnbBurnStatus()`
+
+```php
+getUmFuturesBnbBurnStatus($recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\GetUmFuturesBnbBurnStatusResponse
+```
+
+Get UM Futures BNB Burn Status (USER_DATA)
+
+Get user's BNB Fee Discount for UM Futures (Fee Discount On or Fee Discount Off )  Weight(IP): 30  Security Type: USER_DATA
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getUmFuturesBnbBurnStatus($recvWindow);
@@ -916,9 +1099,9 @@ No authorization required
 marginAccountBorrow($marginAccountBorrowRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\MarginAccountBorrowResponse
 ```
 
-Margin Account Borrow(MARGIN)
+Margin Account Borrow (MARGIN)
 
-Apply for a margin loan.  Weight: 100
+Apply for a margin loan.  Weight(IP): 100  Security Type: MARGIN
 
 ### Example
 
@@ -972,9 +1155,9 @@ No authorization required
 marginAccountNewOco($marginAccountNewOcoRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\MarginAccountNewOcoResponse
 ```
 
-Margin Account New OCO(TRADE)
+Margin Account New OCO (TRADE)
 
-Send in a new OCO for a margin account  * Price Restrictions: * `SELL`: Limit Price > Last Price > Stop Price * `BUY`: Limit Price < Last Price < Stop Price * Quantity Restrictions: * Both legs must have the same quantity * `ICEBERG` quantities however do not have to be the same. * Order Rate Limit * `OCO` counts as 2 orders against the order rate limit.  Weight: 1
+Send in a new OCO for a margin account  Weight(IP): 1  Security Type: TRADE  Notes: - Other Info:   - Price Restrictions:   - `SELL`: Limit Price > Last Price > Stop Price   - `BUY`: Limit Price  * Quantity Restrictions:   - Both legs must have the same quantity   - `ICEBERG` quantities however do not have to be the same.   - Order Rate Limit   - `OCO` counts as 2 orders against the order rate limit.
 
 ### Example
 
@@ -1028,9 +1211,9 @@ No authorization required
 marginAccountRepay($marginAccountRepayRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\MarginAccountRepayResponse
 ```
 
-Margin Account Repay(MARGIN)
+Margin Account Repay (MARGIN)
 
-Repay for a margin loan.  Weight: 100
+Repay for a margin loan.  Weight(IP): 100  Security Type: MARGIN
 
 ### Example
 
@@ -1084,9 +1267,9 @@ No authorization required
 marginAccountRepayDebt($marginAccountRepayDebtRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\MarginAccountRepayDebtResponse
 ```
 
-Margin Account Repay Debt(TRADE)
+Margin Account Repay Debt (TRADE)
 
-Repay debt for a margin loan.  * The repay asset amount cannot exceed 50000 USD equivalent value for a single request. * If `amount` is not sent, all the asset loan will be repaid if having enough specific repay assets. * If `amount` is sent, only the certain amount of the asset loan will be repaid if having enough specific repay assets. * The system will use the same asset to repay the loan first (if have) no matter whether put the asset in `specifyRepayAssets`  Weight: 3000
+Repay debt for a margin loan.  Weight(IP): 3000  Security Type: TRADE  Notes: - The repay asset amount cannot exceed 50000 USD equivalent value for a single request. - If `amount` is not sent, all the asset loan will be repaid if having enough specific repay assets. - If `amount` is sent, only the certain amount of the asset loan will be repaid if having enough specific repay assets. - The system will use the same asset to repay the loan first (if have) no matter whether put the asset in `specifyRepayAssets`
 
 ### Example
 
@@ -1142,7 +1325,7 @@ marginAccountTradeList($symbol, $orderId, $startTime, $endTime, $fromId, $limit,
 
 Margin Account Trade List (USER_DATA)
 
-Margin Account Trade List  Weight: 5
+Margin Account Trade List  Weight(IP): 5  Security Type: USER_DATA  Notes: - **Note:** * If `fromId` is set, returns orders with id >= `fromId`; otherwise returns recent order history. - The interval between `startTime` and `endTime` must be less than 24 hours.
 
 ### Example
 
@@ -1157,13 +1340,13 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$fromId = 56; // int | Trade id to fetch from. Default gets most recent trades.
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$orderId = 1; // int
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$fromId = 1; // int | Trade ID to fetch from.
+$limit = 500; // int | Number of results returned.
+$recvWindow = 5000; // int | Value cannot be greater than 60000
 
 try {
     $result = $apiInstance->marginAccountTradeList($symbol, $orderId, $startTime, $endTime, $fromId, $limit, $recvWindow);
@@ -1177,13 +1360,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **orderId** | **int**|  | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **fromId** | **int**| Trade id to fetch from. Default gets most recent trades. | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **fromId** | **int**| Trade ID to fetch from. | [optional] |
+| **limit** | **int**| Number of results returned. | [optional] |
+| **recvWindow** | **int**| Value cannot be greater than 60000 | [optional] |
 
 ### Return type
 
@@ -1208,9 +1391,9 @@ No authorization required
 modifyCmOrder($modifyCmOrderRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\ModifyCmOrderResponse
 ```
 
-Modify CM Order(TRADE)
+Modify CM Order (TRADE)
 
-Order modify function, currently only LIMIT order modification is supported, modified orders will be reordered in the match queue  * Either `orderId` or `origClientOrderId` must be sent, and the `orderId` will prevail if both are sent. * Both `quantity` and `price` must be sent * When the new `quantity` or `price` doesn't satisfy PRICE_FILTER / PERCENT_FILTER / LOT_SIZE, amendment will be rejected and the order will stay as it is. * However the order will be cancelled by the amendment in the following situations: * when the order is in partially filled status and the new `quantity` <= `executedQty` * When the order is `GTX` and the new price will cause it to be executed immediately  Weight: 1
+Order modify function, currently only LIMIT order modification is supported, modified orders will be reordered in the match queue  Weight(IP): 1  Security Type: TRADE  Notes: - Either `orderId` or `origClientOrderId` must be sent, and the `orderId` will prevail if both are sent. - Both `quantity` and `price` must be sent - When the new `quantity` or `price` doesn't satisfy PRICE_FILTER / PERCENT_FILTER / LOT_SIZE, amendment will be rejected and the order will stay as it is. - However the order will be cancelled by the amendment in the following situations:   - when the order is in partially filled status and the new `quantity`  * When the order is `GTX` and the new price will cause it to be executed immediately
 
 ### Example
 
@@ -1264,9 +1447,9 @@ No authorization required
 modifyUmOrder($modifyUmOrderRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\ModifyUmOrderResponse
 ```
 
-Modify UM Order(TRADE)
+Modify UM Order (TRADE)
 
-Order modify function, currently only LIMIT order modification is supported, modified orders will be reordered in the match queue  * Either orderId or origClientOrderId must be sent, and the orderId will prevail if both are sent. * Both quantity and price must be sent * When the new quantity or price doesn't satisfy PRICE_FILTER / PERCENT_FILTER / LOT_SIZE, amendment will be rejected and the order will stay as it is. * However the order will be cancelled by the amendment in the following situations: * when the order is in partially filled status and the new quantity <= executedQty * When the order is GTX and the new price will cause it to be executed immediately  Weight: 1
+Order modify function, currently only LIMIT order modification is supported, modified orders will be reordered in the match queue  Weight(IP): 1  Security Type: TRADE  Notes: - Either orderId or origClientOrderId must be sent, and the orderId will prevail if both are sent. - Both quantity and price must be sent - When the new quantity or price doesn't satisfy PRICE_FILTER / PERCENT_FILTER / LOT_SIZE, amendment will be rejected and the order will stay as it is. - However the order will be cancelled by the amendment in the following situations:   - when the order is in partially filled status and the new quantity  * When the order is GTX and the new price will cause it to be executed immediately
 
 ### Example
 
@@ -1320,9 +1503,9 @@ No authorization required
 newCmConditionalOrder($newCmConditionalOrderRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\NewCmConditionalOrderResponse
 ```
 
-New CM Conditional Order(TRADE)
+New CM Conditional Order (TRADE)
 
-New CM Conditional Order  * Order with type `STOP/TAKE_PROFIT`, parameter `timeInForce` can be sent ( default `GTC`). * Condition orders will be triggered when: * `STOP`, `STOP_MARKET`: * BUY: \"MARK_PRICE\"  >= `stopPrice` * SELL: \"MARK_PRICE\" <= `stopPrice` * `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`: * BUY: \"MARK_PRICE\" <= `stopPrice` * SELL: \"MARK_PRICE\" >= `stopPrice` * `TRAILING_STOP_MARKET`: * BUY: the lowest mark price after order placed `<= `activationPrice`, and the latest mark price >`= the lowest mark price * (1 + `callbackRate`) * SELL: the highest mark price after order placed >= `activationPrice`, and the latest mark price <= the highest mark price * (1 - `callbackRate`) * For `TRAILING_STOP_MARKET`, if you got such error code. `{\"code\": -2021, \"msg\": \"Order would immediately trigger.\"}` means that the parameters you send do not meet the following requirements: * BUY: `activationPrice` should be smaller than latest mark price. * SELL: `activationPrice` should be larger than latest mark price. * Condition orders will be triggered when: * If parameter`priceProtect`is sent as true: * when price reaches the `stopPrice` ，the difference rate between \"MARK_PRICE\" and \"CONTRACT_PRICE\" cannot be larger than the \"triggerProtect\" of the symbol * \"triggerProtect\" of a symbol can be got from `GET /fapi/v1/exchangeInfo` * `STOP`, `STOP_MARKET`: * BUY: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") >= `stopPrice` * SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") <= `stopPrice` * `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`: * BUY: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") <= `stopPrice` * SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") >= `stopPrice`  Weight: 1
+New CM Conditional Order  Weight(IP): 1  Security Type: TRADE  Notes: - Additional mandatory parameters based on type:   - Order with type `STOP/TAKE_PROFIT`, parameter `timeInForce` can be sent ( default `GTC`).   - Condition orders will be triggered when:   - `STOP`, `STOP_MARKET`:   - BUY: \"MARK_PRICE\" >= `stopPrice`   - SELL: \"MARK_PRICE\" = `stopPrice`   - `TRAILING_STOP_MARKET`:   - BUY: the lowest mark price after order placed ``= the lowest mark price   - (1 + `callbackRate`)   - SELL: the highest mark price after order placed >= `activationPrice`, and the latest mark price = `stopPrice`   - SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") = `stopPrice`
 
 ### Example
 
@@ -1376,9 +1559,9 @@ No authorization required
 newCmOrder($newCmOrderRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\NewCmOrderResponse
 ```
 
-New CM Order(TRADE)
+New CM Order (TRADE)
 
-Place new CM order  * If `newOrderRespType` is sent as `RESULT` : * `MARKET` order: the final FILLED result of the order will be return directly. * `LIMIT` order with special `timeInForce`: the final status result of the order(FILLED or EXPIRED) will be returned directly.  Weight: 1
+Place new CM order  Weight(IP): 1  Security Type: TRADE  Notes: - Additional mandatory parameters based on `type`:   - If `newOrderRespType` is sent as `RESULT` :   - `MARKET` order: the final FILLED result of the order will be return directly.   - `LIMIT` order with special `timeInForce`: the final status result of the order(FILLED or EXPIRED) will be returned directly.
 
 ### Example
 
@@ -1432,9 +1615,9 @@ No authorization required
 newMarginOrder($newMarginOrderRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\NewMarginOrderResponse
 ```
 
-New Margin Order(TRADE)
+New Margin Order (TRADE)
 
-New Margin Order  Weight: 1
+New Margin Order  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -1482,6 +1665,62 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `newUmAlgoOrder()`
+
+```php
+newUmAlgoOrder($newUmAlgoOrderRequest): \Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmAlgoOrderResponse
+```
+
+New UM Algo Order (TRADE)
+
+Place new UM conditional order  Weight(IP): 1  Security Type: TRADE  Notes: - Algo order with type `STOP`, parameter `timeInForce` can be sent (default `GTC`). - Algo order with type `TAKE_PROFIT`, parameter `timeInForce` can be sent (default `GTC`). - Condition orders will be triggered when price reaches the `triggerPrice`. - `STOP`, `STOP_MARKET`: BUY: latest price >= `triggerPrice`; SELL: latest price <= `triggerPrice`. - `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`: BUY: latest price <= `triggerPrice`; SELL: latest price >= `triggerPrice`. - `TRAILING_STOP_MARKET`: BUY: lowest price after order placed <= `activatePrice`, and latest price >= lowest price * (1 + `callbackRate`); SELL: highest price after order placed >= `activatePrice`, and latest price <= highest price * (1 - `callbackRate`). - `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$newUmAlgoOrderRequest = new \Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmAlgoOrderRequest(); // \Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmAlgoOrderRequest
+
+try {
+    $result = $apiInstance->newUmAlgoOrder($newUmAlgoOrderRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->newUmAlgoOrder: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **newUmAlgoOrderRequest** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmAlgoOrderRequest**](../Model/NewUmAlgoOrderRequest.md)|  | |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingPortfolioMargin\Model\NewUmAlgoOrderResponse**](../Model/NewUmAlgoOrderResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `newUmConditionalOrder()`
 
 ```php
@@ -1490,7 +1729,7 @@ newUmConditionalOrder($newUmConditionalOrderRequest): \Binance\Client\Derivative
 
 New UM Conditional Order (TRADE)
 
-Place new UM conditional order  * Order with type `STOP/TAKE_PROFIT`, parameter `timeInForce` can be sent ( default `GTC`). * Condition orders will be triggered when: * `STOP`, `STOP_MARKET`: * BUY: \"MARK_PRICE\"  >= `stopPrice` * SELL: \"MARK_PRICE\" <= `stopPrice` * `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`: * BUY: \"MARK_PRICE\" <= `stopPrice` * SELL: \"MARK_PRICE\" >= `stopPrice` * `TRAILING_STOP_MARKET`: * BUY: the lowest mark price after order placed `<= `activationPrice`, and the latest mark price >`= the lowest mark price * (1 + `callbackRate`) * SELL: the highest mark price after order placed >= `activationPrice`, and the latest mark price <= the highest mark price * (1 - `callbackRate`) * For `TRAILING_STOP_MARKET`, if you got such error code. `{\"code\": -2021, \"msg\": \"Order would immediately trigger.\"}` means that the parameters you send do not meet the following requirements: * BUY: `activationPrice` should be smaller than latest mark price. * SELL: `activationPrice` should be larger than latest mark price. * Condition orders will be triggered when: * If parameter`priceProtect`is sent as true: * when price reaches the `stopPrice` ，the difference rate between \"MARK_PRICE\" and \"CONTRACT_PRICE\" cannot be larger than the \"triggerProtect\" of the symbol * \"triggerProtect\" of a symbol can be got from `GET /fapi/v1/exchangeInfo` * `STOP`, `STOP_MARKET`: * BUY: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") >= `stopPrice` * SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") <= `stopPrice` * `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`: * BUY: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") <= `stopPrice` * SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") >= `stopPrice` * `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`. * In extreme market conditions, timeInForce `GTD` order auto cancel time might be delayed comparing to `goodTillDate`  Weight: 1
+Place new UM conditional order  Weight(IP): 1  Security Type: TRADE  Notes: - Additional mandatory parameters based on type:   - Order with type `STOP/TAKE_PROFIT`, parameter `timeInForce` can be sent ( default `GTC`).   - Condition orders will be triggered when:   - `STOP`, `STOP_MARKET`:   - BUY: \"MARK_PRICE\" >= `stopPrice`   - SELL: \"MARK_PRICE\" = `stopPrice`   - `TRAILING_STOP_MARKET`:   - BUY: the lowest mark price after order placed ``= the lowest mark price   - (1 + `callbackRate`)   - SELL: the highest mark price after order placed >= `activationPrice`, and the latest mark price = `stopPrice`   - SELL: latest price (\"MARK_PRICE\" or \"CONTRACT_PRICE\") = `stopPrice`   - `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`.   - In extreme market conditions, timeInForce `GTD` order auto cancel time might be delayed comparing to `goodTillDate`
 
 ### Example
 
@@ -1546,7 +1785,7 @@ newUmOrder($newUmOrderRequest): \Binance\Client\DerivativesTradingPortfolioMargi
 
 New UM Order (TRADE)
 
-Place new UM order  * If `newOrderRespType` is sent as `RESULT` : * `MARKET` order: the final FILLED result of the order will be return directly. * `LIMIT` order with special `timeInForce`: the final status result of the order(FILLED or EXPIRED) will be returned directly. * `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`. * In extreme market conditions, timeInForce `GTD` order auto cancel time might be delayed comparing to `goodTillDate`  Weight: 1
+Place new UM order  Weight(IP): 1  Security Type: TRADE  Notes: - Additional mandatory parameters based on type:   - If `newOrderRespType` is sent as `RESULT` :   - `MARKET` order: the final FILLED result of the order will be return directly.   - `LIMIT` order with special `timeInForce`: the final status result of the order(FILLED or EXPIRED) will be returned directly.   - `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`.   - In extreme market conditions, timeInForce `GTD` order auto cancel time might be delayed comparing to `goodTillDate`
 
 ### Example
 
@@ -1600,9 +1839,9 @@ No authorization required
 queryAllCmConditionalOrders($symbol, $strategyId, $startTime, $endTime, $limit, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCmConditionalOrdersResponse
 ```
 
-Query All CM Conditional Orders(USER_DATA)
+Query All CM Conditional Orders (USER_DATA)
 
-Query All CM Conditional Orders  * These orders will not be found: * order strategyStatus is `CANCELED` or `EXPIRED`, **AND** * order has NO filled trade, **AND** * created time + 7 days < current time * The query time period must be less than 7 days( default as the recent 7 days).  Weight: 1 for a single symbol; 40 when the symbol parameter is omitted
+Query All CM Conditional Orders  Weight: - 1 for a single `symbol` - 40 when `symbol` is omitted  Security Type: USER_DATA  Notes: - These orders will not be found:   - order strategyStatus is `CANCELED` or `EXPIRED`, **AND**   - order has NO filled trade, **AND**   - created time + 7 days  * The query time period must be less than 7 days( default as the recent 7 days).
 
 ### Example
 
@@ -1617,12 +1856,12 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$strategyId = 56; // int
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$strategyId = 1; // int
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$limit = 500; // int | Number of results returned.
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryAllCmConditionalOrders($symbol, $strategyId, $startTime, $endTime, $limit, $recvWindow);
@@ -1640,7 +1879,7 @@ try {
 | **strategyId** | **int**|  | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **limit** | **int**| Number of results returned. | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -1668,7 +1907,7 @@ queryAllCmOrders($symbol, $pair, $orderId, $startTime, $endTime, $limit, $recvWi
 
 Query All CM Orders (USER_DATA)
 
-Get all account CM orders; active, canceled, or filled.  * Either `symbol` or `pair` must be sent. * If `orderId` is set, it will get orders >= that orderId. Otherwise most recent orders are returned. * These orders will not be found: * order status is `CANCELED` or `EXPIRED`, **AND** * order has NO filled trade, **AND** * created time + 3 days < current time  Weight: 20 with symbol, 40 with pair
+Get all account CM orders; active, canceled, or filled.  Weight: - 20 with `symbol` - 40 with `pair`  Security Type: USER_DATA  Notes: - Either `symbol` or `pair` must be sent. - If `orderId` is set, it will get orders >= that orderId. Otherwise most recent orders are returned. - These orders will not be found:   - order status is `CANCELED` or `EXPIRED`, **AND**   - order has NO filled trade, **AND**   - created time + 3 days < current time
 
 ### Example
 
@@ -1683,13 +1922,13 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$pair = 'pair_example'; // string
-$orderId = 56; // int
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSD_200925; // string | Symbol
+$pair = BTCUSD; // string
+$orderId = 1; // int
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$limit = 500; // int | Number of results returned.
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryAllCmOrders($symbol, $pair, $orderId, $startTime, $endTime, $limit, $recvWindow);
@@ -1703,12 +1942,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | [optional] |
 | **pair** | **string**|  | [optional] |
 | **orderId** | **int**|  | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **limit** | **int**| Number of results returned. | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -1736,7 +1975,7 @@ queryAllCurrentCmOpenConditionalOrders($symbol, $recvWindow): \Binance\Client\De
 
 Query All Current CM Open Conditional Orders (USER_DATA)
 
-Get all open conditional orders on a symbol. **Careful** when accessing this with no symbol.  * If the symbol is not sent, orders for all symbols will be returned in an array.  Weight: 1 for a single symbol; 40 when the symbol parameter is omitted
+Get all open conditional orders on a symbol. **Careful** when accessing this with no symbol.  Weight: - 1 for a single `symbol` - 40 when `symbol` is omitted  Security Type: USER_DATA  Notes: - If the symbol is not sent, orders for all symbols will be returned in an array.
 
 ### Example
 
@@ -1751,8 +1990,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSD; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryAllCurrentCmOpenConditionalOrders($symbol, $recvWindow);
@@ -1792,9 +2031,9 @@ No authorization required
 queryAllCurrentCmOpenOrders($symbol, $pair, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentCmOpenOrdersResponse
 ```
 
-Query All Current CM Open Orders(USER_DATA)
+Query All Current CM Open Orders (USER_DATA)
 
-Get all open orders on a symbol.  * If the symbol is not sent, orders for all symbols will be returned in an array.  Weight: 1 for a single symbol; 40 when the symbol parameter is omitted Careful when accessing this with no symbol.
+Get all open orders on a symbol.  * If the symbol is not sent, orders for all symbols will be returned in an array.  Weight: - 1 for a single `symbol` - 40 when `symbol` is omitted  Security Type: USER_DATA
 
 ### Example
 
@@ -1809,9 +2048,9 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$pair = 'pair_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSD_200925; // string
+$pair = BTCUSD; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryAllCurrentCmOpenOrders($symbol, $pair, $recvWindow);
@@ -1846,15 +2085,15 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `queryAllCurrentUmOpenConditionalOrders()`
+## `queryAllCurrentUmOpenAlgoOrders()`
 
 ```php
-queryAllCurrentUmOpenConditionalOrders($symbol, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentUmOpenConditionalOrdersResponse
+queryAllCurrentUmOpenAlgoOrders($algoType, $symbol, $algoId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentUmOpenAlgoOrdersResponse
 ```
 
-Query All Current UM Open Conditional Orders(USER_DATA)
+Query All Current UM Open Algo Orders (USER_DATA)
 
-Get all open conditional orders on a symbol.  * If the symbol is not sent, orders for all symbols will be returned in an array.  Weight: 1 for a single symbol; 40 when the symbol parameter is omitted Careful when accessing this with no symbol.
+Get all UM open algo orders on a symbol. If the symbol is not sent, orders for all symbols will be returned.  Weight(IP): 1  Security Type: USER_DATA  Notes: - Weight: 1 for a single symbol; 40 when the symbol parameter is omitted.
 
 ### Example
 
@@ -1869,8 +2108,70 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$algoType = CONDITIONAL; // string
+$symbol = BNBUSDT; // string
+$algoId = 2146760; // int
+$recvWindow = 5000; // int
+
+try {
+    $result = $apiInstance->queryAllCurrentUmOpenAlgoOrders($algoType, $symbol, $algoId, $recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->queryAllCurrentUmOpenAlgoOrders: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **algoType** | **string**|  | [optional] |
+| **symbol** | **string**|  | [optional] |
+| **algoId** | **int**|  | [optional] |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentUmOpenAlgoOrdersResponse**](../Model/QueryAllCurrentUmOpenAlgoOrdersResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `queryAllCurrentUmOpenConditionalOrders()`
+
+```php
+queryAllCurrentUmOpenConditionalOrders($symbol, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentUmOpenConditionalOrdersResponse
+```
+
+Query All Current UM Open Conditional Orders (USER_DATA)
+
+Get all open conditional orders on a symbol.  Weight: - 1 for a single `symbol` - 40 when `symbol` is omitted  Security Type: USER_DATA  Notes: - If `symbol` is not provided, conditional open orders for all symbols are returned.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryAllCurrentUmOpenConditionalOrders($symbol, $recvWindow);
@@ -1910,9 +2211,9 @@ No authorization required
 queryAllCurrentUmOpenOrders($symbol, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllCurrentUmOpenOrdersResponse
 ```
 
-Query All Current UM Open Orders(USER_DATA)
+Query All Current UM Open Orders (USER_DATA)
 
-Get all open orders on a symbol.   * If the symbol is not sent, orders for all symbols will be returned in an array.  Weight: 1 for a single symbol; 40 when the symbol parameter is omitted
+Get all open orders on a symbol.  Weight: - 1 for a single `symbol` - 40 when `symbol` is omitted  Security Type: USER_DATA  Notes: - If the symbol is not sent, orders for all symbols will be returned in an array.
 
 ### Example
 
@@ -1927,8 +2228,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryAllCurrentUmOpenOrders($symbol, $recvWindow);
@@ -1970,7 +2271,7 @@ queryAllMarginAccountOrders($symbol, $orderId, $startTime, $endTime, $limit, $re
 
 Query All Margin Account Orders (USER_DATA)
 
-Query All Margin Account Orders  Weight: 100
+Query All Margin Account Orders  Weight(IP): 100  Security Type: USER_DATA  Notes: - If `orderId` is set, returns orders with id >= `orderId`; otherwise returns recent order history. - For some historical orders, `cummulativeQuoteQty < 0` means the data is unavailable at this time.
 
 ### Example
 
@@ -1985,12 +2286,12 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$orderId = 1; // int
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$limit = 500; // int | Number of results returned.
+$recvWindow = 5000; // int | Value cannot be greater than 60000
 
 try {
     $result = $apiInstance->queryAllMarginAccountOrders($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
@@ -2004,12 +2305,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **orderId** | **int**|  | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **limit** | **int**| Number of results returned. | [optional] |
+| **recvWindow** | **int**| Value cannot be greater than 60000 | [optional] |
 
 ### Return type
 
@@ -2034,9 +2335,9 @@ No authorization required
 queryAllUmConditionalOrders($symbol, $strategyId, $startTime, $endTime, $limit, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllUmConditionalOrdersResponse
 ```
 
-Query All UM Conditional Orders(USER_DATA)
+Query All UM Conditional Orders (USER_DATA)
 
-Query All UM Conditional Orders  * These orders will not be found: * order strategyStatus is `CANCELED` or `EXPIRED`, **AND** * order has NO filled trade, **AND** * created time + 7 days < current time * The query time period must be less than 7 days( default as the recent 7 days).  Weight: 1 for a single symbol; 40 when the symbol parameter is omitted
+Query All UM Conditional Orders  Weight: - 1 for a single `symbol` - 40 when `symbol` is omitted  Security Type: USER_DATA  Notes: - These orders will not be found:   - order strategyStatus is `CANCELED` or `EXPIRED`, **AND**   - order has NO filled trade, **AND**   - created time + 7 days  * The query time period must be less than 7 days( default as the recent 7 days).
 
 ### Example
 
@@ -2051,12 +2352,12 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$strategyId = 56; // int
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$strategyId = 1; // int
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$limit = 500; // int | Number of results returned.
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryAllUmConditionalOrders($symbol, $strategyId, $startTime, $endTime, $limit, $recvWindow);
@@ -2074,7 +2375,7 @@ try {
 | **strategyId** | **int**|  | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **limit** | **int**| Number of results returned. | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -2100,9 +2401,9 @@ No authorization required
 queryAllUmOrders($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryAllUmOrdersResponse
 ```
 
-Query All UM Orders(USER_DATA)
+Query All UM Orders (USER_DATA)
 
-Get all account UM orders; active, canceled, or filled. * These orders will not be found: * order status is `CANCELED` or `EXPIRED`, **AND** * order has NO filled trade, **AND** * created time + 3 days < current time  * If `orderId` is set, it will get orders >= that orderId. Otherwise most recent orders are returned. * The query time period must be less then 7 days( default as the recent 7 days).  Weight: 5
+Get all account UM orders; active, canceled, or filled.  Weight(IP): 5  Security Type: USER_DATA  Notes: - If `orderId` is set, it will get orders >= that orderId. Otherwise most recent orders are returned. - The query time period must be less then 7 days( default as the recent 7 days).
 
 ### Example
 
@@ -2117,12 +2418,12 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$orderId = 1; // int
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$limit = 500; // int | Number of results returned.
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryAllUmOrders($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
@@ -2136,11 +2437,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **orderId** | **int**|  | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **limit** | **int**| Number of results returned. | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -2166,9 +2467,9 @@ No authorization required
 queryCmConditionalOrderHistory($symbol, $strategyId, $newClientStrategyId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCmConditionalOrderHistoryResponse
 ```
 
-Query CM Conditional Order History(USER_DATA)
+Query CM Conditional Order History (USER_DATA)
 
-Query CM Conditional Order History   * Either `strategyId` or `newClientStrategyId` must be sent. * `NEW` orders will not be found. * These orders will not be found: * order status is `CANCELED` or `EXPIRED`, **AND** * order has NO filled trade, **AND** * created time + 7 days < current time  Weight: 1
+Query CM Conditional Order History  Weight(IP): 1  Security Type: USER_DATA  Notes: - Either `strategyId` or `newClientStrategyId` must be sent. - `NEW` orders will not be found. - These orders will not be found:   - order status is `CANCELED` or `EXPIRED`, **AND**   - order has NO filled trade, **AND**   - created time + 7 days < current time
 
 ### Example
 
@@ -2183,10 +2484,10 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$strategyId = 56; // int
-$newClientStrategyId = 'newClientStrategyId_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$strategyId = 1; // int
+$newClientStrategyId = 1; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryCmConditionalOrderHistory($symbol, $strategyId, $newClientStrategyId, $recvWindow);
@@ -2200,7 +2501,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **strategyId** | **int**|  | [optional] |
 | **newClientStrategyId** | **string**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
@@ -2228,9 +2529,9 @@ No authorization required
 queryCmModifyOrderHistory($symbol, $orderId, $origClientOrderId, $startTime, $endTime, $limit, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCmModifyOrderHistoryResponse
 ```
 
-Query CM Modify Order History(TRADE)
+Query CM Modify Order History (TRADE)
 
-Get order modification history  * Either `orderId` or `origClientOrderId` must be sent, and the `orderId` will prevail if both are sent.  Weight: 1
+Get order modification history  Weight(IP): 1  Security Type: TRADE  Notes: - Either `orderId` or `origClientOrderId` must be sent, and the `orderId` will prevail if both are sent.
 
 ### Example
 
@@ -2245,13 +2546,13 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$origClientOrderId = 'origClientOrderId_example'; // string
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$orderId = 1; // int | Order ID
+$origClientOrderId = 1; // string | Client order ID
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$limit = 500; // int | Number of results returned.
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryCmModifyOrderHistory($symbol, $orderId, $origClientOrderId, $startTime, $endTime, $limit, $recvWindow);
@@ -2265,12 +2566,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
-| **orderId** | **int**|  | [optional] |
-| **origClientOrderId** | **string**|  | [optional] |
+| **symbol** | **string**| Symbol | |
+| **orderId** | **int**| Order ID | [optional] |
+| **origClientOrderId** | **string**| Client order ID | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **limit** | **int**| Number of results returned. | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -2296,9 +2597,9 @@ No authorization required
 queryCmOrder($symbol, $orderId, $origClientOrderId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCmOrderResponse
 ```
 
-Query CM Order(USER_DATA)
+Query CM Order (USER_DATA)
 
-Check an CM order's status.  * Either `orderId` or `origClientOrderId` must be sent. * These orders will not be found: * order status is `CANCELED` or `EXPIRED`, **AND** * order has NO filled trade, **AND** * created time + 3 days < current time  Weight: 1
+Check an CM order's status.  Weight(IP): 1  Security Type: USER_DATA  Notes: - Either `orderId` or `origClientOrderId` must be sent. - These orders will not be found:   - order status is `CANCELED` or `EXPIRED`, **AND**   - order has NO filled trade, **AND**   - created time + 3 days < current time
 
 ### Example
 
@@ -2313,10 +2614,10 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$origClientOrderId = 'origClientOrderId_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSD_200925; // string | Symbol
+$orderId = 1; // int
+$origClientOrderId = 1; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryCmOrder($symbol, $orderId, $origClientOrderId, $recvWindow);
@@ -2330,7 +2631,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **orderId** | **int**|  | [optional] |
 | **origClientOrderId** | **string**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
@@ -2358,9 +2659,9 @@ No authorization required
 queryCurrentCmOpenConditionalOrder($symbol, $strategyId, $newClientStrategyId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentCmOpenConditionalOrderResponse
 ```
 
-Query Current CM Open Conditional Order(USER_DATA)
+Query Current CM Open Conditional Order (USER_DATA)
 
-Query Current CM Open Conditional Order  * Either `strategyId` or `newClientStrategyId` must be sent. * If the queried order has been triggered, cancelled or expired, the error message \"Order does not exist\" will be returned.  Weight: 1
+Query Current CM Open Conditional Order  Weight(IP): 1  Security Type: USER_DATA  Notes: - Either `strategyId` or `newClientStrategyId` must be sent. - If the queried order has been triggered, cancelled or expired, the error message \"Order does not exist\" will be returned.
 
 ### Example
 
@@ -2375,10 +2676,10 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$strategyId = 56; // int
-$newClientStrategyId = 'newClientStrategyId_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSD_200925; // string | Symbol
+$strategyId = 1; // int
+$newClientStrategyId = 1; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryCurrentCmOpenConditionalOrder($symbol, $strategyId, $newClientStrategyId, $recvWindow);
@@ -2392,7 +2693,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **strategyId** | **int**|  | [optional] |
 | **newClientStrategyId** | **string**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
@@ -2422,7 +2723,7 @@ queryCurrentCmOpenOrder($symbol, $orderId, $origClientOrderId, $recvWindow): \Bi
 
 Query Current CM Open Order (USER_DATA)
 
-Query current CM open order  * Either `orderId` or `origClientOrderId` must be sent. * If the queried order has been filled or cancelled, the error message \"Order does not exist\" will be returned.  Weight: 1
+Query current CM open order  Weight(IP): 1  Security Type: USER_DATA  Notes: - Either `orderId` or `origClientOrderId` must be sent. - If the queried order has been filled or cancelled, the error message \"Order does not exist\" will be returned.
 
 ### Example
 
@@ -2437,10 +2738,10 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$origClientOrderId = 'origClientOrderId_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Trading pair.
+$orderId = 1917641; // int | Order ID.
+$origClientOrderId = abc; // string | User-defined order ID.
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryCurrentCmOpenOrder($symbol, $orderId, $origClientOrderId, $recvWindow);
@@ -2454,9 +2755,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
-| **orderId** | **int**|  | [optional] |
-| **origClientOrderId** | **string**|  | [optional] |
+| **symbol** | **string**| Trading pair. | |
+| **orderId** | **int**| Order ID. | [optional] |
+| **origClientOrderId** | **string**| User-defined order ID. | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -2484,7 +2785,7 @@ queryCurrentMarginOpenOrder($symbol, $recvWindow): \Binance\Client\DerivativesTr
 
 Query Current Margin Open Order (USER_DATA)
 
-Query Current Margin Open Order  Weight: 5
+Query Current Margin Open Order  Weight(IP): 5  Security Type: USER_DATA  Notes: - If `symbol` is not sent, order records for all symbols are returned. - When returning all symbols, the request count charged to the rate limiter equals the number of symbols currently trading on the exchange.
 
 ### Example
 
@@ -2499,8 +2800,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$recvWindow = 5000; // int | Value cannot be greater than 60000
 
 try {
     $result = $apiInstance->queryCurrentMarginOpenOrder($symbol, $recvWindow);
@@ -2514,12 +2815,72 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
-| **recvWindow** | **int**|  | [optional] |
+| **symbol** | **string**| Symbol | |
+| **recvWindow** | **int**| Value cannot be greater than 60000 | [optional] |
 
 ### Return type
 
 [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentMarginOpenOrderResponse**](../Model/QueryCurrentMarginOpenOrderResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `queryCurrentUmOpenAlgoOrder()`
+
+```php
+queryCurrentUmOpenAlgoOrder($algoId, $clientAlgoId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentUmOpenAlgoOrderResponse
+```
+
+Query Current UM Open Algo Order (USER_DATA)
+
+Check an UM algo order's status. Orders will not be found if: status is CANCELED/EXPIRED with no fills and created 3+ days ago; or created 90+ days ago.  Weight(IP): 1  Security Type: USER_DATA  Notes: - Either `algoId` or `clientAlgoId` must be sent. `algoId` is self-increment for each specific `symbol`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$algoId = 2146760; // int | Algo order ID
+$clientAlgoId = 6B2I9XVcJpCjqPAJ4YoFX7; // string | Client algo order ID
+$recvWindow = 5000; // int
+
+try {
+    $result = $apiInstance->queryCurrentUmOpenAlgoOrder($algoId, $clientAlgoId, $recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->queryCurrentUmOpenAlgoOrder: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **algoId** | **int**| Algo order ID | [optional] |
+| **clientAlgoId** | **string**| Client algo order ID | [optional] |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentUmOpenAlgoOrderResponse**](../Model/QueryCurrentUmOpenAlgoOrderResponse.md)
 
 ### Authorization
 
@@ -2540,9 +2901,9 @@ No authorization required
 queryCurrentUmOpenConditionalOrder($symbol, $strategyId, $newClientStrategyId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentUmOpenConditionalOrderResponse
 ```
 
-Query Current UM Open Conditional Order(USER_DATA)
+Query Current UM Open Conditional Order (USER_DATA)
 
-Query Current UM Open Conditional Order  * Either `strategyId` or `newClientStrategyId` must be sent. * If the queried order has been `CANCELED`, `TRIGGERED`或`EXPIRED`, the error message \"Order does not exist\" will be returned.  Weight: 1
+Query Current UM Open Conditional Order  Weight(IP): 1  Security Type: USER_DATA  Notes: - Either `strategyId` or `newClientStrategyId` must be sent. - If the queried order has been `CANCELED`, `TRIGGERED` or `EXPIRED`, the error message \"Order does not exist\" will be returned.
 
 ### Example
 
@@ -2557,10 +2918,10 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$strategyId = 56; // int
-$newClientStrategyId = 'newClientStrategyId_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$strategyId = 1; // int
+$newClientStrategyId = 1; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryCurrentUmOpenConditionalOrder($symbol, $strategyId, $newClientStrategyId, $recvWindow);
@@ -2574,7 +2935,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **strategyId** | **int**|  | [optional] |
 | **newClientStrategyId** | **string**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
@@ -2602,9 +2963,9 @@ No authorization required
 queryCurrentUmOpenOrder($symbol, $orderId, $origClientOrderId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryCurrentUmOpenOrderResponse
 ```
 
-Query Current UM Open Order(USER_DATA)
+Query Current UM Open Order (USER_DATA)
 
-Query current UM open order   * Either `orderId` or `origClientOrderId` must be sent. * If the queried order has been filled or cancelled, the error message \"Order does not exist\" will be returned.  Weight: 1
+Query current UM open order  Weight(IP): 1  Security Type: USER_DATA  Notes: - Either `orderId` or `origClientOrderId` must be sent. - If the queried order has been filled or cancelled, the error message \"Order does not exist\" will be returned.
 
 ### Example
 
@@ -2619,10 +2980,10 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$origClientOrderId = 'origClientOrderId_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$orderId = 1; // int
+$origClientOrderId = 1; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryCurrentUmOpenOrder($symbol, $orderId, $origClientOrderId, $recvWindow);
@@ -2636,7 +2997,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **orderId** | **int**|  | [optional] |
 | **origClientOrderId** | **string**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
@@ -2666,7 +3027,7 @@ queryMarginAccountOrder($symbol, $orderId, $origClientOrderId, $recvWindow): \Bi
 
 Query Margin Account Order (USER_DATA)
 
-Query Margin Account Order  Weight: 10
+Query Margin Account Order  Weight(IP): 10  Security Type: USER_DATA  Notes: - Either `orderId` or `origClientOrderId` must be sent. - For some historical orders, `cummulativeQuoteQty < 0` means the data is unavailable at this time.
 
 ### Example
 
@@ -2681,10 +3042,10 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$origClientOrderId = 'origClientOrderId_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$orderId = 1; // int
+$origClientOrderId = 1; // string
+$recvWindow = 5000; // int | Value cannot be greater than 60000
 
 try {
     $result = $apiInstance->queryMarginAccountOrder($symbol, $orderId, $origClientOrderId, $recvWindow);
@@ -2698,10 +3059,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **orderId** | **int**|  | [optional] |
 | **origClientOrderId** | **string**|  | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| Value cannot be greater than 60000 | [optional] |
 
 ### Return type
 
@@ -2728,7 +3089,7 @@ queryMarginAccountsAllOco($fromId, $startTime, $endTime, $limit, $recvWindow): \
 
 Query Margin Account's all OCO (USER_DATA)
 
-Query all OCO for a specific margin account based on provided optional parameters  Weight: 100
+Query all OCO for a specific margin account based on provided optional parameters  Weight(IP): 100  Security Type: USER_DATA
 
 ### Example
 
@@ -2743,11 +3104,11 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$fromId = 56; // int | Trade id to fetch from. Default gets most recent trades.
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$fromId = 1; // int | Trade ID to fetch from.
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$limit = 500; // int | Number of results returned.
+$recvWindow = 5000; // int | Value cannot be greater than 60000
 
 try {
     $result = $apiInstance->queryMarginAccountsAllOco($fromId, $startTime, $endTime, $limit, $recvWindow);
@@ -2761,11 +3122,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromId** | **int**| Trade id to fetch from. Default gets most recent trades. | [optional] |
+| **fromId** | **int**| Trade ID to fetch from. | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **limit** | **int**| Number of results returned. | [optional] |
+| **recvWindow** | **int**| Value cannot be greater than 60000 | [optional] |
 
 ### Return type
 
@@ -2792,7 +3153,7 @@ queryMarginAccountsOco($orderListId, $origClientOrderId, $recvWindow): \Binance\
 
 Query Margin Account's OCO (USER_DATA)
 
-Retrieves a specific OCO based on provided optional parameters  Weight: 5
+Retrieves a specific OCO based on provided optional parameters  Weight(IP): 5  Security Type: USER_DATA
 
 ### Example
 
@@ -2807,9 +3168,9 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$orderListId = 56; // int | Either `orderListId` or `listClientOrderId` must be provided
-$origClientOrderId = 'origClientOrderId_example'; // string
-$recvWindow = 56; // int
+$orderListId = 1; // int | Either `orderListId` or `listClientOrderId` must be provided
+$origClientOrderId = 1; // string | `orderListId` or `listClientOrderId` must be provided.
+$recvWindow = 5000; // int | Value cannot be greater than 60000
 
 try {
     $result = $apiInstance->queryMarginAccountsOco($orderListId, $origClientOrderId, $recvWindow);
@@ -2824,8 +3185,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **orderListId** | **int**| Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided | [optional] |
-| **origClientOrderId** | **string**|  | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **origClientOrderId** | **string**| &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided. | [optional] |
+| **recvWindow** | **int**| Value cannot be greater than 60000 | [optional] |
 
 ### Return type
 
@@ -2852,7 +3213,7 @@ queryMarginAccountsOpenOco($recvWindow): \Binance\Client\DerivativesTradingPortf
 
 Query Margin Account's Open OCO (USER_DATA)
 
-Query Margin Account's Open OCO  Weight: 5
+Query Margin Account's Open OCO  Weight(IP): 5  Security Type: USER_DATA
 
 ### Example
 
@@ -2867,7 +3228,7 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int | Value cannot be greater than 60000
 
 try {
     $result = $apiInstance->queryMarginAccountsOpenOco($recvWindow);
@@ -2881,11 +3242,77 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| Value cannot be greater than 60000 | [optional] |
 
 ### Return type
 
 [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryMarginAccountsOpenOcoResponse**](../Model/QueryMarginAccountsOpenOcoResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `queryUmAlgoOrderHistory()`
+
+```php
+queryUmAlgoOrderHistory($symbol, $algoId, $startTime, $endTime, $limit, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUmAlgoOrderHistoryResponse
+```
+
+Query UM Algo Order History (USER_DATA)
+
+Get all algo orders: ACTIVE, CANCELED, TRIGGERED or FINISHED.  Weight(IP): 5  Security Type: USER_DATA  Notes: - If `algoId` is set, it will get orders >= that `algoId`. Otherwise most recent orders are returned. - The query time period must be less than 7 days (default as the recent 7 days).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$symbol = BNBUSDT; // string
+$algoId = 2146760; // int | Only return orders >= this algoId
+$startTime = 1770130294138; // int
+$endTime = 1770736694138; // int
+$limit = 500; // int | Default 500; max 1000
+$recvWindow = 5000; // int
+
+try {
+    $result = $apiInstance->queryUmAlgoOrderHistory($symbol, $algoId, $startTime, $endTime, $limit, $recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TradeApi->queryUmAlgoOrderHistory: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **symbol** | **string**|  | |
+| **algoId** | **int**| Only return orders &gt;&#x3D; this algoId | [optional] |
+| **startTime** | **int**|  | [optional] |
+| **endTime** | **int**|  | [optional] |
+| **limit** | **int**| Default 500; max 1000 | [optional] |
+| **recvWindow** | **int**|  | [optional] |
+
+### Return type
+
+[**\Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUmAlgoOrderHistoryResponse**](../Model/QueryUmAlgoOrderHistoryResponse.md)
 
 ### Authorization
 
@@ -2906,9 +3333,9 @@ No authorization required
 queryUmConditionalOrderHistory($symbol, $strategyId, $newClientStrategyId, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUmConditionalOrderHistoryResponse
 ```
 
-Query UM Conditional Order History(USER_DATA)
+Query UM Conditional Order History (USER_DATA)
 
-Query UM Conditional Order History  * Either `strategyId` or `newClientStrategyId` must be sent. * `NEW` orders will not be found. * These orders will not be found: * order status is `CANCELED` or `EXPIRED`, **AND** * order has NO filled trade, **AND** * created time + 7 days < current time  Weight: 1
+Query UM Conditional Order History  Weight(IP): 1  Security Type: USER_DATA  Notes: - Either `strategyId` or `newClientStrategyId` must be sent. - `NEW` orders will not be found. - These orders will not be found:   - order status is `CANCELED` or `EXPIRED`, **AND**   - order has NO filled trade, **AND**   - created time + 7 days < current time
 
 ### Example
 
@@ -2923,10 +3350,10 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$strategyId = 56; // int
-$newClientStrategyId = 'newClientStrategyId_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$strategyId = 1; // int
+$newClientStrategyId = 1; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryUmConditionalOrderHistory($symbol, $strategyId, $newClientStrategyId, $recvWindow);
@@ -2940,7 +3367,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **strategyId** | **int**|  | [optional] |
 | **newClientStrategyId** | **string**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
@@ -2968,9 +3395,9 @@ No authorization required
 queryUmModifyOrderHistory($symbol, $orderId, $origClientOrderId, $startTime, $endTime, $limit, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUmModifyOrderHistoryResponse
 ```
 
-Query UM Modify Order History(TRADE)
+Query UM Modify Order History (TRADE)
 
-Get order modification history  * Either `orderId` or `origClientOrderId` must be sent, and the `orderId` will prevail if both are sent.  Weight: 1
+Get order modification history  Weight(IP): 1  Security Type: TRADE  Notes: - Either `orderId` or `origClientOrderId` must be sent, and the `orderId` will prevail if both are sent.
 
 ### Example
 
@@ -2985,13 +3412,13 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$origClientOrderId = 'origClientOrderId_example'; // string
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$orderId = 1; // int | Order ID
+$origClientOrderId = 1; // string | Client order ID
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$limit = 500; // int | Number of results returned.
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryUmModifyOrderHistory($symbol, $orderId, $origClientOrderId, $startTime, $endTime, $limit, $recvWindow);
@@ -3005,12 +3432,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
-| **orderId** | **int**|  | [optional] |
-| **origClientOrderId** | **string**|  | [optional] |
+| **symbol** | **string**| Symbol | |
+| **orderId** | **int**| Order ID | [optional] |
+| **origClientOrderId** | **string**| Client order ID | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **limit** | **int**| Number of results returned. | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -3038,7 +3465,7 @@ queryUmOrder($symbol, $orderId, $origClientOrderId, $recvWindow): \Binance\Clien
 
 Query UM Order (USER_DATA)
 
-Check an UM order's status.  * These orders will not be found: * Either `orderId` or `origClientOrderId` must be sent. * order status is `CANCELED` or `EXPIRED`, **AND** * order has NO filled trade, **AND** * created time + 3 days < current time  Weight: 1
+Check an UM order's status.  Weight(IP): 1  Security Type: USER_DATA  Notes: - These orders will not be found:   - Either `orderId` or `origClientOrderId` must be sent.   - order status is `CANCELED` or `EXPIRED`, **AND**   - order has NO filled trade, **AND**   - created time + 3 days < current time
 
 ### Example
 
@@ -3053,10 +3480,10 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$orderId = 56; // int
-$origClientOrderId = 'origClientOrderId_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$orderId = 1; // int
+$origClientOrderId = 1; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryUmOrder($symbol, $orderId, $origClientOrderId, $recvWindow);
@@ -3070,7 +3497,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **orderId** | **int**|  | [optional] |
 | **origClientOrderId** | **string**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
@@ -3098,9 +3525,9 @@ No authorization required
 queryUsersCmForceOrders($symbol, $autoCloseType, $startTime, $endTime, $limit, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUsersCmForceOrdersResponse
 ```
 
-Query User's CM Force Orders(USER_DATA)
+Query User's CM Force Orders (USER_DATA)
 
-Query User's CM Force Orders  * If \"autoCloseType\" is not sent, orders with both of the types will be returned * If \"startTime\" is not sent, data within 7 days before \"endTime\" can be queried  Weight: 20 with symbol, 50 without symbol
+Query User's CM Force Orders  Weight: - 20 with `symbol` - 50 without `symbol`  Security Type: USER_DATA  Notes: - If \"autoCloseType\" is not sent, orders with both of the types will be returned - If \"startTime\" is not sent, data within 7 days before \"endTime\" can be queried
 
 ### Example
 
@@ -3115,12 +3542,12 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = BTCUSDT; // string
 $autoCloseType = new \Binance\Client\DerivativesTradingPortfolioMargin\Model\\Binance\Client\DerivativesTradingPortfolioMargin\Model\AutoCloseType(); // \Binance\Client\DerivativesTradingPortfolioMargin\Model\AutoCloseType | `LIQUIDATION` for liquidation orders, `ADL` for ADL orders.
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$limit = 500; // int | Number of results returned.
+$recvWindow = 5000; // int | The value cannot be greater than 60000
 
 try {
     $result = $apiInstance->queryUsersCmForceOrders($symbol, $autoCloseType, $startTime, $endTime, $limit, $recvWindow);
@@ -3138,8 +3565,8 @@ try {
 | **autoCloseType** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\AutoCloseType**](../Model/.md)| &#x60;LIQUIDATION&#x60; for liquidation orders, &#x60;ADL&#x60; for ADL orders. | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **limit** | **int**| Number of results returned. | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 | [optional] |
 
 ### Return type
 
@@ -3164,9 +3591,9 @@ No authorization required
 queryUsersMarginForceOrders($startTime, $endTime, $current, $size, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\QueryUsersMarginForceOrdersResponse
 ```
 
-Query User's Margin Force Orders(USER_DATA)
+Query User's Margin Force Orders (USER_DATA)
 
-Query user's margin force orders  Weight: 1
+Query user's margin force orders  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -3181,11 +3608,11 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10 Max:100
-$recvWindow = 56; // int
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$current = 1; // int | Current page number.
+$size = 10; // int | Number of results returned.
+$recvWindow = 5000; // int | The value cannot be greater than 60000
 
 try {
     $result = $apiInstance->queryUsersMarginForceOrders($startTime, $endTime, $current, $size, $recvWindow);
@@ -3201,9 +3628,9 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10 Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Current page number. | [optional] |
+| **size** | **int**| Number of results returned. | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 | [optional] |
 
 ### Return type
 
@@ -3230,7 +3657,7 @@ queryUsersUmForceOrders($symbol, $autoCloseType, $startTime, $endTime, $limit, $
 
 Query User's UM Force Orders (USER_DATA)
 
-Query User's UM Force Orders  * If `autoCloseType` is not sent, orders with both of the types will be returned * If `startTime` is not sent, data within 7 days before `endTime` can be queried  Weight: 20 with symbol, 50 without symbol
+Query User's UM Force Orders  Weight: - 20 with `symbol` - 50 without `symbol`  Security Type: USER_DATA  Notes: - If `autoCloseType` is not sent, orders with both of the types will be returned - If `startTime` is not sent, data within 7 days before `endTime` can be queried
 
 ### Example
 
@@ -3245,12 +3672,12 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
+$symbol = BTCUSDT; // string
 $autoCloseType = new \Binance\Client\DerivativesTradingPortfolioMargin\Model\\Binance\Client\DerivativesTradingPortfolioMargin\Model\AutoCloseType(); // \Binance\Client\DerivativesTradingPortfolioMargin\Model\AutoCloseType | `LIQUIDATION` for liquidation orders, `ADL` for ADL orders.
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$limit = 500; // int | Number of results returned.
+$recvWindow = 5000; // int | The value cannot be greater than 60000
 
 try {
     $result = $apiInstance->queryUsersUmForceOrders($symbol, $autoCloseType, $startTime, $endTime, $limit, $recvWindow);
@@ -3268,8 +3695,8 @@ try {
 | **autoCloseType** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\AutoCloseType**](../Model/.md)| &#x60;LIQUIDATION&#x60; for liquidation orders, &#x60;ADL&#x60; for ADL orders. | [optional] |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **limit** | **int**| Number of results returned. | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 | [optional] |
 
 ### Return type
 
@@ -3296,7 +3723,7 @@ toggleBnbBurnOnUmFuturesTrade($toggleBnbBurnOnUmFuturesTradeRequest): \Binance\C
 
 Toggle BNB Burn On UM Futures Trade (TRADE)
 
-Change user's BNB Fee Discount for UM Futures (Fee Discount On or Fee Discount Off ) on ***EVERY symbol***   * The BNB would not be collected from UM-PM account to the Portfolio Margin account.  Weight: 1
+Change user's BNB Fee Discount for UM Futures (Fee Discount On or Fee Discount Off ) on ***EVERY symbol***  Weight(IP): 1  Security Type: TRADE  Notes: - The BNB would not be collected from UM-PM account to the Portfolio Margin account.
 
 ### Example
 
@@ -3350,9 +3777,9 @@ No authorization required
 umAccountTradeList($symbol, $startTime, $endTime, $fromId, $limit, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\UmAccountTradeListResponse
 ```
 
-UM Account Trade List(USER_DATA)
+UM Account Trade List (USER_DATA)
 
-Get trades for a specific account and UM symbol.   * If `startTime` and `endTime` are both not sent, then the last '7 days' data will be returned. * The time between `startTime` and `endTime` cannot be longer than 7 days. * The parameter `fromId` cannot be sent with `startTime` or `endTime`.  Weight: 5
+Get trades for a specific account and UM symbol.  Weight(IP): 5  Security Type: USER_DATA  Notes: - If `startTime` and `endTime` are both not sent, then the last '7 days' data will be returned. - The time between `startTime` and `endTime` cannot be longer than 7 days. - The parameter `fromId` cannot be sent with `startTime` or `endTime`.
 
 ### Example
 
@@ -3367,12 +3794,12 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$startTime = 56; // int | Timestamp in ms to get funding from INCLUSIVE.
-$endTime = 56; // int | Timestamp in ms to get funding until INCLUSIVE.
-$fromId = 56; // int | Trade id to fetch from. Default gets most recent trades.
-$limit = 56; // int | Default 100; max 1000
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string | Symbol
+$startTime = 1623319461670; // int | Timestamp in ms to get funding from INCLUSIVE.
+$endTime = 1641782889000; // int | Timestamp in ms to get funding until INCLUSIVE.
+$fromId = 1; // int | Trade ID to fetch from.
+$limit = 500; // int | Number of results returned.
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->umAccountTradeList($symbol, $startTime, $endTime, $fromId, $limit, $recvWindow);
@@ -3386,11 +3813,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**|  | |
+| **symbol** | **string**| Symbol | |
 | **startTime** | **int**| Timestamp in ms to get funding from INCLUSIVE. | [optional] |
 | **endTime** | **int**| Timestamp in ms to get funding until INCLUSIVE. | [optional] |
-| **fromId** | **int**| Trade id to fetch from. Default gets most recent trades. | [optional] |
-| **limit** | **int**| Default 100; max 1000 | [optional] |
+| **fromId** | **int**| Trade ID to fetch from. | [optional] |
+| **limit** | **int**| Number of results returned. | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -3416,9 +3843,9 @@ No authorization required
 umPositionAdlQuantileEstimation($symbol, $recvWindow): \Binance\Client\DerivativesTradingPortfolioMargin\Model\UmPositionAdlQuantileEstimationResponse
 ```
 
-UM Position ADL Quantile Estimation(USER_DATA)
+UM Position ADL Quantile Estimation (USER_DATA)
 
-Query UM Position ADL Quantile Estimation  * Values update every 30s. * Values 0, 1, 2, 3, 4 shows the queue position and possibility of ADL from low to high. * For positions of the symbol are in One-way Mode or isolated margined in Hedge Mode, \"LONG\", \"SHORT\", and \"BOTH\" will be returned to show the positions' adl quantiles of different position sides. * If the positions of the symbol are crossed margined in Hedge Mode: * \"HEDGE\" as a sign will be returned instead of \"BOTH\"; * A same value caculated on unrealized pnls on long and short sides' positions will be shown for \"LONG\" and \"SHORT\" when there are positions in both of long and short sides.  Weight: 5
+Query UM Position ADL Quantile Estimation  * Values update every 30s. * Values 0, 1, 2, 3, 4 shows the queue position and possibility of ADL from low to high. * For positions of the symbol are in One-way Mode or isolated margined in Hedge Mode, \"LONG\", \"SHORT\", and \"BOTH\" will be returned to show the positions' adl quantiles of different position sides. * If the positions of the symbol are crossed margined in Hedge Mode: * \"HEDGE\" as a sign will be returned instead of \"BOTH\"; * A same value caculated on unrealized pnls on long and short sides' positions will be shown for \"LONG\" and \"SHORT\" when there are positions in both of long and short sides.  Weight(IP): 5  Security Type: USER_DATA
 
 ### Example
 
@@ -3433,8 +3860,8 @@ $apiInstance = new Binance\Client\DerivativesTradingPortfolioMargin\Api\TradeApi
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string
-$recvWindow = 56; // int
+$symbol = BTCUSDT; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->umPositionAdlQuantileEstimation($symbol, $recvWindow);

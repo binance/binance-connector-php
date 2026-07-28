@@ -1,4 +1,4 @@
-# # GetSummaryOfSubAccountsFuturesAccountV2ResponseDeliveryAccountSummaryResp
+# GetSummaryOfSubAccountsFuturesAccountV2ResponseDeliveryAccountSummaryResp
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # OpenInterestStatisticsResponse
+# OpenInterestStatisticsResponse
 
 ## Properties
 

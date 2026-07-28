@@ -12,7 +12,7 @@ function enableFuturesForSubAccountExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
     $enableFuturesForSubAccountRequest = new EnableFuturesForSubAccountRequest();
-    $enableFuturesForSubAccountRequest->setEmail('sub-account-email@email.com');
+    $enableFuturesForSubAccountRequest->setEmail('123@test.com');
     $response = $api->enableFuturesForSubAccount($enableFuturesForSubAccountRequest);
     print_r($response);
 }

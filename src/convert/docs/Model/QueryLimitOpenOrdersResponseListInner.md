@@ -1,4 +1,4 @@
-# # QueryLimitOpenOrdersResponseListInner
+# QueryLimitOpenOrdersResponseListInner
 
 ## Properties
 

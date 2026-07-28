@@ -1,4 +1,4 @@
-# # ExtraBonusListResponse
+# ExtraBonusListResponse
 
 ## Properties
 

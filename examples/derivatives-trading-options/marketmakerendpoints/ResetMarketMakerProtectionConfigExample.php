@@ -12,6 +12,7 @@ function resetMarketMakerProtectionConfigExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingOptionsRestApi($configurationBuilder->build());
     $resetMarketMakerProtectionConfigRequest = new ResetMarketMakerProtectionConfigRequest();
+    $resetMarketMakerProtectionConfigRequest->setUnderlying('BTCUSDT');
     $response = $api->resetMarketMakerProtectionConfig($resetMarketMakerProtectionConfigRequest);
     print_r($response);
 }

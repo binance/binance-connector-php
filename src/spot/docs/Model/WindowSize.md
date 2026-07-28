@@ -1,4 +1,4 @@
-# # WindowSize
+# WindowSize
 
 ## Properties
 

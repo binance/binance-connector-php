@@ -1,4 +1,4 @@
-# # RecentBlockTradesListResponse
+# RecentBlockTradesListResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetDelistScheduleResponse
+# GetDelistScheduleResponse
 
 ## Properties
 

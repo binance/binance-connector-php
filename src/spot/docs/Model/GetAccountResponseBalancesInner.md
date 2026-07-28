@@ -1,4 +1,4 @@
-# # GetAccountResponseBalancesInner
+# GetAccountResponseBalancesInner
 
 ## Properties
 

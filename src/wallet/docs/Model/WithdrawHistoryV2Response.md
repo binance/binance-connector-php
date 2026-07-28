@@ -1,4 +1,4 @@
-# # WithdrawHistoryV2Response
+# WithdrawHistoryV2Response
 
 ## Properties
 

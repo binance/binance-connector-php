@@ -1,4 +1,4 @@
-# # SymbolPriceTickerResponse2
+# SymbolPriceTickerResponse2
 
 ## Properties
 

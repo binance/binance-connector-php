@@ -1,15 +1,15 @@
-# # FuturesAccountConfigurationResponse
+# FuturesAccountConfigurationResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**feeTier** | **int** |  | [optional]
-**canTrade** | **bool** |  | [optional]
-**canDeposit** | **bool** |  | [optional]
-**canWithdraw** | **bool** |  | [optional]
+**feeTier** | **int** | account commission tier | [optional]
+**canTrade** | **bool** | if can trade | [optional]
+**canDeposit** | **bool** | if can transfer in asset | [optional]
+**canWithdraw** | **bool** | if can transfer out asset | [optional]
 **dualSidePosition** | **bool** |  | [optional]
-**updateTime** | **int** |  | [optional]
+**updateTime** | **int** | reserved property, please ignore | [optional]
 **multiAssetsMargin** | **bool** |  | [optional]
 **tradeGroupId** | **int** |  | [optional]
 

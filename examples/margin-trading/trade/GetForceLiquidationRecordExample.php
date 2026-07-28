@@ -12,7 +12,7 @@ function getForceLiquidationRecordExample()
     $api = new MarginTradingRestApi($configurationBuilder->build());
     $startTime = 1623319461670;
     $endTime = 1641782889000;
-    $isolatedSymbol = '';
+    $isolatedSymbol = 'BTCUSDT';
     $current = 1;
     $size = 10;
     $recvWindow = 5000;

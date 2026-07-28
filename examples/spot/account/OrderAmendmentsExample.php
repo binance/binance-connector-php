@@ -10,11 +10,11 @@ function orderAmendmentsExample()
     $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SpotRestApi($configurationBuilder->build());
-    $symbol = 'BNBUSDT';
-    $orderId = 1;
-    $fromExecutionId = 1;
-    $limit = 500;
-    $recvWindow = 5000.0;
+    $symbol = 'BTCUSDT';
+    $orderId = 9;
+    $fromExecutionId = 22;
+    $limit = 1;
+    $recvWindow = 5000;
     $response = $api->orderAmendments($symbol, $orderId, $fromExecutionId, $limit, $recvWindow);
     print_r($response);
 }

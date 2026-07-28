@@ -1,4 +1,4 @@
-## Rebate
+## Default
 
-[/sapi/v1/rebate/taxQuery](https://developers.binance.com/docs/rebate/rest-api/Get-Spot-Rebate-History-Records) - getSpotRebateHistoryRecords - [GetSpotRebateHistoryRecordsExample.php:28](/examples/rebate/rebate/GetSpotRebateHistoryRecordsExample.php#L28)
+[/sapi/v1/rebate/taxQuery](https://developers.binance.com/en/docs/catalog/investment-and-services-rebate/api/rest-api/~#get-spot-rebate-history-records) - getSpotRebateHistoryRecords - [GetSpotRebateHistoryRecordsExample.php:17](/examples/rebate/default/GetSpotRebateHistoryRecordsExample.php#L17)
 

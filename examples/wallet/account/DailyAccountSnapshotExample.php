@@ -3,6 +3,7 @@
 require_once __DIR__.'/../vendor/autoload.php';
 
 use Binance\Client\Wallet\Api\WalletRestApi;
+use Binance\Client\Wallet\Model\OrderType;
 use Binance\Client\Wallet\WalletRestApiUtil;
 
 function dailyAccountSnapshotExample()
@@ -10,7 +11,7 @@ function dailyAccountSnapshotExample()
     $configurationBuilder = WalletRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
-    $type = '';
+    $type = OrderType::MAIN_UMFUTURE;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $limit = 7;

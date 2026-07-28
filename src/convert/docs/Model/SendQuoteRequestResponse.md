@@ -1,4 +1,4 @@
-# # SendQuoteRequestResponse
+# SendQuoteRequestResponse
 
 ## Properties
 

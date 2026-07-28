@@ -1,15 +1,15 @@
-# # ModifyCmOrderRequest
+# ModifyCmOrderRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orderId** | **int** |  | [optional]
-**origClientOrderId** | **string** |  | [optional]
-**symbol** | **string** |  |
+**orderId** | **int** | Order ID | [optional]
+**origClientOrderId** | **string** | Client order ID | [optional]
+**symbol** | **string** | Symbol |
 **side** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\Side**](Side.md) |  |
-**quantity** | **float** |  |
-**price** | **float** |  |
+**quantity** | **float** | Order quantity |
+**price** | **float** | Order price |
 **priceMatch** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\PriceMatch**](PriceMatch.md) |  | [optional]
 **recvWindow** | **int** |  | [optional]
 

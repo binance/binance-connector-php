@@ -1,4 +1,4 @@
-# # QueryCrossMarginFeeDataResponse
+# QueryCrossMarginFeeDataResponse
 
 ## Properties
 

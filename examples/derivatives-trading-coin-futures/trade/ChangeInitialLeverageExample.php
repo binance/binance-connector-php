@@ -12,8 +12,8 @@ function changeInitialLeverageExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
     $changeInitialLeverageRequest = new ChangeInitialLeverageRequest();
-    $changeInitialLeverageRequest->setSymbol('');
-    $changeInitialLeverageRequest->setLeverage(null);
+    $changeInitialLeverageRequest->setSymbol('BTCUSD_200925');
+    $changeInitialLeverageRequest->setLeverage(1);
     $response = $api->changeInitialLeverage($changeInitialLeverageRequest);
     print_r($response);
 }

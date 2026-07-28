@@ -12,8 +12,8 @@ function getVIPLoanOngoingOrdersExample()
     $api = new VipLoanRestApi($configurationBuilder->build());
     $orderId = 1;
     $collateralAccountId = 1;
-    $loanCoin = '';
-    $collateralCoin = '';
+    $loanCoin = 'BUSD';
+    $collateralCoin = 'BNB,BTC,ETH';
     $current = 1;
     $limit = 10;
     $recvWindow = 5000;

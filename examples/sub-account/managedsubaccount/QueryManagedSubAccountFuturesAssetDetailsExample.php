@@ -10,8 +10,8 @@ function queryManagedSubAccountFuturesAssetDetailsExample()
     $configurationBuilder = SubAccountRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
-    $email = 'sub-account-email@email.com';
-    $accountType = '';
+    $email = 'abc@test.com';
+    $accountType = 'MARGIN';
     $response = $api->queryManagedSubAccountFuturesAssetDetails($email, $accountType);
     print_r($response);
 }

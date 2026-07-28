@@ -1,4 +1,4 @@
-# # RedeemABinanceGiftCardResponse
+# RedeemABinanceGiftCardResponse
 
 ## Properties
 

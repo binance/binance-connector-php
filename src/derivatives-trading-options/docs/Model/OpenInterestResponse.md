@@ -1,4 +1,4 @@
-# # OpenInterestResponse
+# OpenInterestResponse
 
 ## Properties
 

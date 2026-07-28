@@ -4,6 +4,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 use Binance\Client\DerivativesTradingUsdsFutures\Api\DerivativesTradingUsdsFuturesRestApi;
 use Binance\Client\DerivativesTradingUsdsFutures\DerivativesTradingUsdsFuturesRestApiUtil;
+use Binance\Client\DerivativesTradingUsdsFutures\Model\OrderType;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\Side;
 use Binance\Client\DerivativesTradingUsdsFutures\Model\TestOrderRequest;
 
@@ -13,9 +14,9 @@ function testOrderExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
     $testOrderRequest = new TestOrderRequest();
-    $testOrderRequest->setSymbol('');
+    $testOrderRequest->setSymbol('BTCUSDT');
     $testOrderRequest->setSide(Side::BUY);
-    $testOrderRequest->setType('');
+    $testOrderRequest->setType(OrderType::LIMIT);
     $response = $api->testOrder($testOrderRequest);
     print_r($response);
 }

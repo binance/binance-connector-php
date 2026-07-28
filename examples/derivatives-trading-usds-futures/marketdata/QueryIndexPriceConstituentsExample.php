@@ -9,7 +9,7 @@ function queryIndexPriceConstituentsExample()
 {
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTCUSDT';
     $response = $api->queryIndexPriceConstituents($symbol);
     print_r($response);
 }

@@ -26,7 +26,7 @@ class ObjectDeserializeTest extends TestCase
         $result = ObjectSerializer::deserialize($data, '\Binance\Client\Spot\Model\GetTradesResponse');
         self::assertInstanceOf('\Binance\Client\Spot\Model\GetTradesResponse', $result);
         self::assertEquals(5, count($result->getItems()));
-        self::assertInstanceOf('\Binance\Client\Spot\Model\HistoricalTradesResponseInner', $result->getItems()[0]);
+        self::assertInstanceOf('\Binance\Client\Spot\Model\GetTradesResponseInner', $result->getItems()[0]);
     }
 
     public function testDeserializeOneOfModel()

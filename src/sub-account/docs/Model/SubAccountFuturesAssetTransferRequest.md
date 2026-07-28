@@ -1,12 +1,12 @@
-# # SubAccountFuturesAssetTransferRequest
+# SubAccountFuturesAssetTransferRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**fromEmail** | **string** |  |
-**toEmail** | **string** |  |
-**futuresType** | **int** |  |
+**fromEmail** | **string** | Sender email |
+**toEmail** | **string** | Recipient email |
+**futuresType** | **int** | 1:USDT-margined Futures，2: Coin-margined Futures |
 **asset** | **string** |  |
 **amount** | **float** |  |
 **recvWindow** | **int** |  | [optional]

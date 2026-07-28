@@ -1,4 +1,4 @@
-# # FetchTokenLimitResponse
+# FetchTokenLimitResponse
 
 ## Properties
 

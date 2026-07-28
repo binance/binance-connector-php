@@ -125,7 +125,7 @@ class TradeApi
     /**
      * Operation batchCancelOrders.
      *
-     * Batch Cancel Orders
+     * Batch Cancel Orders (TRADE)
      *
      * @param BatchCancelOrdersRequest $batchCancelOrdersRequest batchCancelOrdersRequest (required)
      *
@@ -142,7 +142,7 @@ class TradeApi
     /**
      * Operation batchCancelOrdersWithHttpInfo.
      *
-     * Batch Cancel Orders
+     * Batch Cancel Orders (TRADE)
      *
      * @param BatchCancelOrdersRequest $batchCancelOrdersRequest (required)
      *
@@ -325,7 +325,7 @@ class TradeApi
     /**
      * Operation getQuote.
      *
-     * Get Quote
+     * Get Quote (TRADE)
      *
      * @param GetQuoteRequest $getQuoteRequest getQuoteRequest (required)
      *
@@ -342,7 +342,7 @@ class TradeApi
     /**
      * Operation getQuoteWithHttpInfo.
      *
-     * Get Quote
+     * Get Quote (TRADE)
      *
      * @param GetQuoteRequest $getQuoteRequest (required)
      *
@@ -525,7 +525,7 @@ class TradeApi
     /**
      * Operation placeOrder.
      *
-     * Place Order
+     * Place Order (TRADE)
      *
      * @param PlaceOrderRequest $placeOrderRequest placeOrderRequest (required)
      *
@@ -542,7 +542,7 @@ class TradeApi
     /**
      * Operation placeOrderWithHttpInfo.
      *
-     * Place Order
+     * Place Order (TRADE)
      *
      * @param PlaceOrderRequest $placeOrderRequest (required)
      *
@@ -725,7 +725,7 @@ class TradeApi
     /**
      * Operation queryActiveOrders.
      *
-     * Query Active Orders
+     * Query Active Orders (USER_DATA)
      *
      * @param string         $walletAddress User&#39;s prediction wallet address (required)
      * @param null|TradeSide $tradeSide     Filter by trade side. Enum: &#x60;BUY&#x60;, &#x60;SELL&#x60; (optional)
@@ -748,7 +748,7 @@ class TradeApi
     /**
      * Operation queryActiveOrdersWithHttpInfo.
      *
-     * Query Active Orders
+     * Query Active Orders (USER_DATA)
      *
      * @param string         $walletAddress User&#39;s prediction wallet address (required)
      * @param null|TradeSide $tradeSide     Filter by trade side. Enum: &#x60;BUY&#x60;, &#x60;SELL&#x60; (optional)
@@ -982,7 +982,7 @@ class TradeApi
     /**
      * Operation queryOrderHistory.
      *
-     * Query Order History
+     * Query Order History (USER_DATA)
      *
      * @param string         $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string    $l1Category    Filter by level-1 category (optional)
@@ -1007,7 +1007,7 @@ class TradeApi
     /**
      * Operation queryOrderHistoryWithHttpInfo.
      *
-     * Query Order History
+     * Query Order History (USER_DATA)
      *
      * @param string         $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string    $l1Category    Filter by level-1 category (optional)

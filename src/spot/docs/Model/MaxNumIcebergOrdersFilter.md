@@ -1,4 +1,4 @@
-# # MaxNumIcebergOrdersFilter
+# MaxNumIcebergOrdersFilter
 
 ## Properties
 

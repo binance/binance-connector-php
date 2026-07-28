@@ -197,7 +197,7 @@ class W3WPredictionRestApi
     /**
      * Operation getPositionByToken.
      *
-     * Get Position by Token
+     * Get Position by Token (USER_DATA)
      *
      * @param string   $walletAddress User&#39;s prediction wallet address (required)
      * @param string   $tokenId       Prediction outcome token ID (required)
@@ -216,7 +216,7 @@ class W3WPredictionRestApi
     /**
      * Operation queryPnL.
      *
-     * Query PnL
+     * Query PnL (USER_DATA)
      *
      * @param string      $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string $tokenId       Filter by prediction token ID (optional)
@@ -238,7 +238,7 @@ class W3WPredictionRestApi
     /**
      * Operation queryPositions.
      *
-     * Query Positions
+     * Query Positions (USER_DATA)
      *
      * @param string      $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string $tab           Position status tab. Values from &#x60;PositionQueryType&#x60;. Default &#x60;ONGOING&#x60; (optional)
@@ -259,7 +259,7 @@ class W3WPredictionRestApi
     /**
      * Operation queryPositionsByFilter.
      *
-     * Query Positions by Filter
+     * Query Positions by Filter (USER_DATA)
      *
      * @param null|string $walletAddress User&#39;s prediction wallet address (optional)
      * @param null|int    $marketTopicId Filter by market topic ID (optional)
@@ -278,7 +278,7 @@ class W3WPredictionRestApi
     /**
      * Operation querySettledPositionHistory.
      *
-     * Query Settled Position History
+     * Query Settled Position History (USER_DATA)
      *
      * @param string      $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string $l1Category    Filter by level-1 category (optional)
@@ -302,7 +302,7 @@ class W3WPredictionRestApi
     /**
      * Operation batchRedeem.
      *
-     * Batch Redeem
+     * Batch Redeem (TRADE)
      *
      * @param BatchRedeemRequest $batchRedeemRequest batchRedeemRequest (required)
      *
@@ -319,7 +319,7 @@ class W3WPredictionRestApi
     /**
      * Operation getRedeemStatus.
      *
-     * Get Redeem Status
+     * Get Redeem Status (USER_DATA)
      *
      * @param string   $walletAddress User&#39;s prediction wallet address (required)
      * @param string   $txHash        Redeem transaction hash (required)
@@ -338,7 +338,7 @@ class W3WPredictionRestApi
     /**
      * Operation batchCancelOrders.
      *
-     * Batch Cancel Orders
+     * Batch Cancel Orders (TRADE)
      *
      * @param BatchCancelOrdersRequest $batchCancelOrdersRequest batchCancelOrdersRequest (required)
      *
@@ -355,7 +355,7 @@ class W3WPredictionRestApi
     /**
      * Operation getQuote.
      *
-     * Get Quote
+     * Get Quote (TRADE)
      *
      * @param GetQuoteRequest $getQuoteRequest getQuoteRequest (required)
      *
@@ -372,7 +372,7 @@ class W3WPredictionRestApi
     /**
      * Operation placeOrder.
      *
-     * Place Order
+     * Place Order (TRADE)
      *
      * @param PlaceOrderRequest $placeOrderRequest placeOrderRequest (required)
      *
@@ -389,7 +389,7 @@ class W3WPredictionRestApi
     /**
      * Operation queryActiveOrders.
      *
-     * Query Active Orders
+     * Query Active Orders (USER_DATA)
      *
      * @param string         $walletAddress User&#39;s prediction wallet address (required)
      * @param null|TradeSide $tradeSide     Filter by trade side. Enum: &#x60;BUY&#x60;, &#x60;SELL&#x60; (optional)
@@ -412,7 +412,7 @@ class W3WPredictionRestApi
     /**
      * Operation queryOrderHistory.
      *
-     * Query Order History
+     * Query Order History (USER_DATA)
      *
      * @param string         $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string    $l1Category    Filter by level-1 category (optional)
@@ -437,7 +437,7 @@ class W3WPredictionRestApi
     /**
      * Operation createInboundTransfer.
      *
-     * Create Inbound Transfer
+     * Create Inbound Transfer (TRADE)
      *
      * @param CreateInboundTransferRequest $createInboundTransferRequest createInboundTransferRequest (required)
      *
@@ -454,7 +454,7 @@ class W3WPredictionRestApi
     /**
      * Operation createOutboundTransfer.
      *
-     * Create Outbound Transfer
+     * Create Outbound Transfer (TRADE)
      *
      * @param CreateOutboundTransferRequest $createOutboundTransferRequest createOutboundTransferRequest (required)
      *
@@ -471,7 +471,7 @@ class W3WPredictionRestApi
     /**
      * Operation queryTransferList.
      *
-     * Query Transfer List
+     * Query Transfer List (USER_DATA)
      *
      * @param string         $walletAddress User&#39;s prediction wallet address (required)
      * @param string         $startDate     Start date. Format: &#x60;yyyy-MM-dd&#x60;. Must be ≤ &#x60;endDate&#x60; (required)
@@ -495,7 +495,7 @@ class W3WPredictionRestApi
     /**
      * Operation queryTransferStatus.
      *
-     * Query Transfer Status
+     * Query Transfer Status (USER_DATA)
      *
      * @param string   $transferId Transfer ID returned from outbound/inbound transfer (required)
      * @param null|int $recvWindow Request validity window in milliseconds (optional)
@@ -513,7 +513,7 @@ class W3WPredictionRestApi
     /**
      * Operation getPortfolio.
      *
-     * Get Portfolio
+     * Get Portfolio (USER_DATA)
      *
      * @param string      $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string $tokenId       Filter by prediction token ID (optional)
@@ -535,7 +535,7 @@ class W3WPredictionRestApi
     /**
      * Operation getQuotaStatus.
      *
-     * Get Quota Status
+     * Get Quota Status (USER_DATA)
      *
      * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
@@ -552,7 +552,7 @@ class W3WPredictionRestApi
     /**
      * Operation listPredictionWallets.
      *
-     * List Prediction Wallets
+     * List Prediction Wallets (USER_DATA)
      *
      * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
@@ -569,7 +569,7 @@ class W3WPredictionRestApi
     /**
      * Operation queryPaymentOptionBalances.
      *
-     * Query Payment Option Balances
+     * Query Payment Option Balances (USER_DATA)
      *
      * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *

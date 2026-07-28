@@ -1,4 +1,4 @@
-# # QueryInsuranceFundBalanceSnapshotResponse2
+# QueryInsuranceFundBalanceSnapshotResponse2
 
 ## Properties
 

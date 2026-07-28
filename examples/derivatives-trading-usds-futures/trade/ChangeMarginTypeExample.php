@@ -13,7 +13,7 @@ function changeMarginTypeExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
     $changeMarginTypeRequest = new ChangeMarginTypeRequest();
-    $changeMarginTypeRequest->setSymbol('');
+    $changeMarginTypeRequest->setSymbol('BTCUSDT');
     $changeMarginTypeRequest->setMarginType(MarginType::ISOLATED);
     $response = $api->changeMarginType($changeMarginTypeRequest);
     print_r($response);

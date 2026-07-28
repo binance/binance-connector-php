@@ -10,7 +10,7 @@ function cmPositionAdlQuantileEstimationExample()
     $configurationBuilder = DerivativesTradingPortfolioMarginRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTCUSD_201225';
     $recvWindow = 5000;
     $response = $api->cmPositionAdlQuantileEstimation($symbol, $recvWindow);
     print_r($response);

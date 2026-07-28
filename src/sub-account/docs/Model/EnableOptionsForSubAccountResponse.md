@@ -1,4 +1,4 @@
-# # EnableOptionsForSubAccountResponse
+# EnableOptionsForSubAccountResponse
 
 ## Properties
 

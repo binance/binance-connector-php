@@ -10,7 +10,7 @@ function notionalBracketForSymbolExample()
     $configurationBuilder = DerivativesTradingCoinFuturesRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTCUSD_PERP';
     $recvWindow = 5000;
     $response = $api->notionalBracketForSymbol($symbol, $recvWindow);
     print_r($response);

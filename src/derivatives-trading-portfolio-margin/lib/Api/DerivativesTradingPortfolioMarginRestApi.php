@@ -4,6 +4,7 @@ namespace Binance\Client\DerivativesTradingPortfolioMargin\Api;
 
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\AccountBalanceResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\AccountInformationResponse;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\Archived;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\AutoCloseType;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\BnbTransferRequest;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\BnbTransferResponse;
@@ -57,6 +58,7 @@ use Binance\Client\DerivativesTradingPortfolioMargin\Model\GetUmFuturesTransacti
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\GetUmIncomeHistoryResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\GetUserCommissionRateForCmResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\GetUserCommissionRateForUmResponse;
+use Binance\Client\DerivativesTradingPortfolioMargin\Model\IncomeType;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\MarginAccountBorrowRequest;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\MarginAccountBorrowResponse;
 use Binance\Client\DerivativesTradingPortfolioMargin\Model\MarginAccountNewOcoRequest;
@@ -170,7 +172,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation accountBalance.
      *
-     * Account Balance(USER_DATA)
+     * Account Balance (USER_DATA)
      *
      * @param null|string $asset      asset (optional)
      * @param null|int    $recvWindow recvWindow (optional)
@@ -188,7 +190,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation accountInformation.
      *
-     * Account Information(USER_DATA)
+     * Account Information (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -222,7 +224,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation changeAutoRepayFuturesStatus.
      *
-     * Change Auto-repay-futures Status(TRADE)
+     * Change Auto-repay-futures Status (TRADE)
      *
      * @param ChangeAutoRepayFuturesStatusRequest $changeAutoRepayFuturesStatusRequest changeAutoRepayFuturesStatusRequest (required)
      *
@@ -256,7 +258,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation changeCmPositionMode.
      *
-     * Change CM Position Mode(TRADE)
+     * Change CM Position Mode (TRADE)
      *
      * @param ChangeCmPositionModeRequest $changeCmPositionModeRequest changeCmPositionModeRequest (required)
      *
@@ -273,7 +275,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation changeUmInitialLeverage.
      *
-     * Change UM Initial Leverage(TRADE)
+     * Change UM Initial Leverage (TRADE)
      *
      * @param ChangeUmInitialLeverageRequest $changeUmInitialLeverageRequest changeUmInitialLeverageRequest (required)
      *
@@ -290,7 +292,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation changeUmPositionMode.
      *
-     * Change UM Position Mode(TRADE)
+     * Change UM Position Mode (TRADE)
      *
      * @param ChangeUmPositionModeRequest $changeUmPositionModeRequest changeUmPositionModeRequest (required)
      *
@@ -307,7 +309,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation cmNotionalAndLeverageBrackets.
      *
-     * CM Notional and Leverage Brackets(USER_DATA)
+     * CM Notional and Leverage Brackets (USER_DATA)
      *
      * @param null|string $symbol     symbol (optional)
      * @param null|int    $recvWindow recvWindow (optional)
@@ -325,16 +327,16 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation fundAutoCollection.
      *
-     * Fund Auto-collection(TRADE)
+     * Fund Auto-collection (TRADE)
      *
-     * @param FundAutoCollectionRequest $fundAutoCollectionRequest fundAutoCollectionRequest (required)
+     * @param null|FundAutoCollectionRequest $fundAutoCollectionRequest fundAutoCollectionRequest (optional)
      *
      * @return ApiResponse<FundAutoCollectionResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function fundAutoCollection($fundAutoCollectionRequest): ApiResponse
+    public function fundAutoCollection($fundAutoCollectionRequest = null): ApiResponse
     {
         return $this->accountApi->fundAutoCollection($fundAutoCollectionRequest);
     }
@@ -342,7 +344,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation fundCollectionByAsset.
      *
-     * Fund Collection by Asset(TRADE)
+     * Fund Collection by Asset (TRADE)
      *
      * @param FundCollectionByAssetRequest $fundCollectionByAssetRequest fundCollectionByAssetRequest (required)
      *
@@ -359,7 +361,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation getAutoRepayFuturesStatus.
      *
-     * Get Auto-repay-futures Status(USER_DATA)
+     * Get Auto-repay-futures Status (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -376,7 +378,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation getCmAccountDetail.
      *
-     * Get CM Account Detail(USER_DATA)
+     * Get CM Account Detail (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -393,7 +395,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation getCmCurrentPositionMode.
      *
-     * Get CM Current Position Mode(USER_DATA)
+     * Get CM Current Position Mode (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -410,15 +412,15 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation getCmIncomeHistory.
      *
-     * Get CM Income History(USER_DATA)
+     * Get CM Income History (USER_DATA)
      *
-     * @param null|string $symbol     symbol (optional)
-     * @param null|string $incomeType TRANSFER, WELCOME_BONUS, REALIZED_PNL, FUNDING_FEE, COMMISSION, INSURANCE_CLEAR, REFERRAL_KICKBACK, COMMISSION_REBATE, API_REBATE, CONTEST_REWARD, CROSS_COLLATERAL_TRANSFER, OPTIONS_PREMIUM_FEE, OPTIONS_SETTLE_PROFIT, INTERNAL_TRANSFER, AUTO_EXCHANGE, DELIVERED_SETTELMENT, COIN_SWAP_DEPOSIT, COIN_SWAP_WITHDRAW, POSITION_LIMIT_INCREASE_FEE (optional)
-     * @param null|int    $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
-     * @param null|int    $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int    $page       page (optional)
-     * @param null|int    $limit      Default 100; max 1000 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|string     $symbol     symbol (optional)
+     * @param null|IncomeType $incomeType incomeType (optional)
+     * @param null|int        $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
+     * @param null|int        $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
+     * @param null|int        $page       page (optional)
+     * @param null|int        $limit      Number of results returned. (optional)
+     * @param null|int        $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetCmIncomeHistoryResponse>
      *
@@ -435,8 +437,8 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * Get Download Id For UM Futures Order History (USER_DATA)
      *
-     * @param int      $startTime  startTime (required)
-     * @param int      $endTime    endTime (required)
+     * @param int      $startTime  Timestamp in ms (required)
+     * @param int      $endTime    Timestamp in ms (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetDownloadIdForUmFuturesOrderHistoryResponse>
@@ -454,8 +456,8 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * Get Download Id For UM Futures Trade History (USER_DATA)
      *
-     * @param int      $startTime  startTime (required)
-     * @param int      $endTime    endTime (required)
+     * @param int      $startTime  Timestamp in ms (required)
+     * @param int      $endTime    Timestamp in ms (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetDownloadIdForUmFuturesTradeHistoryResponse>
@@ -473,8 +475,8 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * Get Download Id For UM Futures Transaction History (USER_DATA)
      *
-     * @param int      $startTime  startTime (required)
-     * @param int      $endTime    endTime (required)
+     * @param int      $startTime  Timestamp in ms (required)
+     * @param int      $endTime    Timestamp in ms (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetDownloadIdForUmFuturesTransactionHistoryResponse>
@@ -490,15 +492,15 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation getMarginBorrowLoanInterestHistory.
      *
-     * Get Margin Borrow/Loan Interest History(USER_DATA)
+     * Get Margin Borrow/Loan Interest History (USER_DATA)
      *
-     * @param null|string $asset      asset (optional)
-     * @param null|int    $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
-     * @param null|int    $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int    $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10 Max:100 (optional)
-     * @param null|string $archived   Default: &#x60;false&#x60;. Set to &#x60;true&#x60; for archived data from 6 months ago (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|string   $asset      asset (optional)
+     * @param null|int      $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
+     * @param null|int      $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
+     * @param null|int      $current    Current page number. (optional)
+     * @param null|int      $size       Number of results returned. (optional)
+     * @param null|Archived $archived   Set to true to query archived data from 6 months ago. (optional)
+     * @param null|int      $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
      *
      * @return ApiResponse<GetMarginBorrowLoanInterestHistoryResponse>
      *
@@ -513,7 +515,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation getUmAccountDetail.
      *
-     * Get UM Account Detail(USER_DATA)
+     * Get UM Account Detail (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -530,7 +532,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation getUmAccountDetailV2.
      *
-     * Get UM Account Detail V2(USER_DATA)
+     * Get UM Account Detail V2 (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -547,7 +549,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation getUmCurrentPositionMode.
      *
-     * Get UM Current Position Mode(USER_DATA)
+     * Get UM Current Position Mode (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -564,7 +566,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation getUmFuturesOrderDownloadLinkById.
      *
-     * Get UM Futures Order Download Link by Id(USER_DATA)
+     * Get UM Futures Order Download Link by Id (USER_DATA)
      *
      * @param string   $downloadId get by download id api (required)
      * @param null|int $recvWindow recvWindow (optional)
@@ -582,7 +584,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation getUmFuturesTradeDownloadLinkById.
      *
-     * Get UM Futures Trade Download Link by Id(USER_DATA)
+     * Get UM Futures Trade Download Link by Id (USER_DATA)
      *
      * @param string   $downloadId get by download id api (required)
      * @param null|int $recvWindow recvWindow (optional)
@@ -600,7 +602,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation getUmFuturesTransactionDownloadLinkById.
      *
-     * Get UM Futures Transaction Download Link by Id(USER_DATA)
+     * Get UM Futures Transaction Download Link by Id (USER_DATA)
      *
      * @param string   $downloadId get by download id api (required)
      * @param null|int $recvWindow recvWindow (optional)
@@ -618,15 +620,15 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation getUmIncomeHistory.
      *
-     * Get UM Income History(USER_DATA)
+     * Get UM Income History (USER_DATA)
      *
-     * @param null|string $symbol     symbol (optional)
-     * @param null|string $incomeType TRANSFER, WELCOME_BONUS, REALIZED_PNL, FUNDING_FEE, COMMISSION, INSURANCE_CLEAR, REFERRAL_KICKBACK, COMMISSION_REBATE, API_REBATE, CONTEST_REWARD, CROSS_COLLATERAL_TRANSFER, OPTIONS_PREMIUM_FEE, OPTIONS_SETTLE_PROFIT, INTERNAL_TRANSFER, AUTO_EXCHANGE, DELIVERED_SETTELMENT, COIN_SWAP_DEPOSIT, COIN_SWAP_WITHDRAW, POSITION_LIMIT_INCREASE_FEE (optional)
-     * @param null|int    $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
-     * @param null|int    $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int    $page       page (optional)
-     * @param null|int    $limit      Default 100; max 1000 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|string     $symbol     symbol (optional)
+     * @param null|IncomeType $incomeType Income type. (optional)
+     * @param null|int        $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
+     * @param null|int        $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
+     * @param null|int        $page       Page number. (optional)
+     * @param null|int        $limit      Number of results returned. (optional)
+     * @param null|int        $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetUmIncomeHistoryResponse>
      *
@@ -641,9 +643,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation getUserCommissionRateForCm.
      *
-     * Get User Commission Rate for CM(USER_DATA)
+     * Get User Commission Rate for CM (USER_DATA)
      *
-     * @param string   $symbol     symbol (required)
+     * @param string   $symbol     Symbol (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetUserCommissionRateForCmResponse>
@@ -659,9 +661,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation getUserCommissionRateForUm.
      *
-     * Get User Commission Rate for UM(USER_DATA)
+     * Get User Commission Rate for UM (USER_DATA)
      *
-     * @param string   $symbol     symbol (required)
+     * @param string   $symbol     Symbol (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetUserCommissionRateForUmResponse>
@@ -677,10 +679,10 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation marginMaxBorrow.
      *
-     * Margin Max Borrow(USER_DATA)
+     * Margin Max Borrow (USER_DATA)
      *
      * @param string   $asset      asset (required)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow The value cannot be greater than &#x60;60000&#x60; (optional)
      *
      * @return ApiResponse<MarginMaxBorrowResponse>
      *
@@ -695,7 +697,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation portfolioMarginUmTradingQuantitativeRulesIndicators.
      *
-     * Portfolio Margin UM Trading Quantitative Rules Indicators(USER_DATA)
+     * Portfolio Margin UM Trading Quantitative Rules Indicators (USER_DATA)
      *
      * @param null|string $symbol     symbol (optional)
      * @param null|int    $recvWindow recvWindow (optional)
@@ -713,7 +715,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryCmPositionInformation.
      *
-     * Query CM Position Information(USER_DATA)
+     * Query CM Position Information (USER_DATA)
      *
      * @param null|string $marginAsset marginAsset (optional)
      * @param null|string $pair        pair (optional)
@@ -732,16 +734,16 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryMarginLoanRecord.
      *
-     * Query Margin Loan Record(USER_DATA)
+     * Query Margin Loan Record (USER_DATA)
      *
-     * @param string      $asset      asset (required)
-     * @param null|int    $txId       the &#x60;tranId&#x60; in &#x60;POST/papi/v1/marginLoan&#x60; (optional)
-     * @param null|int    $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
-     * @param null|int    $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int    $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10 Max:100 (optional)
-     * @param null|string $archived   Default: &#x60;false&#x60;. Set to &#x60;true&#x60; for archived data from 6 months ago (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param string        $asset      asset (required)
+     * @param null|int      $txId       the &#x60;tranId&#x60; in &#x60;POST/papi/v1/marginLoan&#x60; (optional)
+     * @param null|int      $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
+     * @param null|int      $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
+     * @param null|int      $current    Current page number. (optional)
+     * @param null|int      $size       Number of results returned. (optional)
+     * @param null|Archived $archived   Set to true to query archived data from 6 months ago. (optional)
+     * @param null|int      $recvWindow The value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<QueryMarginLoanRecordResponse>
      *
@@ -756,7 +758,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryMarginMaxWithdraw.
      *
-     * Query Margin Max Withdraw(USER_DATA)
+     * Query Margin Max Withdraw (USER_DATA)
      *
      * @param string   $asset      asset (required)
      * @param null|int $recvWindow recvWindow (optional)
@@ -774,16 +776,16 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryMarginRepayRecord.
      *
-     * Query Margin repay Record(USER_DATA)
+     * Query Margin repay Record (USER_DATA)
      *
-     * @param string      $asset      asset (required)
-     * @param null|int    $txId       the &#x60;tranId&#x60; in &#x60;POST/papi/v1/marginLoan&#x60; (optional)
-     * @param null|int    $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
-     * @param null|int    $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int    $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int    $size       Default:10 Max:100 (optional)
-     * @param null|string $archived   Default: &#x60;false&#x60;. Set to &#x60;true&#x60; for archived data from 6 months ago (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param string        $asset      asset (required)
+     * @param null|int      $txId       the &#x60;tranId&#x60; in &#x60;POST /papi/v1/repayLoan&#x60; (optional)
+     * @param null|int      $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
+     * @param null|int      $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
+     * @param null|int      $current    Current page number. (optional)
+     * @param null|int      $size       Number of results returned. (optional)
+     * @param null|Archived $archived   Set to true to query archived data from 6 months ago. (optional)
+     * @param null|int      $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryMarginRepayRecordResponse>
      *
@@ -798,12 +800,12 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryPortfolioMarginNegativeBalanceInterestHistory.
      *
-     * Query Portfolio Margin Negative Balance Interest History(USER_DATA)
+     * Query Portfolio Margin Negative Balance Interest History (USER_DATA)
      *
      * @param null|string $asset      asset (optional)
      * @param null|int    $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int    $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int    $size       Default:10 Max:100 (optional)
+     * @param null|int    $size       Number of results returned. (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryPortfolioMarginNegativeBalanceInterestHistoryResponse>
@@ -819,7 +821,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryUmPositionInformation.
      *
-     * Query UM Position Information(USER_DATA)
+     * Query UM Position Information (USER_DATA)
      *
      * @param null|string $symbol     symbol (optional)
      * @param null|int    $recvWindow recvWindow (optional)
@@ -873,16 +875,16 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation repayFuturesNegativeBalance.
      *
-     * Repay futures Negative Balance(USER_DATA)
+     * Repay futures Negative Balance (USER_DATA)
      *
-     * @param RepayFuturesNegativeBalanceRequest $repayFuturesNegativeBalanceRequest repayFuturesNegativeBalanceRequest (required)
+     * @param null|RepayFuturesNegativeBalanceRequest $repayFuturesNegativeBalanceRequest repayFuturesNegativeBalanceRequest (optional)
      *
      * @return ApiResponse<RepayFuturesNegativeBalanceResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function repayFuturesNegativeBalance($repayFuturesNegativeBalanceRequest): ApiResponse
+    public function repayFuturesNegativeBalance($repayFuturesNegativeBalanceRequest = null): ApiResponse
     {
         return $this->accountApi->repayFuturesNegativeBalance($repayFuturesNegativeBalanceRequest);
     }
@@ -890,7 +892,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation umFuturesAccountConfiguration.
      *
-     * UM Futures Account Configuration(USER_DATA)
+     * UM Futures Account Configuration (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -907,9 +909,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation umFuturesSymbolConfiguration.
      *
-     * UM Futures Symbol Configuration(USER_DATA)
+     * UM Futures Symbol Configuration (USER_DATA)
      *
-     * @param null|string $symbol     symbol (optional)
+     * @param null|string $symbol     Symbol (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<UmFuturesSymbolConfigurationResponse>
@@ -956,9 +958,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation cancelAllCmOpenConditionalOrders.
      *
-     * Cancel All CM Open Conditional Orders(TRADE)
+     * Cancel All CM Open Conditional Orders (TRADE)
      *
-     * @param string   $symbol     symbol (required)
+     * @param string   $symbol     Symbol (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<CancelAllCmOpenConditionalOrdersResponse>
@@ -974,9 +976,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation cancelAllCmOpenOrders.
      *
-     * Cancel All CM Open Orders(TRADE)
+     * Cancel All CM Open Orders (TRADE)
      *
-     * @param string   $symbol     symbol (required)
+     * @param string   $symbol     Symbol (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<CancelAllCmOpenOrdersResponse>
@@ -994,7 +996,7 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * Cancel All UM Algo Open Orders (TRADE)
      *
-     * @param string   $symbol     symbol (required)
+     * @param string   $symbol     Symbol (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<CancelAllUmAlgoOpenOrdersResponse>
@@ -1010,17 +1012,15 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation cancelAllUmOpenConditionalOrders.
      *
-     * Cancel All UM Open Conditional Orders
+     * Cancel All UM Open Conditional Orders (TRADE)
      *
-     * @param string   $symbol     symbol (required)
+     * @param string   $symbol     Symbol (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<CancelAllUmOpenConditionalOrdersResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     *
-     * @deprecated
      */
     public function cancelAllUmOpenConditionalOrders($symbol, $recvWindow = null): ApiResponse
     {
@@ -1030,9 +1030,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation cancelAllUmOpenOrders.
      *
-     * Cancel All UM Open Orders(TRADE)
+     * Cancel All UM Open Orders (TRADE)
      *
-     * @param string   $symbol     symbol (required)
+     * @param string   $symbol     Symbol (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<CancelAllUmOpenOrdersResponse>
@@ -1048,9 +1048,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation cancelCmConditionalOrder.
      *
-     * Cancel CM Conditional Order(TRADE)
+     * Cancel CM Conditional Order (TRADE)
      *
-     * @param string      $symbol              symbol (required)
+     * @param string      $symbol              Symbol (required)
      * @param null|int    $strategyId          strategyId (optional)
      * @param null|string $newClientStrategyId newClientStrategyId (optional)
      * @param null|int    $recvWindow          recvWindow (optional)
@@ -1068,9 +1068,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation cancelCmOrder.
      *
-     * Cancel CM Order(TRADE)
+     * Cancel CM Order (TRADE)
      *
-     * @param string      $symbol            symbol (required)
+     * @param string      $symbol            Symbol (required)
      * @param null|int    $orderId           orderId (optional)
      * @param null|string $origClientOrderId origClientOrderId (optional)
      * @param null|int    $recvWindow        recvWindow (optional)
@@ -1088,9 +1088,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation cancelMarginAccountAllOpenOrdersOnASymbol.
      *
-     * Cancel Margin Account All Open Orders on a Symbol(TRADE)
+     * Cancel Margin Account All Open Orders on a Symbol (TRADE)
      *
-     * @param string   $symbol     symbol (required)
+     * @param string   $symbol     Symbol (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<CancelMarginAccountAllOpenOrdersOnASymbolResponse>
@@ -1106,13 +1106,13 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation cancelMarginAccountOcoOrders.
      *
-     * Cancel Margin Account OCO Orders(TRADE)
+     * Cancel Margin Account OCO Orders (TRADE)
      *
-     * @param string      $symbol            symbol (required)
+     * @param string      $symbol            Symbol (required)
      * @param null|int    $orderListId       Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
      * @param null|string $listClientOrderId Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
-     * @param null|string $newClientOrderId  Used to uniquely identify this cancel. Automatically generated by default (optional)
-     * @param null|int    $recvWindow        recvWindow (optional)
+     * @param null|string $newClientOrderId  Used to uniquely identify this cancel request. (optional)
+     * @param null|int    $recvWindow        The value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<CancelMarginAccountOcoOrdersResponse>
      *
@@ -1127,13 +1127,13 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation cancelMarginAccountOrder.
      *
-     * Cancel Margin Account Order(TRADE)
+     * Cancel Margin Account Order (TRADE)
      *
-     * @param string      $symbol            symbol (required)
+     * @param string      $symbol            Symbol (required)
      * @param null|int    $orderId           orderId (optional)
      * @param null|string $origClientOrderId origClientOrderId (optional)
-     * @param null|string $newClientOrderId  Used to uniquely identify this cancel. Automatically generated by default (optional)
-     * @param null|int    $recvWindow        recvWindow (optional)
+     * @param null|string $newClientOrderId  Used to uniquely identify this cancel request. (optional)
+     * @param null|int    $recvWindow        The value cannot be greater than &#x60;60000&#x60; (optional)
      *
      * @return ApiResponse<CancelMarginAccountOrderResponse>
      *
@@ -1150,8 +1150,8 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * Cancel UM Algo Order (TRADE)
      *
-     * @param null|int    $algoId       algoId (optional)
-     * @param null|string $clientAlgoId clientAlgoId (optional)
+     * @param null|int    $algoId       Algo order ID (optional)
+     * @param null|string $clientAlgoId Client algo order ID (optional)
      * @param null|int    $recvWindow   recvWindow (optional)
      *
      * @return ApiResponse<CancelUmAlgoOrderResponse>
@@ -1167,9 +1167,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation cancelUmConditionalOrder.
      *
-     * Cancel UM Conditional Order
+     * Cancel UM Conditional Order (TRADE)
      *
-     * @param string      $symbol              symbol (required)
+     * @param string      $symbol              Symbol (required)
      * @param null|int    $strategyId          strategyId (optional)
      * @param null|string $newClientStrategyId newClientStrategyId (optional)
      * @param null|int    $recvWindow          recvWindow (optional)
@@ -1178,8 +1178,6 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     *
-     * @deprecated
      */
     public function cancelUmConditionalOrder($symbol, $strategyId = null, $newClientStrategyId = null, $recvWindow = null): ApiResponse
     {
@@ -1189,9 +1187,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation cancelUmOrder.
      *
-     * Cancel UM Order(TRADE)
+     * Cancel UM Order (TRADE)
      *
-     * @param string      $symbol            symbol (required)
+     * @param string      $symbol            Symbol (required)
      * @param null|int    $orderId           orderId (optional)
      * @param null|string $origClientOrderId origClientOrderId (optional)
      * @param null|int    $recvWindow        recvWindow (optional)
@@ -1209,14 +1207,14 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation cmAccountTradeList.
      *
-     * CM Account Trade List(USER_DATA)
+     * CM Account Trade List (USER_DATA)
      *
      * @param null|string $symbol     symbol (optional)
      * @param null|string $pair       pair (optional)
      * @param null|int    $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int    $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int    $fromId     Trade id to fetch from. Default gets most recent trades. (optional)
-     * @param null|int    $limit      Default 100; max 1000 (optional)
+     * @param null|int    $fromId     Trade ID to fetch from. (optional)
+     * @param null|int    $limit      Number of results returned. (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<CmAccountTradeListResponse>
@@ -1232,7 +1230,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation cmPositionAdlQuantileEstimation.
      *
-     * CM Position ADL Quantile Estimation(USER_DATA)
+     * CM Position ADL Quantile Estimation (USER_DATA)
      *
      * @param null|string $symbol     symbol (optional)
      * @param null|int    $recvWindow recvWindow (optional)
@@ -1250,16 +1248,16 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation futuresTradfiPerpsContract.
      *
-     * Futures TradFi Perps Contract(USER_DATA)
+     * Futures TradFi Perps Contract (USER_DATA)
      *
-     * @param FuturesTradfiPerpsContractRequest $futuresTradfiPerpsContractRequest futuresTradfiPerpsContractRequest (required)
+     * @param null|FuturesTradfiPerpsContractRequest $futuresTradfiPerpsContractRequest futuresTradfiPerpsContractRequest (optional)
      *
      * @return ApiResponse<FuturesTradfiPerpsContractResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest): ApiResponse
+    public function futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest = null): ApiResponse
     {
         return $this->tradeApi->futuresTradfiPerpsContract($futuresTradfiPerpsContractRequest);
     }
@@ -1284,7 +1282,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation marginAccountBorrow.
      *
-     * Margin Account Borrow(MARGIN)
+     * Margin Account Borrow (MARGIN)
      *
      * @param MarginAccountBorrowRequest $marginAccountBorrowRequest marginAccountBorrowRequest (required)
      *
@@ -1301,7 +1299,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation marginAccountNewOco.
      *
-     * Margin Account New OCO(TRADE)
+     * Margin Account New OCO (TRADE)
      *
      * @param MarginAccountNewOcoRequest $marginAccountNewOcoRequest marginAccountNewOcoRequest (required)
      *
@@ -1318,7 +1316,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation marginAccountRepay.
      *
-     * Margin Account Repay(MARGIN)
+     * Margin Account Repay (MARGIN)
      *
      * @param MarginAccountRepayRequest $marginAccountRepayRequest marginAccountRepayRequest (required)
      *
@@ -1335,7 +1333,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation marginAccountRepayDebt.
      *
-     * Margin Account Repay Debt(TRADE)
+     * Margin Account Repay Debt (TRADE)
      *
      * @param MarginAccountRepayDebtRequest $marginAccountRepayDebtRequest marginAccountRepayDebtRequest (required)
      *
@@ -1354,13 +1352,13 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * Margin Account Trade List (USER_DATA)
      *
-     * @param string   $symbol     symbol (required)
+     * @param string   $symbol     Symbol (required)
      * @param null|int $orderId    orderId (optional)
      * @param null|int $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int $fromId     Trade id to fetch from. Default gets most recent trades. (optional)
-     * @param null|int $limit      Default 100; max 1000 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $fromId     Trade ID to fetch from. (optional)
+     * @param null|int $limit      Number of results returned. (optional)
+     * @param null|int $recvWindow Value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<MarginAccountTradeListResponse>
      *
@@ -1375,7 +1373,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation modifyCmOrder.
      *
-     * Modify CM Order(TRADE)
+     * Modify CM Order (TRADE)
      *
      * @param ModifyCmOrderRequest $modifyCmOrderRequest modifyCmOrderRequest (required)
      *
@@ -1392,7 +1390,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation modifyUmOrder.
      *
-     * Modify UM Order(TRADE)
+     * Modify UM Order (TRADE)
      *
      * @param ModifyUmOrderRequest $modifyUmOrderRequest modifyUmOrderRequest (required)
      *
@@ -1409,7 +1407,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation newCmConditionalOrder.
      *
-     * New CM Conditional Order(TRADE)
+     * New CM Conditional Order (TRADE)
      *
      * @param NewCmConditionalOrderRequest $newCmConditionalOrderRequest newCmConditionalOrderRequest (required)
      *
@@ -1426,7 +1424,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation newCmOrder.
      *
-     * New CM Order(TRADE)
+     * New CM Order (TRADE)
      *
      * @param NewCmOrderRequest $newCmOrderRequest newCmOrderRequest (required)
      *
@@ -1443,7 +1441,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation newMarginOrder.
      *
-     * New Margin Order(TRADE)
+     * New Margin Order (TRADE)
      *
      * @param NewMarginOrderRequest $newMarginOrderRequest newMarginOrderRequest (required)
      *
@@ -1477,7 +1475,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation newUmConditionalOrder.
      *
-     * New UM Conditional Order
+     * New UM Conditional Order (TRADE)
      *
      * @param NewUmConditionalOrderRequest $newUmConditionalOrderRequest newUmConditionalOrderRequest (required)
      *
@@ -1485,8 +1483,6 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     *
-     * @deprecated
      */
     public function newUmConditionalOrder($newUmConditionalOrderRequest): ApiResponse
     {
@@ -1513,13 +1509,13 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryAllCmConditionalOrders.
      *
-     * Query All CM Conditional Orders(USER_DATA)
+     * Query All CM Conditional Orders (USER_DATA)
      *
      * @param null|string $symbol     symbol (optional)
      * @param null|int    $strategyId strategyId (optional)
      * @param null|int    $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int    $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int    $limit      Default 100; max 1000 (optional)
+     * @param null|int    $limit      Number of results returned. (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryAllCmConditionalOrdersResponse>
@@ -1537,12 +1533,12 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * Query All CM Orders (USER_DATA)
      *
-     * @param string      $symbol     symbol (required)
+     * @param null|string $symbol     Symbol (optional)
      * @param null|string $pair       pair (optional)
      * @param null|int    $orderId    orderId (optional)
      * @param null|int    $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int    $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int    $limit      Default 100; max 1000 (optional)
+     * @param null|int    $limit      Number of results returned. (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryAllCmOrdersResponse>
@@ -1550,7 +1546,7 @@ class DerivativesTradingPortfolioMarginRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function queryAllCmOrders($symbol, $pair = null, $orderId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
+    public function queryAllCmOrders($symbol = null, $pair = null, $orderId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
         return $this->tradeApi->queryAllCmOrders($symbol, $pair, $orderId, $startTime, $endTime, $limit, $recvWindow);
     }
@@ -1576,7 +1572,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryAllCurrentCmOpenOrders.
      *
-     * Query All Current CM Open Orders(USER_DATA)
+     * Query All Current CM Open Orders (USER_DATA)
      *
      * @param null|string $symbol     symbol (optional)
      * @param null|string $pair       pair (optional)
@@ -1615,7 +1611,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryAllCurrentUmOpenConditionalOrders.
      *
-     * Query All Current UM Open Conditional Orders
+     * Query All Current UM Open Conditional Orders (USER_DATA)
      *
      * @param null|string $symbol     symbol (optional)
      * @param null|int    $recvWindow recvWindow (optional)
@@ -1624,8 +1620,6 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     *
-     * @deprecated
      */
     public function queryAllCurrentUmOpenConditionalOrders($symbol = null, $recvWindow = null): ApiResponse
     {
@@ -1635,7 +1629,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryAllCurrentUmOpenOrders.
      *
-     * Query All Current UM Open Orders(USER_DATA)
+     * Query All Current UM Open Orders (USER_DATA)
      *
      * @param null|string $symbol     symbol (optional)
      * @param null|int    $recvWindow recvWindow (optional)
@@ -1655,12 +1649,12 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * Query All Margin Account Orders (USER_DATA)
      *
-     * @param string   $symbol     symbol (required)
+     * @param string   $symbol     Symbol (required)
      * @param null|int $orderId    orderId (optional)
      * @param null|int $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int $limit      Default 100; max 1000 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $limit      Number of results returned. (optional)
+     * @param null|int $recvWindow Value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<QueryAllMarginAccountOrdersResponse>
      *
@@ -1675,21 +1669,19 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryAllUmConditionalOrders.
      *
-     * Query All UM Conditional Orders
+     * Query All UM Conditional Orders (USER_DATA)
      *
      * @param null|string $symbol     symbol (optional)
      * @param null|int    $strategyId strategyId (optional)
      * @param null|int    $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int    $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int    $limit      Default 100; max 1000 (optional)
+     * @param null|int    $limit      Number of results returned. (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryAllUmConditionalOrdersResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     *
-     * @deprecated
      */
     public function queryAllUmConditionalOrders($symbol = null, $strategyId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
@@ -1699,13 +1691,13 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryAllUmOrders.
      *
-     * Query All UM Orders(USER_DATA)
+     * Query All UM Orders (USER_DATA)
      *
-     * @param string   $symbol     symbol (required)
+     * @param string   $symbol     Symbol (required)
      * @param null|int $orderId    orderId (optional)
      * @param null|int $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int $limit      Default 100; max 1000 (optional)
+     * @param null|int $limit      Number of results returned. (optional)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryAllUmOrdersResponse>
@@ -1721,9 +1713,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryCmConditionalOrderHistory.
      *
-     * Query CM Conditional Order History(USER_DATA)
+     * Query CM Conditional Order History (USER_DATA)
      *
-     * @param string      $symbol              symbol (required)
+     * @param string      $symbol              Symbol (required)
      * @param null|int    $strategyId          strategyId (optional)
      * @param null|string $newClientStrategyId newClientStrategyId (optional)
      * @param null|int    $recvWindow          recvWindow (optional)
@@ -1741,14 +1733,14 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryCmModifyOrderHistory.
      *
-     * Query CM Modify Order History(TRADE)
+     * Query CM Modify Order History (TRADE)
      *
-     * @param string      $symbol            symbol (required)
-     * @param null|int    $orderId           orderId (optional)
-     * @param null|string $origClientOrderId origClientOrderId (optional)
+     * @param string      $symbol            Symbol (required)
+     * @param null|int    $orderId           Order ID (optional)
+     * @param null|string $origClientOrderId Client order ID (optional)
      * @param null|int    $startTime         Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int    $endTime           Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int    $limit             Default 100; max 1000 (optional)
+     * @param null|int    $limit             Number of results returned. (optional)
      * @param null|int    $recvWindow        recvWindow (optional)
      *
      * @return ApiResponse<QueryCmModifyOrderHistoryResponse>
@@ -1764,9 +1756,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryCmOrder.
      *
-     * Query CM Order(USER_DATA)
+     * Query CM Order (USER_DATA)
      *
-     * @param string      $symbol            symbol (required)
+     * @param string      $symbol            Symbol (required)
      * @param null|int    $orderId           orderId (optional)
      * @param null|string $origClientOrderId origClientOrderId (optional)
      * @param null|int    $recvWindow        recvWindow (optional)
@@ -1784,9 +1776,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryCurrentCmOpenConditionalOrder.
      *
-     * Query Current CM Open Conditional Order(USER_DATA)
+     * Query Current CM Open Conditional Order (USER_DATA)
      *
-     * @param string      $symbol              symbol (required)
+     * @param string      $symbol              Symbol (required)
      * @param null|int    $strategyId          strategyId (optional)
      * @param null|string $newClientStrategyId newClientStrategyId (optional)
      * @param null|int    $recvWindow          recvWindow (optional)
@@ -1806,9 +1798,9 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * Query Current CM Open Order (USER_DATA)
      *
-     * @param string      $symbol            symbol (required)
-     * @param null|int    $orderId           orderId (optional)
-     * @param null|string $origClientOrderId origClientOrderId (optional)
+     * @param string      $symbol            Trading pair. (required)
+     * @param null|int    $orderId           Order ID. (optional)
+     * @param null|string $origClientOrderId User-defined order ID. (optional)
      * @param null|int    $recvWindow        recvWindow (optional)
      *
      * @return ApiResponse<QueryCurrentCmOpenOrderResponse>
@@ -1826,8 +1818,8 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * Query Current Margin Open Order (USER_DATA)
      *
-     * @param string   $symbol     symbol (required)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param string   $symbol     Symbol (required)
+     * @param null|int $recvWindow Value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<QueryCurrentMarginOpenOrderResponse>
      *
@@ -1844,8 +1836,8 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * Query Current UM Open Algo Order (USER_DATA)
      *
-     * @param null|int    $algoId       algoId (optional)
-     * @param null|string $clientAlgoId clientAlgoId (optional)
+     * @param null|int    $algoId       Algo order ID (optional)
+     * @param null|string $clientAlgoId Client algo order ID (optional)
      * @param null|int    $recvWindow   recvWindow (optional)
      *
      * @return ApiResponse<QueryCurrentUmOpenAlgoOrderResponse>
@@ -1861,9 +1853,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryCurrentUmOpenConditionalOrder.
      *
-     * Query Current UM Open Conditional Order
+     * Query Current UM Open Conditional Order (USER_DATA)
      *
-     * @param string      $symbol              symbol (required)
+     * @param string      $symbol              Symbol (required)
      * @param null|int    $strategyId          strategyId (optional)
      * @param null|string $newClientStrategyId newClientStrategyId (optional)
      * @param null|int    $recvWindow          recvWindow (optional)
@@ -1872,8 +1864,6 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     *
-     * @deprecated
      */
     public function queryCurrentUmOpenConditionalOrder($symbol, $strategyId = null, $newClientStrategyId = null, $recvWindow = null): ApiResponse
     {
@@ -1883,9 +1873,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryCurrentUmOpenOrder.
      *
-     * Query Current UM Open Order(USER_DATA)
+     * Query Current UM Open Order (USER_DATA)
      *
-     * @param string      $symbol            symbol (required)
+     * @param string      $symbol            Symbol (required)
      * @param null|int    $orderId           orderId (optional)
      * @param null|string $origClientOrderId origClientOrderId (optional)
      * @param null|int    $recvWindow        recvWindow (optional)
@@ -1905,10 +1895,10 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * Query Margin Account Order (USER_DATA)
      *
-     * @param string      $symbol            symbol (required)
+     * @param string      $symbol            Symbol (required)
      * @param null|int    $orderId           orderId (optional)
      * @param null|string $origClientOrderId origClientOrderId (optional)
-     * @param null|int    $recvWindow        recvWindow (optional)
+     * @param null|int    $recvWindow        Value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<QueryMarginAccountOrderResponse>
      *
@@ -1925,11 +1915,11 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * Query Margin Account&#39;s all OCO (USER_DATA)
      *
-     * @param null|int $fromId     Trade id to fetch from. Default gets most recent trades. (optional)
+     * @param null|int $fromId     Trade ID to fetch from. (optional)
      * @param null|int $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int $limit      Default 100; max 1000 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $limit      Number of results returned. (optional)
+     * @param null|int $recvWindow Value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<QueryMarginAccountsAllOcoResponse>
      *
@@ -1947,8 +1937,8 @@ class DerivativesTradingPortfolioMarginRestApi
      * Query Margin Account&#39;s OCO (USER_DATA)
      *
      * @param null|int    $orderListId       Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
-     * @param null|string $origClientOrderId origClientOrderId (optional)
-     * @param null|int    $recvWindow        recvWindow (optional)
+     * @param null|string $origClientOrderId &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided. (optional)
+     * @param null|int    $recvWindow        Value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<QueryMarginAccountsOcoResponse>
      *
@@ -1965,7 +1955,7 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * Query Margin Account&#39;s Open OCO (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow Value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<QueryMarginAccountsOpenOcoResponse>
      *
@@ -1983,10 +1973,10 @@ class DerivativesTradingPortfolioMarginRestApi
      * Query UM Algo Order History (USER_DATA)
      *
      * @param string   $symbol     symbol (required)
-     * @param null|int $algoId     algoId (optional)
-     * @param null|int $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
-     * @param null|int $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int $limit      Default 100; max 1000 (optional)
+     * @param null|int $algoId     Only return orders &gt;&#x3D; this algoId (optional)
+     * @param null|int $startTime  startTime (optional)
+     * @param null|int $endTime    endTime (optional)
+     * @param null|int $limit      Default 500; max 1000 (optional)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryUmAlgoOrderHistoryResponse>
@@ -2002,9 +1992,9 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryUmConditionalOrderHistory.
      *
-     * Query UM Conditional Order History
+     * Query UM Conditional Order History (USER_DATA)
      *
-     * @param string      $symbol              symbol (required)
+     * @param string      $symbol              Symbol (required)
      * @param null|int    $strategyId          strategyId (optional)
      * @param null|string $newClientStrategyId newClientStrategyId (optional)
      * @param null|int    $recvWindow          recvWindow (optional)
@@ -2013,8 +2003,6 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     *
-     * @deprecated
      */
     public function queryUmConditionalOrderHistory($symbol, $strategyId = null, $newClientStrategyId = null, $recvWindow = null): ApiResponse
     {
@@ -2024,14 +2012,14 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryUmModifyOrderHistory.
      *
-     * Query UM Modify Order History(TRADE)
+     * Query UM Modify Order History (TRADE)
      *
-     * @param string      $symbol            symbol (required)
-     * @param null|int    $orderId           orderId (optional)
-     * @param null|string $origClientOrderId origClientOrderId (optional)
+     * @param string      $symbol            Symbol (required)
+     * @param null|int    $orderId           Order ID (optional)
+     * @param null|string $origClientOrderId Client order ID (optional)
      * @param null|int    $startTime         Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int    $endTime           Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int    $limit             Default 100; max 1000 (optional)
+     * @param null|int    $limit             Number of results returned. (optional)
      * @param null|int    $recvWindow        recvWindow (optional)
      *
      * @return ApiResponse<QueryUmModifyOrderHistoryResponse>
@@ -2049,7 +2037,7 @@ class DerivativesTradingPortfolioMarginRestApi
      *
      * Query UM Order (USER_DATA)
      *
-     * @param string      $symbol            symbol (required)
+     * @param string      $symbol            Symbol (required)
      * @param null|int    $orderId           orderId (optional)
      * @param null|string $origClientOrderId origClientOrderId (optional)
      * @param null|int    $recvWindow        recvWindow (optional)
@@ -2067,14 +2055,14 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryUsersCmForceOrders.
      *
-     * Query User&#39;s CM Force Orders(USER_DATA)
+     * Query User&#39;s CM Force Orders (USER_DATA)
      *
      * @param null|string        $symbol        symbol (optional)
      * @param null|AutoCloseType $autoCloseType &#x60;LIQUIDATION&#x60; for liquidation orders, &#x60;ADL&#x60; for ADL orders. (optional)
      * @param null|int           $startTime     Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int           $endTime       Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int           $limit         Default 100; max 1000 (optional)
-     * @param null|int           $recvWindow    recvWindow (optional)
+     * @param null|int           $limit         Number of results returned. (optional)
+     * @param null|int           $recvWindow    The value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<QueryUsersCmForceOrdersResponse>
      *
@@ -2089,13 +2077,13 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation queryUsersMarginForceOrders.
      *
-     * Query User&#39;s Margin Force Orders(USER_DATA)
+     * Query User&#39;s Margin Force Orders (USER_DATA)
      *
      * @param null|int $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10 Max:100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $current    Current page number. (optional)
+     * @param null|int $size       Number of results returned. (optional)
+     * @param null|int $recvWindow The value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<QueryUsersMarginForceOrdersResponse>
      *
@@ -2116,8 +2104,8 @@ class DerivativesTradingPortfolioMarginRestApi
      * @param null|AutoCloseType $autoCloseType &#x60;LIQUIDATION&#x60; for liquidation orders, &#x60;ADL&#x60; for ADL orders. (optional)
      * @param null|int           $startTime     Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int           $endTime       Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int           $limit         Default 100; max 1000 (optional)
-     * @param null|int           $recvWindow    recvWindow (optional)
+     * @param null|int           $limit         Number of results returned. (optional)
+     * @param null|int           $recvWindow    The value cannot be greater than 60000 (optional)
      *
      * @return ApiResponse<QueryUsersUmForceOrdersResponse>
      *
@@ -2149,13 +2137,13 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation umAccountTradeList.
      *
-     * UM Account Trade List(USER_DATA)
+     * UM Account Trade List (USER_DATA)
      *
-     * @param string   $symbol     symbol (required)
+     * @param string   $symbol     Symbol (required)
      * @param null|int $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int $fromId     Trade id to fetch from. Default gets most recent trades. (optional)
-     * @param null|int $limit      Default 100; max 1000 (optional)
+     * @param null|int $fromId     Trade ID to fetch from. (optional)
+     * @param null|int $limit      Number of results returned. (optional)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<UmAccountTradeListResponse>
@@ -2171,7 +2159,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation umPositionAdlQuantileEstimation.
      *
-     * UM Position ADL Quantile Estimation(USER_DATA)
+     * UM Position ADL Quantile Estimation (USER_DATA)
      *
      * @param null|string $symbol     symbol (optional)
      * @param null|int    $recvWindow recvWindow (optional)
@@ -2189,7 +2177,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation closeUserDataStream.
      *
-     * Close User Data Stream(USER_STREAM)
+     * Close User Data Stream (USER_STREAM)
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
@@ -2215,7 +2203,7 @@ class DerivativesTradingPortfolioMarginRestApi
     /**
      * Operation startUserDataStream.
      *
-     * Start User Data Stream(USER_STREAM)
+     * Start User Data Stream (USER_STREAM)
      *
      * @return ApiResponse<StartUserDataStreamResponse>
      *

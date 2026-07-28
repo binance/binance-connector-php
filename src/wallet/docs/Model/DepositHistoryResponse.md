@@ -1,4 +1,4 @@
-# # DepositHistoryResponse
+# DepositHistoryResponse
 
 ## Properties
 

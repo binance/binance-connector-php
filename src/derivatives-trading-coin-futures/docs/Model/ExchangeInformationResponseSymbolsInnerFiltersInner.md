@@ -1,19 +1,19 @@
-# # ExchangeInformationResponseSymbolsInnerFiltersInner
+# ExchangeInformationResponseSymbolsInnerFiltersInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filterType** | **string** |  | [optional]
-**maxPrice** | **string** |  | [optional]
-**minPrice** | **string** |  | [optional]
-**tickSize** | **string** |  | [optional]
-**maxQty** | **string** |  | [optional]
-**minQty** | **string** |  | [optional]
-**stepSize** | **string** |  | [optional]
-**limit** | **int** |  | [optional]
-**multiplierUp** | **string** |  | [optional]
-**multiplierDown** | **string** |  | [optional]
-**multiplierDecimal** | **string** |  | [optional]
+**filterType** | **string** | Filter type. | [optional]
+**maxPrice** | **string** | Maximum price. | [optional]
+**minPrice** | **string** | Minimum price. | [optional]
+**tickSize** | **string** | Tick size. | [optional]
+**maxQty** | **string** | maximum quantity of base asset | [optional]
+**minQty** | **string** | Minimum quantity. | [optional]
+**stepSize** | **string** | Step size. | [optional]
+**limit** | **int** | Maximum allowed orders for this rule. | [optional]
+**multiplierUp** | **string** | Upper multiplier bound. | [optional]
+**multiplierDown** | **string** | Lower multiplier bound. | [optional]
+**multiplierDecimal** | **string** | Multiplier decimal precision. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

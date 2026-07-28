@@ -1,4 +1,4 @@
-# # GetEthRedemptionHistoryResponse
+# GetEthRedemptionHistoryResponse
 
 ## Properties
 

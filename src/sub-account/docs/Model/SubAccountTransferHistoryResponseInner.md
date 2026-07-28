@@ -1,4 +1,4 @@
-# # SubAccountTransferHistoryResponseInner
+# SubAccountTransferHistoryResponseInner
 
 ## Properties
 

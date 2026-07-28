@@ -10,9 +10,9 @@ function longShortRatioExample()
 {
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTCUSDT';
     $period = Period::PERIOD_5M;
-    $limit = 100;
+    $limit = 50;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $response = $api->longShortRatio($symbol, $period, $limit, $startTime, $endTime);

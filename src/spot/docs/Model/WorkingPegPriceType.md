@@ -1,4 +1,4 @@
-# # WorkingPegPriceType
+# WorkingPegPriceType
 
 ## Properties
 

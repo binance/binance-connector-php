@@ -4,15 +4,16 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 use Binance\Client\MarginTrading\Api\MarginTradingRestApi;
 use Binance\Client\MarginTrading\MarginTradingRestApiUtil;
+use Binance\Client\MarginTrading\Model\OrderType;
 
 function queryCrossIsolatedMarginCapitalFlowExample()
 {
     $configurationBuilder = MarginTradingRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new MarginTradingRestApi($configurationBuilder->build());
-    $asset = '';
-    $symbol = '';
-    $type = '';
+    $asset = 'USDT';
+    $symbol = 'BTCUSDT';
+    $type = OrderType::ROLL_IN;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $fromId = 1;

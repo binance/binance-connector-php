@@ -1,19 +1,19 @@
-# # MarginAccountNewOcoRequest
+# MarginAccountNewOcoRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **symbol** | **string** |  |
-**listClientOrderId** | **string** |  | [optional]
+**listClientOrderId** | **string** | A unique Id for the entire orderList | [optional]
 **side** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\Side**](Side.md) |  |
 **quantity** | **float** |  |
-**limitClientOrderId** | **string** |  | [optional]
+**limitClientOrderId** | **string** | A unique Id for the limit order | [optional]
 **price** | **float** |  |
 **limitIcebergQty** | **float** |  | [optional]
-**stopClientOrderId** | **string** |  | [optional]
+**stopClientOrderId** | **string** | A unique Id for the stop loss/stop loss limit leg | [optional]
 **stopPrice** | **float** |  |
-**stopLimitPrice** | **float** |  | [optional]
+**stopLimitPrice** | **float** | If provided, stopLimitTimeInForce is required. | [optional]
 **stopIcebergQty** | **float** |  | [optional]
 **stopLimitTimeInForce** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\StopLimitTimeInForce**](StopLimitTimeInForce.md) |  | [optional]
 **newOrderRespType** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\NewOrderRespType**](NewOrderRespType.md) |  | [optional]

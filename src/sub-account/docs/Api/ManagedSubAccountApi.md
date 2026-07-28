@@ -1,5 +1,7 @@
 # Binance\Client\SubAccount\ManagedSubAccountApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -11,8 +13,8 @@ All URIs are relative to https://api.binance.com, except if the operation define
 | [**queryManagedSubAccountList()**](ManagedSubAccountApi.md#queryManagedSubAccountList) | **GET** /sapi/v1/managed-subaccount/info | Query Managed Sub-account List (For Investor) (USER_DATA) |
 | [**queryManagedSubAccountMarginAssetDetails()**](ManagedSubAccountApi.md#queryManagedSubAccountMarginAssetDetails) | **GET** /sapi/v1/managed-subaccount/marginAsset | Query Managed Sub-account Margin Asset Details (For Investor Master Account) (USER_DATA) |
 | [**queryManagedSubAccountSnapshot()**](ManagedSubAccountApi.md#queryManagedSubAccountSnapshot) | **GET** /sapi/v1/managed-subaccount/accountSnapshot | Query Managed Sub-account Snapshot (For Investor Master Account) (USER_DATA) |
-| [**queryManagedSubAccountTransferLogMasterAccountInvestor()**](ManagedSubAccountApi.md#queryManagedSubAccountTransferLogMasterAccountInvestor) | **GET** /sapi/v1/managed-subaccount/queryTransLogForInvestor | Query Managed Sub Account Transfer Log (For Investor Master Account) (USER_DATA) |
-| [**queryManagedSubAccountTransferLogMasterAccountTrading()**](ManagedSubAccountApi.md#queryManagedSubAccountTransferLogMasterAccountTrading) | **GET** /sapi/v1/managed-subaccount/queryTransLogForTradeParent | Query Managed Sub Account Transfer Log (For Trading Team Master Account) (USER_DATA) |
+| [**queryManagedSubAccountTransferLogMasterAccountInvestor()**](ManagedSubAccountApi.md#queryManagedSubAccountTransferLogMasterAccountInvestor) | **GET** /sapi/v1/managed-subaccount/queryTransLogForInvestor | Query Managed Sub Account Transfer Log For Investor Master Account (USER_DATA) |
+| [**queryManagedSubAccountTransferLogMasterAccountTrading()**](ManagedSubAccountApi.md#queryManagedSubAccountTransferLogMasterAccountTrading) | **GET** /sapi/v1/managed-subaccount/queryTransLogForTradeParent | Query Managed Sub Account Transfer Log For Trading Team Master Account (USER_DATA) |
 | [**queryManagedSubAccountTransferLogSubAccountTrading()**](ManagedSubAccountApi.md#queryManagedSubAccountTransferLogSubAccountTrading) | **GET** /sapi/v1/managed-subaccount/query-trans-log | Query Managed Sub Account Transfer Log (For Trading Team Sub Account) (USER_DATA) |
 | [**withdrawlAssetsFromTheManagedSubAccount()**](ManagedSubAccountApi.md#withdrawlAssetsFromTheManagedSubAccount) | **POST** /sapi/v1/managed-subaccount/withdraw | Withdrawl Assets From The Managed Sub-account (For Investor Master Account) (USER_DATA) |
 
@@ -25,7 +27,7 @@ depositAssetsIntoTheManagedSubAccount($depositAssetsIntoTheManagedSubAccountRequ
 
 Deposit Assets Into The Managed Sub-account (For Investor Master Account) (USER_DATA)
 
-Deposit Assets Into The Managed Sub-account  * You need to enable `Enable Spot & Margin Trading` option for the api key which requests this endpoint  Weight: 1
+Deposit Assets Into The Managed Sub-account  Weight(IP): 1  Security Type: USER_DATA  Notes: - You need to enable `Enable Spot & Margin Trading` option for the api key which requests this endpoint
 
 ### Example
 
@@ -81,7 +83,7 @@ getManagedSubAccountDepositAddress($email, $coin, $network, $amount, $recvWindow
 
 Get Managed Sub-account Deposit Address (For Investor Master Account) (USER_DATA)
 
-Get investor's managed sub-account deposit address.  * If `network` is not send, return with default `network` of the `coin`. * * `amount` needs to be sent if using LIGHTNING network  Weight: 1
+Get investor's managed sub-account deposit address.  Weight(UID): 1  Security Type: USER_DATA  Notes: - If `network` is not sent, the default `network` for the `coin` is returned. - When using `LIGHTNING`, `amount` must be provided.
 
 ### Example
 
@@ -96,11 +98,11 @@ $apiInstance = new Binance\Client\SubAccount\Api\ManagedSubAccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$email = 'email_example'; // string | [Sub-account email](#email-address)
-$coin = 'coin_example'; // string
-$network = 'network_example'; // string | networks can be found in `GET /sapi/v1/capital/deposit/address`
-$amount = 3.4; // float
-$recvWindow = 56; // int
+$email = abc@test.com; // string
+$coin = USDT; // string
+$network = LIGHTNING; // string | networks can be found in `GET /sapi/v1/capital/deposit/address`
+$amount = 1.0; // float
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getManagedSubAccountDepositAddress($email, $coin, $network, $amount, $recvWindow);
@@ -114,7 +116,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| [Sub-account email](#email-address) | |
+| **email** | **string**|  | |
 | **coin** | **string**|  | |
 | **network** | **string**| networks can be found in &#x60;GET /sapi/v1/capital/deposit/address&#x60; | [optional] |
 | **amount** | **float**|  | [optional] |
@@ -145,7 +147,7 @@ queryManagedSubAccountAssetDetails($email, $recvWindow): \Binance\Client\SubAcco
 
 Query Managed Sub-account Asset Details (For Investor Master Account) (USER_DATA)
 
-Query Managed Sub-account Asset Details  Weight: 1
+Query Managed Sub-account Asset Details  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -160,8 +162,8 @@ $apiInstance = new Binance\Client\SubAccount\Api\ManagedSubAccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$email = 'email_example'; // string | [Sub-account email](#email-address)
-$recvWindow = 56; // int
+$email = abc@test.com; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryManagedSubAccountAssetDetails($email, $recvWindow);
@@ -175,7 +177,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| [Sub-account email](#email-address) | |
+| **email** | **string**|  | |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -203,7 +205,7 @@ queryManagedSubAccountFuturesAssetDetails($email, $accountType): \Binance\Client
 
 Query Managed Sub-account Futures Asset Details (For Investor Master Account) (USER_DATA)
 
-Investor can use this api to query managed sub account futures asset details  Weight: 60
+Investor can use this api to query managed sub account futures asset details  Weight(UID): 60  Security Type: USER_DATA
 
 ### Example
 
@@ -218,8 +220,8 @@ $apiInstance = new Binance\Client\SubAccount\Api\ManagedSubAccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$email = 'email_example'; // string | [Sub-account email](#email-address)
-$accountType = 'accountType_example'; // string | No input or input \"MARGIN\" to get Cross Margin account details. Input \"ISOLATED_MARGIN\" to get Isolated Margin account details.
+$email = abc@test.com; // string
+$accountType = MARGIN; // string | No input or input \"USDT_FUTURE\" to get UM Futures account details. Input \"COIN_FUTURE\" to get CM Futures account details.
 
 try {
     $result = $apiInstance->queryManagedSubAccountFuturesAssetDetails($email, $accountType);
@@ -233,8 +235,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| [Sub-account email](#email-address) | |
-| **accountType** | **string**| No input or input \&quot;MARGIN\&quot; to get Cross Margin account details. Input \&quot;ISOLATED_MARGIN\&quot; to get Isolated Margin account details. | [optional] |
+| **email** | **string**|  | |
+| **accountType** | **string**| No input or input \&quot;USDT_FUTURE\&quot; to get UM Futures account details. Input \&quot;COIN_FUTURE\&quot; to get CM Futures account details. | [optional] |
 
 ### Return type
 
@@ -261,7 +263,7 @@ queryManagedSubAccountList($email, $page, $limit, $recvWindow): \Binance\Client\
 
 Query Managed Sub-account List (For Investor) (USER_DATA)
 
-Get investor's managed sub-account list.  Weight: 60
+Get investor's managed sub-account list.  Weight(UID): 60  Security Type: USER_DATA
 
 ### Example
 
@@ -276,10 +278,10 @@ $apiInstance = new Binance\Client\SubAccount\Api\ManagedSubAccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$email = 'email_example'; // string | Managed sub-account email
-$page = 56; // int | Default value: 1
-$limit = 56; // int | Default value: 1, Max value: 200
-$recvWindow = 56; // int
+$email = abc@test.com; // string
+$page = 1; // int
+$limit = 10; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryManagedSubAccountList($email, $page, $limit, $recvWindow);
@@ -293,9 +295,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| Managed sub-account email | [optional] |
-| **page** | **int**| Default value: 1 | [optional] |
-| **limit** | **int**| Default value: 1, Max value: 200 | [optional] |
+| **email** | **string**|  | [optional] |
+| **page** | **int**|  | [optional] |
+| **limit** | **int**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -323,7 +325,7 @@ queryManagedSubAccountMarginAssetDetails($email, $accountType): \Binance\Client\
 
 Query Managed Sub-account Margin Asset Details (For Investor Master Account) (USER_DATA)
 
-Investor can use this api to query managed sub account margin asset details  Weight: 1
+Investor can use this api to query managed sub account margin asset details  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -338,8 +340,8 @@ $apiInstance = new Binance\Client\SubAccount\Api\ManagedSubAccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$email = 'email_example'; // string | [Sub-account email](#email-address)
-$accountType = 'accountType_example'; // string | No input or input \"MARGIN\" to get Cross Margin account details. Input \"ISOLATED_MARGIN\" to get Isolated Margin account details.
+$email = abc@test.com; // string
+$accountType = MARGIN; // string | No input or input \"MARGIN\" to get Cross Margin account details. Input \"ISOLATED_MARGIN\" to get Isolated Margin account details.
 
 try {
     $result = $apiInstance->queryManagedSubAccountMarginAssetDetails($email, $accountType);
@@ -353,7 +355,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| [Sub-account email](#email-address) | |
+| **email** | **string**|  | |
 | **accountType** | **string**| No input or input \&quot;MARGIN\&quot; to get Cross Margin account details. Input \&quot;ISOLATED_MARGIN\&quot; to get Isolated Margin account details. | [optional] |
 
 ### Return type
@@ -381,7 +383,7 @@ queryManagedSubAccountSnapshot($email, $type, $startTime, $endTime, $limit, $rec
 
 Query Managed Sub-account Snapshot (For Investor Master Account) (USER_DATA)
 
-Query Managed Sub-account Snapshot  * The query time period must be less then 30 days * Support query within the last one month only * If startTimeand endTime not sent, return records of the last 7 days by default  Weight: 2400
+Query Managed Sub-account Snapshot  Weight(IP): 2400  Security Type: USER_DATA  Notes: - The query time range must be less than 30 days. - Only data from the most recent month is supported. - If `startTime` and `endTime` are omitted, records from the last 7 days are returned by default.
 
 ### Example
 
@@ -396,12 +398,12 @@ $apiInstance = new Binance\Client\SubAccount\Api\ManagedSubAccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$email = 'email_example'; // string | [Sub-account email](#email-address)
-$type = 'type_example'; // string | \"SPOT\", \"MARGIN\"（cross）, \"FUTURES\"（UM）
-$startTime = 56; // int
-$endTime = 56; // int
-$limit = 56; // int | Default value: 1, Max value: 200
-$recvWindow = 56; // int
+$email = abc@test.com; // string
+$type = new \Binance\Client\SubAccount\Model\\Binance\Client\SubAccount\Model\OrderType(); // \Binance\Client\SubAccount\Model\OrderType
+$startTime = 1623319461670; // int | Query time range must be within 30 days and only supports data within the last month.
+$endTime = 1641782889000; // int | If both startTime and endTime are omitted, records from the last 7 days are returned by default.
+$limit = 10; // int
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryManagedSubAccountSnapshot($email, $type, $startTime, $endTime, $limit, $recvWindow);
@@ -415,11 +417,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| [Sub-account email](#email-address) | |
-| **type** | **string**| \&quot;SPOT\&quot;, \&quot;MARGIN\&quot;（cross）, \&quot;FUTURES\&quot;（UM） | |
-| **startTime** | **int**|  | [optional] |
-| **endTime** | **int**|  | [optional] |
-| **limit** | **int**| Default value: 1, Max value: 200 | [optional] |
+| **email** | **string**|  | |
+| **type** | [**\Binance\Client\SubAccount\Model\OrderType**](../Model/.md)|  | |
+| **startTime** | **int**| Query time range must be within 30 days and only supports data within the last month. | [optional] |
+| **endTime** | **int**| If both startTime and endTime are omitted, records from the last 7 days are returned by default. | [optional] |
+| **limit** | **int**|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -445,9 +447,9 @@ No authorization required
 queryManagedSubAccountTransferLogMasterAccountInvestor($email, $startTime, $endTime, $page, $limit, $transfers, $transferFunctionAccountType): \Binance\Client\SubAccount\Model\QueryManagedSubAccountTransferLogMasterAccountInvestorResponse
 ```
 
-Query Managed Sub Account Transfer Log (For Investor Master Account) (USER_DATA)
+Query Managed Sub Account Transfer Log For Investor Master Account (USER_DATA)
 
-Investor can use this api to query managed sub account transfer log. This endpoint is available for investor of Managed Sub-Account. A Managed Sub-Account is an account type for investors who value flexibility in asset allocation and account application, while delegating trades to a professional trading team. Please refer to [link](https://www.binance.com/en/support/faq/how-to-get-started-with-managed-sub-account-functions-and-frequently-asked-questions-0594748722704383a7c369046e489459)  Weight: 1
+Query Managed Sub Account Transfer Log For Investor Master Account  Investor can use this api to query managed sub account transfer log. This endpoint is available for investor of Managed Sub-Account. A Managed Sub-Account is an account type for investors who value flexibility in asset allocation and account application, while delegating trades to a professional trading team.  Please refer to [link](https://www.binance.com/en/support/faq/how-to-get-started-with-managed-sub-account-functions-and-frequently-asked-questions-0594748722704383a7c369046e489459)  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -462,13 +464,13 @@ $apiInstance = new Binance\Client\SubAccount\Api\ManagedSubAccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$email = 'email_example'; // string | [Sub-account email](#email-address)
-$startTime = 56; // int | Start Time
-$endTime = 56; // int | End Time (The start time and end time interval cannot exceed half a year)
-$page = 56; // int | Page
-$limit = 56; // int | Limit (Max: 500)
+$email = abc@test.com; // string
+$startTime = 1623319461670; // int | Start Time
+$endTime = 1641782889000; // int | End Time (The start time and end time interval cannot exceed half a year)
+$page = 1; // int | Page
+$limit = 1; // int
 $transfers = 'transfers_example'; // string | Transfer Direction (FROM/TO)
-$transferFunctionAccountType = 'transferFunctionAccountType_example'; // string | Transfer function account type (SPOT/MARGIN/ISOLATED_MARGIN/USDT_FUTURE/COIN_FUTURE)
+$transferFunctionAccountType = new \Binance\Client\SubAccount\Model\\Binance\Client\SubAccount\Model\TransferFunctionAccountType(); // \Binance\Client\SubAccount\Model\TransferFunctionAccountType
 
 try {
     $result = $apiInstance->queryManagedSubAccountTransferLogMasterAccountInvestor($email, $startTime, $endTime, $page, $limit, $transfers, $transferFunctionAccountType);
@@ -482,13 +484,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| [Sub-account email](#email-address) | |
+| **email** | **string**|  | |
 | **startTime** | **int**| Start Time | |
 | **endTime** | **int**| End Time (The start time and end time interval cannot exceed half a year) | |
 | **page** | **int**| Page | |
-| **limit** | **int**| Limit (Max: 500) | |
+| **limit** | **int**|  | |
 | **transfers** | **string**| Transfer Direction (FROM/TO) | [optional] |
-| **transferFunctionAccountType** | **string**| Transfer function account type (SPOT/MARGIN/ISOLATED_MARGIN/USDT_FUTURE/COIN_FUTURE) | [optional] |
+| **transferFunctionAccountType** | [**\Binance\Client\SubAccount\Model\TransferFunctionAccountType**](../Model/.md)|  | [optional] |
 
 ### Return type
 
@@ -513,9 +515,9 @@ No authorization required
 queryManagedSubAccountTransferLogMasterAccountTrading($email, $startTime, $endTime, $page, $limit, $transfers, $transferFunctionAccountType): \Binance\Client\SubAccount\Model\QueryManagedSubAccountTransferLogMasterAccountTradingResponse
 ```
 
-Query Managed Sub Account Transfer Log (For Trading Team Master Account) (USER_DATA)
+Query Managed Sub Account Transfer Log For Trading Team Master Account (USER_DATA)
 
-Trading team can use this api to query managed sub account transfer log. This endpoint is available for trading team of Managed Sub-Account. A Managed Sub-Account is an account type for investors who value flexibility in asset allocation and account application, while delegating trades to a professional trading team. Please refer to [link](https://www.binance.com/en/support/faq/how-to-get-started-with-managed-sub-account-functions-and-frequently-asked-questions-0594748722704383a7c369046e489459)  Weight: 60
+Query Managed Sub Account Transfer Log For Trading Team Master Account  Trading team can use this api to query managed sub account transfer log. This endpoint is available for trading team of Managed Sub-Account. A Managed Sub-Account is an account type for investors who value flexibility in asset allocation and account application, while delegating trades to a professional trading team.  Please refer to [link](https://www.binance.com/en/support/faq/how-to-get-started-with-managed-sub-account-functions-and-frequently-asked-questions-0594748722704383a7c369046e489459)  Weight(UID): 60  Security Type: USER_DATA
 
 ### Example
 
@@ -530,13 +532,13 @@ $apiInstance = new Binance\Client\SubAccount\Api\ManagedSubAccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$email = 'email_example'; // string | [Sub-account email](#email-address)
-$startTime = 56; // int | Start Time
-$endTime = 56; // int | End Time (The start time and end time interval cannot exceed half a year)
-$page = 56; // int | Page
-$limit = 56; // int | Limit (Max: 500)
+$email = abc@test.com; // string
+$startTime = 1623319461670; // int | Start Time
+$endTime = 1641782889000; // int | End Time (The start time and end time interval cannot exceed half a year)
+$page = 1; // int
+$limit = 10; // int
 $transfers = 'transfers_example'; // string | Transfer Direction (FROM/TO)
-$transferFunctionAccountType = 'transferFunctionAccountType_example'; // string | Transfer function account type (SPOT/MARGIN/ISOLATED_MARGIN/USDT_FUTURE/COIN_FUTURE)
+$transferFunctionAccountType = new \Binance\Client\SubAccount\Model\\Binance\Client\SubAccount\Model\TransferFunctionAccountType(); // \Binance\Client\SubAccount\Model\TransferFunctionAccountType
 
 try {
     $result = $apiInstance->queryManagedSubAccountTransferLogMasterAccountTrading($email, $startTime, $endTime, $page, $limit, $transfers, $transferFunctionAccountType);
@@ -550,13 +552,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| [Sub-account email](#email-address) | |
+| **email** | **string**|  | |
 | **startTime** | **int**| Start Time | |
 | **endTime** | **int**| End Time (The start time and end time interval cannot exceed half a year) | |
-| **page** | **int**| Page | |
-| **limit** | **int**| Limit (Max: 500) | |
+| **page** | **int**|  | |
+| **limit** | **int**|  | |
 | **transfers** | **string**| Transfer Direction (FROM/TO) | [optional] |
-| **transferFunctionAccountType** | **string**| Transfer function account type (SPOT/MARGIN/ISOLATED_MARGIN/USDT_FUTURE/COIN_FUTURE) | [optional] |
+| **transferFunctionAccountType** | [**\Binance\Client\SubAccount\Model\TransferFunctionAccountType**](../Model/.md)|  | [optional] |
 
 ### Return type
 
@@ -583,7 +585,7 @@ queryManagedSubAccountTransferLogSubAccountTrading($startTime, $endTime, $page, 
 
 Query Managed Sub Account Transfer Log (For Trading Team Sub Account) (USER_DATA)
 
-Query Managed Sub Account Transfer Log (For Trading Team Sub Account)  Weight: 60
+Query Managed Sub Account Transfer Log (For Trading Team Sub Account)  Weight(UID): 60  Security Type: USER_DATA
 
 ### Example
 
@@ -598,13 +600,13 @@ $apiInstance = new Binance\Client\SubAccount\Api\ManagedSubAccountApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$startTime = 56; // int | Start Time
-$endTime = 56; // int | End Time (The start time and end time interval cannot exceed half a year)
-$page = 56; // int | Page
-$limit = 56; // int | Limit (Max: 500)
-$transfers = 'transfers_example'; // string | Transfer Direction (FROM/TO)
-$transferFunctionAccountType = 'transferFunctionAccountType_example'; // string | Transfer function account type (SPOT/MARGIN/ISOLATED_MARGIN/USDT_FUTURE/COIN_FUTURE)
-$recvWindow = 56; // int
+$startTime = 1623319461670; // int | Start Time
+$endTime = 1641782889000; // int | End Time (The start time and end time interval cannot exceed half a year)
+$page = 1; // int
+$limit = 10; // int
+$transfers = 'transfers_example'; // string | Transfer Direction (from/to)
+$transferFunctionAccountType = new \Binance\Client\SubAccount\Model\\Binance\Client\SubAccount\Model\TransferFunctionAccountType(); // \Binance\Client\SubAccount\Model\TransferFunctionAccountType
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->queryManagedSubAccountTransferLogSubAccountTrading($startTime, $endTime, $page, $limit, $transfers, $transferFunctionAccountType, $recvWindow);
@@ -620,10 +622,10 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **startTime** | **int**| Start Time | |
 | **endTime** | **int**| End Time (The start time and end time interval cannot exceed half a year) | |
-| **page** | **int**| Page | |
-| **limit** | **int**| Limit (Max: 500) | |
-| **transfers** | **string**| Transfer Direction (FROM/TO) | [optional] |
-| **transferFunctionAccountType** | **string**| Transfer function account type (SPOT/MARGIN/ISOLATED_MARGIN/USDT_FUTURE/COIN_FUTURE) | [optional] |
+| **page** | **int**|  | |
+| **limit** | **int**|  | |
+| **transfers** | **string**| Transfer Direction (from/to) | [optional] |
+| **transferFunctionAccountType** | [**\Binance\Client\SubAccount\Model\TransferFunctionAccountType**](../Model/.md)|  | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -651,7 +653,7 @@ withdrawlAssetsFromTheManagedSubAccount($withdrawlAssetsFromTheManagedSubAccount
 
 Withdrawl Assets From The Managed Sub-account (For Investor Master Account) (USER_DATA)
 
-Withdrawl Assets From The Managed Sub-account  * You need to enable `Enable Spot & Margin Trading` option for the api key which requests this endpoint  Weight: 1
+Withdrawl Assets From The Managed Sub-account  Weight(IP): 1  Security Type: USER_DATA  Notes: - Your API key must have the permission `Enable Spot & Margin Trading`.
 
 ### Example
 

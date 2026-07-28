@@ -1,4 +1,4 @@
-# # CancelAllAlgoOpenOrdersResponse
+# CancelAllAlgoOpenOrdersResponse
 
 ## Properties
 

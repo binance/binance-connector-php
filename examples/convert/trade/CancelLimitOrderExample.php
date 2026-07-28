@@ -12,7 +12,7 @@ function cancelLimitOrderExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new ConvertRestApi($configurationBuilder->build());
     $cancelLimitOrderRequest = new CancelLimitOrderRequest();
-    $cancelLimitOrderRequest->setOrderId('1');
+    $cancelLimitOrderRequest->setOrderId(1603680255057330400);
     $response = $api->cancelLimitOrder($cancelLimitOrderRequest);
     print_r($response);
 }

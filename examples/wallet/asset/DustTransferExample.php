@@ -12,7 +12,7 @@ function dustTransferExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
     $dustTransferRequest = new DustTransferRequest();
-    $dustTransferRequest->setAsset('');
+    $dustTransferRequest->setAsset('BTC');
     $response = $api->dustTransfer($dustTransferRequest);
     print_r($response);
 }

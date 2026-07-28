@@ -6,6 +6,8 @@ use Binance\Client\SubAccount\Model\AddIpRestrictionForSubAccountApiKeyRequest;
 use Binance\Client\SubAccount\Model\AddIpRestrictionForSubAccountApiKeyResponse;
 use Binance\Client\SubAccount\Model\CreateAVirtualSubAccountRequest;
 use Binance\Client\SubAccount\Model\CreateAVirtualSubAccountResponse;
+use Binance\Client\SubAccount\Model\CreateSubAccountApiKeyRequest;
+use Binance\Client\SubAccount\Model\CreateSubAccountApiKeyResponse;
 use Binance\Client\SubAccount\Model\DeleteIpListForASubAccountApiKeyResponse;
 use Binance\Client\SubAccount\Model\DepositAssetsIntoTheManagedSubAccountRequest;
 use Binance\Client\SubAccount\Model\DepositAssetsIntoTheManagedSubAccountResponse;
@@ -31,8 +33,11 @@ use Binance\Client\SubAccount\Model\GetSummaryOfSubAccountsFuturesAccountV2Respo
 use Binance\Client\SubAccount\Model\GetSummaryOfSubAccountsMarginAccountResponse;
 use Binance\Client\SubAccount\Model\MarginTransferForSubAccountRequest;
 use Binance\Client\SubAccount\Model\MarginTransferForSubAccountResponse;
+use Binance\Client\SubAccount\Model\ModifySubAccountApiKeyPermissionRequest;
+use Binance\Client\SubAccount\Model\ModifySubAccountApiKeyPermissionResponse;
 use Binance\Client\SubAccount\Model\MovePositionForSubAccountRequest;
 use Binance\Client\SubAccount\Model\MovePositionForSubAccountResponse;
+use Binance\Client\SubAccount\Model\OrderType;
 use Binance\Client\SubAccount\Model\QueryManagedSubAccountAssetDetailsResponse;
 use Binance\Client\SubAccount\Model\QueryManagedSubAccountFuturesAssetDetailsResponse;
 use Binance\Client\SubAccount\Model\QueryManagedSubAccountListResponse;
@@ -41,6 +46,7 @@ use Binance\Client\SubAccount\Model\QueryManagedSubAccountSnapshotResponse;
 use Binance\Client\SubAccount\Model\QueryManagedSubAccountTransferLogMasterAccountInvestorResponse;
 use Binance\Client\SubAccount\Model\QueryManagedSubAccountTransferLogMasterAccountTradingResponse;
 use Binance\Client\SubAccount\Model\QueryManagedSubAccountTransferLogSubAccountTradingResponse;
+use Binance\Client\SubAccount\Model\QuerySubAccountApiKeyResponse;
 use Binance\Client\SubAccount\Model\QuerySubAccountAssetsAssetManagementResponse;
 use Binance\Client\SubAccount\Model\QuerySubAccountAssetsResponse;
 use Binance\Client\SubAccount\Model\QuerySubAccountFuturesAssetTransferHistoryResponse;
@@ -52,6 +58,7 @@ use Binance\Client\SubAccount\Model\QueryUniversalTransferHistoryResponse;
 use Binance\Client\SubAccount\Model\SubAccountFuturesAssetTransferRequest;
 use Binance\Client\SubAccount\Model\SubAccountFuturesAssetTransferResponse;
 use Binance\Client\SubAccount\Model\SubAccountTransferHistoryResponse;
+use Binance\Client\SubAccount\Model\TransferFunctionAccountType;
 use Binance\Client\SubAccount\Model\TransferToMasterRequest;
 use Binance\Client\SubAccount\Model\TransferToMasterResponse;
 use Binance\Client\SubAccount\Model\TransferToSubAccountOfSameMasterRequest;
@@ -151,7 +158,7 @@ class SubAccountRestApi
      *
      * Get Futures Position-Risk of Sub-account (For Master Account) (USER_DATA)
      *
-     * @param string   $email      [Sub-account email](#email-address) (required)
+     * @param string   $email      email (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetFuturesPositionRiskOfSubAccountResponse>
@@ -169,7 +176,7 @@ class SubAccountRestApi
      *
      * Get Futures Position-Risk of Sub-account V2 (For Master Account) (USER_DATA)
      *
-     * @param string   $email       [Sub-account email](#email-address) (required)
+     * @param string   $email       email (required)
      * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $recvWindow  recvWindow (optional)
      *
@@ -188,7 +195,7 @@ class SubAccountRestApi
      *
      * Get Sub-account&#39;s Status on Margin Or Futures (For Master Account) (USER_DATA)
      *
-     * @param null|string $email      Managed sub-account email (optional)
+     * @param null|string $email      email (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetSubAccountsStatusOnMarginOrFuturesResponse>
@@ -206,10 +213,10 @@ class SubAccountRestApi
      *
      * Query Sub-account List (For Master Account) (USER_DATA)
      *
-     * @param null|string $email      Managed sub-account email (optional)
-     * @param null|string $isFreeze   true or false (optional)
-     * @param null|int    $page       Default value: 1 (optional)
-     * @param null|int    $limit      Default value: 1, Max value: 200 (optional)
+     * @param null|string $email      email (optional)
+     * @param null|string $isFreeze   isFreeze (optional)
+     * @param null|int    $page       page (optional)
+     * @param null|int    $limit      limit (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QuerySubAccountListResponse>
@@ -258,11 +265,28 @@ class SubAccountRestApi
     }
 
     /**
+     * Operation createSubAccountApiKey.
+     *
+     * Create Sub-account API Key (For Master Account) (USER_DATA)
+     *
+     * @param CreateSubAccountApiKeyRequest $createSubAccountApiKeyRequest createSubAccountApiKeyRequest (required)
+     *
+     * @return ApiResponse<CreateSubAccountApiKeyResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function createSubAccountApiKey($createSubAccountApiKeyRequest): ApiResponse
+    {
+        return $this->apiManagementApi->createSubAccountApiKey($createSubAccountApiKeyRequest);
+    }
+
+    /**
      * Operation deleteIpListForASubAccountApiKey.
      *
      * Delete IP List For a Sub-account API Key (For Master Account) (USER_DATA)
      *
-     * @param string   $email            [Sub-account email](#email-address) (required)
+     * @param string   $email            email (required)
      * @param string   $subAccountApiKey subAccountApiKey (required)
      * @param string   $ipAddress        IPs to be deleted. Can be added in batches, separated by commas (required)
      * @param null|int $recvWindow       recvWindow (optional)
@@ -278,11 +302,30 @@ class SubAccountRestApi
     }
 
     /**
+     * Operation deleteSubAccountApiKey.
+     *
+     * Delete Sub-account API Key (For Master Account) (USER_DATA)
+     *
+     * @param string   $email            Sub-account email (required)
+     * @param string   $subAccountApiKey The sub-account API Key to be deleted (required)
+     * @param null|int $recvWindow       recvWindow (optional)
+     *
+     * @return ApiResponse<object>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function deleteSubAccountApiKey($email, $subAccountApiKey, $recvWindow = null): ApiResponse
+    {
+        return $this->apiManagementApi->deleteSubAccountApiKey($email, $subAccountApiKey, $recvWindow);
+    }
+
+    /**
      * Operation getIpRestrictionForASubAccountApiKey.
      *
      * Get IP Restriction for a Sub-account API Key (For Master Account) (USER_DATA)
      *
-     * @param string   $email            [Sub-account email](#email-address) (required)
+     * @param string   $email            email (required)
      * @param string   $subAccountApiKey subAccountApiKey (required)
      * @param null|int $recvWindow       recvWindow (optional)
      *
@@ -294,6 +337,44 @@ class SubAccountRestApi
     public function getIpRestrictionForASubAccountApiKey($email, $subAccountApiKey, $recvWindow = null): ApiResponse
     {
         return $this->apiManagementApi->getIpRestrictionForASubAccountApiKey($email, $subAccountApiKey, $recvWindow);
+    }
+
+    /**
+     * Operation modifySubAccountApiKeyPermission.
+     *
+     * Modify Sub-account API Key Permission (For Master Account) (USER_DATA)
+     *
+     * @param ModifySubAccountApiKeyPermissionRequest $modifySubAccountApiKeyPermissionRequest modifySubAccountApiKeyPermissionRequest (required)
+     *
+     * @return ApiResponse<ModifySubAccountApiKeyPermissionResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function modifySubAccountApiKeyPermission($modifySubAccountApiKeyPermissionRequest): ApiResponse
+    {
+        return $this->apiManagementApi->modifySubAccountApiKeyPermission($modifySubAccountApiKeyPermissionRequest);
+    }
+
+    /**
+     * Operation querySubAccountApiKey.
+     *
+     * Query Sub-account API Key (For Master Account) (USER_DATA)
+     *
+     * @param string      $email            Sub-account email (required)
+     * @param null|string $subAccountApiKey Specify an API Key for exact match (optional)
+     * @param null|int    $page             Page number, default 1, minimum 1 (optional)
+     * @param null|int    $size             Page size, default 30, maximum 100 (optional)
+     * @param null|int    $recvWindow       recvWindow (optional)
+     *
+     * @return ApiResponse<QuerySubAccountApiKeyResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function querySubAccountApiKey($email, $subAccountApiKey = null, $page = null, $size = null, $recvWindow = null): ApiResponse
+    {
+        return $this->apiManagementApi->querySubAccountApiKey($email, $subAccountApiKey, $page, $size, $recvWindow);
     }
 
     /**
@@ -318,7 +399,7 @@ class SubAccountRestApi
      *
      * Get Detail on Sub-account&#39;s Futures Account (For Master Account) (USER_DATA)
      *
-     * @param string   $email      [Sub-account email](#email-address) (required)
+     * @param string   $email      email (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetDetailOnSubAccountsFuturesAccountResponse>
@@ -336,7 +417,7 @@ class SubAccountRestApi
      *
      * Get Detail on Sub-account&#39;s Futures Account V2 (For Master Account) (USER_DATA)
      *
-     * @param string   $email       [Sub-account email](#email-address) (required)
+     * @param string   $email       email (required)
      * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $recvWindow  recvWindow (optional)
      *
@@ -355,7 +436,7 @@ class SubAccountRestApi
      *
      * Get Detail on Sub-account&#39;s Margin Account (For Master Account) (USER_DATA)
      *
-     * @param string   $email      [Sub-account email](#email-address) (required)
+     * @param string   $email      email (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetDetailOnSubAccountsMarginAccountResponse>
@@ -374,8 +455,8 @@ class SubAccountRestApi
      * Get Move Position History for Sub-account (For Master Account) (USER_DATA)
      *
      * @param string   $symbol     symbol (required)
-     * @param int      $page       Page (required)
-     * @param int      $row        row (required)
+     * @param int      $page       page (required)
+     * @param int      $rows       rows (required)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
      * @param null|int $recvWindow recvWindow (optional)
@@ -385,9 +466,9 @@ class SubAccountRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getMovePositionHistoryForSubAccount($symbol, $page, $row, $startTime = null, $endTime = null, $recvWindow = null): ApiResponse
+    public function getMovePositionHistoryForSubAccount($symbol, $page, $rows, $startTime = null, $endTime = null, $recvWindow = null): ApiResponse
     {
-        return $this->assetManagementApi->getMovePositionHistoryForSubAccount($symbol, $page, $row, $startTime, $endTime, $recvWindow);
+        return $this->assetManagementApi->getMovePositionHistoryForSubAccount($symbol, $page, $rows, $startTime, $endTime, $recvWindow);
     }
 
     /**
@@ -395,7 +476,7 @@ class SubAccountRestApi
      *
      * Get Sub-account Deposit Address (For Master Account) (USER_DATA)
      *
-     * @param string      $email      [Sub-account email](#email-address) (required)
+     * @param string      $email      email (required)
      * @param string      $coin       coin (required)
      * @param null|string $network    networks can be found in &#x60;GET /sapi/v1/capital/deposit/address&#x60; (optional)
      * @param null|float  $amount     amount (optional)
@@ -416,24 +497,25 @@ class SubAccountRestApi
      *
      * Get Sub-account Deposit History (For Master Account) (USER_DATA)
      *
-     * @param string      $email      [Sub-account email](#email-address) (required)
-     * @param null|string $coin       coin (optional)
-     * @param null|int    $status     0(0:pending,6: credited but cannot withdraw,7:Wrong Deposit,8:Waiting User confirm,1:success) (optional)
-     * @param null|int    $startTime  startTime (optional)
-     * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $limit      Default value: 1, Max value: 200 (optional)
-     * @param null|int    $offset     default:0 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
-     * @param null|string $txId       txId (optional)
+     * @param string      $email         email (required)
+     * @param null|bool   $includeSource Default &#x60;false&#x60;, return &#x60;sourceAddress&#x60; field when set to &#x60;true&#x60; (optional)
+     * @param null|string $coin          coin (optional)
+     * @param null|int    $status        Deposit status: 0&#x3D;pending, 6&#x3D;credited but cannot withdraw, 7&#x3D;wrong deposit, 8&#x3D;waiting user confirmation, 1&#x3D;success. (optional)
+     * @param null|int    $startTime     startTime (optional)
+     * @param null|int    $endTime       endTime (optional)
+     * @param null|int    $limit         limit (optional)
+     * @param null|int    $offset        offset (optional)
+     * @param null|int    $recvWindow    recvWindow (optional)
+     * @param null|string $txId          txId (optional)
      *
      * @return ApiResponse<GetSubAccountDepositHistoryResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getSubAccountDepositHistory($email, $coin = null, $status = null, $startTime = null, $endTime = null, $limit = null, $offset = null, $recvWindow = null, $txId = null): ApiResponse
+    public function getSubAccountDepositHistory($email, $includeSource = null, $coin = null, $status = null, $startTime = null, $endTime = null, $limit = null, $offset = null, $recvWindow = null, $txId = null): ApiResponse
     {
-        return $this->assetManagementApi->getSubAccountDepositHistory($email, $coin, $status, $startTime, $endTime, $limit, $offset, $recvWindow, $txId);
+        return $this->assetManagementApi->getSubAccountDepositHistory($email, $includeSource, $coin, $status, $startTime, $endTime, $limit, $offset, $recvWindow, $txId);
     }
 
     /**
@@ -441,8 +523,8 @@ class SubAccountRestApi
      *
      * Get Summary of Sub-account&#39;s Futures Account (For Master Account) (USER_DATA)
      *
-     * @param int      $page       Page (required)
-     * @param int      $limit      Limit (Max: 500) (required)
+     * @param int      $page       page (required)
+     * @param int      $limit      limit (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetSummaryOfSubAccountsFuturesAccountResponse>
@@ -461,8 +543,8 @@ class SubAccountRestApi
      * Get Summary of Sub-account&#39;s Futures Account V2 (For Master Account) (USER_DATA)
      *
      * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
-     * @param null|int $page        Default value: 1 (optional)
-     * @param null|int $limit       Default value: 1, Max value: 200 (optional)
+     * @param null|int $page        page (optional)
+     * @param null|int $limit       limit (optional)
      * @param null|int $recvWindow  recvWindow (optional)
      *
      * @return ApiResponse<GetSummaryOfSubAccountsFuturesAccountV2Response>
@@ -531,7 +613,7 @@ class SubAccountRestApi
      *
      * Query Sub-account Assets (For Master Account) (USER_DATA)
      *
-     * @param string   $email      [Sub-account email](#email-address) (required)
+     * @param string   $email      email (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QuerySubAccountAssetsResponse>
@@ -547,9 +629,9 @@ class SubAccountRestApi
     /**
      * Operation querySubAccountAssetsAssetManagement.
      *
-     * Query Sub-account Assets (For Master Account) (USER_DATA)
+     * Query Sub-account Assets V4 (For Master Account) (USER_DATA)
      *
-     * @param string   $email      [Sub-account email](#email-address) (required)
+     * @param string   $email      email (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QuerySubAccountAssetsAssetManagementResponse>
@@ -567,12 +649,12 @@ class SubAccountRestApi
      *
      * Query Sub-account Futures Asset Transfer History (For Master Account) (USER_DATA)
      *
-     * @param string   $email       [Sub-account email](#email-address) (required)
+     * @param string   $email       email (required)
      * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
-     * @param null|int $startTime   startTime (optional)
+     * @param null|int $startTime   Cannot be earlier than 1 month ago (optional)
      * @param null|int $endTime     endTime (optional)
-     * @param null|int $page        Default value: 1 (optional)
-     * @param null|int $limit       Default value: 1, Max value: 200 (optional)
+     * @param null|int $page        page (optional)
+     * @param null|int $limit       limit (optional)
      * @param null|int $recvWindow  recvWindow (optional)
      *
      * @return ApiResponse<QuerySubAccountFuturesAssetTransferHistoryResponse>
@@ -594,8 +676,8 @@ class SubAccountRestApi
      * @param null|string $toEmail    toEmail (optional)
      * @param null|int    $startTime  startTime (optional)
      * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $page       Default value: 1 (optional)
-     * @param null|int    $limit      Default value: 1, Max value: 200 (optional)
+     * @param null|int    $page       page (optional)
+     * @param null|int    $limit      limit (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QuerySubAccountSpotAssetTransferHistoryResponse>
@@ -614,8 +696,8 @@ class SubAccountRestApi
      * Query Sub-account Spot Assets Summary (For Master Account) (USER_DATA)
      *
      * @param null|string $email      Managed sub-account email (optional)
-     * @param null|int    $page       Default value: 1 (optional)
-     * @param null|int    $size       default 10, max 20 (optional)
+     * @param null|int    $page       page (optional)
+     * @param null|int    $size       size (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QuerySubAccountSpotAssetsSummaryResponse>
@@ -638,8 +720,8 @@ class SubAccountRestApi
      * @param null|string $clientTranId clientTranId (optional)
      * @param null|int    $startTime    startTime (optional)
      * @param null|int    $endTime      endTime (optional)
-     * @param null|int    $page         Default value: 1 (optional)
-     * @param null|int    $limit        Default value: 1, Max value: 200 (optional)
+     * @param null|int    $page         page (optional)
+     * @param null|int    $limit        limit (optional)
      * @param null|int    $recvWindow   recvWindow (optional)
      *
      * @return ApiResponse<QueryUniversalTransferHistoryResponse>
@@ -678,7 +760,7 @@ class SubAccountRestApi
      * @param null|int    $type              1: transfer in, 2: transfer out (optional)
      * @param null|int    $startTime         startTime (optional)
      * @param null|int    $endTime           endTime (optional)
-     * @param null|int    $limit             Default value: 1, Max value: 200 (optional)
+     * @param null|int    $limit             limit (optional)
      * @param null|bool   $returnFailHistory Default &#x60;False&#x60;, return PROCESS and SUCCESS status history; If &#x60;True&#x60;,return PROCESS and SUCCESS and FAILURE status history (optional)
      * @param null|int    $recvWindow        recvWindow (optional)
      *
@@ -765,7 +847,7 @@ class SubAccountRestApi
      *
      * Get Managed Sub-account Deposit Address (For Investor Master Account) (USER_DATA)
      *
-     * @param string      $email      [Sub-account email](#email-address) (required)
+     * @param string      $email      email (required)
      * @param string      $coin       coin (required)
      * @param null|string $network    networks can be found in &#x60;GET /sapi/v1/capital/deposit/address&#x60; (optional)
      * @param null|float  $amount     amount (optional)
@@ -786,7 +868,7 @@ class SubAccountRestApi
      *
      * Query Managed Sub-account Asset Details (For Investor Master Account) (USER_DATA)
      *
-     * @param string   $email      [Sub-account email](#email-address) (required)
+     * @param string   $email      email (required)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryManagedSubAccountAssetDetailsResponse>
@@ -804,8 +886,8 @@ class SubAccountRestApi
      *
      * Query Managed Sub-account Futures Asset Details (For Investor Master Account) (USER_DATA)
      *
-     * @param string      $email       [Sub-account email](#email-address) (required)
-     * @param null|string $accountType No input or input \&quot;MARGIN\&quot; to get Cross Margin account details. Input \&quot;ISOLATED_MARGIN\&quot; to get Isolated Margin account details. (optional)
+     * @param string      $email       email (required)
+     * @param null|string $accountType No input or input \&quot;USDT_FUTURE\&quot; to get UM Futures account details. Input \&quot;COIN_FUTURE\&quot; to get CM Futures account details. (optional)
      *
      * @return ApiResponse<QueryManagedSubAccountFuturesAssetDetailsResponse>
      *
@@ -822,9 +904,9 @@ class SubAccountRestApi
      *
      * Query Managed Sub-account List (For Investor) (USER_DATA)
      *
-     * @param null|string $email      Managed sub-account email (optional)
-     * @param null|int    $page       Default value: 1 (optional)
-     * @param null|int    $limit      Default value: 1, Max value: 200 (optional)
+     * @param null|string $email      email (optional)
+     * @param null|int    $page       page (optional)
+     * @param null|int    $limit      limit (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryManagedSubAccountListResponse>
@@ -842,7 +924,7 @@ class SubAccountRestApi
      *
      * Query Managed Sub-account Margin Asset Details (For Investor Master Account) (USER_DATA)
      *
-     * @param string      $email       [Sub-account email](#email-address) (required)
+     * @param string      $email       email (required)
      * @param null|string $accountType No input or input \&quot;MARGIN\&quot; to get Cross Margin account details. Input \&quot;ISOLATED_MARGIN\&quot; to get Isolated Margin account details. (optional)
      *
      * @return ApiResponse<QueryManagedSubAccountMarginAssetDetailsResponse>
@@ -860,12 +942,12 @@ class SubAccountRestApi
      *
      * Query Managed Sub-account Snapshot (For Investor Master Account) (USER_DATA)
      *
-     * @param string   $email      [Sub-account email](#email-address) (required)
-     * @param string   $type       \&quot;SPOT\&quot;, \&quot;MARGIN\&quot;（cross）, \&quot;FUTURES\&quot;（UM） (required)
-     * @param null|int $startTime  startTime (optional)
-     * @param null|int $endTime    endTime (optional)
-     * @param null|int $limit      Default value: 1, Max value: 200 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param string    $email      email (required)
+     * @param OrderType $type       type (required)
+     * @param null|int  $startTime  Query time range must be within 30 days and only supports data within the last month. (optional)
+     * @param null|int  $endTime    If both startTime and endTime are omitted, records from the last 7 days are returned by default. (optional)
+     * @param null|int  $limit      limit (optional)
+     * @param null|int  $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryManagedSubAccountSnapshotResponse>
      *
@@ -880,15 +962,15 @@ class SubAccountRestApi
     /**
      * Operation queryManagedSubAccountTransferLogMasterAccountInvestor.
      *
-     * Query Managed Sub Account Transfer Log (For Investor Master Account) (USER_DATA)
+     * Query Managed Sub Account Transfer Log For Investor Master Account (USER_DATA)
      *
-     * @param string      $email                       [Sub-account email](#email-address) (required)
-     * @param int         $startTime                   Start Time (required)
-     * @param int         $endTime                     End Time (The start time and end time interval cannot exceed half a year) (required)
-     * @param int         $page                        Page (required)
-     * @param int         $limit                       Limit (Max: 500) (required)
-     * @param null|string $transfers                   Transfer Direction (FROM/TO) (optional)
-     * @param null|string $transferFunctionAccountType Transfer function account type (SPOT/MARGIN/ISOLATED_MARGIN/USDT_FUTURE/COIN_FUTURE) (optional)
+     * @param string                           $email                       email (required)
+     * @param int                              $startTime                   Start Time (required)
+     * @param int                              $endTime                     End Time (The start time and end time interval cannot exceed half a year) (required)
+     * @param int                              $page                        Page (required)
+     * @param int                              $limit                       limit (required)
+     * @param null|string                      $transfers                   Transfer Direction (FROM/TO) (optional)
+     * @param null|TransferFunctionAccountType $transferFunctionAccountType transferFunctionAccountType (optional)
      *
      * @return ApiResponse<QueryManagedSubAccountTransferLogMasterAccountInvestorResponse>
      *
@@ -903,15 +985,15 @@ class SubAccountRestApi
     /**
      * Operation queryManagedSubAccountTransferLogMasterAccountTrading.
      *
-     * Query Managed Sub Account Transfer Log (For Trading Team Master Account) (USER_DATA)
+     * Query Managed Sub Account Transfer Log For Trading Team Master Account (USER_DATA)
      *
-     * @param string      $email                       [Sub-account email](#email-address) (required)
-     * @param int         $startTime                   Start Time (required)
-     * @param int         $endTime                     End Time (The start time and end time interval cannot exceed half a year) (required)
-     * @param int         $page                        Page (required)
-     * @param int         $limit                       Limit (Max: 500) (required)
-     * @param null|string $transfers                   Transfer Direction (FROM/TO) (optional)
-     * @param null|string $transferFunctionAccountType Transfer function account type (SPOT/MARGIN/ISOLATED_MARGIN/USDT_FUTURE/COIN_FUTURE) (optional)
+     * @param string                           $email                       email (required)
+     * @param int                              $startTime                   Start Time (required)
+     * @param int                              $endTime                     End Time (The start time and end time interval cannot exceed half a year) (required)
+     * @param int                              $page                        page (required)
+     * @param int                              $limit                       limit (required)
+     * @param null|string                      $transfers                   Transfer Direction (FROM/TO) (optional)
+     * @param null|TransferFunctionAccountType $transferFunctionAccountType transferFunctionAccountType (optional)
      *
      * @return ApiResponse<QueryManagedSubAccountTransferLogMasterAccountTradingResponse>
      *
@@ -928,13 +1010,13 @@ class SubAccountRestApi
      *
      * Query Managed Sub Account Transfer Log (For Trading Team Sub Account) (USER_DATA)
      *
-     * @param int         $startTime                   Start Time (required)
-     * @param int         $endTime                     End Time (The start time and end time interval cannot exceed half a year) (required)
-     * @param int         $page                        Page (required)
-     * @param int         $limit                       Limit (Max: 500) (required)
-     * @param null|string $transfers                   Transfer Direction (FROM/TO) (optional)
-     * @param null|string $transferFunctionAccountType Transfer function account type (SPOT/MARGIN/ISOLATED_MARGIN/USDT_FUTURE/COIN_FUTURE) (optional)
-     * @param null|int    $recvWindow                  recvWindow (optional)
+     * @param int                              $startTime                   Start Time (required)
+     * @param int                              $endTime                     End Time (The start time and end time interval cannot exceed half a year) (required)
+     * @param int                              $page                        page (required)
+     * @param int                              $limit                       limit (required)
+     * @param null|string                      $transfers                   Transfer Direction (from/to) (optional)
+     * @param null|TransferFunctionAccountType $transferFunctionAccountType transferFunctionAccountType (optional)
+     * @param null|int                         $recvWindow                  recvWindow (optional)
      *
      * @return ApiResponse<QueryManagedSubAccountTransferLogSubAccountTradingResponse>
      *

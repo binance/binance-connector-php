@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **withdrawalStatus** | **int** |  | [optional]
 **travelRuleStatus** | **int** |  | [optional]
 **address** | **string** |  | [optional]
-**addressTag** | **string** |  | [optional]
 **txId** | **string** |  | [optional]
 **applyTime** | **string** |  | [optional]
 **network** | **string** |  | [optional]

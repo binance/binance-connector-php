@@ -9,7 +9,7 @@ function openInterestExample()
 {
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTCUSDT';
     $response = $api->openInterest($symbol);
     print_r($response);
 }

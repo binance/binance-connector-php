@@ -1,4 +1,4 @@
-# # TransferToSubAccountOfSameMasterResponse
+# TransferToSubAccountOfSameMasterResponse
 
 ## Properties
 

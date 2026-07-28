@@ -10,8 +10,9 @@ function getRegionListExample()
     $configurationBuilder = WalletRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
-    $countryCode = '';
-    $response = $api->getRegionList($countryCode);
+    $countryCode = 'au';
+    $recvWindow = 5000;
+    $response = $api->getRegionList($countryCode, $recvWindow);
     print_r($response);
 }
 

@@ -1,4 +1,4 @@
-# # HistoricalTradesResponse
+# HistoricalTradesResponse
 
 ## Properties
 

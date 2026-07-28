@@ -1,4 +1,4 @@
-# # CancelHashrateResaleConfigurationResponse
+# CancelHashrateResaleConfigurationResponse
 
 ## Properties
 

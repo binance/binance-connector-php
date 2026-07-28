@@ -1,4 +1,4 @@
-# # QueryIsolatedMarginTierDataResponse
+# QueryIsolatedMarginTierDataResponse
 
 ## Properties
 

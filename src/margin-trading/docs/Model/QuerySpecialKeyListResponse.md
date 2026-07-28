@@ -1,4 +1,4 @@
-# # QuerySpecialKeyListResponse
+# QuerySpecialKeyListResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetDetailOnSubAccountsMarginAccountResponseMarginTradeCoeffVo
+# GetDetailOnSubAccountsMarginAccountResponseMarginTradeCoeffVo
 
 ## Properties
 

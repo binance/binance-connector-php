@@ -1,4 +1,4 @@
-# # StopLimitTimeInForce
+# StopLimitTimeInForce
 
 ## Properties
 

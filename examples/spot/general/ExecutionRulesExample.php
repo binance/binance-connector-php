@@ -10,8 +10,8 @@ function executionRulesExample()
 {
     $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
     $api = new SpotRestApi($configurationBuilder->build());
-    $symbol = 'BNBUSDT';
-    $symbols = null;
+    $symbol = 'BAZUSD';
+    $symbols = ['BTCUSDT', 'BNBUSDT'];
     $symbolStatus = SymbolStatus::TRADING;
     $response = $api->executionRules($symbol, $symbols, $symbolStatus);
     print_r($response);

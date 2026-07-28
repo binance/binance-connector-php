@@ -1,4 +1,4 @@
-# # AcceptBlockTradeOrderRequest
+# AcceptBlockTradeOrderRequest
 
 ## Properties
 

@@ -13,7 +13,7 @@ function modifyOrderExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
     $modifyOrderRequest = new ModifyOrderRequest();
-    $modifyOrderRequest->setSymbol('');
+    $modifyOrderRequest->setSymbol('BTCUSD_PERP');
     $modifyOrderRequest->setSide(Side::BUY);
     $response = $api->modifyOrder($modifyOrderRequest);
     print_r($response);

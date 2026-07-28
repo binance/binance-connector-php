@@ -1,4 +1,4 @@
-# # OrderTestResponseStandardCommissionForOrder
+# OrderTestResponseStandardCommissionForOrder
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # NotionalBracketForPairResponse
+# NotionalBracketForPairResponse
 
 ## Properties
 

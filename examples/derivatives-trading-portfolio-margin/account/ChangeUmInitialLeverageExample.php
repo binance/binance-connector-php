@@ -12,8 +12,8 @@ function changeUmInitialLeverageExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
     $changeUmInitialLeverageRequest = new ChangeUmInitialLeverageRequest();
-    $changeUmInitialLeverageRequest->setSymbol('');
-    $changeUmInitialLeverageRequest->setLeverage(null);
+    $changeUmInitialLeverageRequest->setSymbol('BTCUSDT');
+    $changeUmInitialLeverageRequest->setLeverage(21);
     $response = $api->changeUmInitialLeverage($changeUmInitialLeverageRequest);
     print_r($response);
 }

@@ -11,7 +11,7 @@ function getOnChainYieldsLockedRewardsHistoryExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new StakingRestApi($configurationBuilder->build());
     $positionId = '1';
-    $asset = '';
+    $asset = 'BTC';
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $current = 1;

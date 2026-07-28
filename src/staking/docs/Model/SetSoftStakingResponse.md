@@ -1,4 +1,4 @@
-# # SetSoftStakingResponse
+# SetSoftStakingResponse
 
 ## Properties
 

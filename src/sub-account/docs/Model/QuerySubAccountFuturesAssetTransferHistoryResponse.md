@@ -1,4 +1,4 @@
-# # QuerySubAccountFuturesAssetTransferHistoryResponse
+# QuerySubAccountFuturesAssetTransferHistoryResponse
 
 ## Properties
 

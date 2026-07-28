@@ -13,7 +13,7 @@ function modifyCmOrderExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
     $modifyCmOrderRequest = new ModifyCmOrderRequest();
-    $modifyCmOrderRequest->setSymbol('');
+    $modifyCmOrderRequest->setSymbol('BTCUSD_PERP');
     $modifyCmOrderRequest->setSide(Side::BUY);
     $modifyCmOrderRequest->setQuantity(1.0);
     $modifyCmOrderRequest->setPrice(1.0);

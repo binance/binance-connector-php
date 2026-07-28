@@ -1,13 +1,16 @@
 # Binance\Client\VipLoan\MarketDataApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getBorrowInterestRate()**](MarketDataApi.md#getBorrowInterestRate) | **GET** /sapi/v1/loan/vip/request/interestRate | Get Borrow Interest Rate(USER_DATA) |
-| [**getCollateralAssetData()**](MarketDataApi.md#getCollateralAssetData) | **GET** /sapi/v1/loan/vip/collateral/data | Get Collateral Asset Data(USER_DATA) |
-| [**getLoanableAssetsData()**](MarketDataApi.md#getLoanableAssetsData) | **GET** /sapi/v1/loan/vip/loanable/data | Get Loanable Assets Data(USER_DATA) |
+| [**getBorrowInterestRate()**](MarketDataApi.md#getBorrowInterestRate) | **GET** /sapi/v1/loan/vip/request/interestRate | Get Borrow Interest Rate (USER_DATA) |
+| [**getCollateralAssetData()**](MarketDataApi.md#getCollateralAssetData) | **GET** /sapi/v1/loan/vip/collateral/data | Get Collateral Asset Data (USER_DATA) |
+| [**getLoanableAssetsData()**](MarketDataApi.md#getLoanableAssetsData) | **GET** /sapi/v1/loan/vip/loanable/data | Get Loanable Assets Data (USER_DATA) |
 | [**getVIPLoanInterestRateHistory()**](MarketDataApi.md#getVIPLoanInterestRateHistory) | **GET** /sapi/v1/loan/vip/interestRateHistory | Get VIP Loan Interest Rate History (USER_DATA) |
+| [**queryVIPLoanFixedRateMarket()**](MarketDataApi.md#queryVIPLoanFixedRateMarket) | **GET** /sapi/v1/loan/vip/fixed/market | Query VIP Loan Fixed Rate Market (USER_DATA) |
 
 
 ## `getBorrowInterestRate()`
@@ -16,9 +19,9 @@ All URIs are relative to https://api.binance.com, except if the operation define
 getBorrowInterestRate($loanCoin, $recvWindow): \Binance\Client\VipLoan\Model\GetBorrowInterestRateResponse
 ```
 
-Get Borrow Interest Rate(USER_DATA)
+Get Borrow Interest Rate (USER_DATA)
 
-Get Borrow Interest Rate  Weight: 400
+Get Borrow Interest Rate  Weight(IP): 400  Security Type: USER_DATA
 
 ### Example
 
@@ -33,8 +36,8 @@ $apiInstance = new Binance\Client\VipLoan\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$loanCoin = 'loanCoin_example'; // string | Max 10 assets, Multiple split by \",\"
-$recvWindow = 56; // int
+$loanCoin = BTC; // string | Max 10 assets, Multiple split by \",\"
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getBorrowInterestRate($loanCoin, $recvWindow);
@@ -74,9 +77,9 @@ No authorization required
 getCollateralAssetData($collateralCoin, $recvWindow): \Binance\Client\VipLoan\Model\GetCollateralAssetDataResponse
 ```
 
-Get Collateral Asset Data(USER_DATA)
+Get Collateral Asset Data (USER_DATA)
 
-Get Collateral Asset Data  Weight: 400
+Get Collateral Asset Data  Weight(IP): 400  Security Type: USER_DATA
 
 ### Example
 
@@ -91,8 +94,8 @@ $apiInstance = new Binance\Client\VipLoan\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$collateralCoin = 'collateralCoin_example'; // string
-$recvWindow = 56; // int
+$collateralCoin = BUSD; // string
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getCollateralAssetData($collateralCoin, $recvWindow);
@@ -132,9 +135,9 @@ No authorization required
 getLoanableAssetsData($loanCoin, $vipLevel, $recvWindow): \Binance\Client\VipLoan\Model\GetLoanableAssetsDataResponse
 ```
 
-Get Loanable Assets Data(USER_DATA)
+Get Loanable Assets Data (USER_DATA)
 
-Get interest rate and borrow limit of loanable assets. The borrow limit is shown in USD value.  Weight: 400
+Get interest rate and borrow limit of loanable assets. The borrow limit is shown in USD value.  Weight(IP): 400  Security Type: USER_DATA
 
 ### Example
 
@@ -149,9 +152,9 @@ $apiInstance = new Binance\Client\VipLoan\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$loanCoin = 'loanCoin_example'; // string
-$vipLevel = 56; // int | default:user's vip level
-$recvWindow = 56; // int
+$loanCoin = BUSD; // string
+$vipLevel = 1; // int | Defaults to the user's VIP level.
+$recvWindow = 5000; // int
 
 try {
     $result = $apiInstance->getLoanableAssetsData($loanCoin, $vipLevel, $recvWindow);
@@ -166,7 +169,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **loanCoin** | **string**|  | [optional] |
-| **vipLevel** | **int**| default:user&#39;s vip level | [optional] |
+| **vipLevel** | **int**| Defaults to the user&#39;s VIP level. | [optional] |
 | **recvWindow** | **int**|  | [optional] |
 
 ### Return type
@@ -194,7 +197,7 @@ getVIPLoanInterestRateHistory($coin, $recvWindow, $startTime, $endTime, $current
 
 Get VIP Loan Interest Rate History (USER_DATA)
 
-Check VIP Loan flexible interest rate history  * If startTime and endTime are not sent, the recent 90-day data will be returned * The max interval between startTime and end Time is 180 days. * Time based on UTC+0.  Weight: 400
+Check VIP Loan flexible interest rate history  Weight(IP): 400  Security Type: USER_DATA  Notes: - If `startTime` and `endTime` are not sent, recent 90-day data is returned. - The maximum interval between `startTime` and `endTime` is 180 days. - Time is based on UTC+0.
 
 ### Example
 
@@ -209,12 +212,12 @@ $apiInstance = new Binance\Client\VipLoan\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$coin = 'coin_example'; // string
-$recvWindow = 56; // int
-$startTime = 56; // int
-$endTime = 56; // int
-$current = 56; // int | Current querying page. Start from 1; default: 1; max: 1000
-$limit = 56; // int | Default: 10; max: 100
+$coin = USDT; // string
+$recvWindow = 5000; // int
+$startTime = 1623319461670; // int | If both startTime and endTime are omitted, the most recent 90 days are returned.
+$endTime = 1641782889000; // int | Maximum interval between startTime and endTime is 180 days. Time is based on UTC+0.
+$current = 1; // int | Current page number, starting from 1.
+$limit = 10; // int | Number of records per page.
 
 try {
     $result = $apiInstance->getVIPLoanInterestRateHistory($coin, $recvWindow, $startTime, $endTime, $current, $limit);
@@ -230,14 +233,78 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **coin** | **string**|  | |
 | **recvWindow** | **int**|  | |
-| **startTime** | **int**|  | [optional] |
-| **endTime** | **int**|  | [optional] |
-| **current** | **int**| Current querying page. Start from 1; default: 1; max: 1000 | [optional] |
-| **limit** | **int**| Default: 10; max: 100 | [optional] |
+| **startTime** | **int**| If both startTime and endTime are omitted, the most recent 90 days are returned. | [optional] |
+| **endTime** | **int**| Maximum interval between startTime and endTime is 180 days. Time is based on UTC+0. | [optional] |
+| **current** | **int**| Current page number, starting from 1. | [optional] |
+| **limit** | **int**| Number of records per page. | [optional] |
 
 ### Return type
 
 [**\Binance\Client\VipLoan\Model\GetVIPLoanInterestRateHistoryResponse**](../Model/GetVIPLoanInterestRateHistoryResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `queryVIPLoanFixedRateMarket()`
+
+```php
+queryVIPLoanFixedRateMarket($loanCoin, $duration, $current, $size, $recvWindow): \Binance\Client\VipLoan\Model\QueryVIPLoanFixedRateMarketResponse
+```
+
+Query VIP Loan Fixed Rate Market (USER_DATA)
+
+Query the VIP Loan fixed rate market. Returns a paginated list of fixed-rate supply orders.  Weight(IP): 6000  Security Type: USER_DATA
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Binance\Client\VipLoan\Api\MarketDataApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$loanCoin = USDT; // string | Loan coin
+$duration = 30; // int | Duration in days, minimum 1
+$current = 1; // int | Page number, default 1, minimum 1
+$size = 10; // int | Page size, default 10, range [1, 100]
+$recvWindow = 5000; // int | The value cannot be greater than `60000`
+
+try {
+    $result = $apiInstance->queryVIPLoanFixedRateMarket($loanCoin, $duration, $current, $size, $recvWindow);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MarketDataApi->queryVIPLoanFixedRateMarket: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **loanCoin** | **string**| Loan coin | |
+| **duration** | **int**| Duration in days, minimum 1 | [optional] |
+| **current** | **int**| Page number, default 1, minimum 1 | [optional] |
+| **size** | **int**| Page size, default 10, range [1, 100] | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than &#x60;60000&#x60; | [optional] |
+
+### Return type
+
+[**\Binance\Client\VipLoan\Model\QueryVIPLoanFixedRateMarketResponse**](../Model/QueryVIPLoanFixedRateMarketResponse.md)
 
 ### Authorization
 

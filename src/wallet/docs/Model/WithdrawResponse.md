@@ -1,4 +1,4 @@
-# # WithdrawResponse
+# WithdrawResponse
 
 ## Properties
 

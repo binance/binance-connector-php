@@ -9,8 +9,8 @@ function openInterestExample()
 {
     $configurationBuilder = DerivativesTradingOptionsRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingOptionsRestApi($configurationBuilder->build());
-    $underlyingAsset = '';
-    $expiration = '';
+    $underlyingAsset = 'ETH/BTC';
+    $expiration = '221225';
     $response = $api->openInterest($underlyingAsset, $expiration);
     print_r($response);
 }

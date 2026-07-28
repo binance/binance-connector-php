@@ -1,4 +1,4 @@
-# # PlaceMultipleOrdersResponse
+# PlaceMultipleOrdersResponse
 
 ## Properties
 

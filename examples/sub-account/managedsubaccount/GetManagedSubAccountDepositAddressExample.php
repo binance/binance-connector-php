@@ -10,9 +10,9 @@ function getManagedSubAccountDepositAddressExample()
     $configurationBuilder = SubAccountRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
-    $email = 'sub-account-email@email.com';
-    $coin = '';
-    $network = '';
+    $email = 'abc@test.com';
+    $coin = 'USDT';
+    $network = 'LIGHTNING';
     $amount = 1.0;
     $recvWindow = 5000;
     $response = $api->getManagedSubAccountDepositAddress($email, $coin, $network, $amount, $recvWindow);

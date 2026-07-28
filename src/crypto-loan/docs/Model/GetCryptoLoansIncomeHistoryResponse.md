@@ -1,4 +1,4 @@
-# # GetCryptoLoansIncomeHistoryResponse
+# GetCryptoLoansIncomeHistoryResponse
 
 ## Properties
 

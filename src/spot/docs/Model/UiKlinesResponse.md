@@ -1,4 +1,4 @@
-# # UiKlinesResponse
+# UiKlinesResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # AutoCloseType
+# AutoCloseType
 
 ## Properties
 

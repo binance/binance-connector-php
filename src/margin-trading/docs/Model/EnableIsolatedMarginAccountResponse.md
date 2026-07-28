@@ -1,10 +1,10 @@
-# # EnableIsolatedMarginAccountResponse
+# EnableIsolatedMarginAccountResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **bool** |  | [optional]
-**symbol** | **string** |  | [optional]
+**success** | **bool** | success. | [optional]
+**symbol** | **string** | symbol. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

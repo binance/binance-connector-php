@@ -1,5 +1,7 @@
 # Binance\Client\DerivativesTradingOptions\MarketDataApi
 
+
+
 All URIs are relative to https://eapi.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -26,7 +28,7 @@ checkServerTime(): \Binance\Client\DerivativesTradingOptions\Model\CheckServerTi
 
 Check Server Time
 
-Test connectivity to the Rest API and get the current server time.  Weight: 1
+Test connectivity to the Rest API and get the current server time.  Weight(IP): 1
 
 ### Example
 
@@ -79,7 +81,7 @@ exchangeInformation(): \Binance\Client\DerivativesTradingOptions\Model\ExchangeI
 
 Exchange Information
 
-Current exchange trading rules and symbol information  Weight: 1
+Current exchange trading rules and symbol information  Weight(IP): 1
 
 ### Example
 
@@ -132,7 +134,7 @@ historicalExerciseRecords($underlying, $startTime, $endTime, $limit): \Binance\C
 
 Historical Exercise Records
 
-Get historical exercise records. * REALISTIC_VALUE_STRICKEN -> Exercised * EXTRINSIC_VALUE_EXPIRED -> Expired OTM  Weight: 3
+Get historical exercise records.  * REALISTIC_VALUE_STRICKEN -> Exercised * EXTRINSIC_VALUE_EXPIRED -> Expired OTM  Weight(IP): 3
 
 ### Example
 
@@ -147,10 +149,10 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$underlying = 'underlying_example'; // string | underlying, e.g BTCUSDT
-$startTime = 56; // int | Start Time, e.g 1593511200000
-$endTime = 56; // int | End Time, e.g 1593512200000
-$limit = 56; // int | Number of result sets returned Default:100 Max:1000
+$underlying = BTCUSDT; // string | Underlying asset.
+$startTime = 1623319461670; // int | Start Time, e.g 1593511200000
+$endTime = 1641782889000; // int | End Time, e.g 1593512200000
+$limit = 20; // int | Number of result sets returned
 
 try {
     $result = $apiInstance->historicalExerciseRecords($underlying, $startTime, $endTime, $limit);
@@ -164,10 +166,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **underlying** | **string**| underlying, e.g BTCUSDT | [optional] |
+| **underlying** | **string**| Underlying asset. | [optional] |
 | **startTime** | **int**| Start Time, e.g 1593511200000 | [optional] |
 | **endTime** | **int**| End Time, e.g 1593512200000 | [optional] |
-| **limit** | **int**| Number of result sets returned Default:100 Max:1000 | [optional] |
+| **limit** | **int**| Number of result sets returned | [optional] |
 
 ### Return type
 
@@ -194,7 +196,7 @@ indexPrice($underlying): \Binance\Client\DerivativesTradingOptions\Model\IndexPr
 
 Index Price
 
-Get spot index price for option underlying.  Weight: 1
+Get spot index price for option underlying.  Weight(IP): 1
 
 ### Example
 
@@ -209,7 +211,7 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$underlying = 'underlying_example'; // string | Option underlying, e.g BTCUSDT
+$underlying = BTCUSDT; // string | Underlying asset.
 
 try {
     $result = $apiInstance->indexPrice($underlying);
@@ -223,7 +225,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **underlying** | **string**| Option underlying, e.g BTCUSDT | |
+| **underlying** | **string**| Underlying asset. | |
 
 ### Return type
 
@@ -250,7 +252,7 @@ klineCandlestickData($symbol, $interval, $startTime, $endTime, $limit): \Binance
 
 Kline/Candlestick Data
 
-Kline/candlestick bars for an option symbol. Klines are uniquely identified by their open time.  * If startTime and endTime are not sent, the most recent klines are returned.  Weight: 1
+Kline/candlestick bars for an option symbol. Klines are uniquely identified by their open time.  Weight(IP): 1  Notes: - If startTime and endTime are not sent, the most recent klines are returned.
 
 ### Example
 
@@ -265,11 +267,11 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string | Option trading pair, e.g BTC-200730-9000-C
-$interval = 'interval_example'; // string | Time interval
-$startTime = 56; // int | Start Time, e.g 1593511200000
-$endTime = 56; // int | End Time, e.g 1593512200000
-$limit = 56; // int | Number of result sets returned Default:100 Max:1000
+$symbol = BTC-200730-9000-C; // string | Option trading pair
+$interval = new \Binance\Client\DerivativesTradingOptions\Model\\Binance\Client\DerivativesTradingOptions\Model\Interval(); // \Binance\Client\DerivativesTradingOptions\Model\Interval | Time interval
+$startTime = 1623319461670; // int | Start Time, e.g 1593511200000
+$endTime = 1641782889000; // int | End Time, e.g 1593512200000
+$limit = 20; // int | Number of result sets returned
 
 try {
     $result = $apiInstance->klineCandlestickData($symbol, $interval, $startTime, $endTime, $limit);
@@ -283,11 +285,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**| Option trading pair, e.g BTC-200730-9000-C | |
-| **interval** | **string**| Time interval | |
+| **symbol** | **string**| Option trading pair | |
+| **interval** | [**\Binance\Client\DerivativesTradingOptions\Model\Interval**](../Model/.md)| Time interval | |
 | **startTime** | **int**| Start Time, e.g 1593511200000 | [optional] |
 | **endTime** | **int**| End Time, e.g 1593512200000 | [optional] |
-| **limit** | **int**| Number of result sets returned Default:100 Max:1000 | [optional] |
+| **limit** | **int**| Number of result sets returned | [optional] |
 
 ### Return type
 
@@ -314,7 +316,7 @@ openInterest($underlyingAsset, $expiration): \Binance\Client\DerivativesTradingO
 
 Open Interest
 
-Get open interest for specific underlying asset on specific expiration date.  Weight: 0
+Get open interest for specific underlying asset on specific expiration date.  Weight(IP): 0
 
 ### Example
 
@@ -329,8 +331,8 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$underlyingAsset = 'underlyingAsset_example'; // string | underlying asset, e.g ETH/BTC
-$expiration = 'expiration_example'; // string | expiration date, e.g 221225
+$underlyingAsset = ETH/BTC; // string | Underlying asset.
+$expiration = 221225; // string | expiration date
 
 try {
     $result = $apiInstance->openInterest($underlyingAsset, $expiration);
@@ -344,8 +346,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **underlyingAsset** | **string**| underlying asset, e.g ETH/BTC | |
-| **expiration** | **string**| expiration date, e.g 221225 | |
+| **underlyingAsset** | **string**| Underlying asset. | |
+| **expiration** | **string**| expiration date | |
 
 ### Return type
 
@@ -372,7 +374,7 @@ optionMarkPrice($symbol): \Binance\Client\DerivativesTradingOptions\Model\Option
 
 Option Mark Price
 
-Option mark price and greek info.  Weight: 5
+Option mark price and greek info.  Weight(IP): 5
 
 ### Example
 
@@ -387,7 +389,7 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string | Option trading pair, e.g BTC-200730-9000-C
+$symbol = BTC-200730-9000-C; // string | Option trading pair
 
 try {
     $result = $apiInstance->optionMarkPrice($symbol);
@@ -401,7 +403,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**| Option trading pair, e.g BTC-200730-9000-C | [optional] |
+| **symbol** | **string**| Option trading pair | [optional] |
 
 ### Return type
 
@@ -443,8 +445,8 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string | Option trading pair, e.g BTC-200730-9000-C
-$limit = 56; // int | Number of result sets returned Default:100 Max:1000
+$symbol = BTC-200730-9000-C; // string | Option trading pair
+$limit = 20; // int | Default:100 Max:1000.Optional value:[10, 20, 50, 100, 500, 1000]
 
 try {
     $result = $apiInstance->orderBook($symbol, $limit);
@@ -458,8 +460,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**| Option trading pair, e.g BTC-200730-9000-C | |
-| **limit** | **int**| Number of result sets returned Default:100 Max:1000 | [optional] |
+| **symbol** | **string**| Option trading pair | |
+| **limit** | **int**| Default:100 Max:1000.Optional value:[10, 20, 50, 100, 500, 1000] | [optional] |
 
 ### Return type
 
@@ -486,7 +488,7 @@ recentBlockTradesList($symbol, $limit): \Binance\Client\DerivativesTradingOption
 
 Recent Block Trades List
 
-Get recent block trades  Weight: 5
+Get recent block trades  Weight(IP): 5
 
 ### Example
 
@@ -501,8 +503,8 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string | Option trading pair, e.g BTC-200730-9000-C
-$limit = 56; // int | Number of result sets returned Default:100 Max:1000
+$symbol = BTC-200730-9000-C; // string | Option trading pair
+$limit = 20; // int | Number of records
 
 try {
     $result = $apiInstance->recentBlockTradesList($symbol, $limit);
@@ -516,8 +518,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**| Option trading pair, e.g BTC-200730-9000-C | [optional] |
-| **limit** | **int**| Number of result sets returned Default:100 Max:1000 | [optional] |
+| **symbol** | **string**| Option trading pair | [optional] |
+| **limit** | **int**| Number of records | [optional] |
 
 ### Return type
 
@@ -544,7 +546,7 @@ recentTradesList($symbol, $limit): \Binance\Client\DerivativesTradingOptions\Mod
 
 Recent Trades List
 
-Get recent market trades  Weight: 5
+Get recent market trades  Weight(IP): 5
 
 ### Example
 
@@ -559,8 +561,8 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string | Option trading pair, e.g BTC-200730-9000-C
-$limit = 56; // int | Number of result sets returned Default:100 Max:1000
+$symbol = BTC-200730-9000-C; // string | Option trading pair
+$limit = 20; // int | Number of result sets returned
 
 try {
     $result = $apiInstance->recentTradesList($symbol, $limit);
@@ -574,8 +576,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**| Option trading pair, e.g BTC-200730-9000-C | |
-| **limit** | **int**| Number of result sets returned Default:100 Max:1000 | [optional] |
+| **symbol** | **string**| Option trading pair | |
+| **limit** | **int**| Number of result sets returned | [optional] |
 
 ### Return type
 
@@ -602,7 +604,7 @@ testConnectivity()
 
 Test Connectivity
 
-Test connectivity to the Rest API.  Weight: 1
+Test connectivity to the Rest API.  Weight(IP): 1
 
 ### Example
 
@@ -654,7 +656,7 @@ ticker24hrPriceChangeStatistics($symbol): \Binance\Client\DerivativesTradingOpti
 
 24hr Ticker Price Change Statistics
 
-24 hour rolling window price change statistics.  Weight: 5
+24 hour rolling window price change statistics.  Weight(IP): 5
 
 ### Example
 
@@ -669,7 +671,7 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$symbol = 'symbol_example'; // string | Option trading pair, e.g BTC-200730-9000-C
+$symbol = BTC-200730-9000-C; // string | Option trading pair
 
 try {
     $result = $apiInstance->ticker24hrPriceChangeStatistics($symbol);
@@ -683,7 +685,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **symbol** | **string**| Option trading pair, e.g BTC-200730-9000-C | [optional] |
+| **symbol** | **string**| Option trading pair | [optional] |
 
 ### Return type
 

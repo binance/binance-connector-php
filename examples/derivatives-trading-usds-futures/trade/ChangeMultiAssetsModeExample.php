@@ -12,7 +12,7 @@ function changeMultiAssetsModeExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
     $changeMultiAssetsModeRequest = new ChangeMultiAssetsModeRequest();
-    $changeMultiAssetsModeRequest->setMultiAssetsMargin('');
+    $changeMultiAssetsModeRequest->setMultiAssetsMargin('true');
     $response = $api->changeMultiAssetsMode($changeMultiAssetsModeRequest);
     print_r($response);
 }

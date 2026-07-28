@@ -12,7 +12,7 @@ function smallLiabilityExchangeExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new MarginTradingRestApi($configurationBuilder->build());
     $smallLiabilityExchangeRequest = new SmallLiabilityExchangeRequest();
-    $smallLiabilityExchangeRequest->setAssetNames(null);
+    $smallLiabilityExchangeRequest->setAssetNames('BTC,ETH');
     $api->smallLiabilityExchange($smallLiabilityExchangeRequest);
 }
 

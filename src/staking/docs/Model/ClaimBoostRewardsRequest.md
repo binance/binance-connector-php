@@ -1,9 +1,9 @@
-# # ClaimBoostRewardsRequest
+# ClaimBoostRewardsRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**recvWindow** | **int** |  | [optional]
+**recvWindow** | **int** | Request validity window in milliseconds. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

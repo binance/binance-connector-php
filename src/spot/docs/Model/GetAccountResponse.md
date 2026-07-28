@@ -1,4 +1,4 @@
-# # GetAccountResponse
+# GetAccountResponse
 
 ## Properties
 

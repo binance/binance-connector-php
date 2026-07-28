@@ -13,7 +13,7 @@ function orderAmendKeepPriorityExample()
     $api = new SpotRestApi($configurationBuilder->build());
     $orderAmendKeepPriorityRequest = new OrderAmendKeepPriorityRequest();
     $orderAmendKeepPriorityRequest->setSymbol('BNBUSDT');
-    $orderAmendKeepPriorityRequest->setNewQty(1.0);
+    $orderAmendKeepPriorityRequest->setNewQty(1);
     $response = $api->orderAmendKeepPriority($orderAmendKeepPriorityRequest);
     print_r($response);
 }

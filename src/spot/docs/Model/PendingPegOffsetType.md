@@ -1,4 +1,4 @@
-# # PendingPegOffsetType
+# PendingPegOffsetType
 
 ## Properties
 

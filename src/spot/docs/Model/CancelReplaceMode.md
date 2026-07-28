@@ -1,4 +1,4 @@
-# # CancelReplaceMode
+# CancelReplaceMode
 
 ## Properties
 

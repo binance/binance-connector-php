@@ -1,4 +1,4 @@
-# # QueryIndexPriceConstituentsResponse
+# QueryIndexPriceConstituentsResponse
 
 ## Properties
 

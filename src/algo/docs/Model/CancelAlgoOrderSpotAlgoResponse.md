@@ -1,4 +1,4 @@
-# # CancelAlgoOrderSpotAlgoResponse
+# CancelAlgoOrderSpotAlgoResponse
 
 ## Properties
 

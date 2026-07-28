@@ -1,4 +1,4 @@
-# # GetFlexibleLoanOngoingOrdersResponseRowsInner
+# GetFlexibleLoanOngoingOrdersResponseRowsInner
 
 ## Properties
 

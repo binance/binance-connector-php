@@ -1,4 +1,4 @@
-# # GetFlexibleLoanInterestRateHistoryResponseRowsInner
+# GetFlexibleLoanInterestRateHistoryResponseRowsInner
 
 ## Properties
 

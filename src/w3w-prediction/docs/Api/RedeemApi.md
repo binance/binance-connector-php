@@ -1,4 +1,4 @@
-# Binance\Client\W3wPrediction\RedeemApi
+# Binance\Client\W3WPrediction\RedeemApi
 
 
 
@@ -6,17 +6,17 @@ All URIs are relative to https://api.binance.com, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**batchRedeem()**](RedeemApi.md#batchRedeem) | **POST** /sapi/v1/w3w/wallet/prediction/batch-redeem | Batch Redeem |
-| [**getRedeemStatus()**](RedeemApi.md#getRedeemStatus) | **GET** /sapi/v1/w3w/wallet/prediction/redeem/status | Get Redeem Status |
+| [**batchRedeem()**](RedeemApi.md#batchRedeem) | **POST** /sapi/v1/w3w/wallet/prediction/batch-redeem | Batch Redeem (TRADE) |
+| [**getRedeemStatus()**](RedeemApi.md#getRedeemStatus) | **GET** /sapi/v1/w3w/wallet/prediction/redeem/status | Get Redeem Status (USER_DATA) |
 
 
 ## `batchRedeem()`
 
 ```php
-batchRedeem($batchRedeemRequest): \Binance\Client\W3wPrediction\Model\BatchRedeemResponse
+batchRedeem($batchRedeemRequest): \Binance\Client\W3WPrediction\Model\BatchRedeemResponse
 ```
 
-Batch Redeem
+Batch Redeem (TRADE)
 
 Redeem one or more settled prediction tokens on-chain to claim winnings. Requires SAS authorization.  Weight(IP): 200  Security Type: TRADE
 
@@ -28,12 +28,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\RedeemApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\RedeemApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$batchRedeemRequest = new \Binance\Client\W3wPrediction\Model\BatchRedeemRequest(); // \Binance\Client\W3wPrediction\Model\BatchRedeemRequest
+$batchRedeemRequest = new \Binance\Client\W3WPrediction\Model\BatchRedeemRequest(); // \Binance\Client\W3WPrediction\Model\BatchRedeemRequest
 
 try {
     $result = $apiInstance->batchRedeem($batchRedeemRequest);
@@ -47,11 +47,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **batchRedeemRequest** | [**\Binance\Client\W3wPrediction\Model\BatchRedeemRequest**](../Model/BatchRedeemRequest.md)|  | |
+| **batchRedeemRequest** | [**\Binance\Client\W3WPrediction\Model\BatchRedeemRequest**](../Model/BatchRedeemRequest.md)|  | |
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\BatchRedeemResponse**](../Model/BatchRedeemResponse.md)
+[**\Binance\Client\W3WPrediction\Model\BatchRedeemResponse**](../Model/BatchRedeemResponse.md)
 
 ### Authorization
 
@@ -69,10 +69,10 @@ No authorization required
 ## `getRedeemStatus()`
 
 ```php
-getRedeemStatus($walletAddress, $txHash, $recvWindow): \Binance\Client\W3wPrediction\Model\GetRedeemStatusResponse
+getRedeemStatus($walletAddress, $txHash, $recvWindow): \Binance\Client\W3WPrediction\Model\GetRedeemStatusResponse
 ```
 
-Get Redeem Status
+Get Redeem Status (USER_DATA)
 
 Query the on-chain transaction status of a previously submitted redeem request.  Weight(IP): 200  Security Type: USER_DATA  Response Notes: - Status values:    | Value       | Description                                  |   | ----------- | -------------------------------------------- |   | `PENDING`   | Transaction submitted, awaiting confirmation |   | `CONFIRMED` | Transaction confirmed on-chain               |   | `FAILED`    | Transaction failed                           |   | `NOT_FOUND` | Transaction hash not found                   |
 
@@ -84,7 +84,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\RedeemApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\RedeemApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -111,7 +111,7 @@ try {
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\GetRedeemStatusResponse**](../Model/GetRedeemStatusResponse.md)
+[**\Binance\Client\W3WPrediction\Model\GetRedeemStatusResponse**](../Model/GetRedeemStatusResponse.md)
 
 ### Authorization
 

@@ -1,4 +1,4 @@
-# # MiningAccountEarningResponse
+# MiningAccountEarningResponse
 
 ## Properties
 

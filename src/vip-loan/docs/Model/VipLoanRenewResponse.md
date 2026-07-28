@@ -1,10 +1,10 @@
-# # VipLoanRenewResponse
+# VipLoanRenewResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**loanAccountId** | **string** |  | [optional]
+**loanAccountId** | **string** | Loan receiving account. | [optional]
 **loanCoin** | **string** |  | [optional]
 **loanAmount** | **string** |  | [optional]
 **collateralAccountId** | **string** |  | [optional]

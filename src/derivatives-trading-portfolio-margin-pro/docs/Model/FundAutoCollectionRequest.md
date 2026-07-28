@@ -1,4 +1,4 @@
-# # FundAutoCollectionRequest
+# FundAutoCollectionRequest
 
 ## Properties
 

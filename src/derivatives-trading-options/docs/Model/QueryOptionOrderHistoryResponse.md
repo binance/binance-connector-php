@@ -1,4 +1,4 @@
-# # QueryOptionOrderHistoryResponse
+# QueryOptionOrderHistoryResponse
 
 ## Properties
 

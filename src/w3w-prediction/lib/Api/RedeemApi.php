@@ -115,7 +115,7 @@ class RedeemApi
     /**
      * Operation batchRedeem.
      *
-     * Batch Redeem
+     * Batch Redeem (TRADE)
      *
      * @param BatchRedeemRequest $batchRedeemRequest batchRedeemRequest (required)
      *
@@ -132,7 +132,7 @@ class RedeemApi
     /**
      * Operation batchRedeemWithHttpInfo.
      *
-     * Batch Redeem
+     * Batch Redeem (TRADE)
      *
      * @param BatchRedeemRequest $batchRedeemRequest (required)
      *
@@ -315,7 +315,7 @@ class RedeemApi
     /**
      * Operation getRedeemStatus.
      *
-     * Get Redeem Status
+     * Get Redeem Status (USER_DATA)
      *
      * @param string   $walletAddress User&#39;s prediction wallet address (required)
      * @param string   $txHash        Redeem transaction hash (required)
@@ -334,7 +334,7 @@ class RedeemApi
     /**
      * Operation getRedeemStatusWithHttpInfo.
      *
-     * Get Redeem Status
+     * Get Redeem Status (USER_DATA)
      *
      * @param string   $walletAddress User&#39;s prediction wallet address (required)
      * @param string   $txHash        Redeem transaction hash (required)

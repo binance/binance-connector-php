@@ -1,4 +1,4 @@
-# # TransferToMasterResponse
+# TransferToMasterResponse
 
 ## Properties
 

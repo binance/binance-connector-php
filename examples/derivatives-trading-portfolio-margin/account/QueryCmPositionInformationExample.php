@@ -10,8 +10,8 @@ function queryCmPositionInformationExample()
     $configurationBuilder = DerivativesTradingPortfolioMarginRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
-    $marginAsset = '';
-    $pair = '';
+    $marginAsset = 'USDT';
+    $pair = 'BTCUSD_201225';
     $recvWindow = 5000;
     $response = $api->queryCmPositionInformation($marginAsset, $pair, $recvWindow);
     print_r($response);

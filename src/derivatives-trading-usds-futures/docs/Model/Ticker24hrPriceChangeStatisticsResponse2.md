@@ -1,4 +1,4 @@
-# # Ticker24hrPriceChangeStatisticsResponse2
+# Ticker24hrPriceChangeStatisticsResponse2
 
 ## Properties
 

@@ -11,7 +11,7 @@ function getLockedSubscriptionRecordExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SimpleEarnRestApi($configurationBuilder->build());
     $purchaseId = '1';
-    $asset = '';
+    $asset = 'USDC';
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $current = 1;

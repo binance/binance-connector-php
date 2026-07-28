@@ -12,8 +12,8 @@ function tickerTradingDayExample()
     $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
     $api = new SpotRestApi($configurationBuilder->build());
     $symbol = 'BNBUSDT';
-    $symbols = null;
-    $timeZone = '';
+    $symbols = ['BTCUSDT', 'BNBUSDT'];
+    $timeZone = '0';
     $type = TickerType::FULL;
     $symbolStatus = SymbolStatus::TRADING;
     $response = $api->tickerTradingDay($symbol, $symbols, $timeZone, $type, $symbolStatus);

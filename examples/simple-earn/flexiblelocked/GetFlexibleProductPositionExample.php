@@ -10,7 +10,7 @@ function getFlexibleProductPositionExample()
     $configurationBuilder = SimpleEarnRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SimpleEarnRestApi($configurationBuilder->build());
-    $asset = '';
+    $asset = 'USDC';
     $productId = '1';
     $current = 1;
     $size = 10;

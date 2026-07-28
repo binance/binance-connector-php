@@ -10,7 +10,7 @@ function depositAddressExample()
     $configurationBuilder = WalletRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
-    $coin = '';
+    $coin = 'BTC';
     $network = '';
     $amount = 1.0;
     $recvWindow = 5000;

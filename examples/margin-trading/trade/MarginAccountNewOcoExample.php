@@ -13,7 +13,7 @@ function marginAccountNewOcoExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new MarginTradingRestApi($configurationBuilder->build());
     $marginAccountNewOcoRequest = new MarginAccountNewOcoRequest();
-    $marginAccountNewOcoRequest->setSymbol('');
+    $marginAccountNewOcoRequest->setSymbol('LTCBTC');
     $marginAccountNewOcoRequest->setSide(Side::BUY);
     $marginAccountNewOcoRequest->setQuantity(1.0);
     $marginAccountNewOcoRequest->setPrice(1.0);

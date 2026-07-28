@@ -10,6 +10,7 @@ use Binance\Client\Algo\Model\QueryHistoricalAlgoOrdersFutureAlgoResponse;
 use Binance\Client\Algo\Model\QueryHistoricalAlgoOrdersSpotAlgoResponse;
 use Binance\Client\Algo\Model\QuerySubOrdersFutureAlgoResponse;
 use Binance\Client\Algo\Model\QuerySubOrdersSpotAlgoResponse;
+use Binance\Client\Algo\Model\Side;
 use Binance\Client\Algo\Model\TimeWeightedAveragePriceFutureAlgoRequest;
 use Binance\Client\Algo\Model\TimeWeightedAveragePriceFutureAlgoResponse;
 use Binance\Client\Algo\Model\TimeWeightedAveragePriceSpotAlgoRequest;
@@ -42,10 +43,10 @@ class AlgoRestApi
     /**
      * Operation cancelAlgoOrderFutureAlgo.
      *
-     * Cancel Algo Order(TRADE)
+     * Cancel Futures Algo Order (TRADE)
      *
      * @param int      $algoId     eg. 14511 (required)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<CancelAlgoOrderFutureAlgoResponse>
      *
@@ -60,9 +61,9 @@ class AlgoRestApi
     /**
      * Operation queryCurrentAlgoOpenOrdersFutureAlgo.
      *
-     * Query Current Algo Open Orders(USER_DATA)
+     * Query Current Futures Algo Open Orders (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<QueryCurrentAlgoOpenOrdersFutureAlgoResponse>
      *
@@ -77,15 +78,15 @@ class AlgoRestApi
     /**
      * Operation queryHistoricalAlgoOrdersFutureAlgo.
      *
-     * Query Historical Algo Orders(USER_DATA)
+     * Query Historical Futures Algo Orders (USER_DATA)
      *
      * @param null|string $symbol     Trading symbol eg. BTCUSDT (optional)
-     * @param null|string $side       BUY or SELL (optional)
+     * @param null|Side   $side       BUY or SELL (optional)
      * @param null|int    $startTime  in milliseconds  eg.1641522717552 (optional)
      * @param null|int    $endTime    in milliseconds  eg.1641522526562 (optional)
-     * @param null|int    $page       Default is 1 (optional)
-     * @param null|int    $pageSize   MIN 1, MAX 100; Default 100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $page       Page number (optional)
+     * @param null|int    $pageSize   Records per page (optional)
+     * @param null|int    $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<QueryHistoricalAlgoOrdersFutureAlgoResponse>
      *
@@ -100,12 +101,12 @@ class AlgoRestApi
     /**
      * Operation querySubOrdersFutureAlgo.
      *
-     * Query Sub Orders(USER_DATA)
+     * Query Futures Sub Orders (USER_DATA)
      *
      * @param int      $algoId     eg. 14511 (required)
-     * @param null|int $page       Default is 1 (optional)
-     * @param null|int $pageSize   MIN 1, MAX 100; Default 100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $page       Page number (optional)
+     * @param null|int $pageSize   Records per page (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<QuerySubOrdersFutureAlgoResponse>
      *
@@ -120,7 +121,7 @@ class AlgoRestApi
     /**
      * Operation timeWeightedAveragePriceFutureAlgo.
      *
-     * Time-Weighted Average Price(Twap) New Order(TRADE)
+     * Time-Weighted Futures Average Price (Twap) New Order (TRADE)
      *
      * @param TimeWeightedAveragePriceFutureAlgoRequest $timeWeightedAveragePriceFutureAlgoRequest timeWeightedAveragePriceFutureAlgoRequest (required)
      *
@@ -137,7 +138,7 @@ class AlgoRestApi
     /**
      * Operation volumeParticipationFutureAlgo.
      *
-     * Volume Participation(VP) New Order (TRADE)
+     * Volume Participation (VP) New Order (TRADE)
      *
      * @param VolumeParticipationFutureAlgoRequest $volumeParticipationFutureAlgoRequest volumeParticipationFutureAlgoRequest (required)
      *
@@ -154,10 +155,10 @@ class AlgoRestApi
     /**
      * Operation cancelAlgoOrderSpotAlgo.
      *
-     * Cancel Algo Order(TRADE)
+     * Cancel Spot Algo Order (TRADE)
      *
-     * @param int      $algoId     eg. 14511 (required)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param int      $algoId     algoId (required)
+     * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<CancelAlgoOrderSpotAlgoResponse>
      *
@@ -172,9 +173,9 @@ class AlgoRestApi
     /**
      * Operation queryCurrentAlgoOpenOrdersSpotAlgo.
      *
-     * Query Current Algo Open Orders(USER_DATA)
+     * Query Current Spot Algo Open Orders (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<QueryCurrentAlgoOpenOrdersSpotAlgoResponse>
      *
@@ -189,15 +190,15 @@ class AlgoRestApi
     /**
      * Operation queryHistoricalAlgoOrdersSpotAlgo.
      *
-     * Query Historical Algo Orders(USER_DATA)
+     * Query Historical Spot Algo Orders (USER_DATA)
      *
-     * @param null|string $symbol     Trading symbol eg. BTCUSDT (optional)
-     * @param null|string $side       BUY or SELL (optional)
+     * @param null|string $symbol     Trading symbol (optional)
+     * @param null|Side   $side       side (optional)
      * @param null|int    $startTime  in milliseconds  eg.1641522717552 (optional)
      * @param null|int    $endTime    in milliseconds  eg.1641522526562 (optional)
-     * @param null|int    $page       Default is 1 (optional)
-     * @param null|int    $pageSize   MIN 1, MAX 100; Default 100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $page       Page number (optional)
+     * @param null|int    $pageSize   Records per page (optional)
+     * @param null|int    $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<QueryHistoricalAlgoOrdersSpotAlgoResponse>
      *
@@ -212,12 +213,12 @@ class AlgoRestApi
     /**
      * Operation querySubOrdersSpotAlgo.
      *
-     * Query Sub Orders(USER_DATA)
+     * Query Spot Sub Orders (USER_DATA)
      *
      * @param int      $algoId     eg. 14511 (required)
-     * @param null|int $page       Default is 1 (optional)
-     * @param null|int $pageSize   MIN 1, MAX 100; Default 100 (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $page       Page number (optional)
+     * @param null|int $pageSize   Records per page (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<QuerySubOrdersSpotAlgoResponse>
      *
@@ -232,7 +233,7 @@ class AlgoRestApi
     /**
      * Operation timeWeightedAveragePriceSpotAlgo.
      *
-     * Time-Weighted Average Price(Twap) New Order(TRADE)
+     * Time-Weighted Spot Average Price(Twap) New Order (TRADE)
      *
      * @param TimeWeightedAveragePriceSpotAlgoRequest $timeWeightedAveragePriceSpotAlgoRequest timeWeightedAveragePriceSpotAlgoRequest (required)
      *

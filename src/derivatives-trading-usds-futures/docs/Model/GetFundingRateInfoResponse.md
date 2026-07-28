@@ -1,4 +1,4 @@
-# # GetFundingRateInfoResponse
+# GetFundingRateInfoResponse
 
 ## Properties
 

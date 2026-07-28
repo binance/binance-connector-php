@@ -12,7 +12,7 @@ function getFlexibleSubscriptionRecordExample()
     $api = new SimpleEarnRestApi($configurationBuilder->build());
     $productId = '1';
     $purchaseId = '1';
-    $asset = '';
+    $asset = 'USDC';
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $current = 1;

@@ -9,8 +9,8 @@ function orderBookExample()
 {
     $configurationBuilder = DerivativesTradingCoinFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
-    $limit = 100;
+    $symbol = 'BTCUSD_PERP';
+    $limit = 500;
     $response = $api->orderBook($symbol, $limit);
     print_r($response);
 }

@@ -10,7 +10,7 @@ function getOnChainYieldsLockedProductPositionExample()
     $configurationBuilder = StakingRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new StakingRestApi($configurationBuilder->build());
-    $asset = '';
+    $asset = 'BTC';
     $positionId = '1';
     $projectId = '1';
     $current = 1;

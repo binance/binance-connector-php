@@ -1,4 +1,4 @@
-# # EthStakingAccountResponseProfit
+# EthStakingAccountResponseProfit
 
 ## Properties
 

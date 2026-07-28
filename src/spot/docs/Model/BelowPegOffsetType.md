@@ -1,4 +1,4 @@
-# # BelowPegOffsetType
+# BelowPegOffsetType
 
 ## Properties
 

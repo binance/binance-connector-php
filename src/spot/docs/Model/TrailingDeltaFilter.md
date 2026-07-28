@@ -1,4 +1,4 @@
-# # TrailingDeltaFilter
+# TrailingDeltaFilter
 
 ## Properties
 

@@ -12,7 +12,7 @@ function marginAccountBorrowExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
     $marginAccountBorrowRequest = new MarginAccountBorrowRequest();
-    $marginAccountBorrowRequest->setAsset('');
+    $marginAccountBorrowRequest->setAsset('USDT');
     $marginAccountBorrowRequest->setAmount(1.0);
     $response = $api->marginAccountBorrow($marginAccountBorrowRequest);
     print_r($response);

@@ -1,4 +1,4 @@
-# # GetAllMarginAssetsResponse
+# GetAllMarginAssetsResponse
 
 ## Properties
 

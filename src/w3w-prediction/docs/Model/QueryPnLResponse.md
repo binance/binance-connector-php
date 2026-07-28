@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **chainId** | **string** |  | [optional]
 **walletAddress** | **string** |  | [optional]
 **pnl** | **object** |  | [optional]
-**pnlList** | [**\Binance\Client\W3wPrediction\Model\GetPortfolioResponsePositionsInner[]**](GetPortfolioResponsePositionsInner.md) |  | [optional]
+**pnlList** | [**\Binance\Client\W3WPrediction\Model\GetPortfolioResponsePositionsInner[]**](GetPortfolioResponsePositionsInner.md) |  | [optional]
 **totalCount** | **int** |  | [optional]
 **totalRealizedPnl** | **string** |  | [optional]
 **totalUnrealizedPnl** | **string** |  | [optional]

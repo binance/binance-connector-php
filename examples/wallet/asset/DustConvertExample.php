@@ -12,7 +12,7 @@ function dustConvertExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
     $dustConvertRequest = new DustConvertRequest();
-    $dustConvertRequest->setAsset('');
+    $dustConvertRequest->setAsset('USDT');
     $response = $api->dustConvert($dustConvertRequest);
     print_r($response);
 }

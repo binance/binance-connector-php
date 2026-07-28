@@ -1,4 +1,4 @@
-# # SubmitDepositQuestionnaireV2Response
+# SubmitDepositQuestionnaireV2Response
 
 ## Properties
 

@@ -10,7 +10,8 @@ function getCountryListExample()
     $configurationBuilder = WalletRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
-    $response = $api->getCountryList();
+    $recvWindow = 5000;
+    $response = $api->getCountryList($recvWindow);
     print_r($response);
 }
 

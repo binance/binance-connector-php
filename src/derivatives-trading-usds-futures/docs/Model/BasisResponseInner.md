@@ -1,4 +1,4 @@
-# # BasisResponseInner
+# BasisResponseInner
 
 ## Properties
 

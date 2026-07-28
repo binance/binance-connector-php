@@ -1,4 +1,4 @@
-# # QueryUserDelegationHistoryResponseRowsInner
+# QueryUserDelegationHistoryResponseRowsInner
 
 ## Properties
 

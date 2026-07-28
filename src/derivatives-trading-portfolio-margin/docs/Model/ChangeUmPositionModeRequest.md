@@ -1,10 +1,10 @@
-# # ChangeUmPositionModeRequest
+# ChangeUmPositionModeRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dualSidePosition** | **string** |  |
+**dualSidePosition** | [**\Binance\Client\DerivativesTradingPortfolioMargin\Model\DualSidePosition**](DualSidePosition.md) |  |
 **recvWindow** | **int** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -1,4 +1,4 @@
-# # MarketLotSizeFilter
+# MarketLotSizeFilter
 
 ## Properties
 

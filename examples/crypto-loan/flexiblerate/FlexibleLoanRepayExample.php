@@ -12,9 +12,9 @@ function flexibleLoanRepayExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new CryptoLoanRestApi($configurationBuilder->build());
     $flexibleLoanRepayRequest = new FlexibleLoanRepayRequest();
-    $flexibleLoanRepayRequest->setLoanCoin('');
-    $flexibleLoanRepayRequest->setCollateralCoin('');
-    $flexibleLoanRepayRequest->setRepayAmount(1.0);
+    $flexibleLoanRepayRequest->setLoanCoin('BUSD');
+    $flexibleLoanRepayRequest->setCollateralCoin('BNB');
+    $flexibleLoanRepayRequest->setRepayAmount(1);
     $response = $api->flexibleLoanRepay($flexibleLoanRepayRequest);
     print_r($response);
 }

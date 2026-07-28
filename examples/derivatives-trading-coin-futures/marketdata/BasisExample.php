@@ -12,9 +12,9 @@ function basisExample()
     $configurationBuilder = DerivativesTradingCoinFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
     $pair = '';
-    $contractType = ContractType::PERPETUAL;
+    $contractType = ContractType::ALL;
     $period = Period::PERIOD_5M;
-    $limit = 100;
+    $limit = 30;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $response = $api->basis($pair, $contractType, $period, $limit, $startTime, $endTime);

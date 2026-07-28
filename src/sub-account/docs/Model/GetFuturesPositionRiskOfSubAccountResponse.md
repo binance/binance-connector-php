@@ -1,4 +1,4 @@
-# # GetFuturesPositionRiskOfSubAccountResponse
+# GetFuturesPositionRiskOfSubAccountResponse
 
 ## Properties
 

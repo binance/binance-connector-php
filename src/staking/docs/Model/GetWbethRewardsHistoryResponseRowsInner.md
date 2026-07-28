@@ -1,4 +1,4 @@
-# # GetWbethRewardsHistoryResponseRowsInner
+# GetWbethRewardsHistoryResponseRowsInner
 
 ## Properties
 

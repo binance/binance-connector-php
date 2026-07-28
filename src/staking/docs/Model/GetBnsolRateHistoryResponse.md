@@ -1,4 +1,4 @@
-# # GetBnsolRateHistoryResponse
+# GetBnsolRateHistoryResponse
 
 ## Properties
 

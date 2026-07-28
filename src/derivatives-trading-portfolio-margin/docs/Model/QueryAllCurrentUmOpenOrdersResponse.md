@@ -1,4 +1,4 @@
-# # QueryAllCurrentUmOpenOrdersResponse
+# QueryAllCurrentUmOpenOrdersResponse
 
 ## Properties
 

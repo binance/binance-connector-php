@@ -107,6 +107,7 @@ class AccountApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/account/apiTradingStatus', $request->getUri()->getPath());
         self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
@@ -124,6 +125,7 @@ class AccountApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/account/info', $request->getUri()->getPath());
         self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
@@ -140,6 +142,7 @@ class AccountApiTest extends TestCase
         $response = $this->getApiMock($request)->accountStatus($recvWindow);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/account/status', $request->getUri()->getPath());
@@ -162,6 +165,7 @@ class AccountApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/accountSnapshot', $request->getUri()->getPath());
         self::assertEquals('7f5d880300068afcaef8978dcf0b77c58c8307d0f2de2302fd75872e33a68f9e', $queryMap['signature']);
@@ -180,6 +184,7 @@ class AccountApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals('/sapi/v1/account/disableFastWithdrawSwitch', $request->getUri()->getPath());
         self::assertEquals('dc0def720e795be0f84b02a8fa211ecc3a27dd06ffdbd287a679f1321807f820', $queryMap['signature']);
     }
@@ -197,6 +202,7 @@ class AccountApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals('/sapi/v1/account/enableFastWithdrawSwitch', $request->getUri()->getPath());
         self::assertEquals('dc0def720e795be0f84b02a8fa211ecc3a27dd06ffdbd287a679f1321807f820', $queryMap['signature']);
     }
@@ -212,6 +218,7 @@ class AccountApiTest extends TestCase
         $response = $this->getApiMock($request)->getApiKeyPermission($recvWindow);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/account/apiRestrictions', $request->getUri()->getPath());

@@ -1,4 +1,4 @@
-# # CrossMarginCollateralRatioResponse
+# CrossMarginCollateralRatioResponse
 
 ## Properties
 

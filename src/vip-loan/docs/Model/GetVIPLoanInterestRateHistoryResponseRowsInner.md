@@ -1,4 +1,4 @@
-# # GetVIPLoanInterestRateHistoryResponseRowsInner
+# GetVIPLoanInterestRateHistoryResponseRowsInner
 
 ## Properties
 

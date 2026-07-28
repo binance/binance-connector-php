@@ -12,7 +12,7 @@ function getLockedRedemptionRecordExample()
     $api = new SimpleEarnRestApi($configurationBuilder->build());
     $positionId = '1';
     $redeemId = '1';
-    $asset = '';
+    $asset = 'USDC';
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $current = 1;

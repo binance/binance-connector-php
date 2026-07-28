@@ -1,4 +1,4 @@
-# # Symbols
+# Symbols
 
 ## Properties
 

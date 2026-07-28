@@ -1,4 +1,4 @@
-# Binance\Client\W3wPrediction\WalletApi
+# Binance\Client\W3WPrediction\WalletApi
 
 
 
@@ -6,19 +6,19 @@ All URIs are relative to https://api.binance.com, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getPortfolio()**](WalletApi.md#getPortfolio) | **GET** /sapi/v1/w3w/wallet/prediction/pnl/portfolio | Get Portfolio |
-| [**getQuotaStatus()**](WalletApi.md#getQuotaStatus) | **GET** /sapi/v1/w3w/wallet/prediction/quota/limit/status | Get Quota Status |
-| [**listPredictionWallets()**](WalletApi.md#listPredictionWallets) | **GET** /sapi/v1/w3w/wallet/prediction/wallet/list | List Prediction Wallets |
-| [**queryPaymentOptionBalances()**](WalletApi.md#queryPaymentOptionBalances) | **GET** /sapi/v1/w3w/wallet/prediction/balance/payment-options | Query Payment Option Balances |
+| [**getPortfolio()**](WalletApi.md#getPortfolio) | **GET** /sapi/v1/w3w/wallet/prediction/pnl/portfolio | Get Portfolio (USER_DATA) |
+| [**getQuotaStatus()**](WalletApi.md#getQuotaStatus) | **GET** /sapi/v1/w3w/wallet/prediction/quota/limit/status | Get Quota Status (USER_DATA) |
+| [**listPredictionWallets()**](WalletApi.md#listPredictionWallets) | **GET** /sapi/v1/w3w/wallet/prediction/wallet/list | List Prediction Wallets (USER_DATA) |
+| [**queryPaymentOptionBalances()**](WalletApi.md#queryPaymentOptionBalances) | **GET** /sapi/v1/w3w/wallet/prediction/balance/payment-options | Query Payment Option Balances (USER_DATA) |
 
 
 ## `getPortfolio()`
 
 ```php
-getPortfolio($walletAddress, $tokenId, $marketId, $marketTopicId, $activeOnly, $recvWindow): \Binance\Client\W3wPrediction\Model\GetPortfolioResponse
+getPortfolio($walletAddress, $tokenId, $marketId, $marketTopicId, $activeOnly, $recvWindow): \Binance\Client\W3WPrediction\Model\GetPortfolioResponse
 ```
 
-Get Portfolio
+Get Portfolio (USER_DATA)
 
 Get the authenticated user's prediction portfolio overview including active positions count, aggregated PnL, and full position list.  Weight(IP): 200  Security Type: USER_DATA
 
@@ -30,7 +30,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\WalletApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\WalletApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -63,7 +63,7 @@ try {
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\GetPortfolioResponse**](../Model/GetPortfolioResponse.md)
+[**\Binance\Client\W3WPrediction\Model\GetPortfolioResponse**](../Model/GetPortfolioResponse.md)
 
 ### Authorization
 
@@ -81,10 +81,10 @@ No authorization required
 ## `getQuotaStatus()`
 
 ```php
-getQuotaStatus($recvWindow): \Binance\Client\W3wPrediction\Model\GetQuotaStatusResponse
+getQuotaStatus($recvWindow): \Binance\Client\W3WPrediction\Model\GetQuotaStatusResponse
 ```
 
-Get Quota Status
+Get Quota Status (USER_DATA)
 
 Query the current user's daily trading quota limit and remaining allowance for prediction markets.  Weight(IP): 200  Security Type: USER_DATA
 
@@ -96,7 +96,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\WalletApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\WalletApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -119,7 +119,7 @@ try {
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\GetQuotaStatusResponse**](../Model/GetQuotaStatusResponse.md)
+[**\Binance\Client\W3WPrediction\Model\GetQuotaStatusResponse**](../Model/GetQuotaStatusResponse.md)
 
 ### Authorization
 
@@ -137,10 +137,10 @@ No authorization required
 ## `listPredictionWallets()`
 
 ```php
-listPredictionWallets($recvWindow): \Binance\Client\W3wPrediction\Model\ListPredictionWalletsResponse
+listPredictionWallets($recvWindow): \Binance\Client\W3WPrediction\Model\ListPredictionWalletsResponse
 ```
 
-List Prediction Wallets
+List Prediction Wallets (USER_DATA)
 
 Get all prediction wallets registered for the authenticated user.  Weight(IP): 200  Security Type: USER_DATA
 
@@ -152,7 +152,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\WalletApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\WalletApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -175,7 +175,7 @@ try {
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\ListPredictionWalletsResponse**](../Model/ListPredictionWalletsResponse.md)
+[**\Binance\Client\W3WPrediction\Model\ListPredictionWalletsResponse**](../Model/ListPredictionWalletsResponse.md)
 
 ### Authorization
 
@@ -193,10 +193,10 @@ No authorization required
 ## `queryPaymentOptionBalances()`
 
 ```php
-queryPaymentOptionBalances($recvWindow): \Binance\Client\W3wPrediction\Model\QueryPaymentOptionBalancesResponse
+queryPaymentOptionBalances($recvWindow): \Binance\Client\W3WPrediction\Model\QueryPaymentOptionBalancesResponse
 ```
 
-Query Payment Option Balances
+Query Payment Option Balances (USER_DATA)
 
 Get available balances for each payment option that can be used for prediction trading.  Weight(IP): 200  Security Type: USER_DATA
 
@@ -208,7 +208,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\WalletApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\WalletApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -231,7 +231,7 @@ try {
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\QueryPaymentOptionBalancesResponse**](../Model/QueryPaymentOptionBalancesResponse.md)
+[**\Binance\Client\W3WPrediction\Model\QueryPaymentOptionBalancesResponse**](../Model/QueryPaymentOptionBalancesResponse.md)
 
 ### Authorization
 

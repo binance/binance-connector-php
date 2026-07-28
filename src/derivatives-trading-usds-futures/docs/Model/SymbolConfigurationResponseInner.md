@@ -1,4 +1,4 @@
-# # SymbolConfigurationResponseInner
+# SymbolConfigurationResponseInner
 
 ## Properties
 
@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **symbol** | **string** |  | [optional]
 **marginType** | **string** |  | [optional]
-**isAutoAddMargin** | **string** |  | [optional]
+**isAutoAddMargin** | **bool** |  | [optional]
 **leverage** | **int** |  | [optional]
 **maxNotionalValue** | **string** |  | [optional]
 

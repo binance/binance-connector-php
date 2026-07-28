@@ -1,4 +1,4 @@
-# # GetSubAccountDepositHistoryResponseInner
+# GetSubAccountDepositHistoryResponseInner
 
 ## Properties
 
@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **amount** | **string** |  | [optional]
 **coin** | **string** |  | [optional]
 **network** | **string** |  | [optional]
-**status** | **int** |  | [optional]
+**status** | **int** | Deposit status: 0&#x3D;pending, 6&#x3D;credited but cannot withdraw, 7&#x3D;wrong deposit, 8&#x3D;waiting user confirmation, 1&#x3D;success. | [optional]
 **address** | **string** |  | [optional]
 **addressTag** | **string** |  | [optional]
 **txId** | **string** |  | [optional]

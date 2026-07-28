@@ -9,8 +9,8 @@ function listAllConvertPairsExample()
 {
     $configurationBuilder = ConvertRestApiUtil::getConfigurationBuilder();
     $api = new ConvertRestApi($configurationBuilder->build());
-    $fromAsset = '';
-    $toAsset = '';
+    $fromAsset = 'BTC';
+    $toAsset = 'USDT';
     $response = $api->listAllConvertPairs($fromAsset, $toAsset);
     print_r($response);
 }

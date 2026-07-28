@@ -1,4 +1,4 @@
-# # QueryAllAlgoOrdersResponse
+# QueryAllAlgoOrdersResponse
 
 ## Properties
 

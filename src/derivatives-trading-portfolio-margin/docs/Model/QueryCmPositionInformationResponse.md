@@ -1,4 +1,4 @@
-# # QueryCmPositionInformationResponse
+# QueryCmPositionInformationResponse
 
 ## Properties
 

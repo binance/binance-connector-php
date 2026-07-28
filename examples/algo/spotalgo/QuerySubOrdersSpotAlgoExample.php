@@ -12,7 +12,7 @@ function querySubOrdersSpotAlgoExample()
     $api = new AlgoRestApi($configurationBuilder->build());
     $algoId = 1;
     $page = 1;
-    $pageSize = 100;
+    $pageSize = 10;
     $recvWindow = 5000;
     $response = $api->querySubOrdersSpotAlgo($algoId, $page, $pageSize, $recvWindow);
     print_r($response);

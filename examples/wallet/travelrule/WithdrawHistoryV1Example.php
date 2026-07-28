@@ -14,10 +14,10 @@ function withdrawHistoryV1Example()
     $txId = '1';
     $withdrawOrderId = '1';
     $network = '';
-    $coin = '';
-    $travelRuleStatus = null;
+    $coin = 'BTC';
+    $travelRuleStatus = 0;
     $offset = 0;
-    $limit = 7;
+    $limit = 1000;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $recvWindow = 5000;

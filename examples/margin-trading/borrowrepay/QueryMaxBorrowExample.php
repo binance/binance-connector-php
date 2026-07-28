@@ -10,8 +10,8 @@ function queryMaxBorrowExample()
     $configurationBuilder = MarginTradingRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new MarginTradingRestApi($configurationBuilder->build());
-    $asset = '';
-    $isolatedSymbol = '';
+    $asset = 'BTC';
+    $isolatedSymbol = 'BTCUSDT';
     $recvWindow = 5000;
     $response = $api->queryMaxBorrow($asset, $isolatedSymbol, $recvWindow);
     print_r($response);

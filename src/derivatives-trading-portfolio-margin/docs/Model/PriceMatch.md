@@ -1,4 +1,4 @@
-# # PriceMatch
+# PriceMatch
 
 ## Properties
 

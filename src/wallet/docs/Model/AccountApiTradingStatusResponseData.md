@@ -1,4 +1,4 @@
-# # AccountApiTradingStatusResponseData
+# AccountApiTradingStatusResponseData
 
 ## Properties
 

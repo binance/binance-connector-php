@@ -12,7 +12,7 @@ function toggleBnbBurnOnFuturesTradeExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
     $toggleBnbBurnOnFuturesTradeRequest = new ToggleBnbBurnOnFuturesTradeRequest();
-    $toggleBnbBurnOnFuturesTradeRequest->setFeeBurn('');
+    $toggleBnbBurnOnFuturesTradeRequest->setFeeBurn('true');
     $response = $api->toggleBnbBurnOnFuturesTrade($toggleBnbBurnOnFuturesTradeRequest);
     print_r($response);
 }

@@ -9,7 +9,7 @@ function compositeIndexSymbolInformationExample()
 {
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'DEFIUSDT';
     $response = $api->compositeIndexSymbolInformation($symbol);
     print_r($response);
 }

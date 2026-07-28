@@ -1,4 +1,4 @@
-# # CreateAVirtualSubAccountResponse
+# CreateAVirtualSubAccountResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ClaimBoostRewardsResponse
+# ClaimBoostRewardsResponse
 
 ## Properties
 

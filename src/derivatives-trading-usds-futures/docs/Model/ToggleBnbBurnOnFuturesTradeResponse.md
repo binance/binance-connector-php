@@ -1,4 +1,4 @@
-# # ToggleBnbBurnOnFuturesTradeResponse
+# ToggleBnbBurnOnFuturesTradeResponse
 
 ## Properties
 

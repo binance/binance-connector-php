@@ -1,4 +1,4 @@
-# # FlexibleLoanRepayResponse
+# FlexibleLoanRepayResponse
 
 ## Properties
 
@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **remainingCollateral** | **string** |  | [optional]
 **fullRepayment** | **bool** |  | [optional]
 **currentLTV** | **string** |  | [optional]
-**repayStatus** | **string** |  | [optional]
+**repayStatus** | **string** | REPAID, REPAYING, FAILED | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

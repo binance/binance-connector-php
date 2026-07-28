@@ -1,11 +1,13 @@
 # Binance\Client\Convert\MarketDataApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**listAllConvertPairs()**](MarketDataApi.md#listAllConvertPairs) | **GET** /sapi/v1/convert/exchangeInfo | List All Convert Pairs |
-| [**queryOrderQuantityPrecisionPerAsset()**](MarketDataApi.md#queryOrderQuantityPrecisionPerAsset) | **GET** /sapi/v1/convert/assetInfo | Query order quantity precision per asset(USER_DATA) |
+| [**queryOrderQuantityPrecisionPerAsset()**](MarketDataApi.md#queryOrderQuantityPrecisionPerAsset) | **GET** /sapi/v1/convert/assetInfo | Query order quantity precision per asset (USER_DATA) |
 
 
 ## `listAllConvertPairs()`
@@ -16,7 +18,7 @@ listAllConvertPairs($fromAsset, $toAsset): \Binance\Client\Convert\Model\ListAll
 
 List All Convert Pairs
 
-Query for all convertible token pairs and the tokens’ respective upper/lower limits  * User needs to supply either or both of the input parameter * If not defined for both fromAsset and toAsset, only partial token pairs will be returned  Weight: 3000(IP)
+Query for all convertible token pairs and the tokens’ respective upper/lower limits  Weight(IP): 3000  Notes: - User needs to supply either or both input parameters. - If only one of `fromAsset` and `toAsset` is provided, only partial token pairs are returned.
 
 ### Example
 
@@ -31,8 +33,8 @@ $apiInstance = new Binance\Client\Convert\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$fromAsset = 'fromAsset_example'; // string | User spends coin
-$toAsset = 'toAsset_example'; // string | User receives coin
+$fromAsset = BTC; // string | User spends coin
+$toAsset = USDT; // string | User receives coin
 
 try {
     $result = $apiInstance->listAllConvertPairs($fromAsset, $toAsset);
@@ -72,9 +74,9 @@ No authorization required
 queryOrderQuantityPrecisionPerAsset($recvWindow): \Binance\Client\Convert\Model\QueryOrderQuantityPrecisionPerAssetResponse
 ```
 
-Query order quantity precision per asset(USER_DATA)
+Query order quantity precision per asset (USER_DATA)
 
-Query for supported asset’s precision information  Weight: 100(IP)
+Query for supported asset’s precision information  Weight(IP): 100  Security Type: USER_DATA
 
 ### Example
 
@@ -89,7 +91,7 @@ $apiInstance = new Binance\Client\Convert\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int | The value cannot be greater than 60000
+$recvWindow = 5000; // int | Request validity window in milliseconds
 
 try {
     $result = $apiInstance->queryOrderQuantityPrecisionPerAsset($recvWindow);
@@ -103,7 +105,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**| The value cannot be greater than 60000 | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds | [optional] |
 
 ### Return type
 

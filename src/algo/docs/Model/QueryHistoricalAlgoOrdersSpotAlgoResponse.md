@@ -1,4 +1,4 @@
-# # QueryHistoricalAlgoOrdersSpotAlgoResponse
+# QueryHistoricalAlgoOrdersSpotAlgoResponse
 
 ## Properties
 

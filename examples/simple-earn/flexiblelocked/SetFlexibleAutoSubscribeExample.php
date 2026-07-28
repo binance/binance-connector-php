@@ -13,7 +13,7 @@ function setFlexibleAutoSubscribeExample()
     $api = new SimpleEarnRestApi($configurationBuilder->build());
     $setFlexibleAutoSubscribeRequest = new SetFlexibleAutoSubscribeRequest();
     $setFlexibleAutoSubscribeRequest->setProductId('1');
-    $setFlexibleAutoSubscribeRequest->setAutoSubscribe(false);
+    $setFlexibleAutoSubscribeRequest->setAutoSubscribe(true);
     $response = $api->setFlexibleAutoSubscribe($setFlexibleAutoSubscribeRequest);
     print_r($response);
 }

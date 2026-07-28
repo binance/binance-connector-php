@@ -1,4 +1,4 @@
-# # AccountTradeListResponse
+# AccountTradeListResponse
 
 ## Properties
 

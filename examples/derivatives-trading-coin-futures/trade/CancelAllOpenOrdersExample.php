@@ -10,7 +10,7 @@ function cancelAllOpenOrdersExample()
     $configurationBuilder = DerivativesTradingCoinFuturesRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTCUSD_200925';
     $recvWindow = 5000;
     $response = $api->cancelAllOpenOrders($symbol, $recvWindow);
     print_r($response);

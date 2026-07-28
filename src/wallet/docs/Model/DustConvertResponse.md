@@ -1,4 +1,4 @@
-# # DustConvertResponse
+# DustConvertResponse
 
 ## Properties
 

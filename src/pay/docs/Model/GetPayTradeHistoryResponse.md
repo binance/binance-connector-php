@@ -1,4 +1,4 @@
-# # GetPayTradeHistoryResponse
+# GetPayTradeHistoryResponse
 
 ## Properties
 

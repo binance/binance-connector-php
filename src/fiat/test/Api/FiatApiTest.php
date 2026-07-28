@@ -1,7 +1,7 @@
 <?php
 
 /**
- * FiatApiTest
+ * DefaultApiTest
  * PHP version 8.1.
  *
  * @category Class
@@ -29,10 +29,12 @@
 
 namespace Binance\Client\Fiat\Test\Api;
 
-use Binance\Client\Fiat\Api\FiatApi;
-use Binance\Client\Fiat\Model\AccountInfo;
+
+use Binance\Client\Fiat\Api\DefaultApi;
 use Binance\Client\Fiat\Model\DepositRequest;
 use Binance\Client\Fiat\Model\FiatWithdrawRequest;
+use Binance\Client\Fiat\Model\ApiPaymentMethod;
+use Binance\Client\Fiat\Model\FiatWithdrawRequestAccountInfo;
 use Binance\Common\Configuration\ClientConfiguration;
 use Binance\Common\Configuration\SignatureConfiguration;
 use Binance\Common\HttpClient;
@@ -41,7 +43,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * FiatApiTest Class Doc Comment.
+ * DefaultApiTest Class Doc Comment.
  *
  * @category Class
  *
@@ -53,7 +55,7 @@ use Psr\Http\Message\ResponseInterface;
  *
  * @coversNothing
  */
-class FiatApiTest extends TestCase
+class DefaultApiTest extends TestCase
 {
     public function getApiMock(&$request)
     {
@@ -85,7 +87,7 @@ class FiatApiTest extends TestCase
             }))
         ;
 
-        $apiMock = $this->getMockBuilder(FiatApi::class)
+        $apiMock = $this->getMockBuilder(DefaultApi::class)
             ->setConstructorArgs([$clientConfig, $clientMock])
             ->onlyMethods(['getTimestamp'])
             ->getMock()
@@ -105,7 +107,7 @@ class FiatApiTest extends TestCase
     {
         $depositRequest = new DepositRequest();
         $depositRequest->setCurrency('');
-        $depositRequest->setApiPaymentMethod('');
+        $depositRequest->setApiPaymentMethod(ApiPaymentMethod::BANK_TRANSFER);
         $depositRequest->setAmount(1);
 
         $response = $this->getApiMock($request)->deposit($depositRequest);
@@ -114,7 +116,7 @@ class FiatApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/fiat/deposit', $request->getUri()->getPath());
-        self::assertEquals('50d24733794b928836575c346769be26ee1fb5ffbf73f36933cd22c50116f74e', $queryMap['signature']);
+        self::assertEquals('2310890ab34d761caa5f8e88c9807b65e36140e90320763244d4e59743a403e5', $queryMap['signature']);
     }
 
     /**
@@ -126,9 +128,9 @@ class FiatApiTest extends TestCase
     {
         $fiatWithdrawRequest = new FiatWithdrawRequest();
         $fiatWithdrawRequest->setCurrency('');
-        $fiatWithdrawRequest->setApiPaymentMethod('');
+        $fiatWithdrawRequest->setApiPaymentMethod(ApiPaymentMethod::BANK_TRANSFER);
         $fiatWithdrawRequest->setAmount(1);
-        $fiatWithdrawRequest->setAccountInfo(new AccountInfo());
+        $fiatWithdrawRequest->setAccountInfo(new FiatWithdrawRequestAccountInfo());
 
         $response = $this->getApiMock($request)->fiatWithdraw($fiatWithdrawRequest);
 
@@ -136,7 +138,7 @@ class FiatApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v2/fiat/withdraw', $request->getUri()->getPath());
-        self::assertEquals('81b06132041b0a2ee7c6518e68d1aded33ac3bb4d7d4d70bbe29cca7cb45bde6', $queryMap['signature']);
+        self::assertEquals('2ccaf17a5d111293e3b7f4d83b8e9c7d7fc80a8675d37cc0dc7d31e583626dfc', $queryMap['signature']);
     }
 
     /**

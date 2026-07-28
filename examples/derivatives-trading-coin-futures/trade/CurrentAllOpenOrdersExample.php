@@ -10,8 +10,8 @@ function currentAllOpenOrdersExample()
     $configurationBuilder = DerivativesTradingCoinFuturesRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
-    $pair = '';
+    $symbol = 'BTCUSD_200925';
+    $pair = 'BTCUSD';
     $recvWindow = 5000;
     $response = $api->currentAllOpenOrders($symbol, $pair, $recvWindow);
     print_r($response);

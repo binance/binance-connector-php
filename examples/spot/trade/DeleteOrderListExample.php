@@ -12,9 +12,9 @@ function deleteOrderListExample()
     $api = new SpotRestApi($configurationBuilder->build());
     $symbol = 'BNBUSDT';
     $orderListId = 1;
-    $listClientOrderId = '';
-    $newClientOrderId = '';
-    $recvWindow = 5000.0;
+    $listClientOrderId = 'C3wyj4WVEktd7u9aVBRXcN';
+    $newClientOrderId = 'cancelMyOrder1';
+    $recvWindow = 5000;
     $response = $api->deleteOrderList($symbol, $orderListId, $listClientOrderId, $newClientOrderId, $recvWindow);
     print_r($response);
 }

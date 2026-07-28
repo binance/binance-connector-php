@@ -1,4 +1,4 @@
-# # PercentPriceFilter
+# PercentPriceFilter
 
 ## Properties
 

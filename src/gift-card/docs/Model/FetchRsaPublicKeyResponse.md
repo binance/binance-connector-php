@@ -1,4 +1,4 @@
-# # FetchRsaPublicKeyResponse
+# FetchRsaPublicKeyResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # OptionPositionInformationResponse
+# OptionPositionInformationResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # AccountCommissionResponse
+# AccountCommissionResponse
 
 ## Properties
 

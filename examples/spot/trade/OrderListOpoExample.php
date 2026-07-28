@@ -19,8 +19,8 @@ function orderListOpoExample()
     $orderListOpoRequest->setSymbol('BNBUSDT');
     $orderListOpoRequest->setWorkingType(WorkingType::LIMIT);
     $orderListOpoRequest->setWorkingSide(WorkingSide::BUY);
-    $orderListOpoRequest->setWorkingPrice(1.0);
-    $orderListOpoRequest->setWorkingQuantity(1.0);
+    $orderListOpoRequest->setWorkingPrice(1);
+    $orderListOpoRequest->setWorkingQuantity(1);
     $orderListOpoRequest->setPendingType(PendingType::LIMIT);
     $orderListOpoRequest->setPendingSide(PendingSide::BUY);
     $response = $api->orderListOpo($orderListOpoRequest);

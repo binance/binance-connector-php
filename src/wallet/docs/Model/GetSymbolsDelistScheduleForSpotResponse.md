@@ -1,4 +1,4 @@
-# # GetSymbolsDelistScheduleForSpotResponse
+# GetSymbolsDelistScheduleForSpotResponse
 
 ## Properties
 

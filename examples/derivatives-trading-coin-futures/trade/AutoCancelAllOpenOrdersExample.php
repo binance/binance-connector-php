@@ -12,8 +12,8 @@ function autoCancelAllOpenOrdersExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
     $autoCancelAllOpenOrdersRequest = new AutoCancelAllOpenOrdersRequest();
-    $autoCancelAllOpenOrdersRequest->setSymbol('');
-    $autoCancelAllOpenOrdersRequest->setCountdownTime(null);
+    $autoCancelAllOpenOrdersRequest->setSymbol('BTCUSD_200925');
+    $autoCancelAllOpenOrdersRequest->setCountdownTime(1000);
     $response = $api->autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest);
     print_r($response);
 }

@@ -11,6 +11,7 @@ use Binance\Client\MarginTrading\Model\DisableIsolatedMarginAccountResponse;
 use Binance\Client\MarginTrading\Model\EditIpForSpecialKeyRequest;
 use Binance\Client\MarginTrading\Model\EnableIsolatedMarginAccountRequest;
 use Binance\Client\MarginTrading\Model\EnableIsolatedMarginAccountResponse;
+use Binance\Client\MarginTrading\Model\ExitSpecialKeyModeRequest;
 use Binance\Client\MarginTrading\Model\GetAllCrossMarginPairsResponse;
 use Binance\Client\MarginTrading\Model\GetAllIsolatedMarginSymbolResponse;
 use Binance\Client\MarginTrading\Model\GetAllMarginAssetsResponse;
@@ -27,7 +28,10 @@ use Binance\Client\MarginTrading\Model\GetMarginRestrictedAssetsResponse;
 use Binance\Client\MarginTrading\Model\GetSmallLiabilityExchangeCoinListResponse;
 use Binance\Client\MarginTrading\Model\GetSmallLiabilityExchangeHistoryResponse;
 use Binance\Client\MarginTrading\Model\GetSummaryOfMarginAccountResponse;
+use Binance\Client\MarginTrading\Model\IsIsolated;
 use Binance\Client\MarginTrading\Model\KeepaliveUserDataStreamRequest;
+use Binance\Client\MarginTrading\Model\LiquidationLoanRepayRequest;
+use Binance\Client\MarginTrading\Model\LiquidationLoanRepayResponse;
 use Binance\Client\MarginTrading\Model\MarginAccountBorrowRepayRequest;
 use Binance\Client\MarginTrading\Model\MarginAccountBorrowRepayResponse;
 use Binance\Client\MarginTrading\Model\MarginAccountCancelAllOpenOrdersOnASymbolResponse;
@@ -43,6 +47,7 @@ use Binance\Client\MarginTrading\Model\MarginAccountNewOtoRequest;
 use Binance\Client\MarginTrading\Model\MarginAccountNewOtoResponse;
 use Binance\Client\MarginTrading\Model\MarginManualLiquidationRequest;
 use Binance\Client\MarginTrading\Model\MarginManualLiquidationResponse;
+use Binance\Client\MarginTrading\Model\OrderType;
 use Binance\Client\MarginTrading\Model\QueryBorrowRepayRecordsInMarginAccountResponse;
 use Binance\Client\MarginTrading\Model\QueryCrossIsolatedMarginCapitalFlowResponse;
 use Binance\Client\MarginTrading\Model\QueryCrossMarginAccountDetailsResponse;
@@ -53,6 +58,8 @@ use Binance\Client\MarginTrading\Model\QueryIsolatedMarginAccountInfoResponse;
 use Binance\Client\MarginTrading\Model\QueryIsolatedMarginFeeDataResponse;
 use Binance\Client\MarginTrading\Model\QueryIsolatedMarginTierDataResponse;
 use Binance\Client\MarginTrading\Model\QueryLiabilityCoinLeverageBracketInCrossMarginProModeResponse;
+use Binance\Client\MarginTrading\Model\QueryLiquidationLoanRepayHistoryResponse;
+use Binance\Client\MarginTrading\Model\QueryLiquidationLoanResponse;
 use Binance\Client\MarginTrading\Model\QueryMarginAccountsAllOcoResponse;
 use Binance\Client\MarginTrading\Model\QueryMarginAccountsAllOrdersResponse;
 use Binance\Client\MarginTrading\Model\QueryMarginAccountsOcoResponse;
@@ -92,11 +99,6 @@ class MarginTradingRestApi
     private $marketDataApi;
 
     /**
-     * @var RiskDataStreamApi
-     */
-    private $riskDataStreamApi;
-
-    /**
      * @var TradeApi
      */
     private $tradeApi;
@@ -106,15 +108,20 @@ class MarginTradingRestApi
      */
     private $transferApi;
 
+    /**
+     * @var UserDataStreamApi
+     */
+    private $userDataStreamApi;
+
     public function __construct(
         ?ClientConfiguration $clientConfig = new ClientConfiguration(),
     ) {
         $this->accountApi = new AccountApi($clientConfig);
         $this->borrowRepayApi = new BorrowRepayApi($clientConfig);
         $this->marketDataApi = new MarketDataApi($clientConfig);
-        $this->riskDataStreamApi = new RiskDataStreamApi($clientConfig);
         $this->tradeApi = new TradeApi($clientConfig);
         $this->transferApi = new TransferApi($clientConfig);
+        $this->userDataStreamApi = new UserDataStreamApi($clientConfig);
     }
 
     /**
@@ -140,7 +147,7 @@ class MarginTradingRestApi
      * Disable Isolated Margin Account (TRADE)
      *
      * @param string   $symbol     symbol (required)
-     * @param null|int $recvWindow No more than 60000 (optional)
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<DisableIsolatedMarginAccountResponse>
      *
@@ -174,7 +181,7 @@ class MarginTradingRestApi
      *
      * Get BNB Burn Status (USER_DATA)
      *
-     * @param null|int $recvWindow No more than 60000 (optional)
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetBnbBurnStatusResponse>
      *
@@ -191,7 +198,7 @@ class MarginTradingRestApi
      *
      * Get Summary of Margin account (USER_DATA)
      *
-     * @param null|int $recvWindow No more than 60000 (optional)
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetSummaryOfMarginAccountResponse>
      *
@@ -208,14 +215,14 @@ class MarginTradingRestApi
      *
      * Query Cross Isolated Margin Capital Flow (USER_DATA)
      *
-     * @param null|string $asset      asset (optional)
-     * @param null|string $symbol     isolated margin pair (optional)
-     * @param null|string $type       Transfer Type: ROLL_IN, ROLL_OUT (optional)
-     * @param null|int    $startTime  Only supports querying data from the past 90 days. (optional)
-     * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $fromId     If &#x60;fromId&#x60; is set, data with &#x60;id&#x60; greater than &#x60;fromId&#x60; will be returned. Otherwise, the latest data will be returned. (optional)
-     * @param null|int    $limit      Limit on the number of data records returned per request. Default: 500; Maximum: 1000. (optional)
-     * @param null|int    $recvWindow No more than 60000 (optional)
+     * @param null|string    $asset      asset (optional)
+     * @param null|string    $symbol     Mandatory for Isolated data (optional)
+     * @param null|OrderType $type       type (optional)
+     * @param null|int       $startTime  startTime (optional)
+     * @param null|int       $endTime    endTime (optional)
+     * @param null|int       $fromId     fromId (optional)
+     * @param null|int       $limit      limit (optional)
+     * @param null|int       $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryCrossIsolatedMarginCapitalFlowResponse>
      *
@@ -232,7 +239,7 @@ class MarginTradingRestApi
      *
      * Query Cross Margin Account Details (USER_DATA)
      *
-     * @param null|int $recvWindow No more than 60000 (optional)
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryCrossMarginAccountDetailsResponse>
      *
@@ -251,7 +258,7 @@ class MarginTradingRestApi
      *
      * @param null|int    $vipLevel   User&#39;s current specific margin data will be returned if vipLevel is omitted (optional)
      * @param null|string $coin       coin (optional)
-     * @param null|int    $recvWindow No more than 60000 (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryCrossMarginFeeDataResponse>
      *
@@ -268,7 +275,7 @@ class MarginTradingRestApi
      *
      * Query Enabled Isolated Margin Account Limit (USER_DATA)
      *
-     * @param null|int $recvWindow No more than 60000 (optional)
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryEnabledIsolatedMarginAccountLimitResponse>
      *
@@ -285,8 +292,8 @@ class MarginTradingRestApi
      *
      * Query Isolated Margin Account Info (USER_DATA)
      *
-     * @param null|string $symbols    Max 5 symbols can be sent; separated by \&quot;,\&quot;. e.g. \&quot;BTCUSDT,BNBUSDT,ADAUSDT\&quot; (optional)
-     * @param null|int    $recvWindow No more than 60000 (optional)
+     * @param null|string $symbols    symbols (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryIsolatedMarginAccountInfoResponse>
      *
@@ -303,9 +310,9 @@ class MarginTradingRestApi
      *
      * Query Isolated Margin Fee Data (USER_DATA)
      *
-     * @param null|int    $vipLevel   User&#39;s current specific margin data will be returned if vipLevel is omitted (optional)
-     * @param null|string $symbol     isolated margin pair (optional)
-     * @param null|int    $recvWindow No more than 60000 (optional)
+     * @param null|int    $vipLevel   vipLevel (optional)
+     * @param null|string $symbol     symbol (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryIsolatedMarginFeeDataResponse>
      *
@@ -322,8 +329,8 @@ class MarginTradingRestApi
      *
      * Get future hourly interest rate (USER_DATA)
      *
-     * @param string $assets     List of assets, separated by commas, up to 20 (required)
-     * @param string $isIsolated for isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot; (required)
+     * @param string     $assets     assets (required)
+     * @param IsIsolated $isIsolated isIsolated (required)
      *
      * @return ApiResponse<GetFutureHourlyInterestRateResponse>
      *
@@ -341,12 +348,12 @@ class MarginTradingRestApi
      * Get Interest History (USER_DATA)
      *
      * @param null|string $asset          asset (optional)
-     * @param null|string $isolatedSymbol isolated symbol (optional)
+     * @param null|string $isolatedSymbol isolatedSymbol (optional)
      * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
      * @param null|int    $endTime        endTime (optional)
-     * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int    $size           Default:10 Max:100 (optional)
-     * @param null|int    $recvWindow     No more than 60000 (optional)
+     * @param null|int    $current        current (optional)
+     * @param null|int    $size           size (optional)
+     * @param null|int    $recvWindow     recvWindow (optional)
      *
      * @return ApiResponse<GetInterestHistoryResponse>
      *
@@ -361,7 +368,7 @@ class MarginTradingRestApi
     /**
      * Operation marginAccountBorrowRepay.
      *
-     * Margin account borrow/repay(MARGIN)
+     * Margin account borrow/repay (USER_DATA)
      *
      * @param MarginAccountBorrowRepayRequest $marginAccountBorrowRepayRequest marginAccountBorrowRepayRequest (required)
      *
@@ -378,17 +385,17 @@ class MarginTradingRestApi
     /**
      * Operation queryBorrowRepayRecordsInMarginAccount.
      *
-     * Query borrow/repay records in Margin account(USER_DATA)
+     * Query borrow/repay records in Margin account (USER_DATA)
      *
-     * @param string      $type           MARGIN,ISOLATED (required)
+     * @param OrderType   $type           type (required)
      * @param null|string $asset          asset (optional)
-     * @param null|string $isolatedSymbol isolated symbol (optional)
-     * @param null|int    $txId           &#x60;tranId&#x60; in &#x60;POST /sapi/v1/margin/loan&#x60; (optional)
-     * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
+     * @param null|string $isolatedSymbol isolatedSymbol (optional)
+     * @param null|int    $txId           txId (optional)
+     * @param null|int    $startTime      startTime (optional)
      * @param null|int    $endTime        endTime (optional)
-     * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int    $size           Default:10 Max:100 (optional)
-     * @param null|int    $recvWindow     No more than 60000 (optional)
+     * @param null|int    $current        current (optional)
+     * @param null|int    $size           size (optional)
+     * @param null|int    $recvWindow     recvWindow (optional)
      *
      * @return ApiResponse<QueryBorrowRepayRecordsInMarginAccountResponse>
      *
@@ -406,10 +413,10 @@ class MarginTradingRestApi
      * Query Margin Interest Rate History (USER_DATA)
      *
      * @param string   $asset      asset (required)
-     * @param null|int $vipLevel   User&#39;s current specific margin data will be returned if vipLevel is omitted (optional)
-     * @param null|int $startTime  Only supports querying data from the past 90 days. (optional)
+     * @param null|int $vipLevel   vipLevel (optional)
+     * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $recvWindow No more than 60000 (optional)
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryMarginInterestRateHistoryResponse>
      *
@@ -427,8 +434,8 @@ class MarginTradingRestApi
      * Query Max Borrow (USER_DATA)
      *
      * @param string      $asset          asset (required)
-     * @param null|string $isolatedSymbol isolated symbol (optional)
-     * @param null|int    $recvWindow     No more than 60000 (optional)
+     * @param null|string $isolatedSymbol isolatedSymbol (optional)
+     * @param null|int    $recvWindow     recvWindow (optional)
      *
      * @return ApiResponse<QueryMaxBorrowResponse>
      *
@@ -460,7 +467,7 @@ class MarginTradingRestApi
      *
      * Get All Cross Margin Pairs (MARKET_DATA)
      *
-     * @param null|string $symbol isolated margin pair (optional)
+     * @param null|string $symbol symbol (optional)
      *
      * @return ApiResponse<GetAllCrossMarginPairsResponse>
      *
@@ -475,10 +482,10 @@ class MarginTradingRestApi
     /**
      * Operation getAllIsolatedMarginSymbol.
      *
-     * Get All Isolated Margin Symbol(MARKET_DATA)
+     * Get All Isolated Margin Symbol (MARKET_DATA)
      *
-     * @param null|string $symbol     isolated margin pair (optional)
-     * @param null|int    $recvWindow No more than 60000 (optional)
+     * @param null|string $symbol     symbol (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetAllIsolatedMarginSymbolResponse>
      *
@@ -512,7 +519,7 @@ class MarginTradingRestApi
      *
      * Get Delist Schedule (MARKET_DATA)
      *
-     * @param null|int $recvWindow No more than 60000 (optional)
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetDelistScheduleResponse>
      *
@@ -527,7 +534,7 @@ class MarginTradingRestApi
     /**
      * Operation getLimitPricePairs.
      *
-     * Get Limit Price Pairs(MARKET_DATA)
+     * Get Limit Price Pairs (MARKET_DATA)
      *
      * @return ApiResponse<GetLimitPricePairsResponse>
      *
@@ -544,7 +551,7 @@ class MarginTradingRestApi
      *
      * Get list Schedule (MARKET_DATA)
      *
-     * @param null|int $recvWindow No more than 60000 (optional)
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetListScheduleResponse>
      *
@@ -592,8 +599,8 @@ class MarginTradingRestApi
      * Query Isolated Margin Tier Data (USER_DATA)
      *
      * @param string   $symbol     symbol (required)
-     * @param null|int $tier       All margin tier data will be returned if tier is omitted (optional)
-     * @param null|int $recvWindow No more than 60000 (optional)
+     * @param null|int $tier       tier (optional)
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryIsolatedMarginTierDataResponse>
      *
@@ -608,7 +615,7 @@ class MarginTradingRestApi
     /**
      * Operation queryLiabilityCoinLeverageBracketInCrossMarginProMode.
      *
-     * Query Liability Coin Leverage Bracket in Cross Margin Pro Mode(MARKET_DATA)
+     * Query Liability Coin Leverage Bracket in Cross Margin Pro Mode (MARKET_DATA)
      *
      * @return ApiResponse<QueryLiabilityCoinLeverageBracketInCrossMarginProModeResponse>
      *
@@ -623,9 +630,9 @@ class MarginTradingRestApi
     /**
      * Operation queryMarginAvailableInventory.
      *
-     * Query Margin Available Inventory(USER_DATA)
+     * Query Margin Available Inventory (USER_DATA)
      *
-     * @param string $type MARGIN,ISOLATED (required)
+     * @param OrderType $type type (required)
      *
      * @return ApiResponse<QueryMarginAvailableInventoryResponse>
      *
@@ -655,52 +662,9 @@ class MarginTradingRestApi
     }
 
     /**
-     * Operation closeUserDataStream.
-     *
-     * Close User Data Stream (USER_STREAM)
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function closeUserDataStream()
-    {
-        $this->riskDataStreamApi->closeUserDataStream();
-    }
-
-    /**
-     * Operation keepaliveUserDataStream.
-     *
-     * Keepalive User Data Stream (USER_STREAM)
-     *
-     * @param KeepaliveUserDataStreamRequest $keepaliveUserDataStreamRequest keepaliveUserDataStreamRequest (required)
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function keepaliveUserDataStream($keepaliveUserDataStreamRequest)
-    {
-        $this->riskDataStreamApi->keepaliveUserDataStream($keepaliveUserDataStreamRequest);
-    }
-
-    /**
-     * Operation startUserDataStream.
-     *
-     * Start User Data Stream (USER_STREAM)
-     *
-     * @return ApiResponse<StartUserDataStreamResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function startUserDataStream(): ApiResponse
-    {
-        return $this->riskDataStreamApi->startUserDataStream();
-    }
-
-    /**
      * Operation createSpecialKey.
      *
-     * Create Special Key(Low-Latency Trading)(TRADE)
+     * Create Special Key(Low-Latency Trading) (TRADE)
      *
      * @param CreateSpecialKeyRequest $createSpecialKeyRequest createSpecialKeyRequest (required)
      *
@@ -717,11 +681,11 @@ class MarginTradingRestApi
     /**
      * Operation deleteSpecialKey.
      *
-     * Delete Special Key(Low-Latency Trading)(TRADE)
+     * Delete Special Key(Low-Latency Trading) (TRADE)
      *
      * @param null|string $apiName    apiName (optional)
-     * @param null|string $symbol     isolated margin pair (optional)
-     * @param null|int    $recvWindow No more than 60000 (optional)
+     * @param null|string $symbol     symbol (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
@@ -734,7 +698,7 @@ class MarginTradingRestApi
     /**
      * Operation editIpForSpecialKey.
      *
-     * Edit ip for Special Key(Low-Latency Trading)(TRADE)
+     * Edit ip for Special Key(Low-Latency Trading) (TRADE)
      *
      * @param EditIpForSpecialKeyRequest $editIpForSpecialKeyRequest editIpForSpecialKeyRequest (required)
      *
@@ -747,16 +711,33 @@ class MarginTradingRestApi
     }
 
     /**
+     * Operation exitSpecialKeyMode.
+     *
+     * Exit Special Key Mode (TRADE)
+     *
+     * @param null|ExitSpecialKeyModeRequest $exitSpecialKeyModeRequest exitSpecialKeyModeRequest (optional)
+     *
+     * @return ApiResponse<object>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function exitSpecialKeyMode($exitSpecialKeyModeRequest = null): ApiResponse
+    {
+        return $this->tradeApi->exitSpecialKeyMode($exitSpecialKeyModeRequest);
+    }
+
+    /**
      * Operation getForceLiquidationRecord.
      *
      * Get Force Liquidation Record (USER_DATA)
      *
-     * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
+     * @param null|int    $startTime      startTime (optional)
      * @param null|int    $endTime        endTime (optional)
-     * @param null|string $isolatedSymbol isolated symbol (optional)
-     * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int    $size           Default:10 Max:100 (optional)
-     * @param null|int    $recvWindow     No more than 60000 (optional)
+     * @param null|string $isolatedSymbol isolatedSymbol (optional)
+     * @param null|int    $current        current (optional)
+     * @param null|int    $size           size (optional)
+     * @param null|int    $recvWindow     recvWindow (optional)
      *
      * @return ApiResponse<GetForceLiquidationRecordResponse>
      *
@@ -773,7 +754,7 @@ class MarginTradingRestApi
      *
      * Get Small Liability Exchange Coin List (USER_DATA)
      *
-     * @param null|int $recvWindow No more than 60000 (optional)
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetSmallLiabilityExchangeCoinListResponse>
      *
@@ -790,11 +771,11 @@ class MarginTradingRestApi
      *
      * Get Small Liability Exchange History (USER_DATA)
      *
-     * @param int      $current    Currently querying page. Start from 1. Default:1 (required)
-     * @param int      $size       Default:10, Max:100 (required)
-     * @param null|int $startTime  Only supports querying data from the past 90 days. (optional)
+     * @param int      $current    current (required)
+     * @param int      $size       size (required)
+     * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $recvWindow No more than 60000 (optional)
+     * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<GetSmallLiabilityExchangeHistoryResponse>
      *
@@ -807,13 +788,30 @@ class MarginTradingRestApi
     }
 
     /**
+     * Operation liquidationLoanRepay.
+     *
+     * Liquidation Loan Repay (MARGIN)
+     *
+     * @param LiquidationLoanRepayRequest $liquidationLoanRepayRequest liquidationLoanRepayRequest (required)
+     *
+     * @return ApiResponse<LiquidationLoanRepayResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function liquidationLoanRepay($liquidationLoanRepayRequest): ApiResponse
+    {
+        return $this->tradeApi->liquidationLoanRepay($liquidationLoanRepayRequest);
+    }
+
+    /**
      * Operation marginAccountCancelAllOpenOrdersOnASymbol.
      *
      * Margin Account Cancel all Open Orders on a Symbol (TRADE)
      *
-     * @param string      $symbol     symbol (required)
-     * @param null|string $isIsolated For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
-     * @param null|int    $recvWindow No more than 60000 (optional)
+     * @param string          $symbol     symbol (required)
+     * @param null|IsIsolated $isIsolated isIsolated (optional)
+     * @param null|int        $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<MarginAccountCancelAllOpenOrdersOnASymbolResponse>
      *
@@ -830,12 +828,12 @@ class MarginTradingRestApi
      *
      * Margin Account Cancel OCO (TRADE)
      *
-     * @param string      $symbol            symbol (required)
-     * @param null|string $isIsolated        For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
-     * @param null|int    $orderListId       Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
-     * @param null|string $listClientOrderId Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
-     * @param null|string $newClientOrderId  Used to uniquely identify this cancel. Automatically generated by default (optional)
-     * @param null|int    $recvWindow        No more than 60000 (optional)
+     * @param string          $symbol            symbol (required)
+     * @param null|IsIsolated $isIsolated        isIsolated (optional)
+     * @param null|int        $orderListId       orderListId (optional)
+     * @param null|string     $listClientOrderId listClientOrderId (optional)
+     * @param null|string     $newClientOrderId  newClientOrderId (optional)
+     * @param null|int        $recvWindow        recvWindow (optional)
      *
      * @return ApiResponse<MarginAccountCancelOcoResponse>
      *
@@ -852,12 +850,12 @@ class MarginTradingRestApi
      *
      * Margin Account Cancel Order (TRADE)
      *
-     * @param string      $symbol            symbol (required)
-     * @param null|string $isIsolated        For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
-     * @param null|int    $orderId           orderId (optional)
-     * @param null|string $origClientOrderId origClientOrderId (optional)
-     * @param null|string $newClientOrderId  Used to uniquely identify this cancel. Automatically generated by default (optional)
-     * @param null|int    $recvWindow        No more than 60000 (optional)
+     * @param string          $symbol            symbol (required)
+     * @param null|IsIsolated $isIsolated        isIsolated (optional)
+     * @param null|int        $orderId           orderId (optional)
+     * @param null|string     $origClientOrderId origClientOrderId (optional)
+     * @param null|string     $newClientOrderId  newClientOrderId (optional)
+     * @param null|int        $recvWindow        recvWindow (optional)
      *
      * @return ApiResponse<MarginAccountCancelOrderResponse>
      *
@@ -940,7 +938,7 @@ class MarginTradingRestApi
     /**
      * Operation marginManualLiquidation.
      *
-     * Margin Manual Liquidation(MARGIN)
+     * Margin Manual Liquidation (TRADE)
      *
      * @param MarginManualLiquidationRequest $marginManualLiquidationRequest marginManualLiquidationRequest (required)
      *
@@ -959,9 +957,9 @@ class MarginTradingRestApi
      *
      * Query Current Margin Order Count Usage (TRADE)
      *
-     * @param null|string $isIsolated For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
-     * @param null|string $symbol     isolated margin pair (optional)
-     * @param null|int    $recvWindow No more than 60000 (optional)
+     * @param null|IsIsolated $isIsolated isIsolated (optional)
+     * @param null|string     $symbol     symbol (optional)
+     * @param null|int        $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryCurrentMarginOrderCountUsageResponse>
      *
@@ -974,17 +972,55 @@ class MarginTradingRestApi
     }
 
     /**
+     * Operation queryLiquidationLoan.
+     *
+     * Query Liquidation Loan (USER_DATA)
+     *
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<QueryLiquidationLoanResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function queryLiquidationLoan($recvWindow = null): ApiResponse
+    {
+        return $this->tradeApi->queryLiquidationLoan($recvWindow);
+    }
+
+    /**
+     * Operation queryLiquidationLoanRepayHistory.
+     *
+     * Query Liquidation Loan Repay History (USER_DATA)
+     *
+     * @param null|int $startTime  Start time in Unix timestamp (milliseconds). Defaults to 7 days ago if not specified (optional)
+     * @param null|int $endTime    End time in Unix timestamp (milliseconds). Defaults to now if not specified (optional)
+     * @param null|int $current    Current page number, default &#x60;1&#x60; (optional)
+     * @param null|int $size       Page size, default &#x60;50&#x60; (optional)
+     * @param null|int $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<QueryLiquidationLoanRepayHistoryResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function queryLiquidationLoanRepayHistory($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    {
+        return $this->tradeApi->queryLiquidationLoanRepayHistory($startTime, $endTime, $current, $size, $recvWindow);
+    }
+
+    /**
      * Operation queryMarginAccountsAllOco.
      *
      * Query Margin Account&#39;s all OCO (USER_DATA)
      *
-     * @param null|string $isIsolated For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
-     * @param null|string $symbol     isolated margin pair (optional)
-     * @param null|int    $fromId     If &#x60;fromId&#x60; is set, data with &#x60;id&#x60; greater than &#x60;fromId&#x60; will be returned. Otherwise, the latest data will be returned. (optional)
-     * @param null|int    $startTime  Only supports querying data from the past 90 days. (optional)
-     * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $limit      Limit on the number of data records returned per request. Default: 500; Maximum: 1000. (optional)
-     * @param null|int    $recvWindow No more than 60000 (optional)
+     * @param null|IsIsolated $isIsolated isIsolated (optional)
+     * @param null|string     $symbol     symbol (optional)
+     * @param null|int        $fromId     fromId (optional)
+     * @param null|int        $startTime  startTime (optional)
+     * @param null|int        $endTime    endTime (optional)
+     * @param null|int        $limit      limit (optional)
+     * @param null|int        $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryMarginAccountsAllOcoResponse>
      *
@@ -1001,13 +1037,13 @@ class MarginTradingRestApi
      *
      * Query Margin Account&#39;s All Orders (USER_DATA)
      *
-     * @param string      $symbol     symbol (required)
-     * @param null|string $isIsolated For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
-     * @param null|int    $orderId    orderId (optional)
-     * @param null|int    $startTime  Only supports querying data from the past 90 days. (optional)
-     * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $limit      Limit on the number of data records returned per request. Default: 500; Maximum: 1000. (optional)
-     * @param null|int    $recvWindow No more than 60000 (optional)
+     * @param string          $symbol     symbol (required)
+     * @param null|IsIsolated $isIsolated isIsolated (optional)
+     * @param null|int        $orderId    orderId (optional)
+     * @param null|int        $startTime  startTime (optional)
+     * @param null|int        $endTime    endTime (optional)
+     * @param null|int        $limit      limit (optional)
+     * @param null|int        $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryMarginAccountsAllOrdersResponse>
      *
@@ -1024,11 +1060,11 @@ class MarginTradingRestApi
      *
      * Query Margin Account&#39;s OCO (USER_DATA)
      *
-     * @param null|string $isIsolated        For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
-     * @param null|string $symbol            isolated margin pair (optional)
-     * @param null|int    $orderListId       Either &#x60;orderListId&#x60; or &#x60;listClientOrderId&#x60; must be provided (optional)
-     * @param null|string $origClientOrderId origClientOrderId (optional)
-     * @param null|int    $recvWindow        No more than 60000 (optional)
+     * @param null|IsIsolated $isIsolated        isIsolated (optional)
+     * @param null|string     $symbol            symbol (optional)
+     * @param null|int        $orderListId       orderListId (optional)
+     * @param null|string     $origClientOrderId origClientOrderId (optional)
+     * @param null|int        $recvWindow        recvWindow (optional)
      *
      * @return ApiResponse<QueryMarginAccountsOcoResponse>
      *
@@ -1045,9 +1081,9 @@ class MarginTradingRestApi
      *
      * Query Margin Account&#39;s Open OCO (USER_DATA)
      *
-     * @param null|string $isIsolated For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
-     * @param null|string $symbol     isolated margin pair (optional)
-     * @param null|int    $recvWindow No more than 60000 (optional)
+     * @param null|IsIsolated $isIsolated isIsolated (optional)
+     * @param null|string     $symbol     symbol (optional)
+     * @param null|int        $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryMarginAccountsOpenOcoResponse>
      *
@@ -1064,9 +1100,9 @@ class MarginTradingRestApi
      *
      * Query Margin Account&#39;s Open Orders (USER_DATA)
      *
-     * @param null|string $symbol     isolated margin pair (optional)
-     * @param null|string $isIsolated For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
-     * @param null|int    $recvWindow No more than 60000 (optional)
+     * @param null|string     $symbol     isolated margin pair (optional)
+     * @param null|IsIsolated $isIsolated isIsolated (optional)
+     * @param null|int        $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryMarginAccountsOpenOrdersResponse>
      *
@@ -1083,11 +1119,11 @@ class MarginTradingRestApi
      *
      * Query Margin Account&#39;s Order (USER_DATA)
      *
-     * @param string      $symbol            symbol (required)
-     * @param null|string $isIsolated        For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
-     * @param null|int    $orderId           orderId (optional)
-     * @param null|string $origClientOrderId origClientOrderId (optional)
-     * @param null|int    $recvWindow        No more than 60000 (optional)
+     * @param string          $symbol            symbol (required)
+     * @param null|IsIsolated $isIsolated        isIsolated (optional)
+     * @param null|int        $orderId           orderId (optional)
+     * @param null|string     $origClientOrderId origClientOrderId (optional)
+     * @param null|int        $recvWindow        recvWindow (optional)
      *
      * @return ApiResponse<QueryMarginAccountsOrderResponse>
      *
@@ -1104,14 +1140,14 @@ class MarginTradingRestApi
      *
      * Query Margin Account&#39;s Trade List (USER_DATA)
      *
-     * @param string      $symbol     symbol (required)
-     * @param null|string $isIsolated For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
-     * @param null|int    $orderId    orderId (optional)
-     * @param null|int    $startTime  Only supports querying data from the past 90 days. (optional)
-     * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $fromId     If &#x60;fromId&#x60; is set, data with &#x60;id&#x60; greater than &#x60;fromId&#x60; will be returned. Otherwise, the latest data will be returned. (optional)
-     * @param null|int    $limit      Limit on the number of data records returned per request. Default: 500; Maximum: 1000. (optional)
-     * @param null|int    $recvWindow No more than 60000 (optional)
+     * @param string          $symbol     symbol (required)
+     * @param null|IsIsolated $isIsolated isIsolated (optional)
+     * @param null|int        $orderId    orderId (optional)
+     * @param null|int        $startTime  startTime (optional)
+     * @param null|int        $endTime    endTime (optional)
+     * @param null|int        $fromId     fromId (optional)
+     * @param null|int        $limit      limit (optional)
+     * @param null|int        $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryMarginAccountsTradeListResponse>
      *
@@ -1126,32 +1162,32 @@ class MarginTradingRestApi
     /**
      * Operation queryPreventedMatches.
      *
-     * Query Prevented Matches(USER_DATA)
+     * Query Prevented Matches (USER_DATA)
      *
-     * @param string      $symbol               symbol (required)
-     * @param null|int    $preventedMatchId     preventedMatchId (optional)
-     * @param null|int    $orderId              orderId (optional)
-     * @param null|int    $fromPreventedMatchId fromPreventedMatchId (optional)
-     * @param null|int    $recvWindow           No more than 60000 (optional)
-     * @param null|string $isIsolated           For isolated margin or not, \&quot;TRUE\&quot;, \&quot;FALSE\&quot;, default \&quot;FALSE\&quot; (optional)
+     * @param string          $symbol               symbol (required)
+     * @param null|int        $preventedMatchId     preventedMatchId (optional)
+     * @param null|int        $orderId              orderId (optional)
+     * @param null|int        $fromPreventedMatchId fromPreventedMatchId (optional)
+     * @param null|IsIsolated $isIsolated           isIsolated (optional)
+     * @param null|int        $recvWindow           recvWindow (optional)
      *
      * @return ApiResponse<QueryPreventedMatchesResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function queryPreventedMatches($symbol, $preventedMatchId = null, $orderId = null, $fromPreventedMatchId = null, $recvWindow = null, $isIsolated = null): ApiResponse
+    public function queryPreventedMatches($symbol, $preventedMatchId = null, $orderId = null, $fromPreventedMatchId = null, $isIsolated = null, $recvWindow = null): ApiResponse
     {
-        return $this->tradeApi->queryPreventedMatches($symbol, $preventedMatchId, $orderId, $fromPreventedMatchId, $recvWindow, $isIsolated);
+        return $this->tradeApi->queryPreventedMatches($symbol, $preventedMatchId, $orderId, $fromPreventedMatchId, $isIsolated, $recvWindow);
     }
 
     /**
      * Operation querySpecialKey.
      *
-     * Query Special key(Low Latency Trading)(TRADE)
+     * Query Special key(Low Latency Trading) (TRADE)
      *
-     * @param null|string $symbol     isolated margin pair (optional)
-     * @param null|int    $recvWindow No more than 60000 (optional)
+     * @param null|string $symbol     symbol (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QuerySpecialKeyResponse>
      *
@@ -1166,10 +1202,10 @@ class MarginTradingRestApi
     /**
      * Operation querySpecialKeyList.
      *
-     * Query Special key List(Low Latency Trading)(TRADE)
+     * Query Special key List(Low Latency Trading) (TRADE)
      *
-     * @param null|string $symbol     isolated margin pair (optional)
-     * @param null|int    $recvWindow No more than 60000 (optional)
+     * @param null|string $symbol     symbol (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QuerySpecialKeyListResponse>
      *
@@ -1201,14 +1237,14 @@ class MarginTradingRestApi
      *
      * Get Cross Margin Transfer History (USER_DATA)
      *
-     * @param null|string $asset          asset (optional)
-     * @param null|string $type           Transfer Type: ROLL_IN, ROLL_OUT (optional)
-     * @param null|int    $startTime      Only supports querying data from the past 90 days. (optional)
-     * @param null|int    $endTime        endTime (optional)
-     * @param null|int    $current        Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int    $size           Default:10 Max:100 (optional)
-     * @param null|string $isolatedSymbol isolated symbol (optional)
-     * @param null|int    $recvWindow     No more than 60000 (optional)
+     * @param null|string    $asset          asset (optional)
+     * @param null|OrderType $type           type (optional)
+     * @param null|int       $startTime      startTime (optional)
+     * @param null|int       $endTime        endTime (optional)
+     * @param null|int       $current        current (optional)
+     * @param null|int       $size           size (optional)
+     * @param null|string    $isolatedSymbol isolatedSymbol (optional)
+     * @param null|int       $recvWindow     recvWindow (optional)
      *
      * @return ApiResponse<GetCrossMarginTransferHistoryResponse>
      *
@@ -1226,8 +1262,8 @@ class MarginTradingRestApi
      * Query Max Transfer-Out Amount (USER_DATA)
      *
      * @param string      $asset          asset (required)
-     * @param null|string $isolatedSymbol isolated symbol (optional)
-     * @param null|int    $recvWindow     No more than 60000 (optional)
+     * @param null|string $isolatedSymbol isolatedSymbol (optional)
+     * @param null|int    $recvWindow     recvWindow (optional)
      *
      * @return ApiResponse<QueryMaxTransferOutAmountResponse>
      *
@@ -1237,5 +1273,48 @@ class MarginTradingRestApi
     public function queryMaxTransferOutAmount($asset, $isolatedSymbol = null, $recvWindow = null): ApiResponse
     {
         return $this->transferApi->queryMaxTransferOutAmount($asset, $isolatedSymbol, $recvWindow);
+    }
+
+    /**
+     * Operation closeUserDataStream.
+     *
+     * Close User Data Stream (USER_STREAM)
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function closeUserDataStream()
+    {
+        $this->userDataStreamApi->closeUserDataStream();
+    }
+
+    /**
+     * Operation keepaliveUserDataStream.
+     *
+     * Keepalive User Data Stream (USER_STREAM)
+     *
+     * @param KeepaliveUserDataStreamRequest $keepaliveUserDataStreamRequest keepaliveUserDataStreamRequest (required)
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function keepaliveUserDataStream($keepaliveUserDataStreamRequest)
+    {
+        $this->userDataStreamApi->keepaliveUserDataStream($keepaliveUserDataStreamRequest);
+    }
+
+    /**
+     * Operation startUserDataStream.
+     *
+     * Start User Data Stream (USER_STREAM)
+     *
+     * @return ApiResponse<StartUserDataStreamResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function startUserDataStream(): ApiResponse
+    {
+        return $this->userDataStreamApi->startUserDataStream();
     }
 }

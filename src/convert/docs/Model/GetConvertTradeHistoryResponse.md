@@ -1,4 +1,4 @@
-# # GetConvertTradeHistoryResponse
+# GetConvertTradeHistoryResponse
 
 ## Properties
 

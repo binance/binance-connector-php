@@ -1,20 +1,22 @@
 # Binance\Client\Staking\SolStakingApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**claimBoostRewards()**](SolStakingApi.md#claimBoostRewards) | **POST** /sapi/v1/sol-staking/sol/claim | Claim Boost Rewards(TRADE) |
-| [**getBnsolRateHistory()**](SolStakingApi.md#getBnsolRateHistory) | **GET** /sapi/v1/sol-staking/sol/history/rateHistory | Get BNSOL Rate History(USER_DATA) |
-| [**getBnsolRewardsHistory()**](SolStakingApi.md#getBnsolRewardsHistory) | **GET** /sapi/v1/sol-staking/sol/history/bnsolRewardsHistory | Get BNSOL rewards history(USER_DATA) |
-| [**getBoostRewardsHistory()**](SolStakingApi.md#getBoostRewardsHistory) | **GET** /sapi/v1/sol-staking/sol/history/boostRewardsHistory | Get Boost Rewards History(USER_DATA) |
-| [**getSolRedemptionHistory()**](SolStakingApi.md#getSolRedemptionHistory) | **GET** /sapi/v1/sol-staking/sol/history/redemptionHistory | Get SOL redemption history(USER_DATA) |
-| [**getSolStakingHistory()**](SolStakingApi.md#getSolStakingHistory) | **GET** /sapi/v1/sol-staking/sol/history/stakingHistory | Get SOL staking history(USER_DATA) |
-| [**getSolStakingQuotaDetails()**](SolStakingApi.md#getSolStakingQuotaDetails) | **GET** /sapi/v1/sol-staking/sol/quota | Get SOL staking quota details(USER_DATA) |
-| [**getUnclaimedRewards()**](SolStakingApi.md#getUnclaimedRewards) | **GET** /sapi/v1/sol-staking/sol/history/unclaimedRewards | Get Unclaimed Rewards(USER_DATA) |
-| [**redeemSol()**](SolStakingApi.md#redeemSol) | **POST** /sapi/v1/sol-staking/sol/redeem | Redeem SOL(TRADE) |
-| [**solStakingAccount()**](SolStakingApi.md#solStakingAccount) | **GET** /sapi/v1/sol-staking/account | SOL Staking account(USER_DATA) |
-| [**subscribeSolStaking()**](SolStakingApi.md#subscribeSolStaking) | **POST** /sapi/v1/sol-staking/sol/stake | Subscribe SOL Staking(TRADE) |
+| [**claimBoostRewards()**](SolStakingApi.md#claimBoostRewards) | **POST** /sapi/v1/sol-staking/sol/claim | Claim Boost Rewards (TRADE) |
+| [**getBnsolRateHistory()**](SolStakingApi.md#getBnsolRateHistory) | **GET** /sapi/v1/sol-staking/sol/history/rateHistory | Get BNSOL Rate History (USER_DATA) |
+| [**getBnsolRewardsHistory()**](SolStakingApi.md#getBnsolRewardsHistory) | **GET** /sapi/v1/sol-staking/sol/history/bnsolRewardsHistory | Get BNSOL rewards history (USER_DATA) |
+| [**getBoostRewardsHistory()**](SolStakingApi.md#getBoostRewardsHistory) | **GET** /sapi/v1/sol-staking/sol/history/boostRewardsHistory | Get Boost Rewards History (USER_DATA) |
+| [**getSolRedemptionHistory()**](SolStakingApi.md#getSolRedemptionHistory) | **GET** /sapi/v1/sol-staking/sol/history/redemptionHistory | Get SOL redemption history (USER_DATA) |
+| [**getSolStakingHistory()**](SolStakingApi.md#getSolStakingHistory) | **GET** /sapi/v1/sol-staking/sol/history/stakingHistory | Get SOL staking history (USER_DATA) |
+| [**getSolStakingQuotaDetails()**](SolStakingApi.md#getSolStakingQuotaDetails) | **GET** /sapi/v1/sol-staking/sol/quota | Get SOL staking quota details (USER_DATA) |
+| [**getUnclaimedRewards()**](SolStakingApi.md#getUnclaimedRewards) | **GET** /sapi/v1/sol-staking/sol/history/unclaimedRewards | Get Unclaimed Rewards (USER_DATA) |
+| [**redeemSol()**](SolStakingApi.md#redeemSol) | **POST** /sapi/v1/sol-staking/sol/redeem | Redeem SOL (TRADE) |
+| [**solStakingAccount()**](SolStakingApi.md#solStakingAccount) | **GET** /sapi/v1/sol-staking/account | SOL Staking account (USER_DATA) |
+| [**subscribeSolStaking()**](SolStakingApi.md#subscribeSolStaking) | **POST** /sapi/v1/sol-staking/sol/stake | Subscribe SOL Staking (TRADE) |
 
 
 ## `claimBoostRewards()`
@@ -23,9 +25,9 @@ All URIs are relative to https://api.binance.com, except if the operation define
 claimBoostRewards($claimBoostRewardsRequest): \Binance\Client\Staking\Model\ClaimBoostRewardsResponse
 ```
 
-Claim Boost Rewards(TRADE)
+Claim Boost Rewards (TRADE)
 
-Claim Boost APR Airdrop Rewards  * You need to open Enable Spot & Margin Trading permission for the API Key which requests this endpoint.  Weight: 150
+Claim Boost APR Airdrop Rewards  Weight(IP): 150  Security Type: TRADE  Notes: - You need to open Enable Spot & Margin Trading permission for the API Key which requests this endpoint.
 
 ### Example
 
@@ -54,7 +56,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **claimBoostRewardsRequest** | [**\Binance\Client\Staking\Model\ClaimBoostRewardsRequest**](../Model/ClaimBoostRewardsRequest.md)|  | |
+| **claimBoostRewardsRequest** | [**\Binance\Client\Staking\Model\ClaimBoostRewardsRequest**](../Model/ClaimBoostRewardsRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -79,9 +81,9 @@ No authorization required
 getBnsolRateHistory($startTime, $endTime, $current, $size, $recvWindow): \Binance\Client\Staking\Model\GetBnsolRateHistoryResponse
 ```
 
-Get BNSOL Rate History(USER_DATA)
+Get BNSOL Rate History (USER_DATA)
 
-Get BNSOL Rate History  * The time between `startTime` and `endTime` cannot be longer than 3 months. * If `startTime` and `endTime` are both not sent, then the last 30 days' data will be returned. * If `startTime` is sent but `endTime` is not sent, the next 30 days' data beginning from `startTime` will be returned. * If `endTime` is sent but `startTime` is not sent, the 30 days' data before `endTime` will be returned.  Weight: 150
+Get BNSOL Rate History  Weight(IP): 150  Security Type: USER_DATA  Notes: - The time between `startTime` and `endTime` cannot be longer than 3 months. - If `startTime` and `endTime`   are both not sent, then the last 30 days' data will be returned. - If `startTime` is sent but `endTime` is not   sent, the next 30 days' data beginning from `startTime` will be returned. - If `endTime` is sent but   `startTime` is not sent, the 30 days' data before `endTime` will be returned.
 
 ### Example
 
@@ -96,11 +98,11 @@ $apiInstance = new Binance\Client\Staking\Api\SolStakingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$startTime = 56; // int
-$endTime = 56; // int
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$current = 1; // int | Currently querying page
+$size = 10; // int
+$recvWindow = 5000; // int | The value cannot be greater than 60000
 
 try {
     $result = $apiInstance->getBnsolRateHistory($startTime, $endTime, $current, $size, $recvWindow);
@@ -116,9 +118,9 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page | [optional] |
+| **size** | **int**|  | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 | [optional] |
 
 ### Return type
 
@@ -143,9 +145,9 @@ No authorization required
 getBnsolRewardsHistory($startTime, $endTime, $current, $size, $recvWindow): \Binance\Client\Staking\Model\GetBnsolRewardsHistoryResponse
 ```
 
-Get BNSOL rewards history(USER_DATA)
+Get BNSOL rewards history (USER_DATA)
 
-Get BNSOL rewards history  * The time between `startTime` and `endTime` cannot be longer than 3 months. * If `startTime` and `endTime` are both not sent, then the last 30 days' data will be returned. * If `startTime` is sent but `endTime` is not sent, the next 30 days' data beginning from `startTime` will be returned. * If `endTime` is sent but `startTime` is not sent, the 30 days' data before `endTime` will be returned.  Weight: 150
+Get BNSOL rewards history  Weight(IP): 150  Security Type: USER_DATA  Notes: - The time between `startTime` and `endTime` cannot be longer than 3 months. - If `startTime` and `endTime`   are both not sent, then the last 30 days' data will be returned. - If `startTime` is sent but `endTime` is not   sent, the next 30 days' data beginning from `startTime` will be returned. - If `endTime` is sent but   `startTime` is not sent, the 30 days' data before `endTime` will be returned.
 
 ### Example
 
@@ -160,11 +162,11 @@ $apiInstance = new Binance\Client\Staking\Api\SolStakingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$startTime = 56; // int
-$endTime = 56; // int
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$current = 1; // int | Currently querying page
+$size = 10; // int
+$recvWindow = 5000; // int | Request validity window in milliseconds.
 
 try {
     $result = $apiInstance->getBnsolRewardsHistory($startTime, $endTime, $current, $size, $recvWindow);
@@ -180,9 +182,9 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page | [optional] |
+| **size** | **int**|  | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds. | [optional] |
 
 ### Return type
 
@@ -207,9 +209,9 @@ No authorization required
 getBoostRewardsHistory($type, $startTime, $endTime, $current, $size, $recvWindow): \Binance\Client\Staking\Model\GetBoostRewardsHistoryResponse
 ```
 
-Get Boost Rewards History(USER_DATA)
+Get Boost Rewards History (USER_DATA)
 
-Get Boost rewards history  * The time between `startTime` and `endTime` cannot be longer than 3 months. * If `startTime` and `endTime` are both not sent, then the last 30 days' data will be returned. * If `startTime` is sent but `endTime` is not sent, the next 30 days' data beginning from `startTime` will be returned. * If `endTime` is sent but `startTime` is not sent, the 30 days' data before `endTime` will be returned.  Weight: 150
+Get Boost rewards history  Weight(IP): 150  Security Type: USER_DATA  Notes: - The time between `startTime` and `endTime` cannot be longer than 3 months. - If `startTime` and `endTime`   are both not sent, then the last 30 days' data will be returned. - If `startTime` is sent but `endTime` is not   sent, the next 30 days' data beginning from `startTime` will be returned. - If `endTime` is sent but   `startTime` is not sent, the 30 days' data before `endTime` will be returned.
 
 ### Example
 
@@ -224,12 +226,12 @@ $apiInstance = new Binance\Client\Staking\Api\SolStakingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$type = 'type_example'; // string | \"CLAIM\", \"DISTRIBUTE\", default \"CLAIM\"
-$startTime = 56; // int
-$endTime = 56; // int
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$type = new \Binance\Client\Staking\Model\\Binance\Client\Staking\Model\OrderType(); // \Binance\Client\Staking\Model\OrderType
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$current = 1; // int | Currently querying page
+$size = 10; // int
+$recvWindow = 5000; // int | Request validity window in milliseconds.
 
 try {
     $result = $apiInstance->getBoostRewardsHistory($type, $startTime, $endTime, $current, $size, $recvWindow);
@@ -243,12 +245,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **type** | **string**| \&quot;CLAIM\&quot;, \&quot;DISTRIBUTE\&quot;, default \&quot;CLAIM\&quot; | |
+| **type** | [**\Binance\Client\Staking\Model\OrderType**](../Model/.md)|  | |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page | [optional] |
+| **size** | **int**|  | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds. | [optional] |
 
 ### Return type
 
@@ -270,12 +272,12 @@ No authorization required
 ## `getSolRedemptionHistory()`
 
 ```php
-getSolRedemptionHistory($startTime, $endTime, $current, $size, $recvWindow): \Binance\Client\Staking\Model\GetSolRedemptionHistoryResponse
+getSolRedemptionHistory($redeemId, $startTime, $endTime, $current, $size, $recvWindow): \Binance\Client\Staking\Model\GetSolRedemptionHistoryResponse
 ```
 
-Get SOL redemption history(USER_DATA)
+Get SOL redemption history (USER_DATA)
 
-Get SOL redemption history  * The time between `startTime` and `endTime` cannot be longer than 3 months. * If `startTime` and `endTime` are both not sent, then the last 30 days' data will be returned. * If `startTime` is sent but `endTime` is not sent, the next 30 days' data beginning from `startTime` will be returned. * If `endTime` is sent but `startTime` is not sent, the 30 days' data before `endTime` will be returned.  Weight: 150
+Get SOL redemption history  Weight(IP): 150  Security Type: USER_DATA  Notes: - The time between `startTime` and `endTime` cannot be longer than 3 months. - If `startTime` and `endTime`   are both not sent, then the last 30 days' data will be returned. - If `startTime` is sent but `endTime` is not   sent, the next 30 days' data beginning from `startTime` will be returned. - If `endTime` is sent but   `startTime` is not sent, the 30 days' data before `endTime` will be returned.
 
 ### Example
 
@@ -290,14 +292,15 @@ $apiInstance = new Binance\Client\Staking\Api\SolStakingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$startTime = 56; // int
-$endTime = 56; // int
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$redeemId = 1234567; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$current = 1; // int | Currently querying page
+$size = 10; // int
+$recvWindow = 5000; // int | Request validity window in milliseconds.
 
 try {
-    $result = $apiInstance->getSolRedemptionHistory($startTime, $endTime, $current, $size, $recvWindow);
+    $result = $apiInstance->getSolRedemptionHistory($redeemId, $startTime, $endTime, $current, $size, $recvWindow);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SolStakingApi->getSolRedemptionHistory: ', $e->getMessage(), PHP_EOL;
@@ -308,11 +311,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **redeemId** | **int**|  | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page | [optional] |
+| **size** | **int**|  | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds. | [optional] |
 
 ### Return type
 
@@ -334,12 +338,12 @@ No authorization required
 ## `getSolStakingHistory()`
 
 ```php
-getSolStakingHistory($startTime, $endTime, $current, $size, $recvWindow): \Binance\Client\Staking\Model\GetSolStakingHistoryResponse
+getSolStakingHistory($purchaseId, $startTime, $endTime, $current, $size, $recvWindow): \Binance\Client\Staking\Model\GetSolStakingHistoryResponse
 ```
 
-Get SOL staking history(USER_DATA)
+Get SOL staking history (USER_DATA)
 
-Get SOL staking history  * The time between `startTime` and `endTime` cannot be longer than 3 months. * If `startTime` and `endTime` are both not sent, then the last 30 days' data will be returned. * If `startTime` is sent but `endTime` is not sent, the next 30 days' data beginning from `startTime` will be returned. * If `endTime` is sent but `startTime` is not sent, the 30 days' data before `endTime` will be returned.  Weight: 150
+Get SOL staking history  Weight(IP): 150  Security Type: USER_DATA  Notes: - The time between `startTime` and `endTime` cannot be longer than 3 months. - If `startTime` and `endTime`   are both not sent, then the last 30 days' data will be returned. - If `startTime` is sent but `endTime` is not   sent, the next 30 days' data beginning from `startTime` will be returned. - If `endTime` is sent but   `startTime` is not sent, the 30 days' data before `endTime` will be returned.
 
 ### Example
 
@@ -354,14 +358,15 @@ $apiInstance = new Binance\Client\Staking\Api\SolStakingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$startTime = 56; // int
-$endTime = 56; // int
-$current = 56; // int | Currently querying page. Start from 1. Default:1
-$size = 56; // int | Default:10, Max:100
-$recvWindow = 56; // int
+$purchaseId = 1234567; // int
+$startTime = 1623319461670; // int
+$endTime = 1641782889000; // int
+$current = 1; // int | Currently querying page
+$size = 10; // int
+$recvWindow = 5000; // int | Request validity window in milliseconds.
 
 try {
-    $result = $apiInstance->getSolStakingHistory($startTime, $endTime, $current, $size, $recvWindow);
+    $result = $apiInstance->getSolStakingHistory($purchaseId, $startTime, $endTime, $current, $size, $recvWindow);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SolStakingApi->getSolStakingHistory: ', $e->getMessage(), PHP_EOL;
@@ -372,11 +377,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **purchaseId** | **int**|  | [optional] |
 | **startTime** | **int**|  | [optional] |
 | **endTime** | **int**|  | [optional] |
-| **current** | **int**| Currently querying page. Start from 1. Default:1 | [optional] |
-| **size** | **int**| Default:10, Max:100 | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **current** | **int**| Currently querying page | [optional] |
+| **size** | **int**|  | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds. | [optional] |
 
 ### Return type
 
@@ -401,9 +407,9 @@ No authorization required
 getSolStakingQuotaDetails($recvWindow): \Binance\Client\Staking\Model\GetSolStakingQuotaDetailsResponse
 ```
 
-Get SOL staking quota details(USER_DATA)
+Get SOL staking quota details (USER_DATA)
 
-Get SOL staking quota  Weight: 150
+Get SOL staking quota  Weight(IP): 150  Security Type: USER_DATA
 
 ### Example
 
@@ -418,7 +424,7 @@ $apiInstance = new Binance\Client\Staking\Api\SolStakingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int | The value cannot be greater than 60000
 
 try {
     $result = $apiInstance->getSolStakingQuotaDetails($recvWindow);
@@ -432,7 +438,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 | [optional] |
 
 ### Return type
 
@@ -457,9 +463,9 @@ No authorization required
 getUnclaimedRewards($recvWindow): \Binance\Client\Staking\Model\GetUnclaimedRewardsResponse
 ```
 
-Get Unclaimed Rewards(USER_DATA)
+Get Unclaimed Rewards (USER_DATA)
 
-Get Unclaimed rewards  * The time between `startTime` and `endTime` cannot be longer than 3 months. * If `startTime` and `endTime` are both not sent, then the last 30 days' data will be returned. * If `startTime` is sent but `endTime` is not sent, the next 30 days' data beginning from `startTime` will be returned. * If `endTime` is sent but `startTime` is not sent, the 30 days' data before `endTime` will be returned.  Weight: 150
+Get Unclaimed rewards  Weight(IP): 150  Security Type: USER_DATA  Notes: - The time between `startTime` and `endTime` cannot be longer than 3 months. - If `startTime` and `endTime`   are both not sent, then the last 30 days' data will be returned. - If `startTime` is sent but `endTime` is not   sent, the next 30 days' data beginning from `startTime` will be returned. - If `endTime` is sent but   `startTime` is not sent, the 30 days' data before `endTime` will be returned.
 
 ### Example
 
@@ -474,7 +480,7 @@ $apiInstance = new Binance\Client\Staking\Api\SolStakingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int | Request validity window in milliseconds.
 
 try {
     $result = $apiInstance->getUnclaimedRewards($recvWindow);
@@ -488,7 +494,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds. | [optional] |
 
 ### Return type
 
@@ -513,9 +519,9 @@ No authorization required
 redeemSol($redeemSolRequest): \Binance\Client\Staking\Model\RedeemSolResponse
 ```
 
-Redeem SOL(TRADE)
+Redeem SOL (TRADE)
 
-Redeem BNSOL get SOL  * You need to open Enable Spot & Margin Trading permission for the API Key which requests this endpoint.  Weight: 150
+Redeem BNSOL get SOL  Weight(IP): 150  Security Type: TRADE  Notes: - You need to open Enable Spot & Margin Trading permission for the API Key which requests this endpoint.
 
 ### Example
 
@@ -569,9 +575,9 @@ No authorization required
 solStakingAccount($recvWindow): \Binance\Client\Staking\Model\SolStakingAccountResponse
 ```
 
-SOL Staking account(USER_DATA)
+SOL Staking account (USER_DATA)
 
-SOL Staking account  Weight: 150
+SOL Staking account  Weight(IP): 150  Security Type: USER_DATA
 
 ### Example
 
@@ -586,7 +592,7 @@ $apiInstance = new Binance\Client\Staking\Api\SolStakingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int | The value cannot be greater than 60000
 
 try {
     $result = $apiInstance->solStakingAccount($recvWindow);
@@ -600,7 +606,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| The value cannot be greater than 60000 | [optional] |
 
 ### Return type
 
@@ -625,9 +631,9 @@ No authorization required
 subscribeSolStaking($subscribeSolStakingRequest): \Binance\Client\Staking\Model\SubscribeSolStakingResponse
 ```
 
-Subscribe SOL Staking(TRADE)
+Subscribe SOL Staking (TRADE)
 
-Subscribe SOL Staking  * You need to open Enable Spot & Margin Trading permission for the API Key which requests this endpoint.  Weight: 150
+Subscribe SOL Staking  Weight(IP): 150  Security Type: TRADE  Notes: - You need to open Enable Spot & Margin Trading permission for the API Key which requests this endpoint.
 
 ### Example
 

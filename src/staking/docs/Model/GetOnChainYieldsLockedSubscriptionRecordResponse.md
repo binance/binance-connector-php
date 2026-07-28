@@ -1,4 +1,4 @@
-# # GetOnChainYieldsLockedSubscriptionRecordResponse
+# GetOnChainYieldsLockedSubscriptionRecordResponse
 
 ## Properties
 

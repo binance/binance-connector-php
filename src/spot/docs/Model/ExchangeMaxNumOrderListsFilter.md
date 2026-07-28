@@ -1,4 +1,4 @@
-# # ExchangeMaxNumOrderListsFilter
+# ExchangeMaxNumOrderListsFilter
 
 ## Properties
 

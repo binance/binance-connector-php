@@ -1,4 +1,4 @@
-# # FlexibleLoanBorrowResponse
+# FlexibleLoanBorrowResponse
 
 ## Properties
 

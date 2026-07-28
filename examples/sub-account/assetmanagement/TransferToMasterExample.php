@@ -12,7 +12,7 @@ function transferToMasterExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
     $transferToMasterRequest = new TransferToMasterRequest();
-    $transferToMasterRequest->setAsset('');
+    $transferToMasterRequest->setAsset('BTC');
     $transferToMasterRequest->setAmount(1.0);
     $response = $api->transferToMaster($transferToMasterRequest);
     print_r($response);

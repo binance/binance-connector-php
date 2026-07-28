@@ -10,11 +10,11 @@ function withdrawHistoryExample()
     $configurationBuilder = WalletRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
-    $coin = '';
+    $coin = 'BTC';
     $withdrawOrderId = '1';
-    $status = null;
+    $status = 0;
     $offset = 0;
-    $limit = 7;
+    $limit = 1000;
     $idList = '';
     $startTime = 1623319461670;
     $endTime = 1641782889000;

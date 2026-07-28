@@ -12,7 +12,7 @@ function createAVirtualSubAccountExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
     $createAVirtualSubAccountRequest = new CreateAVirtualSubAccountRequest();
-    $createAVirtualSubAccountRequest->setSubAccountString('');
+    $createAVirtualSubAccountRequest->setSubAccountString('testSubAccount');
     $response = $api->createAVirtualSubAccount($createAVirtualSubAccountRequest);
     print_r($response);
 }

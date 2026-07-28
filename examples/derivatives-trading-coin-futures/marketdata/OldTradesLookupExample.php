@@ -10,8 +10,8 @@ function oldTradesLookupExample()
     $configurationBuilder = DerivativesTradingCoinFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
     $symbol = '';
-    $limit = 100;
-    $fromId = 1;
+    $limit = 30;
+    $fromId = 595103;
     $response = $api->oldTradesLookup($symbol, $limit, $fromId);
     print_r($response);
 }

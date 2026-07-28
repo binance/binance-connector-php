@@ -10,7 +10,7 @@ function fetchDepositAddressListWithNetworkExample()
     $configurationBuilder = WalletRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
-    $coin = '';
+    $coin = 'BTC';
     $network = '';
     $response = $api->fetchDepositAddressListWithNetwork($coin, $network);
     print_r($response);

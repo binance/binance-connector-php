@@ -1,4 +1,4 @@
-# # CurrentAllAlgoOpenOrdersResponseInner
+# CurrentAllAlgoOpenOrdersResponseInner
 
 ## Properties
 

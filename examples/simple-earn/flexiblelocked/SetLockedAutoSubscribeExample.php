@@ -13,7 +13,7 @@ function setLockedAutoSubscribeExample()
     $api = new SimpleEarnRestApi($configurationBuilder->build());
     $setLockedAutoSubscribeRequest = new SetLockedAutoSubscribeRequest();
     $setLockedAutoSubscribeRequest->setPositionId('1');
-    $setLockedAutoSubscribeRequest->setAutoSubscribe(false);
+    $setLockedAutoSubscribeRequest->setAutoSubscribe(true);
     $response = $api->setLockedAutoSubscribe($setLockedAutoSubscribeRequest);
     print_r($response);
 }

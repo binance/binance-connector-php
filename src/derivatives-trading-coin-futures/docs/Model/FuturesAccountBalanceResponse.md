@@ -1,4 +1,4 @@
-# # FuturesAccountBalanceResponse
+# FuturesAccountBalanceResponse
 
 ## Properties
 

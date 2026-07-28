@@ -13,7 +13,7 @@ function vipLoanRenewExample()
     $api = new VipLoanRestApi($configurationBuilder->build());
     $vipLoanRenewRequest = new VipLoanRenewRequest();
     $vipLoanRenewRequest->setOrderId(1);
-    $vipLoanRenewRequest->setLoanTerm(null);
+    $vipLoanRenewRequest->setLoanTerm(30);
     $response = $api->vipLoanRenew($vipLoanRenewRequest);
     print_r($response);
 }

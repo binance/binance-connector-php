@@ -10,7 +10,7 @@ function getTradesExample()
     $configurationBuilder = SpotRestApiUtil::getConfigurationBuilder();
     $api = new SpotRestApi($configurationBuilder->build());
     $symbol = 'BNBUSDT';
-    $limit = 500;
+    $limit = 1;
     $response = $api->getTrades($symbol, $limit);
     print_r($response);
 }

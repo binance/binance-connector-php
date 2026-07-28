@@ -1,4 +1,4 @@
-# # FetchWithdrawAddressListResponseInner
+# FetchWithdrawAddressListResponseInner
 
 ## Properties
 

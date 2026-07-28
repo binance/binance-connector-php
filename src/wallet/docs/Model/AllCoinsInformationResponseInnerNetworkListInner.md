@@ -1,4 +1,4 @@
-# # AllCoinsInformationResponseInnerNetworkListInner
+# AllCoinsInformationResponseInnerNetworkListInner
 
 ## Properties
 

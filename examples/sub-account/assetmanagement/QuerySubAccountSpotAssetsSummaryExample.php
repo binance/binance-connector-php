@@ -10,7 +10,7 @@ function querySubAccountSpotAssetsSummaryExample()
     $configurationBuilder = SubAccountRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SubAccountRestApi($configurationBuilder->build());
-    $email = '';
+    $email = '123@test.com';
     $page = 1;
     $size = 10;
     $recvWindow = 5000;

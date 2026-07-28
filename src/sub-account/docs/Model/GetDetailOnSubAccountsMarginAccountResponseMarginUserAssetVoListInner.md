@@ -1,4 +1,4 @@
-# # GetDetailOnSubAccountsMarginAccountResponseMarginUserAssetVoListInner
+# GetDetailOnSubAccountsMarginAccountResponseMarginUserAssetVoListInner
 
 ## Properties
 

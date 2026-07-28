@@ -1,26 +1,26 @@
-# # QueryUsersCmForceOrdersResponseInner
+# QueryUsersCmForceOrdersResponseInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orderId** | **int** |  | [optional]
-**symbol** | **string** |  | [optional]
-**pair** | **string** |  | [optional]
-**status** | **string** |  | [optional]
-**clientOrderId** | **string** |  | [optional]
-**price** | **string** |  | [optional]
-**avgPrice** | **string** |  | [optional]
-**origQty** | **string** |  | [optional]
-**executedQty** | **string** |  | [optional]
-**cumBase** | **string** |  | [optional]
-**timeInForce** | **string** |  | [optional]
-**type** | **string** |  | [optional]
-**reduceOnly** | **bool** |  | [optional]
-**side** | **string** |  | [optional]
-**positionSide** | **string** |  | [optional]
-**origType** | **string** |  | [optional]
-**time** | **int** |  | [optional]
-**updateTime** | **int** |  | [optional]
+**orderId** | **int** | Normal orderID after trigger if appliable, only have when the strategy is triggered | [optional]
+**symbol** | **string** | Trade symbol, if existing. | [optional]
+**pair** | **string** | Pair. | [optional]
+**status** | **string** | Enum：completed，processing | [optional]
+**clientOrderId** | **string** | Client Order ID. | [optional]
+**price** | **string** | Price. | [optional]
+**avgPrice** | **string** | Avg Price. | [optional]
+**origQty** | **string** | Orig Qty. | [optional]
+**executedQty** | **string** | Executed Qty. | [optional]
+**cumBase** | **string** | Cum Base. | [optional]
+**timeInForce** | **string** | Time In Force. | [optional]
+**type** | **string** | Normal order type after trigger if appliable | [optional]
+**reduceOnly** | **bool** | Reduce Only. | [optional]
+**side** | **string** | Side. | [optional]
+**positionSide** | **string** | BOTH means that it is the position of One-way Mode | [optional]
+**origType** | **string** | Orig Type. | [optional]
+**time** | **int** | Event time. | [optional]
+**updateTime** | **int** | last update time | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

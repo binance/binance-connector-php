@@ -1,4 +1,4 @@
-# # PositionSide
+# PositionSide
 
 ## Properties
 

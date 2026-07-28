@@ -1,4 +1,4 @@
-# # UserAssetResponse
+# UserAssetResponse
 
 ## Properties
 

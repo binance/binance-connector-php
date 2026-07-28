@@ -10,7 +10,7 @@ function getPortfolioMarginProAccountBalanceExample()
     $configurationBuilder = DerivativesTradingPortfolioMarginProRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginProRestApi($configurationBuilder->build());
-    $asset = '';
+    $asset = 'BTC';
     $recvWindow = 5000;
     $response = $api->getPortfolioMarginProAccountBalance($asset, $recvWindow);
     print_r($response);

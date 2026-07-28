@@ -3,7 +3,6 @@
 namespace Binance\Client\CryptoLoan\Api;
 
 use Binance\Client\CryptoLoan\Model\CheckCollateralRepayRateResponse;
-use Binance\Client\CryptoLoan\Model\CheckCollateralRepayRateStableRateResponse;
 use Binance\Client\CryptoLoan\Model\FlexibleLoanAdjustLtvRequest;
 use Binance\Client\CryptoLoan\Model\FlexibleLoanAdjustLtvResponse;
 use Binance\Client\CryptoLoan\Model\FlexibleLoanBorrowRequest;
@@ -22,6 +21,7 @@ use Binance\Client\CryptoLoan\Model\GetFlexibleLoanRepaymentHistoryResponse;
 use Binance\Client\CryptoLoan\Model\GetLoanBorrowHistoryResponse;
 use Binance\Client\CryptoLoan\Model\GetLoanLtvAdjustmentHistoryResponse;
 use Binance\Client\CryptoLoan\Model\GetLoanRepaymentHistoryResponse;
+use Binance\Client\CryptoLoan\Model\OrderType;
 use Binance\Common\ApiException;
 use Binance\Common\Configuration\ClientConfiguration;
 use Binance\Common\Dtos\ApiResponse;
@@ -48,11 +48,11 @@ class CryptoLoanRestApi
     /**
      * Operation checkCollateralRepayRate.
      *
-     * Check Collateral Repay Rate (USER_DATA)
+     * Check Collateral Flexible Repay Rate (USER_DATA)
      *
      * @param string   $loanCoin       loanCoin (required)
      * @param string   $collateralCoin collateralCoin (required)
-     * @param null|int $recvWindow     recvWindow (optional)
+     * @param null|int $recvWindow     Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<CheckCollateralRepayRateResponse>
      *
@@ -67,7 +67,7 @@ class CryptoLoanRestApi
     /**
      * Operation flexibleLoanAdjustLtv.
      *
-     * Flexible Loan Adjust LTV(TRADE)
+     * Flexible Loan Adjust LTV (TRADE)
      *
      * @param FlexibleLoanAdjustLtvRequest $flexibleLoanAdjustLtvRequest flexibleLoanAdjustLtvRequest (required)
      *
@@ -84,7 +84,7 @@ class CryptoLoanRestApi
     /**
      * Operation flexibleLoanBorrow.
      *
-     * Flexible Loan Borrow(TRADE)
+     * Flexible Loan Borrow (TRADE)
      *
      * @param FlexibleLoanBorrowRequest $flexibleLoanBorrowRequest flexibleLoanBorrowRequest (required)
      *
@@ -101,7 +101,7 @@ class CryptoLoanRestApi
     /**
      * Operation flexibleLoanRepay.
      *
-     * Flexible Loan Repay(TRADE)
+     * Flexible Loan Repay (TRADE)
      *
      * @param FlexibleLoanRepayRequest $flexibleLoanRepayRequest flexibleLoanRepayRequest (required)
      *
@@ -118,10 +118,10 @@ class CryptoLoanRestApi
     /**
      * Operation getFlexibleLoanAssetsData.
      *
-     * Get Flexible Loan Assets Data(USER_DATA)
+     * Get Flexible Loan Assets Data (USER_DATA)
      *
      * @param null|string $loanCoin   loanCoin (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|int    $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetFlexibleLoanAssetsDataResponse>
      *
@@ -136,15 +136,15 @@ class CryptoLoanRestApi
     /**
      * Operation getFlexibleLoanBorrowHistory.
      *
-     * Get Flexible Loan Borrow History(USER_DATA)
+     * Get Flexible Loan Borrow History (USER_DATA)
      *
      * @param null|string $loanCoin       loanCoin (optional)
      * @param null|string $collateralCoin collateralCoin (optional)
      * @param null|int    $startTime      startTime (optional)
      * @param null|int    $endTime        endTime (optional)
-     * @param null|int    $current        Current querying page. Start from 1; default: 1; max: 1000 (optional)
-     * @param null|int    $limit          Default: 10; max: 100 (optional)
-     * @param null|int    $recvWindow     recvWindow (optional)
+     * @param null|int    $current        Current querying page (optional)
+     * @param null|int    $limit          Number of records to return (optional)
+     * @param null|int    $recvWindow     Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetFlexibleLoanBorrowHistoryResponse>
      *
@@ -159,10 +159,10 @@ class CryptoLoanRestApi
     /**
      * Operation getFlexibleLoanCollateralAssetsData.
      *
-     * Get Flexible Loan Collateral Assets Data(USER_DATA)
+     * Get Flexible Loan Collateral Assets Data (USER_DATA)
      *
      * @param null|string $collateralCoin collateralCoin (optional)
-     * @param null|int    $recvWindow     recvWindow (optional)
+     * @param null|int    $recvWindow     Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetFlexibleLoanCollateralAssetsDataResponse>
      *
@@ -180,11 +180,11 @@ class CryptoLoanRestApi
      * Get Flexible Loan Interest Rate History (USER_DATA)
      *
      * @param string   $coin       coin (required)
-     * @param int      $recvWindow recvWindow (required)
+     * @param int      $recvWindow Request validity window in milliseconds (required)
      * @param null|int $startTime  startTime (optional)
      * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Current querying page. Start from 1; default: 1; max: 1000 (optional)
-     * @param null|int $limit      Default: 10; max: 100 (optional)
+     * @param null|int $current    Current querying page (optional)
+     * @param null|int $limit      Number of records to return (optional)
      *
      * @return ApiResponse<GetFlexibleLoanInterestRateHistoryResponse>
      *
@@ -205,9 +205,9 @@ class CryptoLoanRestApi
      * @param null|string $collateralCoin collateralCoin (optional)
      * @param null|int    $startTime      startTime (optional)
      * @param null|int    $endTime        endTime (optional)
-     * @param null|int    $current        Current querying page. Start from 1; default: 1; max: 1000 (optional)
-     * @param null|int    $limit          Default: 10; max: 100 (optional)
-     * @param null|int    $recvWindow     recvWindow (optional)
+     * @param null|int    $current        Current querying page (optional)
+     * @param null|int    $limit          Number of records to return (optional)
+     * @param null|int    $recvWindow     Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetFlexibleLoanLiquidationHistoryResponse>
      *
@@ -222,15 +222,15 @@ class CryptoLoanRestApi
     /**
      * Operation getFlexibleLoanLtvAdjustmentHistory.
      *
-     * Get Flexible Loan LTV Adjustment History(USER_DATA)
+     * Get Flexible Loan LTV Adjustment History (USER_DATA)
      *
      * @param null|string $loanCoin       loanCoin (optional)
      * @param null|string $collateralCoin collateralCoin (optional)
      * @param null|int    $startTime      startTime (optional)
      * @param null|int    $endTime        endTime (optional)
-     * @param null|int    $current        Current querying page. Start from 1; default: 1; max: 1000 (optional)
-     * @param null|int    $limit          Default: 10; max: 100 (optional)
-     * @param null|int    $recvWindow     recvWindow (optional)
+     * @param null|int    $current        Current querying page (optional)
+     * @param null|int    $limit          Number of records to return (optional)
+     * @param null|int    $recvWindow     Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetFlexibleLoanLtvAdjustmentHistoryResponse>
      *
@@ -245,13 +245,13 @@ class CryptoLoanRestApi
     /**
      * Operation getFlexibleLoanOngoingOrders.
      *
-     * Get Flexible Loan Ongoing Orders(USER_DATA)
+     * Get Flexible Loan Ongoing Orders (USER_DATA)
      *
      * @param null|string $loanCoin       loanCoin (optional)
      * @param null|string $collateralCoin collateralCoin (optional)
-     * @param null|int    $current        Current querying page. Start from 1; default: 1; max: 1000 (optional)
-     * @param null|int    $limit          Default: 10; max: 100 (optional)
-     * @param null|int    $recvWindow     recvWindow (optional)
+     * @param null|int    $current        Current querying page (optional)
+     * @param null|int    $limit          Number of records to return (optional)
+     * @param null|int    $recvWindow     Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetFlexibleLoanOngoingOrdersResponse>
      *
@@ -266,15 +266,15 @@ class CryptoLoanRestApi
     /**
      * Operation getFlexibleLoanRepaymentHistory.
      *
-     * Get Flexible Loan Repayment History(USER_DATA)
+     * Get Flexible Loan Repayment History (USER_DATA)
      *
      * @param null|string $loanCoin       loanCoin (optional)
      * @param null|string $collateralCoin collateralCoin (optional)
      * @param null|int    $startTime      startTime (optional)
      * @param null|int    $endTime        endTime (optional)
-     * @param null|int    $current        Current querying page. Start from 1; default: 1; max: 1000 (optional)
-     * @param null|int    $limit          Default: 10; max: 100 (optional)
-     * @param null|int    $recvWindow     recvWindow (optional)
+     * @param null|int    $current        Current querying page (optional)
+     * @param null|int    $limit          Number of records to return (optional)
+     * @param null|int    $recvWindow     Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetFlexibleLoanRepaymentHistoryResponse>
      *
@@ -287,36 +287,16 @@ class CryptoLoanRestApi
     }
 
     /**
-     * Operation checkCollateralRepayRateStableRate.
-     *
-     * Check Collateral Repay Rate(USER_DATA)
-     *
-     * @param string   $loanCoin       loanCoin (required)
-     * @param string   $collateralCoin collateralCoin (required)
-     * @param float    $repayAmount    repay amount of loanCoin (required)
-     * @param null|int $recvWindow     recvWindow (optional)
-     *
-     * @return ApiResponse<CheckCollateralRepayRateStableRateResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function checkCollateralRepayRateStableRate($loanCoin, $collateralCoin, $repayAmount, $recvWindow = null): ApiResponse
-    {
-        return $this->stableRateApi->checkCollateralRepayRateStableRate($loanCoin, $collateralCoin, $repayAmount, $recvWindow);
-    }
-
-    /**
      * Operation getCryptoLoansIncomeHistory.
      *
-     * Get Crypto Loans Income History(USER_DATA)
+     * Get Crypto Loans Income History (USER_DATA)
      *
-     * @param null|string $asset      asset (optional)
-     * @param null|string $type       All types will be returned by default. Enum：&#x60;borrowIn&#x60; ,&#x60;collateralSpent&#x60;, &#x60;repayAmount&#x60;, &#x60;collateralReturn&#x60;(Collateral return after repayment), &#x60;addCollateral&#x60;, &#x60;removeCollateral&#x60;, &#x60;collateralReturnAfterLiquidation&#x60; (optional)
-     * @param null|int    $startTime  startTime (optional)
-     * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $limit      Default: 10; max: 100 (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|string    $asset      asset (optional)
+     * @param null|OrderType $type       All types will be returned by default. (optional)
+     * @param null|int       $startTime  startTime (optional)
+     * @param null|int       $endTime    endTime (optional)
+     * @param null|int       $limit      Number of records to return (optional)
+     * @param null|int       $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetCryptoLoansIncomeHistoryResponse>
      *
@@ -331,16 +311,16 @@ class CryptoLoanRestApi
     /**
      * Operation getLoanBorrowHistory.
      *
-     * Get Loan Borrow History(USER_DATA)
+     * Get Loan Borrow History (USER_DATA)
      *
      * @param null|int    $orderId        orderId in &#x60;POST /sapi/v1/loan/borrow&#x60; (optional)
      * @param null|string $loanCoin       loanCoin (optional)
      * @param null|string $collateralCoin collateralCoin (optional)
      * @param null|int    $startTime      startTime (optional)
      * @param null|int    $endTime        endTime (optional)
-     * @param null|int    $current        Current querying page. Start from 1; default: 1; max: 1000 (optional)
-     * @param null|int    $limit          Default: 10; max: 100 (optional)
-     * @param null|int    $recvWindow     recvWindow (optional)
+     * @param null|int    $current        Current querying page (optional)
+     * @param null|int    $limit          Number of records to return (optional)
+     * @param null|int    $recvWindow     Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetLoanBorrowHistoryResponse>
      *
@@ -355,16 +335,16 @@ class CryptoLoanRestApi
     /**
      * Operation getLoanLtvAdjustmentHistory.
      *
-     * Get Loan LTV Adjustment History(USER_DATA)
+     * Get Loan LTV Adjustment History (USER_DATA)
      *
      * @param null|int    $orderId        orderId in &#x60;POST /sapi/v1/loan/borrow&#x60; (optional)
      * @param null|string $loanCoin       loanCoin (optional)
      * @param null|string $collateralCoin collateralCoin (optional)
      * @param null|int    $startTime      startTime (optional)
      * @param null|int    $endTime        endTime (optional)
-     * @param null|int    $current        Current querying page. Start from 1; default: 1; max: 1000 (optional)
-     * @param null|int    $limit          Default: 10; max: 100 (optional)
-     * @param null|int    $recvWindow     recvWindow (optional)
+     * @param null|int    $current        Current querying page (optional)
+     * @param null|int    $limit          Number of records to return (optional)
+     * @param null|int    $recvWindow     Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetLoanLtvAdjustmentHistoryResponse>
      *
@@ -379,16 +359,16 @@ class CryptoLoanRestApi
     /**
      * Operation getLoanRepaymentHistory.
      *
-     * Get Loan Repayment History(USER_DATA)
+     * Get Loan Repayment History (USER_DATA)
      *
      * @param null|int    $orderId        orderId in &#x60;POST /sapi/v1/loan/borrow&#x60; (optional)
      * @param null|string $loanCoin       loanCoin (optional)
      * @param null|string $collateralCoin collateralCoin (optional)
      * @param null|int    $startTime      startTime (optional)
      * @param null|int    $endTime        endTime (optional)
-     * @param null|int    $current        Current querying page. Start from 1; default: 1; max: 1000 (optional)
-     * @param null|int    $limit          Default: 10; max: 100 (optional)
-     * @param null|int    $recvWindow     recvWindow (optional)
+     * @param null|int    $current        Current querying page (optional)
+     * @param null|int    $limit          Number of records to return (optional)
+     * @param null|int    $recvWindow     Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetLoanRepaymentHistoryResponse>
      *

@@ -1,4 +1,4 @@
-# # QueryOrderQuantityPrecisionPerAssetResponseInner
+# QueryOrderQuantityPrecisionPerAssetResponseInner
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetWbethRewardsHistoryResponse
+# GetWbethRewardsHistoryResponse
 
 ## Properties
 

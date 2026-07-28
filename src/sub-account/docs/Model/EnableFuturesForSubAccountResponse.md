@@ -1,4 +1,4 @@
-# # EnableFuturesForSubAccountResponse
+# EnableFuturesForSubAccountResponse
 
 ## Properties
 

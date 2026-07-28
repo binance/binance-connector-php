@@ -1,4 +1,4 @@
-# # GetDualInvestmentPositionsResponse
+# GetDualInvestmentPositionsResponse
 
 ## Properties
 

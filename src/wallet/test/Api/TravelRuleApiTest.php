@@ -112,11 +112,11 @@ class TravelRuleApiTest extends TestCase
         $brokerWithdrawRequest->setWithdrawOrderId('1');
         $brokerWithdrawRequest->setQuestionnaire('');
         $brokerWithdrawRequest->setOriginatorPii('');
-        $brokerWithdrawRequest->setSignature('');
 
         $response = $this->getApiMock($request)->brokerWithdraw($brokerWithdrawRequest);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/localentity/broker/withdraw/apply', $request->getUri()->getPath());
@@ -134,6 +134,7 @@ class TravelRuleApiTest extends TestCase
         $response = $this->getApiMock($request)->checkQuestionnaireRequirements($recvWindow);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/localentity/questionnaire-requirements', $request->getUri()->getPath());
@@ -162,6 +163,7 @@ class TravelRuleApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/localentity/deposit/history', $request->getUri()->getPath());
         self::assertEquals('c8d3902b485951a73d5ec58900ec1d4678f0a8bae1f9c111c61e080a825a5cf0', $queryMap['signature']);
@@ -187,6 +189,7 @@ class TravelRuleApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v2/localentity/deposit/history', $request->getUri()->getPath());
         self::assertEquals('1c4d7aa79c3265cee0dd986f32c4e66e0e19193b53c32d6cc883929ef48055b2', $queryMap['signature']);
@@ -204,9 +207,45 @@ class TravelRuleApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/addressVerify/list', $request->getUri()->getPath());
         self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for getCountryList.
+     *
+     * Get Country List (USER_DATA).
+     */
+    public function testGetCountryList()
+    {
+        $response = $this->getApiMock($request)->getCountryList();
+
+        parse_str($request->getUri(), $queryMap);
+
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/sapi/v1/localentity/country/list', $request->getUri()->getPath());
+        self::assertEquals('53668e00dc92eb93de0b253c301e9fc0c20042b13db384a0ad94b38688a5a84c', $queryMap['signature']);
+    }
+
+    /**
+     * Test case for getRegionList.
+     *
+     * Get Region List (USER_DATA).
+     */
+    public function testGetRegionList()
+    {
+        $countryCode = '';
+        $response = $this->getApiMock($request)->getRegionList($countryCode);
+
+        parse_str($request->getUri(), $queryMap);
+
+
+        self::assertEquals(200, $response->getStatusCode());
+        self::assertEquals('/sapi/v1/localentity/region/list', $request->getUri()->getPath());
+        self::assertEquals('ee63d646bf33d64ffe85698548821d670a6e938b535ce9a1cb1220c2ac25ad9f', $queryMap['signature']);
     }
 
     /**
@@ -221,11 +260,11 @@ class TravelRuleApiTest extends TestCase
         $submitDepositQuestionnaireRequest->setDepositId(1);
         $submitDepositQuestionnaireRequest->setQuestionnaire('');
         $submitDepositQuestionnaireRequest->setBeneficiaryPii('');
-        $submitDepositQuestionnaireRequest->setSignature('');
 
         $response = $this->getApiMock($request)->submitDepositQuestionnaire($submitDepositQuestionnaireRequest);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/localentity/broker/deposit/provide-info', $request->getUri()->getPath());
@@ -247,6 +286,7 @@ class TravelRuleApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/localentity/deposit/provide-info', $request->getUri()->getPath());
         self::assertEquals('9e2879ef1f6acbc94112cf07e1b20e19c20feb58efaa07eb8f91b2b917dfb74a', $queryMap['signature']);
@@ -267,6 +307,7 @@ class TravelRuleApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v2/localentity/deposit/provide-info', $request->getUri()->getPath());
         self::assertEquals('0740dd9c29b45a12194c82ead461fc0551e7fd665e2c44f01b15eef46708e287', $queryMap['signature']);
@@ -283,6 +324,7 @@ class TravelRuleApiTest extends TestCase
         $response = $this->getApiMock($request)->vaspList($recvWindow);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/localentity/vasp', $request->getUri()->getPath());
@@ -311,6 +353,7 @@ class TravelRuleApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/localentity/withdraw/history', $request->getUri()->getPath());
         self::assertEquals('81b84b0e71f20e1d4129775b0cf3d37dc9cf4c0587ae05d69d7ed34e0d4e2ea7', $queryMap['signature']);
@@ -338,6 +381,7 @@ class TravelRuleApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v2/localentity/withdraw/history', $request->getUri()->getPath());
         self::assertEquals('81b84b0e71f20e1d4129775b0cf3d37dc9cf4c0587ae05d69d7ed34e0d4e2ea7', $queryMap['signature']);
@@ -359,6 +403,7 @@ class TravelRuleApiTest extends TestCase
         $response = $this->getApiMock($request)->withdrawTravelRule($withdrawTravelRuleRequest);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/localentity/withdraw/apply', $request->getUri()->getPath());

@@ -12,7 +12,7 @@ function autoCancelAllOpenOrdersExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingOptionsRestApi($configurationBuilder->build());
     $autoCancelAllOpenOrdersRequest = new AutoCancelAllOpenOrdersRequest();
-    $autoCancelAllOpenOrdersRequest->setUnderlyings('');
+    $autoCancelAllOpenOrdersRequest->setUnderlyings('BTCUSDT,ETHUSDT');
     $response = $api->autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest);
     print_r($response);
 }

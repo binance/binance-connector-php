@@ -1,4 +1,4 @@
-# # AccountBalanceResponse1
+# AccountBalanceResponse1
 
 ## Properties
 

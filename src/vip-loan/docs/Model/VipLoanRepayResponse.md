@@ -1,4 +1,4 @@
-# # VipLoanRepayResponse
+# VipLoanRepayResponse
 
 ## Properties
 
@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **remainingInterest** | **string** |  | [optional]
 **collateralCoin** | **string** |  | [optional]
 **currentLTV** | **string** |  | [optional]
-**repayStatus** | **string** |  | [optional]
+**repayStatus** | **string** | Repayment status (&#x60;Repaid&#x60;, &#x60;Repaying&#x60;, &#x60;Failed&#x60;). | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

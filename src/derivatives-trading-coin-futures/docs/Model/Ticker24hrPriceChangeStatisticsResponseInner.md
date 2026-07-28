@@ -1,25 +1,25 @@
-# # Ticker24hrPriceChangeStatisticsResponseInner
+# Ticker24hrPriceChangeStatisticsResponseInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**symbol** | **string** |  | [optional]
-**pair** | **string** |  | [optional]
-**priceChange** | **string** |  | [optional]
-**priceChangePercent** | **string** |  | [optional]
-**weightedAvgPrice** | **string** |  | [optional]
-**lastPrice** | **string** |  | [optional]
-**lastQty** | **string** |  | [optional]
-**openPrice** | **string** |  | [optional]
-**highPrice** | **string** |  | [optional]
-**lowPrice** | **string** |  | [optional]
-**volume** | **string** |  | [optional]
-**baseVolume** | **string** |  | [optional]
-**openTime** | **int** |  | [optional]
-**closeTime** | **int** |  | [optional]
-**firstId** | **int** |  | [optional]
-**lastId** | **int** |  | [optional]
-**count** | **int** |  | [optional]
+**symbol** | **string** | Trading symbol | [optional]
+**pair** | **string** | Pair | [optional]
+**priceChange** | **string** | Absolute price change in the 24h window. | [optional]
+**priceChangePercent** | **string** | Percentage price change in the 24h window. | [optional]
+**weightedAvgPrice** | **string** | Weighted average price in the 24h window. | [optional]
+**lastPrice** | **string** | Latest traded price. | [optional]
+**lastQty** | **string** | Quantity of the latest trade. | [optional]
+**openPrice** | **string** | Opening price of the 24h window. | [optional]
+**highPrice** | **string** | Highest price in the 24h window. | [optional]
+**lowPrice** | **string** | Lowest price in the 24h window. | [optional]
+**volume** | **string** | Base asset volume in the 24h window. | [optional]
+**baseVolume** | **string** | Base asset volume. | [optional]
+**openTime** | **int** | Start time of the 24h window (milliseconds). | [optional]
+**closeTime** | **int** | End time of the 24h window (milliseconds). | [optional]
+**firstId** | **int** | First tradeId | [optional]
+**lastId** | **int** | Last tradeId | [optional]
+**count** | **int** | Total number of trades in the 24h window. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

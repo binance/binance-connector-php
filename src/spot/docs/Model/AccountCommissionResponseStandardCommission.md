@@ -1,4 +1,4 @@
-# # AccountCommissionResponseStandardCommission
+# AccountCommissionResponseStandardCommission
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # DepositHistoryV2ResponseInner
+# DepositHistoryV2ResponseInner
 
 ## Properties
 

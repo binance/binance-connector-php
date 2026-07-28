@@ -12,6 +12,11 @@ function setMarketMakerProtectionConfigExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingOptionsRestApi($configurationBuilder->build());
     $setMarketMakerProtectionConfigRequest = new SetMarketMakerProtectionConfigRequest();
+    $setMarketMakerProtectionConfigRequest->setUnderlying('BTCUSDT');
+    $setMarketMakerProtectionConfigRequest->setWindowTimeInMilliseconds(1000);
+    $setMarketMakerProtectionConfigRequest->setFrozenTimeInMilliseconds(1000);
+    $setMarketMakerProtectionConfigRequest->setQtyLimit(1.0);
+    $setMarketMakerProtectionConfigRequest->setDeltaLimit(1.0);
     $response = $api->setMarketMakerProtectionConfig($setMarketMakerProtectionConfigRequest);
     print_r($response);
 }

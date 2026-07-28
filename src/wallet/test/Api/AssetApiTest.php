@@ -108,14 +108,16 @@ class AssetApiTest extends TestCase
      */
     public function testAssetDetail()
     {
+        $asset = '';
         $recvWindow = 5000;
-        $response = $this->getApiMock($request)->assetDetail($recvWindow);
+        $response = $this->getApiMock($request)->assetDetail($asset, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/assetDetail', $request->getUri()->getPath());
-        self::assertEquals('509214a6160ae15ca662a486d584159b1d32e81f90e34dadb88e6cb46363b11a', $queryMap['signature']);
+        self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
     }
 
     /**
@@ -133,6 +135,7 @@ class AssetApiTest extends TestCase
         $response = $this->getApiMock($request)->assetDividendRecord($asset, $startTime, $endTime, $limit, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/assetDividend', $request->getUri()->getPath());
@@ -153,6 +156,7 @@ class AssetApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/dust-convert/convert', $request->getUri()->getPath());
         self::assertEquals('2979a51ce4c44a35c65db4a87fdd907b27c5f1cb4e786af718af1c6bceff4ce0', $queryMap['signature']);
@@ -171,6 +175,7 @@ class AssetApiTest extends TestCase
         $response = $this->getApiMock($request)->dustConvertibleAssets($dustConvertibleAssetsRequest);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/dust-convert/query-convertible-assets', $request->getUri()->getPath());
@@ -191,6 +196,7 @@ class AssetApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/dust', $request->getUri()->getPath());
         self::assertEquals('2979a51ce4c44a35c65db4a87fdd907b27c5f1cb4e786af718af1c6bceff4ce0', $queryMap['signature']);
@@ -203,16 +209,18 @@ class AssetApiTest extends TestCase
      */
     public function testDustlog()
     {
+        $accountType = 'SPOT';
         $startTime = 1623319461670;
         $endTime = 1641782889000;
         $recvWindow = 5000;
-        $response = $this->getApiMock($request)->dustlog($startTime, $endTime, $recvWindow);
+        $response = $this->getApiMock($request)->dustlog($accountType, $startTime, $endTime, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/dribblet', $request->getUri()->getPath());
-        self::assertEquals('0ddec5a1715e99d1083349ffc2ef497594db001f03b7237e1096d7dd9674c652', $queryMap['signature']);
+        self::assertEquals('8d08897a225fad28d0edf49ccf59ae39ddb3b03af9cd70fb4c7c3686250cad3f', $queryMap['signature']);
     }
 
     /**
@@ -227,6 +235,7 @@ class AssetApiTest extends TestCase
         $response = $this->getApiMock($request)->fundingWallet($fundingWalletRequest);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/get-funding-asset', $request->getUri()->getPath());
@@ -245,6 +254,7 @@ class AssetApiTest extends TestCase
         $response = $this->getApiMock($request)->getAssetsThatCanBeConvertedIntoBnb($getAssetsThatCanBeConvertedIntoBnbRequest);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/dust-btc', $request->getUri()->getPath());
@@ -269,6 +279,7 @@ class AssetApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/ledger-transfer/cloud-mining/queryByPage', $request->getUri()->getPath());
         self::assertEquals('fc5861c679752b9e41eee8e49b11fd6ca99aa2892d159ba5d29e915692d09431', $queryMap['signature']);
@@ -284,6 +295,7 @@ class AssetApiTest extends TestCase
         $response = $this->getApiMock($request)->getOpenSymbolList();
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/spot/open-symbol-list', $request->getUri()->getPath());
@@ -309,6 +321,7 @@ class AssetApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/custody/transfer-history', $request->getUri()->getPath());
         self::assertEquals('902f3aebafab582a601c675c4db18bec806fdd4dfff7467bc5ccd4d9891d7d59', $queryMap['signature']);
@@ -333,6 +346,7 @@ class AssetApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/transfer', $request->getUri()->getPath());
         self::assertEquals('345e943a0d483ac801b537e0794cc1f5b99bd7ad6fbf2610a105016d2189e50a', $queryMap['signature']);
@@ -350,6 +364,7 @@ class AssetApiTest extends TestCase
         $response = $this->getApiMock($request)->queryUserWalletBalance($quoteAsset, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/wallet/balance', $request->getUri()->getPath());
@@ -369,6 +384,7 @@ class AssetApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/bnbBurn', $request->getUri()->getPath());
         self::assertEquals('dc0def720e795be0f84b02a8fa211ecc3a27dd06ffdbd287a679f1321807f820', $queryMap['signature']);
@@ -387,6 +403,7 @@ class AssetApiTest extends TestCase
 
         parse_str($request->getUri(), $queryMap);
 
+
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/tradeFee', $request->getUri()->getPath());
         self::assertEquals('2cdd1e484bce80021437bee6b762e6a276b1954c3a0c011a16f6f2f6a47aba75', $queryMap['signature']);
@@ -404,6 +421,7 @@ class AssetApiTest extends TestCase
         $response = $this->getApiMock($request)->userAsset($userAssetRequest);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v3/asset/getUserAsset', $request->getUri()->getPath());
@@ -425,6 +443,7 @@ class AssetApiTest extends TestCase
         $response = $this->getApiMock($request)->userUniversalTransfer($userUniversalTransferRequest);
 
         parse_str($request->getUri(), $queryMap);
+
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/transfer', $request->getUri()->getPath());

@@ -1,11 +1,13 @@
 # Binance\Client\CopyTrading\FutureCopyTradingApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getFuturesLeadTraderStatus()**](FutureCopyTradingApi.md#getFuturesLeadTraderStatus) | **GET** /sapi/v1/copyTrading/futures/userStatus | Get Futures Lead Trader Status(TRADE) |
-| [**getFuturesLeadTradingSymbolWhitelist()**](FutureCopyTradingApi.md#getFuturesLeadTradingSymbolWhitelist) | **GET** /sapi/v1/copyTrading/futures/leadSymbol | Get Futures Lead Trading Symbol Whitelist(USER_DATA) |
+| [**getFuturesLeadTraderStatus()**](FutureCopyTradingApi.md#getFuturesLeadTraderStatus) | **GET** /sapi/v1/copyTrading/futures/userStatus | Get Futures Lead Trader Status (TRADE) |
+| [**getFuturesLeadTradingSymbolWhitelist()**](FutureCopyTradingApi.md#getFuturesLeadTradingSymbolWhitelist) | **GET** /sapi/v1/copyTrading/futures/leadSymbol | Get Futures Lead Trading Symbol Whitelist (USER_DATA) |
 
 
 ## `getFuturesLeadTraderStatus()`
@@ -14,9 +16,9 @@ All URIs are relative to https://api.binance.com, except if the operation define
 getFuturesLeadTraderStatus($recvWindow): \Binance\Client\CopyTrading\Model\GetFuturesLeadTraderStatusResponse
 ```
 
-Get Futures Lead Trader Status(TRADE)
+Get Futures Lead Trader Status (TRADE)
 
-Get Futures Lead Trader Status  Weight: 20
+Get Futures Lead Trader Status  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -31,7 +33,7 @@ $apiInstance = new Binance\Client\CopyTrading\Api\FutureCopyTradingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int | Request validity window in milliseconds
 
 try {
     $result = $apiInstance->getFuturesLeadTraderStatus($recvWindow);
@@ -45,7 +47,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds | [optional] |
 
 ### Return type
 
@@ -70,9 +72,9 @@ No authorization required
 getFuturesLeadTradingSymbolWhitelist($recvWindow): \Binance\Client\CopyTrading\Model\GetFuturesLeadTradingSymbolWhitelistResponse
 ```
 
-Get Futures Lead Trading Symbol Whitelist(USER_DATA)
+Get Futures Lead Trading Symbol Whitelist (USER_DATA)
 
-Get Futures Lead Trading Symbol Whitelist  Weight: 20
+Get Futures Lead Trading Symbol Whitelist  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -87,7 +89,7 @@ $apiInstance = new Binance\Client\CopyTrading\Api\FutureCopyTradingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int
+$recvWindow = 5000; // int | Request validity window in milliseconds
 
 try {
     $result = $apiInstance->getFuturesLeadTradingSymbolWhitelist($recvWindow);
@@ -101,7 +103,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**|  | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds | [optional] |
 
 ### Return type
 

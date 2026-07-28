@@ -1,5 +1,7 @@
 # Binance\Client\DualInvestment\MarketDataApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -15,7 +17,7 @@ getDualInvestmentProductList($optionType, $exercisedCoin, $investCoin, $pageSize
 
 Get Dual Investment product list
 
-Get Dual Investment product list  Weight: 1(IP)
+Get Dual Investment product list  Weight(IP): 1
 
 ### Example
 
@@ -30,12 +32,12 @@ $apiInstance = new Binance\Client\DualInvestment\Api\MarketDataApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$optionType = 'optionType_example'; // string | Input CALL or PUT
-$exercisedCoin = 'exercisedCoin_example'; // string | Target exercised asset, e.g.: if you subscribe to a high sell product (call option), you should input: `optionType`:CALL,`exercisedCoin`:USDT,`investCoin`:BNB; if you subscribe to a low buy product (put option), you should input: `optionType`:PUT,`exercisedCoin`:BNB,`investCoin`:USDT
-$investCoin = 'investCoin_example'; // string | Asset used for subscribing, e.g.: if you subscribe to a high sell product (call option), you should input: `optionType`:CALL,`exercisedCoin`:USDT,`investCoin`:BNB; if you subscribe to a low buy product (put option), you should input: `optionType`:PUT,`exercisedCoin`:BNB,`investCoin`:USDT
-$pageSize = 56; // int | Default: 10, Maximum: 100
-$pageIndex = 56; // int | Default: 1
-$recvWindow = 56; // int | The value cannot be greater than 60000
+$optionType = new \Binance\Client\DualInvestment\Model\\Binance\Client\DualInvestment\Model\OptionType(); // \Binance\Client\DualInvestment\Model\OptionType | Input CALL or PUT
+$exercisedCoin = USDT; // string | Target exercised asset, e.g.: if you subscribe to a high sell product (call option), you should input: `optionType: CALL`, `exercisedCoin: USDT`, `investCoin: BNB`; if you subscribe to a low buy product (put option), you should input: `optionType: PUT`, `exercisedCoin: BNB`, `investCoin: USDT`
+$investCoin = BNB; // string | Asset used for subscribing, e.g.: if you subscribe to a high sell product (call option), you should input: `optionType: CALL`, `exercisedCoin: USDT`, `investCoin: BNB`; if you subscribe to a low buy product (put option), you should input: `optionType: PUT`, `exercisedCoin: BNB`, `investCoin: USDT`
+$pageSize = 10; // int | Number of records per page
+$pageIndex = 1; // int | Page index
+$recvWindow = 5000; // int | Request validity window in milliseconds
 
 try {
     $result = $apiInstance->getDualInvestmentProductList($optionType, $exercisedCoin, $investCoin, $pageSize, $pageIndex, $recvWindow);
@@ -49,12 +51,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **optionType** | **string**| Input CALL or PUT | |
-| **exercisedCoin** | **string**| Target exercised asset, e.g.: if you subscribe to a high sell product (call option), you should input: &#x60;optionType&#x60;:CALL,&#x60;exercisedCoin&#x60;:USDT,&#x60;investCoin&#x60;:BNB; if you subscribe to a low buy product (put option), you should input: &#x60;optionType&#x60;:PUT,&#x60;exercisedCoin&#x60;:BNB,&#x60;investCoin&#x60;:USDT | |
-| **investCoin** | **string**| Asset used for subscribing, e.g.: if you subscribe to a high sell product (call option), you should input: &#x60;optionType&#x60;:CALL,&#x60;exercisedCoin&#x60;:USDT,&#x60;investCoin&#x60;:BNB; if you subscribe to a low buy product (put option), you should input: &#x60;optionType&#x60;:PUT,&#x60;exercisedCoin&#x60;:BNB,&#x60;investCoin&#x60;:USDT | |
-| **pageSize** | **int**| Default: 10, Maximum: 100 | [optional] |
-| **pageIndex** | **int**| Default: 1 | [optional] |
-| **recvWindow** | **int**| The value cannot be greater than 60000 | [optional] |
+| **optionType** | [**\Binance\Client\DualInvestment\Model\OptionType**](../Model/.md)| Input CALL or PUT | |
+| **exercisedCoin** | **string**| Target exercised asset, e.g.: if you subscribe to a high sell product (call option), you should input: &#x60;optionType: CALL&#x60;, &#x60;exercisedCoin: USDT&#x60;, &#x60;investCoin: BNB&#x60;; if you subscribe to a low buy product (put option), you should input: &#x60;optionType: PUT&#x60;, &#x60;exercisedCoin: BNB&#x60;, &#x60;investCoin: USDT&#x60; | |
+| **investCoin** | **string**| Asset used for subscribing, e.g.: if you subscribe to a high sell product (call option), you should input: &#x60;optionType: CALL&#x60;, &#x60;exercisedCoin: USDT&#x60;, &#x60;investCoin: BNB&#x60;; if you subscribe to a low buy product (put option), you should input: &#x60;optionType: PUT&#x60;, &#x60;exercisedCoin: BNB&#x60;, &#x60;investCoin: USDT&#x60; | |
+| **pageSize** | **int**| Number of records per page | [optional] |
+| **pageIndex** | **int**| Page index | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds | [optional] |
 
 ### Return type
 

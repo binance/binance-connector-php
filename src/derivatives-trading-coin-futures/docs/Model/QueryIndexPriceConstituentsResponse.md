@@ -1,11 +1,11 @@
-# # QueryIndexPriceConstituentsResponse
+# QueryIndexPriceConstituentsResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**symbol** | **string** |  | [optional]
-**time** | **int** |  | [optional]
-**constituents** | [**\Binance\Client\DerivativesTradingCoinFutures\Model\QueryIndexPriceConstituentsResponseConstituentsInner[]**](QueryIndexPriceConstituentsResponseConstituentsInner.md) |  | [optional]
+**symbol** | **string** | Trading symbol | [optional]
+**time** | **int** | Time | [optional]
+**constituents** | [**\Binance\Client\DerivativesTradingCoinFutures\Model\QueryIndexPriceConstituentsResponseConstituentsInner[]**](QueryIndexPriceConstituentsResponseConstituentsInner.md) | Constituent list. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

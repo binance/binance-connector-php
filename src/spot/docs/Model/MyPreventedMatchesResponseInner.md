@@ -1,4 +1,4 @@
-# # MyPreventedMatchesResponseInner
+# MyPreventedMatchesResponseInner
 
 ## Properties
 

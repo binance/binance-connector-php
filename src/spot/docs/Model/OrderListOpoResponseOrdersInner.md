@@ -1,4 +1,4 @@
-# # OrderListOpoResponseOrdersInner
+# OrderListOpoResponseOrdersInner
 
 ## Properties
 

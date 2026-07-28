@@ -10,7 +10,7 @@ function cancelMarginAccountOcoOrdersExample()
     $configurationBuilder = DerivativesTradingPortfolioMarginRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'LTCBTC';
     $orderListId = 1;
     $listClientOrderId = '1';
     $newClientOrderId = '1';

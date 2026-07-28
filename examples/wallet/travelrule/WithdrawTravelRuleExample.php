@@ -12,7 +12,7 @@ function withdrawTravelRuleExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
     $withdrawTravelRuleRequest = new WithdrawTravelRuleRequest();
-    $withdrawTravelRuleRequest->setCoin('');
+    $withdrawTravelRuleRequest->setCoin('BTC');
     $withdrawTravelRuleRequest->setAddress('');
     $withdrawTravelRuleRequest->setAmount(1.0);
     $withdrawTravelRuleRequest->setQuestionnaire('');

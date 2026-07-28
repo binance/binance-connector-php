@@ -1,4 +1,4 @@
-# # QueryCrossIsolatedMarginCapitalFlowResponse
+# QueryCrossIsolatedMarginCapitalFlowResponse
 
 ## Properties
 

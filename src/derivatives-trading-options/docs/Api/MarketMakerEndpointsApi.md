@@ -1,5 +1,7 @@
 # Binance\Client\DerivativesTradingOptions\MarketMakerEndpointsApi
 
+
+
 All URIs are relative to https://eapi.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -20,7 +22,7 @@ autoCancelAllOpenOrders($autoCancelAllOpenOrdersRequest): \Binance\Client\Deriva
 
 Auto-Cancel All Open Orders (Kill-Switch) Heartbeat (TRADE)
 
-This endpoint resets the time from which the countdown will begin to the time this messaged is received.  It should be called repeatedly as heartbeats.  Multiple heartbeats can be updated at once by specifying the underlying symbols as a list (ex. BTCUSDT,ETHUSDT) in the underlyings parameter.  * The response will only include underlying symbols where the heartbeat has been successfully updated.  Weight: 10
+This endpoint resets the time from which the countdown will begin to the time this messaged is received.  It should be called repeatedly as heartbeats.  Multiple heartbeats can be updated at once by specifying the underlying symbols as a list (ex. BTCUSDT,ETHUSDT) in the underlyings parameter.  Weight(IP): 10  Security Type: TRADE  Notes: - The response will only include underlying symbols where the heartbeat has been successfully updated.
 
 ### Example
 
@@ -76,7 +78,7 @@ getAutoCancelAllOpenOrders($underlying, $recvWindow): \Binance\Client\Derivative
 
 Get Auto-Cancel All Open Orders (Kill-Switch) Config (TRADE)
 
-This endpoint returns the auto-cancel parameters for each underlying symbol. Note only active auto-cancel parameters will be returned, if countdownTime is set to 0 (ie. countdownTime has been turned off), the underlying symbol and corresponding countdownTime parameter will not be returned in the response.  * countdownTime = 0 means the function is disabled.  Weight: 1
+This endpoint returns the auto-cancel parameters for each underlying symbol. Note only active auto-cancel parameters will be returned, if countdownTime is set to 0 (ie. countdownTime has been turned off), the underlying symbol and corresponding countdownTime parameter will not be returned in the response.  Weight(IP): 1  Security Type: TRADE  Notes: - countdownTime = 0 means the function is disabled.
 
 ### Example
 
@@ -91,8 +93,8 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketMakerEndpo
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$underlying = 'underlying_example'; // string | underlying, e.g BTCUSDT
-$recvWindow = 56; // int
+$underlying = BTCUSDT; // string | Underlying asset.
+$recvWindow = 5000; // int | Recv Window.
 
 try {
     $result = $apiInstance->getAutoCancelAllOpenOrders($underlying, $recvWindow);
@@ -106,8 +108,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **underlying** | **string**| underlying, e.g BTCUSDT | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **underlying** | **string**| Underlying asset. | [optional] |
+| **recvWindow** | **int**| Recv Window. | [optional] |
 
 ### Return type
 
@@ -134,7 +136,7 @@ getMarketMakerProtectionConfig($underlying, $recvWindow): \Binance\Client\Deriva
 
 Get Market Maker Protection Config (TRADE)
 
-Get config for MMP.  Weight: 1
+Get config for MMP.  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -149,8 +151,8 @@ $apiInstance = new Binance\Client\DerivativesTradingOptions\Api\MarketMakerEndpo
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$underlying = 'underlying_example'; // string | underlying, e.g BTCUSDT
-$recvWindow = 56; // int
+$underlying = BTCUSDT; // string | Underlying asset.
+$recvWindow = 5000; // int | Recv Window.
 
 try {
     $result = $apiInstance->getMarketMakerProtectionConfig($underlying, $recvWindow);
@@ -164,8 +166,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **underlying** | **string**| underlying, e.g BTCUSDT | [optional] |
-| **recvWindow** | **int**|  | [optional] |
+| **underlying** | **string**| Underlying asset. | |
+| **recvWindow** | **int**| Recv Window. | [optional] |
 
 ### Return type
 
@@ -192,7 +194,7 @@ resetMarketMakerProtectionConfig($resetMarketMakerProtectionConfigRequest): \Bin
 
 Reset Market Maker Protection Config (TRADE)
 
-Reset MMP, start MMP order again.  Weight: 1
+Reset MMP, start MMP order again.  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 
@@ -248,7 +250,7 @@ setAutoCancelAllOpenOrders($setAutoCancelAllOpenOrdersRequest): \Binance\Client\
 
 Set Auto-Cancel All Open Orders (Kill-Switch) Config (TRADE)
 
-This endpoint sets the parameters of the auto-cancel feature which cancels all open orders (both market maker protection and non market maker protection order types) of the underlying symbol at the end of the specified countdown time period if no heartbeat message is sent.  After the countdown time period, all open orders will be cancelled and new orders will be rejected with error code -2010 until either a heartbeat message is sent or the auto-cancel feature is turned off by setting countdownTime to 0.   * This rest endpoint sets up the parameters to cancel your open orders in case of an outage or disconnection. * Example usage: Call this endpoint with a countdownTime value of 10000 (10 seconds) to turn on the auto-cancel feature. If the corresponding countdownCancelAllHeartBeat endpoint is not called within 10 seconds with the specified underlying symbol, all open orders of the specified symbol will be automatically canceled. If this endpoint is called with an countdownTime of 0, the countdown timer will be stopped. * The system will check all countdowns approximately every 1000 milliseconds, **please note that sufficient redundancy should be considered when using this function**. We do not recommend setting the countdown time to be too precise or too small.  Weight: 1
+This endpoint sets the parameters of the auto-cancel feature which cancels all open orders (both market maker protection and non market maker protection order types) of the underlying symbol at the end of the specified countdown time period if no heartbeat message is sent.  After the countdown time period, all open orders will be cancelled and new orders will be rejected with error code -2010 until either a heartbeat message is sent or the auto-cancel feature is turned off by setting countdownTime to 0.  Weight(IP): 1  Security Type: TRADE  Notes: - This rest endpoint sets up the parameters to cancel your open orders in case of an outage or disconnection. - Example usage: > Call this endpoint with a countdownTime value of 10000 (10 seconds) to turn on the auto-cancel feature. If the corresponding countdownCancelAllHeartBeat endpoint is not called within 10 seconds with the specified underlying symbol, all open orders of the specified symbol will be automatically canceled. If this endpoint is called with an countdownTime of 0, the countdown timer will be stopped. - The system will check all countdowns approximately every 100 milliseconds, **please note that sufficient redundancy should be considered when using this function**. We do not recommend setting the countdown time to be too precise or too small.
 
 ### Example
 
@@ -304,7 +306,7 @@ setMarketMakerProtectionConfig($setMarketMakerProtectionConfigRequest): \Binance
 
 Set Market Maker Protection Config (TRADE)
 
-Set config for MMP. Market Maker Protection(MMP) is a set of protection mechanism for option market maker, this mechanism is able to prevent mass trading in short period time. Once market maker's account branches the threshold, the Market Maker Protection will be triggered. When Market Maker Protection triggers, all the current MMP orders will be canceled, new MMP orders will be rejected. Market maker can use this time to reevaluate market and modify order price.  Weight: 1
+Set config for MMP. Market Maker Protection(MMP) is a set of protection mechanism for option market maker, this mechanism is able to prevent mass trading in short period time. Once market maker's account branches the threshold, the Market Maker Protection will be triggered. When Market Maker Protection triggers, all the current MMP orders will be canceled, new MMP orders will be rejected. Market maker can use this time to reevaluate market and modify order price.  Weight(IP): 1  Security Type: TRADE
 
 ### Example
 

@@ -1,4 +1,4 @@
-# # WorkingType
+# WorkingType
 
 ## Properties
 

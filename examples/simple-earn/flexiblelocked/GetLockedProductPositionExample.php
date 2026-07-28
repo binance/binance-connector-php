@@ -10,7 +10,7 @@ function getLockedProductPositionExample()
     $configurationBuilder = SimpleEarnRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SimpleEarnRestApi($configurationBuilder->build());
-    $asset = '';
+    $asset = 'USDC';
     $positionId = '1';
     $projectId = '1';
     $current = 1;

@@ -1,4 +1,4 @@
-# # MaxAssetFilter
+# MaxAssetFilter
 
 ## Properties
 

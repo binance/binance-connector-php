@@ -35,6 +35,7 @@ use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\SwitchDeltaModeReq
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\SwitchDeltaModeResponse;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginRequest;
 use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferLdusdtRwusdForPortfolioMarginResponse;
+use Binance\Client\DerivativesTradingPortfolioMarginPro\Model\TransferType;
 use Binance\Common\ApiException;
 use Binance\Common\Configuration\ClientConfiguration;
 use Binance\Common\Dtos\ApiResponse;
@@ -61,7 +62,7 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation bnbTransfer.
      *
-     * BNB transfer(USER_DATA)
+     * BNB transfer (USER_DATA)
      *
      * @param BnbTransferRequest $bnbTransferRequest bnbTransferRequest (required)
      *
@@ -78,7 +79,7 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation changeAutoRepayFuturesStatus.
      *
-     * Change Auto-repay-futures Status(TRADE)
+     * Change Auto-repay-futures Status (TRADE)
      *
      * @param ChangeAutoRepayFuturesStatusRequest $changeAutoRepayFuturesStatusRequest changeAutoRepayFuturesStatusRequest (required)
      *
@@ -97,7 +98,7 @@ class DerivativesTradingPortfolioMarginProRestApi
      *
      * Delete Margin Call Level (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<DeleteMarginCallLevelResponse>
      *
@@ -112,16 +113,16 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation fundAutoCollection.
      *
-     * Fund Auto-collection(USER_DATA)
+     * Fund Auto-collection (USER_DATA)
      *
-     * @param FundAutoCollectionRequest $fundAutoCollectionRequest fundAutoCollectionRequest (required)
+     * @param null|FundAutoCollectionRequest $fundAutoCollectionRequest fundAutoCollectionRequest (optional)
      *
      * @return ApiResponse<FundAutoCollectionResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function fundAutoCollection($fundAutoCollectionRequest): ApiResponse
+    public function fundAutoCollection($fundAutoCollectionRequest = null): ApiResponse
     {
         return $this->accountApi->fundAutoCollection($fundAutoCollectionRequest);
     }
@@ -129,7 +130,7 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation fundCollectionByAsset.
      *
-     * Fund Collection by Asset(USER_DATA)
+     * Fund Collection by Asset (USER_DATA)
      *
      * @param FundCollectionByAssetRequest $fundCollectionByAssetRequest fundCollectionByAssetRequest (required)
      *
@@ -146,7 +147,7 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation getAutoRepayFuturesStatus.
      *
-     * Get Auto-repay-futures Status(USER_DATA)
+     * Get Auto-repay-futures Status (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -163,7 +164,7 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation getDeltaModeStatus.
      *
-     * Get Delta Mode Status(USER_DATA)
+     * Get Delta Mode Status (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -182,7 +183,7 @@ class DerivativesTradingPortfolioMarginProRestApi
      *
      * Get Margin Call Level (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetMarginCallLevelResponse>
      *
@@ -197,7 +198,7 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation getPortfolioMarginProAccountBalance.
      *
-     * Get Portfolio Margin Pro Account Balance(USER_DATA)
+     * Get Portfolio Margin Pro Account Balance (USER_DATA)
      *
      * @param null|string $asset      asset (optional)
      * @param null|int    $recvWindow recvWindow (optional)
@@ -215,7 +216,7 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation getPortfolioMarginProAccountInfo.
      *
-     * Get Portfolio Margin Pro Account Info(USER_DATA)
+     * Get Portfolio Margin Pro Account Info (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -232,7 +233,7 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation getPortfolioMarginProSpanAccountInfo.
      *
-     * Get Portfolio Margin Pro SPAN Account Info(USER_DATA)
+     * Get Portfolio Margin Pro SPAN Account Info (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -251,9 +252,9 @@ class DerivativesTradingPortfolioMarginProRestApi
      *
      * Get Transferable Earn Asset Balance for Portfolio Margin (USER_DATA)
      *
-     * @param string   $asset        &#x60;LDUSDT&#x60; only (required)
-     * @param string   $transferType &#x60;EARN_TO_FUTURE&#x60; /&#x60;FUTURE_TO_EARN&#x60; (required)
-     * @param null|int $recvWindow   recvWindow (optional)
+     * @param string       $asset        &#x60;LDUSDT&#x60; only (required)
+     * @param TransferType $transferType transferType (required)
+     * @param null|int     $recvWindow   recvWindow (optional)
      *
      * @return ApiResponse<GetTransferableEarnAssetBalanceForPortfolioMarginResponse>
      *
@@ -268,16 +269,16 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation portfolioMarginProBankruptcyLoanRepay.
      *
-     * Portfolio Margin Pro Bankruptcy Loan Repay
+     * Portfolio Margin Pro Bankruptcy Loan Repay (TRADE)
      *
-     * @param PortfolioMarginProBankruptcyLoanRepayRequest $portfolioMarginProBankruptcyLoanRepayRequest portfolioMarginProBankruptcyLoanRepayRequest (required)
+     * @param null|PortfolioMarginProBankruptcyLoanRepayRequest $portfolioMarginProBankruptcyLoanRepayRequest portfolioMarginProBankruptcyLoanRepayRequest (optional)
      *
      * @return ApiResponse<PortfolioMarginProBankruptcyLoanRepayResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function portfolioMarginProBankruptcyLoanRepay($portfolioMarginProBankruptcyLoanRepayRequest): ApiResponse
+    public function portfolioMarginProBankruptcyLoanRepay($portfolioMarginProBankruptcyLoanRepayRequest = null): ApiResponse
     {
         return $this->accountApi->portfolioMarginProBankruptcyLoanRepay($portfolioMarginProBankruptcyLoanRepayRequest);
     }
@@ -285,7 +286,7 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation queryPortfolioMarginProBankruptcyLoanAmount.
      *
-     * Query Portfolio Margin Pro Bankruptcy Loan Amount(USER_DATA)
+     * Query Portfolio Margin Pro Bankruptcy Loan Amount (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *
@@ -302,12 +303,12 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation queryPortfolioMarginProBankruptcyLoanRepayHistory.
      *
-     * Query Portfolio Margin Pro Bankruptcy Loan Repay History(USER_DATA)
+     * Query Portfolio Margin Pro Bankruptcy Loan Repay History (USER_DATA)
      *
-     * @param null|int $startTime  startTime (optional)
-     * @param null|int $endTime    endTime (optional)
-     * @param null|int $current    Currently querying page. Start from 1. Default:1 (optional)
-     * @param null|int $size       Default:10 Max:100 (optional)
+     * @param null|int $startTime  Start time (optional)
+     * @param null|int $endTime    End time (optional)
+     * @param null|int $size       Number of results returned. (optional)
+     * @param null|int $current    Currently querying page. Start from 1. (optional)
      * @param null|int $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryPortfolioMarginProBankruptcyLoanRepayHistoryResponse>
@@ -315,20 +316,20 @@ class DerivativesTradingPortfolioMarginProRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function queryPortfolioMarginProBankruptcyLoanRepayHistory($startTime = null, $endTime = null, $current = null, $size = null, $recvWindow = null): ApiResponse
+    public function queryPortfolioMarginProBankruptcyLoanRepayHistory($startTime = null, $endTime = null, $size = null, $current = null, $recvWindow = null): ApiResponse
     {
-        return $this->accountApi->queryPortfolioMarginProBankruptcyLoanRepayHistory($startTime, $endTime, $current, $size, $recvWindow);
+        return $this->accountApi->queryPortfolioMarginProBankruptcyLoanRepayHistory($startTime, $endTime, $size, $current, $recvWindow);
     }
 
     /**
      * Operation queryPortfolioMarginProNegativeBalanceInterestHistory.
      *
-     * Query Portfolio Margin Pro Negative Balance Interest History(USER_DATA)
+     * Query Portfolio Margin Pro Negative Balance Interest History (USER_DATA)
      *
      * @param null|string $asset      asset (optional)
-     * @param null|int    $startTime  startTime (optional)
-     * @param null|int    $endTime    endTime (optional)
-     * @param null|int    $size       Default:10 Max:100 (optional)
+     * @param null|int    $startTime  Start time (optional)
+     * @param null|int    $endTime    End time (optional)
+     * @param null|int    $size       Number of results returned. (optional)
      * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<QueryPortfolioMarginProNegativeBalanceInterestHistoryResponse>
@@ -344,16 +345,16 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation repayFuturesNegativeBalance.
      *
-     * Repay futures Negative Balance(USER_DATA)
+     * Repay futures Negative Balance (USER_DATA)
      *
-     * @param RepayFuturesNegativeBalanceRequest $repayFuturesNegativeBalanceRequest repayFuturesNegativeBalanceRequest (required)
+     * @param null|RepayFuturesNegativeBalanceRequest $repayFuturesNegativeBalanceRequest repayFuturesNegativeBalanceRequest (optional)
      *
      * @return ApiResponse<RepayFuturesNegativeBalanceResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function repayFuturesNegativeBalance($repayFuturesNegativeBalanceRequest): ApiResponse
+    public function repayFuturesNegativeBalance($repayFuturesNegativeBalanceRequest = null): ApiResponse
     {
         return $this->accountApi->repayFuturesNegativeBalance($repayFuturesNegativeBalanceRequest);
     }
@@ -378,7 +379,7 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation switchDeltaMode.
      *
-     * Switch Delta Mode(TRADE)
+     * Switch Delta Mode (TRADE)
      *
      * @param SwitchDeltaModeRequest $switchDeltaModeRequest switchDeltaModeRequest (required)
      *
@@ -395,7 +396,7 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation transferLdusdtRwusdForPortfolioMargin.
      *
-     * Transfer LDUSDT/RWUSD for Portfolio Margin(TRADE)
+     * Transfer LDUSDT/RWUSD for Portfolio Margin (TRADE)
      *
      * @param TransferLdusdtRwusdForPortfolioMarginRequest $transferLdusdtRwusdForPortfolioMarginRequest transferLdusdtRwusdForPortfolioMarginRequest (required)
      *
@@ -412,7 +413,7 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation getPortfolioMarginAssetLeverage.
      *
-     * Get Portfolio Margin Asset Leverage(USER_DATA)
+     * Get Portfolio Margin Asset Leverage (USER_DATA)
      *
      * @return ApiResponse<GetPortfolioMarginAssetLeverageResponse>
      *
@@ -427,7 +428,7 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation portfolioMarginCollateralRate.
      *
-     * Portfolio Margin Collateral Rate(MARKET_DATA)
+     * Portfolio Margin Collateral Rate (MARKET_DATA)
      *
      * @return ApiResponse<PortfolioMarginCollateralRateResponse>
      *
@@ -442,7 +443,7 @@ class DerivativesTradingPortfolioMarginProRestApi
     /**
      * Operation portfolioMarginProTieredCollateralRate.
      *
-     * Portfolio Margin Pro Tiered Collateral Rate(USER_DATA)
+     * Portfolio Margin Pro Tiered Collateral Rate (USER_DATA)
      *
      * @param null|int $recvWindow recvWindow (optional)
      *

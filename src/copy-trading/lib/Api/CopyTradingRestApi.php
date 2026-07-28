@@ -24,9 +24,9 @@ class CopyTradingRestApi
     /**
      * Operation getFuturesLeadTraderStatus.
      *
-     * Get Futures Lead Trader Status(TRADE)
+     * Get Futures Lead Trader Status (TRADE)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetFuturesLeadTraderStatusResponse>
      *
@@ -41,9 +41,9 @@ class CopyTradingRestApi
     /**
      * Operation getFuturesLeadTradingSymbolWhitelist.
      *
-     * Get Futures Lead Trading Symbol Whitelist(USER_DATA)
+     * Get Futures Lead Trading Symbol Whitelist (USER_DATA)
      *
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetFuturesLeadTradingSymbolWhitelistResponse>
      *

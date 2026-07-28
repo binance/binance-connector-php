@@ -9,7 +9,7 @@ function symbolPriceTickerV2Example()
 {
     $configurationBuilder = DerivativesTradingUsdsFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingUsdsFuturesRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTCUSDT';
     $response = $api->symbolPriceTickerV2($symbol);
     print_r($response);
 }

@@ -1,4 +1,4 @@
-# # GetCloudMiningPaymentAndRefundHistoryResponse
+# GetCloudMiningPaymentAndRefundHistoryResponse
 
 ## Properties
 

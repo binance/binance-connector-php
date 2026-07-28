@@ -7,6 +7,8 @@ use Binance\Client\DualInvestment\Model\ChangeAutoCompoundStatusResponse;
 use Binance\Client\DualInvestment\Model\CheckDualInvestmentAccountsResponse;
 use Binance\Client\DualInvestment\Model\GetDualInvestmentPositionsResponse;
 use Binance\Client\DualInvestment\Model\GetDualInvestmentProductListResponse;
+use Binance\Client\DualInvestment\Model\OptionType;
+use Binance\Client\DualInvestment\Model\Status;
 use Binance\Client\DualInvestment\Model\SubscribeDualInvestmentProductsRequest;
 use Binance\Client\DualInvestment\Model\SubscribeDualInvestmentProductsResponse;
 use Binance\Common\ApiException;
@@ -37,12 +39,12 @@ class DualInvestmentRestApi
      *
      * Get Dual Investment product list
      *
-     * @param string   $optionType    Input CALL or PUT (required)
-     * @param string   $exercisedCoin Target exercised asset, e.g.: if you subscribe to a high sell product (call option), you should input: &#x60;optionType&#x60;:CALL,&#x60;exercisedCoin&#x60;:USDT,&#x60;investCoin&#x60;:BNB; if you subscribe to a low buy product (put option), you should input: &#x60;optionType&#x60;:PUT,&#x60;exercisedCoin&#x60;:BNB,&#x60;investCoin&#x60;:USDT (required)
-     * @param string   $investCoin    Asset used for subscribing, e.g.: if you subscribe to a high sell product (call option), you should input: &#x60;optionType&#x60;:CALL,&#x60;exercisedCoin&#x60;:USDT,&#x60;investCoin&#x60;:BNB; if you subscribe to a low buy product (put option), you should input: &#x60;optionType&#x60;:PUT,&#x60;exercisedCoin&#x60;:BNB,&#x60;investCoin&#x60;:USDT (required)
-     * @param null|int $pageSize      Default: 10, Maximum: 100 (optional)
-     * @param null|int $pageIndex     Default: 1 (optional)
-     * @param null|int $recvWindow    The value cannot be greater than 60000 (optional)
+     * @param OptionType $optionType    Input CALL or PUT (required)
+     * @param string     $exercisedCoin Target exercised asset, e.g.: if you subscribe to a high sell product (call option), you should input: &#x60;optionType: CALL&#x60;, &#x60;exercisedCoin: USDT&#x60;, &#x60;investCoin: BNB&#x60;; if you subscribe to a low buy product (put option), you should input: &#x60;optionType: PUT&#x60;, &#x60;exercisedCoin: BNB&#x60;, &#x60;investCoin: USDT&#x60; (required)
+     * @param string     $investCoin    Asset used for subscribing, e.g.: if you subscribe to a high sell product (call option), you should input: &#x60;optionType: CALL&#x60;, &#x60;exercisedCoin: USDT&#x60;, &#x60;investCoin: BNB&#x60;; if you subscribe to a low buy product (put option), you should input: &#x60;optionType: PUT&#x60;, &#x60;exercisedCoin: BNB&#x60;, &#x60;investCoin: USDT&#x60; (required)
+     * @param null|int   $pageSize      Number of records per page (optional)
+     * @param null|int   $pageIndex     Page index (optional)
+     * @param null|int   $recvWindow    Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetDualInvestmentProductListResponse>
      *
@@ -57,7 +59,7 @@ class DualInvestmentRestApi
     /**
      * Operation changeAutoCompoundStatus.
      *
-     * Change Auto-Compound status(USER_DATA)
+     * Change Auto-Compound status (USER_DATA)
      *
      * @param ChangeAutoCompoundStatusRequest $changeAutoCompoundStatusRequest changeAutoCompoundStatusRequest (required)
      *
@@ -74,9 +76,9 @@ class DualInvestmentRestApi
     /**
      * Operation checkDualInvestmentAccounts.
      *
-     * Check Dual Investment accounts(USER_DATA)
+     * Check Dual Investment accounts (USER_DATA)
      *
-     * @param null|int $recvWindow The value cannot be greater than 60000 (optional)
+     * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<CheckDualInvestmentAccountsResponse>
      *
@@ -91,12 +93,12 @@ class DualInvestmentRestApi
     /**
      * Operation getDualInvestmentPositions.
      *
-     * Get Dual Investment positions(USER_DATA)
+     * Get Dual Investment positions (USER_DATA)
      *
-     * @param null|string $status     &#x60;PENDING&#x60;:Products are purchasing, will give results later;&#x60;PURCHASE_SUCCESS&#x60;:purchase successfully;&#x60;SETTLED&#x60;: Products are finish settling;&#x60;PURCHASE_FAIL&#x60;:fail to purchase;&#x60;REFUNDING&#x60;:refund ongoing;&#x60;REFUND_SUCCESS&#x60;:refund to spot account successfully; &#x60;SETTLING&#x60;:Products are settling. If don&#39;t fill this field, will response all the position status. (optional)
-     * @param null|int    $pageSize   Default: 10, Maximum: 100 (optional)
-     * @param null|int    $pageIndex  Default: 1 (optional)
-     * @param null|int    $recvWindow The value cannot be greater than 60000 (optional)
+     * @param null|Status $status     &#x60;PENDING&#x60;: Products are purchasing, will give results later; &#x60;PURCHASE_SUCCESS&#x60;: purchase successfully; &#x60;SETTLED&#x60;: Products are finish settling; &#x60;PURCHASE_FAIL&#x60;: fail to purchase; &#x60;REFUNDING&#x60;: refund ongoing; &#x60;REFUND_SUCCESS&#x60;: refund to spot account successfully; &#x60;SETTLING&#x60;: Products are settling. If don&#39;t fill this field, will response all the position status. (optional)
+     * @param null|int    $pageSize   Number of records per page (optional)
+     * @param null|int    $pageIndex  Page index (optional)
+     * @param null|int    $recvWindow Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<GetDualInvestmentPositionsResponse>
      *
@@ -111,7 +113,7 @@ class DualInvestmentRestApi
     /**
      * Operation subscribeDualInvestmentProducts.
      *
-     * Subscribe Dual Investment products(USER_DATA)
+     * Subscribe Dual Investment products (USER_DATA)
      *
      * @param SubscribeDualInvestmentProductsRequest $subscribeDualInvestmentProductsRequest subscribeDualInvestmentProductsRequest (required)
      *

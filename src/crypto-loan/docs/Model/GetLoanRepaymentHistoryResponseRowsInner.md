@@ -1,4 +1,4 @@
-# # GetLoanRepaymentHistoryResponseRowsInner
+# GetLoanRepaymentHistoryResponseRowsInner
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # DeleteOrderListResponse
+# DeleteOrderListResponse
 
 ## Properties
 

@@ -19,11 +19,11 @@ function orderListOtoExample()
     $orderListOtoRequest->setSymbol('BNBUSDT');
     $orderListOtoRequest->setWorkingType(WorkingType::LIMIT);
     $orderListOtoRequest->setWorkingSide(WorkingSide::BUY);
-    $orderListOtoRequest->setWorkingPrice(1.0);
-    $orderListOtoRequest->setWorkingQuantity(1.0);
+    $orderListOtoRequest->setWorkingPrice(1);
+    $orderListOtoRequest->setWorkingQuantity(1);
     $orderListOtoRequest->setPendingType(PendingType::LIMIT);
     $orderListOtoRequest->setPendingSide(PendingSide::BUY);
-    $orderListOtoRequest->setPendingQuantity(1.0);
+    $orderListOtoRequest->setPendingQuantity(1);
     $response = $api->orderListOto($orderListOtoRequest);
     print_r($response);
 }

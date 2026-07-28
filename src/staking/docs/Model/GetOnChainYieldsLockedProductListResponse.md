@@ -1,4 +1,4 @@
-# # GetOnChainYieldsLockedProductListResponse
+# GetOnChainYieldsLockedProductListResponse
 
 ## Properties
 

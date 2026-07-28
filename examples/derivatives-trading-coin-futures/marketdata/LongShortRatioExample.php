@@ -12,7 +12,7 @@ function longShortRatioExample()
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
     $pair = '';
     $period = Period::PERIOD_5M;
-    $limit = 100;
+    $limit = 30;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $response = $api->longShortRatio($pair, $period, $limit, $startTime, $endTime);

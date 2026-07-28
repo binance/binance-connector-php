@@ -1,4 +1,4 @@
-# # GetFlexibleLoanCollateralAssetsDataResponse
+# GetFlexibleLoanCollateralAssetsDataResponse
 
 ## Properties
 

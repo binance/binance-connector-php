@@ -16,7 +16,6 @@ function submitDepositQuestionnaireExample()
     $submitDepositQuestionnaireRequest->setDepositId(1);
     $submitDepositQuestionnaireRequest->setQuestionnaire('');
     $submitDepositQuestionnaireRequest->setBeneficiaryPii('');
-    $submitDepositQuestionnaireRequest->setSignature('');
     $response = $api->submitDepositQuestionnaire($submitDepositQuestionnaireRequest);
     print_r($response);
 }

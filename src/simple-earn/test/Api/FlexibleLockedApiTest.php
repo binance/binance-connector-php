@@ -206,7 +206,7 @@ class FlexibleLockedApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/simple-earn/flexible/history/rewardsRecord', $request->getUri()->getPath());
-        self::assertEquals('b74b860a05349f57d0c41be83ff8af3f9442866cb9c5753cff50243f61b6f92c', $queryMap['signature']);
+        self::assertEquals('2791836301233f039c9e5f4a95f241c3cf30b68f0eaa5888cac5925c8ed0eaaa', $queryMap['signature']);
     }
 
     /**
@@ -577,7 +577,7 @@ class FlexibleLockedApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/simple-earn/flexible/subscribe', $request->getUri()->getPath());
-        self::assertEquals('3dee22bd6696da63a05dcfeab0e3354c811f0ccee9225496640c2d08bd9e234d', $queryMap['signature']);
+        self::assertEquals('41bdcf3a70c007276d13c479c149ca3129fcfc4862bb6a0012b984624786755d', $queryMap['signature']);
     }
 
     /**

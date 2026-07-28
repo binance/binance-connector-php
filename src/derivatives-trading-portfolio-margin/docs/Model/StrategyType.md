@@ -1,4 +1,4 @@
-# # StrategyType
+# StrategyType
 
 ## Properties
 

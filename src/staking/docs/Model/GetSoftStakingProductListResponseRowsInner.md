@@ -1,4 +1,4 @@
-# # GetSoftStakingProductListResponseRowsInner
+# GetSoftStakingProductListResponseRowsInner
 
 ## Properties
 

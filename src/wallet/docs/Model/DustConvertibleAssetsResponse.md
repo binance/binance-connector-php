@@ -1,4 +1,4 @@
-# # DustConvertibleAssetsResponse
+# DustConvertibleAssetsResponse
 
 ## Properties
 

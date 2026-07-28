@@ -10,7 +10,7 @@ function cancelUmOrderExample()
     $configurationBuilder = DerivativesTradingPortfolioMarginRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingPortfolioMarginRestApi($configurationBuilder->build());
-    $symbol = '';
+    $symbol = 'BTCUSDT';
     $orderId = 1;
     $origClientOrderId = '1';
     $recvWindow = 5000;

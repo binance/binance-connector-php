@@ -1,4 +1,4 @@
-# # GetOpenSymbolListResponseInner
+# GetOpenSymbolListResponseInner
 
 ## Properties
 

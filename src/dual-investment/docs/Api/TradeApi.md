@@ -1,13 +1,15 @@
 # Binance\Client\DualInvestment\TradeApi
 
+
+
 All URIs are relative to https://api.binance.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**changeAutoCompoundStatus()**](TradeApi.md#changeAutoCompoundStatus) | **POST** /sapi/v1/dci/product/auto_compound/edit-status | Change Auto-Compound status(USER_DATA) |
-| [**checkDualInvestmentAccounts()**](TradeApi.md#checkDualInvestmentAccounts) | **GET** /sapi/v1/dci/product/accounts | Check Dual Investment accounts(USER_DATA) |
-| [**getDualInvestmentPositions()**](TradeApi.md#getDualInvestmentPositions) | **GET** /sapi/v1/dci/product/positions | Get Dual Investment positions(USER_DATA) |
-| [**subscribeDualInvestmentProducts()**](TradeApi.md#subscribeDualInvestmentProducts) | **POST** /sapi/v1/dci/product/subscribe | Subscribe Dual Investment products(USER_DATA) |
+| [**changeAutoCompoundStatus()**](TradeApi.md#changeAutoCompoundStatus) | **POST** /sapi/v1/dci/product/auto_compound/edit-status | Change Auto-Compound status (USER_DATA) |
+| [**checkDualInvestmentAccounts()**](TradeApi.md#checkDualInvestmentAccounts) | **GET** /sapi/v1/dci/product/accounts | Check Dual Investment accounts (USER_DATA) |
+| [**getDualInvestmentPositions()**](TradeApi.md#getDualInvestmentPositions) | **GET** /sapi/v1/dci/product/positions | Get Dual Investment positions (USER_DATA) |
+| [**subscribeDualInvestmentProducts()**](TradeApi.md#subscribeDualInvestmentProducts) | **POST** /sapi/v1/dci/product/subscribe | Subscribe Dual Investment products (USER_DATA) |
 
 
 ## `changeAutoCompoundStatus()`
@@ -16,9 +18,9 @@ All URIs are relative to https://api.binance.com, except if the operation define
 changeAutoCompoundStatus($changeAutoCompoundStatusRequest): \Binance\Client\DualInvestment\Model\ChangeAutoCompoundStatusResponse
 ```
 
-Change Auto-Compound status(USER_DATA)
+Change Auto-Compound status (USER_DATA)
 
-Change Auto-Compound status  Weight: 1(IP)
+Change Auto-Compound status  Weight(IP): 1  Security Type: USER_DATA  Notes: - 15:31 ~ 16:00 UTC+8: This function is disabled.
 
 ### Example
 
@@ -72,9 +74,9 @@ No authorization required
 checkDualInvestmentAccounts($recvWindow): \Binance\Client\DualInvestment\Model\CheckDualInvestmentAccountsResponse
 ```
 
-Check Dual Investment accounts(USER_DATA)
+Check Dual Investment accounts (USER_DATA)
 
-Check Dual Investment accounts  Weight: 1(IP)
+Check Dual Investment accounts  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -89,7 +91,7 @@ $apiInstance = new Binance\Client\DualInvestment\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$recvWindow = 56; // int | The value cannot be greater than 60000
+$recvWindow = 5000; // int | Request validity window in milliseconds
 
 try {
     $result = $apiInstance->checkDualInvestmentAccounts($recvWindow);
@@ -103,7 +105,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **recvWindow** | **int**| The value cannot be greater than 60000 | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds | [optional] |
 
 ### Return type
 
@@ -128,9 +130,9 @@ No authorization required
 getDualInvestmentPositions($status, $pageSize, $pageIndex, $recvWindow): \Binance\Client\DualInvestment\Model\GetDualInvestmentPositionsResponse
 ```
 
-Get Dual Investment positions(USER_DATA)
+Get Dual Investment positions (USER_DATA)
 
-Get Dual Investment positions (batch)  Weight: 1(IP)
+Get Dual Investment positions (batch)  Weight(IP): 1  Security Type: USER_DATA
 
 ### Example
 
@@ -145,10 +147,10 @@ $apiInstance = new Binance\Client\DualInvestment\Api\TradeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$status = 'status_example'; // string | `PENDING`:Products are purchasing, will give results later;`PURCHASE_SUCCESS`:purchase successfully;`SETTLED`: Products are finish settling;`PURCHASE_FAIL`:fail to purchase;`REFUNDING`:refund ongoing;`REFUND_SUCCESS`:refund to spot account successfully; `SETTLING`:Products are settling. If don't fill this field, will response all the position status.
-$pageSize = 56; // int | Default: 10, Maximum: 100
-$pageIndex = 56; // int | Default: 1
-$recvWindow = 56; // int | The value cannot be greater than 60000
+$status = new \Binance\Client\DualInvestment\Model\\Binance\Client\DualInvestment\Model\Status(); // \Binance\Client\DualInvestment\Model\Status | `PENDING`: Products are purchasing, will give results later; `PURCHASE_SUCCESS`: purchase successfully; `SETTLED`: Products are finish settling; `PURCHASE_FAIL`: fail to purchase; `REFUNDING`: refund ongoing; `REFUND_SUCCESS`: refund to spot account successfully; `SETTLING`: Products are settling. If don't fill this field, will response all the position status.
+$pageSize = 10; // int | Number of records per page
+$pageIndex = 1; // int | Page index
+$recvWindow = 5000; // int | Request validity window in milliseconds
 
 try {
     $result = $apiInstance->getDualInvestmentPositions($status, $pageSize, $pageIndex, $recvWindow);
@@ -162,10 +164,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **status** | **string**| &#x60;PENDING&#x60;:Products are purchasing, will give results later;&#x60;PURCHASE_SUCCESS&#x60;:purchase successfully;&#x60;SETTLED&#x60;: Products are finish settling;&#x60;PURCHASE_FAIL&#x60;:fail to purchase;&#x60;REFUNDING&#x60;:refund ongoing;&#x60;REFUND_SUCCESS&#x60;:refund to spot account successfully; &#x60;SETTLING&#x60;:Products are settling. If don&#39;t fill this field, will response all the position status. | [optional] |
-| **pageSize** | **int**| Default: 10, Maximum: 100 | [optional] |
-| **pageIndex** | **int**| Default: 1 | [optional] |
-| **recvWindow** | **int**| The value cannot be greater than 60000 | [optional] |
+| **status** | [**\Binance\Client\DualInvestment\Model\Status**](../Model/.md)| &#x60;PENDING&#x60;: Products are purchasing, will give results later; &#x60;PURCHASE_SUCCESS&#x60;: purchase successfully; &#x60;SETTLED&#x60;: Products are finish settling; &#x60;PURCHASE_FAIL&#x60;: fail to purchase; &#x60;REFUNDING&#x60;: refund ongoing; &#x60;REFUND_SUCCESS&#x60;: refund to spot account successfully; &#x60;SETTLING&#x60;: Products are settling. If don&#39;t fill this field, will response all the position status. | [optional] |
+| **pageSize** | **int**| Number of records per page | [optional] |
+| **pageIndex** | **int**| Page index | [optional] |
+| **recvWindow** | **int**| Request validity window in milliseconds | [optional] |
 
 ### Return type
 
@@ -190,9 +192,9 @@ No authorization required
 subscribeDualInvestmentProducts($subscribeDualInvestmentProductsRequest): \Binance\Client\DualInvestment\Model\SubscribeDualInvestmentProductsResponse
 ```
 
-Subscribe Dual Investment products(USER_DATA)
+Subscribe Dual Investment products (USER_DATA)
 
-Subscribe Dual Investment products  * Products are not available. // this means APR changes to lower value, or orders are not unavailable. * Failed. This means System or network errors.  Weight: 1(IP)
+Subscribe Dual Investment products  Weight(IP): 1  Security Type: USER_DATA  Notes: - Failed messages:   - Products are not available. This means APR changed to a lower value, or the order is unavailable.   - Failed. This means system or network errors.
 
 ### Example
 

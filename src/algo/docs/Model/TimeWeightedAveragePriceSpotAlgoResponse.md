@@ -1,4 +1,4 @@
-# # TimeWeightedAveragePriceSpotAlgoResponse
+# TimeWeightedAveragePriceSpotAlgoResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # AssetDividendRecordResponse
+# AssetDividendRecordResponse
 
 ## Properties
 

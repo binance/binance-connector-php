@@ -1,4 +1,4 @@
-# # CheckVIPLoanCollateralAccountResponse
+# CheckVIPLoanCollateralAccountResponse
 
 ## Properties
 

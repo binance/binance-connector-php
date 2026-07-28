@@ -1,4 +1,4 @@
-# Binance\Client\W3wPrediction\PositionApi
+# Binance\Client\W3WPrediction\PositionApi
 
 
 
@@ -6,20 +6,20 @@ All URIs are relative to https://api.binance.com, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getPositionByToken()**](PositionApi.md#getPositionByToken) | **GET** /sapi/v1/w3w/wallet/prediction/position/token | Get Position by Token |
-| [**queryPnL()**](PositionApi.md#queryPnL) | **GET** /sapi/v1/w3w/wallet/prediction/pnl/query | Query PnL |
-| [**queryPositions()**](PositionApi.md#queryPositions) | **GET** /sapi/v1/w3w/wallet/prediction/position/list | Query Positions |
-| [**queryPositionsByFilter()**](PositionApi.md#queryPositionsByFilter) | **GET** /sapi/v1/w3w/wallet/prediction/position/filter | Query Positions by Filter |
-| [**querySettledPositionHistory()**](PositionApi.md#querySettledPositionHistory) | **GET** /sapi/v1/w3w/wallet/prediction/position/settled-history | Query Settled Position History |
+| [**getPositionByToken()**](PositionApi.md#getPositionByToken) | **GET** /sapi/v1/w3w/wallet/prediction/position/token | Get Position by Token (USER_DATA) |
+| [**queryPnL()**](PositionApi.md#queryPnL) | **GET** /sapi/v1/w3w/wallet/prediction/pnl/query | Query PnL (USER_DATA) |
+| [**queryPositions()**](PositionApi.md#queryPositions) | **GET** /sapi/v1/w3w/wallet/prediction/position/list | Query Positions (USER_DATA) |
+| [**queryPositionsByFilter()**](PositionApi.md#queryPositionsByFilter) | **GET** /sapi/v1/w3w/wallet/prediction/position/filter | Query Positions by Filter (USER_DATA) |
+| [**querySettledPositionHistory()**](PositionApi.md#querySettledPositionHistory) | **GET** /sapi/v1/w3w/wallet/prediction/position/settled-history | Query Settled Position History (USER_DATA) |
 
 
 ## `getPositionByToken()`
 
 ```php
-getPositionByToken($walletAddress, $tokenId, $recvWindow): \Binance\Client\W3wPrediction\Model\GetPositionByTokenResponse
+getPositionByToken($walletAddress, $tokenId, $recvWindow): \Binance\Client\W3WPrediction\Model\GetPositionByTokenResponse
 ```
 
-Get Position by Token
+Get Position by Token (USER_DATA)
 
 Get the authenticated user's position detail for a specific prediction token.  Weight(IP): 200  Security Type: USER_DATA
 
@@ -31,7 +31,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\PositionApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\PositionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -58,7 +58,7 @@ try {
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\GetPositionByTokenResponse**](../Model/GetPositionByTokenResponse.md)
+[**\Binance\Client\W3WPrediction\Model\GetPositionByTokenResponse**](../Model/GetPositionByTokenResponse.md)
 
 ### Authorization
 
@@ -76,10 +76,10 @@ No authorization required
 ## `queryPnL()`
 
 ```php
-queryPnL($walletAddress, $tokenId, $marketId, $marketTopicId, $activeOnly, $recvWindow): \Binance\Client\W3wPrediction\Model\QueryPnLResponse
+queryPnL($walletAddress, $tokenId, $marketId, $marketTopicId, $activeOnly, $recvWindow): \Binance\Client\W3WPrediction\Model\QueryPnLResponse
 ```
 
-Query PnL
+Query PnL (USER_DATA)
 
 Query profit and loss records for the authenticated user's prediction positions. When `tokenId` is provided, returns a single record in `pnl`; otherwise returns a list in `pnlList`.  Weight(IP): 200  Security Type: USER_DATA
 
@@ -91,7 +91,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\PositionApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\PositionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -124,7 +124,7 @@ try {
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\QueryPnLResponse**](../Model/QueryPnLResponse.md)
+[**\Binance\Client\W3WPrediction\Model\QueryPnLResponse**](../Model/QueryPnLResponse.md)
 
 ### Authorization
 
@@ -142,10 +142,10 @@ No authorization required
 ## `queryPositions()`
 
 ```php
-queryPositions($walletAddress, $tab, $offset, $limit, $recvWindow): \Binance\Client\W3wPrediction\Model\QueryPositionsResponse
+queryPositions($walletAddress, $tab, $offset, $limit, $recvWindow): \Binance\Client\W3WPrediction\Model\QueryPositionsResponse
 ```
 
-Query Positions
+Query Positions (USER_DATA)
 
 Get the authenticated user's prediction token positions with portfolio summary and tab-based filtering.  Weight(IP): 200  Security Type: USER_DATA
 
@@ -157,7 +157,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\PositionApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\PositionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -188,7 +188,7 @@ try {
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\QueryPositionsResponse**](../Model/QueryPositionsResponse.md)
+[**\Binance\Client\W3WPrediction\Model\QueryPositionsResponse**](../Model/QueryPositionsResponse.md)
 
 ### Authorization
 
@@ -206,10 +206,10 @@ No authorization required
 ## `queryPositionsByFilter()`
 
 ```php
-queryPositionsByFilter($walletAddress, $marketTopicId, $recvWindow): \Binance\Client\W3wPrediction\Model\QueryPositionsByFilterResponse
+queryPositionsByFilter($walletAddress, $marketTopicId, $recvWindow): \Binance\Client\W3WPrediction\Model\QueryPositionsByFilterResponse
 ```
 
-Query Positions by Filter
+Query Positions by Filter (USER_DATA)
 
 Get prediction positions filtered by wallet address and/or market topic ID. Both parameters are optional.  Weight(IP): 200  Security Type: USER_DATA
 
@@ -221,7 +221,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\PositionApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\PositionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -248,7 +248,7 @@ try {
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\QueryPositionsByFilterResponse**](../Model/QueryPositionsByFilterResponse.md)
+[**\Binance\Client\W3WPrediction\Model\QueryPositionsByFilterResponse**](../Model/QueryPositionsByFilterResponse.md)
 
 ### Authorization
 
@@ -266,10 +266,10 @@ No authorization required
 ## `querySettledPositionHistory()`
 
 ```php
-querySettledPositionHistory($walletAddress, $l1Category, $result, $startDate, $endDate, $offset, $limit, $recvWindow): \Binance\Client\W3wPrediction\Model\QuerySettledPositionHistoryResponse
+querySettledPositionHistory($walletAddress, $l1Category, $result, $startDate, $endDate, $offset, $limit, $recvWindow): \Binance\Client\W3WPrediction\Model\QuerySettledPositionHistoryResponse
 ```
 
-Query Settled Position History
+Query Settled Position History (USER_DATA)
 
 Get the authenticated user's settled (resolved) prediction position history with optional filters.  Weight(IP): 200  Security Type: USER_DATA
 
@@ -281,7 +281,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Binance\Client\W3wPrediction\Api\PositionApi(
+$apiInstance = new Binance\Client\W3WPrediction\Api\PositionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -318,7 +318,7 @@ try {
 
 ### Return type
 
-[**\Binance\Client\W3wPrediction\Model\QuerySettledPositionHistoryResponse**](../Model/QuerySettledPositionHistoryResponse.md)
+[**\Binance\Client\W3WPrediction\Model\QuerySettledPositionHistoryResponse**](../Model/QuerySettledPositionHistoryResponse.md)
 
 ### Authorization
 

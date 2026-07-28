@@ -10,8 +10,8 @@ function positionInformationExample()
     $configurationBuilder = DerivativesTradingCoinFuturesRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
-    $marginAsset = '';
-    $pair = '';
+    $marginAsset = 'USDT';
+    $pair = 'BTCUSDT';
     $recvWindow = 5000;
     $response = $api->positionInformation($marginAsset, $pair, $recvWindow);
     print_r($response);

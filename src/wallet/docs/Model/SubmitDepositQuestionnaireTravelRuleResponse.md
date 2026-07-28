@@ -1,4 +1,4 @@
-# # SubmitDepositQuestionnaireTravelRuleResponse
+# SubmitDepositQuestionnaireTravelRuleResponse
 
 ## Properties
 
