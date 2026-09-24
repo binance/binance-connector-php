@@ -417,7 +417,7 @@ class AccountBalanceResponse1Inner implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets crossMarginAsset.
      *
-     * @param null|string $crossMarginAsset cross Margin Asset
+     * @param null|string $crossMarginAsset Cross Margin Asset. Equal to crossMarginFree + crossMarginLocked.
      *
      * @return self
      */

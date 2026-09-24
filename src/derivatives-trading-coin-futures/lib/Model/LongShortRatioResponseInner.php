@@ -415,7 +415,7 @@ class LongShortRatioResponseInner implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets timestamp.
      *
-     * @param null|int $timestamp timestamp in milliseconds
+     * @param null|int $timestamp end time of the period, in milliseconds
      *
      * @return self
      */

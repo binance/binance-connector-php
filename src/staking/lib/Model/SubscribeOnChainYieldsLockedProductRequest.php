@@ -179,7 +179,7 @@ class SubscribeOnChainYieldsLockedProductRequest implements ModelInterface, \Arr
     {
         $this->setIfExists('projectId', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('autoSubscribe', $data ?? [], false);
+        $this->setIfExists('autoSubscribe', $data ?? [], null);
         $this->setIfExists('sourceAccount', $data ?? [], null);
         $this->setIfExists('redeemTo', $data ?? [], null);
         $this->setIfExists('channelId', $data ?? [], null);

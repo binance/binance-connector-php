@@ -1,5 +1,16 @@
 # Changelog
 
+## 7.0.0 - 2026-09-24
+
+**Derivatives Trading Portfolio Margin Pro**
+
+### Changed (2)
+
+#### WebSocket Streams
+
+- Modified response schema `UserDataStreamEventsResponse`:
+  - oneOf modified
+
 ## 6.0.0 - 2026-07-28
 
 ### Changed (6)

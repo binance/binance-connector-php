@@ -87,6 +87,8 @@ enum IncomeType: string
 
     case BFUSD_REWARD = 'BFUSD_REWARD';
 
+    case SPECIAL_FUNDING_FEE = 'SPECIAL_FUNDING_FEE';
+
     /**
      * Gets allowable values of the enum.
      *
@@ -117,6 +119,7 @@ enum IncomeType: string
             self::STRATEGY_UMFUTURES_TRANSFER,
             self::FEE_RETURN,
             self::BFUSD_REWARD,
+            self::SPECIAL_FUNDING_FEE,
         ];
     }
 }

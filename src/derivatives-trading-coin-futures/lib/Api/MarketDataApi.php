@@ -2126,20 +2126,21 @@ class MarketDataApi
      *
      * Long/Short Ratio
      *
-     * @param string   $pair      BTCUSD (required)
-     * @param Period   $period    period (required)
-     * @param null|int $limit     Maximum number of records to return. (optional)
-     * @param null|int $startTime startTime (optional)
-     * @param null|int $endTime   endTime (optional)
+     * @param string            $pair         BTCUSD (required)
+     * @param Period            $period       period (required)
+     * @param null|ContractType $contractType Contract type filter. If omitted, returns aggregated data across all contract types. (optional)
+     * @param null|int          $limit        Maximum number of records to return. (optional)
+     * @param null|int          $startTime    startTime (optional)
+     * @param null|int          $endTime      endTime (optional)
      *
      * @return ApiResponse<LongShortRatioResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function longShortRatio($pair, $period, $limit = null, $startTime = null, $endTime = null): ApiResponse
+    public function longShortRatio($pair, $period, $contractType = null, $limit = null, $startTime = null, $endTime = null): ApiResponse
     {
-        return $this->longShortRatioWithHttpInfo($pair, $period, $limit, $startTime, $endTime);
+        return $this->longShortRatioWithHttpInfo($pair, $period, $contractType, $limit, $startTime, $endTime);
     }
 
     /**
@@ -2147,20 +2148,21 @@ class MarketDataApi
      *
      * Long/Short Ratio
      *
-     * @param string   $pair      BTCUSD (required)
-     * @param Period   $period    (required)
-     * @param null|int $limit     Maximum number of records to return. (optional)
-     * @param null|int $startTime (optional)
-     * @param null|int $endTime   (optional)
+     * @param string            $pair         BTCUSD (required)
+     * @param Period            $period       (required)
+     * @param null|ContractType $contractType Contract type filter. If omitted, returns aggregated data across all contract types. (optional)
+     * @param null|int          $limit        Maximum number of records to return. (optional)
+     * @param null|int          $startTime    (optional)
+     * @param null|int          $endTime      (optional)
      *
      * @return ApiResponse<LongShortRatioResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function longShortRatioWithHttpInfo($pair, $period, $limit = null, $startTime = null, $endTime = null): ApiResponse
+    public function longShortRatioWithHttpInfo($pair, $period, $contractType = null, $limit = null, $startTime = null, $endTime = null): ApiResponse
     {
-        $request = $this->longShortRatioRequest($pair, $period, $limit, $startTime, $endTime);
+        $request = $this->longShortRatioRequest($pair, $period, $contractType, $limit, $startTime, $endTime);
 
         try {
             try {
@@ -2230,17 +2232,18 @@ class MarketDataApi
     /**
      * Create request for operation 'longShortRatio'.
      *
-     * @param string   $pair      BTCUSD (required)
-     * @param Period   $period    (required)
-     * @param null|int $limit     Maximum number of records to return. (optional)
-     * @param null|int $startTime (optional)
-     * @param null|int $endTime   (optional)
+     * @param string            $pair         BTCUSD (required)
+     * @param Period            $period       (required)
+     * @param null|ContractType $contractType Contract type filter. If omitted, returns aggregated data across all contract types. (optional)
+     * @param null|int          $limit        Maximum number of records to return. (optional)
+     * @param null|int          $startTime    (optional)
+     * @param null|int          $endTime      (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function longShortRatioRequest($pair, $period, $limit = null, $startTime = null, $endTime = null)
+    public function longShortRatioRequest($pair, $period, $contractType = null, $limit = null, $startTime = null, $endTime = null)
     {
         $contentType = self::contentTypes['longShortRatio'][0];
 
@@ -2286,6 +2289,15 @@ class MarketDataApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $contractType,
+            'contractType', // param base name
+            'ContractType', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -2936,21 +2948,21 @@ class MarketDataApi
      *
      * Open Interest Statistics
      *
-     * @param string       $pair         pair (required)
-     * @param ContractType $contractType contractType (required)
-     * @param Period       $period       period (required)
-     * @param null|int     $limit        Maximum number of records to return. (optional)
-     * @param null|int     $startTime    startTime (optional)
-     * @param null|int     $endTime      endTime (optional)
+     * @param string            $pair         pair (required)
+     * @param Period            $period       period (required)
+     * @param null|ContractType $contractType Contract type filter. If omitted, returns aggregated data across all contract types. (optional)
+     * @param null|int          $limit        Maximum number of records to return. (optional)
+     * @param null|int          $startTime    startTime (optional)
+     * @param null|int          $endTime      endTime (optional)
      *
      * @return ApiResponse<OpenInterestStatisticsResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function openInterestStatistics($pair, $contractType, $period, $limit = null, $startTime = null, $endTime = null): ApiResponse
+    public function openInterestStatistics($pair, $period, $contractType = null, $limit = null, $startTime = null, $endTime = null): ApiResponse
     {
-        return $this->openInterestStatisticsWithHttpInfo($pair, $contractType, $period, $limit, $startTime, $endTime);
+        return $this->openInterestStatisticsWithHttpInfo($pair, $period, $contractType, $limit, $startTime, $endTime);
     }
 
     /**
@@ -2958,21 +2970,21 @@ class MarketDataApi
      *
      * Open Interest Statistics
      *
-     * @param string       $pair         (required)
-     * @param ContractType $contractType (required)
-     * @param Period       $period       (required)
-     * @param null|int     $limit        Maximum number of records to return. (optional)
-     * @param null|int     $startTime    (optional)
-     * @param null|int     $endTime      (optional)
+     * @param string            $pair         (required)
+     * @param Period            $period       (required)
+     * @param null|ContractType $contractType Contract type filter. If omitted, returns aggregated data across all contract types. (optional)
+     * @param null|int          $limit        Maximum number of records to return. (optional)
+     * @param null|int          $startTime    (optional)
+     * @param null|int          $endTime      (optional)
      *
      * @return ApiResponse<OpenInterestStatisticsResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function openInterestStatisticsWithHttpInfo($pair, $contractType, $period, $limit = null, $startTime = null, $endTime = null): ApiResponse
+    public function openInterestStatisticsWithHttpInfo($pair, $period, $contractType = null, $limit = null, $startTime = null, $endTime = null): ApiResponse
     {
-        $request = $this->openInterestStatisticsRequest($pair, $contractType, $period, $limit, $startTime, $endTime);
+        $request = $this->openInterestStatisticsRequest($pair, $period, $contractType, $limit, $startTime, $endTime);
 
         try {
             try {
@@ -3042,18 +3054,18 @@ class MarketDataApi
     /**
      * Create request for operation 'openInterestStatistics'.
      *
-     * @param string       $pair         (required)
-     * @param ContractType $contractType (required)
-     * @param Period       $period       (required)
-     * @param null|int     $limit        Maximum number of records to return. (optional)
-     * @param null|int     $startTime    (optional)
-     * @param null|int     $endTime      (optional)
+     * @param string            $pair         (required)
+     * @param Period            $period       (required)
+     * @param null|ContractType $contractType Contract type filter. If omitted, returns aggregated data across all contract types. (optional)
+     * @param null|int          $limit        Maximum number of records to return. (optional)
+     * @param null|int          $startTime    (optional)
+     * @param null|int          $endTime      (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function openInterestStatisticsRequest($pair, $contractType, $period, $limit = null, $startTime = null, $endTime = null)
+    public function openInterestStatisticsRequest($pair, $period, $contractType = null, $limit = null, $startTime = null, $endTime = null)
     {
         $contentType = self::contentTypes['openInterestStatistics'][0];
 
@@ -3061,13 +3073,6 @@ class MarketDataApi
         if (null === $pair || (is_array($pair) && 0 === count($pair))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $pair when calling openInterestStatistics'
-            );
-        }
-
-        // verify the required parameter 'contractType' is set
-        if (null === $contractType || (is_array($contractType) && 0 === count($contractType))) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $contractType when calling openInterestStatistics'
             );
         }
 
@@ -3105,7 +3110,7 @@ class MarketDataApi
             'ContractType', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -4796,20 +4801,21 @@ class MarketDataApi
      *
      * Top Trader Long/Short Account Ratio
      *
-     * @param string   $symbol    Symbol (required)
-     * @param Period   $period    period (required)
-     * @param null|int $limit     Maximum number of records to return. (optional)
-     * @param null|int $startTime startTime (optional)
-     * @param null|int $endTime   endTime (optional)
+     * @param string            $pair         Pair (required)
+     * @param Period            $period       period (required)
+     * @param null|ContractType $contractType Contract type filter. If omitted, returns aggregated data across all contract types. (optional)
+     * @param null|int          $limit        Maximum number of records to return. (optional)
+     * @param null|int          $startTime    startTime (optional)
+     * @param null|int          $endTime      endTime (optional)
      *
      * @return ApiResponse<TopTraderLongShortRatioAccountsResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function topTraderLongShortRatioAccounts($symbol, $period, $limit = null, $startTime = null, $endTime = null): ApiResponse
+    public function topTraderLongShortRatioAccounts($pair, $period, $contractType = null, $limit = null, $startTime = null, $endTime = null): ApiResponse
     {
-        return $this->topTraderLongShortRatioAccountsWithHttpInfo($symbol, $period, $limit, $startTime, $endTime);
+        return $this->topTraderLongShortRatioAccountsWithHttpInfo($pair, $period, $contractType, $limit, $startTime, $endTime);
     }
 
     /**
@@ -4817,20 +4823,21 @@ class MarketDataApi
      *
      * Top Trader Long/Short Account Ratio
      *
-     * @param string   $symbol    Symbol (required)
-     * @param Period   $period    (required)
-     * @param null|int $limit     Maximum number of records to return. (optional)
-     * @param null|int $startTime (optional)
-     * @param null|int $endTime   (optional)
+     * @param string            $pair         Pair (required)
+     * @param Period            $period       (required)
+     * @param null|ContractType $contractType Contract type filter. If omitted, returns aggregated data across all contract types. (optional)
+     * @param null|int          $limit        Maximum number of records to return. (optional)
+     * @param null|int          $startTime    (optional)
+     * @param null|int          $endTime      (optional)
      *
      * @return ApiResponse<TopTraderLongShortRatioAccountsResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function topTraderLongShortRatioAccountsWithHttpInfo($symbol, $period, $limit = null, $startTime = null, $endTime = null): ApiResponse
+    public function topTraderLongShortRatioAccountsWithHttpInfo($pair, $period, $contractType = null, $limit = null, $startTime = null, $endTime = null): ApiResponse
     {
-        $request = $this->topTraderLongShortRatioAccountsRequest($symbol, $period, $limit, $startTime, $endTime);
+        $request = $this->topTraderLongShortRatioAccountsRequest($pair, $period, $contractType, $limit, $startTime, $endTime);
 
         try {
             try {
@@ -4900,24 +4907,25 @@ class MarketDataApi
     /**
      * Create request for operation 'topTraderLongShortRatioAccounts'.
      *
-     * @param string   $symbol    Symbol (required)
-     * @param Period   $period    (required)
-     * @param null|int $limit     Maximum number of records to return. (optional)
-     * @param null|int $startTime (optional)
-     * @param null|int $endTime   (optional)
+     * @param string            $pair         Pair (required)
+     * @param Period            $period       (required)
+     * @param null|ContractType $contractType Contract type filter. If omitted, returns aggregated data across all contract types. (optional)
+     * @param null|int          $limit        Maximum number of records to return. (optional)
+     * @param null|int          $startTime    (optional)
+     * @param null|int          $endTime      (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function topTraderLongShortRatioAccountsRequest($symbol, $period, $limit = null, $startTime = null, $endTime = null)
+    public function topTraderLongShortRatioAccountsRequest($pair, $period, $contractType = null, $limit = null, $startTime = null, $endTime = null)
     {
         $contentType = self::contentTypes['topTraderLongShortRatioAccounts'][0];
 
-        // verify the required parameter 'symbol' is set
-        if (null === $symbol || (is_array($symbol) && 0 === count($symbol))) {
+        // verify the required parameter 'pair' is set
+        if (null === $pair || (is_array($pair) && 0 === count($pair))) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $symbol when calling topTraderLongShortRatioAccounts'
+                'Missing the required parameter $pair when calling topTraderLongShortRatioAccounts'
             );
         }
 
@@ -4941,8 +4949,8 @@ class MarketDataApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $symbol,
-            'symbol', // param base name
+            $pair,
+            'pair', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -4956,6 +4964,15 @@ class MarketDataApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $contractType,
+            'contractType', // param base name
+            'ContractType', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -5021,20 +5038,21 @@ class MarketDataApi
      *
      * Top Trader Long/Short Position Ratio
      *
-     * @param string   $pair      pair (required)
-     * @param Period   $period    period (required)
-     * @param null|int $limit     Maximum number of records to return. (optional)
-     * @param null|int $startTime startTime (optional)
-     * @param null|int $endTime   endTime (optional)
+     * @param string            $pair         pair (required)
+     * @param Period            $period       period (required)
+     * @param null|ContractType $contractType Contract type filter. If omitted, returns aggregated data across all contract types. (optional)
+     * @param null|int          $limit        Maximum number of records to return. (optional)
+     * @param null|int          $startTime    startTime (optional)
+     * @param null|int          $endTime      endTime (optional)
      *
      * @return ApiResponse<TopTraderLongShortRatioPositionsResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function topTraderLongShortRatioPositions($pair, $period, $limit = null, $startTime = null, $endTime = null): ApiResponse
+    public function topTraderLongShortRatioPositions($pair, $period, $contractType = null, $limit = null, $startTime = null, $endTime = null): ApiResponse
     {
-        return $this->topTraderLongShortRatioPositionsWithHttpInfo($pair, $period, $limit, $startTime, $endTime);
+        return $this->topTraderLongShortRatioPositionsWithHttpInfo($pair, $period, $contractType, $limit, $startTime, $endTime);
     }
 
     /**
@@ -5042,20 +5060,21 @@ class MarketDataApi
      *
      * Top Trader Long/Short Position Ratio
      *
-     * @param string   $pair      (required)
-     * @param Period   $period    (required)
-     * @param null|int $limit     Maximum number of records to return. (optional)
-     * @param null|int $startTime (optional)
-     * @param null|int $endTime   (optional)
+     * @param string            $pair         (required)
+     * @param Period            $period       (required)
+     * @param null|ContractType $contractType Contract type filter. If omitted, returns aggregated data across all contract types. (optional)
+     * @param null|int          $limit        Maximum number of records to return. (optional)
+     * @param null|int          $startTime    (optional)
+     * @param null|int          $endTime      (optional)
      *
      * @return ApiResponse<TopTraderLongShortRatioPositionsResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function topTraderLongShortRatioPositionsWithHttpInfo($pair, $period, $limit = null, $startTime = null, $endTime = null): ApiResponse
+    public function topTraderLongShortRatioPositionsWithHttpInfo($pair, $period, $contractType = null, $limit = null, $startTime = null, $endTime = null): ApiResponse
     {
-        $request = $this->topTraderLongShortRatioPositionsRequest($pair, $period, $limit, $startTime, $endTime);
+        $request = $this->topTraderLongShortRatioPositionsRequest($pair, $period, $contractType, $limit, $startTime, $endTime);
 
         try {
             try {
@@ -5125,17 +5144,18 @@ class MarketDataApi
     /**
      * Create request for operation 'topTraderLongShortRatioPositions'.
      *
-     * @param string   $pair      (required)
-     * @param Period   $period    (required)
-     * @param null|int $limit     Maximum number of records to return. (optional)
-     * @param null|int $startTime (optional)
-     * @param null|int $endTime   (optional)
+     * @param string            $pair         (required)
+     * @param Period            $period       (required)
+     * @param null|ContractType $contractType Contract type filter. If omitted, returns aggregated data across all contract types. (optional)
+     * @param null|int          $limit        Maximum number of records to return. (optional)
+     * @param null|int          $startTime    (optional)
+     * @param null|int          $endTime      (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function topTraderLongShortRatioPositionsRequest($pair, $period, $limit = null, $startTime = null, $endTime = null)
+    public function topTraderLongShortRatioPositionsRequest($pair, $period, $contractType = null, $limit = null, $startTime = null, $endTime = null)
     {
         $contentType = self::contentTypes['topTraderLongShortRatioPositions'][0];
 
@@ -5181,6 +5201,15 @@ class MarketDataApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $contractType,
+            'contractType', // param base name
+            'ContractType', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

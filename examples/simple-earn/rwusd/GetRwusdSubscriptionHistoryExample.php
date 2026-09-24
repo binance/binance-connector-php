@@ -11,7 +11,7 @@ function getRwusdSubscriptionHistoryExample()
     $configurationBuilder = SimpleEarnRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SimpleEarnRestApi($configurationBuilder->build());
-    $asset = Asset::USDT;
+    $asset = Asset::USDC;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $current = 1;

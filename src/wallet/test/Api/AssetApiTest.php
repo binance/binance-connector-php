@@ -368,7 +368,7 @@ class AssetApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/asset/wallet/balance', $request->getUri()->getPath());
-        self::assertEquals('fb7a854542348a3445f9dbdab6d6639e8d3dedbacc4a203868c4bb12fe280d54', $queryMap['signature']);
+        self::assertEquals('764c3f76cc12d88a1e2179c54704278e70aff9465219d221a29dc491d8e5f757', $queryMap['signature']);
     }
 
     /**

@@ -161,7 +161,7 @@ class SubscribeFlexibleProductRequest implements ModelInterface, \ArrayAccess, \
     {
         $this->setIfExists('productId', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('autoSubscribe', $data ?? [], true);
+        $this->setIfExists('autoSubscribe', $data ?? [], null);
         $this->setIfExists('sourceAccount', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }

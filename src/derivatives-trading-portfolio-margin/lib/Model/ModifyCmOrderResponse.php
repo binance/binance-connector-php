@@ -67,11 +67,9 @@ class ModifyCmOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerial
         'clientOrderId' => 'string',
         'modifyId' => 'int',
         'price' => 'string',
-        'avgPrice' => 'string',
         'origQty' => 'string',
         'executedQty' => 'string',
         'cumQty' => 'string',
-        'cumBase' => 'string',
         'timeInForce' => 'string',
         'type' => 'string',
         'reduceOnly' => 'bool',
@@ -98,11 +96,9 @@ class ModifyCmOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerial
         'clientOrderId' => null,
         'modifyId' => 'int64',
         'price' => null,
-        'avgPrice' => null,
         'origQty' => null,
         'executedQty' => null,
         'cumQty' => null,
-        'cumBase' => null,
         'timeInForce' => null,
         'type' => null,
         'reduceOnly' => null,
@@ -125,11 +121,9 @@ class ModifyCmOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerial
         'clientOrderId' => false,
         'modifyId' => false,
         'price' => false,
-        'avgPrice' => false,
         'origQty' => false,
         'executedQty' => false,
         'cumQty' => false,
-        'cumBase' => false,
         'timeInForce' => false,
         'type' => false,
         'reduceOnly' => false,
@@ -160,11 +154,9 @@ class ModifyCmOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerial
         'clientOrderId' => 'clientOrderId',
         'modifyId' => 'modifyId',
         'price' => 'price',
-        'avgPrice' => 'avgPrice',
         'origQty' => 'origQty',
         'executedQty' => 'executedQty',
         'cumQty' => 'cumQty',
-        'cumBase' => 'cumBase',
         'timeInForce' => 'timeInForce',
         'type' => 'type',
         'reduceOnly' => 'reduceOnly',
@@ -187,11 +179,9 @@ class ModifyCmOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerial
         'clientOrderId' => 'setClientOrderId',
         'modifyId' => 'setModifyId',
         'price' => 'setPrice',
-        'avgPrice' => 'setAvgPrice',
         'origQty' => 'setOrigQty',
         'executedQty' => 'setExecutedQty',
         'cumQty' => 'setCumQty',
-        'cumBase' => 'setCumBase',
         'timeInForce' => 'setTimeInForce',
         'type' => 'setType',
         'reduceOnly' => 'setReduceOnly',
@@ -214,11 +204,9 @@ class ModifyCmOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerial
         'clientOrderId' => 'getClientOrderId',
         'modifyId' => 'getModifyId',
         'price' => 'getPrice',
-        'avgPrice' => 'getAvgPrice',
         'origQty' => 'getOrigQty',
         'executedQty' => 'getExecutedQty',
         'cumQty' => 'getCumQty',
-        'cumBase' => 'getCumBase',
         'timeInForce' => 'getTimeInForce',
         'type' => 'getType',
         'reduceOnly' => 'getReduceOnly',
@@ -250,11 +238,9 @@ class ModifyCmOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerial
         $this->setIfExists('clientOrderId', $data ?? [], null);
         $this->setIfExists('modifyId', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
-        $this->setIfExists('avgPrice', $data ?? [], null);
         $this->setIfExists('origQty', $data ?? [], null);
         $this->setIfExists('executedQty', $data ?? [], null);
         $this->setIfExists('cumQty', $data ?? [], null);
-        $this->setIfExists('cumBase', $data ?? [], null);
         $this->setIfExists('timeInForce', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('reduceOnly', $data ?? [], null);
@@ -486,7 +472,7 @@ class ModifyCmOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets status.
      *
-     * @param null|string $status Enum：completed，processing
+     * @param null|string $status status
      *
      * @return self
      */
@@ -582,33 +568,6 @@ class ModifyCmOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets avgPrice.
-     *
-     * @return null|string
-     */
-    public function getAvgPrice()
-    {
-        return $this->container['avgPrice'];
-    }
-
-    /**
-     * Sets avgPrice.
-     *
-     * @param null|string $avgPrice avg Price
-     *
-     * @return self
-     */
-    public function setAvgPrice($avgPrice)
-    {
-        if (is_null($avgPrice)) {
-            throw new \InvalidArgumentException('non-nullable avgPrice cannot be null');
-        }
-        $this->container['avgPrice'] = $avgPrice;
-
-        return $this;
-    }
-
-    /**
      * Gets origQty.
      *
      * @return null|string
@@ -685,33 +644,6 @@ class ModifyCmOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable cumQty cannot be null');
         }
         $this->container['cumQty'] = $cumQty;
-
-        return $this;
-    }
-
-    /**
-     * Gets cumBase.
-     *
-     * @return null|string
-     */
-    public function getCumBase()
-    {
-        return $this->container['cumBase'];
-    }
-
-    /**
-     * Sets cumBase.
-     *
-     * @param null|string $cumBase cum Base
-     *
-     * @return self
-     */
-    public function setCumBase($cumBase)
-    {
-        if (is_null($cumBase)) {
-            throw new \InvalidArgumentException('non-nullable cumBase cannot be null');
-        }
-        $this->container['cumBase'] = $cumBase;
 
         return $this;
     }

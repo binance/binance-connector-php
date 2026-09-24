@@ -347,7 +347,7 @@ class OrderArgsInner implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets positionSide.
      *
-     * @param null|string $positionSide positionSide
+     * @param null|string $positionSide Required when productType=UM. Optional and ignored when productType=OPTION (the response returns positionSide as null).
      *
      * @return self
      */

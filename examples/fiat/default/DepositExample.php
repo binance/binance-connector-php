@@ -14,7 +14,7 @@ function depositExample()
     $api = new FiatRestApi($configurationBuilder->build());
     $depositRequest = new DepositRequest();
     $depositRequest->setCurrency('BRL');
-    $depositRequest->setApiPaymentMethod(ApiPaymentMethod::bank_transfer);
+    $depositRequest->setApiPaymentMethod(ApiPaymentMethod::pix);
     $depositRequest->setAmount('1');
     $recvWindow = 5000;
     $response = $api->deposit($depositRequest, $recvWindow);

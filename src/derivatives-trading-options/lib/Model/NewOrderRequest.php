@@ -213,8 +213,8 @@ class NewOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('timeInForce', $data ?? [], null);
-        $this->setIfExists('reduceOnly', $data ?? [], false);
-        $this->setIfExists('postOnly', $data ?? [], false);
+        $this->setIfExists('reduceOnly', $data ?? [], null);
+        $this->setIfExists('postOnly', $data ?? [], null);
         $this->setIfExists('newOrderRespType', $data ?? [], null);
         $this->setIfExists('clientOrderId', $data ?? [], null);
         $this->setIfExists('isMmp', $data ?? [], null);

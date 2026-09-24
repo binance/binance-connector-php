@@ -34,7 +34,7 @@ namespace Binance\Client\Fiat\Model;
  *
  * @category Class
  *
- * @description payment method; current supported: bank_transfer
+ * @description payment method; current supported: pix
  *
  * @author   OpenAPI Generator team
  *
@@ -45,6 +45,8 @@ enum ApiPaymentMethod: string
     /**
      * Possible values of this enum.
      */
+    case PIX = 'pix';
+
     case BANK_TRANSFER = 'bank_transfer';
 
     /**
@@ -55,6 +57,7 @@ enum ApiPaymentMethod: string
     public static function getAllowableEnumValues()
     {
         return [
+            self::PIX,
             self::BANK_TRANSFER,
         ];
     }

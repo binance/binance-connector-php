@@ -918,7 +918,7 @@ class AccountManagementApi
      * Get Futures Position-Risk of Sub-account V2 (For Master Account) (USER_DATA)
      *
      * @param string   $email       email (required)
-     * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
+     * @param int      $futuresType 1: USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $recvWindow  recvWindow (optional)
      *
      * @return ApiResponse<GetFuturesPositionRiskOfSubAccountV2Response>
@@ -937,7 +937,7 @@ class AccountManagementApi
      * Get Futures Position-Risk of Sub-account V2 (For Master Account) (USER_DATA)
      *
      * @param string   $email       (required)
-     * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
+     * @param int      $futuresType 1: USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $recvWindow  (optional)
      *
      * @return ApiResponse<GetFuturesPositionRiskOfSubAccountV2Response>
@@ -1018,7 +1018,7 @@ class AccountManagementApi
      * Create request for operation 'getFuturesPositionRiskOfSubAccountV2'.
      *
      * @param string   $email       (required)
-     * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
+     * @param int      $futuresType 1: USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $recvWindow  (optional)
      *
      * @return Request

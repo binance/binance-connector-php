@@ -751,7 +751,7 @@ class QueryOrderResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
     /**
      * Sets status.
      *
-     * @param null|string $status Enum：completed，processing
+     * @param null|string $status status
      *
      * @return self
      */

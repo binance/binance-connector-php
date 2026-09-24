@@ -695,7 +695,7 @@ class QueryAllCmOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets status.
      *
-     * @param null|string $status Enum：completed，processing
+     * @param null|string $status status
      *
      * @return self
      */

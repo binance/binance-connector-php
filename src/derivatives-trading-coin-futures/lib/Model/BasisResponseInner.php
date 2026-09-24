@@ -517,7 +517,7 @@ class BasisResponseInner implements ModelInterface, \ArrayAccess, \JsonSerializa
     /**
      * Sets timestamp.
      *
-     * @param null|int $timestamp timestamp in milliseconds
+     * @param null|int $timestamp start time of the period, in milliseconds
      *
      * @return self
      */

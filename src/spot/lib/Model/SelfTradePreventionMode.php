@@ -34,7 +34,7 @@ namespace Binance\Client\Spot\Model;
  *
  * @category Class
  *
- * @description The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)
+ * @description The allowed enums is dependent on what is configured on the symbol.
  *
  * @author   OpenAPI Generator team
  *

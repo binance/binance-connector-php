@@ -49,6 +49,16 @@ enum OrderType: string
 
     case LIMIT = 'LIMIT';
 
+    case STOP_LOSS = 'STOP_LOSS';
+
+    case STOP_LOSS_LIMIT = 'STOP_LOSS_LIMIT';
+
+    case TAKE_PROFIT = 'TAKE_PROFIT';
+
+    case TAKE_PROFIT_LIMIT = 'TAKE_PROFIT_LIMIT';
+
+    case LIMIT_MAKER = 'LIMIT_MAKER';
+
     /**
      * Gets allowable values of the enum.
      *
@@ -59,6 +69,11 @@ enum OrderType: string
         return [
             self::MARKET,
             self::LIMIT,
+            self::STOP_LOSS,
+            self::STOP_LOSS_LIMIT,
+            self::TAKE_PROFIT,
+            self::TAKE_PROFIT_LIMIT,
+            self::LIMIT_MAKER,
         ];
     }
 }

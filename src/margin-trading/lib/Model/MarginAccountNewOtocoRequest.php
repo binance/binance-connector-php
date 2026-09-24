@@ -312,7 +312,7 @@ class MarginAccountNewOtocoRequest implements ModelInterface, \ArrayAccess, \Jso
         $this->setIfExists('symbol', $data ?? [], null);
         $this->setIfExists('isIsolated', $data ?? [], null);
         $this->setIfExists('sideEffectType', $data ?? [], null);
-        $this->setIfExists('autoRepayAtCancel', $data ?? [], true);
+        $this->setIfExists('autoRepayAtCancel', $data ?? [], null);
         $this->setIfExists('listClientOrderId', $data ?? [], null);
         $this->setIfExists('newOrderRespType', $data ?? [], null);
         $this->setIfExists('selfTradePreventionMode', $data ?? [], null);

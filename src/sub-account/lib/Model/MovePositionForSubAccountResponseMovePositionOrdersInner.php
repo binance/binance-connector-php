@@ -107,7 +107,7 @@ class MovePositionForSubAccountResponseMovePositionOrdersInner implements ModelI
         'priceType' => false,
         'price' => false,
         'quantity' => false,
-        'positionSide' => false,
+        'positionSide' => true,
         'side' => false,
         'success' => false,
     ];
@@ -531,14 +531,21 @@ class MovePositionForSubAccountResponseMovePositionOrdersInner implements ModelI
     /**
      * Sets positionSide.
      *
-     * @param null|string $positionSide positionSide
+     * @param null|string $positionSide null when productType=OPTION
      *
      * @return self
      */
     public function setPositionSide($positionSide)
     {
         if (is_null($positionSide)) {
-            throw new \InvalidArgumentException('non-nullable positionSide cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'positionSide');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('positionSide', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['positionSide'] = $positionSide;
 

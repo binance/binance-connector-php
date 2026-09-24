@@ -16,7 +16,7 @@ function newMarginOrderExample()
     $newMarginOrderRequest = new NewMarginOrderRequest();
     $newMarginOrderRequest->setSymbol('BTCUSDT');
     $newMarginOrderRequest->setSide(Side::BUY);
-    $newMarginOrderRequest->setType(OrderType::STOP);
+    $newMarginOrderRequest->setType(OrderType::LIMIT);
     $response = $api->newMarginOrder($newMarginOrderRequest);
     print_r($response);
 }

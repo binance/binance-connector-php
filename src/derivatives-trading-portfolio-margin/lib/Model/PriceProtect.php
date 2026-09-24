@@ -34,7 +34,7 @@ namespace Binance\Client\DerivativesTradingPortfolioMargin\Model;
  *
  * @category Class
  *
- * @description Price protection. Default &#x60;false&#x60;
+ * @description \&quot;true\&quot; or \&quot;false\&quot;, default \&quot;false\&quot;. Used with &#x60;STOP&#x60;/&#x60;STOP_MARKET&#x60; or &#x60;TAKE_PROFIT&#x60;/&#x60;TAKE_PROFIT_MARKET&#x60; orders
  *
  * @author   OpenAPI Generator team
  *

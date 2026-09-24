@@ -34,6 +34,8 @@ namespace Binance\Client\DerivativesTradingPortfolioMargin\Model;
  *
  * @category Class
  *
+ * @description Side
+ *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech

@@ -202,8 +202,8 @@ class GetQuoteRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('orderType', $data ?? [], null);
         $this->setIfExists('slippageBps', $data ?? [], null);
         $this->setIfExists('priceLimit', $data ?? [], null);
-        $this->setIfExists('chainId', $data ?? [], '56');
-        $this->setIfExists('feeRateBps', $data ?? [], 200);
+        $this->setIfExists('chainId', $data ?? [], null);
+        $this->setIfExists('feeRateBps', $data ?? [], null);
         $this->setIfExists('fundingSource', $data ?? [], null);
         $this->setIfExists('fundTransferAmount', $data ?? [], null);
     }

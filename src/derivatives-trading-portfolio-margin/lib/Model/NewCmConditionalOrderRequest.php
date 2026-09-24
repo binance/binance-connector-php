@@ -225,7 +225,7 @@ class NewCmConditionalOrderRequest implements ModelInterface, \ArrayAccess, \Jso
         $this->setIfExists('strategyType', $data ?? [], null);
         $this->setIfExists('timeInForce', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
-        $this->setIfExists('reduceOnly', $data ?? [], 'false');
+        $this->setIfExists('reduceOnly', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('workingType', $data ?? [], null);
         $this->setIfExists('priceProtect', $data ?? [], null);

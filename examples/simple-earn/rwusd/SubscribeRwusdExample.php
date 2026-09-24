@@ -13,7 +13,7 @@ function subscribeRwusdExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new SimpleEarnRestApi($configurationBuilder->build());
     $subscribeRwusdRequest = new SubscribeRwusdRequest();
-    $subscribeRwusdRequest->setAsset(Asset::USDT);
+    $subscribeRwusdRequest->setAsset(Asset::USDC);
     $subscribeRwusdRequest->setAmount(1.0);
     $response = $api->subscribeRwusd($subscribeRwusdRequest);
     print_r($response);

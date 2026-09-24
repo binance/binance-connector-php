@@ -103,7 +103,7 @@ class MarketDataApiTest extends TestCase
     public function testBasis()
     {
         $pair = '';
-        $contractType = ContractType::ALL;
+        $contractType = ContractType::PERPETUAL;
         $period = Period::PERIOD_5M;
         $limit = 30;
         $startTime = 1623319461670;
@@ -165,7 +165,7 @@ class MarketDataApiTest extends TestCase
     public function testContinuousContractKlineCandlestickData()
     {
         $pair = 'BTCUSD';
-        $contractType = ContractType::ALL;
+        $contractType = ContractType::PERPETUAL;
         $interval = Interval::INTERVAL_1M;
         $startTime = 1623319461670;
         $endTime = 1641782889000;
@@ -307,10 +307,11 @@ class MarketDataApiTest extends TestCase
     {
         $pair = '';
         $period = Period::PERIOD_5M;
+        $contractType = ContractType::PERPETUAL;
         $limit = 30;
         $startTime = 1623319461670;
         $endTime = 1641782889000;
-        $response = $this->getApiMock($request)->longShortRatio($pair, $period, $limit, $startTime, $endTime);
+        $response = $this->getApiMock($request)->longShortRatio($pair, $period, $contractType, $limit, $startTime, $endTime);
 
         parse_str($request->getUri(), $queryMap);
 
@@ -388,7 +389,7 @@ class MarketDataApiTest extends TestCase
     public function testOpenInterestStatistics()
     {
         $pair = 'BTCUSD';
-        $contractType = ContractType::ALL;
+        $contractType = ContractType::PERPETUAL;
         $period = Period::PERIOD_5M;
         $limit = 30;
         $startTime = 1623319461670;
@@ -527,7 +528,7 @@ class MarketDataApiTest extends TestCase
     public function testTakerBuySellVolume()
     {
         $pair = 'BTCUSD';
-        $contractType = ContractType::ALL;
+        $contractType = ContractType::PERPETUAL;
         $period = Period::PERIOD_5M;
         $limit = 30;
         $startTime = 1623319461670;
@@ -586,10 +587,11 @@ class MarketDataApiTest extends TestCase
     {
         $symbol = '';
         $period = Period::PERIOD_5M;
+        $contractType = ContractType::PERPETUAL;
         $limit = 30;
         $startTime = 1623319461670;
         $endTime = 1641782889000;
-        $response = $this->getApiMock($request)->topTraderLongShortRatioAccounts($symbol, $period, $limit, $startTime, $endTime);
+        $response = $this->getApiMock($request)->topTraderLongShortRatioAccounts($symbol, $period, $contractType, $limit, $startTime, $endTime);
 
         parse_str($request->getUri(), $queryMap);
 
@@ -608,10 +610,11 @@ class MarketDataApiTest extends TestCase
     {
         $pair = 'BTCUSD';
         $period = Period::PERIOD_5M;
+        $contractType = ContractType::PERPETUAL;
         $limit = 30;
         $startTime = 1623319461670;
         $endTime = 1641782889000;
-        $response = $this->getApiMock($request)->topTraderLongShortRatioPositions($pair, $period, $limit, $startTime, $endTime);
+        $response = $this->getApiMock($request)->topTraderLongShortRatioPositions($pair, $period, $contractType, $limit, $startTime, $endTime);
 
         parse_str($request->getUri(), $queryMap);
 

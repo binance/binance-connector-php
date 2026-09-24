@@ -61,7 +61,7 @@ class QuerySubAccountApiKeyResponse implements ModelInterface, \ArrayAccess, \Js
      */
     protected static $openAPITypes = [
         'total' => 'int',
-        'list' => '\Binance\Client\SubAccount\Model\QuerySubAccountApiKeyResponseListInner[]',
+        'rows' => '\Binance\Client\SubAccount\Model\QuerySubAccountApiKeyResponseRowsInner[]',
     ];
 
     /**
@@ -75,7 +75,7 @@ class QuerySubAccountApiKeyResponse implements ModelInterface, \ArrayAccess, \Js
      */
     protected static $openAPIFormats = [
         'total' => 'int64',
-        'list' => null,
+        'rows' => null,
     ];
 
     /**
@@ -85,7 +85,7 @@ class QuerySubAccountApiKeyResponse implements ModelInterface, \ArrayAccess, \Js
      */
     protected static array $openAPINullables = [
         'total' => false,
-        'list' => false,
+        'rows' => false,
     ];
 
     /**
@@ -103,7 +103,7 @@ class QuerySubAccountApiKeyResponse implements ModelInterface, \ArrayAccess, \Js
      */
     protected static $attributeMap = [
         'total' => 'total',
-        'list' => 'list',
+        'rows' => 'rows',
     ];
 
     /**
@@ -113,7 +113,7 @@ class QuerySubAccountApiKeyResponse implements ModelInterface, \ArrayAccess, \Js
      */
     protected static $setters = [
         'total' => 'setTotal',
-        'list' => 'setList',
+        'rows' => 'setRows',
     ];
 
     /**
@@ -123,7 +123,7 @@ class QuerySubAccountApiKeyResponse implements ModelInterface, \ArrayAccess, \Js
      */
     protected static $getters = [
         'total' => 'getTotal',
-        'list' => 'getList',
+        'rows' => 'getRows',
     ];
 
     /**
@@ -142,7 +142,7 @@ class QuerySubAccountApiKeyResponse implements ModelInterface, \ArrayAccess, \Js
     public function __construct(?array $data = null)
     {
         $this->setIfExists('total', $data ?? [], null);
-        $this->setIfExists('list', $data ?? [], null);
+        $this->setIfExists('rows', $data ?? [], null);
     }
 
     /**
@@ -301,28 +301,28 @@ class QuerySubAccountApiKeyResponse implements ModelInterface, \ArrayAccess, \Js
     }
 
     /**
-     * Gets list.
+     * Gets rows.
      *
-     * @return null|QuerySubAccountApiKeyResponseListInner[]
+     * @return null|QuerySubAccountApiKeyResponseRowsInner[]
      */
-    public function getList()
+    public function getRows()
     {
-        return $this->container['list'];
+        return $this->container['rows'];
     }
 
     /**
-     * Sets list.
+     * Sets rows.
      *
-     * @param null|QuerySubAccountApiKeyResponseListInner[] $list list
+     * @param null|QuerySubAccountApiKeyResponseRowsInner[] $rows rows
      *
      * @return self
      */
-    public function setList($list)
+    public function setRows($rows)
     {
-        if (is_null($list)) {
-            throw new \InvalidArgumentException('non-nullable list cannot be null');
+        if (is_null($rows)) {
+            throw new \InvalidArgumentException('non-nullable rows cannot be null');
         }
-        $this->container['list'] = $list;
+        $this->container['rows'] = $rows;
 
         return $this;
     }

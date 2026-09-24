@@ -64,6 +64,8 @@ class TradingScheduleResponseMarketSchedules implements ModelInterface, \ArrayAc
         'cOMMODITY' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\TradingScheduleResponseMarketSchedulesCOMMODITY',
         'kREQUITY' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\TradingScheduleResponseMarketSchedulesKREQUITY',
         'hKEQUITY' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\TradingScheduleResponseMarketSchedulesHKEQUITY',
+        'cNEQUITY' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\TradingScheduleResponseMarketSchedulesHKEQUITY',
+        'fX' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\TradingScheduleResponseMarketSchedulesFX',
     ];
 
     /**
@@ -80,6 +82,8 @@ class TradingScheduleResponseMarketSchedules implements ModelInterface, \ArrayAc
         'cOMMODITY' => null,
         'kREQUITY' => null,
         'hKEQUITY' => null,
+        'cNEQUITY' => null,
+        'fX' => null,
     ];
 
     /**
@@ -92,6 +96,8 @@ class TradingScheduleResponseMarketSchedules implements ModelInterface, \ArrayAc
         'cOMMODITY' => false,
         'kREQUITY' => false,
         'hKEQUITY' => false,
+        'cNEQUITY' => false,
+        'fX' => false,
     ];
 
     /**
@@ -112,6 +118,8 @@ class TradingScheduleResponseMarketSchedules implements ModelInterface, \ArrayAc
         'cOMMODITY' => 'COMMODITY',
         'kREQUITY' => 'KR_EQUITY',
         'hKEQUITY' => 'HK_EQUITY',
+        'cNEQUITY' => 'CN_EQUITY',
+        'fX' => 'FX',
     ];
 
     /**
@@ -124,6 +132,8 @@ class TradingScheduleResponseMarketSchedules implements ModelInterface, \ArrayAc
         'cOMMODITY' => 'setCOMMODITY',
         'kREQUITY' => 'setKREQUITY',
         'hKEQUITY' => 'setHKEQUITY',
+        'cNEQUITY' => 'setCNEQUITY',
+        'fX' => 'setFX',
     ];
 
     /**
@@ -136,6 +146,8 @@ class TradingScheduleResponseMarketSchedules implements ModelInterface, \ArrayAc
         'cOMMODITY' => 'getCOMMODITY',
         'kREQUITY' => 'getKREQUITY',
         'hKEQUITY' => 'getHKEQUITY',
+        'cNEQUITY' => 'getCNEQUITY',
+        'fX' => 'getFX',
     ];
 
     /**
@@ -157,6 +169,8 @@ class TradingScheduleResponseMarketSchedules implements ModelInterface, \ArrayAc
         $this->setIfExists('cOMMODITY', $data ?? [], null);
         $this->setIfExists('kREQUITY', $data ?? [], null);
         $this->setIfExists('hKEQUITY', $data ?? [], null);
+        $this->setIfExists('cNEQUITY', $data ?? [], null);
+        $this->setIfExists('fX', $data ?? [], null);
     }
 
     /**
@@ -391,6 +405,60 @@ class TradingScheduleResponseMarketSchedules implements ModelInterface, \ArrayAc
             throw new \InvalidArgumentException('non-nullable hKEQUITY cannot be null');
         }
         $this->container['hKEQUITY'] = $hKEQUITY;
+
+        return $this;
+    }
+
+    /**
+     * Gets cNEQUITY.
+     *
+     * @return null|TradingScheduleResponseMarketSchedulesHKEQUITY
+     */
+    public function getCNEQUITY()
+    {
+        return $this->container['cNEQUITY'];
+    }
+
+    /**
+     * Sets cNEQUITY.
+     *
+     * @param null|TradingScheduleResponseMarketSchedulesHKEQUITY $cNEQUITY cNEQUITY
+     *
+     * @return self
+     */
+    public function setCNEQUITY($cNEQUITY)
+    {
+        if (is_null($cNEQUITY)) {
+            throw new \InvalidArgumentException('non-nullable cNEQUITY cannot be null');
+        }
+        $this->container['cNEQUITY'] = $cNEQUITY;
+
+        return $this;
+    }
+
+    /**
+     * Gets fX.
+     *
+     * @return null|TradingScheduleResponseMarketSchedulesFX
+     */
+    public function getFX()
+    {
+        return $this->container['fX'];
+    }
+
+    /**
+     * Sets fX.
+     *
+     * @param null|TradingScheduleResponseMarketSchedulesFX $fX fX
+     *
+     * @return self
+     */
+    public function setFX($fX)
+    {
+        if (is_null($fX)) {
+            throw new \InvalidArgumentException('non-nullable fX cannot be null');
+        }
+        $this->container['fX'] = $fX;
 
         return $this;
     }

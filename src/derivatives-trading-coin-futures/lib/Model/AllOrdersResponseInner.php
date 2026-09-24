@@ -63,6 +63,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'avgPrice' => 'string',
         'clientOrderId' => 'string',
         'cumBase' => 'string',
+        'cumQuote' => 'string',
         'executedQty' => 'string',
         'orderId' => 'int',
         'origQty' => 'string',
@@ -86,6 +87,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'priceProtect' => 'bool',
         'priceMatch' => 'string',
         'selfTradePreventionMode' => 'string',
+        'goodTillDate' => 'int',
     ];
 
     /**
@@ -101,6 +103,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'avgPrice' => null,
         'clientOrderId' => null,
         'cumBase' => null,
+        'cumQuote' => null,
         'executedQty' => null,
         'orderId' => 'int64',
         'origQty' => null,
@@ -124,6 +127,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'priceProtect' => null,
         'priceMatch' => null,
         'selfTradePreventionMode' => null,
+        'goodTillDate' => 'int64',
     ];
 
     /**
@@ -135,6 +139,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'avgPrice' => false,
         'clientOrderId' => false,
         'cumBase' => false,
+        'cumQuote' => false,
         'executedQty' => false,
         'orderId' => false,
         'origQty' => false,
@@ -158,6 +163,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'priceProtect' => false,
         'priceMatch' => false,
         'selfTradePreventionMode' => false,
+        'goodTillDate' => false,
     ];
 
     /**
@@ -177,6 +183,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'avgPrice' => 'avgPrice',
         'clientOrderId' => 'clientOrderId',
         'cumBase' => 'cumBase',
+        'cumQuote' => 'cumQuote',
         'executedQty' => 'executedQty',
         'orderId' => 'orderId',
         'origQty' => 'origQty',
@@ -200,6 +207,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'priceProtect' => 'priceProtect',
         'priceMatch' => 'priceMatch',
         'selfTradePreventionMode' => 'selfTradePreventionMode',
+        'goodTillDate' => 'goodTillDate',
     ];
 
     /**
@@ -211,6 +219,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'avgPrice' => 'setAvgPrice',
         'clientOrderId' => 'setClientOrderId',
         'cumBase' => 'setCumBase',
+        'cumQuote' => 'setCumQuote',
         'executedQty' => 'setExecutedQty',
         'orderId' => 'setOrderId',
         'origQty' => 'setOrigQty',
@@ -234,6 +243,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'priceProtect' => 'setPriceProtect',
         'priceMatch' => 'setPriceMatch',
         'selfTradePreventionMode' => 'setSelfTradePreventionMode',
+        'goodTillDate' => 'setGoodTillDate',
     ];
 
     /**
@@ -245,6 +255,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'avgPrice' => 'getAvgPrice',
         'clientOrderId' => 'getClientOrderId',
         'cumBase' => 'getCumBase',
+        'cumQuote' => 'getCumQuote',
         'executedQty' => 'getExecutedQty',
         'orderId' => 'getOrderId',
         'origQty' => 'getOrigQty',
@@ -268,6 +279,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'priceProtect' => 'getPriceProtect',
         'priceMatch' => 'getPriceMatch',
         'selfTradePreventionMode' => 'getSelfTradePreventionMode',
+        'goodTillDate' => 'getGoodTillDate',
     ];
 
     /**
@@ -288,6 +300,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         $this->setIfExists('avgPrice', $data ?? [], null);
         $this->setIfExists('clientOrderId', $data ?? [], null);
         $this->setIfExists('cumBase', $data ?? [], null);
+        $this->setIfExists('cumQuote', $data ?? [], null);
         $this->setIfExists('executedQty', $data ?? [], null);
         $this->setIfExists('orderId', $data ?? [], null);
         $this->setIfExists('origQty', $data ?? [], null);
@@ -311,6 +324,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         $this->setIfExists('priceProtect', $data ?? [], null);
         $this->setIfExists('priceMatch', $data ?? [], null);
         $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
+        $this->setIfExists('goodTillDate', $data ?? [], null);
     }
 
     /**
@@ -518,6 +532,33 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable cumBase cannot be null');
         }
         $this->container['cumBase'] = $cumBase;
+
+        return $this;
+    }
+
+    /**
+     * Gets cumQuote.
+     *
+     * @return null|string
+     */
+    public function getCumQuote()
+    {
+        return $this->container['cumQuote'];
+    }
+
+    /**
+     * Sets cumQuote.
+     *
+     * @param null|string $cumQuote cumulative quote asset amount
+     *
+     * @return self
+     */
+    public function setCumQuote($cumQuote)
+    {
+        if (is_null($cumQuote)) {
+            throw new \InvalidArgumentException('non-nullable cumQuote cannot be null');
+        }
+        $this->container['cumQuote'] = $cumQuote;
 
         return $this;
     }
@@ -751,7 +792,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets status.
      *
-     * @param null|string $status Enum：completed，processing
+     * @param null|string $status status
      *
      * @return self
      */
@@ -1139,6 +1180,33 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable selfTradePreventionMode cannot be null');
         }
         $this->container['selfTradePreventionMode'] = $selfTradePreventionMode;
+
+        return $this;
+    }
+
+    /**
+     * Gets goodTillDate.
+     *
+     * @return null|int
+     */
+    public function getGoodTillDate()
+    {
+        return $this->container['goodTillDate'];
+    }
+
+    /**
+     * Sets goodTillDate.
+     *
+     * @param null|int $goodTillDate order pre-set auto cancel time for TIF GTD order
+     *
+     * @return self
+     */
+    public function setGoodTillDate($goodTillDate)
+    {
+        if (is_null($goodTillDate)) {
+            throw new \InvalidArgumentException('non-nullable goodTillDate cannot be null');
+        }
+        $this->container['goodTillDate'] = $goodTillDate;
 
         return $this;
     }

@@ -71,6 +71,7 @@ class NewUmAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'triggerPrice' => 'float',
         'workingType' => '\Binance\Client\DerivativesTradingPortfolioMargin\Model\WorkingType',
         'priceMatch' => '\Binance\Client\DerivativesTradingPortfolioMargin\Model\PriceMatch',
+        'closePosition' => '\Binance\Client\DerivativesTradingPortfolioMargin\Model\ClosePosition',
         'priceProtect' => '\Binance\Client\DerivativesTradingPortfolioMargin\Model\PriceProtect',
         'reduceOnly' => '\Binance\Client\DerivativesTradingPortfolioMargin\Model\ReduceOnly',
         'activatePrice' => 'float',
@@ -103,6 +104,7 @@ class NewUmAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'triggerPrice' => 'float',
         'workingType' => null,
         'priceMatch' => null,
+        'closePosition' => null,
         'priceProtect' => null,
         'reduceOnly' => null,
         'activatePrice' => 'float',
@@ -131,6 +133,7 @@ class NewUmAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'triggerPrice' => false,
         'workingType' => false,
         'priceMatch' => false,
+        'closePosition' => false,
         'priceProtect' => false,
         'reduceOnly' => false,
         'activatePrice' => false,
@@ -167,6 +170,7 @@ class NewUmAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'triggerPrice' => 'triggerPrice',
         'workingType' => 'workingType',
         'priceMatch' => 'priceMatch',
+        'closePosition' => 'closePosition',
         'priceProtect' => 'priceProtect',
         'reduceOnly' => 'reduceOnly',
         'activatePrice' => 'activatePrice',
@@ -195,6 +199,7 @@ class NewUmAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'triggerPrice' => 'setTriggerPrice',
         'workingType' => 'setWorkingType',
         'priceMatch' => 'setPriceMatch',
+        'closePosition' => 'setClosePosition',
         'priceProtect' => 'setPriceProtect',
         'reduceOnly' => 'setReduceOnly',
         'activatePrice' => 'setActivatePrice',
@@ -223,6 +228,7 @@ class NewUmAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         'triggerPrice' => 'getTriggerPrice',
         'workingType' => 'getWorkingType',
         'priceMatch' => 'getPriceMatch',
+        'closePosition' => 'getClosePosition',
         'priceProtect' => 'getPriceProtect',
         'reduceOnly' => 'getReduceOnly',
         'activatePrice' => 'getActivatePrice',
@@ -260,6 +266,7 @@ class NewUmAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         $this->setIfExists('triggerPrice', $data ?? [], null);
         $this->setIfExists('workingType', $data ?? [], null);
         $this->setIfExists('priceMatch', $data ?? [], null);
+        $this->setIfExists('closePosition', $data ?? [], null);
         $this->setIfExists('priceProtect', $data ?? [], null);
         $this->setIfExists('reduceOnly', $data ?? [], null);
         $this->setIfExists('activatePrice', $data ?? [], null);
@@ -398,9 +405,6 @@ class NewUmAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         }
         if (null === $this->container['type']) {
             $invalidProperties[] = "'type' can't be null";
-        }
-        if (null === $this->container['quantity']) {
-            $invalidProperties[] = "'quantity' can't be null";
         }
         if (!is_null($this->container['recvWindow']) && ($this->container['recvWindow'] > 60000)) {
             $invalidProperties[] = "invalid value for 'recvWindow', must be smaller than or equal to 60000.";
@@ -585,7 +589,7 @@ class NewUmAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Gets quantity.
      *
-     * @return float
+     * @return null|float
      */
     public function getQuantity()
     {
@@ -595,7 +599,7 @@ class NewUmAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets quantity.
      *
-     * @param float $quantity Order quantity
+     * @param null|float $quantity Order quantity. Cannot be sent with `closePosition`=`true`(Close-All)
      *
      * @return self
      */
@@ -713,6 +717,33 @@ class NewUmAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable priceMatch cannot be null');
         }
         $this->container['priceMatch'] = $priceMatch;
+
+        return $this;
+    }
+
+    /**
+     * Gets closePosition.
+     *
+     * @return null|ClosePosition
+     */
+    public function getClosePosition()
+    {
+        return $this->container['closePosition'];
+    }
+
+    /**
+     * Sets closePosition.
+     *
+     * @param null|ClosePosition $closePosition closePosition
+     *
+     * @return self
+     */
+    public function setClosePosition($closePosition)
+    {
+        if (is_null($closePosition)) {
+            throw new \InvalidArgumentException('non-nullable closePosition cannot be null');
+        }
+        $this->container['closePosition'] = $closePosition;
 
         return $this;
     }

@@ -34,6 +34,8 @@ namespace Binance\Client\DerivativesTradingPortfolioMargin\Model;
  *
  * @category Class
  *
+ * @description &#x60;NONE&#x60;: No STP / &#x60;EXPIRE_TAKER&#x60;: expire taker order when STP triggers/ &#x60;EXPIRE_MAKER&#x60;: expire taker order when STP triggers/ &#x60;EXPIRE_BOTH&#x60;: expire both orders when STP triggers
+ *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech
@@ -47,9 +49,9 @@ enum SelfTradePreventionMode: string
 
     case EXPIRE_TAKER = 'EXPIRE_TAKER';
 
-    case EXPIRE_MAKER = 'EXPIRE_MAKER';
-
     case EXPIRE_BOTH = 'EXPIRE_BOTH';
+
+    case EXPIRE_MAKER = 'EXPIRE_MAKER';
 
     /**
      * Gets allowable values of the enum.
@@ -61,8 +63,8 @@ enum SelfTradePreventionMode: string
         return [
             self::NONE,
             self::EXPIRE_TAKER,
-            self::EXPIRE_MAKER,
             self::EXPIRE_BOTH,
+            self::EXPIRE_MAKER,
         ];
     }
 }

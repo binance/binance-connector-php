@@ -69,10 +69,13 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'price' => 'string',
         'qty' => 'string',
         'quoteQty' => 'string',
+        'baseQty' => 'string',
+        'marginAsset' => 'string',
         'realizedPnl' => 'string',
         'side' => 'string',
         'positionSide' => 'string',
         'symbol' => 'string',
+        'pair' => 'string',
         'time' => 'int',
     ];
 
@@ -95,10 +98,13 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'price' => null,
         'qty' => null,
         'quoteQty' => null,
+        'baseQty' => null,
+        'marginAsset' => null,
         'realizedPnl' => null,
         'side' => null,
         'positionSide' => null,
         'symbol' => null,
+        'pair' => null,
         'time' => 'int64',
     ];
 
@@ -117,10 +123,13 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'price' => false,
         'qty' => false,
         'quoteQty' => false,
+        'baseQty' => false,
+        'marginAsset' => false,
         'realizedPnl' => false,
         'side' => false,
         'positionSide' => false,
         'symbol' => false,
+        'pair' => false,
         'time' => false,
     ];
 
@@ -147,10 +156,13 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'price' => 'price',
         'qty' => 'qty',
         'quoteQty' => 'quoteQty',
+        'baseQty' => 'baseQty',
+        'marginAsset' => 'marginAsset',
         'realizedPnl' => 'realizedPnl',
         'side' => 'side',
         'positionSide' => 'positionSide',
         'symbol' => 'symbol',
+        'pair' => 'pair',
         'time' => 'time',
     ];
 
@@ -169,10 +181,13 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'price' => 'setPrice',
         'qty' => 'setQty',
         'quoteQty' => 'setQuoteQty',
+        'baseQty' => 'setBaseQty',
+        'marginAsset' => 'setMarginAsset',
         'realizedPnl' => 'setRealizedPnl',
         'side' => 'setSide',
         'positionSide' => 'setPositionSide',
         'symbol' => 'setSymbol',
+        'pair' => 'setPair',
         'time' => 'setTime',
     ];
 
@@ -191,10 +206,13 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'price' => 'getPrice',
         'qty' => 'getQty',
         'quoteQty' => 'getQuoteQty',
+        'baseQty' => 'getBaseQty',
+        'marginAsset' => 'getMarginAsset',
         'realizedPnl' => 'getRealizedPnl',
         'side' => 'getSide',
         'positionSide' => 'getPositionSide',
         'symbol' => 'getSymbol',
+        'pair' => 'getPair',
         'time' => 'getTime',
     ];
 
@@ -222,10 +240,13 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('qty', $data ?? [], null);
         $this->setIfExists('quoteQty', $data ?? [], null);
+        $this->setIfExists('baseQty', $data ?? [], null);
+        $this->setIfExists('marginAsset', $data ?? [], null);
         $this->setIfExists('realizedPnl', $data ?? [], null);
         $this->setIfExists('side', $data ?? [], null);
         $this->setIfExists('positionSide', $data ?? [], null);
         $this->setIfExists('symbol', $data ?? [], null);
+        $this->setIfExists('pair', $data ?? [], null);
         $this->setIfExists('time', $data ?? [], null);
     }
 
@@ -586,7 +607,7 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets quoteQty.
      *
-     * @param null|string $quoteQty quote Qty
+     * @param null|string $quoteQty Quote asset quantity. Populated for USDⓈ-M symbols; returns \"0\" for COIN-M symbols.
      *
      * @return self
      */
@@ -596,6 +617,60 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable quoteQty cannot be null');
         }
         $this->container['quoteQty'] = $quoteQty;
+
+        return $this;
+    }
+
+    /**
+     * Gets baseQty.
+     *
+     * @return null|string
+     */
+    public function getBaseQty()
+    {
+        return $this->container['baseQty'];
+    }
+
+    /**
+     * Sets baseQty.
+     *
+     * @param null|string $baseQty Base asset quantity. Populated for COIN-M symbols; returns \"0\" for USDⓈ-M symbols.
+     *
+     * @return self
+     */
+    public function setBaseQty($baseQty)
+    {
+        if (is_null($baseQty)) {
+            throw new \InvalidArgumentException('non-nullable baseQty cannot be null');
+        }
+        $this->container['baseQty'] = $baseQty;
+
+        return $this;
+    }
+
+    /**
+     * Gets marginAsset.
+     *
+     * @return null|string
+     */
+    public function getMarginAsset()
+    {
+        return $this->container['marginAsset'];
+    }
+
+    /**
+     * Sets marginAsset.
+     *
+     * @param null|string $marginAsset margin Asset
+     *
+     * @return self
+     */
+    public function setMarginAsset($marginAsset)
+    {
+        if (is_null($marginAsset)) {
+            throw new \InvalidArgumentException('non-nullable marginAsset cannot be null');
+        }
+        $this->container['marginAsset'] = $marginAsset;
 
         return $this;
     }
@@ -704,6 +779,33 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable symbol cannot be null');
         }
         $this->container['symbol'] = $symbol;
+
+        return $this;
+    }
+
+    /**
+     * Gets pair.
+     *
+     * @return null|string
+     */
+    public function getPair()
+    {
+        return $this->container['pair'];
+    }
+
+    /**
+     * Sets pair.
+     *
+     * @param null|string $pair pair
+     *
+     * @return self
+     */
+    public function setPair($pair)
+    {
+        if (is_null($pair)) {
+            throw new \InvalidArgumentException('non-nullable pair cannot be null');
+        }
+        $this->container['pair'] = $pair;
 
         return $this;
     }

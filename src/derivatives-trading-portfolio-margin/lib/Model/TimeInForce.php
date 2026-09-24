@@ -34,6 +34,8 @@ namespace Binance\Client\DerivativesTradingPortfolioMargin\Model;
  *
  * @category Class
  *
+ * @description Valid values
+ *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech
@@ -43,9 +45,9 @@ enum TimeInForce: string
     /**
      * Possible values of this enum.
      */
-    case IOC = 'IOC';
-
     case GTC = 'GTC';
+
+    case IOC = 'IOC';
 
     case FOK = 'FOK';
 
@@ -61,8 +63,8 @@ enum TimeInForce: string
     public static function getAllowableEnumValues()
     {
         return [
-            self::IOC,
             self::GTC,
+            self::IOC,
             self::FOK,
             self::GTX,
             self::GTD,

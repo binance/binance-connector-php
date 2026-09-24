@@ -45,6 +45,7 @@ use Binance\Client\Wallet\Model\GetAssetsThatCanBeConvertedIntoBnbRequest;
 use Binance\Client\Wallet\Model\GetAssetsThatCanBeConvertedIntoBnbResponse;
 use Binance\Client\Wallet\Model\GetCloudMiningPaymentAndRefundHistoryResponse;
 use Binance\Client\Wallet\Model\GetOpenSymbolListResponse;
+use Binance\Client\Wallet\Model\GetSpotAssetTagsResponse;
 use Binance\Client\Wallet\Model\OrderType;
 use Binance\Client\Wallet\Model\QueryUserDelegationHistoryResponse;
 use Binance\Client\Wallet\Model\QueryUserUniversalTransferHistoryResponse;
@@ -98,6 +99,7 @@ class AssetApi
         'getAssetsThatCanBeConvertedIntoBnb' => ['application/x-www-form-urlencoded'],
         'getCloudMiningPaymentAndRefundHistory' => ['application/x-www-form-urlencoded'],
         'getOpenSymbolList' => ['application/x-www-form-urlencoded'],
+        'getSpotAssetTags' => ['application/x-www-form-urlencoded'],
         'queryUserDelegationHistory' => ['application/x-www-form-urlencoded'],
         'queryUserUniversalTransferHistory' => ['application/x-www-form-urlencoded'],
         'queryUserWalletBalance' => ['application/x-www-form-urlencoded'],
@@ -2141,6 +2143,165 @@ class AssetApi
     }
 
     /**
+     * Operation getSpotAssetTags.
+     *
+     * Get Spot Asset Tags (MARKET_DATA)
+     *
+     * @param null|string $tag Tag filter. Supports multiple comma-separated tags with OR semantics (an asset is returned if it matches any one tag); leading/trailing whitespace around each tag is ignored. Returns all eligible assets when omitted. (optional)
+     *
+     * @return ApiResponse<GetSpotAssetTagsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getSpotAssetTags($tag = null): ApiResponse
+    {
+        return $this->getSpotAssetTagsWithHttpInfo($tag);
+    }
+
+    /**
+     * Operation getSpotAssetTagsWithHttpInfo.
+     *
+     * Get Spot Asset Tags (MARKET_DATA)
+     *
+     * @param null|string $tag Tag filter. Supports multiple comma-separated tags with OR semantics (an asset is returned if it matches any one tag); leading/trailing whitespace around each tag is ignored. Returns all eligible assets when omitted. (optional)
+     *
+     * @return ApiResponse<GetSpotAssetTagsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getSpotAssetTagsWithHttpInfo($tag = null): ApiResponse
+    {
+        $request = $this->getSpotAssetTagsRequest($tag);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\Wallet\Model\GetSpotAssetTagsResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\Wallet\Model\GetSpotAssetTagsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\Wallet\Model\GetSpotAssetTagsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'getSpotAssetTags'.
+     *
+     * @param null|string $tag Tag filter. Supports multiple comma-separated tags with OR semantics (an asset is returned if it matches any one tag); leading/trailing whitespace around each tag is ignored. Returns all eligible assets when omitted. (optional)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getSpotAssetTagsRequest($tag = null)
+    {
+        $contentType = self::contentTypes['getSpotAssetTags'][0];
+
+        $resourcePath = '/sapi/v1/spot/asset/tags';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tag,
+            'tag', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'GET',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation queryUserDelegationHistory.
      *
      * Query User Delegation History(For Master Account) (USER_DATA)
@@ -2691,17 +2852,18 @@ class AssetApi
      *
      * Query User Wallet Balance (USER_DATA)
      *
-     * @param null|string $quoteAsset quoteAsset (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|string $quoteAsset        quoteAsset (optional)
+     * @param null|bool   $needBalanceDetail Whether to return the per-asset balance detail for each wallet. When &#x60;false&#x60; or omitted, the response is unchanged from current behavior. (optional)
+     * @param null|int    $recvWindow        recvWindow (optional)
      *
      * @return ApiResponse<QueryUserWalletBalanceResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function queryUserWalletBalance($quoteAsset = null, $recvWindow = null): ApiResponse
+    public function queryUserWalletBalance($quoteAsset = null, $needBalanceDetail = null, $recvWindow = null): ApiResponse
     {
-        return $this->queryUserWalletBalanceWithHttpInfo($quoteAsset, $recvWindow);
+        return $this->queryUserWalletBalanceWithHttpInfo($quoteAsset, $needBalanceDetail, $recvWindow);
     }
 
     /**
@@ -2709,17 +2871,18 @@ class AssetApi
      *
      * Query User Wallet Balance (USER_DATA)
      *
-     * @param null|string $quoteAsset (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|string $quoteAsset        (optional)
+     * @param null|bool   $needBalanceDetail Whether to return the per-asset balance detail for each wallet. When &#x60;false&#x60; or omitted, the response is unchanged from current behavior. (optional)
+     * @param null|int    $recvWindow        (optional)
      *
      * @return ApiResponse<QueryUserWalletBalanceResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function queryUserWalletBalanceWithHttpInfo($quoteAsset = null, $recvWindow = null): ApiResponse
+    public function queryUserWalletBalanceWithHttpInfo($quoteAsset = null, $needBalanceDetail = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->queryUserWalletBalanceRequest($quoteAsset, $recvWindow);
+        $request = $this->queryUserWalletBalanceRequest($quoteAsset, $needBalanceDetail, $recvWindow);
 
         try {
             try {
@@ -2789,14 +2952,15 @@ class AssetApi
     /**
      * Create request for operation 'queryUserWalletBalance'.
      *
-     * @param null|string $quoteAsset (optional)
-     * @param null|int    $recvWindow (optional)
+     * @param null|string $quoteAsset        (optional)
+     * @param null|bool   $needBalanceDetail Whether to return the per-asset balance detail for each wallet. When &#x60;false&#x60; or omitted, the response is unchanged from current behavior. (optional)
+     * @param null|int    $recvWindow        (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function queryUserWalletBalanceRequest($quoteAsset = null, $recvWindow = null)
+    public function queryUserWalletBalanceRequest($quoteAsset = null, $needBalanceDetail = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['queryUserWalletBalance'][0];
 
@@ -2816,6 +2980,15 @@ class AssetApi
             $quoteAsset,
             'quoteAsset', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $needBalanceDetail,
+            'needBalanceDetail', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required

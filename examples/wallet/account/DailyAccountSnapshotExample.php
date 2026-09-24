@@ -11,7 +11,7 @@ function dailyAccountSnapshotExample()
     $configurationBuilder = WalletRestApiUtil::getConfigurationBuilder();
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
-    $type = OrderType::MAIN_UMFUTURE;
+    $type = OrderType::DELEGATE;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $limit = 7;

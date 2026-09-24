@@ -140,7 +140,7 @@ class TradeApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/w3w/wallet/prediction/trade/get-quote', $request->getUri()->getPath());
-        self::assertEquals('7b260d7c2714a1fc402b7938e847fc2d8f97ca1b2a8711cdc6d277d220ca289c', $queryMap['signature']);
+        self::assertEquals('f5a575ec085c0b3aeefa8a0f498b64f532a327bc7fff851fc6a49bfae2f5ede4', $queryMap['signature']);
     }
 
     /**

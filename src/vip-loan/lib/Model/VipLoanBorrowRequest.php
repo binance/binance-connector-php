@@ -182,7 +182,7 @@ class VipLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSeriali
         $this->setIfExists('loanAmount', $data ?? [], null);
         $this->setIfExists('collateralAccountId', $data ?? [], null);
         $this->setIfExists('collateralCoin', $data ?? [], null);
-        $this->setIfExists('isFlexibleRate', $data ?? [], true);
+        $this->setIfExists('isFlexibleRate', $data ?? [], null);
         $this->setIfExists('loanTerm', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }

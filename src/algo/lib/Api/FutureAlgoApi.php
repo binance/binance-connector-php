@@ -127,17 +127,18 @@ class FutureAlgoApi
      *
      * Cancel Futures Algo Order (TRADE)
      *
-     * @param int      $algoId     eg. 14511 (required)
-     * @param null|int $recvWindow Request validity window in milliseconds (optional)
+     * @param null|int    $algoId       eg. 14511 (optional)
+     * @param null|string $clientAlgoId eg. \&quot;65ce1630101a480b85915d7e11fd5078\&quot; (optional)
+     * @param null|int    $recvWindow   Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<CancelAlgoOrderFutureAlgoResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function cancelAlgoOrderFutureAlgo($algoId, $recvWindow = null): ApiResponse
+    public function cancelAlgoOrderFutureAlgo($algoId = null, $clientAlgoId = null, $recvWindow = null): ApiResponse
     {
-        return $this->cancelAlgoOrderFutureAlgoWithHttpInfo($algoId, $recvWindow);
+        return $this->cancelAlgoOrderFutureAlgoWithHttpInfo($algoId, $clientAlgoId, $recvWindow);
     }
 
     /**
@@ -145,17 +146,18 @@ class FutureAlgoApi
      *
      * Cancel Futures Algo Order (TRADE)
      *
-     * @param int      $algoId     eg. 14511 (required)
-     * @param null|int $recvWindow Request validity window in milliseconds (optional)
+     * @param null|int    $algoId       eg. 14511 (optional)
+     * @param null|string $clientAlgoId eg. \&quot;65ce1630101a480b85915d7e11fd5078\&quot; (optional)
+     * @param null|int    $recvWindow   Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<CancelAlgoOrderFutureAlgoResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function cancelAlgoOrderFutureAlgoWithHttpInfo($algoId, $recvWindow = null): ApiResponse
+    public function cancelAlgoOrderFutureAlgoWithHttpInfo($algoId = null, $clientAlgoId = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->cancelAlgoOrderFutureAlgoRequest($algoId, $recvWindow);
+        $request = $this->cancelAlgoOrderFutureAlgoRequest($algoId, $clientAlgoId, $recvWindow);
 
         try {
             try {
@@ -225,23 +227,17 @@ class FutureAlgoApi
     /**
      * Create request for operation 'cancelAlgoOrderFutureAlgo'.
      *
-     * @param int      $algoId     eg. 14511 (required)
-     * @param null|int $recvWindow Request validity window in milliseconds (optional)
+     * @param null|int    $algoId       eg. 14511 (optional)
+     * @param null|string $clientAlgoId eg. \&quot;65ce1630101a480b85915d7e11fd5078\&quot; (optional)
+     * @param null|int    $recvWindow   Request validity window in milliseconds (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function cancelAlgoOrderFutureAlgoRequest($algoId, $recvWindow = null)
+    public function cancelAlgoOrderFutureAlgoRequest($algoId = null, $clientAlgoId = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['cancelAlgoOrderFutureAlgo'][0];
-
-        // verify the required parameter 'algoId' is set
-        if (null === $algoId || (is_array($algoId) && 0 === count($algoId))) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $algoId when calling cancelAlgoOrderFutureAlgo'
-            );
-        }
 
         if (null !== $recvWindow && $recvWindow > 60000) {
             throw new \InvalidArgumentException('invalid value for "$recvWindow" when calling FutureAlgoApi.cancelAlgoOrderFutureAlgo, must be smaller than or equal to 60000.');
@@ -261,7 +257,16 @@ class FutureAlgoApi
             'integer', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $clientAlgoId,
+            'clientAlgoId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

@@ -1,5 +1,38 @@
 # Changelog
 
+## 7.0.0 - 2026-09-24
+
+**Sub Account**
+
+### Changed (7)
+
+- Added parameter `productType`
+  - affected methods:
+    - `getMovePositionHistoryForSubAccount()` (`GET /sapi/v1/sub-account/futures/move-position`)
+- Modified parameter `productType`:
+  - enum added: `OPTION`
+  - affected methods:
+    - `movePositionForSubAccount()` (`POST /sapi/v1/sub-account/futures/move-position`)
+- Modified response for `movePositionForSubAccount()` (`POST /sapi/v1/sub-account/futures/move-position`):
+  - `movePositionOrders`.items.`positionSide`: nullable `false` → `true`
+  - `movePositionOrders`.items.`positionSide`: nullable `false` → `true`
+
+- Modified response for `querySubAccountApiKey()` (`GET /sapi/v1/sub-account/subAccountApi`):
+  - property `rows` added
+  - property `list` deleted
+
+- Added response field `rows`
+  - affected events:
+    - `querySubAccountApiKeyResponse`
+- Removed response field `list`
+  - affected events:
+    - `querySubAccountApiKeyResponse`
+- Modified response field `movePositionOrders`:
+  - items.`positionSide`: nullable `false` → `true`
+  - items.`positionSide`: nullable `false` → `true`
+  - affected events:
+    - `movePositionForSubAccountResponse`
+
 ## 6.0.0 - 2026-07-28
 
 ### Added (4)

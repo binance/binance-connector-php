@@ -34,7 +34,7 @@ namespace Binance\Client\DerivativesTradingUsdsFutures\Model;
  *
  * @category Class
  *
- * @description Cannot be sent in Hedge Mode; cannot be sent with &#x60;closePosition&#x60;&#x3D;&#x60;true&#x60;
+ * @description Cannot be sent in Hedge Mode; cannot be sent with &#x60;closePosition&#x60;&#x3D;&#x60;true&#x60;&#39;
  *
  * @author   OpenAPI Generator team
  *

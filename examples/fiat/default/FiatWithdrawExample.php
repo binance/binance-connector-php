@@ -14,7 +14,7 @@ function fiatWithdrawExample()
     $api = new FiatRestApi($configurationBuilder->build());
     $fiatWithdrawRequest = new FiatWithdrawRequest();
     $fiatWithdrawRequest->setCurrency('BRL');
-    $fiatWithdrawRequest->setApiPaymentMethod(ApiPaymentMethod::bank_transfer);
+    $fiatWithdrawRequest->setApiPaymentMethod(ApiPaymentMethod::pix);
     $fiatWithdrawRequest->setAmount(10);
     $fiatWithdrawRequest->setAccountInfo(null);
     $recvWindow = 5000;

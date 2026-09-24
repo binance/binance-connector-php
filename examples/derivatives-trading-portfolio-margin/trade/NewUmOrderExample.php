@@ -16,7 +16,7 @@ function newUmOrderExample()
     $newUmOrderRequest = new NewUmOrderRequest();
     $newUmOrderRequest->setSymbol('BTCUSDT');
     $newUmOrderRequest->setSide(Side::BUY);
-    $newUmOrderRequest->setType(OrderType::STOP);
+    $newUmOrderRequest->setType(OrderType::LIMIT);
     $response = $api->newUmOrder($newUmOrderRequest);
     print_r($response);
 }

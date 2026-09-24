@@ -70,6 +70,7 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'realizedPnl' => 'string',
         'marginAsset' => 'string',
         'baseQty' => 'string',
+        'quoteQty' => 'string',
         'commission' => 'string',
         'commissionAsset' => 'string',
         'time' => 'int',
@@ -98,6 +99,7 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'realizedPnl' => null,
         'marginAsset' => null,
         'baseQty' => null,
+        'quoteQty' => null,
         'commission' => null,
         'commissionAsset' => null,
         'time' => 'int64',
@@ -122,6 +124,7 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'realizedPnl' => false,
         'marginAsset' => false,
         'baseQty' => false,
+        'quoteQty' => false,
         'commission' => false,
         'commissionAsset' => false,
         'time' => false,
@@ -154,6 +157,7 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'realizedPnl' => 'realizedPnl',
         'marginAsset' => 'marginAsset',
         'baseQty' => 'baseQty',
+        'quoteQty' => 'quoteQty',
         'commission' => 'commission',
         'commissionAsset' => 'commissionAsset',
         'time' => 'time',
@@ -178,6 +182,7 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'realizedPnl' => 'setRealizedPnl',
         'marginAsset' => 'setMarginAsset',
         'baseQty' => 'setBaseQty',
+        'quoteQty' => 'setQuoteQty',
         'commission' => 'setCommission',
         'commissionAsset' => 'setCommissionAsset',
         'time' => 'setTime',
@@ -202,6 +207,7 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         'realizedPnl' => 'getRealizedPnl',
         'marginAsset' => 'getMarginAsset',
         'baseQty' => 'getBaseQty',
+        'quoteQty' => 'getQuoteQty',
         'commission' => 'getCommission',
         'commissionAsset' => 'getCommissionAsset',
         'time' => 'getTime',
@@ -235,6 +241,7 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
         $this->setIfExists('realizedPnl', $data ?? [], null);
         $this->setIfExists('marginAsset', $data ?? [], null);
         $this->setIfExists('baseQty', $data ?? [], null);
+        $this->setIfExists('quoteQty', $data ?? [], null);
         $this->setIfExists('commission', $data ?? [], null);
         $this->setIfExists('commissionAsset', $data ?? [], null);
         $this->setIfExists('time', $data ?? [], null);
@@ -627,7 +634,7 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets baseQty.
      *
-     * @param null|string $baseQty base asset quantity
+     * @param null|string $baseQty Base asset quantity. Populated for COIN-M symbols; returns \"0\" for USDⓈ-M symbols.
      *
      * @return self
      */
@@ -637,6 +644,33 @@ class AccountTradeListResponseInner implements ModelInterface, \ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable baseQty cannot be null');
         }
         $this->container['baseQty'] = $baseQty;
+
+        return $this;
+    }
+
+    /**
+     * Gets quoteQty.
+     *
+     * @return null|string
+     */
+    public function getQuoteQty()
+    {
+        return $this->container['quoteQty'];
+    }
+
+    /**
+     * Sets quoteQty.
+     *
+     * @param null|string $quoteQty Quote asset quantity. Populated for USDⓈ-M symbols; returns \"0\" for COIN-M symbols.
+     *
+     * @return self
+     */
+    public function setQuoteQty($quoteQty)
+    {
+        if (is_null($quoteQty)) {
+            throw new \InvalidArgumentException('non-nullable quoteQty cannot be null');
+        }
+        $this->container['quoteQty'] = $quoteQty;
 
         return $this;
     }

@@ -34,6 +34,8 @@ namespace Binance\Client\MarginTrading\Model;
  *
  * @category Class
  *
+ * @description MARKET and LIMIT order types default to FULL, all other orders default to ACK.
+ *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech

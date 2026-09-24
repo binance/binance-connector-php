@@ -104,15 +104,16 @@ class FutureAlgoApiTest extends TestCase
     public function testCancelAlgoOrderFutureAlgo()
     {
         $algoId = 1;
+        $clientAlgoId = 'client-id';
         $recvWindow = 5000;
-        $response = $this->getApiMock($request)->cancelAlgoOrderFutureAlgo($algoId, $recvWindow);
+        $response = $this->getApiMock($request)->cancelAlgoOrderFutureAlgo($algoId, $clientAlgoId, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
 
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/algo/futures/order', $request->getUri()->getPath());
-        self::assertEquals('4dcc675276dcc7a5eddf3f11f98e221dc22b447b227be14ec73a51c61602f2a5', $queryMap['signature']);
+        self::assertEquals('9bd35ef17039afab392fff6d06525cd018d165c562b2ecfdf0b8da16496ba666', $queryMap['signature']);
     }
 
     /**

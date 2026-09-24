@@ -431,7 +431,7 @@ class SubmitDepositQuestionnaireRequest implements ModelInterface, \ArrayAccess,
     /**
      * Sets beneficiaryPii.
      *
-     * @param string $beneficiaryPii JSON format beneficiary Pii
+     * @param string $beneficiaryPii JSON format beneficiary Pii, see StandardPii section below
      *
      * @return self
      */

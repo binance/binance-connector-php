@@ -248,10 +248,10 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('timeInForce', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
-        $this->setIfExists('reduceOnly', $data ?? [], 'false');
+        $this->setIfExists('reduceOnly', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('newClientOrderId', $data ?? [], null);
-        $this->setIfExists('newOrderRespType', $data ?? [], 'ACK');
+        $this->setIfExists('newOrderRespType', $data ?? [], null);
         $this->setIfExists('priceMatch', $data ?? [], null);
         $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
         $this->setIfExists('goodTillDate', $data ?? [], null);
@@ -961,7 +961,7 @@ class BatchOrdersInner implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Sets selfTradePreventionMode.
      *
-     * @param null|string $selfTradePreventionMode EXPIRE_TAKER:expire taker order when STP triggers/ EXPIRE_MAKER:expire taker order when STP triggers/ EXPIRE_BOTH:expire both orders when STP triggers; default NONE
+     * @param null|string $selfTradePreventionMode EXPIRE_TAKER: expire taker order when STP triggers/ EXPIRE_MAKER: expire taker order when STP triggers/ EXPIRE_BOTH: expire both orders when STP triggers; default NONE
      *
      * @return self
      */

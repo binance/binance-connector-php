@@ -34,7 +34,7 @@ namespace Binance\Client\Spot\Model;
  *
  * @category Class
  *
- * @description &#x60;PRIMARY_PEG&#x60; or &#x60;MARKET_PEG&#x60;. See [Pegged Orders](/products/spot/faqs/pegged_orders)
+ * @description See Pegged Orders Info
  *
  * @author   OpenAPI Generator team
  *

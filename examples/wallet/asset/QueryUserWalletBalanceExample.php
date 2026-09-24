@@ -11,8 +11,9 @@ function queryUserWalletBalanceExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
     $quoteAsset = 'BTC';
+    $needBalanceDetail = false;
     $recvWindow = 5000;
-    $response = $api->queryUserWalletBalance($quoteAsset, $recvWindow);
+    $response = $api->queryUserWalletBalance($quoteAsset, $needBalanceDetail, $recvWindow);
     print_r($response);
 }
 

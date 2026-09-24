@@ -179,7 +179,7 @@ class FlexibleRateApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v2/loan/flexible/repay', $request->getUri()->getPath());
-        self::assertEquals('0eaf774fdc9345a6a5cf73d081a0de357abe0313eca90d02967ceeafb0b38cbc', $queryMap['signature']);
+        self::assertEquals('ea04f360074548319f1a18cfc8ca9add859e130bf34c9cb5a3475d6568400511', $queryMap['signature']);
     }
 
     /**

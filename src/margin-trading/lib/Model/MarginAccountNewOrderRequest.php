@@ -246,7 +246,7 @@ class MarginAccountNewOrderRequest implements ModelInterface, \ArrayAccess, \Jso
         $this->setIfExists('timeInForce', $data ?? [], null);
         $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
         $this->setIfExists('trailingDelta', $data ?? [], null);
-        $this->setIfExists('autoRepayAtCancel', $data ?? [], true);
+        $this->setIfExists('autoRepayAtCancel', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }
 

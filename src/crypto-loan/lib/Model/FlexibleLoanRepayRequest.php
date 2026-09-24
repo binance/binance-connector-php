@@ -174,8 +174,8 @@ class FlexibleLoanRepayRequest implements ModelInterface, \ArrayAccess, \JsonSer
         $this->setIfExists('loanCoin', $data ?? [], null);
         $this->setIfExists('collateralCoin', $data ?? [], null);
         $this->setIfExists('repayAmount', $data ?? [], null);
-        $this->setIfExists('collateralReturn', $data ?? [], true);
-        $this->setIfExists('fullRepayment', $data ?? [], false);
+        $this->setIfExists('collateralReturn', $data ?? [], null);
+        $this->setIfExists('fullRepayment', $data ?? [], null);
         $this->setIfExists('repaymentType', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }

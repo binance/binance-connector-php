@@ -593,7 +593,7 @@ class NewMarginOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets status.
      *
-     * @param null|string $status Enum：completed，processing
+     * @param null|string $status status
      *
      * @return self
      */

@@ -232,7 +232,7 @@ class NewMarginOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         $this->setIfExists('sideEffectType', $data ?? [], null);
         $this->setIfExists('timeInForce', $data ?? [], null);
         $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
-        $this->setIfExists('autoRepayAtCancel', $data ?? [], true);
+        $this->setIfExists('autoRepayAtCancel', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }
 

@@ -43,9 +43,9 @@ enum Asset: string
     /**
      * Possible values of this enum.
      */
-    case USDT = 'USDT';
-
     case USDC = 'USDC';
+
+    case USDT = 'USDT';
 
     /**
      * Gets allowable values of the enum.
@@ -55,8 +55,8 @@ enum Asset: string
     public static function getAllowableEnumValues()
     {
         return [
-            self::USDT,
             self::USDC,
+            self::USDT,
         ];
     }
 }

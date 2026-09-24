@@ -48,7 +48,7 @@
 
 [/dapi/v1/klines](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-coin-m-futures/api/rest-api/market-data#kline-candlestick-data) - klineCandlestickData - [KlineCandlestickDataExample.php:18](/examples/derivatives-trading-coin-futures/marketdata/KlineCandlestickDataExample.php#L18)
 
-[/futures/data/globalLongShortAccountRatio](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-coin-m-futures/api/rest-api/market-data#long-short-ratio) - longShortRatio - [LongShortRatioExample.php:18](/examples/derivatives-trading-coin-futures/marketdata/LongShortRatioExample.php#L18)
+[/futures/data/globalLongShortAccountRatio](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-coin-m-futures/api/rest-api/market-data#long-short-ratio) - longShortRatio - [LongShortRatioExample.php:20](/examples/derivatives-trading-coin-futures/marketdata/LongShortRatioExample.php#L20)
 
 [/dapi/v1/markPriceKlines](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-coin-m-futures/api/rest-api/market-data#mark-price-kline-candlestick-data) - markPriceKlineCandlestickData - [MarkPriceKlineCandlestickDataExample.php:18](/examples/derivatives-trading-coin-futures/marketdata/MarkPriceKlineCandlestickDataExample.php#L18)
 
@@ -76,9 +76,9 @@
 
 [/dapi/v1/ticker/24hr](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-coin-m-futures/api/rest-api/market-data#ticker24hr-price-change-statistics) - ticker24hrPriceChangeStatistics - [Ticker24hrPriceChangeStatisticsExample.php:14](/examples/derivatives-trading-coin-futures/marketdata/Ticker24hrPriceChangeStatisticsExample.php#L14)
 
-[/futures/data/topLongShortAccountRatio](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-coin-m-futures/api/rest-api/market-data#top-trader-long-short-ratio-accounts) - topTraderLongShortRatioAccounts - [TopTraderLongShortRatioAccountsExample.php:18](/examples/derivatives-trading-coin-futures/marketdata/TopTraderLongShortRatioAccountsExample.php#L18)
+[/futures/data/topLongShortAccountRatio](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-coin-m-futures/api/rest-api/market-data#top-trader-long-short-ratio-accounts) - topTraderLongShortRatioAccounts - [TopTraderLongShortRatioAccountsExample.php:20](/examples/derivatives-trading-coin-futures/marketdata/TopTraderLongShortRatioAccountsExample.php#L20)
 
-[/futures/data/topLongShortPositionRatio](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-coin-m-futures/api/rest-api/market-data#top-trader-long-short-ratio-positions) - topTraderLongShortRatioPositions - [TopTraderLongShortRatioPositionsExample.php:18](/examples/derivatives-trading-coin-futures/marketdata/TopTraderLongShortRatioPositionsExample.php#L18)
+[/futures/data/topLongShortPositionRatio](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-coin-m-futures/api/rest-api/market-data#top-trader-long-short-ratio-positions) - topTraderLongShortRatioPositions - [TopTraderLongShortRatioPositionsExample.php:20](/examples/derivatives-trading-coin-futures/marketdata/TopTraderLongShortRatioPositionsExample.php#L20)
 
 ## Trade
 

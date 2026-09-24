@@ -42,7 +42,7 @@
 
 [/sapi/v1/sub-account/margin/account](https://developers.binance.com/en/docs/catalog/vip-and-institutional-sub-account/api/rest-api/asset-management#get-detail-on-sub-accounts-margin-account) - getDetailOnSubAccountsMarginAccount - [GetDetailOnSubAccountsMarginAccountExample.php:15](/examples/sub-account/assetmanagement/GetDetailOnSubAccountsMarginAccountExample.php#L15)
 
-[/sapi/v1/sub-account/futures/move-position](https://developers.binance.com/en/docs/catalog/vip-and-institutional-sub-account/api/rest-api/asset-management#get-move-position-history-for-sub-account) - getMovePositionHistoryForSubAccount - [GetMovePositionHistoryForSubAccountExample.php:19](/examples/sub-account/assetmanagement/GetMovePositionHistoryForSubAccountExample.php#L19)
+[/sapi/v1/sub-account/futures/move-position](https://developers.binance.com/en/docs/catalog/vip-and-institutional-sub-account/api/rest-api/asset-management#get-move-position-history-for-sub-account) - getMovePositionHistoryForSubAccount - [GetMovePositionHistoryForSubAccountExample.php:21](/examples/sub-account/assetmanagement/GetMovePositionHistoryForSubAccountExample.php#L21)
 
 [/sapi/v1/capital/deposit/subAddress](https://developers.binance.com/en/docs/catalog/vip-and-institutional-sub-account/api/rest-api/asset-management#get-sub-account-deposit-address) - getSubAccountDepositAddress - [GetSubAccountDepositAddressExample.php:18](/examples/sub-account/assetmanagement/GetSubAccountDepositAddressExample.php#L18)
 

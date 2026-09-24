@@ -34,6 +34,8 @@ namespace Binance\Client\Spot\Model;
  *
  * @category Class
  *
+ * @description See [Pegged Orders](/products/spot/faqs/pegged_orders)
+ *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech

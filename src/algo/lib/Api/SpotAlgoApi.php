@@ -124,17 +124,18 @@ class SpotAlgoApi
      *
      * Cancel Spot Algo Order (TRADE)
      *
-     * @param int      $algoId     algoId (required)
-     * @param null|int $recvWindow Request validity window in milliseconds (optional)
+     * @param null|int    $algoId       algoId (optional)
+     * @param null|string $clientAlgoId clientAlgoId (optional)
+     * @param null|int    $recvWindow   Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<CancelAlgoOrderSpotAlgoResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function cancelAlgoOrderSpotAlgo($algoId, $recvWindow = null): ApiResponse
+    public function cancelAlgoOrderSpotAlgo($algoId = null, $clientAlgoId = null, $recvWindow = null): ApiResponse
     {
-        return $this->cancelAlgoOrderSpotAlgoWithHttpInfo($algoId, $recvWindow);
+        return $this->cancelAlgoOrderSpotAlgoWithHttpInfo($algoId, $clientAlgoId, $recvWindow);
     }
 
     /**
@@ -142,17 +143,18 @@ class SpotAlgoApi
      *
      * Cancel Spot Algo Order (TRADE)
      *
-     * @param int      $algoId     (required)
-     * @param null|int $recvWindow Request validity window in milliseconds (optional)
+     * @param null|int    $algoId       (optional)
+     * @param null|string $clientAlgoId (optional)
+     * @param null|int    $recvWindow   Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<CancelAlgoOrderSpotAlgoResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function cancelAlgoOrderSpotAlgoWithHttpInfo($algoId, $recvWindow = null): ApiResponse
+    public function cancelAlgoOrderSpotAlgoWithHttpInfo($algoId = null, $clientAlgoId = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->cancelAlgoOrderSpotAlgoRequest($algoId, $recvWindow);
+        $request = $this->cancelAlgoOrderSpotAlgoRequest($algoId, $clientAlgoId, $recvWindow);
 
         try {
             try {
@@ -222,23 +224,17 @@ class SpotAlgoApi
     /**
      * Create request for operation 'cancelAlgoOrderSpotAlgo'.
      *
-     * @param int      $algoId     (required)
-     * @param null|int $recvWindow Request validity window in milliseconds (optional)
+     * @param null|int    $algoId       (optional)
+     * @param null|string $clientAlgoId (optional)
+     * @param null|int    $recvWindow   Request validity window in milliseconds (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function cancelAlgoOrderSpotAlgoRequest($algoId, $recvWindow = null)
+    public function cancelAlgoOrderSpotAlgoRequest($algoId = null, $clientAlgoId = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['cancelAlgoOrderSpotAlgo'][0];
-
-        // verify the required parameter 'algoId' is set
-        if (null === $algoId || (is_array($algoId) && 0 === count($algoId))) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $algoId when calling cancelAlgoOrderSpotAlgo'
-            );
-        }
 
         if (null !== $recvWindow && $recvWindow > 60000) {
             throw new \InvalidArgumentException('invalid value for "$recvWindow" when calling SpotAlgoApi.cancelAlgoOrderSpotAlgo, must be smaller than or equal to 60000.');
@@ -258,7 +254,16 @@ class SpotAlgoApi
             'integer', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $clientAlgoId,
+            'clientAlgoId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

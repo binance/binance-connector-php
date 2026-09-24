@@ -213,7 +213,7 @@ class SorOrderTestRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('computeCommissionRates', $data ?? [], false);
+        $this->setIfExists('computeCommissionRates', $data ?? [], null);
         $this->setIfExists('symbol', $data ?? [], null);
         $this->setIfExists('side', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);

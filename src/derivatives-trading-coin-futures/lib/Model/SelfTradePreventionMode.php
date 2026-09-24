@@ -34,7 +34,7 @@ namespace Binance\Client\DerivativesTradingCoinFutures\Model;
  *
  * @category Class
  *
- * @description &#x60;EXPIRE_TAKER&#x60;:expire taker order when STP triggers/ &#x60;EXPIRE_MAKER&#x60;:expire taker order when STP triggers/ &#x60;EXPIRE_BOTH&#x60;:expire both orders when STP triggers
+ * @description &#x60;EXPIRE_TAKER&#x60;: expire taker order when STP triggers/ &#x60;EXPIRE_MAKER&#x60;: expire taker order when STP triggers/ &#x60;EXPIRE_BOTH&#x60;: expire both orders when STP triggers
  *
  * @author   OpenAPI Generator team
  *

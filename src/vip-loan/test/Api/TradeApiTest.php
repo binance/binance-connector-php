@@ -143,7 +143,7 @@ class TradeApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/loan/vip/fixed/borrow', $request->getUri()->getPath());
-        self::assertEquals('5170b83c915703e61d61a140b29a4a172e0aecb149f26d082d976f5645c0f007', $queryMap['signature']);
+        self::assertEquals('0ed4bf5a449eab95fc8dcb018e9c3a9f16f2507a23e304e648ed5d7e6fdd3638', $queryMap['signature']);
     }
 
     /**

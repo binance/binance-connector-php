@@ -1,5 +1,122 @@
 # Changelog
 
+## 6.1.0 - 2026-09-21
+
+**Derivatives Trading USDS Futures**
+
+### Changed (5)
+
+#### REST API
+
+- Added parameter `reduceOnly`
+  - affected methods:
+    - `modifyOrder()` (`PUT /fapi/v1/order`)
+- Modified parameter `incomeType`:
+  - enum added: `SPECIAL_FUNDING_FEE`
+  - affected methods:
+    - `getIncomeHistory()` (`GET /fapi/v1/income`)
+- Modified response for `tradingSchedule()` (`GET /fapi/v1/tradingSchedule`):
+  - `marketSchedules`: property `FX` added
+
+- Modified response field `marketSchedules`:
+  - property `FX` added
+  - affected events:
+    - `tradingScheduleResponse`
+#### WebSocket API
+
+- Added parameter `reduceOnly`
+  - affected methods:
+    - `modifyOrder()` (`order.modify` method)
+
+## 6.0.1 - 2026-08-25
+
+**Derivatives Trading Usds Futures**
+
+### Changed (28)
+
+#### REST API
+
+- Modified response for `allOrders()` (`GET /fapi/v1/allOrders`):
+  - items: property `pair` added
+  - items: property `cumBase` added
+  - items: item property `pair` added
+  - items: item property `cumBase` added
+
+- Modified response for `usersForceOrders()` (`GET /fapi/v1/forceOrders`):
+  - items: property `pair` added
+  - items: property `cumBase` added
+  - items: item property `pair` added
+  - items: item property `cumBase` added
+
+- Modified response for `tradingSchedule()` (`GET /fapi/v1/tradingSchedule`):
+  - `marketSchedules`: property `CN_EQUITY` added
+
+- Modified response for `accountTradeList()` (`GET /fapi/v1/userTrades`):
+  - items: property `baseQty` added
+  - items: property `pair` added
+  - items: property `marginAsset` added
+  - items: item property `baseQty` added
+  - items: item property `pair` added
+  - items: item property `marginAsset` added
+
+- Modified response field `marketSchedules`:
+  - property `CN_EQUITY` added
+  - affected events:
+    - `tradingScheduleResponse`
+- Modified response schema `accountTradeListResponse`:
+  - items: property `marginAsset` added
+  - items: property `baseQty` added
+  - items: property `pair` added
+  - items: item property `marginAsset` added
+  - items: item property `baseQty` added
+  - items: item property `pair` added
+- Modified response schema `allOrdersResponse`:
+  - items: property `pair` added
+  - items: property `cumBase` added
+  - items: item property `pair` added
+  - items: item property `cumBase` added
+- Modified response schema `usersForceOrdersResponse`:
+  - items: property `pair` added
+  - items: property `cumBase` added
+  - items: item property `pair` added
+  - items: item property `cumBase` added
+#### WebSocket Streams
+
+- Modified response for `diffBookDepthStreams()` (`<symbol>@depth@<updateSpeed>` stream):
+  - `a`.items: minItems `0` → `2`
+  - `a`.items: maxItems `null` → `2`
+  - `b`.items: minItems `0` → `2`
+  - `b`.items: maxItems `null` → `2`
+
+- Modified response for `rpiDiffBookDepthStreams()` (`<symbol>@rpiDepth@500ms` stream):
+  - `a`.items: minItems `0` → `2`
+  - `a`.items: maxItems `null` → `2`
+  - `b`.items: minItems `0` → `2`
+  - `b`.items: maxItems `null` → `2`
+
+- Modified response field `a`:
+  - property `S` added
+  - affected events:
+    - `UserDataStreamEventsResponse`
+    - `accountUpdate`
+- Modified response field `o`:
+  - property `ia` added
+  - affected events:
+    - `UserDataStreamEventsResponse`
+    - `algoUpdate`
+- Modified response field `a`:
+  - items: minItems `0` → `2`
+  - items: maxItems `null` → `2`
+  - affected events:
+    - `diffBookDepthStreamsResponse`
+    - `rpiDiffBookDepthStreamsResponse`
+- Modified response field `b`:
+  - items: minItems `0` → `2`
+  - items: maxItems `null` → `2`
+  - affected events:
+    - `diffBookDepthStreamsResponse`
+    - `rpiDiffBookDepthStreamsResponse`
+
 ## 6.0.0 - 2026-07-28
 
 ### Changed (56)
