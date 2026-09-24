@@ -68,6 +68,7 @@ class ModifyOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
         'price' => 'float',
         'priceMatch' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\PriceMatch',
         'modifyId' => 'int',
+        'reduceOnly' => '\Binance\Client\DerivativesTradingUsdsFutures\Model\ReduceOnly',
         'recvWindow' => 'int',
     ];
 
@@ -89,6 +90,7 @@ class ModifyOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
         'price' => 'float',
         'priceMatch' => null,
         'modifyId' => 'int64',
+        'reduceOnly' => null,
         'recvWindow' => 'int64',
     ];
 
@@ -106,6 +108,7 @@ class ModifyOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
         'price' => false,
         'priceMatch' => false,
         'modifyId' => false,
+        'reduceOnly' => false,
         'recvWindow' => false,
     ];
 
@@ -131,6 +134,7 @@ class ModifyOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
         'price' => 'price',
         'priceMatch' => 'priceMatch',
         'modifyId' => 'modifyId',
+        'reduceOnly' => 'reduceOnly',
         'recvWindow' => 'recvWindow',
     ];
 
@@ -148,6 +152,7 @@ class ModifyOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
         'price' => 'setPrice',
         'priceMatch' => 'setPriceMatch',
         'modifyId' => 'setModifyId',
+        'reduceOnly' => 'setReduceOnly',
         'recvWindow' => 'setRecvWindow',
     ];
 
@@ -165,6 +170,7 @@ class ModifyOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
         'price' => 'getPrice',
         'priceMatch' => 'getPriceMatch',
         'modifyId' => 'getModifyId',
+        'reduceOnly' => 'getReduceOnly',
         'recvWindow' => 'getRecvWindow',
     ];
 
@@ -191,6 +197,7 @@ class ModifyOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('priceMatch', $data ?? [], null);
         $this->setIfExists('modifyId', $data ?? [], null);
+        $this->setIfExists('reduceOnly', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }
 
@@ -552,6 +559,33 @@ class ModifyOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable modifyId cannot be null');
         }
         $this->container['modifyId'] = $modifyId;
+
+        return $this;
+    }
+
+    /**
+     * Gets reduceOnly.
+     *
+     * @return null|ReduceOnly
+     */
+    public function getReduceOnly()
+    {
+        return $this->container['reduceOnly'];
+    }
+
+    /**
+     * Sets reduceOnly.
+     *
+     * @param null|ReduceOnly $reduceOnly reduceOnly
+     *
+     * @return self
+     */
+    public function setReduceOnly($reduceOnly)
+    {
+        if (is_null($reduceOnly)) {
+            throw new \InvalidArgumentException('non-nullable reduceOnly cannot be null');
+        }
+        $this->container['reduceOnly'] = $reduceOnly;
 
         return $this;
     }

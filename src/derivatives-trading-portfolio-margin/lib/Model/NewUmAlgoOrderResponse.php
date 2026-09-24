@@ -75,6 +75,7 @@ class NewUmAlgoOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeria
         'selfTradePreventionMode' => 'string',
         'workingType' => 'string',
         'priceMatch' => 'string',
+        'closePosition' => 'bool',
         'priceProtect' => 'bool',
         'reduceOnly' => 'bool',
         'activatePrice' => 'string',
@@ -110,6 +111,7 @@ class NewUmAlgoOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeria
         'selfTradePreventionMode' => null,
         'workingType' => null,
         'priceMatch' => null,
+        'closePosition' => null,
         'priceProtect' => null,
         'reduceOnly' => null,
         'activatePrice' => null,
@@ -141,6 +143,7 @@ class NewUmAlgoOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeria
         'selfTradePreventionMode' => false,
         'workingType' => false,
         'priceMatch' => false,
+        'closePosition' => false,
         'priceProtect' => false,
         'reduceOnly' => false,
         'activatePrice' => false,
@@ -180,6 +183,7 @@ class NewUmAlgoOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeria
         'selfTradePreventionMode' => 'selfTradePreventionMode',
         'workingType' => 'workingType',
         'priceMatch' => 'priceMatch',
+        'closePosition' => 'closePosition',
         'priceProtect' => 'priceProtect',
         'reduceOnly' => 'reduceOnly',
         'activatePrice' => 'activatePrice',
@@ -211,6 +215,7 @@ class NewUmAlgoOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeria
         'selfTradePreventionMode' => 'setSelfTradePreventionMode',
         'workingType' => 'setWorkingType',
         'priceMatch' => 'setPriceMatch',
+        'closePosition' => 'setClosePosition',
         'priceProtect' => 'setPriceProtect',
         'reduceOnly' => 'setReduceOnly',
         'activatePrice' => 'setActivatePrice',
@@ -242,6 +247,7 @@ class NewUmAlgoOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeria
         'selfTradePreventionMode' => 'getSelfTradePreventionMode',
         'workingType' => 'getWorkingType',
         'priceMatch' => 'getPriceMatch',
+        'closePosition' => 'getClosePosition',
         'priceProtect' => 'getPriceProtect',
         'reduceOnly' => 'getReduceOnly',
         'activatePrice' => 'getActivatePrice',
@@ -282,6 +288,7 @@ class NewUmAlgoOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeria
         $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
         $this->setIfExists('workingType', $data ?? [], null);
         $this->setIfExists('priceMatch', $data ?? [], null);
+        $this->setIfExists('closePosition', $data ?? [], null);
         $this->setIfExists('priceProtect', $data ?? [], null);
         $this->setIfExists('reduceOnly', $data ?? [], null);
         $this->setIfExists('activatePrice', $data ?? [], null);
@@ -821,6 +828,33 @@ class NewUmAlgoOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable priceMatch cannot be null');
         }
         $this->container['priceMatch'] = $priceMatch;
+
+        return $this;
+    }
+
+    /**
+     * Gets closePosition.
+     *
+     * @return null|bool
+     */
+    public function getClosePosition()
+    {
+        return $this->container['closePosition'];
+    }
+
+    /**
+     * Sets closePosition.
+     *
+     * @param null|bool $closePosition closePosition
+     *
+     * @return self
+     */
+    public function setClosePosition($closePosition)
+    {
+        if (is_null($closePosition)) {
+            throw new \InvalidArgumentException('non-nullable closePosition cannot be null');
+        }
+        $this->container['closePosition'] = $closePosition;
 
         return $this;
     }

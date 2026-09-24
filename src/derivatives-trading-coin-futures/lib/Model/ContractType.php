@@ -43,8 +43,6 @@ enum ContractType: string
     /**
      * Possible values of this enum.
      */
-    case ALL = 'ALL';
-
     case PERPETUAL = 'PERPETUAL';
 
     case CURRENT_QUARTER = 'CURRENT_QUARTER';
@@ -59,7 +57,6 @@ enum ContractType: string
     public static function getAllowableEnumValues()
     {
         return [
-            self::ALL,
             self::PERPETUAL,
             self::CURRENT_QUARTER,
             self::NEXT_QUARTER,

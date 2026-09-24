@@ -116,7 +116,7 @@ class WalletApi
     /**
      * Operation getPortfolio.
      *
-     * Get Portfolio (USER_DATA)
+     * Get Portfolio (PREDICTION_TRADE)
      *
      * @param string      $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string $tokenId       Filter by prediction token ID (optional)
@@ -138,7 +138,7 @@ class WalletApi
     /**
      * Operation getPortfolioWithHttpInfo.
      *
-     * Get Portfolio (USER_DATA)
+     * Get Portfolio (PREDICTION_TRADE)
      *
      * @param string      $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string $tokenId       Filter by prediction token ID (optional)
@@ -358,7 +358,7 @@ class WalletApi
     /**
      * Operation getQuotaStatus.
      *
-     * Get Quota Status (USER_DATA)
+     * Get Quota Status (PREDICTION_TRADE)
      *
      * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
@@ -375,7 +375,7 @@ class WalletApi
     /**
      * Operation getQuotaStatusWithHttpInfo.
      *
-     * Get Quota Status (USER_DATA)
+     * Get Quota Status (PREDICTION_TRADE)
      *
      * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
@@ -525,7 +525,7 @@ class WalletApi
     /**
      * Operation listPredictionWallets.
      *
-     * List Prediction Wallets (USER_DATA)
+     * List Prediction Wallets (PREDICTION_TRADE)
      *
      * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
@@ -542,7 +542,7 @@ class WalletApi
     /**
      * Operation listPredictionWalletsWithHttpInfo.
      *
-     * List Prediction Wallets (USER_DATA)
+     * List Prediction Wallets (PREDICTION_TRADE)
      *
      * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
@@ -692,7 +692,7 @@ class WalletApi
     /**
      * Operation queryPaymentOptionBalances.
      *
-     * Query Payment Option Balances (USER_DATA)
+     * Query Payment Option Balances (PREDICTION_TRADE)
      *
      * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
@@ -709,7 +709,7 @@ class WalletApi
     /**
      * Operation queryPaymentOptionBalancesWithHttpInfo.
      *
-     * Query Payment Option Balances (USER_DATA)
+     * Query Payment Option Balances (PREDICTION_TRADE)
      *
      * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *

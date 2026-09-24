@@ -358,7 +358,7 @@ class TradeApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/margin/order/oco', $request->getUri()->getPath());
-        self::assertEquals('8fce2ed26acb9f18458d0827783582a6f290bda06888356f352a298591016d20', $queryMap['signature']);
+        self::assertEquals('c7b1c91507c54b3e48105a7a35d8ec7ba1d570c82ace13232a4918e65038fdf4', $queryMap['signature']);
     }
 
     /**
@@ -380,7 +380,7 @@ class TradeApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/margin/order', $request->getUri()->getPath());
-        self::assertEquals('8bc6c316c7b28af8330c2285830e4690f6b9af8a48a0db63c4126a65e5dd5dd6', $queryMap['signature']);
+        self::assertEquals('80c74b1160bd6a691d9de3bc80f79091bf5d0230ef243193674321644f75b921', $queryMap['signature']);
     }
 
     /**
@@ -408,7 +408,7 @@ class TradeApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/margin/order/oto', $request->getUri()->getPath());
-        self::assertEquals('6fe64f38cab2d7685eec5e495f9be6cdfa34487ebfa81a5e94fd39b686bfad7c', $queryMap['signature']);
+        self::assertEquals('fd594ec017cd52a0f534f140a2cc37c728289d683724b0b949c0292f9a5a870f', $queryMap['signature']);
     }
 
     /**
@@ -435,7 +435,7 @@ class TradeApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/margin/order/otoco', $request->getUri()->getPath());
-        self::assertEquals('09ada4f647c5c46786161cbbd1f813db7b793b673ea669a555c0bb0ae90be5fb', $queryMap['signature']);
+        self::assertEquals('f31110d80bb5347b96053623a312f9c5f97afb05a02e69a614fc6d7db3b27199', $queryMap['signature']);
     }
 
     /**

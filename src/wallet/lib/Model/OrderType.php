@@ -43,6 +43,10 @@ enum OrderType: string
     /**
      * Possible values of this enum.
      */
+    case DELEGATE = 'DELEGATE';
+
+    case UNDELEGATE = 'UNDELEGATE';
+
     case MAIN_UMFUTURE = 'MAIN_UMFUTURE';
 
     case MAIN_CMFUTURE = 'MAIN_CMFUTURE';
@@ -113,6 +117,8 @@ enum OrderType: string
     public static function getAllowableEnumValues()
     {
         return [
+            self::DELEGATE,
+            self::UNDELEGATE,
             self::MAIN_UMFUTURE,
             self::MAIN_CMFUTURE,
             self::MAIN_MARGIN,

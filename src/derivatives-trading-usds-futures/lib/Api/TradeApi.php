@@ -443,19 +443,19 @@ class TradeApi
      *
      * All Orders (USER_DATA)
      *
-     * @param string   $symbol     symbol (required)
-     * @param null|int $orderId    orderId (optional)
-     * @param null|int $startTime  Start time (optional)
-     * @param null|int $endTime    End time (optional)
-     * @param null|int $limit      limit (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|string $symbol     symbol (optional)
+     * @param null|int    $orderId    orderId (optional)
+     * @param null|int    $startTime  Start time (optional)
+     * @param null|int    $endTime    End time (optional)
+     * @param null|int    $limit      limit (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<AllOrdersResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function allOrders($symbol, $orderId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
+    public function allOrders($symbol = null, $orderId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
         return $this->allOrdersWithHttpInfo($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
     }
@@ -465,19 +465,19 @@ class TradeApi
      *
      * All Orders (USER_DATA)
      *
-     * @param string   $symbol     (required)
-     * @param null|int $orderId    (optional)
-     * @param null|int $startTime  Start time (optional)
-     * @param null|int $endTime    End time (optional)
-     * @param null|int $limit      (optional)
-     * @param null|int $recvWindow (optional)
+     * @param null|string $symbol     (optional)
+     * @param null|int    $orderId    (optional)
+     * @param null|int    $startTime  Start time (optional)
+     * @param null|int    $endTime    End time (optional)
+     * @param null|int    $limit      (optional)
+     * @param null|int    $recvWindow (optional)
      *
      * @return ApiResponse<AllOrdersResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function allOrdersWithHttpInfo($symbol, $orderId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
+    public function allOrdersWithHttpInfo($symbol = null, $orderId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
         $request = $this->allOrdersRequest($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
 
@@ -549,27 +549,20 @@ class TradeApi
     /**
      * Create request for operation 'allOrders'.
      *
-     * @param string   $symbol     (required)
-     * @param null|int $orderId    (optional)
-     * @param null|int $startTime  Start time (optional)
-     * @param null|int $endTime    End time (optional)
-     * @param null|int $limit      (optional)
-     * @param null|int $recvWindow (optional)
+     * @param null|string $symbol     (optional)
+     * @param null|int    $orderId    (optional)
+     * @param null|int    $startTime  Start time (optional)
+     * @param null|int    $endTime    End time (optional)
+     * @param null|int    $limit      (optional)
+     * @param null|int    $recvWindow (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function allOrdersRequest($symbol, $orderId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null)
+    public function allOrdersRequest($symbol = null, $orderId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['allOrders'][0];
-
-        // verify the required parameter 'symbol' is set
-        if (null === $symbol || (is_array($symbol) && 0 === count($symbol))) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $symbol when calling allOrders'
-            );
-        }
 
         if (null !== $limit && $limit > 1000) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling TradeApi.allOrders, must be smaller than or equal to 1000.');
@@ -593,7 +586,7 @@ class TradeApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

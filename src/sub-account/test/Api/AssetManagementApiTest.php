@@ -204,7 +204,7 @@ class AssetManagementApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/sub-account/futures/move-position', $request->getUri()->getPath());
-        self::assertEquals('8de4d8f77b968580be9fba1f25671a319d2930766c4b3aed8a43314b76a99423', $queryMap['signature']);
+        self::assertEquals('8bc87ef5a90e3607a7c2be38b6f58060e77023c0cb9e20186bd1edce3795d233', $queryMap['signature']);
     }
 
     /**

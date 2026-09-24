@@ -12,6 +12,24 @@
 
 [/sapi/v1/w3w/wallet/prediction/order-book](https://developers.binance.com/en/docs/catalog/web3-wallet-prediction-trading/api/rest-api/market-data#query-order-book) - queryOrderBook - [QueryOrderBookExample.php:16](/examples/w3w-prediction/marketdata/QueryOrderBookExample.php#L16)
 
+## Otc
+
+[/sapi/v1/w3w/wallet/prediction/otc/blocktrade/create](https://developers.binance.com/en/docs/catalog/web3-wallet-prediction-trading/api/rest-api/otc#create-otc-blocktrade) - createOtcBlocktrade - [CreateOtcBlocktradeExample.php:23](/examples/w3w-prediction/otc/CreateOtcBlocktradeExample.php#L23)
+
+[/sapi/v1/w3w/wallet/prediction/otc/blocktrade/fulfil](https://developers.binance.com/en/docs/catalog/web3-wallet-prediction-trading/api/rest-api/otc#fulfil-otc-blocktrade) - fulfilOtcBlocktrade - [FulfilOtcBlocktradeExample.php:17](/examples/w3w-prediction/otc/FulfilOtcBlocktradeExample.php#L17)
+
+[/sapi/v1/w3w/wallet/prediction/otc/blocktrade/detail](https://developers.binance.com/en/docs/catalog/web3-wallet-prediction-trading/api/rest-api/otc#get-otc-blocktrade-detail) - getOtcBlocktradeDetail - [GetOtcBlocktradeDetailExample.php:16](/examples/w3w-prediction/otc/GetOtcBlocktradeDetailExample.php#L16)
+
+[/sapi/v1/w3w/wallet/prediction/otc/blocktrade/events](https://developers.binance.com/en/docs/catalog/web3-wallet-prediction-trading/api/rest-api/otc#get-otc-blocktrade-events) - getOtcBlocktradeEvents - [GetOtcBlocktradeEventsExample.php:15](/examples/w3w-prediction/otc/GetOtcBlocktradeEventsExample.php#L15)
+
+[/sapi/v1/w3w/wallet/prediction/otc/blocktrade/reserved-balances](https://developers.binance.com/en/docs/catalog/web3-wallet-prediction-trading/api/rest-api/otc#get-otc-reserved-balances) - getOtcReservedBalances - [GetOtcReservedBalancesExample.php:16](/examples/w3w-prediction/otc/GetOtcReservedBalancesExample.php#L16)
+
+[/sapi/v1/w3w/wallet/prediction/otc/blocktrade/list](https://developers.binance.com/en/docs/catalog/web3-wallet-prediction-trading/api/rest-api/otc#list-otc-blocktrades) - listOtcBlocktrades - [ListOtcBlocktradesExample.php:15](/examples/w3w-prediction/otc/ListOtcBlocktradesExample.php#L15)
+
+[/sapi/v1/w3w/wallet/prediction/otc/blocktrade/preview](https://developers.binance.com/en/docs/catalog/web3-wallet-prediction-trading/api/rest-api/otc#preview-otc-blocktrade) - previewOtcBlocktrade - [PreviewOtcBlocktradeExample.php:16](/examples/w3w-prediction/otc/PreviewOtcBlocktradeExample.php#L16)
+
+[/sapi/v1/w3w/wallet/prediction/otc/blocktrade/remove](https://developers.binance.com/en/docs/catalog/web3-wallet-prediction-trading/api/rest-api/otc#remove-otc-blocktrades) - removeOtcBlocktrades - [RemoveOtcBlocktradesExample.php:16](/examples/w3w-prediction/otc/RemoveOtcBlocktradesExample.php#L16)
+
 ## Position
 
 [/sapi/v1/w3w/wallet/prediction/position/token](https://developers.binance.com/en/docs/catalog/web3-wallet-prediction-trading/api/rest-api/position#get-position-by-token) - getPositionByToken - [GetPositionByTokenExample.php:16](/examples/w3w-prediction/position/GetPositionByTokenExample.php#L16)
@@ -43,6 +61,10 @@
 [/sapi/v1/w3w/wallet/prediction/order/history](https://developers.binance.com/en/docs/catalog/web3-wallet-prediction-trading/api/rest-api/trade#query-order-history) - queryOrderHistory - [QueryOrderHistoryExample.php:23](/examples/w3w-prediction/trade/QueryOrderHistoryExample.php#L23)
 
 ## Transfer
+
+[/sapi/v1/w3w/wallet/prediction/deposit/apply](https://developers.binance.com/en/docs/catalog/web3-wallet-prediction-trading/api/rest-api/transfer#apply-mm-deposit) - applyMmDeposit - [ApplyMmDepositExample.php:20](/examples/w3w-prediction/transfer/ApplyMmDepositExample.php#L20)
+
+[/sapi/v1/w3w/wallet/prediction/withdraw/apply](https://developers.binance.com/en/docs/catalog/web3-wallet-prediction-trading/api/rest-api/transfer#apply-mm-withdraw) - applyMmWithdraw - [ApplyMmWithdrawExample.php:18](/examples/w3w-prediction/transfer/ApplyMmWithdrawExample.php#L18)
 
 [/sapi/v1/w3w/wallet/prediction/transfer/inbound](https://developers.binance.com/en/docs/catalog/web3-wallet-prediction-trading/api/rest-api/transfer#create-inbound-transfer) - createInboundTransfer - [CreateInboundTransferExample.php:20](/examples/w3w-prediction/transfer/CreateInboundTransferExample.php#L20)
 

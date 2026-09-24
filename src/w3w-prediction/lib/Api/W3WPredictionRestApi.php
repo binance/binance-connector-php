@@ -2,22 +2,38 @@
 
 namespace Binance\Client\W3WPrediction\Api;
 
+use Binance\Client\W3WPrediction\Model\ApplyMmDepositRequest;
+use Binance\Client\W3WPrediction\Model\ApplyMmDepositResponse;
+use Binance\Client\W3WPrediction\Model\ApplyMmWithdrawRequest;
+use Binance\Client\W3WPrediction\Model\ApplyMmWithdrawResponse;
 use Binance\Client\W3WPrediction\Model\BatchCancelOrdersRequest;
 use Binance\Client\W3WPrediction\Model\BatchCancelOrdersResponse;
 use Binance\Client\W3WPrediction\Model\BatchRedeemRequest;
 use Binance\Client\W3WPrediction\Model\BatchRedeemResponse;
 use Binance\Client\W3WPrediction\Model\CreateInboundTransferRequest;
 use Binance\Client\W3WPrediction\Model\CreateInboundTransferResponse;
+use Binance\Client\W3WPrediction\Model\CreateOtcBlocktradeRequest;
+use Binance\Client\W3WPrediction\Model\CreateOtcBlocktradeResponse;
 use Binance\Client\W3WPrediction\Model\CreateOutboundTransferRequest;
 use Binance\Client\W3WPrediction\Model\CreateOutboundTransferResponse;
 use Binance\Client\W3WPrediction\Model\Direction;
+use Binance\Client\W3WPrediction\Model\FulfilOtcBlocktradeRequest;
+use Binance\Client\W3WPrediction\Model\FulfilOtcBlocktradeResponse;
 use Binance\Client\W3WPrediction\Model\GetMarketDetailResponse;
+use Binance\Client\W3WPrediction\Model\GetOtcBlocktradeDetailRequest;
+use Binance\Client\W3WPrediction\Model\GetOtcBlocktradeDetailResponse;
+use Binance\Client\W3WPrediction\Model\GetOtcBlocktradeEventsRequest;
+use Binance\Client\W3WPrediction\Model\GetOtcBlocktradeEventsResponse;
+use Binance\Client\W3WPrediction\Model\GetOtcReservedBalancesRequest;
+use Binance\Client\W3WPrediction\Model\GetOtcReservedBalancesResponse;
 use Binance\Client\W3WPrediction\Model\GetPortfolioResponse;
 use Binance\Client\W3WPrediction\Model\GetPositionByTokenResponse;
 use Binance\Client\W3WPrediction\Model\GetQuotaStatusResponse;
 use Binance\Client\W3WPrediction\Model\GetQuoteRequest;
 use Binance\Client\W3WPrediction\Model\GetQuoteResponse;
 use Binance\Client\W3WPrediction\Model\GetRedeemStatusResponse;
+use Binance\Client\W3WPrediction\Model\ListOtcBlocktradesRequest;
+use Binance\Client\W3WPrediction\Model\ListOtcBlocktradesResponse;
 use Binance\Client\W3WPrediction\Model\ListPredictionCategoriesResponse;
 use Binance\Client\W3WPrediction\Model\ListPredictionMarketsResponse;
 use Binance\Client\W3WPrediction\Model\ListPredictionWalletsResponse;
@@ -26,6 +42,8 @@ use Binance\Client\W3WPrediction\Model\OrderBy;
 use Binance\Client\W3WPrediction\Model\OrderType;
 use Binance\Client\W3WPrediction\Model\PlaceOrderRequest;
 use Binance\Client\W3WPrediction\Model\PlaceOrderResponse;
+use Binance\Client\W3WPrediction\Model\PreviewOtcBlocktradeRequest;
+use Binance\Client\W3WPrediction\Model\PreviewOtcBlocktradeResponse;
 use Binance\Client\W3WPrediction\Model\QueryActiveOrdersResponse;
 use Binance\Client\W3WPrediction\Model\QueryLastTradePriceResponse;
 use Binance\Client\W3WPrediction\Model\QueryOrderBookResponse;
@@ -37,6 +55,8 @@ use Binance\Client\W3WPrediction\Model\QueryPositionsResponse;
 use Binance\Client\W3WPrediction\Model\QuerySettledPositionHistoryResponse;
 use Binance\Client\W3WPrediction\Model\QueryTransferListResponse;
 use Binance\Client\W3WPrediction\Model\QueryTransferStatusResponse;
+use Binance\Client\W3WPrediction\Model\RemoveOtcBlocktradesRequest;
+use Binance\Client\W3WPrediction\Model\RemoveOtcBlocktradesResponse;
 use Binance\Client\W3WPrediction\Model\SortBy;
 use Binance\Client\W3WPrediction\Model\TradeSide;
 use Binance\Common\ApiException;
@@ -49,6 +69,11 @@ class W3WPredictionRestApi
      * @var MarketDataApi
      */
     private $marketDataApi;
+
+    /**
+     * @var OtcApi
+     */
+    private $otcApi;
 
     /**
      * @var PositionApi
@@ -79,6 +104,7 @@ class W3WPredictionRestApi
         ?ClientConfiguration $clientConfig = new ClientConfiguration(),
     ) {
         $this->marketDataApi = new MarketDataApi($clientConfig);
+        $this->otcApi = new OtcApi($clientConfig);
         $this->positionApi = new PositionApi($clientConfig);
         $this->redeemApi = new RedeemApi($clientConfig);
         $this->tradeApi = new TradeApi($clientConfig);
@@ -195,9 +221,145 @@ class W3WPredictionRestApi
     }
 
     /**
+     * Operation createOtcBlocktrade.
+     *
+     * Create OTC Blocktrade (PREDICTION_TRADE)
+     *
+     * @param CreateOtcBlocktradeRequest $createOtcBlocktradeRequest createOtcBlocktradeRequest (required)
+     *
+     * @return ApiResponse<CreateOtcBlocktradeResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function createOtcBlocktrade($createOtcBlocktradeRequest): ApiResponse
+    {
+        return $this->otcApi->createOtcBlocktrade($createOtcBlocktradeRequest);
+    }
+
+    /**
+     * Operation fulfilOtcBlocktrade.
+     *
+     * Fulfil OTC Blocktrade (PREDICTION_TRADE)
+     *
+     * @param FulfilOtcBlocktradeRequest $fulfilOtcBlocktradeRequest fulfilOtcBlocktradeRequest (required)
+     *
+     * @return ApiResponse<FulfilOtcBlocktradeResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function fulfilOtcBlocktrade($fulfilOtcBlocktradeRequest): ApiResponse
+    {
+        return $this->otcApi->fulfilOtcBlocktrade($fulfilOtcBlocktradeRequest);
+    }
+
+    /**
+     * Operation getOtcBlocktradeDetail.
+     *
+     * Get OTC Blocktrade Detail (PREDICTION_TRADE)
+     *
+     * @param GetOtcBlocktradeDetailRequest $getOtcBlocktradeDetailRequest getOtcBlocktradeDetailRequest (required)
+     *
+     * @return ApiResponse<GetOtcBlocktradeDetailResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getOtcBlocktradeDetail($getOtcBlocktradeDetailRequest): ApiResponse
+    {
+        return $this->otcApi->getOtcBlocktradeDetail($getOtcBlocktradeDetailRequest);
+    }
+
+    /**
+     * Operation getOtcBlocktradeEvents.
+     *
+     * Get OTC Blocktrade Events (PREDICTION_TRADE)
+     *
+     * @param null|GetOtcBlocktradeEventsRequest $getOtcBlocktradeEventsRequest getOtcBlocktradeEventsRequest (optional)
+     *
+     * @return ApiResponse<GetOtcBlocktradeEventsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getOtcBlocktradeEvents($getOtcBlocktradeEventsRequest = null): ApiResponse
+    {
+        return $this->otcApi->getOtcBlocktradeEvents($getOtcBlocktradeEventsRequest);
+    }
+
+    /**
+     * Operation getOtcReservedBalances.
+     *
+     * Get OTC Reserved Balances (PREDICTION_TRADE)
+     *
+     * @param GetOtcReservedBalancesRequest $getOtcReservedBalancesRequest getOtcReservedBalancesRequest (required)
+     *
+     * @return ApiResponse<GetOtcReservedBalancesResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getOtcReservedBalances($getOtcReservedBalancesRequest): ApiResponse
+    {
+        return $this->otcApi->getOtcReservedBalances($getOtcReservedBalancesRequest);
+    }
+
+    /**
+     * Operation listOtcBlocktrades.
+     *
+     * List OTC Blocktrades (PREDICTION_TRADE)
+     *
+     * @param null|ListOtcBlocktradesRequest $listOtcBlocktradesRequest listOtcBlocktradesRequest (optional)
+     *
+     * @return ApiResponse<ListOtcBlocktradesResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function listOtcBlocktrades($listOtcBlocktradesRequest = null): ApiResponse
+    {
+        return $this->otcApi->listOtcBlocktrades($listOtcBlocktradesRequest);
+    }
+
+    /**
+     * Operation previewOtcBlocktrade.
+     *
+     * Preview OTC Blocktrade (PREDICTION_TRADE)
+     *
+     * @param PreviewOtcBlocktradeRequest $previewOtcBlocktradeRequest previewOtcBlocktradeRequest (required)
+     *
+     * @return ApiResponse<PreviewOtcBlocktradeResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function previewOtcBlocktrade($previewOtcBlocktradeRequest): ApiResponse
+    {
+        return $this->otcApi->previewOtcBlocktrade($previewOtcBlocktradeRequest);
+    }
+
+    /**
+     * Operation removeOtcBlocktrades.
+     *
+     * Remove OTC Blocktrades (PREDICTION_TRADE)
+     *
+     * @param RemoveOtcBlocktradesRequest $removeOtcBlocktradesRequest removeOtcBlocktradesRequest (required)
+     *
+     * @return ApiResponse<RemoveOtcBlocktradesResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function removeOtcBlocktrades($removeOtcBlocktradesRequest): ApiResponse
+    {
+        return $this->otcApi->removeOtcBlocktrades($removeOtcBlocktradesRequest);
+    }
+
+    /**
      * Operation getPositionByToken.
      *
-     * Get Position by Token (USER_DATA)
+     * Get Position by Token (PREDICTION_TRADE)
      *
      * @param string   $walletAddress User&#39;s prediction wallet address (required)
      * @param string   $tokenId       Prediction outcome token ID (required)
@@ -216,7 +378,7 @@ class W3WPredictionRestApi
     /**
      * Operation queryPnL.
      *
-     * Query PnL (USER_DATA)
+     * Query PnL (PREDICTION_TRADE)
      *
      * @param string      $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string $tokenId       Filter by prediction token ID (optional)
@@ -238,7 +400,7 @@ class W3WPredictionRestApi
     /**
      * Operation queryPositions.
      *
-     * Query Positions (USER_DATA)
+     * Query Positions (PREDICTION_TRADE)
      *
      * @param string      $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string $tab           Position status tab. Values from &#x60;PositionQueryType&#x60;. Default &#x60;ONGOING&#x60; (optional)
@@ -259,7 +421,7 @@ class W3WPredictionRestApi
     /**
      * Operation queryPositionsByFilter.
      *
-     * Query Positions by Filter (USER_DATA)
+     * Query Positions by Filter (PREDICTION_TRADE)
      *
      * @param null|string $walletAddress User&#39;s prediction wallet address (optional)
      * @param null|int    $marketTopicId Filter by market topic ID (optional)
@@ -278,7 +440,7 @@ class W3WPredictionRestApi
     /**
      * Operation querySettledPositionHistory.
      *
-     * Query Settled Position History (USER_DATA)
+     * Query Settled Position History (PREDICTION_TRADE)
      *
      * @param string      $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string $l1Category    Filter by level-1 category (optional)
@@ -302,7 +464,7 @@ class W3WPredictionRestApi
     /**
      * Operation batchRedeem.
      *
-     * Batch Redeem (TRADE)
+     * Batch Redeem (PREDICTION_TRADE)
      *
      * @param BatchRedeemRequest $batchRedeemRequest batchRedeemRequest (required)
      *
@@ -319,7 +481,7 @@ class W3WPredictionRestApi
     /**
      * Operation getRedeemStatus.
      *
-     * Get Redeem Status (USER_DATA)
+     * Get Redeem Status (PREDICTION_TRADE)
      *
      * @param string   $walletAddress User&#39;s prediction wallet address (required)
      * @param string   $txHash        Redeem transaction hash (required)
@@ -338,7 +500,7 @@ class W3WPredictionRestApi
     /**
      * Operation batchCancelOrders.
      *
-     * Batch Cancel Orders (TRADE)
+     * Batch Cancel Orders (PREDICTION_TRADE)
      *
      * @param BatchCancelOrdersRequest $batchCancelOrdersRequest batchCancelOrdersRequest (required)
      *
@@ -355,7 +517,7 @@ class W3WPredictionRestApi
     /**
      * Operation getQuote.
      *
-     * Get Quote (TRADE)
+     * Get Quote (PREDICTION_TRADE)
      *
      * @param GetQuoteRequest $getQuoteRequest getQuoteRequest (required)
      *
@@ -372,7 +534,7 @@ class W3WPredictionRestApi
     /**
      * Operation placeOrder.
      *
-     * Place Order (TRADE)
+     * Place Order (PREDICTION_TRADE)
      *
      * @param PlaceOrderRequest $placeOrderRequest placeOrderRequest (required)
      *
@@ -389,7 +551,7 @@ class W3WPredictionRestApi
     /**
      * Operation queryActiveOrders.
      *
-     * Query Active Orders (USER_DATA)
+     * Query Active Orders (PREDICTION_TRADE)
      *
      * @param string         $walletAddress User&#39;s prediction wallet address (required)
      * @param null|TradeSide $tradeSide     Filter by trade side. Enum: &#x60;BUY&#x60;, &#x60;SELL&#x60; (optional)
@@ -412,7 +574,7 @@ class W3WPredictionRestApi
     /**
      * Operation queryOrderHistory.
      *
-     * Query Order History (USER_DATA)
+     * Query Order History (PREDICTION_TRADE)
      *
      * @param string         $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string    $l1Category    Filter by level-1 category (optional)
@@ -435,9 +597,43 @@ class W3WPredictionRestApi
     }
 
     /**
+     * Operation applyMmDeposit.
+     *
+     * Apply MM Deposit (PREDICTION_TRADE)
+     *
+     * @param ApplyMmDepositRequest $applyMmDepositRequest applyMmDepositRequest (required)
+     *
+     * @return ApiResponse<ApplyMmDepositResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function applyMmDeposit($applyMmDepositRequest): ApiResponse
+    {
+        return $this->transferApi->applyMmDeposit($applyMmDepositRequest);
+    }
+
+    /**
+     * Operation applyMmWithdraw.
+     *
+     * Apply MM Withdraw (PREDICTION_TRADE)
+     *
+     * @param ApplyMmWithdrawRequest $applyMmWithdrawRequest applyMmWithdrawRequest (required)
+     *
+     * @return ApiResponse<ApplyMmWithdrawResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function applyMmWithdraw($applyMmWithdrawRequest): ApiResponse
+    {
+        return $this->transferApi->applyMmWithdraw($applyMmWithdrawRequest);
+    }
+
+    /**
      * Operation createInboundTransfer.
      *
-     * Create Inbound Transfer (TRADE)
+     * Create Inbound Transfer (PREDICTION_TRADE)
      *
      * @param CreateInboundTransferRequest $createInboundTransferRequest createInboundTransferRequest (required)
      *
@@ -454,7 +650,7 @@ class W3WPredictionRestApi
     /**
      * Operation createOutboundTransfer.
      *
-     * Create Outbound Transfer (TRADE)
+     * Create Outbound Transfer (PREDICTION_TRADE)
      *
      * @param CreateOutboundTransferRequest $createOutboundTransferRequest createOutboundTransferRequest (required)
      *
@@ -471,7 +667,7 @@ class W3WPredictionRestApi
     /**
      * Operation queryTransferList.
      *
-     * Query Transfer List (USER_DATA)
+     * Query Transfer List (PREDICTION_TRADE)
      *
      * @param string         $walletAddress User&#39;s prediction wallet address (required)
      * @param string         $startDate     Start date. Format: &#x60;yyyy-MM-dd&#x60;. Must be ≤ &#x60;endDate&#x60; (required)
@@ -495,7 +691,7 @@ class W3WPredictionRestApi
     /**
      * Operation queryTransferStatus.
      *
-     * Query Transfer Status (USER_DATA)
+     * Query Transfer Status (PREDICTION_TRADE)
      *
      * @param string   $transferId Transfer ID returned from outbound/inbound transfer (required)
      * @param null|int $recvWindow Request validity window in milliseconds (optional)
@@ -513,7 +709,7 @@ class W3WPredictionRestApi
     /**
      * Operation getPortfolio.
      *
-     * Get Portfolio (USER_DATA)
+     * Get Portfolio (PREDICTION_TRADE)
      *
      * @param string      $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string $tokenId       Filter by prediction token ID (optional)
@@ -535,7 +731,7 @@ class W3WPredictionRestApi
     /**
      * Operation getQuotaStatus.
      *
-     * Get Quota Status (USER_DATA)
+     * Get Quota Status (PREDICTION_TRADE)
      *
      * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
@@ -552,7 +748,7 @@ class W3WPredictionRestApi
     /**
      * Operation listPredictionWallets.
      *
-     * List Prediction Wallets (USER_DATA)
+     * List Prediction Wallets (PREDICTION_TRADE)
      *
      * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *
@@ -569,7 +765,7 @@ class W3WPredictionRestApi
     /**
      * Operation queryPaymentOptionBalances.
      *
-     * Query Payment Option Balances (USER_DATA)
+     * Query Payment Option Balances (PREDICTION_TRADE)
      *
      * @param null|int $recvWindow Request validity window in milliseconds (optional)
      *

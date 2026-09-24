@@ -43,6 +43,7 @@ use Binance\Client\SubAccount\Model\MarginTransferForSubAccountRequest;
 use Binance\Client\SubAccount\Model\MarginTransferForSubAccountResponse;
 use Binance\Client\SubAccount\Model\MovePositionForSubAccountRequest;
 use Binance\Client\SubAccount\Model\MovePositionForSubAccountResponse;
+use Binance\Client\SubAccount\Model\ProductType;
 use Binance\Client\SubAccount\Model\QuerySubAccountAssetsAssetManagementResponse;
 use Binance\Client\SubAccount\Model\QuerySubAccountAssetsResponse;
 use Binance\Client\SubAccount\Model\QuerySubAccountFuturesAssetTransferHistoryResponse;
@@ -552,7 +553,7 @@ class AssetManagementApi
      * Get Detail on Sub-account&#39;s Futures Account V2 (For Master Account) (USER_DATA)
      *
      * @param string   $email       email (required)
-     * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
+     * @param int      $futuresType 1: USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $recvWindow  recvWindow (optional)
      *
      * @return ApiResponse<GetDetailOnSubAccountsFuturesAccountV2Response>
@@ -571,7 +572,7 @@ class AssetManagementApi
      * Get Detail on Sub-account&#39;s Futures Account V2 (For Master Account) (USER_DATA)
      *
      * @param string   $email       (required)
-     * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
+     * @param int      $futuresType 1: USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $recvWindow  (optional)
      *
      * @return ApiResponse<GetDetailOnSubAccountsFuturesAccountV2Response>
@@ -652,7 +653,7 @@ class AssetManagementApi
      * Create request for operation 'getDetailOnSubAccountsFuturesAccountV2'.
      *
      * @param string   $email       (required)
-     * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
+     * @param int      $futuresType 1: USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $recvWindow  (optional)
      *
      * @return Request
@@ -942,21 +943,22 @@ class AssetManagementApi
      *
      * Get Move Position History for Sub-account (For Master Account) (USER_DATA)
      *
-     * @param string   $symbol     symbol (required)
-     * @param int      $page       page (required)
-     * @param int      $rows       rows (required)
-     * @param null|int $startTime  startTime (optional)
-     * @param null|int $endTime    endTime (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param string           $symbol      symbol (required)
+     * @param int              $page        page (required)
+     * @param int              $rows        Max 100. (required)
+     * @param null|ProductType $productType Default UM. (optional)
+     * @param null|int         $startTime   startTime (optional)
+     * @param null|int         $endTime     endTime (optional)
+     * @param null|int         $recvWindow  recvWindow (optional)
      *
      * @return ApiResponse<GetMovePositionHistoryForSubAccountResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getMovePositionHistoryForSubAccount($symbol, $page, $rows, $startTime = null, $endTime = null, $recvWindow = null): ApiResponse
+    public function getMovePositionHistoryForSubAccount($symbol, $page, $rows, $productType = null, $startTime = null, $endTime = null, $recvWindow = null): ApiResponse
     {
-        return $this->getMovePositionHistoryForSubAccountWithHttpInfo($symbol, $page, $rows, $startTime, $endTime, $recvWindow);
+        return $this->getMovePositionHistoryForSubAccountWithHttpInfo($symbol, $page, $rows, $productType, $startTime, $endTime, $recvWindow);
     }
 
     /**
@@ -964,21 +966,22 @@ class AssetManagementApi
      *
      * Get Move Position History for Sub-account (For Master Account) (USER_DATA)
      *
-     * @param string   $symbol     (required)
-     * @param int      $page       (required)
-     * @param int      $rows       (required)
-     * @param null|int $startTime  (optional)
-     * @param null|int $endTime    (optional)
-     * @param null|int $recvWindow (optional)
+     * @param string           $symbol      (required)
+     * @param int              $page        (required)
+     * @param int              $rows        Max 100. (required)
+     * @param null|ProductType $productType Default UM. (optional)
+     * @param null|int         $startTime   (optional)
+     * @param null|int         $endTime     (optional)
+     * @param null|int         $recvWindow  (optional)
      *
      * @return ApiResponse<GetMovePositionHistoryForSubAccountResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getMovePositionHistoryForSubAccountWithHttpInfo($symbol, $page, $rows, $startTime = null, $endTime = null, $recvWindow = null): ApiResponse
+    public function getMovePositionHistoryForSubAccountWithHttpInfo($symbol, $page, $rows, $productType = null, $startTime = null, $endTime = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->getMovePositionHistoryForSubAccountRequest($symbol, $page, $rows, $startTime, $endTime, $recvWindow);
+        $request = $this->getMovePositionHistoryForSubAccountRequest($symbol, $page, $rows, $productType, $startTime, $endTime, $recvWindow);
 
         try {
             try {
@@ -1048,18 +1051,19 @@ class AssetManagementApi
     /**
      * Create request for operation 'getMovePositionHistoryForSubAccount'.
      *
-     * @param string   $symbol     (required)
-     * @param int      $page       (required)
-     * @param int      $rows       (required)
-     * @param null|int $startTime  (optional)
-     * @param null|int $endTime    (optional)
-     * @param null|int $recvWindow (optional)
+     * @param string           $symbol      (required)
+     * @param int              $page        (required)
+     * @param int              $rows        Max 100. (required)
+     * @param null|ProductType $productType Default UM. (optional)
+     * @param null|int         $startTime   (optional)
+     * @param null|int         $endTime     (optional)
+     * @param null|int         $recvWindow  (optional)
      *
      * @return Request
      *
      * @throws \InvalidArgumentException
      */
-    public function getMovePositionHistoryForSubAccountRequest($symbol, $page, $rows, $startTime = null, $endTime = null, $recvWindow = null)
+    public function getMovePositionHistoryForSubAccountRequest($symbol, $page, $rows, $productType = null, $startTime = null, $endTime = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['getMovePositionHistoryForSubAccount'][0];
 
@@ -1083,6 +1087,9 @@ class AssetManagementApi
                 'Missing the required parameter $rows when calling getMovePositionHistoryForSubAccount'
             );
         }
+        if ($rows > 100) {
+            throw new \InvalidArgumentException('invalid value for "$rows" when calling AssetManagementApi.getMovePositionHistoryForSubAccount, must be smaller than or equal to 100.');
+        }
 
         if (null !== $recvWindow && $recvWindow > 60000) {
             throw new \InvalidArgumentException('invalid value for "$recvWindow" when calling AssetManagementApi.getMovePositionHistoryForSubAccount, must be smaller than or equal to 60000.');
@@ -1103,6 +1110,15 @@ class AssetManagementApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $productType,
+            'productType', // param base name
+            'ProductType', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -1913,7 +1929,7 @@ class AssetManagementApi
      *
      * Get Summary of Sub-account&#39;s Futures Account V2 (For Master Account) (USER_DATA)
      *
-     * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
+     * @param int      $futuresType 1: USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $page        page (optional)
      * @param null|int $limit       limit (optional)
      * @param null|int $recvWindow  recvWindow (optional)
@@ -1933,7 +1949,7 @@ class AssetManagementApi
      *
      * Get Summary of Sub-account&#39;s Futures Account V2 (For Master Account) (USER_DATA)
      *
-     * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
+     * @param int      $futuresType 1: USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $page        (optional)
      * @param null|int $limit       (optional)
      * @param null|int $recvWindow  (optional)
@@ -2015,7 +2031,7 @@ class AssetManagementApi
     /**
      * Create request for operation 'getSummaryOfSubAccountsFuturesAccountV2'.
      *
-     * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
+     * @param int      $futuresType 1: USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $page        (optional)
      * @param null|int $limit       (optional)
      * @param null|int $recvWindow  (optional)
@@ -3067,7 +3083,7 @@ class AssetManagementApi
      * Query Sub-account Futures Asset Transfer History (For Master Account) (USER_DATA)
      *
      * @param string   $email       email (required)
-     * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
+     * @param int      $futuresType 1: USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $startTime   Cannot be earlier than 1 month ago (optional)
      * @param null|int $endTime     endTime (optional)
      * @param null|int $page        page (optional)
@@ -3090,7 +3106,7 @@ class AssetManagementApi
      * Query Sub-account Futures Asset Transfer History (For Master Account) (USER_DATA)
      *
      * @param string   $email       (required)
-     * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
+     * @param int      $futuresType 1: USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $startTime   Cannot be earlier than 1 month ago (optional)
      * @param null|int $endTime     (optional)
      * @param null|int $page        (optional)
@@ -3175,7 +3191,7 @@ class AssetManagementApi
      * Create request for operation 'querySubAccountFuturesAssetTransferHistory'.
      *
      * @param string   $email       (required)
-     * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
+     * @param int      $futuresType 1: USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $startTime   Cannot be earlier than 1 month ago (optional)
      * @param null|int $endTime     (optional)
      * @param null|int $page        (optional)

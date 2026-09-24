@@ -1,5 +1,82 @@
 # Changelog
 
+## 7.0.0 - 2026-09-24
+
+**Derivatives Trading Coin Futures**
+
+### Changed (24)
+
+#### REST API
+
+- Added parameter `contractType`
+  - affected methods:
+    - `longShortRatio()` (`GET /futures/data/globalLongShortAccountRatio`)
+    - `topTraderLongShortRatioAccounts()` (`GET /futures/data/topLongShortAccountRatio`)
+    - `topTraderLongShortRatioPositions()` (`GET /futures/data/topLongShortPositionRatio`)
+- Added parameter `pair`
+  - affected methods:
+    - `topTraderLongShortRatioAccounts()` (`GET /futures/data/topLongShortAccountRatio`)
+- Deleted parameter `symbol`
+  - affected methods:
+    - `topTraderLongShortRatioAccounts()` (`GET /futures/data/topLongShortAccountRatio`)
+- Modified parameter `contractType`:
+  - required: `true` → `false`
+  - enum removed: `ALL`
+  - affected methods:
+    - `openInterestStatistics()` (`GET /futures/data/openInterestHist`)
+- Modified response for `allOrders()` (`GET /dapi/v1/allOrders`):
+  - items: property `goodTillDate` added
+  - items: property `cumQuote` added
+  - items: item property `goodTillDate` added
+  - items: item property `cumQuote` added
+
+- Modified response for `usersForceOrders()` (`GET /dapi/v1/forceOrders`):
+  - items: property `goodTillDate` added
+  - items: property `cumQuote` added
+  - items: item property `goodTillDate` added
+  - items: item property `cumQuote` added
+
+- Modified response for `accountTradeList()` (`GET /dapi/v1/userTrades`):
+  - items: property `quoteQty` added
+  - items: item property `quoteQty` added
+
+- Modified response schema `accountTradeListResponse`:
+  - items: property `quoteQty` added
+  - items: item property `quoteQty` added
+- Modified response schema `allOrdersResponse`:
+  - items: property `cumQuote` added
+  - items: property `goodTillDate` added
+  - items: item property `cumQuote` added
+  - items: item property `goodTillDate` added
+- Modified response schema `usersForceOrdersResponse`:
+  - items: property `cumQuote` added
+  - items: property `goodTillDate` added
+  - items: item property `cumQuote` added
+  - items: item property `goodTillDate` added
+#### WebSocket Streams
+
+- Modified response for `diffBookDepthStreams()` (`<symbol>@depth@<updateSpeed>` stream):
+  - `a`.items: minItems `0` → `2`
+  - `a`.items: maxItems `null` → `2`
+  - `b`.items: minItems `0` → `2`
+  - `b`.items: maxItems `null` → `2`
+
+- Modified response field `a`:
+  - property `S` added
+  - affected events:
+    - `UserDataStreamEventsResponse`
+    - `accountUpdate`
+- Modified response field `a`:
+  - items: minItems `0` → `2`
+  - items: maxItems `null` → `2`
+  - affected events:
+    - `diffBookDepthStreamsResponse`
+- Modified response field `b`:
+  - items: minItems `0` → `2`
+  - items: maxItems `null` → `2`
+  - affected events:
+    - `diffBookDepthStreamsResponse`
+
 ## 6.0.0 - 2026-07-28
 
 ### Added (1)

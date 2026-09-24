@@ -102,15 +102,16 @@ class SpotAlgoApiTest extends TestCase
     public function testCancelAlgoOrderSpotAlgo()
     {
         $algoId = 14511;
+        $clientAlgoId = 'client-id';
         $recvWindow = 5000;
-        $response = $this->getApiMock($request)->cancelAlgoOrderSpotAlgo($algoId, $recvWindow);
+        $response = $this->getApiMock($request)->cancelAlgoOrderSpotAlgo($algoId, $clientAlgoId, $recvWindow);
 
         parse_str($request->getUri(), $queryMap);
 
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/algo/spot/order', $request->getUri()->getPath());
-        self::assertEquals('7e97b50e23065ea20f9c765a8a2c529c739296123417a24943cf07ae2806dc37', $queryMap['signature']);
+        self::assertEquals('0bb52f719d13bca81a74d445fea1e738763eaae18064318238524cd623a88ee9', $queryMap['signature']);
     }
 
     /**

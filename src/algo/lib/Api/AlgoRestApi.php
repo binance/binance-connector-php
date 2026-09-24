@@ -45,17 +45,18 @@ class AlgoRestApi
      *
      * Cancel Futures Algo Order (TRADE)
      *
-     * @param int      $algoId     eg. 14511 (required)
-     * @param null|int $recvWindow Request validity window in milliseconds (optional)
+     * @param null|int    $algoId       eg. 14511 (optional)
+     * @param null|string $clientAlgoId eg. \&quot;65ce1630101a480b85915d7e11fd5078\&quot; (optional)
+     * @param null|int    $recvWindow   Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<CancelAlgoOrderFutureAlgoResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function cancelAlgoOrderFutureAlgo($algoId, $recvWindow = null): ApiResponse
+    public function cancelAlgoOrderFutureAlgo($algoId = null, $clientAlgoId = null, $recvWindow = null): ApiResponse
     {
-        return $this->futureAlgoApi->cancelAlgoOrderFutureAlgo($algoId, $recvWindow);
+        return $this->futureAlgoApi->cancelAlgoOrderFutureAlgo($algoId, $clientAlgoId, $recvWindow);
     }
 
     /**
@@ -157,17 +158,18 @@ class AlgoRestApi
      *
      * Cancel Spot Algo Order (TRADE)
      *
-     * @param int      $algoId     algoId (required)
-     * @param null|int $recvWindow Request validity window in milliseconds (optional)
+     * @param null|int    $algoId       algoId (optional)
+     * @param null|string $clientAlgoId clientAlgoId (optional)
+     * @param null|int    $recvWindow   Request validity window in milliseconds (optional)
      *
      * @return ApiResponse<CancelAlgoOrderSpotAlgoResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function cancelAlgoOrderSpotAlgo($algoId, $recvWindow = null): ApiResponse
+    public function cancelAlgoOrderSpotAlgo($algoId = null, $clientAlgoId = null, $recvWindow = null): ApiResponse
     {
-        return $this->spotAlgoApi->cancelAlgoOrderSpotAlgo($algoId, $recvWindow);
+        return $this->spotAlgoApi->cancelAlgoOrderSpotAlgo($algoId, $clientAlgoId, $recvWindow);
     }
 
     /**

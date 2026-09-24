@@ -34,7 +34,7 @@ namespace Binance\Client\DerivativesTradingPortfolioMargin\Model;
  *
  * @category Class
  *
- * @description Trigger price type. Default &#x60;CONTRACT_PRICE&#x60;
+ * @description stopPrice triggered by: \&quot;MARK_PRICE\&quot;, \&quot;CONTRACT_PRICE\&quot;. Default \&quot;CONTRACT_PRICE\&quot;
  *
  * @author   OpenAPI Generator team
  *

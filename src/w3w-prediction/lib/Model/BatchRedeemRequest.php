@@ -156,7 +156,7 @@ class BatchRedeemRequest implements ModelInterface, \ArrayAccess, \JsonSerializa
         $this->setIfExists('walletAddress', $data ?? [], null);
         $this->setIfExists('walletId', $data ?? [], null);
         $this->setIfExists('tokenIds', $data ?? [], null);
-        $this->setIfExists('chainId', $data ?? [], '56');
+        $this->setIfExists('chainId', $data ?? [], null);
     }
 
     /**

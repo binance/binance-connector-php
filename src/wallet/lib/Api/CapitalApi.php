@@ -513,7 +513,7 @@ class CapitalApi
      *
      * @param null|bool   $includeSource return &#x60;sourceAddress&#x60; field when set to &#x60;true&#x60; (optional)
      * @param null|string $coin          coin (optional)
-     * @param null|Status $status        0: pending, 6: credited but cannot withdraw, 7: Wrong Deposit, 8: Waiting User confirm, 1: success (optional)
+     * @param null|Status $status        0: pending, 1: success, 2: rejected, 6: credited but cannot withdraw, 7: Wrong Deposit, 8: Waiting User confirm (optional)
      * @param null|int    $startTime     Default: 90 days from current timestamp (optional)
      * @param null|int    $endTime       Default: present timestamp (optional)
      * @param null|int    $offset        offset (optional)
@@ -538,7 +538,7 @@ class CapitalApi
      *
      * @param null|bool   $includeSource return &#x60;sourceAddress&#x60; field when set to &#x60;true&#x60; (optional)
      * @param null|string $coin          (optional)
-     * @param null|Status $status        0: pending, 6: credited but cannot withdraw, 7: Wrong Deposit, 8: Waiting User confirm, 1: success (optional)
+     * @param null|Status $status        0: pending, 1: success, 2: rejected, 6: credited but cannot withdraw, 7: Wrong Deposit, 8: Waiting User confirm (optional)
      * @param null|int    $startTime     Default: 90 days from current timestamp (optional)
      * @param null|int    $endTime       Default: present timestamp (optional)
      * @param null|int    $offset        (optional)
@@ -625,7 +625,7 @@ class CapitalApi
      *
      * @param null|bool   $includeSource return &#x60;sourceAddress&#x60; field when set to &#x60;true&#x60; (optional)
      * @param null|string $coin          (optional)
-     * @param null|Status $status        0: pending, 6: credited but cannot withdraw, 7: Wrong Deposit, 8: Waiting User confirm, 1: success (optional)
+     * @param null|Status $status        0: pending, 1: success, 2: rejected, 6: credited but cannot withdraw, 7: Wrong Deposit, 8: Waiting User confirm (optional)
      * @param null|int    $startTime     Default: 90 days from current timestamp (optional)
      * @param null|int    $endTime       Default: present timestamp (optional)
      * @param null|int    $offset        (optional)
@@ -1649,7 +1649,7 @@ class CapitalApi
      *
      * @param null|string $coin            coin (optional)
      * @param null|string $withdrawOrderId client side id for withdrawal, if provided in POST &#x60;/sapi/v1/capital/withdraw/apply&#x60;, can be used here for query. (optional)
-     * @param null|int    $status          0(0:Email Sent, 2:Awaiting Approval 3:Rejected 4:Processing 6:Completed) (optional)
+     * @param null|int    $status          0(0: Email Sent, 2: Awaiting Approval 3: Rejected 4: Processing 6: Completed) (optional)
      * @param null|int    $offset          Default: 0 (optional)
      * @param null|int    $limit           limit (optional)
      * @param null|string $idList          id list returned in the response of POST &#x60;/sapi/v1/capital/withdraw/apply&#x60;, separated by &#x60;,&#x60; (optional)
@@ -1674,7 +1674,7 @@ class CapitalApi
      *
      * @param null|string $coin            (optional)
      * @param null|string $withdrawOrderId client side id for withdrawal, if provided in POST &#x60;/sapi/v1/capital/withdraw/apply&#x60;, can be used here for query. (optional)
-     * @param null|int    $status          0(0:Email Sent, 2:Awaiting Approval 3:Rejected 4:Processing 6:Completed) (optional)
+     * @param null|int    $status          0(0: Email Sent, 2: Awaiting Approval 3: Rejected 4: Processing 6: Completed) (optional)
      * @param null|int    $offset          Default: 0 (optional)
      * @param null|int    $limit           (optional)
      * @param null|string $idList          id list returned in the response of POST &#x60;/sapi/v1/capital/withdraw/apply&#x60;, separated by &#x60;,&#x60; (optional)
@@ -1761,7 +1761,7 @@ class CapitalApi
      *
      * @param null|string $coin            (optional)
      * @param null|string $withdrawOrderId client side id for withdrawal, if provided in POST &#x60;/sapi/v1/capital/withdraw/apply&#x60;, can be used here for query. (optional)
-     * @param null|int    $status          0(0:Email Sent, 2:Awaiting Approval 3:Rejected 4:Processing 6:Completed) (optional)
+     * @param null|int    $status          0(0: Email Sent, 2: Awaiting Approval 3: Rejected 4: Processing 6: Completed) (optional)
      * @param null|int    $offset          Default: 0 (optional)
      * @param null|int    $limit           (optional)
      * @param null|string $idList          id list returned in the response of POST &#x60;/sapi/v1/capital/withdraw/apply&#x60;, separated by &#x60;,&#x60; (optional)

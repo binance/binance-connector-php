@@ -16,7 +16,7 @@ function newCmOrderExample()
     $newCmOrderRequest = new NewCmOrderRequest();
     $newCmOrderRequest->setSymbol('BTCUSDT');
     $newCmOrderRequest->setSide(Side::BUY);
-    $newCmOrderRequest->setType(OrderType::STOP);
+    $newCmOrderRequest->setType(OrderType::LIMIT);
     $response = $api->newCmOrder($newCmOrderRequest);
     print_r($response);
 }

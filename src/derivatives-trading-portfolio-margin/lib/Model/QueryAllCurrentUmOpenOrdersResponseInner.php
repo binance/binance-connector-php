@@ -709,7 +709,7 @@ class QueryAllCurrentUmOpenOrdersResponseInner implements ModelInterface, \Array
     /**
      * Sets status.
      *
-     * @param null|string $status Enum：completed，processing
+     * @param null|string $status status
      *
      * @return self
      */

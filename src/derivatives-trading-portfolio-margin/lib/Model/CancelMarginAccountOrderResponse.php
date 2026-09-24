@@ -572,7 +572,7 @@ class CancelMarginAccountOrderResponse implements ModelInterface, \ArrayAccess, 
     /**
      * Sets status.
      *
-     * @param null|string $status Enum：completed，processing
+     * @param null|string $status status
      *
      * @return self
      */

@@ -34,7 +34,7 @@ namespace Binance\Client\DerivativesTradingPortfolioMargin\Model;
  *
  * @category Class
  *
- * @description Cannot be sent in Hedge Mode
+ * @description \&quot;true\&quot; or \&quot;false\&quot;. Cannot be sent in Hedge Mode.
  *
  * @author   OpenAPI Generator team
  *

@@ -36,11 +36,13 @@
 
 [/sapi/v1/spot/open-symbol-list](https://developers.binance.com/en/docs/catalog/core-trading-wallet/api/rest-api/asset#get-open-symbol-list) - getOpenSymbolList - [GetOpenSymbolListExample.php:12](/examples/wallet/asset/GetOpenSymbolListExample.php#L12)
 
+[/sapi/v1/spot/asset/tags](https://developers.binance.com/en/docs/catalog/core-trading-wallet/api/rest-api/asset#get-spot-asset-tags) - getSpotAssetTags - [GetSpotAssetTagsExample.php:13](/examples/wallet/asset/GetSpotAssetTagsExample.php#L13)
+
 [/sapi/v1/asset/custody/transfer-history](https://developers.binance.com/en/docs/catalog/core-trading-wallet/api/rest-api/asset#query-user-delegation-history) - queryUserDelegationHistory - [QueryUserDelegationHistoryExample.php:22](/examples/wallet/asset/QueryUserDelegationHistoryExample.php#L22)
 
 [/sapi/v1/asset/transfer](https://developers.binance.com/en/docs/catalog/core-trading-wallet/api/rest-api/asset#query-user-universal-transfer-history) - queryUserUniversalTransferHistory - [QueryUserUniversalTransferHistoryExample.php:23](/examples/wallet/asset/QueryUserUniversalTransferHistoryExample.php#L23)
 
-[/sapi/v1/asset/wallet/balance](https://developers.binance.com/en/docs/catalog/core-trading-wallet/api/rest-api/asset#query-user-wallet-balance) - queryUserWalletBalance - [QueryUserWalletBalanceExample.php:15](/examples/wallet/asset/QueryUserWalletBalanceExample.php#L15)
+[/sapi/v1/asset/wallet/balance](https://developers.binance.com/en/docs/catalog/core-trading-wallet/api/rest-api/asset#query-user-wallet-balance) - queryUserWalletBalance - [QueryUserWalletBalanceExample.php:16](/examples/wallet/asset/QueryUserWalletBalanceExample.php#L16)
 
 [/sapi/v1/bnbBurn](https://developers.binance.com/en/docs/catalog/core-trading-wallet/api/rest-api/asset#toggle-bnb-burn-on-spot-trade-and-margin-interest) - toggleBnbBurnOnSpotTradeAndMarginInterest - [ToggleBnbBurnOnSpotTradeAndMarginInterestExample.php:15](/examples/wallet/asset/ToggleBnbBurnOnSpotTradeAndMarginInterestExample.php#L15)
 

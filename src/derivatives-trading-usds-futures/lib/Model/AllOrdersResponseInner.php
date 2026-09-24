@@ -63,6 +63,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'avgPrice' => 'string',
         'clientOrderId' => 'string',
         'cumQuote' => 'string',
+        'cumBase' => 'string',
         'executedQty' => 'string',
         'orderId' => 'int',
         'origQty' => 'string',
@@ -75,6 +76,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'stopPrice' => 'string',
         'closePosition' => 'bool',
         'symbol' => 'string',
+        'pair' => 'string',
         'time' => 'int',
         'timeInForce' => 'string',
         'type' => 'string',
@@ -101,6 +103,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'avgPrice' => null,
         'clientOrderId' => null,
         'cumQuote' => null,
+        'cumBase' => null,
         'executedQty' => null,
         'orderId' => 'int64',
         'origQty' => null,
@@ -113,6 +116,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'stopPrice' => null,
         'closePosition' => null,
         'symbol' => null,
+        'pair' => null,
         'time' => 'int64',
         'timeInForce' => null,
         'type' => null,
@@ -135,6 +139,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'avgPrice' => false,
         'clientOrderId' => false,
         'cumQuote' => false,
+        'cumBase' => false,
         'executedQty' => false,
         'orderId' => false,
         'origQty' => false,
@@ -147,6 +152,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'stopPrice' => false,
         'closePosition' => false,
         'symbol' => false,
+        'pair' => false,
         'time' => false,
         'timeInForce' => false,
         'type' => false,
@@ -177,6 +183,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'avgPrice' => 'avgPrice',
         'clientOrderId' => 'clientOrderId',
         'cumQuote' => 'cumQuote',
+        'cumBase' => 'cumBase',
         'executedQty' => 'executedQty',
         'orderId' => 'orderId',
         'origQty' => 'origQty',
@@ -189,6 +196,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'stopPrice' => 'stopPrice',
         'closePosition' => 'closePosition',
         'symbol' => 'symbol',
+        'pair' => 'pair',
         'time' => 'time',
         'timeInForce' => 'timeInForce',
         'type' => 'type',
@@ -211,6 +219,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'avgPrice' => 'setAvgPrice',
         'clientOrderId' => 'setClientOrderId',
         'cumQuote' => 'setCumQuote',
+        'cumBase' => 'setCumBase',
         'executedQty' => 'setExecutedQty',
         'orderId' => 'setOrderId',
         'origQty' => 'setOrigQty',
@@ -223,6 +232,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'stopPrice' => 'setStopPrice',
         'closePosition' => 'setClosePosition',
         'symbol' => 'setSymbol',
+        'pair' => 'setPair',
         'time' => 'setTime',
         'timeInForce' => 'setTimeInForce',
         'type' => 'setType',
@@ -245,6 +255,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'avgPrice' => 'getAvgPrice',
         'clientOrderId' => 'getClientOrderId',
         'cumQuote' => 'getCumQuote',
+        'cumBase' => 'getCumBase',
         'executedQty' => 'getExecutedQty',
         'orderId' => 'getOrderId',
         'origQty' => 'getOrigQty',
@@ -257,6 +268,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         'stopPrice' => 'getStopPrice',
         'closePosition' => 'getClosePosition',
         'symbol' => 'getSymbol',
+        'pair' => 'getPair',
         'time' => 'getTime',
         'timeInForce' => 'getTimeInForce',
         'type' => 'getType',
@@ -288,6 +300,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         $this->setIfExists('avgPrice', $data ?? [], null);
         $this->setIfExists('clientOrderId', $data ?? [], null);
         $this->setIfExists('cumQuote', $data ?? [], null);
+        $this->setIfExists('cumBase', $data ?? [], null);
         $this->setIfExists('executedQty', $data ?? [], null);
         $this->setIfExists('orderId', $data ?? [], null);
         $this->setIfExists('origQty', $data ?? [], null);
@@ -300,6 +313,7 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
         $this->setIfExists('stopPrice', $data ?? [], null);
         $this->setIfExists('closePosition', $data ?? [], null);
         $this->setIfExists('symbol', $data ?? [], null);
+        $this->setIfExists('pair', $data ?? [], null);
         $this->setIfExists('time', $data ?? [], null);
         $this->setIfExists('timeInForce', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
@@ -518,6 +532,33 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable cumQuote cannot be null');
         }
         $this->container['cumQuote'] = $cumQuote;
+
+        return $this;
+    }
+
+    /**
+     * Gets cumBase.
+     *
+     * @return null|string
+     */
+    public function getCumBase()
+    {
+        return $this->container['cumBase'];
+    }
+
+    /**
+     * Sets cumBase.
+     *
+     * @param null|string $cumBase cum Base
+     *
+     * @return self
+     */
+    public function setCumBase($cumBase)
+    {
+        if (is_null($cumBase)) {
+            throw new \InvalidArgumentException('non-nullable cumBase cannot be null');
+        }
+        $this->container['cumBase'] = $cumBase;
 
         return $this;
     }
@@ -842,6 +883,33 @@ class AllOrdersResponseInner implements ModelInterface, \ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable symbol cannot be null');
         }
         $this->container['symbol'] = $symbol;
+
+        return $this;
+    }
+
+    /**
+     * Gets pair.
+     *
+     * @return null|string
+     */
+    public function getPair()
+    {
+        return $this->container['pair'];
+    }
+
+    /**
+     * Sets pair.
+     *
+     * @param null|string $pair pair
+     *
+     * @return self
+     */
+    public function setPair($pair)
+    {
+        if (is_null($pair)) {
+            throw new \InvalidArgumentException('non-nullable pair cannot be null');
+        }
+        $this->container['pair'] = $pair;
 
         return $this;
     }

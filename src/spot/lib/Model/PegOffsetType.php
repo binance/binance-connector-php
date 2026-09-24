@@ -34,7 +34,7 @@ namespace Binance\Client\Spot\Model;
  *
  * @category Class
  *
- * @description Only &#x60;PRICE_LEVEL&#x60; is supported. See [Pegged Orders](/products/spot/faqs/pegged_orders)
+ * @description Only &#x60;PRICE_LEVEL&#x60; is supported. See Pegged Orders Info
  *
  * @author   OpenAPI Generator team
  *

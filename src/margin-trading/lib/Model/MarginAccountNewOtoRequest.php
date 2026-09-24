@@ -273,7 +273,7 @@ class MarginAccountNewOtoRequest implements ModelInterface, \ArrayAccess, \JsonS
         $this->setIfExists('newOrderRespType', $data ?? [], null);
         $this->setIfExists('sideEffectType', $data ?? [], null);
         $this->setIfExists('selfTradePreventionMode', $data ?? [], null);
-        $this->setIfExists('autoRepayAtCancel', $data ?? [], true);
+        $this->setIfExists('autoRepayAtCancel', $data ?? [], null);
         $this->setIfExists('workingType', $data ?? [], null);
         $this->setIfExists('workingSide', $data ?? [], null);
         $this->setIfExists('workingClientOrderId', $data ?? [], null);

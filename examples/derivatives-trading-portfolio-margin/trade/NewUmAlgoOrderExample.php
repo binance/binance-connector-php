@@ -18,8 +18,7 @@ function newUmAlgoOrderExample()
     $newUmAlgoOrderRequest->setAlgoType(AlgoType::CONDITIONAL);
     $newUmAlgoOrderRequest->setSymbol('BNBUSDT');
     $newUmAlgoOrderRequest->setSide(Side::BUY);
-    $newUmAlgoOrderRequest->setType(OrderType::STOP);
-    $newUmAlgoOrderRequest->setQuantity(0.01);
+    $newUmAlgoOrderRequest->setType(OrderType::LIMIT);
     $response = $api->newUmAlgoOrder($newUmAlgoOrderRequest);
     print_r($response);
 }

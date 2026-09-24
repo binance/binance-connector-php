@@ -118,7 +118,7 @@ class PositionApi
     /**
      * Operation getPositionByToken.
      *
-     * Get Position by Token (USER_DATA)
+     * Get Position by Token (PREDICTION_TRADE)
      *
      * @param string   $walletAddress User&#39;s prediction wallet address (required)
      * @param string   $tokenId       Prediction outcome token ID (required)
@@ -137,7 +137,7 @@ class PositionApi
     /**
      * Operation getPositionByTokenWithHttpInfo.
      *
-     * Get Position by Token (USER_DATA)
+     * Get Position by Token (PREDICTION_TRADE)
      *
      * @param string   $walletAddress User&#39;s prediction wallet address (required)
      * @param string   $tokenId       Prediction outcome token ID (required)
@@ -323,7 +323,7 @@ class PositionApi
     /**
      * Operation queryPnL.
      *
-     * Query PnL (USER_DATA)
+     * Query PnL (PREDICTION_TRADE)
      *
      * @param string      $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string $tokenId       Filter by prediction token ID (optional)
@@ -345,7 +345,7 @@ class PositionApi
     /**
      * Operation queryPnLWithHttpInfo.
      *
-     * Query PnL (USER_DATA)
+     * Query PnL (PREDICTION_TRADE)
      *
      * @param string      $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string $tokenId       Filter by prediction token ID (optional)
@@ -565,7 +565,7 @@ class PositionApi
     /**
      * Operation queryPositions.
      *
-     * Query Positions (USER_DATA)
+     * Query Positions (PREDICTION_TRADE)
      *
      * @param string      $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string $tab           Position status tab. Values from &#x60;PositionQueryType&#x60;. Default &#x60;ONGOING&#x60; (optional)
@@ -586,7 +586,7 @@ class PositionApi
     /**
      * Operation queryPositionsWithHttpInfo.
      *
-     * Query Positions (USER_DATA)
+     * Query Positions (PREDICTION_TRADE)
      *
      * @param string      $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string $tab           Position status tab. Values from &#x60;PositionQueryType&#x60;. Default &#x60;ONGOING&#x60; (optional)
@@ -798,7 +798,7 @@ class PositionApi
     /**
      * Operation queryPositionsByFilter.
      *
-     * Query Positions by Filter (USER_DATA)
+     * Query Positions by Filter (PREDICTION_TRADE)
      *
      * @param null|string $walletAddress User&#39;s prediction wallet address (optional)
      * @param null|int    $marketTopicId Filter by market topic ID (optional)
@@ -817,7 +817,7 @@ class PositionApi
     /**
      * Operation queryPositionsByFilterWithHttpInfo.
      *
-     * Query Positions by Filter (USER_DATA)
+     * Query Positions by Filter (PREDICTION_TRADE)
      *
      * @param null|string $walletAddress User&#39;s prediction wallet address (optional)
      * @param null|int    $marketTopicId Filter by market topic ID (optional)
@@ -989,7 +989,7 @@ class PositionApi
     /**
      * Operation querySettledPositionHistory.
      *
-     * Query Settled Position History (USER_DATA)
+     * Query Settled Position History (PREDICTION_TRADE)
      *
      * @param string      $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string $l1Category    Filter by level-1 category (optional)
@@ -1013,7 +1013,7 @@ class PositionApi
     /**
      * Operation querySettledPositionHistoryWithHttpInfo.
      *
-     * Query Settled Position History (USER_DATA)
+     * Query Settled Position History (PREDICTION_TRADE)
      *
      * @param string      $walletAddress User&#39;s prediction wallet address (required)
      * @param null|string $l1Category    Filter by level-1 category (optional)

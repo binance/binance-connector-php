@@ -1,6 +1,6 @@
 ## FutureAlgo
 
-[/sapi/v1/algo/futures/order](https://developers.binance.com/en/docs/catalog/advanced-trading-algo-trading/api/rest-api/future-algo#cancel-algo-order-future-algo) - cancelAlgoOrderFutureAlgo - [CancelAlgoOrderFutureAlgoExample.php:15](/examples/algo/futurealgo/CancelAlgoOrderFutureAlgoExample.php#L15)
+[/sapi/v1/algo/futures/order](https://developers.binance.com/en/docs/catalog/advanced-trading-algo-trading/api/rest-api/future-algo#cancel-algo-order-future-algo) - cancelAlgoOrderFutureAlgo - [CancelAlgoOrderFutureAlgoExample.php:16](/examples/algo/futurealgo/CancelAlgoOrderFutureAlgoExample.php#L16)
 
 [/sapi/v1/algo/futures/openOrders](https://developers.binance.com/en/docs/catalog/advanced-trading-algo-trading/api/rest-api/future-algo#query-current-algo-open-orders-future-algo) - queryCurrentAlgoOpenOrdersFutureAlgo - [QueryCurrentAlgoOpenOrdersFutureAlgoExample.php:14](/examples/algo/futurealgo/QueryCurrentAlgoOpenOrdersFutureAlgoExample.php#L14)
 
@@ -14,7 +14,7 @@
 
 ## SpotAlgo
 
-[/sapi/v1/algo/spot/order](https://developers.binance.com/en/docs/catalog/advanced-trading-algo-trading/api/rest-api/spot-algo#cancel-algo-order-spot-algo) - cancelAlgoOrderSpotAlgo - [CancelAlgoOrderSpotAlgoExample.php:15](/examples/algo/spotalgo/CancelAlgoOrderSpotAlgoExample.php#L15)
+[/sapi/v1/algo/spot/order](https://developers.binance.com/en/docs/catalog/advanced-trading-algo-trading/api/rest-api/spot-algo#cancel-algo-order-spot-algo) - cancelAlgoOrderSpotAlgo - [CancelAlgoOrderSpotAlgoExample.php:16](/examples/algo/spotalgo/CancelAlgoOrderSpotAlgoExample.php#L16)
 
 [/sapi/v1/algo/spot/openOrders](https://developers.binance.com/en/docs/catalog/advanced-trading-algo-trading/api/rest-api/spot-algo#query-current-algo-open-orders-spot-algo) - queryCurrentAlgoOpenOrdersSpotAlgo - [QueryCurrentAlgoOpenOrdersSpotAlgoExample.php:14](/examples/algo/spotalgo/QueryCurrentAlgoOpenOrdersSpotAlgoExample.php#L14)
 

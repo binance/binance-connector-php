@@ -12,7 +12,7 @@ function continuousContractKlineCandlestickDataExample()
     $configurationBuilder = DerivativesTradingCoinFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
     $pair = 'BTCUSD';
-    $contractType = ContractType::ALL;
+    $contractType = ContractType::PERPETUAL;
     $interval = Interval::INTERVAL_1M;
     $startTime = 1623319461670;
     $endTime = 1641782889000;

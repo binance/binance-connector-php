@@ -112,7 +112,7 @@ class RedeemApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/w3w/wallet/prediction/batch-redeem', $request->getUri()->getPath());
-        self::assertEquals('116c5e423e409f384da4dc297503cc92ee2841cd079594b70fe52a25c29a1132', $queryMap['signature']);
+        self::assertEquals('640bdbf610527de15ed80d213f8fb6d1ab5a2306fe514938a727f59c4beee0cf', $queryMap['signature']);
     }
 
     /**

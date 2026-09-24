@@ -28,6 +28,10 @@
 
 namespace Binance\Client\W3WPrediction\Api;
 
+use Binance\Client\W3WPrediction\Model\ApplyMmDepositRequest;
+use Binance\Client\W3WPrediction\Model\ApplyMmDepositResponse;
+use Binance\Client\W3WPrediction\Model\ApplyMmWithdrawRequest;
+use Binance\Client\W3WPrediction\Model\ApplyMmWithdrawResponse;
 use Binance\Client\W3WPrediction\Model\CreateInboundTransferRequest;
 use Binance\Client\W3WPrediction\Model\CreateInboundTransferResponse;
 use Binance\Client\W3WPrediction\Model\CreateOutboundTransferRequest;
@@ -66,6 +70,8 @@ class TransferApi
 {
     /** @var string[] */
     public const contentTypes = [
+        'applyMmDeposit' => ['application/x-www-form-urlencoded'],
+        'applyMmWithdraw' => ['application/x-www-form-urlencoded'],
         'createInboundTransfer' => ['application/x-www-form-urlencoded'],
         'createOutboundTransfer' => ['application/x-www-form-urlencoded'],
         'queryTransferList' => ['application/x-www-form-urlencoded'],
@@ -119,9 +125,409 @@ class TransferApi
     }
 
     /**
+     * Operation applyMmDeposit.
+     *
+     * Apply MM Deposit (PREDICTION_TRADE)
+     *
+     * @param ApplyMmDepositRequest $applyMmDepositRequest applyMmDepositRequest (required)
+     *
+     * @return ApiResponse<ApplyMmDepositResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function applyMmDeposit($applyMmDepositRequest): ApiResponse
+    {
+        return $this->applyMmDepositWithHttpInfo($applyMmDepositRequest);
+    }
+
+    /**
+     * Operation applyMmDepositWithHttpInfo.
+     *
+     * Apply MM Deposit (PREDICTION_TRADE)
+     *
+     * @param ApplyMmDepositRequest $applyMmDepositRequest (required)
+     *
+     * @return ApiResponse<ApplyMmDepositResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function applyMmDepositWithHttpInfo($applyMmDepositRequest): ApiResponse
+    {
+        $request = $this->applyMmDepositRequest($applyMmDepositRequest);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\W3WPrediction\Model\ApplyMmDepositResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\W3WPrediction\Model\ApplyMmDepositResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\W3WPrediction\Model\ApplyMmDepositResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'applyMmDeposit'.
+     *
+     * @param ApplyMmDepositRequest $applyMmDepositRequest (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function applyMmDepositRequest($applyMmDepositRequest)
+    {
+        $contentType = self::contentTypes['applyMmDeposit'][0];
+
+        // verify the required parameter 'applyMmDepositRequest' is set
+        if (null === $applyMmDepositRequest || (is_array($applyMmDepositRequest) && 0 === count($applyMmDepositRequest))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $applyMmDepositRequest when calling applyMmDeposit'
+            );
+        }
+
+        $resourcePath = '/sapi/v1/w3w/wallet/prediction/deposit/apply';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $getters = $applyMmDepositRequest::getters();
+        $formParams = [];
+        foreach ($getters as $property => $getter) {
+            $value = $applyMmDepositRequest->{$getter}();
+            if (!empty($value)) {
+                $formParams[$property] = $applyMmDepositRequest->{$getter}();
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        } elseif (isset($applyMmDepositRequest)) {
+            if (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($applyMmDepositRequest));
+            } else {
+                $httpBody = $applyMmDepositRequest;
+            }
+        }
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'POST',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation applyMmWithdraw.
+     *
+     * Apply MM Withdraw (PREDICTION_TRADE)
+     *
+     * @param ApplyMmWithdrawRequest $applyMmWithdrawRequest applyMmWithdrawRequest (required)
+     *
+     * @return ApiResponse<ApplyMmWithdrawResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function applyMmWithdraw($applyMmWithdrawRequest): ApiResponse
+    {
+        return $this->applyMmWithdrawWithHttpInfo($applyMmWithdrawRequest);
+    }
+
+    /**
+     * Operation applyMmWithdrawWithHttpInfo.
+     *
+     * Apply MM Withdraw (PREDICTION_TRADE)
+     *
+     * @param ApplyMmWithdrawRequest $applyMmWithdrawRequest (required)
+     *
+     * @return ApiResponse<ApplyMmWithdrawResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function applyMmWithdrawWithHttpInfo($applyMmWithdrawRequest): ApiResponse
+    {
+        $request = $this->applyMmWithdrawRequest($applyMmWithdrawRequest);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\W3WPrediction\Model\ApplyMmWithdrawResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\W3WPrediction\Model\ApplyMmWithdrawResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\W3WPrediction\Model\ApplyMmWithdrawResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'applyMmWithdraw'.
+     *
+     * @param ApplyMmWithdrawRequest $applyMmWithdrawRequest (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function applyMmWithdrawRequest($applyMmWithdrawRequest)
+    {
+        $contentType = self::contentTypes['applyMmWithdraw'][0];
+
+        // verify the required parameter 'applyMmWithdrawRequest' is set
+        if (null === $applyMmWithdrawRequest || (is_array($applyMmWithdrawRequest) && 0 === count($applyMmWithdrawRequest))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $applyMmWithdrawRequest when calling applyMmWithdraw'
+            );
+        }
+
+        $resourcePath = '/sapi/v1/w3w/wallet/prediction/withdraw/apply';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $getters = $applyMmWithdrawRequest::getters();
+        $formParams = [];
+        foreach ($getters as $property => $getter) {
+            $value = $applyMmWithdrawRequest->{$getter}();
+            if (!empty($value)) {
+                $formParams[$property] = $applyMmWithdrawRequest->{$getter}();
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        } elseif (isset($applyMmWithdrawRequest)) {
+            if (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($applyMmWithdrawRequest));
+            } else {
+                $httpBody = $applyMmWithdrawRequest;
+            }
+        }
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'POST',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation createInboundTransfer.
      *
-     * Create Inbound Transfer (TRADE)
+     * Create Inbound Transfer (PREDICTION_TRADE)
      *
      * @param CreateInboundTransferRequest $createInboundTransferRequest createInboundTransferRequest (required)
      *
@@ -138,7 +544,7 @@ class TransferApi
     /**
      * Operation createInboundTransferWithHttpInfo.
      *
-     * Create Inbound Transfer (TRADE)
+     * Create Inbound Transfer (PREDICTION_TRADE)
      *
      * @param CreateInboundTransferRequest $createInboundTransferRequest (required)
      *
@@ -321,7 +727,7 @@ class TransferApi
     /**
      * Operation createOutboundTransfer.
      *
-     * Create Outbound Transfer (TRADE)
+     * Create Outbound Transfer (PREDICTION_TRADE)
      *
      * @param CreateOutboundTransferRequest $createOutboundTransferRequest createOutboundTransferRequest (required)
      *
@@ -338,7 +744,7 @@ class TransferApi
     /**
      * Operation createOutboundTransferWithHttpInfo.
      *
-     * Create Outbound Transfer (TRADE)
+     * Create Outbound Transfer (PREDICTION_TRADE)
      *
      * @param CreateOutboundTransferRequest $createOutboundTransferRequest (required)
      *
@@ -521,7 +927,7 @@ class TransferApi
     /**
      * Operation queryTransferList.
      *
-     * Query Transfer List (USER_DATA)
+     * Query Transfer List (PREDICTION_TRADE)
      *
      * @param string         $walletAddress User&#39;s prediction wallet address (required)
      * @param string         $startDate     Start date. Format: &#x60;yyyy-MM-dd&#x60;. Must be ≤ &#x60;endDate&#x60; (required)
@@ -545,7 +951,7 @@ class TransferApi
     /**
      * Operation queryTransferListWithHttpInfo.
      *
-     * Query Transfer List (USER_DATA)
+     * Query Transfer List (PREDICTION_TRADE)
      *
      * @param string         $walletAddress User&#39;s prediction wallet address (required)
      * @param string         $startDate     Start date. Format: &#x60;yyyy-MM-dd&#x60;. Must be ≤ &#x60;endDate&#x60; (required)
@@ -804,7 +1210,7 @@ class TransferApi
     /**
      * Operation queryTransferStatus.
      *
-     * Query Transfer Status (USER_DATA)
+     * Query Transfer Status (PREDICTION_TRADE)
      *
      * @param string   $transferId Transfer ID returned from outbound/inbound transfer (required)
      * @param null|int $recvWindow Request validity window in milliseconds (optional)
@@ -822,7 +1228,7 @@ class TransferApi
     /**
      * Operation queryTransferStatusWithHttpInfo.
      *
-     * Query Transfer Status (USER_DATA)
+     * Query Transfer Status (PREDICTION_TRADE)
      *
      * @param string   $transferId Transfer ID returned from outbound/inbound transfer (required)
      * @param null|int $recvWindow Request validity window in milliseconds (optional)

@@ -12,7 +12,7 @@ function takerBuySellVolumeExample()
     $configurationBuilder = DerivativesTradingCoinFuturesRestApiUtil::getConfigurationBuilder();
     $api = new DerivativesTradingCoinFuturesRestApi($configurationBuilder->build());
     $pair = 'BTCUSD';
-    $contractType = ContractType::ALL;
+    $contractType = ContractType::PERPETUAL;
     $period = Period::PERIOD_5M;
     $limit = 30;
     $startTime = 1623319461670;

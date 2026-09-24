@@ -34,6 +34,8 @@ namespace Binance\Client\DerivativesTradingPortfolioMargin\Model;
  *
  * @category Class
  *
+ * @description \&quot;ACK\&quot;, \&quot;RESULT\&quot;, default \&quot;ACK\&quot;
+ *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech
@@ -47,6 +49,8 @@ enum NewOrderRespType: string
 
     case RESULT = 'RESULT';
 
+    case FULL = 'FULL';
+
     /**
      * Gets allowable values of the enum.
      *
@@ -57,6 +61,7 @@ enum NewOrderRespType: string
         return [
             self::ACK,
             self::RESULT,
+            self::FULL,
         ];
     }
 }

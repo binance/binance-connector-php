@@ -15,7 +15,7 @@ function getFlexibleRewardsHistoryExample()
     $asset = 'USDC';
     $startTime = 1623319461670;
     $endTime = 1641782889000;
-    $type = OrderType::FAST;
+    $type = OrderType::BONUS;
     $current = 1;
     $size = 10;
     $recvWindow = 5000;

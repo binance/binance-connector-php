@@ -34,6 +34,8 @@ namespace Binance\Client\DerivativesTradingUsdsFutures\Model;
  *
  * @category Class
  *
+ * @description Used with &#x60;STOP_MARKET&#x60; or &#x60;TAKE_PROFIT_MARKET&#x60; order. when price reaches the triggerPrice ，the difference rate between \&quot;MARK_PRICE\&quot; and \&quot;CONTRACT_PRICE\&quot; cannot be larger than the Price Protection Threshold of the symbol.&#39;
+ *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech

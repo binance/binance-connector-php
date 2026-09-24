@@ -34,7 +34,7 @@ namespace Binance\Client\W3WPrediction\Model;
  *
  * @category Class
  *
- * @description Source CEX account. Enum: &#x60;SPOT&#x60;, &#x60;FUNDING&#x60;
+ * @description Payment account type. Enum: &#x60;SPOT&#x60;, &#x60;FUNDING&#x60;
  *
  * @author   OpenAPI Generator team
  *

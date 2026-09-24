@@ -170,25 +170,6 @@ class TradeApiTest extends TestCase
     }
 
     /**
-     * Test case for cancelAllUmOpenConditionalOrders.
-     *
-     * Cancel All UM Open Conditional Orders (TRADE).
-     */
-    public function testCancelAllUmOpenConditionalOrders()
-    {
-        $symbol = 'BTCUSDT';
-        $recvWindow = 5000;
-        $response = $this->getApiMock($request)->cancelAllUmOpenConditionalOrders($symbol, $recvWindow);
-
-        parse_str($request->getUri(), $queryMap);
-
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/papi/v1/um/conditional/allOpenOrders', $request->getUri()->getPath());
-        self::assertEquals('5e7e1313cde51a8386d885dd02bf6a7f4f4cd7f28dce6810d75c97af7836b3bb', $queryMap['signature']);
-    }
-
-    /**
      * Test case for cancelAllUmOpenOrders.
      *
      * Cancel All UM Open Orders (TRADE).
@@ -330,27 +311,6 @@ class TradeApiTest extends TestCase
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/papi/v1/um/algo/order', $request->getUri()->getPath());
         self::assertEquals('87096ab0f7ef63c753df68f8402162e99b54653f0b45ee1736f9b9f8b1ff7160', $queryMap['signature']);
-    }
-
-    /**
-     * Test case for cancelUmConditionalOrder.
-     *
-     * Cancel UM Conditional Order (TRADE).
-     */
-    public function testCancelUmConditionalOrder()
-    {
-        $symbol = 'BTCUSDT';
-        $strategyId = 1;
-        $newClientStrategyId = '1';
-        $recvWindow = 5000;
-        $response = $this->getApiMock($request)->cancelUmConditionalOrder($symbol, $strategyId, $newClientStrategyId, $recvWindow);
-
-        parse_str($request->getUri(), $queryMap);
-
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/papi/v1/um/conditional/order', $request->getUri()->getPath());
-        self::assertEquals('76ca77501cf0f97cea375b78a61226c092666a1c24806a1fabaa4fba6d9db3f9', $queryMap['signature']);
     }
 
     /**
@@ -629,7 +589,7 @@ class TradeApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/papi/v1/cm/conditional/order', $request->getUri()->getPath());
-        self::assertEquals('066376187246fda17aeeaef1dcc54bd2a3dd8836d87a14c1427eacc75b80eda6', $queryMap['signature']);
+        self::assertEquals('714c4bda09768d457c8539f310805ed00dcba5bf63ab22d86f627101211c49cc', $queryMap['signature']);
     }
 
     /**
@@ -673,7 +633,7 @@ class TradeApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/papi/v1/margin/order', $request->getUri()->getPath());
-        self::assertEquals('e2cc918398b612c2fd926f05d8f5686d85d14f899e925d229af2e7df24cac7c7', $queryMap['signature']);
+        self::assertEquals('e2a5180d8b241e57a97aa49a1ed000414502e20e96553cac79c2e4eae8171c63', $queryMap['signature']);
     }
 
     /**
@@ -698,28 +658,6 @@ class TradeApiTest extends TestCase
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/papi/v1/um/algo/order', $request->getUri()->getPath());
         self::assertEquals('feaafd817e5bb6ee8e4e0245f0ca0a8db62d5de3c788ca6a27dbafc765370dda', $queryMap['signature']);
-    }
-
-    /**
-     * Test case for newUmConditionalOrder.
-     *
-     * New UM Conditional Order (TRADE).
-     */
-    public function testNewUmConditionalOrder()
-    {
-        $newUmConditionalOrderRequest = new NewUmConditionalOrderRequest();
-        $newUmConditionalOrderRequest->setSymbol('BTCUSDT');
-        $newUmConditionalOrderRequest->setSide(Side::BUY);
-        $newUmConditionalOrderRequest->setStrategyType(StrategyType::STOP);
-
-        $response = $this->getApiMock($request)->newUmConditionalOrder($newUmConditionalOrderRequest);
-
-        parse_str($request->getUri(), $queryMap);
-
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/papi/v1/um/conditional/order', $request->getUri()->getPath());
-        self::assertEquals('714c4bda09768d457c8539f310805ed00dcba5bf63ab22d86f627101211c49cc', $queryMap['signature']);
     }
 
     /**
@@ -852,25 +790,6 @@ class TradeApiTest extends TestCase
     }
 
     /**
-     * Test case for queryAllCurrentUmOpenConditionalOrders.
-     *
-     * Query All Current UM Open Conditional Orders (USER_DATA).
-     */
-    public function testQueryAllCurrentUmOpenConditionalOrders()
-    {
-        $symbol = 'BTCUSDT';
-        $recvWindow = 5000;
-        $response = $this->getApiMock($request)->queryAllCurrentUmOpenConditionalOrders($symbol, $recvWindow);
-
-        parse_str($request->getUri(), $queryMap);
-
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/papi/v1/um/conditional/openOrders', $request->getUri()->getPath());
-        self::assertEquals('5e7e1313cde51a8386d885dd02bf6a7f4f4cd7f28dce6810d75c97af7836b3bb', $queryMap['signature']);
-    }
-
-    /**
      * Test case for queryAllCurrentUmOpenOrders.
      *
      * Query All Current UM Open Orders (USER_DATA).
@@ -910,29 +829,6 @@ class TradeApiTest extends TestCase
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/papi/v1/margin/allOrders', $request->getUri()->getPath());
         self::assertEquals('69e776abbb0f64f58f80b72b4d5df7a2fc83fd0446022858b3a6b27cbab666c8', $queryMap['signature']);
-    }
-
-    /**
-     * Test case for queryAllUmConditionalOrders.
-     *
-     * Query All UM Conditional Orders (USER_DATA).
-     */
-    public function testQueryAllUmConditionalOrders()
-    {
-        $symbol = 'BTCUSDT';
-        $strategyId = 1;
-        $startTime = 1623319461670;
-        $endTime = 1641782889000;
-        $limit = 10;
-        $recvWindow = 5000;
-        $response = $this->getApiMock($request)->queryAllUmConditionalOrders($symbol, $strategyId, $startTime, $endTime, $limit, $recvWindow);
-
-        parse_str($request->getUri(), $queryMap);
-
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/papi/v1/um/conditional/allOrders', $request->getUri()->getPath());
-        self::assertEquals('d5fb717159642642f00f32217fcac4e36fb7cb702fee2dd86b36b4a3d6e32f7b', $queryMap['signature']);
     }
 
     /**
@@ -1106,27 +1002,6 @@ class TradeApiTest extends TestCase
     }
 
     /**
-     * Test case for queryCurrentUmOpenConditionalOrder.
-     *
-     * Query Current UM Open Conditional Order (USER_DATA).
-     */
-    public function testQueryCurrentUmOpenConditionalOrder()
-    {
-        $symbol = 'BTCUSDT';
-        $strategyId = 1;
-        $newClientStrategyId = '1';
-        $recvWindow = 5000;
-        $response = $this->getApiMock($request)->queryCurrentUmOpenConditionalOrder($symbol, $strategyId, $newClientStrategyId, $recvWindow);
-
-        parse_str($request->getUri(), $queryMap);
-
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/papi/v1/um/conditional/openOrder', $request->getUri()->getPath());
-        self::assertEquals('76ca77501cf0f97cea375b78a61226c092666a1c24806a1fabaa4fba6d9db3f9', $queryMap['signature']);
-    }
-
-    /**
      * Test case for queryCurrentUmOpenOrder.
      *
      * Query Current UM Open Order (USER_DATA).
@@ -1249,27 +1124,6 @@ class TradeApiTest extends TestCase
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/papi/v1/um/algo/allAlgoOrders', $request->getUri()->getPath());
         self::assertEquals('a87d5b27be16539d1645d368d47f830c811ea900308d32e22c3c1e540b21636a', $queryMap['signature']);
-    }
-
-    /**
-     * Test case for queryUmConditionalOrderHistory.
-     *
-     * Query UM Conditional Order History (USER_DATA).
-     */
-    public function testQueryUmConditionalOrderHistory()
-    {
-        $symbol = 'BTCUSDT';
-        $strategyId = 1;
-        $newClientStrategyId = '1';
-        $recvWindow = 5000;
-        $response = $this->getApiMock($request)->queryUmConditionalOrderHistory($symbol, $strategyId, $newClientStrategyId, $recvWindow);
-
-        parse_str($request->getUri(), $queryMap);
-
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/papi/v1/um/conditional/orderHistory', $request->getUri()->getPath());
-        self::assertEquals('76ca77501cf0f97cea375b78a61226c092666a1c24806a1fabaa4fba6d9db3f9', $queryMap['signature']);
     }
 
     /**

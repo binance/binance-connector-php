@@ -14,7 +14,7 @@ function redeemRwusdExample()
     $api = new SimpleEarnRestApi($configurationBuilder->build());
     $redeemRwusdRequest = new RedeemRwusdRequest();
     $redeemRwusdRequest->setAmount(1.0);
-    $redeemRwusdRequest->setType(OrderType::FAST);
+    $redeemRwusdRequest->setType(OrderType::BONUS);
     $response = $api->redeemRwusd($redeemRwusdRequest);
     print_r($response);
 }

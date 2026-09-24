@@ -34,6 +34,8 @@ namespace Binance\Client\SubAccount\Model;
  *
  * @category Class
  *
+ * @description A single request cannot mix UM and OPTION positions.
+ *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech
@@ -45,6 +47,8 @@ enum ProductType: string
      */
     case UM = 'UM';
 
+    case OPTION = 'OPTION';
+
     /**
      * Gets allowable values of the enum.
      *
@@ -54,6 +58,7 @@ enum ProductType: string
     {
         return [
             self::UM,
+            self::OPTION,
         ];
     }
 }

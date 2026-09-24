@@ -45,9 +45,21 @@ enum OrderType: string
     /**
      * Possible values of this enum.
      */
-    case STOP = 'STOP';
+    case LIMIT = 'LIMIT';
+
+    case MARKET = 'MARKET';
+
+    case STOP_LOSS = 'STOP_LOSS';
+
+    case STOP_LOSS_LIMIT = 'STOP_LOSS_LIMIT';
 
     case TAKE_PROFIT = 'TAKE_PROFIT';
+
+    case TAKE_PROFIT_LIMIT = 'TAKE_PROFIT_LIMIT';
+
+    case LIMIT_MAKER = 'LIMIT_MAKER';
+
+    case STOP = 'STOP';
 
     case STOP_MARKET = 'STOP_MARKET';
 
@@ -63,8 +75,14 @@ enum OrderType: string
     public static function getAllowableEnumValues()
     {
         return [
-            self::STOP,
+            self::LIMIT,
+            self::MARKET,
+            self::STOP_LOSS,
+            self::STOP_LOSS_LIMIT,
             self::TAKE_PROFIT,
+            self::TAKE_PROFIT_LIMIT,
+            self::LIMIT_MAKER,
+            self::STOP,
             self::STOP_MARKET,
             self::TAKE_PROFIT_MARKET,
             self::TRAILING_STOP_MARKET,

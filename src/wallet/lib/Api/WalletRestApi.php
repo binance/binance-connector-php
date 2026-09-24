@@ -40,6 +40,7 @@ use Binance\Client\Wallet\Model\GetCloudMiningPaymentAndRefundHistoryResponse;
 use Binance\Client\Wallet\Model\GetCountryListResponse;
 use Binance\Client\Wallet\Model\GetOpenSymbolListResponse;
 use Binance\Client\Wallet\Model\GetRegionListResponse;
+use Binance\Client\Wallet\Model\GetSpotAssetTagsResponse;
 use Binance\Client\Wallet\Model\GetSymbolsDelistScheduleForSpotResponse;
 use Binance\Client\Wallet\Model\OneClickArrivalDepositApplyRequest;
 use Binance\Client\Wallet\Model\OneClickArrivalDepositApplyResponse;
@@ -414,6 +415,23 @@ class WalletRestApi
     }
 
     /**
+     * Operation getSpotAssetTags.
+     *
+     * Get Spot Asset Tags (MARKET_DATA)
+     *
+     * @param null|string $tag Tag filter. Supports multiple comma-separated tags with OR semantics (an asset is returned if it matches any one tag); leading/trailing whitespace around each tag is ignored. Returns all eligible assets when omitted. (optional)
+     *
+     * @return ApiResponse<GetSpotAssetTagsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function getSpotAssetTags($tag = null): ApiResponse
+    {
+        return $this->assetApi->getSpotAssetTags($tag);
+    }
+
+    /**
      * Operation queryUserDelegationHistory.
      *
      * Query User Delegation History(For Master Account) (USER_DATA)
@@ -466,17 +484,18 @@ class WalletRestApi
      *
      * Query User Wallet Balance (USER_DATA)
      *
-     * @param null|string $quoteAsset quoteAsset (optional)
-     * @param null|int    $recvWindow recvWindow (optional)
+     * @param null|string $quoteAsset        quoteAsset (optional)
+     * @param null|bool   $needBalanceDetail Whether to return the per-asset balance detail for each wallet. When &#x60;false&#x60; or omitted, the response is unchanged from current behavior. (optional)
+     * @param null|int    $recvWindow        recvWindow (optional)
      *
      * @return ApiResponse<QueryUserWalletBalanceResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function queryUserWalletBalance($quoteAsset = null, $recvWindow = null): ApiResponse
+    public function queryUserWalletBalance($quoteAsset = null, $needBalanceDetail = null, $recvWindow = null): ApiResponse
     {
-        return $this->assetApi->queryUserWalletBalance($quoteAsset, $recvWindow);
+        return $this->assetApi->queryUserWalletBalance($quoteAsset, $needBalanceDetail, $recvWindow);
     }
 
     /**
@@ -592,7 +611,7 @@ class WalletRestApi
      *
      * @param null|bool   $includeSource return &#x60;sourceAddress&#x60; field when set to &#x60;true&#x60; (optional)
      * @param null|string $coin          coin (optional)
-     * @param null|Status $status        0: pending, 6: credited but cannot withdraw, 7: Wrong Deposit, 8: Waiting User confirm, 1: success (optional)
+     * @param null|Status $status        0: pending, 1: success, 2: rejected, 6: credited but cannot withdraw, 7: Wrong Deposit, 8: Waiting User confirm (optional)
      * @param null|int    $startTime     Default: 90 days from current timestamp (optional)
      * @param null|int    $endTime       Default: present timestamp (optional)
      * @param null|int    $offset        offset (optional)
@@ -699,7 +718,7 @@ class WalletRestApi
      *
      * @param null|string $coin            coin (optional)
      * @param null|string $withdrawOrderId client side id for withdrawal, if provided in POST &#x60;/sapi/v1/capital/withdraw/apply&#x60;, can be used here for query. (optional)
-     * @param null|int    $status          0(0:Email Sent, 2:Awaiting Approval 3:Rejected 4:Processing 6:Completed) (optional)
+     * @param null|int    $status          0(0: Email Sent, 2: Awaiting Approval 3: Rejected 4: Processing 6: Completed) (optional)
      * @param null|int    $offset          Default: 0 (optional)
      * @param null|int    $limit           limit (optional)
      * @param null|string $idList          id list returned in the response of POST &#x60;/sapi/v1/capital/withdraw/apply&#x60;, separated by &#x60;,&#x60; (optional)
@@ -793,7 +812,7 @@ class WalletRestApi
      * @param null|string $tranId               Comma(,) separated list of wallet tran Ids. (optional)
      * @param null|string $network              network (optional)
      * @param null|string $coin                 coin (optional)
-     * @param null|int    $travelRuleStatus     0:Completed,1:Pending,2:Failed (optional)
+     * @param null|int    $travelRuleStatus     0: Completed,1: Pending,2: Failed (optional)
      * @param null|bool   $pendingQuestionnaire true: Only return records that pending deposit questionnaire. false/not provided: return all records. (optional)
      * @param null|int    $startTime            Default: 90 days from current timestamp (optional)
      * @param null|int    $endTime              Default: present timestamp (optional)
@@ -965,7 +984,7 @@ class WalletRestApi
      * @param null|string $withdrawOrderId  client side id for withdrawal, if provided in POST &#x60;/sapi/v1/capital/withdraw/apply&#x60;, can be used here for query. (optional)
      * @param null|string $network          network (optional)
      * @param null|string $coin             coin (optional)
-     * @param null|int    $travelRuleStatus 0:Completed,1:Pending,2:Failed (optional)
+     * @param null|int    $travelRuleStatus 0: Completed,1: Pending,2: Failed (optional)
      * @param null|int    $offset           offset (optional)
      * @param null|int    $limit            limit (optional)
      * @param null|int    $startTime        Default: 90 days from current timestamp (optional)
@@ -992,7 +1011,7 @@ class WalletRestApi
      * @param null|string $withdrawOrderId  client side id for withdrawal, if provided in POST &#x60;/sapi/v1/capital/withdraw/apply&#x60;, can be used here for query. (optional)
      * @param null|string $network          network (optional)
      * @param null|string $coin             coin (optional)
-     * @param null|int    $travelRuleStatus 0:Completed,1:Pending,2:Failed (optional)
+     * @param null|int    $travelRuleStatus 0: Completed,1: Pending,2: Failed (optional)
      * @param null|int    $offset           offset (optional)
      * @param null|int    $limit            limit (optional)
      * @param null|int    $startTime        Default: 90 days from current timestamp (optional)

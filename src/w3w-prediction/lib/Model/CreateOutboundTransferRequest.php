@@ -182,9 +182,9 @@ class CreateOutboundTransferRequest implements ModelInterface, \ArrayAccess, \Js
         $this->setIfExists('fromTokenAmount', $data ?? [], null);
         $this->setIfExists('accountType', $data ?? [], null);
         $this->setIfExists('sourceBiz', $data ?? [], null);
-        $this->setIfExists('fromToken', $data ?? [], 'USDT');
-        $this->setIfExists('toToken', $data ?? [], 'USDT');
-        $this->setIfExists('chainId', $data ?? [], '56');
+        $this->setIfExists('fromToken', $data ?? [], null);
+        $this->setIfExists('toToken', $data ?? [], null);
+        $this->setIfExists('chainId', $data ?? [], null);
     }
 
     /**

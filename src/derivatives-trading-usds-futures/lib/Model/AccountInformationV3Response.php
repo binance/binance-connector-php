@@ -363,7 +363,7 @@ class AccountInformationV3Response implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets totalInitialMargin.
      *
-     * @param null|string $totalInitialMargin total initial margin requirement
+     * @param null|string $totalInitialMargin Total initial margin requirement. USDT only in single-asset mode; the sum of USD value of all cross positions/open order initial margin in multi-assets mode.
      *
      * @return self
      */
@@ -390,7 +390,7 @@ class AccountInformationV3Response implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets totalMaintMargin.
      *
-     * @param null|string $totalMaintMargin total maintenance margin requirement
+     * @param null|string $totalMaintMargin Total maintenance margin requirement. USDT only in single-asset mode; the sum of USD value of all cross positions maintenance margin in multi-assets mode.
      *
      * @return self
      */
@@ -417,7 +417,7 @@ class AccountInformationV3Response implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets totalWalletBalance.
      *
-     * @param null|string $totalWalletBalance total wallet balance
+     * @param null|string $totalWalletBalance Total wallet balance. USDT only in single-asset mode; USD-denominated in multi-assets mode.
      *
      * @return self
      */
@@ -444,7 +444,7 @@ class AccountInformationV3Response implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets totalUnrealizedProfit.
      *
-     * @param null|string $totalUnrealizedProfit total unrealized profit
+     * @param null|string $totalUnrealizedProfit Total unrealized profit. USDT only in single-asset mode; USD-denominated in multi-assets mode.
      *
      * @return self
      */
@@ -471,7 +471,7 @@ class AccountInformationV3Response implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets totalMarginBalance.
      *
-     * @param null|string $totalMarginBalance total margin balance
+     * @param null|string $totalMarginBalance Total margin balance. USDT only in single-asset mode; USD-denominated in multi-assets mode.
      *
      * @return self
      */
@@ -498,7 +498,7 @@ class AccountInformationV3Response implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets totalPositionInitialMargin.
      *
-     * @param null|string $totalPositionInitialMargin initial margin required for positions
+     * @param null|string $totalPositionInitialMargin Initial margin required for positions. USDT only in single-asset mode; the sum of USD value of all cross positions initial margin in multi-assets mode.
      *
      * @return self
      */
@@ -525,7 +525,7 @@ class AccountInformationV3Response implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets totalOpenOrderInitialMargin.
      *
-     * @param null|string $totalOpenOrderInitialMargin initial margin required for open orders
+     * @param null|string $totalOpenOrderInitialMargin Initial margin required for open orders. USDT only in single-asset mode; USD-denominated in multi-assets mode.
      *
      * @return self
      */
@@ -552,7 +552,7 @@ class AccountInformationV3Response implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets totalCrossWalletBalance.
      *
-     * @param null|string $totalCrossWalletBalance cross wallet balance
+     * @param null|string $totalCrossWalletBalance Cross wallet balance. USDT only in single-asset mode; USD-denominated in multi-assets mode.
      *
      * @return self
      */
@@ -579,7 +579,7 @@ class AccountInformationV3Response implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets totalCrossUnPnl.
      *
-     * @param null|string $totalCrossUnPnl unrealized PnL for cross positions
+     * @param null|string $totalCrossUnPnl Unrealized PnL for cross positions. USDT only in single-asset mode; USD-denominated in multi-assets mode.
      *
      * @return self
      */
@@ -606,7 +606,7 @@ class AccountInformationV3Response implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets availableBalance.
      *
-     * @param null|string $availableBalance available balance
+     * @param null|string $availableBalance Available balance. USDT only in single-asset mode; USD-denominated in multi-assets mode.
      *
      * @return self
      */
@@ -633,7 +633,7 @@ class AccountInformationV3Response implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets maxWithdrawAmount.
      *
-     * @param null|string $maxWithdrawAmount maximum transferable/withdrawable amount
+     * @param null|string $maxWithdrawAmount Maximum transferable/withdrawable amount. USDT only in single-asset mode; a maximum virtual USD amount in multi-assets mode.
      *
      * @return self
      */

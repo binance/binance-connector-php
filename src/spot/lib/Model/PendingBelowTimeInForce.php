@@ -34,7 +34,7 @@ namespace Binance\Client\Spot\Model;
  *
  * @category Class
  *
- * @description Required if &#x60;pendingBelowType&#x60; is &#x60;STOP_LOSS_LIMIT&#x60; or &#x60;TAKE_PROFIT_LIMIT&#x60;.
+ * @description Supported values: [Time In Force](/products/spot/enums#timeinforce)
  *
  * @author   OpenAPI Generator team
  *

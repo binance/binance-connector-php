@@ -14,7 +14,7 @@ function queryUserDelegationHistoryExample()
     $email = 'abc@test.com';
     $startTime = 1623319461670;
     $endTime = 1641782889000;
-    $type = OrderType::MAIN_UMFUTURE;
+    $type = OrderType::DELEGATE;
     $asset = 'BTC';
     $current = 1;
     $size = 10;

@@ -3,6 +3,7 @@
 require_once __DIR__.'/../vendor/autoload.php';
 
 use Binance\Client\SubAccount\Api\SubAccountRestApi;
+use Binance\Client\SubAccount\Model\ProductType;
 use Binance\Client\SubAccount\SubAccountRestApiUtil;
 
 function getMovePositionHistoryForSubAccountExample()
@@ -13,10 +14,11 @@ function getMovePositionHistoryForSubAccountExample()
     $symbol = 'BTCUSDT';
     $page = 1;
     $rows = 1;
+    $productType = ProductType::UM;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
     $recvWindow = 5000;
-    $response = $api->getMovePositionHistoryForSubAccount($symbol, $page, $rows, $startTime, $endTime, $recvWindow);
+    $response = $api->getMovePositionHistoryForSubAccount($symbol, $page, $rows, $productType, $startTime, $endTime, $recvWindow);
     print_r($response);
 }
 

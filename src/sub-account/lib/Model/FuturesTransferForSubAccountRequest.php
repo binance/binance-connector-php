@@ -406,7 +406,7 @@ class FuturesTransferForSubAccountRequest implements ModelInterface, \ArrayAcces
     /**
      * Sets type.
      *
-     * @param int $type 1: transfer from subaccount's spot account to its USDT-margined futures account 2: transfer from subaccount's USDT-margined futures account to its spot account 3: transfer from subaccount's spot account to its COIN-margined futures account 4:transfer from subaccount's COIN-margined futures account to its spot account
+     * @param int $type 1: transfer from subaccount's spot account to its USDT-margined futures account 2: transfer from subaccount's USDT-margined futures account to its spot account 3: transfer from subaccount's spot account to its COIN-margined futures account 4: transfer from subaccount's COIN-margined futures account to its spot account
      *
      * @return self
      */

@@ -389,7 +389,7 @@ class SubAccountFuturesAssetTransferRequest implements ModelInterface, \ArrayAcc
     /**
      * Sets futuresType.
      *
-     * @param int $futuresType 1:USDT-margined Futures，2: Coin-margined Futures
+     * @param int $futuresType 1: USDT-margined Futures，2: Coin-margined Futures
      *
      * @return self
      */

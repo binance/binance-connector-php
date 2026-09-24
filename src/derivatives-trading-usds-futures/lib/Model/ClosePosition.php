@@ -34,7 +34,7 @@ namespace Binance\Client\DerivativesTradingUsdsFutures\Model;
  *
  * @category Class
  *
- * @description Close-All，used with &#x60;STOP_MARKET&#x60; or &#x60;TAKE_PROFIT_MARKET&#x60;.\&quot;
+ * @description Close-All，used with &#x60;STOP_MARKET&#x60; or &#x60;TAKE_PROFIT_MARKET&#x60;.
  *
  * @author   OpenAPI Generator team
  *

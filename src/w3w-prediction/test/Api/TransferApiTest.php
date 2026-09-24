@@ -116,7 +116,7 @@ class TransferApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/w3w/wallet/prediction/transfer/inbound', $request->getUri()->getPath());
-        self::assertEquals('8ccbb0ef2aae3f0b3803e0500ab3fa8523d391aa1ea3dbc1e43e7513b980aa83', $queryMap['signature']);
+        self::assertEquals('32d0b4a8696fe76a9b8c2d1f0d60ab91cfe0f549177aed2ab1f7553232eafe8e', $queryMap['signature']);
     }
 
     /**
@@ -139,7 +139,7 @@ class TransferApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/w3w/wallet/prediction/transfer/outbound', $request->getUri()->getPath());
-        self::assertEquals('44b6833ded2bdcab6bd4372c68185a9d462a0910e59e05957b297fe0fc5eadfb', $queryMap['signature']);
+        self::assertEquals('75b9986259a1026ee347fa0c27098979508d4aa0a3bb419a5b859826ced78190', $queryMap['signature']);
     }
 
     /**

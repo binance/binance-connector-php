@@ -34,6 +34,8 @@ namespace Binance\Client\DerivativesTradingUsdsFutures\Model;
  *
  * @category Class
  *
+ * @description Order type
+ *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech

@@ -43,6 +43,14 @@ enum OrderType: string
     /**
      * Possible values of this enum.
      */
+    case BONUS = 'BONUS';
+
+    case REALTIME = 'REALTIME';
+
+    case REWARDS = 'REWARDS';
+
+    case ALL = 'ALL';
+
     case FAST = 'FAST';
 
     case STANDARD = 'STANDARD';
@@ -55,6 +63,10 @@ enum OrderType: string
     public static function getAllowableEnumValues()
     {
         return [
+            self::BONUS,
+            self::REALTIME,
+            self::REWARDS,
+            self::ALL,
             self::FAST,
             self::STANDARD,
         ];

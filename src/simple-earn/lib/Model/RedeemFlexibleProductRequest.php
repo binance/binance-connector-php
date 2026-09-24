@@ -160,7 +160,7 @@ class RedeemFlexibleProductRequest implements ModelInterface, \ArrayAccess, \Jso
     public function __construct(?array $data = null)
     {
         $this->setIfExists('productId', $data ?? [], null);
-        $this->setIfExists('redeemAll', $data ?? [], false);
+        $this->setIfExists('redeemAll', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('destAccount', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);

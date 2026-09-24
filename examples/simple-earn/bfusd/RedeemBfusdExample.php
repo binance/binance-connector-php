@@ -14,7 +14,7 @@ function redeemBfusdExample()
     $api = new SimpleEarnRestApi($configurationBuilder->build());
     $redeemBfusdRequest = new RedeemBfusdRequest();
     $redeemBfusdRequest->setAmount(1.0);
-    $redeemBfusdRequest->setType(OrderType::FAST);
+    $redeemBfusdRequest->setType(OrderType::BONUS);
     $response = $api->redeemBfusd($redeemBfusdRequest);
     print_r($response);
 }

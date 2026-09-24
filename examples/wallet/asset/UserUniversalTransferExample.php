@@ -13,7 +13,7 @@ function userUniversalTransferExample()
     $configurationBuilder->apiKey('apiKey')->privateKey('file:///path/to/private.key');
     $api = new WalletRestApi($configurationBuilder->build());
     $userUniversalTransferRequest = new UserUniversalTransferRequest();
-    $userUniversalTransferRequest->setType(OrderType::MAIN_UMFUTURE);
+    $userUniversalTransferRequest->setType(OrderType::DELEGATE);
     $userUniversalTransferRequest->setAsset('BTC');
     $userUniversalTransferRequest->setAmount(1.0);
     $response = $api->userUniversalTransfer($userUniversalTransferRequest);

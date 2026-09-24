@@ -1,5 +1,85 @@
 # Changelog
 
+## 7.0.0 - 2026-09-24
+
+**Derivatives Trading Portfolio Margin**
+
+### Changed (10)
+
+#### REST API
+
+- Modified response for `accountBalance()` (`GET /papi/v1/balance`):
+  - oneOf modified
+
+- Removed response schema `cancelAllUmOpenConditionalOrdersResponse`
+- Removed response schema `cancelUmConditionalOrderResponse`
+- Removed response schema `queryAllCurrentUmOpenConditionalOrdersResponse`
+- Removed response schema `queryUmConditionalOrderHistoryResponse`
+- Removed response schema `queryAllUmConditionalOrdersResponse`
+- Removed response schema `queryCurrentUmOpenConditionalOrderResponse`
+- Removed response schema `newUmConditionalOrderResponse`
+- Modified response schema `accountBalanceResponse`:
+  - oneOf modified
+
+### Removed (7)
+
+#### REST API
+
+- `cancelAllUmOpenConditionalOrders()` (`DELETE /papi/v1/um/conditional/allOpenOrders`)
+- `cancelUmConditionalOrder()` (`DELETE /papi/v1/um/conditional/order`)
+- `newUmConditionalOrder()` (`POST /papi/v1/um/conditional/order`)
+- `queryAllCurrentUmOpenConditionalOrders()` (`GET /papi/v1/um/conditional/openOrders`)
+- `queryAllUmConditionalOrders()` (`GET /papi/v1/um/conditional/allOrders`)
+- `queryCurrentUmOpenConditionalOrder()` (`GET /papi/v1/um/conditional/openOrder`)
+- `queryUmConditionalOrderHistory()` (`GET /papi/v1/um/conditional/orderHistory`)
+
+## 6.0.1 - 2026-08-25
+
+**Derivatives Trading Portfolio Margin**
+
+### Changed (14)
+
+#### REST API
+
+- Modified response for `modifyCmOrder()` (`PUT /papi/v1/cm/order`):
+  - property `avgPrice` deleted
+  - property `cumBase` deleted
+
+- Modified response for `modifyUmOrder()` (`PUT /papi/v1/um/order`):
+  - property `avgPrice` deleted
+  - property `cumQuote` deleted
+
+- Removed response field `avgPrice`
+  - affected events:
+    - `modifyCmOrderResponse`
+    - `modifyUmOrderResponse`
+- Removed response field `cumBase`
+  - affected events:
+    - `modifyCmOrderResponse`
+- Removed response field `cumQuote`
+  - affected events:
+    - `modifyUmOrderResponse`
+- Marked `cancelAllUmOpenConditionalOrders()` (`DELETE /papi/v1/um/conditional/allOpenOrders`) as deprecated.
+- Marked `cancelUmConditionalOrder()` (`DELETE /papi/v1/um/conditional/order`) as deprecated.
+- Marked `newUmConditionalOrder()` (`POST /papi/v1/um/conditional/order`) as deprecated.
+- Marked `queryAllCurrentUmOpenConditionalOrders()` (`GET /papi/v1/um/conditional/openOrders`) as deprecated.
+- Marked `queryAllUmConditionalOrders()` (`GET /papi/v1/um/conditional/allOrders`) as deprecated.
+- Marked `queryCurrentUmOpenConditionalOrder()` (`GET /papi/v1/um/conditional/openOrder`) as deprecated.
+- Marked `queryUmConditionalOrderHistory()` (`GET /papi/v1/um/conditional/orderHistory`) as deprecated.
+
+#### WebSocket Streams
+
+- Modified response field `a`:
+  - property `S` added
+  - affected events:
+    - `UserDataStreamEventsResponse`
+    - `accountUpdate`
+- Modified response field `ao`:
+  - property `ia` added
+  - affected events:
+    - `UserDataStreamEventsResponse`
+    - `algoOrderUpdate`
+
 ## 6.0.0 - 2026-07-28
 
 ### Changed (30)

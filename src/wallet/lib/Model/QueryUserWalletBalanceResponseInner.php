@@ -63,6 +63,7 @@ class QueryUserWalletBalanceResponseInner implements ModelInterface, \ArrayAcces
         'activate' => 'bool',
         'balance' => 'string',
         'walletName' => 'string',
+        'assetBalances' => '\Binance\Client\Wallet\Model\QueryUserWalletBalanceResponseInnerAssetBalancesInner[]',
     ];
 
     /**
@@ -78,6 +79,7 @@ class QueryUserWalletBalanceResponseInner implements ModelInterface, \ArrayAcces
         'activate' => null,
         'balance' => null,
         'walletName' => null,
+        'assetBalances' => null,
     ];
 
     /**
@@ -89,6 +91,7 @@ class QueryUserWalletBalanceResponseInner implements ModelInterface, \ArrayAcces
         'activate' => false,
         'balance' => false,
         'walletName' => false,
+        'assetBalances' => false,
     ];
 
     /**
@@ -108,6 +111,7 @@ class QueryUserWalletBalanceResponseInner implements ModelInterface, \ArrayAcces
         'activate' => 'activate',
         'balance' => 'balance',
         'walletName' => 'walletName',
+        'assetBalances' => 'assetBalances',
     ];
 
     /**
@@ -119,6 +123,7 @@ class QueryUserWalletBalanceResponseInner implements ModelInterface, \ArrayAcces
         'activate' => 'setActivate',
         'balance' => 'setBalance',
         'walletName' => 'setWalletName',
+        'assetBalances' => 'setAssetBalances',
     ];
 
     /**
@@ -130,6 +135,7 @@ class QueryUserWalletBalanceResponseInner implements ModelInterface, \ArrayAcces
         'activate' => 'getActivate',
         'balance' => 'getBalance',
         'walletName' => 'getWalletName',
+        'assetBalances' => 'getAssetBalances',
     ];
 
     /**
@@ -150,6 +156,7 @@ class QueryUserWalletBalanceResponseInner implements ModelInterface, \ArrayAcces
         $this->setIfExists('activate', $data ?? [], null);
         $this->setIfExists('balance', $data ?? [], null);
         $this->setIfExists('walletName', $data ?? [], null);
+        $this->setIfExists('assetBalances', $data ?? [], null);
     }
 
     /**
@@ -357,6 +364,33 @@ class QueryUserWalletBalanceResponseInner implements ModelInterface, \ArrayAcces
             throw new \InvalidArgumentException('non-nullable walletName cannot be null');
         }
         $this->container['walletName'] = $walletName;
+
+        return $this;
+    }
+
+    /**
+     * Gets assetBalances.
+     *
+     * @return null|QueryUserWalletBalanceResponseInnerAssetBalancesInner[]
+     */
+    public function getAssetBalances()
+    {
+        return $this->container['assetBalances'];
+    }
+
+    /**
+     * Sets assetBalances.
+     *
+     * @param null|QueryUserWalletBalanceResponseInnerAssetBalancesInner[] $assetBalances Per-asset balance detail for this wallet. Only present when `needBalanceDetail=true` is passed; omitted entirely otherwise.
+     *
+     * @return self
+     */
+    public function setAssetBalances($assetBalances)
+    {
+        if (is_null($assetBalances)) {
+            throw new \InvalidArgumentException('non-nullable assetBalances cannot be null');
+        }
+        $this->container['assetBalances'] = $assetBalances;
 
         return $this;
     }

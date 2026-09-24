@@ -34,7 +34,7 @@ namespace Binance\Client\Spot\Model;
  *
  * @category Class
  *
- * @description Set the response JSON. &#x60;ACK&#x60;, &#x60;RESULT&#x60;, or &#x60;FULL&#x60;. Default to &#x60;FULL&#x60;.
+ * @description &#x60;MARKET&#x60; and &#x60;LIMIT&#x60; order types default to &#x60;FULL&#x60;, all other orders default to &#x60;ACK&#x60;.
  *
  * @author   OpenAPI Generator team
  *

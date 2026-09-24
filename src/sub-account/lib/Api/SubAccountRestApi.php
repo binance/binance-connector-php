@@ -38,6 +38,7 @@ use Binance\Client\SubAccount\Model\ModifySubAccountApiKeyPermissionResponse;
 use Binance\Client\SubAccount\Model\MovePositionForSubAccountRequest;
 use Binance\Client\SubAccount\Model\MovePositionForSubAccountResponse;
 use Binance\Client\SubAccount\Model\OrderType;
+use Binance\Client\SubAccount\Model\ProductType;
 use Binance\Client\SubAccount\Model\QueryManagedSubAccountAssetDetailsResponse;
 use Binance\Client\SubAccount\Model\QueryManagedSubAccountFuturesAssetDetailsResponse;
 use Binance\Client\SubAccount\Model\QueryManagedSubAccountListResponse;
@@ -177,7 +178,7 @@ class SubAccountRestApi
      * Get Futures Position-Risk of Sub-account V2 (For Master Account) (USER_DATA)
      *
      * @param string   $email       email (required)
-     * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
+     * @param int      $futuresType 1: USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $recvWindow  recvWindow (optional)
      *
      * @return ApiResponse<GetFuturesPositionRiskOfSubAccountV2Response>
@@ -418,7 +419,7 @@ class SubAccountRestApi
      * Get Detail on Sub-account&#39;s Futures Account V2 (For Master Account) (USER_DATA)
      *
      * @param string   $email       email (required)
-     * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
+     * @param int      $futuresType 1: USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $recvWindow  recvWindow (optional)
      *
      * @return ApiResponse<GetDetailOnSubAccountsFuturesAccountV2Response>
@@ -454,21 +455,22 @@ class SubAccountRestApi
      *
      * Get Move Position History for Sub-account (For Master Account) (USER_DATA)
      *
-     * @param string   $symbol     symbol (required)
-     * @param int      $page       page (required)
-     * @param int      $rows       rows (required)
-     * @param null|int $startTime  startTime (optional)
-     * @param null|int $endTime    endTime (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param string           $symbol      symbol (required)
+     * @param int              $page        page (required)
+     * @param int              $rows        Max 100. (required)
+     * @param null|ProductType $productType Default UM. (optional)
+     * @param null|int         $startTime   startTime (optional)
+     * @param null|int         $endTime     endTime (optional)
+     * @param null|int         $recvWindow  recvWindow (optional)
      *
      * @return ApiResponse<GetMovePositionHistoryForSubAccountResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getMovePositionHistoryForSubAccount($symbol, $page, $rows, $startTime = null, $endTime = null, $recvWindow = null): ApiResponse
+    public function getMovePositionHistoryForSubAccount($symbol, $page, $rows, $productType = null, $startTime = null, $endTime = null, $recvWindow = null): ApiResponse
     {
-        return $this->assetManagementApi->getMovePositionHistoryForSubAccount($symbol, $page, $rows, $startTime, $endTime, $recvWindow);
+        return $this->assetManagementApi->getMovePositionHistoryForSubAccount($symbol, $page, $rows, $productType, $startTime, $endTime, $recvWindow);
     }
 
     /**
@@ -542,7 +544,7 @@ class SubAccountRestApi
      *
      * Get Summary of Sub-account&#39;s Futures Account V2 (For Master Account) (USER_DATA)
      *
-     * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
+     * @param int      $futuresType 1: USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $page        page (optional)
      * @param null|int $limit       limit (optional)
      * @param null|int $recvWindow  recvWindow (optional)
@@ -650,7 +652,7 @@ class SubAccountRestApi
      * Query Sub-account Futures Asset Transfer History (For Master Account) (USER_DATA)
      *
      * @param string   $email       email (required)
-     * @param int      $futuresType 1:USDT-margined Futures，2: Coin-margined Futures (required)
+     * @param int      $futuresType 1: USDT-margined Futures，2: Coin-margined Futures (required)
      * @param null|int $startTime   Cannot be earlier than 1 month ago (optional)
      * @param null|int $endTime     endTime (optional)
      * @param null|int $page        page (optional)

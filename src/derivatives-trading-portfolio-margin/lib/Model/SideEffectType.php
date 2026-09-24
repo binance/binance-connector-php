@@ -51,6 +51,8 @@ enum SideEffectType: string
 
     case AUTO_REPAY = 'AUTO_REPAY';
 
+    case AUTO_BORROW_REPAY = 'AUTO_BORROW_REPAY';
+
     /**
      * Gets allowable values of the enum.
      *
@@ -62,6 +64,7 @@ enum SideEffectType: string
             self::NO_SIDE_EFFECT,
             self::MARGIN_BUY,
             self::AUTO_REPAY,
+            self::AUTO_BORROW_REPAY,
         ];
     }
 }

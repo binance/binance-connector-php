@@ -62,6 +62,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
     protected static $openAPITypes = [
         'orderId' => 'int',
         'symbol' => 'string',
+        'pair' => 'string',
         'status' => 'string',
         'clientOrderId' => 'string',
         'price' => 'string',
@@ -69,6 +70,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origQty' => 'string',
         'executedQty' => 'string',
         'cumQuote' => 'string',
+        'cumBase' => 'string',
         'timeInForce' => 'string',
         'type' => 'string',
         'reduceOnly' => 'bool',
@@ -94,6 +96,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
     protected static $openAPIFormats = [
         'orderId' => 'int64',
         'symbol' => null,
+        'pair' => null,
         'status' => null,
         'clientOrderId' => null,
         'price' => null,
@@ -101,6 +104,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origQty' => null,
         'executedQty' => null,
         'cumQuote' => null,
+        'cumBase' => null,
         'timeInForce' => null,
         'type' => null,
         'reduceOnly' => null,
@@ -122,6 +126,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
     protected static array $openAPINullables = [
         'orderId' => false,
         'symbol' => false,
+        'pair' => false,
         'status' => false,
         'clientOrderId' => false,
         'price' => false,
@@ -129,6 +134,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origQty' => false,
         'executedQty' => false,
         'cumQuote' => false,
+        'cumBase' => false,
         'timeInForce' => false,
         'type' => false,
         'reduceOnly' => false,
@@ -158,6 +164,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
     protected static $attributeMap = [
         'orderId' => 'orderId',
         'symbol' => 'symbol',
+        'pair' => 'pair',
         'status' => 'status',
         'clientOrderId' => 'clientOrderId',
         'price' => 'price',
@@ -165,6 +172,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origQty' => 'origQty',
         'executedQty' => 'executedQty',
         'cumQuote' => 'cumQuote',
+        'cumBase' => 'cumBase',
         'timeInForce' => 'timeInForce',
         'type' => 'type',
         'reduceOnly' => 'reduceOnly',
@@ -186,6 +194,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
     protected static $setters = [
         'orderId' => 'setOrderId',
         'symbol' => 'setSymbol',
+        'pair' => 'setPair',
         'status' => 'setStatus',
         'clientOrderId' => 'setClientOrderId',
         'price' => 'setPrice',
@@ -193,6 +202,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origQty' => 'setOrigQty',
         'executedQty' => 'setExecutedQty',
         'cumQuote' => 'setCumQuote',
+        'cumBase' => 'setCumBase',
         'timeInForce' => 'setTimeInForce',
         'type' => 'setType',
         'reduceOnly' => 'setReduceOnly',
@@ -214,6 +224,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
     protected static $getters = [
         'orderId' => 'getOrderId',
         'symbol' => 'getSymbol',
+        'pair' => 'getPair',
         'status' => 'getStatus',
         'clientOrderId' => 'getClientOrderId',
         'price' => 'getPrice',
@@ -221,6 +232,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origQty' => 'getOrigQty',
         'executedQty' => 'getExecutedQty',
         'cumQuote' => 'getCumQuote',
+        'cumBase' => 'getCumBase',
         'timeInForce' => 'getTimeInForce',
         'type' => 'getType',
         'reduceOnly' => 'getReduceOnly',
@@ -251,6 +263,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
     {
         $this->setIfExists('orderId', $data ?? [], null);
         $this->setIfExists('symbol', $data ?? [], null);
+        $this->setIfExists('pair', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('clientOrderId', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
@@ -258,6 +271,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         $this->setIfExists('origQty', $data ?? [], null);
         $this->setIfExists('executedQty', $data ?? [], null);
         $this->setIfExists('cumQuote', $data ?? [], null);
+        $this->setIfExists('cumBase', $data ?? [], null);
         $this->setIfExists('timeInForce', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('reduceOnly', $data ?? [], null);
@@ -454,6 +468,33 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
     }
 
     /**
+     * Gets pair.
+     *
+     * @return null|string
+     */
+    public function getPair()
+    {
+        return $this->container['pair'];
+    }
+
+    /**
+     * Sets pair.
+     *
+     * @param null|string $pair pair
+     *
+     * @return self
+     */
+    public function setPair($pair)
+    {
+        if (is_null($pair)) {
+            throw new \InvalidArgumentException('non-nullable pair cannot be null');
+        }
+        $this->container['pair'] = $pair;
+
+        return $this;
+    }
+
+    /**
      * Gets status.
      *
      * @return null|string
@@ -638,6 +679,33 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable cumQuote cannot be null');
         }
         $this->container['cumQuote'] = $cumQuote;
+
+        return $this;
+    }
+
+    /**
+     * Gets cumBase.
+     *
+     * @return null|string
+     */
+    public function getCumBase()
+    {
+        return $this->container['cumBase'];
+    }
+
+    /**
+     * Sets cumBase.
+     *
+     * @param null|string $cumBase cum Base
+     *
+     * @return self
+     */
+    public function setCumBase($cumBase)
+    {
+        if (is_null($cumBase)) {
+            throw new \InvalidArgumentException('non-nullable cumBase cannot be null');
+        }
+        $this->container['cumBase'] = $cumBase;
 
         return $this;
     }

@@ -34,7 +34,7 @@ namespace Binance\Client\DerivativesTradingPortfolioMargin\Model;
  *
  * @category Class
  *
- * @description Default &#x60;BOTH&#x60; for One-way Mode; &#x60;LONG&#x60; or &#x60;SHORT&#x60; for Hedge Mode
+ * @description Default &#x60;BOTH&#x60; for One-way Mode ; &#x60;LONG&#x60; or &#x60;SHORT&#x60; for Hedge Mode. It must be sent in Hedge Mode.
  *
  * @author   OpenAPI Generator team
  *

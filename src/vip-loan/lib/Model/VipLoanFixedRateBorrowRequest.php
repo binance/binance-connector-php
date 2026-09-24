@@ -183,7 +183,7 @@ class VipLoanFixedRateBorrowRequest implements ModelInterface, \ArrayAccess, \Js
         $this->setIfExists('borrowUid', $data ?? [], null);
         $this->setIfExists('collateralCoin', $data ?? [], null);
         $this->setIfExists('collateralAccountId', $data ?? [], null);
-        $this->setIfExists('autoRepay', $data ?? [], true);
+        $this->setIfExists('autoRepay', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }
 

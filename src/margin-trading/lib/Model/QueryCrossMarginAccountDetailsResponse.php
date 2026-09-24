@@ -68,7 +68,6 @@ class QueryCrossMarginAccountDetailsResponse implements ModelInterface, \ArrayAc
         'totalLiabilityOfBtc' => 'string',
         'totalNetAssetOfBtc' => 'string',
         'totalCollateralValueInUSDT' => 'string',
-        'totalOpenOrderLossInUSDT' => 'string',
         'tradeEnabled' => 'bool',
         'transferInEnabled' => 'bool',
         'transferOutEnabled' => 'bool',
@@ -94,7 +93,6 @@ class QueryCrossMarginAccountDetailsResponse implements ModelInterface, \ArrayAc
         'totalLiabilityOfBtc' => null,
         'totalNetAssetOfBtc' => null,
         'totalCollateralValueInUSDT' => null,
-        'totalOpenOrderLossInUSDT' => null,
         'tradeEnabled' => null,
         'transferInEnabled' => null,
         'transferOutEnabled' => null,
@@ -116,7 +114,6 @@ class QueryCrossMarginAccountDetailsResponse implements ModelInterface, \ArrayAc
         'totalLiabilityOfBtc' => false,
         'totalNetAssetOfBtc' => false,
         'totalCollateralValueInUSDT' => false,
-        'totalOpenOrderLossInUSDT' => false,
         'tradeEnabled' => false,
         'transferInEnabled' => false,
         'transferOutEnabled' => false,
@@ -146,7 +143,6 @@ class QueryCrossMarginAccountDetailsResponse implements ModelInterface, \ArrayAc
         'totalLiabilityOfBtc' => 'totalLiabilityOfBtc',
         'totalNetAssetOfBtc' => 'totalNetAssetOfBtc',
         'totalCollateralValueInUSDT' => 'TotalCollateralValueInUSDT',
-        'totalOpenOrderLossInUSDT' => 'totalOpenOrderLossInUSDT',
         'tradeEnabled' => 'tradeEnabled',
         'transferInEnabled' => 'transferInEnabled',
         'transferOutEnabled' => 'transferOutEnabled',
@@ -168,7 +164,6 @@ class QueryCrossMarginAccountDetailsResponse implements ModelInterface, \ArrayAc
         'totalLiabilityOfBtc' => 'setTotalLiabilityOfBtc',
         'totalNetAssetOfBtc' => 'setTotalNetAssetOfBtc',
         'totalCollateralValueInUSDT' => 'setTotalCollateralValueInUSDT',
-        'totalOpenOrderLossInUSDT' => 'setTotalOpenOrderLossInUSDT',
         'tradeEnabled' => 'setTradeEnabled',
         'transferInEnabled' => 'setTransferInEnabled',
         'transferOutEnabled' => 'setTransferOutEnabled',
@@ -190,7 +185,6 @@ class QueryCrossMarginAccountDetailsResponse implements ModelInterface, \ArrayAc
         'totalLiabilityOfBtc' => 'getTotalLiabilityOfBtc',
         'totalNetAssetOfBtc' => 'getTotalNetAssetOfBtc',
         'totalCollateralValueInUSDT' => 'getTotalCollateralValueInUSDT',
-        'totalOpenOrderLossInUSDT' => 'getTotalOpenOrderLossInUSDT',
         'tradeEnabled' => 'getTradeEnabled',
         'transferInEnabled' => 'getTransferInEnabled',
         'transferOutEnabled' => 'getTransferOutEnabled',
@@ -221,7 +215,6 @@ class QueryCrossMarginAccountDetailsResponse implements ModelInterface, \ArrayAc
         $this->setIfExists('totalLiabilityOfBtc', $data ?? [], null);
         $this->setIfExists('totalNetAssetOfBtc', $data ?? [], null);
         $this->setIfExists('totalCollateralValueInUSDT', $data ?? [], null);
-        $this->setIfExists('totalOpenOrderLossInUSDT', $data ?? [], null);
         $this->setIfExists('tradeEnabled', $data ?? [], null);
         $this->setIfExists('transferInEnabled', $data ?? [], null);
         $this->setIfExists('transferOutEnabled', $data ?? [], null);
@@ -569,33 +562,6 @@ class QueryCrossMarginAccountDetailsResponse implements ModelInterface, \ArrayAc
             throw new \InvalidArgumentException('non-nullable totalCollateralValueInUSDT cannot be null');
         }
         $this->container['totalCollateralValueInUSDT'] = $totalCollateralValueInUSDT;
-
-        return $this;
-    }
-
-    /**
-     * Gets totalOpenOrderLossInUSDT.
-     *
-     * @return null|string
-     */
-    public function getTotalOpenOrderLossInUSDT()
-    {
-        return $this->container['totalOpenOrderLossInUSDT'];
-    }
-
-    /**
-     * Sets totalOpenOrderLossInUSDT.
-     *
-     * @param null|string $totalOpenOrderLossInUSDT total Open Order Loss In USDT
-     *
-     * @return self
-     */
-    public function setTotalOpenOrderLossInUSDT($totalOpenOrderLossInUSDT)
-    {
-        if (is_null($totalOpenOrderLossInUSDT)) {
-            throw new \InvalidArgumentException('non-nullable totalOpenOrderLossInUSDT cannot be null');
-        }
-        $this->container['totalOpenOrderLossInUSDT'] = $totalOpenOrderLossInUSDT;
 
         return $this;
     }

@@ -1283,19 +1283,19 @@ class DerivativesTradingUsdsFuturesRestApi
      *
      * All Orders (USER_DATA)
      *
-     * @param string   $symbol     symbol (required)
-     * @param null|int $orderId    orderId (optional)
-     * @param null|int $startTime  Start time (optional)
-     * @param null|int $endTime    End time (optional)
-     * @param null|int $limit      limit (optional)
-     * @param null|int $recvWindow recvWindow (optional)
+     * @param null|string $symbol     symbol (optional)
+     * @param null|int    $orderId    orderId (optional)
+     * @param null|int    $startTime  Start time (optional)
+     * @param null|int    $endTime    End time (optional)
+     * @param null|int    $limit      limit (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
      *
      * @return ApiResponse<AllOrdersResponse>
      *
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function allOrders($symbol, $orderId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
+    public function allOrders($symbol = null, $orderId = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
         return $this->tradeApi->allOrders($symbol, $orderId, $startTime, $endTime, $limit, $recvWindow);
     }

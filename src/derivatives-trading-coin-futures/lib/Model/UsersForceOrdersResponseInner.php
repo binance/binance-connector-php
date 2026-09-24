@@ -70,6 +70,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origQty' => 'string',
         'executedQty' => 'string',
         'cumBase' => 'string',
+        'cumQuote' => 'string',
         'timeInForce' => 'string',
         'type' => 'string',
         'reduceOnly' => 'bool',
@@ -82,6 +83,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origType' => 'string',
         'time' => 'int',
         'updateTime' => 'int',
+        'goodTillDate' => 'int',
     ];
 
     /**
@@ -104,6 +106,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origQty' => null,
         'executedQty' => null,
         'cumBase' => null,
+        'cumQuote' => null,
         'timeInForce' => null,
         'type' => null,
         'reduceOnly' => null,
@@ -116,6 +119,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origType' => null,
         'time' => 'int64',
         'updateTime' => 'int64',
+        'goodTillDate' => 'int64',
     ];
 
     /**
@@ -134,6 +138,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origQty' => false,
         'executedQty' => false,
         'cumBase' => false,
+        'cumQuote' => false,
         'timeInForce' => false,
         'type' => false,
         'reduceOnly' => false,
@@ -146,6 +151,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origType' => false,
         'time' => false,
         'updateTime' => false,
+        'goodTillDate' => false,
     ];
 
     /**
@@ -172,6 +178,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origQty' => 'origQty',
         'executedQty' => 'executedQty',
         'cumBase' => 'cumBase',
+        'cumQuote' => 'cumQuote',
         'timeInForce' => 'timeInForce',
         'type' => 'type',
         'reduceOnly' => 'reduceOnly',
@@ -184,6 +191,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origType' => 'origType',
         'time' => 'time',
         'updateTime' => 'updateTime',
+        'goodTillDate' => 'goodTillDate',
     ];
 
     /**
@@ -202,6 +210,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origQty' => 'setOrigQty',
         'executedQty' => 'setExecutedQty',
         'cumBase' => 'setCumBase',
+        'cumQuote' => 'setCumQuote',
         'timeInForce' => 'setTimeInForce',
         'type' => 'setType',
         'reduceOnly' => 'setReduceOnly',
@@ -214,6 +223,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origType' => 'setOrigType',
         'time' => 'setTime',
         'updateTime' => 'setUpdateTime',
+        'goodTillDate' => 'setGoodTillDate',
     ];
 
     /**
@@ -232,6 +242,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origQty' => 'getOrigQty',
         'executedQty' => 'getExecutedQty',
         'cumBase' => 'getCumBase',
+        'cumQuote' => 'getCumQuote',
         'timeInForce' => 'getTimeInForce',
         'type' => 'getType',
         'reduceOnly' => 'getReduceOnly',
@@ -244,6 +255,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         'origType' => 'getOrigType',
         'time' => 'getTime',
         'updateTime' => 'getUpdateTime',
+        'goodTillDate' => 'getGoodTillDate',
     ];
 
     /**
@@ -271,6 +283,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         $this->setIfExists('origQty', $data ?? [], null);
         $this->setIfExists('executedQty', $data ?? [], null);
         $this->setIfExists('cumBase', $data ?? [], null);
+        $this->setIfExists('cumQuote', $data ?? [], null);
         $this->setIfExists('timeInForce', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('reduceOnly', $data ?? [], null);
@@ -283,6 +296,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
         $this->setIfExists('origType', $data ?? [], null);
         $this->setIfExists('time', $data ?? [], null);
         $this->setIfExists('updateTime', $data ?? [], null);
+        $this->setIfExists('goodTillDate', $data ?? [], null);
     }
 
     /**
@@ -507,7 +521,7 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets status.
      *
-     * @param null|string $status Enum：completed，processing
+     * @param null|string $status status
      *
      * @return self
      */
@@ -679,6 +693,33 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable cumBase cannot be null');
         }
         $this->container['cumBase'] = $cumBase;
+
+        return $this;
+    }
+
+    /**
+     * Gets cumQuote.
+     *
+     * @return null|string
+     */
+    public function getCumQuote()
+    {
+        return $this->container['cumQuote'];
+    }
+
+    /**
+     * Sets cumQuote.
+     *
+     * @param null|string $cumQuote cumulative quote asset amount
+     *
+     * @return self
+     */
+    public function setCumQuote($cumQuote)
+    {
+        if (is_null($cumQuote)) {
+            throw new \InvalidArgumentException('non-nullable cumQuote cannot be null');
+        }
+        $this->container['cumQuote'] = $cumQuote;
 
         return $this;
     }
@@ -1003,6 +1044,33 @@ class UsersForceOrdersResponseInner implements ModelInterface, \ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable updateTime cannot be null');
         }
         $this->container['updateTime'] = $updateTime;
+
+        return $this;
+    }
+
+    /**
+     * Gets goodTillDate.
+     *
+     * @return null|int
+     */
+    public function getGoodTillDate()
+    {
+        return $this->container['goodTillDate'];
+    }
+
+    /**
+     * Sets goodTillDate.
+     *
+     * @param null|int $goodTillDate order pre-set auto cancel time for TIF GTD order
+     *
+     * @return self
+     */
+    public function setGoodTillDate($goodTillDate)
+    {
+        if (is_null($goodTillDate)) {
+            throw new \InvalidArgumentException('non-nullable goodTillDate cannot be null');
+        }
+        $this->container['goodTillDate'] = $goodTillDate;
 
         return $this;
     }

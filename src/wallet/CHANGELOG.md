@@ -1,5 +1,27 @@
 # Changelog
 
+## 7.0.0 - 2026-09-24
+
+**Wallet**
+
+### Added (1)
+
+- `getSpotAssetTags()` (`GET /sapi/v1/spot/asset/tags`)
+
+### Changed (6)
+
+- Added parameter `needBalanceDetail`
+  - affected methods:
+    - `queryUserWalletBalance()` (`GET /sapi/v1/asset/wallet/balance`)
+- Modified response for `queryUserWalletBalance()` (`GET /sapi/v1/asset/wallet/balance`):
+  - items: property `assetBalances` added
+  - items: item property `assetBalances` added
+
+- Added response schema `getSpotAssetTagsResponse`
+- Modified response schema `queryUserWalletBalanceResponse`:
+  - items: property `assetBalances` added
+  - items: item property `assetBalances` added
+
 ## 7.0.0 - 2026-07-28
 
 ### Changed (13)
