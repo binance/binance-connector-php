@@ -334,7 +334,7 @@ class GetWbethRewardsHistoryResponseRowsInner implements ModelInterface, \ArrayA
     /**
      * Sets amountInETH.
      *
-     * @param null|string $amountInETH amountInETH
+     * @param null|string $amountInETH Estimated rewards accrued within WBETH
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class GetWbethRewardsHistoryResponseRowsInner implements ModelInterface, \ArrayA
     /**
      * Sets holding.
      *
-     * @param null|string $holding holding
+     * @param null|string $holding WBETH holding balance
      *
      * @return self
      */

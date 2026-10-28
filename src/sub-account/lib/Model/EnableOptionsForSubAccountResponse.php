@@ -313,7 +313,7 @@ class EnableOptionsForSubAccountResponse implements ModelInterface, \ArrayAccess
     /**
      * Sets isEOptionsEnabled.
      *
-     * @param null|bool $isEOptionsEnabled isEOptionsEnabled
+     * @param null|bool $isEOptionsEnabled true or false
      *
      * @return self
      */

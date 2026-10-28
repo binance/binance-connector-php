@@ -381,7 +381,7 @@ class GetAssetsThatCanBeConvertedIntoBnbResponse implements ModelInterface, \Arr
     /**
      * Sets dribbletPercentage.
      *
-     * @param null|string $dribbletPercentage dribbletPercentage
+     * @param null|string $dribbletPercentage Commission fee
      *
      * @return self
      */

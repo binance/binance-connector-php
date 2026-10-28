@@ -1,5 +1,17 @@
 # Changelog
 
+## 8.0.0 - 2026-10-28
+
+**Derivatives Trading COIN Futures**
+
+### Changed (1)
+
+#### REST API
+
+- Deleted parameter `page`
+  - affected methods:
+    - `getIncomeHistory()` (`GET /dapi/v1/income`)
+
 ## 7.0.0 - 2026-09-24
 
 **Derivatives Trading Coin Futures**

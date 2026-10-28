@@ -1091,7 +1091,6 @@ class MarketApi
 
         $operationHost = $this->clientConfig->getUrl();
 
-        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
         $query = ObjectSerializer::buildQuery($queryParams);
 
         return new Request(
@@ -1705,7 +1704,7 @@ class MarketApi
      * Query Reference Price Calculation
      *
      * @param string            $symbol       symbol (required)
-     * @param null|SymbolStatus $symbolStatus Supported values: &#x60;TRADING&#x60;, &#x60;HALT&#x60;, &#x60;BREAK&#x60; (optional)
+     * @param null|SymbolStatus $symbolStatus Supported values: &#x60;TRADING&#x60;, &#x60;HALT&#x60;, &#x60;BREAK&#x60;, &#x60;CANCEL_ONLY&#x60; (optional)
      *
      * @return ApiResponse<ReferencePriceCalculationResponse>
      *
@@ -1723,7 +1722,7 @@ class MarketApi
      * Query Reference Price Calculation
      *
      * @param string            $symbol       (required)
-     * @param null|SymbolStatus $symbolStatus Supported values: &#x60;TRADING&#x60;, &#x60;HALT&#x60;, &#x60;BREAK&#x60; (optional)
+     * @param null|SymbolStatus $symbolStatus Supported values: &#x60;TRADING&#x60;, &#x60;HALT&#x60;, &#x60;BREAK&#x60;, &#x60;CANCEL_ONLY&#x60; (optional)
      *
      * @return ApiResponse<ReferencePriceCalculationResponse>
      *
@@ -1803,7 +1802,7 @@ class MarketApi
      * Create request for operation 'referencePriceCalculation'.
      *
      * @param string            $symbol       (required)
-     * @param null|SymbolStatus $symbolStatus Supported values: &#x60;TRADING&#x60;, &#x60;HALT&#x60;, &#x60;BREAK&#x60; (optional)
+     * @param null|SymbolStatus $symbolStatus Supported values: &#x60;TRADING&#x60;, &#x60;HALT&#x60;, &#x60;BREAK&#x60;, &#x60;CANCEL_ONLY&#x60; (optional)
      *
      * @return Request
      *

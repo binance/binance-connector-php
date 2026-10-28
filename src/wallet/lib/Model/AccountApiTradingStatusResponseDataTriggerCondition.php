@@ -293,7 +293,7 @@ class AccountApiTradingStatusResponseDataTriggerCondition implements ModelInterf
     /**
      * Sets gCR.
      *
-     * @param null|int $gCR gCR
+     * @param null|int $gCR Number of GTC orders
      *
      * @return self
      */
@@ -320,7 +320,7 @@ class AccountApiTradingStatusResponseDataTriggerCondition implements ModelInterf
     /**
      * Sets iFER.
      *
-     * @param null|int $iFER iFER
+     * @param null|int $iFER Number of FOK/IOC orders
      *
      * @return self
      */
@@ -347,7 +347,7 @@ class AccountApiTradingStatusResponseDataTriggerCondition implements ModelInterf
     /**
      * Sets uFR.
      *
-     * @param null|int $uFR uFR
+     * @param null|int $uFR Number of orders
      *
      * @return self
      */

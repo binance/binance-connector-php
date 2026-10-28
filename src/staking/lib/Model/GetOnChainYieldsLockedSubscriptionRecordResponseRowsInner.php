@@ -579,7 +579,7 @@ class GetOnChainYieldsLockedSubscriptionRecordResponseRowsInner implements Model
     /**
      * Sets type.
      *
-     * @param null|string $type type
+     * @param null|string $type NORMAL for normal staking, AUTO for auto-subscription order
      *
      * @return self
      */
@@ -606,7 +606,7 @@ class GetOnChainYieldsLockedSubscriptionRecordResponseRowsInner implements Model
     /**
      * Sets sourceAccount.
      *
-     * @param null|string $sourceAccount sourceAccount
+     * @param null|string $sourceAccount SPOT, FUNDING, SPOTANDFUNDING
      *
      * @return self
      */
@@ -633,7 +633,7 @@ class GetOnChainYieldsLockedSubscriptionRecordResponseRowsInner implements Model
     /**
      * Sets amtFromSpot.
      *
-     * @param null|string $amtFromSpot amtFromSpot
+     * @param null|string $amtFromSpot Display if sourceAccount is SPOTANDFUNDING
      *
      * @return self
      */
@@ -660,7 +660,7 @@ class GetOnChainYieldsLockedSubscriptionRecordResponseRowsInner implements Model
     /**
      * Sets amtFromFunding.
      *
-     * @param null|string $amtFromFunding amtFromFunding
+     * @param null|string $amtFromFunding Display if sourceAccount is SPOTANDFUNDING
      *
      * @return self
      */
@@ -687,7 +687,7 @@ class GetOnChainYieldsLockedSubscriptionRecordResponseRowsInner implements Model
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status PURCHASING/SUCCESS/FAILED
      *
      * @return self
      */

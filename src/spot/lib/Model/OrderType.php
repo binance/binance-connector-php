@@ -34,7 +34,7 @@ namespace Binance\Client\Spot\Model;
  *
  * @category Class
  *
- * @description Please see [Enums](/products/spot/enums#ordertypes) for supported values.
+ * @description Please see Enums for supported values.
  *
  * @author   OpenAPI Generator team
  *

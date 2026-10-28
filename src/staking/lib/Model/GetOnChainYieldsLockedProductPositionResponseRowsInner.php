@@ -433,7 +433,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets positionId.
      *
-     * @param null|string $positionId positionId
+     * @param null|string $positionId Locked position ID
      *
      * @return self
      */
@@ -460,7 +460,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets projectId.
      *
-     * @param null|string $projectId projectId
+     * @param null|string $projectId Locked project ID
      *
      * @return self
      */
@@ -487,7 +487,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets asset.
      *
-     * @param null|string $asset asset
+     * @param null|string $asset Locked asset
      *
      * @return self
      */
@@ -514,7 +514,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets amount.
      *
-     * @param null|string $amount amount
+     * @param null|string $amount Locked Amount
      *
      * @return self
      */
@@ -541,7 +541,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets purchaseTime.
      *
-     * @param null|string $purchaseTime purchaseTime
+     * @param null|string $purchaseTime Subscription time
      *
      * @return self
      */
@@ -568,7 +568,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets duration.
      *
-     * @param null|string $duration duration
+     * @param null|string $duration Lock period(days)
      *
      * @return self
      */
@@ -595,7 +595,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets accrualDays.
      *
-     * @param null|string $accrualDays accrualDays
+     * @param null|string $accrualDays Accrue days
      *
      * @return self
      */
@@ -622,7 +622,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets rewardAsset.
      *
-     * @param null|string $rewardAsset rewardAsset
+     * @param null|string $rewardAsset Earned asset
      *
      * @return self
      */
@@ -676,7 +676,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets rewardAmt.
      *
-     * @param null|string $rewardAmt rewardAmt
+     * @param null|string $rewardAmt Earned amount
      *
      * @return self
      */
@@ -703,7 +703,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets nextPay.
      *
-     * @param null|string $nextPay nextPay
+     * @param null|string $nextPay Next estimated rewards payment
      *
      * @return self
      */
@@ -730,7 +730,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets nextPayDate.
      *
-     * @param null|string $nextPayDate nextPayDate
+     * @param null|string $nextPayDate Next rewards payment date
      *
      * @return self
      */
@@ -757,7 +757,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets payPeriod.
      *
-     * @param null|string $payPeriod payPeriod
+     * @param null|string $payPeriod Payment cycle
      *
      * @return self
      */
@@ -784,7 +784,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets rewardsPayDate.
      *
-     * @param null|string $rewardsPayDate rewardsPayDate
+     * @param null|string $rewardsPayDate Rewards payment date when maturity
      *
      * @return self
      */
@@ -811,7 +811,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets rewardsEndDate.
      *
-     * @param null|string $rewardsEndDate rewardsEndDate
+     * @param null|string $rewardsEndDate Rewards accrual end date
      *
      * @return self
      */
@@ -838,7 +838,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets deliverDate.
      *
-     * @param null|string $deliverDate deliverDate
+     * @param null|string $deliverDate Redemption arrival time(include early redemption or natural maturity; if auto-subscribe is on, not response this one)
      *
      * @return self
      */
@@ -865,7 +865,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets nextSubscriptionDate.
      *
-     * @param null|string $nextSubscriptionDate nextSubscriptionDate
+     * @param null|string $nextSubscriptionDate Response when auto-subscribe on
      *
      * @return self
      */
@@ -892,7 +892,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets redeemingAmt.
      *
-     * @param null|string $redeemingAmt redeemingAmt
+     * @param null|string $redeemingAmt Amount under redemption when auto-subsceibe is on but left quota is less than stake amount
      *
      * @return self
      */
@@ -919,7 +919,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets redeemTo.
      *
-     * @param null|string $redeemTo redeemTo
+     * @param null|string $redeemTo Redeem to simple earn Flexible product or Spot wallet, \"SPOT\":spot wallet
      *
      * @return self
      */
@@ -946,7 +946,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets canRedeemEarly.
      *
-     * @param null|bool $canRedeemEarly canRedeemEarly
+     * @param null|bool $canRedeemEarly When it is true, early redemption can be operated
      *
      * @return self
      */
@@ -973,7 +973,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets autoSubscribe.
      *
-     * @param null|bool $autoSubscribe autoSubscribe
+     * @param null|bool $autoSubscribe When it is true, auto subscribe can be operated
      *
      * @return self
      */
@@ -1000,7 +1000,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets type.
      *
-     * @param null|string $type type
+     * @param null|string $type AUTO：auto-subscribe order； NORMAL：normal-subscribe order
      *
      * @return self
      */
@@ -1027,7 +1027,7 @@ class GetOnChainYieldsLockedProductPositionResponseRowsInner implements ModelInt
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status HOLDING,REDEEMING,RENEWING:auto subscribing,NEW_TRANSFERRING:Redeeming to Simple Earn flexible
      *
      * @return self
      */

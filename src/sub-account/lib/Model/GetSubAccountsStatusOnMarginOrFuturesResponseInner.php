@@ -321,7 +321,7 @@ class GetSubAccountsStatusOnMarginOrFuturesResponseInner implements ModelInterfa
     /**
      * Sets email.
      *
-     * @param null|string $email email
+     * @param null|string $email user email
      *
      * @return self
      */
@@ -348,7 +348,7 @@ class GetSubAccountsStatusOnMarginOrFuturesResponseInner implements ModelInterfa
     /**
      * Sets isSubUserEnabled.
      *
-     * @param null|bool $isSubUserEnabled isSubUserEnabled
+     * @param null|bool $isSubUserEnabled true or false
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class GetSubAccountsStatusOnMarginOrFuturesResponseInner implements ModelInterfa
     /**
      * Sets isUserActive.
      *
-     * @param null|bool $isUserActive isUserActive
+     * @param null|bool $isUserActive true or false
      *
      * @return self
      */
@@ -402,7 +402,7 @@ class GetSubAccountsStatusOnMarginOrFuturesResponseInner implements ModelInterfa
     /**
      * Sets insertTime.
      *
-     * @param null|int $insertTime insertTime
+     * @param null|int $insertTime sub account create time
      *
      * @return self
      */
@@ -429,7 +429,7 @@ class GetSubAccountsStatusOnMarginOrFuturesResponseInner implements ModelInterfa
     /**
      * Sets isMarginEnabled.
      *
-     * @param null|bool $isMarginEnabled isMarginEnabled
+     * @param null|bool $isMarginEnabled true or false for margin
      *
      * @return self
      */
@@ -456,7 +456,7 @@ class GetSubAccountsStatusOnMarginOrFuturesResponseInner implements ModelInterfa
     /**
      * Sets isFutureEnabled.
      *
-     * @param null|bool $isFutureEnabled isFutureEnabled
+     * @param null|bool $isFutureEnabled true or false for futures
      *
      * @return self
      */
@@ -483,7 +483,7 @@ class GetSubAccountsStatusOnMarginOrFuturesResponseInner implements ModelInterfa
     /**
      * Sets mobile.
      *
-     * @param null|int $mobile mobile
+     * @param null|int $mobile user mobile number
      *
      * @return self
      */

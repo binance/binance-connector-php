@@ -422,7 +422,7 @@ class GetFlexibleLoanRepaymentHistoryResponseRowsInner implements ModelInterface
     /**
      * Sets repayStatus.
      *
-     * @param null|string $repayStatus repayStatus
+     * @param null|string $repayStatus REPAID, REPAYING, FAILED
      *
      * @return self
      */

@@ -2849,7 +2849,6 @@ class AccountApi
      * @param null|IncomeType $incomeType Income type. (optional)
      * @param null|int        $startTime  Timestamp in milliseconds (inclusive start). (optional)
      * @param null|int        $endTime    Timestamp in milliseconds (inclusive end). (optional)
-     * @param null|int        $page       Pagination page number. (optional)
      * @param null|int        $limit      Maximum number of records to return. (optional)
      * @param null|int        $recvWindow recvWindow (optional)
      *
@@ -2858,9 +2857,9 @@ class AccountApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getIncomeHistory($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null): ApiResponse
+    public function getIncomeHistory($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
-        return $this->getIncomeHistoryWithHttpInfo($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
+        return $this->getIncomeHistoryWithHttpInfo($symbol, $incomeType, $startTime, $endTime, $limit, $recvWindow);
     }
 
     /**
@@ -2872,7 +2871,6 @@ class AccountApi
      * @param null|IncomeType $incomeType Income type. (optional)
      * @param null|int        $startTime  Timestamp in milliseconds (inclusive start). (optional)
      * @param null|int        $endTime    Timestamp in milliseconds (inclusive end). (optional)
-     * @param null|int        $page       Pagination page number. (optional)
      * @param null|int        $limit      Maximum number of records to return. (optional)
      * @param null|int        $recvWindow (optional)
      *
@@ -2881,9 +2879,9 @@ class AccountApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getIncomeHistoryWithHttpInfo($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null): ApiResponse
+    public function getIncomeHistoryWithHttpInfo($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->getIncomeHistoryRequest($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
+        $request = $this->getIncomeHistoryRequest($symbol, $incomeType, $startTime, $endTime, $limit, $recvWindow);
 
         try {
             try {
@@ -2957,7 +2955,6 @@ class AccountApi
      * @param null|IncomeType $incomeType Income type. (optional)
      * @param null|int        $startTime  Timestamp in milliseconds (inclusive start). (optional)
      * @param null|int        $endTime    Timestamp in milliseconds (inclusive end). (optional)
-     * @param null|int        $page       Pagination page number. (optional)
      * @param null|int        $limit      Maximum number of records to return. (optional)
      * @param null|int        $recvWindow (optional)
      *
@@ -2965,7 +2962,7 @@ class AccountApi
      *
      * @throws \InvalidArgumentException
      */
-    public function getIncomeHistoryRequest($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null)
+    public function getIncomeHistoryRequest($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['getIncomeHistory'][0];
 
@@ -3015,15 +3012,6 @@ class AccountApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $endTime,
             'endTime', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode

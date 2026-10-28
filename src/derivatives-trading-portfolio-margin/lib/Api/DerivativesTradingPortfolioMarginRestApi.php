@@ -410,7 +410,6 @@ class DerivativesTradingPortfolioMarginRestApi
      * @param null|IncomeType $incomeType incomeType (optional)
      * @param null|int        $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int        $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int        $page       page (optional)
      * @param null|int        $limit      Number of results returned. (optional)
      * @param null|int        $recvWindow recvWindow (optional)
      *
@@ -419,9 +418,9 @@ class DerivativesTradingPortfolioMarginRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getCmIncomeHistory($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null): ApiResponse
+    public function getCmIncomeHistory($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
-        return $this->accountApi->getCmIncomeHistory($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
+        return $this->accountApi->getCmIncomeHistory($symbol, $incomeType, $startTime, $endTime, $limit, $recvWindow);
     }
 
     /**
@@ -618,7 +617,6 @@ class DerivativesTradingPortfolioMarginRestApi
      * @param null|IncomeType $incomeType Income type. (optional)
      * @param null|int        $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int        $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int        $page       Page number. (optional)
      * @param null|int        $limit      Number of results returned. (optional)
      * @param null|int        $recvWindow recvWindow (optional)
      *
@@ -627,9 +625,9 @@ class DerivativesTradingPortfolioMarginRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getUmIncomeHistory($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null): ApiResponse
+    public function getUmIncomeHistory($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
-        return $this->accountApi->getUmIncomeHistory($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
+        return $this->accountApi->getUmIncomeHistory($symbol, $incomeType, $startTime, $endTime, $limit, $recvWindow);
     }
 
     /**

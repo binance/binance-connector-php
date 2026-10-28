@@ -1,5 +1,31 @@
 # Changelog
 
+## 8.0.0 - 2026-10-28
+
+**Algo**
+
+### Added (1)
+
+- `volumeParticipation()` (`POST /sapi/v1/algo/spot/newOrderVp`)
+
+### Changed (4)
+
+- Modified response for `queryHistoricalAlgoOrdersSpotAlgo()` (`GET /sapi/v1/algo/spot/historicalOrders`):
+  - `orders`.items: property `duration` added
+  - `orders`.items: item property `duration` added
+
+- Modified response for `queryCurrentAlgoOpenOrdersSpotAlgo()` (`GET /sapi/v1/algo/spot/openOrders`):
+  - `orders`.items: property `duration` added
+  - `orders`.items: item property `duration` added
+
+- Modified response field `orders`:
+  - items: property `duration` added
+  - items: item property `duration` added
+  - affected events:
+    - `queryCurrentAlgoOpenOrdersSpotAlgoResponse`
+    - `queryHistoricalAlgoOrdersSpotAlgoResponse`
+- Added response schema `volumeParticipationResponse`
+
 ## 7.0.0 - 2026-09-24
 
 **Algo**

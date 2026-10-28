@@ -456,7 +456,7 @@ class GetWbethWrapHistoryResponseRowsInner implements ModelInterface, \ArrayAcce
     /**
      * Sets exchangeRate.
      *
-     * @param null|string $exchangeRate exchangeRate
+     * @param null|string $exchangeRate BETH amount per 1 WBETH
      *
      * @return self
      */
@@ -483,7 +483,7 @@ class GetWbethWrapHistoryResponseRowsInner implements ModelInterface, \ArrayAcce
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status PENDING,SUCCESS,FAILED
      *
      * @return self
      */

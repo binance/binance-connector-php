@@ -1000,7 +1000,7 @@ class PlaceMultipleOrdersResponseInner implements ModelInterface, \ArrayAccess, 
     /**
      * Sets selfTradePreventionMode.
      *
-     * @param null|string $selfTradePreventionMode selfTradePreventionMode
+     * @param null|string $selfTradePreventionMode self trading prevention mode
      *
      * @return self
      */

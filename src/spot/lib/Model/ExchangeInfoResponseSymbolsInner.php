@@ -589,7 +589,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
     /**
      * Sets quotePrecision.
      *
-     * @param null|int $quotePrecision quotePrecision
+     * @param null|int $quotePrecision will be removed in future api versions (v4+)
      *
      * @return self
      */
@@ -1021,7 +1021,7 @@ class ExchangeInfoResponseSymbolsInner implements ModelInterface, \ArrayAccess, 
     /**
      * Sets filters.
      *
-     * @param null|MyFiltersResponseSymbolFiltersInner[] $filters filters
+     * @param null|MyFiltersResponseSymbolFiltersInner[] $filters symbol filters are explained on the \"Filters\" page: All symbol filters are optional
      *
      * @return self
      */

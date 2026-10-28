@@ -456,7 +456,7 @@ class GetFlexibleRedemptionRecordResponseRowsInner implements ModelInterface, \A
     /**
      * Sets destAccount.
      *
-     * @param null|string $destAccount destAccount
+     * @param null|string $destAccount SPOT, FUNDING
      *
      * @return self
      */
@@ -483,7 +483,7 @@ class GetFlexibleRedemptionRecordResponseRowsInner implements ModelInterface, \A
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status CREATED,PAID,FAILED
      *
      * @return self
      */

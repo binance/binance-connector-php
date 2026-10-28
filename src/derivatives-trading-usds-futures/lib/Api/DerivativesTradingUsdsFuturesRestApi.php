@@ -439,7 +439,6 @@ class DerivativesTradingUsdsFuturesRestApi
      * @param null|IncomeType $incomeType Income type. (optional)
      * @param null|int        $startTime  Timestamp in milliseconds (inclusive start). (optional)
      * @param null|int        $endTime    Timestamp in milliseconds (inclusive end). (optional)
-     * @param null|int        $page       Pagination page number. (optional)
      * @param null|int        $limit      Maximum number of records to return. (optional)
      * @param null|int        $recvWindow recvWindow (optional)
      *
@@ -448,9 +447,9 @@ class DerivativesTradingUsdsFuturesRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getIncomeHistory($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null): ApiResponse
+    public function getIncomeHistory($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
-        return $this->accountApi->getIncomeHistory($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
+        return $this->accountApi->getIncomeHistory($symbol, $incomeType, $startTime, $endTime, $limit, $recvWindow);
     }
 
     /**

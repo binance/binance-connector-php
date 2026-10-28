@@ -334,7 +334,7 @@ class AccountInfoResponse implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Sets isMarginEnabled.
      *
-     * @param null|bool $isMarginEnabled isMarginEnabled
+     * @param null|bool $isMarginEnabled true or false for margin
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class AccountInfoResponse implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Sets isFutureEnabled.
      *
-     * @param null|bool $isFutureEnabled isFutureEnabled
+     * @param null|bool $isFutureEnabled true or false for futures
      *
      * @return self
      */
@@ -388,7 +388,7 @@ class AccountInfoResponse implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Sets isOptionsEnabled.
      *
-     * @param null|bool $isOptionsEnabled isOptionsEnabled
+     * @param null|bool $isOptionsEnabled true or false for options
      *
      * @return self
      */
@@ -415,7 +415,7 @@ class AccountInfoResponse implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Sets isPortfolioMarginRetailEnabled.
      *
-     * @param null|bool $isPortfolioMarginRetailEnabled isPortfolioMarginRetailEnabled
+     * @param null|bool $isPortfolioMarginRetailEnabled true or false for portfolio margin retail
      *
      * @return self
      */

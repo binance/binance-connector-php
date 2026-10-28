@@ -34,7 +34,7 @@ namespace Binance\Client\Spot\Model;
  *
  * @category Class
  *
- * @description Supported values: [Time In Force](/products/spot/enums#timeinforce)
+ * @description Supported values: Time In Force
  *
  * @author   OpenAPI Generator team
  *

@@ -71,8 +71,6 @@ enum IncomeType: string
 
     case INTERNAL_TRANSFER = 'INTERNAL_TRANSFER';
 
-    case AUTO_EXCHANGE = 'AUTO_EXCHANGE';
-
     case DELIVERED_SETTELMENT = 'DELIVERED_SETTELMENT';
 
     case COIN_SWAP_DEPOSIT = 'COIN_SWAP_DEPOSIT';
@@ -103,7 +101,6 @@ enum IncomeType: string
             self::OPTIONS_PREMIUM_FEE,
             self::OPTIONS_SETTLE_PROFIT,
             self::INTERNAL_TRANSFER,
-            self::AUTO_EXCHANGE,
             self::DELIVERED_SETTELMENT,
             self::COIN_SWAP_DEPOSIT,
             self::COIN_SWAP_WITHDRAW,

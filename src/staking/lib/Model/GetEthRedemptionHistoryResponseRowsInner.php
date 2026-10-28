@@ -517,7 +517,7 @@ class GetEthRedemptionHistoryResponseRowsInner implements ModelInterface, \Array
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status PENDING,SUCCESS,FAILED
      *
      * @return self
      */

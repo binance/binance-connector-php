@@ -466,7 +466,7 @@ class GetQuoteRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets amountIn.
      *
-     * @param string $amountIn Input amount in wei (18 decimals). Must be > 0. For `MARKET` orders, minimum is approximately 1.5 USDT (varies by market depth). Example: `1000000000000000000` = 1 USDT
+     * @param string $amountIn Input amount in wei (18 decimals). Must be > 0. The minimum is set by the server and may change, see the response notes. Example: `1000000000000000000` = 1 USDT
      *
      * @return self
      */
@@ -555,7 +555,7 @@ class GetQuoteRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets priceLimit.
      *
-     * @param null|string $priceLimit Limit price. Required when `orderType=LIMIT`. Must be > 0
+     * @param null|string $priceLimit Limit price. Required when `orderType=LIMIT`. Must be > 0. A price that is not on the price tick of the market (see `decimalPrecision` in Get Market Detail) is truncated down instead of being rejected, unless the result is 0
      *
      * @return self
      */

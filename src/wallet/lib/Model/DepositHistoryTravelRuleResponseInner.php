@@ -796,7 +796,7 @@ class DepositHistoryTravelRuleResponseInner implements ModelInterface, \ArrayAcc
     /**
      * Sets requireQuestionnaire.
      *
-     * @param null|bool $requireQuestionnaire requireQuestionnaire
+     * @param null|bool $requireQuestionnaire true: This deposit require user to answer questionnaire to get it credited, false: This deposit doesn't require user to answer questionnaire as it's already completed or information has been verified
      *
      * @return self
      */

@@ -300,7 +300,7 @@ class FetchDepositAddressListWithNetworkResponseInner implements ModelInterface,
     /**
      * Sets coin.
      *
-     * @param null|string $coin coin
+     * @param null|string $coin coin here means network address space, ETH for all EVM-like network
      *
      * @return self
      */
@@ -381,7 +381,7 @@ class FetchDepositAddressListWithNetworkResponseInner implements ModelInterface,
     /**
      * Sets isDefault.
      *
-     * @param null|int $isDefault isDefault
+     * @param null|int $isDefault 'isDefault' is 1 means the address is default, same as shown in the app
      *
      * @return self
      */

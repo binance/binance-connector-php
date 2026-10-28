@@ -28,7 +28,7 @@
 
 [/papi/v1/cm/positionSide/dual](https://developers.binance.com/en/docs/catalog/advanced-trading-derivatives-trading-portfolio-margin/api/rest-api/account#get-cm-current-position-mode) - getCmCurrentPositionMode - [GetCmCurrentPositionModeExample.php:14](/examples/derivatives-trading-portfolio-margin/account/GetCmCurrentPositionModeExample.php#L14)
 
-[/papi/v1/cm/income](https://developers.binance.com/en/docs/catalog/advanced-trading-derivatives-trading-portfolio-margin/api/rest-api/account#get-cm-income-history) - getCmIncomeHistory - [GetCmIncomeHistoryExample.php:21](/examples/derivatives-trading-portfolio-margin/account/GetCmIncomeHistoryExample.php#L21)
+[/papi/v1/cm/income](https://developers.binance.com/en/docs/catalog/advanced-trading-derivatives-trading-portfolio-margin/api/rest-api/account#get-cm-income-history) - getCmIncomeHistory - [GetCmIncomeHistoryExample.php:20](/examples/derivatives-trading-portfolio-margin/account/GetCmIncomeHistoryExample.php#L20)
 
 [/papi/v1/um/order/asyn](https://developers.binance.com/en/docs/catalog/advanced-trading-derivatives-trading-portfolio-margin/api/rest-api/account#get-download-id-for-um-futures-order-history) - getDownloadIdForUmFuturesOrderHistory - [GetDownloadIdForUmFuturesOrderHistoryExample.php:16](/examples/derivatives-trading-portfolio-margin/account/GetDownloadIdForUmFuturesOrderHistoryExample.php#L16)
 
@@ -50,7 +50,7 @@
 
 [/papi/v1/um/income/asyn/id](https://developers.binance.com/en/docs/catalog/advanced-trading-derivatives-trading-portfolio-margin/api/rest-api/account#get-um-futures-transaction-download-link-by-id) - getUmFuturesTransactionDownloadLinkById - [GetUmFuturesTransactionDownloadLinkByIdExample.php:15](/examples/derivatives-trading-portfolio-margin/account/GetUmFuturesTransactionDownloadLinkByIdExample.php#L15)
 
-[/papi/v1/um/income](https://developers.binance.com/en/docs/catalog/advanced-trading-derivatives-trading-portfolio-margin/api/rest-api/account#get-um-income-history) - getUmIncomeHistory - [GetUmIncomeHistoryExample.php:21](/examples/derivatives-trading-portfolio-margin/account/GetUmIncomeHistoryExample.php#L21)
+[/papi/v1/um/income](https://developers.binance.com/en/docs/catalog/advanced-trading-derivatives-trading-portfolio-margin/api/rest-api/account#get-um-income-history) - getUmIncomeHistory - [GetUmIncomeHistoryExample.php:20](/examples/derivatives-trading-portfolio-margin/account/GetUmIncomeHistoryExample.php#L20)
 
 [/papi/v1/cm/commissionRate](https://developers.binance.com/en/docs/catalog/advanced-trading-derivatives-trading-portfolio-margin/api/rest-api/account#get-user-commission-rate-for-cm) - getUserCommissionRateForCm - [GetUserCommissionRateForCmExample.php:15](/examples/derivatives-trading-portfolio-margin/account/GetUserCommissionRateForCmExample.php#L15)
 

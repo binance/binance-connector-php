@@ -347,7 +347,7 @@ class AcceptTheOfferedQuoteResponse implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets orderStatus.
      *
-     * @param null|string $orderStatus orderStatus
+     * @param null|string $orderStatus PROCESS/ACCEPT_SUCCESS/SUCCESS/FAIL
      *
      * @return self
      */

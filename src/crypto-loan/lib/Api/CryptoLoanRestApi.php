@@ -9,7 +9,6 @@ use Binance\Client\CryptoLoan\Model\FlexibleLoanBorrowRequest;
 use Binance\Client\CryptoLoan\Model\FlexibleLoanBorrowResponse;
 use Binance\Client\CryptoLoan\Model\FlexibleLoanRepayRequest;
 use Binance\Client\CryptoLoan\Model\FlexibleLoanRepayResponse;
-use Binance\Client\CryptoLoan\Model\GetCryptoLoansIncomeHistoryResponse;
 use Binance\Client\CryptoLoan\Model\GetFlexibleLoanAssetsDataResponse;
 use Binance\Client\CryptoLoan\Model\GetFlexibleLoanBorrowHistoryResponse;
 use Binance\Client\CryptoLoan\Model\GetFlexibleLoanCollateralAssetsDataResponse;
@@ -18,10 +17,6 @@ use Binance\Client\CryptoLoan\Model\GetFlexibleLoanLiquidationHistoryResponse;
 use Binance\Client\CryptoLoan\Model\GetFlexibleLoanLtvAdjustmentHistoryResponse;
 use Binance\Client\CryptoLoan\Model\GetFlexibleLoanOngoingOrdersResponse;
 use Binance\Client\CryptoLoan\Model\GetFlexibleLoanRepaymentHistoryResponse;
-use Binance\Client\CryptoLoan\Model\GetLoanBorrowHistoryResponse;
-use Binance\Client\CryptoLoan\Model\GetLoanLtvAdjustmentHistoryResponse;
-use Binance\Client\CryptoLoan\Model\GetLoanRepaymentHistoryResponse;
-use Binance\Client\CryptoLoan\Model\OrderType;
 use Binance\Common\ApiException;
 use Binance\Common\Configuration\ClientConfiguration;
 use Binance\Common\Dtos\ApiResponse;
@@ -33,16 +28,10 @@ class CryptoLoanRestApi
      */
     private $flexibleRateApi;
 
-    /**
-     * @var StableRateApi
-     */
-    private $stableRateApi;
-
     public function __construct(
         ?ClientConfiguration $clientConfig = new ClientConfiguration(),
     ) {
         $this->flexibleRateApi = new FlexibleRateApi($clientConfig);
-        $this->stableRateApi = new StableRateApi($clientConfig);
     }
 
     /**
@@ -284,99 +273,5 @@ class CryptoLoanRestApi
     public function getFlexibleLoanRepaymentHistory($loanCoin = null, $collateralCoin = null, $startTime = null, $endTime = null, $current = null, $limit = null, $recvWindow = null): ApiResponse
     {
         return $this->flexibleRateApi->getFlexibleLoanRepaymentHistory($loanCoin, $collateralCoin, $startTime, $endTime, $current, $limit, $recvWindow);
-    }
-
-    /**
-     * Operation getCryptoLoansIncomeHistory.
-     *
-     * Get Crypto Loans Income History (USER_DATA)
-     *
-     * @param null|string    $asset      asset (optional)
-     * @param null|OrderType $type       All types will be returned by default. (optional)
-     * @param null|int       $startTime  startTime (optional)
-     * @param null|int       $endTime    endTime (optional)
-     * @param null|int       $limit      Number of records to return (optional)
-     * @param null|int       $recvWindow Request validity window in milliseconds (optional)
-     *
-     * @return ApiResponse<GetCryptoLoansIncomeHistoryResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function getCryptoLoansIncomeHistory($asset = null, $type = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
-    {
-        return $this->stableRateApi->getCryptoLoansIncomeHistory($asset, $type, $startTime, $endTime, $limit, $recvWindow);
-    }
-
-    /**
-     * Operation getLoanBorrowHistory.
-     *
-     * Get Loan Borrow History (USER_DATA)
-     *
-     * @param null|int    $orderId        orderId in &#x60;POST /sapi/v1/loan/borrow&#x60; (optional)
-     * @param null|string $loanCoin       loanCoin (optional)
-     * @param null|string $collateralCoin collateralCoin (optional)
-     * @param null|int    $startTime      startTime (optional)
-     * @param null|int    $endTime        endTime (optional)
-     * @param null|int    $current        Current querying page (optional)
-     * @param null|int    $limit          Number of records to return (optional)
-     * @param null|int    $recvWindow     Request validity window in milliseconds (optional)
-     *
-     * @return ApiResponse<GetLoanBorrowHistoryResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function getLoanBorrowHistory($orderId = null, $loanCoin = null, $collateralCoin = null, $startTime = null, $endTime = null, $current = null, $limit = null, $recvWindow = null): ApiResponse
-    {
-        return $this->stableRateApi->getLoanBorrowHistory($orderId, $loanCoin, $collateralCoin, $startTime, $endTime, $current, $limit, $recvWindow);
-    }
-
-    /**
-     * Operation getLoanLtvAdjustmentHistory.
-     *
-     * Get Loan LTV Adjustment History (USER_DATA)
-     *
-     * @param null|int    $orderId        orderId in &#x60;POST /sapi/v1/loan/borrow&#x60; (optional)
-     * @param null|string $loanCoin       loanCoin (optional)
-     * @param null|string $collateralCoin collateralCoin (optional)
-     * @param null|int    $startTime      startTime (optional)
-     * @param null|int    $endTime        endTime (optional)
-     * @param null|int    $current        Current querying page (optional)
-     * @param null|int    $limit          Number of records to return (optional)
-     * @param null|int    $recvWindow     Request validity window in milliseconds (optional)
-     *
-     * @return ApiResponse<GetLoanLtvAdjustmentHistoryResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function getLoanLtvAdjustmentHistory($orderId = null, $loanCoin = null, $collateralCoin = null, $startTime = null, $endTime = null, $current = null, $limit = null, $recvWindow = null): ApiResponse
-    {
-        return $this->stableRateApi->getLoanLtvAdjustmentHistory($orderId, $loanCoin, $collateralCoin, $startTime, $endTime, $current, $limit, $recvWindow);
-    }
-
-    /**
-     * Operation getLoanRepaymentHistory.
-     *
-     * Get Loan Repayment History (USER_DATA)
-     *
-     * @param null|int    $orderId        orderId in &#x60;POST /sapi/v1/loan/borrow&#x60; (optional)
-     * @param null|string $loanCoin       loanCoin (optional)
-     * @param null|string $collateralCoin collateralCoin (optional)
-     * @param null|int    $startTime      startTime (optional)
-     * @param null|int    $endTime        endTime (optional)
-     * @param null|int    $current        Current querying page (optional)
-     * @param null|int    $limit          Number of records to return (optional)
-     * @param null|int    $recvWindow     Request validity window in milliseconds (optional)
-     *
-     * @return ApiResponse<GetLoanRepaymentHistoryResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function getLoanRepaymentHistory($orderId = null, $loanCoin = null, $collateralCoin = null, $startTime = null, $endTime = null, $current = null, $limit = null, $recvWindow = null): ApiResponse
-    {
-        return $this->stableRateApi->getLoanRepaymentHistory($orderId, $loanCoin, $collateralCoin, $startTime, $endTime, $current, $limit, $recvWindow);
     }
 }

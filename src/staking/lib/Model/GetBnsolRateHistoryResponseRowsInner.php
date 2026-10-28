@@ -300,7 +300,7 @@ class GetBnsolRateHistoryResponseRowsInner implements ModelInterface, \ArrayAcce
     /**
      * Sets annualPercentageRate.
      *
-     * @param null|string $annualPercentageRate annualPercentageRate
+     * @param null|string $annualPercentageRate BNSOL APR
      *
      * @return self
      */
@@ -327,7 +327,7 @@ class GetBnsolRateHistoryResponseRowsInner implements ModelInterface, \ArrayAcce
     /**
      * Sets exchangeRate.
      *
-     * @param null|string $exchangeRate exchangeRate
+     * @param null|string $exchangeRate SOL amount per 1 BNSOL
      *
      * @return self
      */

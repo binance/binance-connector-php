@@ -30,7 +30,7 @@
 
 [/fapi/v1/income/asyn/id](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-usd-s-m-futures/api/rest-api/account#get-futures-transaction-history-download-link-by-id) - getFuturesTransactionHistoryDownloadLinkById - [GetFuturesTransactionHistoryDownloadLinkByIdExample.php:15](/examples/derivatives-trading-usds-futures/account/GetFuturesTransactionHistoryDownloadLinkByIdExample.php#L15)
 
-[/fapi/v1/income](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-usd-s-m-futures/api/rest-api/account#get-income-history) - getIncomeHistory - [GetIncomeHistoryExample.php:21](/examples/derivatives-trading-usds-futures/account/GetIncomeHistoryExample.php#L21)
+[/fapi/v1/income](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-usd-s-m-futures/api/rest-api/account#get-income-history) - getIncomeHistory - [GetIncomeHistoryExample.php:20](/examples/derivatives-trading-usds-futures/account/GetIncomeHistoryExample.php#L20)
 
 [/fapi/v1/leverageBracket](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-usd-s-m-futures/api/rest-api/account#notional-and-leverage-brackets) - notionalAndLeverageBrackets - [NotionalAndLeverageBracketsExample.php:15](/examples/derivatives-trading-usds-futures/account/NotionalAndLeverageBracketsExample.php#L15)
 

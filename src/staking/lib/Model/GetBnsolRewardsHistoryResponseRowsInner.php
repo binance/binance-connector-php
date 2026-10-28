@@ -334,7 +334,7 @@ class GetBnsolRewardsHistoryResponseRowsInner implements ModelInterface, \ArrayA
     /**
      * Sets amountInSOL.
      *
-     * @param null|string $amountInSOL amountInSOL
+     * @param null|string $amountInSOL reward amount
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class GetBnsolRewardsHistoryResponseRowsInner implements ModelInterface, \ArrayA
     /**
      * Sets holding.
      *
-     * @param null|string $holding holding
+     * @param null|string $holding BNSOL holding balance
      *
      * @return self
      */
@@ -415,7 +415,7 @@ class GetBnsolRewardsHistoryResponseRowsInner implements ModelInterface, \ArrayA
     /**
      * Sets annualPercentageRate.
      *
-     * @param null|string $annualPercentageRate annualPercentageRate
+     * @param null|string $annualPercentageRate 0.5 means 50% here
      *
      * @return self
      */

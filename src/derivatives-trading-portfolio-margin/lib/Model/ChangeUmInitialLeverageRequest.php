@@ -274,10 +274,6 @@ class ChangeUmInitialLeverageRequest implements ModelInterface, \ArrayAccess, \J
         if (null === $this->container['leverage']) {
             $invalidProperties[] = "'leverage' can't be null";
         }
-        if ($this->container['leverage'] > 125) {
-            $invalidProperties[] = "invalid value for 'leverage', must be smaller than or equal to 125.";
-        }
-
         if ($this->container['leverage'] < 1) {
             $invalidProperties[] = "invalid value for 'leverage', must be bigger than or equal to 1.";
         }
@@ -336,7 +332,7 @@ class ChangeUmInitialLeverageRequest implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets leverage.
      *
-     * @param int $leverage target initial leverage
+     * @param int $leverage Target initial leverage. The maximum is symbol-specific: use `initialLeverage` of bracket 1 from `GET /papi/v1/um/leverageBracket`.
      *
      * @return self
      */
@@ -346,9 +342,6 @@ class ChangeUmInitialLeverageRequest implements ModelInterface, \ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable leverage cannot be null');
         }
 
-        if ($leverage > 125) {
-            throw new \InvalidArgumentException('invalid value for $leverage when calling ChangeUmInitialLeverageRequest., must be smaller than or equal to 125.');
-        }
         if ($leverage < 1) {
             throw new \InvalidArgumentException('invalid value for $leverage when calling ChangeUmInitialLeverageRequest., must be bigger than or equal to 1.');
         }

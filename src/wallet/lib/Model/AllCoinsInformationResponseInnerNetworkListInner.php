@@ -630,7 +630,7 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
     /**
      * Sets depositDesc.
      *
-     * @param null|string $depositDesc depositDesc
+     * @param null|string $depositDesc shown only when \"depositEnable\" is false
      *
      * @return self
      */
@@ -657,7 +657,7 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
     /**
      * Sets withdrawDesc.
      *
-     * @param null|string $withdrawDesc withdrawDesc
+     * @param null|string $withdrawDesc shown only when \"withdrawEnable\" is false
      *
      * @return self
      */
@@ -927,7 +927,7 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
     /**
      * Sets withdrawInternalMin.
      *
-     * @param null|string $withdrawInternalMin withdrawInternalMin
+     * @param null|string $withdrawInternalMin Minimum internal transfer amount
      *
      * @return self
      */
@@ -981,7 +981,7 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
     /**
      * Sets minConfirm.
      *
-     * @param null|int $minConfirm minConfirm
+     * @param null|int $minConfirm min number for balance confirmation
      *
      * @return self
      */
@@ -1008,7 +1008,7 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
     /**
      * Sets unLockConfirm.
      *
-     * @param null|int $unLockConfirm unLockConfirm
+     * @param null|int $unLockConfirm confirmation number for balance unlock
      *
      * @return self
      */
@@ -1035,7 +1035,7 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
     /**
      * Sets sameAddress.
      *
-     * @param null|bool $sameAddress sameAddress
+     * @param null|bool $sameAddress Obsoleted, recomment to use withdrawTag
      *
      * @return self
      */
@@ -1062,7 +1062,7 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
     /**
      * Sets withdrawTag.
      *
-     * @param null|bool $withdrawTag withdrawTag
+     * @param null|bool $withdrawTag If the coin needs to provide memo to withdraw
      *
      * @return self
      */
@@ -1197,7 +1197,7 @@ class AllCoinsInformationResponseInnerNetworkListInner implements ModelInterface
     /**
      * Sets denomination.
      *
-     * @param null|int $denomination denomination
+     * @param null|int $denomination 1 1MBABYDOGE = 1000000 BABYDOGE
      *
      * @return self
      */

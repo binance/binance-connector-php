@@ -18,7 +18,7 @@
 
 [/dapi/v1/income/asyn/id](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-coin-m-futures/api/rest-api/account#get-futures-transaction-history-download-link-by-id) - getFuturesTransactionHistoryDownloadLinkById - [GetFuturesTransactionHistoryDownloadLinkByIdExample.php:15](/examples/derivatives-trading-coin-futures/account/GetFuturesTransactionHistoryDownloadLinkByIdExample.php#L15)
 
-[/dapi/v1/income](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-coin-m-futures/api/rest-api/account#get-income-history) - getIncomeHistory - [GetIncomeHistoryExample.php:21](/examples/derivatives-trading-coin-futures/account/GetIncomeHistoryExample.php#L21)
+[/dapi/v1/income](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-coin-m-futures/api/rest-api/account#get-income-history) - getIncomeHistory - [GetIncomeHistoryExample.php:20](/examples/derivatives-trading-coin-futures/account/GetIncomeHistoryExample.php#L20)
 
 [/dapi/v1/leverageBracket](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-coin-m-futures/api/rest-api/account#notional-bracket-for-pair) - notionalBracketForPair - [NotionalBracketForPairExample.php:15](/examples/derivatives-trading-coin-futures/account/NotionalBracketForPairExample.php#L15)
 

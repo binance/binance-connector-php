@@ -34,7 +34,7 @@ namespace Binance\Client\W3WPrediction\Model;
  *
  * @category Class
  *
- * @description Payment account type. Enum: &#x60;SPOT&#x60;, &#x60;FUNDING&#x60;
+ * @description Payment account type. Enum: &#x60;SPOT&#x60;, &#x60;FUNDING&#x60;. This only determines the settlement/reference account — it does not control which balance is debited. See &#x60;fundingSource&#x60; below for that.
  *
  * @author   OpenAPI Generator team
  *

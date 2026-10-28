@@ -1,5 +1,24 @@
 # Changelog
 
+## 8.0.0 - 2026-10-28
+
+**Derivatives Trading Portfolio Margin Pro**
+
+### Changed (3)
+
+#### REST API
+
+- Added parameter `amount`
+  - affected methods:
+    - `fundCollectionByAsset()` (`POST /sapi/v1/portfolio/asset-collection`)
+- Added parameter `futureType`
+  - affected methods:
+    - `fundCollectionByAsset()` (`POST /sapi/v1/portfolio/asset-collection`)
+- Deleted parameter `from`
+  - affected methods:
+    - `portfolioMarginProBankruptcyLoanRepay()` (`POST /sapi/v1/portfolio/repay`)
+    - `repayFuturesNegativeBalance()` (`POST /sapi/v1/portfolio/repay-futures-negative-balance`)
+
 ## 7.0.0 - 2026-09-24
 
 **Derivatives Trading Portfolio Margin Pro**

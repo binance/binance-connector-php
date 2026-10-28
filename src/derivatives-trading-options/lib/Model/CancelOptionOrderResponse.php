@@ -959,7 +959,7 @@ class CancelOptionOrderResponse implements ModelInterface, \ArrayAccess, \JsonSe
     /**
      * Sets selfTradePreventionMode.
      *
-     * @param null|string $selfTradePreventionMode selfTradePreventionMode
+     * @param null|string $selfTradePreventionMode self trading prevention mode
      *
      * @return self
      */

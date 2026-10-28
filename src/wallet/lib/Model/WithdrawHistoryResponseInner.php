@@ -384,7 +384,7 @@ class WithdrawHistoryResponseInner implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets id.
      *
-     * @param null|string $id id
+     * @param null|string $id Withdrawal id in Binance
      *
      * @return self
      */
@@ -411,7 +411,7 @@ class WithdrawHistoryResponseInner implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets amount.
      *
-     * @param null|string $amount amount
+     * @param null|string $amount withdrawal amount
      *
      * @return self
      */
@@ -438,7 +438,7 @@ class WithdrawHistoryResponseInner implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets transactionFee.
      *
-     * @param null|string $transactionFee transactionFee
+     * @param null|string $transactionFee transaction fee
      *
      * @return self
      */
@@ -546,7 +546,7 @@ class WithdrawHistoryResponseInner implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets txId.
      *
-     * @param null|string $txId txId
+     * @param null|string $txId withdrawal transaction id
      *
      * @return self
      */
@@ -573,7 +573,7 @@ class WithdrawHistoryResponseInner implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets applyTime.
      *
-     * @param null|string $applyTime applyTime
+     * @param null|string $applyTime UTC time
      *
      * @return self
      */
@@ -627,7 +627,7 @@ class WithdrawHistoryResponseInner implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets transferType.
      *
-     * @param null|int $transferType transferType
+     * @param null|int $transferType 1 for internal transfer, 0 for external transfer
      *
      * @return self
      */
@@ -654,7 +654,7 @@ class WithdrawHistoryResponseInner implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets withdrawOrderId.
      *
-     * @param null|string $withdrawOrderId withdrawOrderId
+     * @param null|string $withdrawOrderId will not be returned if there's no withdrawOrderId for this withdraw
      *
      * @return self
      */
@@ -681,7 +681,7 @@ class WithdrawHistoryResponseInner implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets info.
      *
-     * @param null|string $info info
+     * @param null|string $info reason for withdrawal failure
      *
      * @return self
      */
@@ -708,7 +708,7 @@ class WithdrawHistoryResponseInner implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets confirmNo.
      *
-     * @param null|int $confirmNo confirmNo
+     * @param null|int $confirmNo confirm times for withdraw
      *
      * @return self
      */
@@ -735,7 +735,7 @@ class WithdrawHistoryResponseInner implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets walletType.
      *
-     * @param null|int $walletType walletType
+     * @param null|int $walletType 1: Funding Wallet 0:Spot Wallet
      *
      * @return self
      */
@@ -789,7 +789,7 @@ class WithdrawHistoryResponseInner implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets completeTime.
      *
-     * @param null|string $completeTime completeTime
+     * @param null|string $completeTime complete UTC time when user's asset is deduct from withdrawing, only if status =  6(success)
      *
      * @return self
      */

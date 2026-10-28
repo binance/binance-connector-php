@@ -63,6 +63,7 @@ class AccountFundingFlowResponseInner implements ModelInterface, \ArrayAccess, \
         'id' => 'int',
         'asset' => 'string',
         'amount' => 'string',
+        'symbol' => 'string',
         'type' => 'string',
         'createDate' => 'int',
     ];
@@ -80,6 +81,7 @@ class AccountFundingFlowResponseInner implements ModelInterface, \ArrayAccess, \
         'id' => 'int64',
         'asset' => null,
         'amount' => null,
+        'symbol' => null,
         'type' => null,
         'createDate' => 'int64',
     ];
@@ -93,6 +95,7 @@ class AccountFundingFlowResponseInner implements ModelInterface, \ArrayAccess, \
         'id' => false,
         'asset' => false,
         'amount' => false,
+        'symbol' => false,
         'type' => false,
         'createDate' => false,
     ];
@@ -114,6 +117,7 @@ class AccountFundingFlowResponseInner implements ModelInterface, \ArrayAccess, \
         'id' => 'id',
         'asset' => 'asset',
         'amount' => 'amount',
+        'symbol' => 'symbol',
         'type' => 'type',
         'createDate' => 'createDate',
     ];
@@ -127,6 +131,7 @@ class AccountFundingFlowResponseInner implements ModelInterface, \ArrayAccess, \
         'id' => 'setId',
         'asset' => 'setAsset',
         'amount' => 'setAmount',
+        'symbol' => 'setSymbol',
         'type' => 'setType',
         'createDate' => 'setCreateDate',
     ];
@@ -140,6 +145,7 @@ class AccountFundingFlowResponseInner implements ModelInterface, \ArrayAccess, \
         'id' => 'getId',
         'asset' => 'getAsset',
         'amount' => 'getAmount',
+        'symbol' => 'getSymbol',
         'type' => 'getType',
         'createDate' => 'getCreateDate',
     ];
@@ -162,6 +168,7 @@ class AccountFundingFlowResponseInner implements ModelInterface, \ArrayAccess, \
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('asset', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
+        $this->setIfExists('symbol', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('createDate', $data ?? [], null);
     }
@@ -371,6 +378,33 @@ class AccountFundingFlowResponseInner implements ModelInterface, \ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable amount cannot be null');
         }
         $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets symbol.
+     *
+     * @return null|string
+     */
+    public function getSymbol()
+    {
+        return $this->container['symbol'];
+    }
+
+    /**
+     * Sets symbol.
+     *
+     * @param null|string $symbol Option symbol the record relates to. Returned only for contract-related types (e.g. `CONTRACT`, `FEE`, `EXERCISE_PNL`, `EXERCISE_FEE`); omitted for other types such as `TRANSFER`. Older records may not include this field.
+     *
+     * @return self
+     */
+    public function setSymbol($symbol)
+    {
+        if (is_null($symbol)) {
+            throw new \InvalidArgumentException('non-nullable symbol cannot be null');
+        }
+        $this->container['symbol'] = $symbol;
 
         return $this;
     }

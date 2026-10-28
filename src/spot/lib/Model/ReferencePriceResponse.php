@@ -87,7 +87,7 @@ class ReferencePriceResponse implements ModelInterface, \ArrayAccess, \JsonSeria
      */
     protected static array $openAPINullables = [
         'symbol' => false,
-        'referencePrice' => false,
+        'referencePrice' => true,
         'timestamp' => false,
     ];
 
@@ -327,7 +327,14 @@ class ReferencePriceResponse implements ModelInterface, \ArrayAccess, \JsonSeria
     public function setReferencePrice($referencePrice)
     {
         if (is_null($referencePrice)) {
-            throw new \InvalidArgumentException('non-nullable referencePrice cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'referencePrice');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('referencePrice', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['referencePrice'] = $referencePrice;
 

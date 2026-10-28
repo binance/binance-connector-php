@@ -62,7 +62,7 @@ class FiatWithdrawResponse implements ModelInterface, \ArrayAccess, \JsonSeriali
     protected static $openAPITypes = [
         'code' => 'string',
         'message' => 'string',
-        'data' => '\Binance\Client\Fiat\Model\DepositResponseData',
+        'data' => '\Binance\Client\Fiat\Model\FiatWithdrawResponseData',
     ];
 
     /**
@@ -337,7 +337,7 @@ class FiatWithdrawResponse implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Gets data.
      *
-     * @return null|DepositResponseData
+     * @return null|FiatWithdrawResponseData
      */
     public function getData()
     {
@@ -347,7 +347,7 @@ class FiatWithdrawResponse implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets data.
      *
-     * @param null|DepositResponseData $data data
+     * @param null|FiatWithdrawResponseData $data data
      *
      * @return self
      */

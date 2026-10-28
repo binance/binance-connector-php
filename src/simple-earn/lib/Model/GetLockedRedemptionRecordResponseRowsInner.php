@@ -573,7 +573,7 @@ class GetLockedRedemptionRecordResponseRowsInner implements ModelInterface, \Arr
     /**
      * Sets type.
      *
-     * @param null|string $type type
+     * @param null|string $type MATURE for redeem to Spot Wallet, NEW_TRANSFERRED for redeem to Flexible product, AHEAD for early redemption
      *
      * @return self
      */
@@ -627,7 +627,7 @@ class GetLockedRedemptionRecordResponseRowsInner implements ModelInterface, \Arr
     /**
      * Sets lossAmount.
      *
-     * @param null|string $lossAmount lossAmount
+     * @param null|string $lossAmount Loss of profit on early redemption
      *
      * @return self
      */

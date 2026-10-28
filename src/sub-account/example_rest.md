@@ -22,6 +22,8 @@
 
 [/sapi/v1/sub-account/subAccountApi](https://developers.binance.com/en/docs/catalog/vip-and-institutional-sub-account/api/rest-api/api-management#create-sub-account-api-key) - createSubAccountApiKey - [CreateSubAccountApiKeyExample.php:18](/examples/sub-account/apimanagement/CreateSubAccountApiKeyExample.php#L18)
 
+[/sapi/v2/sub-account/subAccountApi](https://developers.binance.com/en/docs/catalog/vip-and-institutional-sub-account/api/rest-api/api-management#create-sub-account-api-key-v2) - createSubAccountApiKeyV2 - [CreateSubAccountApiKeyV2Example.php:18](/examples/sub-account/apimanagement/CreateSubAccountApiKeyV2Example.php#L18)
+
 [/sapi/v1/sub-account/subAccountApi/ipRestriction/ipList](https://developers.binance.com/en/docs/catalog/vip-and-institutional-sub-account/api/rest-api/api-management#delete-ip-list-for-asub-account-api-key) - deleteIpListForASubAccountApiKey - [DeleteIpListForASubAccountApiKeyExample.php:17](/examples/sub-account/apimanagement/DeleteIpListForASubAccountApiKeyExample.php#L17)
 
 [/sapi/v1/sub-account/subAccountApi](https://developers.binance.com/en/docs/catalog/vip-and-institutional-sub-account/api/rest-api/api-management#delete-sub-account-api-key) - deleteSubAccountApiKey - [DeleteSubAccountApiKeyExample.php:16](/examples/sub-account/apimanagement/DeleteSubAccountApiKeyExample.php#L16)

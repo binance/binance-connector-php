@@ -405,7 +405,7 @@ class WithdrawHistoryV1ResponseInner implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets id.
      *
-     * @param null|string $id id
+     * @param null|string $id Withdrawal id in Binance
      *
      * @return self
      */
@@ -432,7 +432,7 @@ class WithdrawHistoryV1ResponseInner implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets trId.
      *
-     * @param null|int $trId trId
+     * @param null|int $trId Travel rule record id
      *
      * @return self
      */
@@ -459,7 +459,7 @@ class WithdrawHistoryV1ResponseInner implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets amount.
      *
-     * @param null|string $amount amount
+     * @param null|string $amount withdrawal amount
      *
      * @return self
      */
@@ -486,7 +486,7 @@ class WithdrawHistoryV1ResponseInner implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets transactionFee.
      *
-     * @param null|string $transactionFee transactionFee
+     * @param null|string $transactionFee only available for sAPI requests
      *
      * @return self
      */
@@ -540,7 +540,7 @@ class WithdrawHistoryV1ResponseInner implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets withdrawalStatus.
      *
-     * @param null|int $withdrawalStatus withdrawalStatus
+     * @param null|int $withdrawalStatus Capital withdrawal status, only available for sAPI requests
      *
      * @return self
      */
@@ -567,7 +567,7 @@ class WithdrawHistoryV1ResponseInner implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets travelRuleStatus.
      *
-     * @param null|int $travelRuleStatus travelRuleStatus
+     * @param null|int $travelRuleStatus travel rule status
      *
      * @return self
      */
@@ -621,7 +621,7 @@ class WithdrawHistoryV1ResponseInner implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets txId.
      *
-     * @param null|string $txId txId
+     * @param null|string $txId withdrawal transaction id
      *
      * @return self
      */
@@ -648,7 +648,7 @@ class WithdrawHistoryV1ResponseInner implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets applyTime.
      *
-     * @param null|string $applyTime applyTime
+     * @param null|string $applyTime UTC time
      *
      * @return self
      */
@@ -702,7 +702,7 @@ class WithdrawHistoryV1ResponseInner implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets transferType.
      *
-     * @param null|int $transferType transferType
+     * @param null|int $transferType 1 for internal transfer, 0 for external transfer, only available for sAPI requests
      *
      * @return self
      */
@@ -729,7 +729,7 @@ class WithdrawHistoryV1ResponseInner implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets withdrawOrderId.
      *
-     * @param null|string $withdrawOrderId withdrawOrderId
+     * @param null|string $withdrawOrderId will not be returned if there's no withdrawOrderId for this withdraw, only available for sAPI requests
      *
      * @return self
      */
@@ -756,7 +756,7 @@ class WithdrawHistoryV1ResponseInner implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets info.
      *
-     * @param null|string $info info
+     * @param null|string $info reason for withdrawal failure, only available for sAPI requests
      *
      * @return self
      */
@@ -783,7 +783,7 @@ class WithdrawHistoryV1ResponseInner implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets confirmNo.
      *
-     * @param null|int $confirmNo confirmNo
+     * @param null|int $confirmNo confirm times for withdraw, only available for sAPI requests
      *
      * @return self
      */
@@ -810,7 +810,7 @@ class WithdrawHistoryV1ResponseInner implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets walletType.
      *
-     * @param null|int $walletType walletType
+     * @param null|int $walletType 1: Funding Wallet 0:Spot Wallet, only available for sAPI requests
      *
      * @return self
      */
@@ -837,7 +837,7 @@ class WithdrawHistoryV1ResponseInner implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets txKey.
      *
-     * @param null|string $txKey txKey
+     * @param null|string $txKey only available for sAPI requests
      *
      * @return self
      */
@@ -864,7 +864,7 @@ class WithdrawHistoryV1ResponseInner implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets questionnaire.
      *
-     * @param null|string $questionnaire questionnaire
+     * @param null|string $questionnaire The answers of the questionnaire
      *
      * @return self
      */
@@ -891,7 +891,7 @@ class WithdrawHistoryV1ResponseInner implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets completeTime.
      *
-     * @param null|string $completeTime completeTime
+     * @param null|string $completeTime complete UTC time when user's asset is deduct from withdrawing, only if status =  6(success)
      *
      * @return self
      */

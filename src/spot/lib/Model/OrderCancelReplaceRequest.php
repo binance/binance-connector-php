@@ -870,7 +870,7 @@ class OrderCancelReplaceRequest implements ModelInterface, \ArrayAccess, \JsonSe
     /**
      * Sets trailingDelta.
      *
-     * @param null|int $trailingDelta See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)
+     * @param null|int $trailingDelta See Trailing Stop order FAQ
      *
      * @return self
      */

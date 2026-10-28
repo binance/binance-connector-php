@@ -477,7 +477,7 @@ class GetFlexibleSubscriptionRecordResponseRowsInner implements ModelInterface, 
     /**
      * Sets type.
      *
-     * @param null|string $type type
+     * @param null|string $type AUTO for auto subscribe, NORMAL for normal subscription, CONVERT for Locked to Flexible, LOAN for flexible loan collateral, AI for Auto Invest subscribe, TRANSFER for Locked Savings to Flexible
      *
      * @return self
      */
@@ -504,7 +504,7 @@ class GetFlexibleSubscriptionRecordResponseRowsInner implements ModelInterface, 
     /**
      * Sets sourceAccount.
      *
-     * @param null|string $sourceAccount sourceAccount
+     * @param null|string $sourceAccount SPOT, FUNDING, SPOTANDFUNDING
      *
      * @return self
      */
@@ -531,7 +531,7 @@ class GetFlexibleSubscriptionRecordResponseRowsInner implements ModelInterface, 
     /**
      * Sets amtFromSpot.
      *
-     * @param null|string $amtFromSpot amtFromSpot
+     * @param null|string $amtFromSpot Display if sourceAccount is SPOTANDFUNDING
      *
      * @return self
      */
@@ -558,7 +558,7 @@ class GetFlexibleSubscriptionRecordResponseRowsInner implements ModelInterface, 
     /**
      * Sets amtFromFunding.
      *
-     * @param null|string $amtFromFunding amtFromFunding
+     * @param null|string $amtFromFunding Display if sourceAccount is SPOTANDFUNDING
      *
      * @return self
      */
@@ -585,7 +585,7 @@ class GetFlexibleSubscriptionRecordResponseRowsInner implements ModelInterface, 
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status PURCHASING/SUCCESS/FAILED
      *
      * @return self
      */

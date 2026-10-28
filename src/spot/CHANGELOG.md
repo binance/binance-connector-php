@@ -1,5 +1,136 @@
 # Changelog
 
+## 8.0.0 - 2026-10-28
+
+**Spot**
+
+### Changed (44)
+
+#### REST API
+
+- Modified parameter `symbolStatus`:
+  - enum added: `CANCEL_ONLY`
+  - affected methods:
+    - `depth()` (`GET /api/v3/depth`)
+    - `exchangeInfo()` (`GET /api/v3/exchangeInfo`)
+    - `executionRules()` (`GET /api/v3/executionRules`)
+    - `referencePriceCalculation()` (`GET /api/v3/referencePrice/calculation`)
+    - `ticker()` (`GET /api/v3/ticker`)
+    - `ticker24hr()` (`GET /api/v3/ticker/24hr`)
+    - `tickerBookTicker()` (`GET /api/v3/ticker/bookTicker`)
+    - `tickerPrice()` (`GET /api/v3/ticker/price`)
+    - `tickerTradingDay()` (`GET /api/v3/ticker/tradingDay`)
+- Modified response for `referencePrice()` (`GET /api/v3/referencePrice`):
+  - `referencePrice`: nullable `false` → `true`
+
+- Modified response for `ticker()` (`GET /api/v3/ticker`):
+  - oneOf modified
+
+- Modified response for `ticker24hr()` (`GET /api/v3/ticker/24hr`):
+  - oneOf modified
+
+- Modified response for `tickerBookTicker()` (`GET /api/v3/ticker/bookTicker`):
+  - oneOf modified
+
+- Modified response for `tickerPrice()` (`GET /api/v3/ticker/price`):
+  - oneOf modified
+
+- Modified response for `tickerTradingDay()` (`GET /api/v3/ticker/tradingDay`):
+  - oneOf modified
+
+- Modified response field `referencePrice`:
+  - nullable `false` → `true`
+  - affected events:
+    - `referencePriceResponse`
+- Modified response schema `ticker24hrResponse`:
+  - oneOf modified
+- Modified response schema `tickerBookTickerResponse`:
+  - oneOf modified
+- Modified response schema `tickerPriceResponse`:
+  - oneOf modified
+- Modified response schema `tickerResponse`:
+  - oneOf modified
+- Modified response schema `tickerTradingDayResponse`:
+  - oneOf modified
+- Marked `orderOco()` (`POST /api/v3/order/oco`) as deprecated.
+
+#### WebSocket API
+
+- Modified parameter `symbolStatus`:
+  - enum added: `CANCEL_ONLY`
+  - affected methods:
+    - `depth()` (`depth` method)
+    - `exchangeInfo()` (`exchangeInfo` method)
+    - `executionRules()` (`executionRules` method)
+    - `referencePriceCalculation()` (`referencePrice.calculation` method)
+    - `ticker()` (`ticker` method)
+    - `ticker24hr()` (`ticker.24hr` method)
+    - `tickerBook()` (`ticker.book` method)
+    - `tickerPrice()` (`ticker.price` method)
+    - `tickerTradingDay()` (`ticker.tradingDay` method)
+- Modified response for `referencePrice()` (`referencePrice` method):
+  - `result`.`referencePrice`: nullable `false` → `true`
+
+- Modified response for `ticker()` (`ticker` method):
+  - oneOf modified
+
+- Modified response for `ticker24hr()` (`ticker.24hr` method):
+  - oneOf modified
+
+- Modified response for `tickerBook()` (`ticker.book` method):
+  - oneOf modified
+
+- Modified response for `tickerPrice()` (`ticker.price` method):
+  - oneOf modified
+
+- Modified response for `tickerTradingDay()` (`ticker.tradingDay` method):
+  - property `id` deleted
+  - property `rateLimits` deleted
+  - property `result` deleted
+  - property `status` deleted
+  - oneOf added 2 schema(s)
+
+- Removed response field `id`
+  - affected events:
+    - `tickerTradingDayResponse`
+- Removed response field `rateLimits`
+  - affected events:
+    - `tickerTradingDayResponse`
+- Removed response field `result`
+  - affected events:
+    - `tickerTradingDayResponse`
+- Removed response field `status`
+  - affected events:
+    - `tickerTradingDayResponse`
+- Modified response field `N`:
+  - nullable `false` → `true`
+  - affected events:
+    - `UserDataStreamEventsResponse`
+    - `executionReport`
+- Modified response field `result`:
+  - `referencePrice`: nullable `false` → `true`
+  - affected events:
+    - `referencePriceResponse`
+- Added response schema `tickerTradingDayResponse2`
+- Added response schema `tickerTradingDayResponse1`
+- Modified response schema `ticker24hrResponse`:
+  - oneOf modified
+- Modified response schema `tickerBookResponse`:
+  - oneOf modified
+- Modified response schema `tickerPriceResponse`:
+  - oneOf modified
+- Modified response schema `tickerResponse`:
+  - oneOf modified
+- Marked `orderListPlace()` (`orderList.place` method) as deprecated.
+
+#### WebSocket Streams
+
+- Modified response field `N`:
+  - nullable `false` → `true`
+  - affected events:
+    - `UserDataStreamEventsResponse`
+    - `executionReport`
+
 ## 6.0.0 - 2026-07-28
 
 ### Changed (76)

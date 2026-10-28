@@ -37,6 +37,8 @@ use Binance\Common\ObjectSerializer;
  *
  * @category Class
  *
+ * @description Both the cancel and the new order placement succeeded, and the account has not exceeded its unfilled order count:
+ *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech

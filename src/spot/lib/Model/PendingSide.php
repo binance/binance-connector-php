@@ -34,7 +34,7 @@ namespace Binance\Client\Spot\Model;
  *
  * @category Class
  *
- * @description Supported values: [Order Side](/products/spot/enums#side)
+ * @description Supported values: Order Side
  *
  * @author   OpenAPI Generator team
  *

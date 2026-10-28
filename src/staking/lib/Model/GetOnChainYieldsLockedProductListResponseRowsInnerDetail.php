@@ -335,7 +335,7 @@ class GetOnChainYieldsLockedProductListResponseRowsInnerDetail implements ModelI
     /**
      * Sets asset.
      *
-     * @param null|string $asset asset
+     * @param null|string $asset Lock up asset
      *
      * @return self
      */
@@ -362,7 +362,7 @@ class GetOnChainYieldsLockedProductListResponseRowsInnerDetail implements ModelI
     /**
      * Sets rewardAsset.
      *
-     * @param null|string $rewardAsset rewardAsset
+     * @param null|string $rewardAsset Earn Asset
      *
      * @return self
      */
@@ -389,7 +389,7 @@ class GetOnChainYieldsLockedProductListResponseRowsInnerDetail implements ModelI
     /**
      * Sets duration.
      *
-     * @param null|int $duration duration
+     * @param null|int $duration Lock period(days)
      *
      * @return self
      */
@@ -416,7 +416,7 @@ class GetOnChainYieldsLockedProductListResponseRowsInnerDetail implements ModelI
     /**
      * Sets renewable.
      *
-     * @param null|bool $renewable renewable
+     * @param null|bool $renewable Project supports renewal (auto-subscribe when maturity)
      *
      * @return self
      */
@@ -470,7 +470,7 @@ class GetOnChainYieldsLockedProductListResponseRowsInnerDetail implements ModelI
     /**
      * Sets apr.
      *
-     * @param null|string $apr apr
+     * @param null|string $apr 0.039 stands for 3.9%
      *
      * @return self
      */
@@ -497,7 +497,7 @@ class GetOnChainYieldsLockedProductListResponseRowsInnerDetail implements ModelI
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status PREHEATING,PURCHASING
      *
      * @return self
      */
@@ -551,7 +551,7 @@ class GetOnChainYieldsLockedProductListResponseRowsInnerDetail implements ModelI
     /**
      * Sets canRedeemToFlex.
      *
-     * @param null|bool $canRedeemToFlex canRedeemToFlex
+     * @param null|bool $canRedeemToFlex whether redemption to simple earn flexible is supported
      *
      * @return self
      */

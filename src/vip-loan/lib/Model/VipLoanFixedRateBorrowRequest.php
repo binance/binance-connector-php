@@ -460,7 +460,7 @@ class VipLoanFixedRateBorrowRequest implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets collateralCoin.
      *
-     * @param string $collateralCoin Collateral coin(s), multiple separated by `,`. Only coin names, no amount (VIP loan collateral amount = entire spot account balance)
+     * @param string $collateralCoin Collateral coin(s), multiple separated by `,`. Only coin names, no amount (VIP loan collateral amount = entire Spot balance of the coin; for `<ASSET>-Earn`, the Simple Earn Flexible position of the asset). `<ASSET>-Earn` must be sent together with its Spot asset, e.g. `BNB,BNB-Earn`.
      *
      * @return self
      */

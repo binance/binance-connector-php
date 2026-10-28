@@ -313,7 +313,7 @@ class EnableFuturesForSubAccountResponse implements ModelInterface, \ArrayAccess
     /**
      * Sets isFuturesEnabled.
      *
-     * @param null|bool $isFuturesEnabled isFuturesEnabled
+     * @param null|bool $isFuturesEnabled true or false
      *
      * @return self
      */

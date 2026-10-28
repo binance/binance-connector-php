@@ -293,7 +293,7 @@ class QueryManagedSubAccountSnapshotResponse implements ModelInterface, \ArrayAc
     /**
      * Sets code.
      *
-     * @param null|int $code code
+     * @param null|int $code 200 for success; others are error codes
      *
      * @return self
      */
@@ -320,7 +320,7 @@ class QueryManagedSubAccountSnapshotResponse implements ModelInterface, \ArrayAc
     /**
      * Sets msg.
      *
-     * @param null|string $msg msg
+     * @param null|string $msg error message
      *
      * @return self
      */

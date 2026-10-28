@@ -503,7 +503,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets positionId.
      *
-     * @param null|int $positionId positionId
+     * @param null|int $positionId Locked position ID
      *
      * @return self
      */
@@ -530,7 +530,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets parentPositionId.
      *
-     * @param null|int $parentPositionId parentPositionId
+     * @param null|int $parentPositionId Parent position ID
      *
      * @return self
      */
@@ -557,7 +557,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets projectId.
      *
-     * @param null|string $projectId projectId
+     * @param null|string $projectId Locked project ID
      *
      * @return self
      */
@@ -584,7 +584,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets asset.
      *
-     * @param null|string $asset asset
+     * @param null|string $asset Locked asset
      *
      * @return self
      */
@@ -611,7 +611,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets amount.
      *
-     * @param null|string $amount amount
+     * @param null|string $amount Locked Amount
      *
      * @return self
      */
@@ -638,7 +638,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets purchaseTime.
      *
-     * @param null|int $purchaseTime purchaseTime
+     * @param null|int $purchaseTime Subscription time
      *
      * @return self
      */
@@ -665,7 +665,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets duration.
      *
-     * @param null|string $duration duration
+     * @param null|string $duration Lock period(days)
      *
      * @return self
      */
@@ -692,7 +692,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets accrualDays.
      *
-     * @param null|string $accrualDays accrualDays
+     * @param null|string $accrualDays Accrue days
      *
      * @return self
      */
@@ -719,7 +719,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets rewardAsset.
      *
-     * @param null|string $rewardAsset rewardAsset
+     * @param null|string $rewardAsset Earned asset
      *
      * @return self
      */
@@ -773,7 +773,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets rewardAmt.
      *
-     * @param null|string $rewardAmt rewardAmt
+     * @param null|string $rewardAmt Earned amount
      *
      * @return self
      */
@@ -800,7 +800,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets extraRewardAsset.
      *
-     * @param null|string $extraRewardAsset extraRewardAsset
+     * @param null|string $extraRewardAsset Rewards assets of extra staking type
      *
      * @return self
      */
@@ -827,7 +827,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets extraRewardAPR.
      *
-     * @param null|string $extraRewardAPR extraRewardAPR
+     * @param null|string $extraRewardAPR APR of extra staking type
      *
      * @return self
      */
@@ -854,7 +854,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets estExtraRewardAmt.
      *
-     * @param null|string $estExtraRewardAmt estExtraRewardAmt
+     * @param null|string $estExtraRewardAmt Rewards of extra staking type, distribute when order expires
      *
      * @return self
      */
@@ -962,7 +962,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets nextPay.
      *
-     * @param null|string $nextPay nextPay
+     * @param null|string $nextPay Next estimated rewards payment
      *
      * @return self
      */
@@ -989,7 +989,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets nextPayDate.
      *
-     * @param null|int $nextPayDate nextPayDate
+     * @param null|int $nextPayDate Next rewards payment date
      *
      * @return self
      */
@@ -1016,7 +1016,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets payPeriod.
      *
-     * @param null|string $payPeriod payPeriod
+     * @param null|string $payPeriod Payment cycle
      *
      * @return self
      */
@@ -1043,7 +1043,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets redeemAmountEarly.
      *
-     * @param null|string $redeemAmountEarly redeemAmountEarly
+     * @param null|string $redeemAmountEarly Early redemption amount
      *
      * @return self
      */
@@ -1070,7 +1070,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets rewardsEndDate.
      *
-     * @param null|int $rewardsEndDate rewardsEndDate
+     * @param null|int $rewardsEndDate Rewards accrual end date
      *
      * @return self
      */
@@ -1097,7 +1097,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets deliverDate.
      *
-     * @param null|int $deliverDate deliverDate
+     * @param null|int $deliverDate Redemption arrival time
      *
      * @return self
      */
@@ -1124,7 +1124,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets redeemPeriod.
      *
-     * @param null|string $redeemPeriod redeemPeriod
+     * @param null|string $redeemPeriod Redemption interval
      *
      * @return self
      */
@@ -1151,7 +1151,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets redeemingAmt.
      *
-     * @param null|string $redeemingAmt redeemingAmt
+     * @param null|string $redeemingAmt Amount under redemption
      *
      * @return self
      */
@@ -1178,7 +1178,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets redeemTo.
      *
-     * @param null|string $redeemTo redeemTo
+     * @param null|string $redeemTo Redeem to Flexible product or Spot wallet
      *
      * @return self
      */
@@ -1205,7 +1205,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets partialAmtDeliverDate.
      *
-     * @param null|int $partialAmtDeliverDate partialAmtDeliverDate
+     * @param null|int $partialAmtDeliverDate Arrival time of partial redemption amount of order
      *
      * @return self
      */
@@ -1232,7 +1232,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets canRedeemEarly.
      *
-     * @param null|bool $canRedeemEarly canRedeemEarly
+     * @param null|bool $canRedeemEarly When it is true, early redemption can be operated
      *
      * @return self
      */
@@ -1259,7 +1259,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets canFastRedemption.
      *
-     * @param null|bool $canFastRedemption canFastRedemption
+     * @param null|bool $canFastRedemption When it is true, fast redemption can be operated
      *
      * @return self
      */
@@ -1286,7 +1286,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets autoSubscribe.
      *
-     * @param null|bool $autoSubscribe autoSubscribe
+     * @param null|bool $autoSubscribe When it is true, auto staking can be operated
      *
      * @return self
      */
@@ -1313,7 +1313,7 @@ class GetLockedProductPositionResponseRowsInner implements ModelInterface, \Arra
     /**
      * Sets type.
      *
-     * @param null|string $type type
+     * @param null|string $type Order type is auto subscribe or normal
      *
      * @return self
      */

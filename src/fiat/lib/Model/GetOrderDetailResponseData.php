@@ -328,7 +328,7 @@ class GetOrderDetailResponseData implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets orderId.
      *
-     * @param null|string $orderId orderId
+     * @param null|string $orderId Order id
      *
      * @return self
      */
@@ -355,7 +355,7 @@ class GetOrderDetailResponseData implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets orderStatus.
      *
-     * @param null|string $orderStatus orderStatus
+     * @param null|string $orderStatus Order status
      *
      * @return self
      */
@@ -382,7 +382,7 @@ class GetOrderDetailResponseData implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets amount.
      *
-     * @param null|string $amount amount
+     * @param null|string $amount Order amount
      *
      * @return self
      */
@@ -409,7 +409,7 @@ class GetOrderDetailResponseData implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets fee.
      *
-     * @param null|string $fee fee
+     * @param null|string $fee Trade fee
      *
      * @return self
      */
@@ -436,7 +436,7 @@ class GetOrderDetailResponseData implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets fiatCurrency.
      *
-     * @param null|string $fiatCurrency fiatCurrency
+     * @param null|string $fiatCurrency Fiat token
      *
      * @return self
      */
@@ -463,7 +463,7 @@ class GetOrderDetailResponseData implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets errorCode.
      *
-     * @param null|string $errorCode errorCode
+     * @param null|string $errorCode Error code if any
      *
      * @return self
      */
@@ -490,7 +490,7 @@ class GetOrderDetailResponseData implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets errorMessage.
      *
-     * @param null|string $errorMessage errorMessage
+     * @param null|string $errorMessage Error message if any
      *
      * @return self
      */
@@ -517,7 +517,7 @@ class GetOrderDetailResponseData implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets ext.
      *
-     * @param null|object $ext ext
+     * @param null|object $ext Extra info
      *
      * @return self
      */

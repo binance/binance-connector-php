@@ -375,7 +375,7 @@ class GetAssetsThatCanBeConvertedIntoBnbResponseDetailsInner implements ModelInt
     /**
      * Sets amountFree.
      *
-     * @param null|string $amountFree amountFree
+     * @param null|string $amountFree Convertible amount
      *
      * @return self
      */
@@ -402,7 +402,7 @@ class GetAssetsThatCanBeConvertedIntoBnbResponseDetailsInner implements ModelInt
     /**
      * Sets toBTC.
      *
-     * @param null|string $toBTC toBTC
+     * @param null|string $toBTC BTC amount
      *
      * @return self
      */
@@ -429,7 +429,7 @@ class GetAssetsThatCanBeConvertedIntoBnbResponseDetailsInner implements ModelInt
     /**
      * Sets toBNB.
      *
-     * @param null|string $toBNB toBNB
+     * @param null|string $toBNB BNB amount（Not deducted commission fee）
      *
      * @return self
      */
@@ -456,7 +456,7 @@ class GetAssetsThatCanBeConvertedIntoBnbResponseDetailsInner implements ModelInt
     /**
      * Sets toBNBOffExchange.
      *
-     * @param null|string $toBNBOffExchange toBNBOffExchange
+     * @param null|string $toBNBOffExchange BNB amount（Deducted commission fee）
      *
      * @return self
      */
@@ -483,7 +483,7 @@ class GetAssetsThatCanBeConvertedIntoBnbResponseDetailsInner implements ModelInt
     /**
      * Sets exchange.
      *
-     * @param null|string $exchange exchange
+     * @param null|string $exchange Commission fee
      *
      * @return self
      */

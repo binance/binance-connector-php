@@ -320,7 +320,7 @@ class DailyAccountSnapshotResponseSnapshotVosInnerDataAssetsInner implements Mod
     /**
      * Sets marginBalance.
      *
-     * @param null|string $marginBalance marginBalance
+     * @param null|string $marginBalance Not real-time data, can ignore
      *
      * @return self
      */

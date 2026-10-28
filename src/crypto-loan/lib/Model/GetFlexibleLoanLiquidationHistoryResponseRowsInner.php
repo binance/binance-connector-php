@@ -551,7 +551,7 @@ class GetFlexibleLoanLiquidationHistoryResponseRowsInner implements ModelInterfa
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status Liquidating
      *
      * @return self
      */

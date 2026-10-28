@@ -355,7 +355,7 @@ class GetFuturesPositionRiskOfSubAccountResponseInner implements ModelInterface,
     /**
      * Sets leverage.
      *
-     * @param null|string $leverage leverage
+     * @param null|string $leverage current initial leverage
      *
      * @return self
      */
@@ -382,7 +382,7 @@ class GetFuturesPositionRiskOfSubAccountResponseInner implements ModelInterface,
     /**
      * Sets maxNotional.
      *
-     * @param null|string $maxNotional maxNotional
+     * @param null|string $maxNotional notional value limit of current initial leverage
      *
      * @return self
      */

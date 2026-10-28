@@ -16,7 +16,7 @@ function vipLoanFixedRateBorrowExample()
     $vipLoanFixedRateBorrowRequest->setBorrowCoin('BUSD');
     $vipLoanFixedRateBorrowRequest->setLoanTerm(30);
     $vipLoanFixedRateBorrowRequest->setBorrowUid(12345678);
-    $vipLoanFixedRateBorrowRequest->setCollateralCoin('BNB,ETH,BTC');
+    $vipLoanFixedRateBorrowRequest->setCollateralCoin('BNB,BNB-Earn,ETH,BTC');
     $vipLoanFixedRateBorrowRequest->setCollateralAccountId('12345,67890,13579');
     $response = $api->vipLoanFixedRateBorrow($vipLoanFixedRateBorrowRequest);
     print_r($response);

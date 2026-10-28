@@ -926,7 +926,7 @@ class NewUmAlgoOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets activatePrice.
      *
-     * @param null|string $activatePrice activatePrice
+     * @param null|string $activatePrice TRAILING_STOP_MARKET order
      *
      * @return self
      */
@@ -953,7 +953,7 @@ class NewUmAlgoOrderResponse implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets callbackRate.
      *
-     * @param null|string $callbackRate callbackRate
+     * @param null|string $callbackRate TRAILING_STOP_MARKET order
      *
      * @return self
      */

@@ -405,7 +405,7 @@ class GetC2CTradeHistoryResponseDataInner implements ModelInterface, \ArrayAcces
     /**
      * Sets orderNumber.
      *
-     * @param null|string $orderNumber orderNumber
+     * @param null|string $orderNumber Order Number
      *
      * @return self
      */
@@ -432,7 +432,7 @@ class GetC2CTradeHistoryResponseDataInner implements ModelInterface, \ArrayAcces
     /**
      * Sets advNo.
      *
-     * @param null|string $advNo advNo
+     * @param null|string $advNo Adv Number
      *
      * @return self
      */
@@ -459,7 +459,7 @@ class GetC2CTradeHistoryResponseDataInner implements ModelInterface, \ArrayAcces
     /**
      * Sets tradeType.
      *
-     * @param null|string $tradeType tradeType
+     * @param null|string $tradeType \"BUY\" or \"SELL\"
      *
      * @return self
      */
@@ -486,7 +486,7 @@ class GetC2CTradeHistoryResponseDataInner implements ModelInterface, \ArrayAcces
     /**
      * Sets asset.
      *
-     * @param null|string $asset asset
+     * @param null|string $asset Crypto asset
      *
      * @return self
      */
@@ -513,7 +513,7 @@ class GetC2CTradeHistoryResponseDataInner implements ModelInterface, \ArrayAcces
     /**
      * Sets fiat.
      *
-     * @param null|string $fiat fiat
+     * @param null|string $fiat Fiat currency
      *
      * @return self
      */
@@ -540,7 +540,7 @@ class GetC2CTradeHistoryResponseDataInner implements ModelInterface, \ArrayAcces
     /**
      * Sets fiatSymbol.
      *
-     * @param null|string $fiatSymbol fiatSymbol
+     * @param null|string $fiatSymbol Fiat currency symbol
      *
      * @return self
      */
@@ -648,7 +648,7 @@ class GetC2CTradeHistoryResponseDataInner implements ModelInterface, \ArrayAcces
     /**
      * Sets orderStatus.
      *
-     * @param null|string $orderStatus orderStatus
+     * @param null|string $orderStatus PENDING, TRADING, BUYER_PAYED, DISTRIBUTING, COMPLETED, IN_APPEAL, CANCELLED, CANCELLED_BY_SYSTEM
      *
      * @return self
      */

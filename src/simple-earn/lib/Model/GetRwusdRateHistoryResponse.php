@@ -60,7 +60,7 @@ class GetRwusdRateHistoryResponse implements ModelInterface, \ArrayAccess, \Json
      * @var string[]
      */
     protected static $openAPITypes = [
-        'rows' => '\Binance\Client\SimpleEarn\Model\GetBfusdRateHistoryResponseRowsInner[]',
+        'rows' => '\Binance\Client\SimpleEarn\Model\GetRwusdRateHistoryResponseRowsInner[]',
         'total' => 'string',
     ];
 
@@ -276,7 +276,7 @@ class GetRwusdRateHistoryResponse implements ModelInterface, \ArrayAccess, \Json
     /**
      * Gets rows.
      *
-     * @return null|GetBfusdRateHistoryResponseRowsInner[]
+     * @return null|GetRwusdRateHistoryResponseRowsInner[]
      */
     public function getRows()
     {
@@ -286,7 +286,7 @@ class GetRwusdRateHistoryResponse implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets rows.
      *
-     * @param null|GetBfusdRateHistoryResponseRowsInner[] $rows rows
+     * @param null|GetRwusdRateHistoryResponseRowsInner[] $rows rows
      *
      * @return self
      */

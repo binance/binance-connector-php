@@ -383,7 +383,7 @@ class AccountCommissionResponseDiscount implements ModelInterface, \ArrayAccess,
     /**
      * Sets discount.
      *
-     * @param null|string $discount standard commission is reduced by this rate when paying commission in BNB
+     * @param null|string $discount Multiplier applied to the standard commission when paying commission in BNB (e.g. 0.75 = 75% of the standard commission is charged).
      *
      * @return self
      */

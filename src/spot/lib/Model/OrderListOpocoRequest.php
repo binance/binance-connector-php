@@ -617,7 +617,7 @@ class OrderListOpocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets listClientOrderId.
      *
-     * @param null|string $listClientOrderId Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `workingClientOrderId` and the `pendingClientOrderId`.
+     * @param null|string $listClientOrderId Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `workingClientOrderId`, `pendingAboveClientOrderId`, and the `pendingBelowClientOrderId`.
      *
      * @return self
      */
@@ -995,7 +995,7 @@ class OrderListOpocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets workingPegOffsetValue.
      *
-     * @param null|int $workingPegOffsetValue Price level for pegging (max: 100). See [Pegged Orders](/products/spot/faqs/pegged_orders)
+     * @param null|int $workingPegOffsetValue Price level for pegging (max: 100). See Pegged Orders
      *
      * @return self
      */
@@ -1157,7 +1157,7 @@ class OrderListOpocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets pendingAboveTrailingDelta.
      *
-     * @param null|float $pendingAboveTrailingDelta See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)
+     * @param null|float $pendingAboveTrailingDelta See Trailing Stop order FAQ
      *
      * @return self
      */
@@ -1346,7 +1346,7 @@ class OrderListOpocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets pendingAbovePegOffsetValue.
      *
-     * @param null|int $pendingAbovePegOffsetValue Price level for pegging (max: 100). See [Pegged Orders](/products/spot/faqs/pegged_orders)
+     * @param null|int $pendingAbovePegOffsetValue Price level for pegging (max: 100). See Pegged Orders
      *
      * @return self
      */
@@ -1481,7 +1481,7 @@ class OrderListOpocoRequest implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets pendingBelowTrailingDelta.
      *
-     * @param null|float $pendingBelowTrailingDelta See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)
+     * @param null|float $pendingBelowTrailingDelta See Trailing Stop order FAQ
      *
      * @return self
      */

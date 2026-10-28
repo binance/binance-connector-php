@@ -49,6 +49,8 @@ enum SymbolStatus: string
 
     case _BREAK = 'BREAK';
 
+    case CANCEL_ONLY = 'CANCEL_ONLY';
+
     /**
      * Gets allowable values of the enum.
      *
@@ -60,6 +62,7 @@ enum SymbolStatus: string
             self::TRADING,
             self::HALT,
             self::_BREAK,
+            self::CANCEL_ONLY,
         ];
     }
 }

@@ -2132,6 +2132,7 @@ class AssetApi
 
         $operationHost = $this->clientConfig->getUrl();
 
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
         $query = ObjectSerializer::buildQuery($queryParams);
 
         return new Request(
@@ -2291,6 +2292,7 @@ class AssetApi
 
         $operationHost = $this->clientConfig->getUrl();
 
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
         $query = ObjectSerializer::buildQuery($queryParams);
 
         return new Request(

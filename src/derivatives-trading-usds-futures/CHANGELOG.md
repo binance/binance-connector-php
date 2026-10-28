@@ -1,5 +1,21 @@
 # Changelog
 
+## 8.0.0 - 2026-10-28
+
+**Derivatives Trading USDS Futures**
+
+### Changed (2)
+
+#### REST API
+
+- Deleted parameter `page`
+  - affected methods:
+    - `getIncomeHistory()` (`GET /fapi/v1/income`)
+- Modified parameter `interval`:
+  - enum added: `1s`
+  - affected methods:
+    - `continuousContractKlineCandlestickData()` (`GET /fapi/v1/continuousKlines`)
+
 ## 6.1.0 - 2026-09-21
 
 **Derivatives Trading USDS Futures**

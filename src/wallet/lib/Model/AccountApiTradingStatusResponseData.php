@@ -300,7 +300,7 @@ class AccountApiTradingStatusResponseData implements ModelInterface, \ArrayAcces
     /**
      * Sets isLocked.
      *
-     * @param null|bool $isLocked isLocked
+     * @param null|bool $isLocked API trading function is locked or not
      *
      * @return self
      */
@@ -327,7 +327,7 @@ class AccountApiTradingStatusResponseData implements ModelInterface, \ArrayAcces
     /**
      * Sets plannedRecoverTime.
      *
-     * @param null|int $plannedRecoverTime plannedRecoverTime
+     * @param null|int $plannedRecoverTime If API trading function is locked, this is the planned recover time
      *
      * @return self
      */

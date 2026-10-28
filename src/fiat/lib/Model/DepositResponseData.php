@@ -279,7 +279,7 @@ class DepositResponseData implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Sets orderId.
      *
-     * @param null|string $orderId orderId
+     * @param null|string $orderId deposit order id
      *
      * @return self
      */

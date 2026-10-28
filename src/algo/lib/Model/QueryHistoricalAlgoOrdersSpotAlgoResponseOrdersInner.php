@@ -73,6 +73,7 @@ class QueryHistoricalAlgoOrdersSpotAlgoResponseOrdersInner implements ModelInter
         'algoStatus' => 'string',
         'algoType' => 'string',
         'urgency' => 'string',
+        'duration' => 'int',
     ];
 
     /**
@@ -98,6 +99,7 @@ class QueryHistoricalAlgoOrdersSpotAlgoResponseOrdersInner implements ModelInter
         'algoStatus' => null,
         'algoType' => null,
         'urgency' => null,
+        'duration' => 'int64',
     ];
 
     /**
@@ -119,6 +121,7 @@ class QueryHistoricalAlgoOrdersSpotAlgoResponseOrdersInner implements ModelInter
         'algoStatus' => false,
         'algoType' => false,
         'urgency' => false,
+        'duration' => false,
     ];
 
     /**
@@ -148,6 +151,7 @@ class QueryHistoricalAlgoOrdersSpotAlgoResponseOrdersInner implements ModelInter
         'algoStatus' => 'algoStatus',
         'algoType' => 'algoType',
         'urgency' => 'urgency',
+        'duration' => 'duration',
     ];
 
     /**
@@ -169,6 +173,7 @@ class QueryHistoricalAlgoOrdersSpotAlgoResponseOrdersInner implements ModelInter
         'algoStatus' => 'setAlgoStatus',
         'algoType' => 'setAlgoType',
         'urgency' => 'setUrgency',
+        'duration' => 'setDuration',
     ];
 
     /**
@@ -190,6 +195,7 @@ class QueryHistoricalAlgoOrdersSpotAlgoResponseOrdersInner implements ModelInter
         'algoStatus' => 'getAlgoStatus',
         'algoType' => 'getAlgoType',
         'urgency' => 'getUrgency',
+        'duration' => 'getDuration',
     ];
 
     /**
@@ -220,6 +226,7 @@ class QueryHistoricalAlgoOrdersSpotAlgoResponseOrdersInner implements ModelInter
         $this->setIfExists('algoStatus', $data ?? [], null);
         $this->setIfExists('algoType', $data ?? [], null);
         $this->setIfExists('urgency', $data ?? [], null);
+        $this->setIfExists('duration', $data ?? [], null);
     }
 
     /**
@@ -697,6 +704,33 @@ class QueryHistoricalAlgoOrdersSpotAlgoResponseOrdersInner implements ModelInter
             throw new \InvalidArgumentException('non-nullable urgency cannot be null');
         }
         $this->container['urgency'] = $urgency;
+
+        return $this;
+    }
+
+    /**
+     * Gets duration.
+     *
+     * @return null|int
+     */
+    public function getDuration()
+    {
+        return $this->container['duration'];
+    }
+
+    /**
+     * Sets duration.
+     *
+     * @param null|int $duration Order duration in seconds. Only returned for TWAP orders
+     *
+     * @return self
+     */
+    public function setDuration($duration)
+    {
+        if (is_null($duration)) {
+            throw new \InvalidArgumentException('non-nullable duration cannot be null');
+        }
+        $this->container['duration'] = $duration;
 
         return $this;
     }

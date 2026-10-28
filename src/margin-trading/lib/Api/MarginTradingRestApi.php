@@ -30,6 +30,7 @@ use Binance\Client\MarginTrading\Model\GetSmallLiabilityExchangeHistoryResponse;
 use Binance\Client\MarginTrading\Model\GetSummaryOfMarginAccountResponse;
 use Binance\Client\MarginTrading\Model\IsIsolated;
 use Binance\Client\MarginTrading\Model\KeepaliveUserDataStreamRequest;
+use Binance\Client\MarginTrading\Model\KeepaliveUserDataStreamV2Request;
 use Binance\Client\MarginTrading\Model\LiquidationLoanRepayRequest;
 use Binance\Client\MarginTrading\Model\LiquidationLoanRepayResponse;
 use Binance\Client\MarginTrading\Model\MarginAccountBorrowRepayRequest;
@@ -65,6 +66,7 @@ use Binance\Client\MarginTrading\Model\QueryMarginAccountsAllOrdersResponse;
 use Binance\Client\MarginTrading\Model\QueryMarginAccountsOcoResponse;
 use Binance\Client\MarginTrading\Model\QueryMarginAccountsOpenOcoResponse;
 use Binance\Client\MarginTrading\Model\QueryMarginAccountsOpenOrdersResponse;
+use Binance\Client\MarginTrading\Model\QueryMarginAccountsOpenOtootocoOrderListsResponse;
 use Binance\Client\MarginTrading\Model\QueryMarginAccountsOrderResponse;
 use Binance\Client\MarginTrading\Model\QueryMarginAccountsTradeListResponse;
 use Binance\Client\MarginTrading\Model\QueryMarginAvailableInventoryResponse;
@@ -77,6 +79,7 @@ use Binance\Client\MarginTrading\Model\QuerySpecialKeyListResponse;
 use Binance\Client\MarginTrading\Model\QuerySpecialKeyResponse;
 use Binance\Client\MarginTrading\Model\SmallLiabilityExchangeRequest;
 use Binance\Client\MarginTrading\Model\StartUserDataStreamResponse;
+use Binance\Client\MarginTrading\Model\StartUserDataStreamV2Response;
 use Binance\Common\ApiException;
 use Binance\Common\Configuration\ClientConfiguration;
 use Binance\Common\Dtos\ApiResponse;
@@ -1115,6 +1118,24 @@ class MarginTradingRestApi
     }
 
     /**
+     * Operation queryMarginAccountsOpenOtootocoOrderLists.
+     *
+     * Query Margin Account&#39;s Open OTO/OTOCO Order Lists (USER_DATA)
+     *
+     * @param null|string $symbol     symbol (optional)
+     * @param null|int    $recvWindow recvWindow (optional)
+     *
+     * @return ApiResponse<QueryMarginAccountsOpenOtootocoOrderListsResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function queryMarginAccountsOpenOtootocoOrderLists($symbol = null, $recvWindow = null): ApiResponse
+    {
+        return $this->tradeApi->queryMarginAccountsOpenOtootocoOrderLists($symbol, $recvWindow);
+    }
+
+    /**
      * Operation queryMarginAccountsOrder.
      *
      * Query Margin Account&#39;s Order (USER_DATA)
@@ -1289,6 +1310,19 @@ class MarginTradingRestApi
     }
 
     /**
+     * Operation closeUserDataStreamV2.
+     *
+     * Close User Data Stream V2 (USER_STREAM)
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function closeUserDataStreamV2()
+    {
+        $this->userDataStreamApi->closeUserDataStreamV2();
+    }
+
+    /**
      * Operation keepaliveUserDataStream.
      *
      * Keepalive User Data Stream (USER_STREAM)
@@ -1304,6 +1338,21 @@ class MarginTradingRestApi
     }
 
     /**
+     * Operation keepaliveUserDataStreamV2.
+     *
+     * Keepalive User Data Stream V2 (USER_STREAM)
+     *
+     * @param KeepaliveUserDataStreamV2Request $keepaliveUserDataStreamV2Request keepaliveUserDataStreamV2Request (required)
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function keepaliveUserDataStreamV2($keepaliveUserDataStreamV2Request)
+    {
+        $this->userDataStreamApi->keepaliveUserDataStreamV2($keepaliveUserDataStreamV2Request);
+    }
+
+    /**
      * Operation startUserDataStream.
      *
      * Start User Data Stream (USER_STREAM)
@@ -1316,5 +1365,20 @@ class MarginTradingRestApi
     public function startUserDataStream(): ApiResponse
     {
         return $this->userDataStreamApi->startUserDataStream();
+    }
+
+    /**
+     * Operation startUserDataStreamV2.
+     *
+     * Start User Data Stream V2 (USER_STREAM)
+     *
+     * @return ApiResponse<StartUserDataStreamV2Response>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function startUserDataStreamV2(): ApiResponse
+    {
+        return $this->userDataStreamApi->startUserDataStreamV2();
     }
 }

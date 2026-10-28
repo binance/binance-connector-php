@@ -653,7 +653,7 @@ class GetSimpleEarnFlexibleProductListResponseRowsInner implements ModelInterfac
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status PREHEATING,PURCHASING,END
      *
      * @return self
      */

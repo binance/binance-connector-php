@@ -286,7 +286,7 @@ class GetBfusdRateHistoryResponseRowsInner implements ModelInterface, \ArrayAcce
     /**
      * Sets annualPercentageRate.
      *
-     * @param null|string $annualPercentageRate annualPercentageRate
+     * @param null|string $annualPercentageRate BFUSD APR
      *
      * @return self
      */

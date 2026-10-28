@@ -17,6 +17,8 @@ use Binance\Client\Algo\Model\TimeWeightedAveragePriceSpotAlgoRequest;
 use Binance\Client\Algo\Model\TimeWeightedAveragePriceSpotAlgoResponse;
 use Binance\Client\Algo\Model\VolumeParticipationFutureAlgoRequest;
 use Binance\Client\Algo\Model\VolumeParticipationFutureAlgoResponse;
+use Binance\Client\Algo\Model\VolumeParticipationRequest;
+use Binance\Client\Algo\Model\VolumeParticipationResponse;
 use Binance\Common\ApiException;
 use Binance\Common\Configuration\ClientConfiguration;
 use Binance\Common\Dtos\ApiResponse;
@@ -247,5 +249,22 @@ class AlgoRestApi
     public function timeWeightedAveragePriceSpotAlgo($timeWeightedAveragePriceSpotAlgoRequest): ApiResponse
     {
         return $this->spotAlgoApi->timeWeightedAveragePriceSpotAlgo($timeWeightedAveragePriceSpotAlgoRequest);
+    }
+
+    /**
+     * Operation volumeParticipation.
+     *
+     * Volume Participation (VP) New Order (TRADE)
+     *
+     * @param VolumeParticipationRequest $volumeParticipationRequest volumeParticipationRequest (required)
+     *
+     * @return ApiResponse<VolumeParticipationResponse>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function volumeParticipation($volumeParticipationRequest): ApiResponse
+    {
+        return $this->spotAlgoApi->volumeParticipation($volumeParticipationRequest);
     }
 }

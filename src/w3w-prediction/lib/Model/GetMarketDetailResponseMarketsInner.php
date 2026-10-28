@@ -626,7 +626,7 @@ class GetMarketDetailResponseMarketsInner implements ModelInterface, \ArrayAcces
     /**
      * Sets decimalPrecision.
      *
-     * @param null|int $decimalPrecision decimalPrecision
+     * @param null|int $decimalPrecision Price precision of the market, in decimal places. The price tick is 10 to the power of minus `decimalPrecision`, for example `2` means a tick of 0.01. A limit price that is not on the tick is truncated down
      *
      * @return self
      */

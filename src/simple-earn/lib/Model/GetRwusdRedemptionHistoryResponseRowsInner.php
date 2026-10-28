@@ -517,7 +517,7 @@ class GetRwusdRedemptionHistoryResponseRowsInner implements ModelInterface, \Arr
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status PENDING, SUCCESS
      *
      * @return self
      */

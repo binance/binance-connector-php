@@ -16,7 +16,7 @@ function vipLoanBorrowExample()
     $vipLoanBorrowRequest->setLoanCoin('BTC');
     $vipLoanBorrowRequest->setLoanAmount(1.0);
     $vipLoanBorrowRequest->setCollateralAccountId('12345678,12345678,12345678');
-    $vipLoanBorrowRequest->setCollateralCoin('BUSD,USDT,ETH');
+    $vipLoanBorrowRequest->setCollateralCoin('BUSD,USDT,USDT-Earn,ETH');
     $vipLoanBorrowRequest->setIsFlexibleRate(true);
     $response = $api->vipLoanBorrow($vipLoanBorrowRequest);
     print_r($response);

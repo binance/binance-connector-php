@@ -32,6 +32,8 @@ use Binance\Client\SubAccount\Model\AddIpRestrictionForSubAccountApiKeyRequest;
 use Binance\Client\SubAccount\Model\AddIpRestrictionForSubAccountApiKeyResponse;
 use Binance\Client\SubAccount\Model\CreateSubAccountApiKeyRequest;
 use Binance\Client\SubAccount\Model\CreateSubAccountApiKeyResponse;
+use Binance\Client\SubAccount\Model\CreateSubAccountApiKeyV2Request;
+use Binance\Client\SubAccount\Model\CreateSubAccountApiKeyV2Response;
 use Binance\Client\SubAccount\Model\DeleteIpListForASubAccountApiKeyResponse;
 use Binance\Client\SubAccount\Model\GetIpRestrictionForASubAccountApiKeyResponse;
 use Binance\Client\SubAccount\Model\ModifySubAccountApiKeyPermissionRequest;
@@ -70,6 +72,7 @@ class ApiManagementApi
     public const contentTypes = [
         'addIpRestrictionForSubAccountApiKey' => ['application/x-www-form-urlencoded'],
         'createSubAccountApiKey' => ['application/x-www-form-urlencoded'],
+        'createSubAccountApiKeyV2' => ['application/x-www-form-urlencoded'],
         'deleteIpListForASubAccountApiKey' => ['application/x-www-form-urlencoded'],
         'deleteSubAccountApiKey' => ['application/x-www-form-urlencoded'],
         'getIpRestrictionForASubAccountApiKey' => ['application/x-www-form-urlencoded'],
@@ -491,6 +494,206 @@ class ApiManagementApi
                 $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($createSubAccountApiKeyRequest));
             } else {
                 $httpBody = $createSubAccountApiKeyRequest;
+            }
+        }
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $queryParams['timestamp'] = $this->getTimestamp();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        $queryParams['signature'] = $this->signer->sign($query.$httpBody);
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'POST',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createSubAccountApiKeyV2.
+     *
+     * Create Sub-account API Key V2 (For Master Account) (USER_DATA)
+     *
+     * @param CreateSubAccountApiKeyV2Request $createSubAccountApiKeyV2Request createSubAccountApiKeyV2Request (required)
+     *
+     * @return ApiResponse<CreateSubAccountApiKeyV2Response>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function createSubAccountApiKeyV2($createSubAccountApiKeyV2Request): ApiResponse
+    {
+        return $this->createSubAccountApiKeyV2WithHttpInfo($createSubAccountApiKeyV2Request);
+    }
+
+    /**
+     * Operation createSubAccountApiKeyV2WithHttpInfo.
+     *
+     * Create Sub-account API Key V2 (For Master Account) (USER_DATA)
+     *
+     * @param CreateSubAccountApiKeyV2Request $createSubAccountApiKeyV2Request (required)
+     *
+     * @return ApiResponse<CreateSubAccountApiKeyV2Response>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function createSubAccountApiKeyV2WithHttpInfo($createSubAccountApiKeyV2Request): ApiResponse
+    {
+        $request = $this->createSubAccountApiKeyV2Request($createSubAccountApiKeyV2Request);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\SubAccount\Model\CreateSubAccountApiKeyV2Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\SubAccount\Model\CreateSubAccountApiKeyV2Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\SubAccount\Model\CreateSubAccountApiKeyV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'createSubAccountApiKeyV2'.
+     *
+     * @param CreateSubAccountApiKeyV2Request $createSubAccountApiKeyV2Request (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function createSubAccountApiKeyV2Request($createSubAccountApiKeyV2Request)
+    {
+        $contentType = self::contentTypes['createSubAccountApiKeyV2'][0];
+
+        // verify the required parameter 'createSubAccountApiKeyV2Request' is set
+        if (null === $createSubAccountApiKeyV2Request || (is_array($createSubAccountApiKeyV2Request) && 0 === count($createSubAccountApiKeyV2Request))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $createSubAccountApiKeyV2Request when calling createSubAccountApiKeyV2'
+            );
+        }
+
+        $resourcePath = '/sapi/v2/sub-account/subAccountApi';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $getters = $createSubAccountApiKeyV2Request::getters();
+        $formParams = [];
+        foreach ($getters as $property => $getter) {
+            $value = $createSubAccountApiKeyV2Request->{$getter}();
+            if (!empty($value)) {
+                $formParams[$property] = $createSubAccountApiKeyV2Request->{$getter}();
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        } elseif (isset($createSubAccountApiKeyV2Request)) {
+            if (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($createSubAccountApiKeyV2Request));
+            } else {
+                $httpBody = $createSubAccountApiKeyV2Request;
             }
         }
 

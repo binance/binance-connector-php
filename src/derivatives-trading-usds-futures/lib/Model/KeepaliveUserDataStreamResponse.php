@@ -279,7 +279,7 @@ class KeepaliveUserDataStreamResponse implements ModelInterface, \ArrayAccess, \
     /**
      * Sets listenKey.
      *
-     * @param null|string $listenKey listenKey
+     * @param null|string $listenKey the listenkey which got extended
      *
      * @return self
      */

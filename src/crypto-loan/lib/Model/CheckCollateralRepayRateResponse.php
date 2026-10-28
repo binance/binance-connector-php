@@ -347,7 +347,7 @@ class CheckCollateralRepayRateResponse implements ModelInterface, \ArrayAccess, 
     /**
      * Sets rate.
      *
-     * @param null|string $rate rate
+     * @param null|string $rate rate of collateral coin/loan coin
      *
      * @return self
      */

@@ -409,7 +409,7 @@ class FetchWithdrawAddressListResponseInner implements ModelInterface, \ArrayAcc
     /**
      * Sets name.
      *
-     * @param null|string $name name
+     * @param null|string $name is a user-defined name
      *
      * @return self
      */
@@ -463,7 +463,7 @@ class FetchWithdrawAddressListResponseInner implements ModelInterface, \ArrayAcc
     /**
      * Sets origin.
      *
-     * @param null|string $origin origin
+     * @param null|string $origin if originType != 'others', this value is blank, otherwise the origin is manually filled in by the user
      *
      * @return self
      */
@@ -490,7 +490,7 @@ class FetchWithdrawAddressListResponseInner implements ModelInterface, \ArrayAcc
     /**
      * Sets originType.
      *
-     * @param null|string $originType originType
+     * @param null|string $originType Address source type, including but not limited to: type Exchange Address: Binance, CoinBase, HTX, Bitfinex, OKX, Bithumb, Kraken, Kucoin, Gemini, Bitget, Bybit, Upbit, Gate.io;  type Wallet Address: Binance Web3 Wallet, Trust Wallet, MetaMask, Rabby Wallet, Phantom, OKX Web 3 Wallet, Coinbase Wallet, Bitget Wallet; type Others: others(multilanguage support)
      *
      * @return self
      */
@@ -517,7 +517,7 @@ class FetchWithdrawAddressListResponseInner implements ModelInterface, \ArrayAcc
     /**
      * Sets whiteStatus.
      *
-     * @param null|bool $whiteStatus whiteStatus
+     * @param null|bool $whiteStatus Is it whitelisted
      *
      * @return self
      */

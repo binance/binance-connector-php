@@ -293,7 +293,7 @@ class GetWbethRateHistoryResponseRowsInner implements ModelInterface, \ArrayAcce
     /**
      * Sets annualPercentageRate.
      *
-     * @param null|string $annualPercentageRate annualPercentageRate
+     * @param null|string $annualPercentageRate BETH APR
      *
      * @return self
      */
@@ -320,7 +320,7 @@ class GetWbethRateHistoryResponseRowsInner implements ModelInterface, \ArrayAcce
     /**
      * Sets exchangeRate.
      *
-     * @param null|string $exchangeRate exchangeRate
+     * @param null|string $exchangeRate BETH value per 1 WBETH
      *
      * @return self
      */

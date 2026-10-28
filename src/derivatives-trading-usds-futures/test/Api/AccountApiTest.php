@@ -396,7 +396,7 @@ class AccountApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/fapi/v1/income', $request->getUri()->getPath());
-        self::assertEquals('128f16c42dd66df38dc3a5d0a15371edcdb1bf4c2d103347020dcb40ccb5fb0c', $queryMap['signature']);
+        self::assertEquals('20d82986bf2c00f22923f2bc4532ef0d4cdf55e87f3d0b418107cade5b54ea27', $queryMap['signature']);
     }
 
     /**

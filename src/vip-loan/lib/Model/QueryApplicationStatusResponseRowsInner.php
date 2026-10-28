@@ -504,7 +504,7 @@ class QueryApplicationStatusResponseRowsInner implements ModelInterface, \ArrayA
     /**
      * Sets collateralCoin.
      *
-     * @param null|string $collateralCoin collateralCoin
+     * @param null|string $collateralCoin includes `<ASSET>-Earn` entries when a Simple Earn Flexible position is pledged
      *
      * @return self
      */

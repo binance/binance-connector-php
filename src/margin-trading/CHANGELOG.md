@@ -1,5 +1,67 @@
 # Changelog
 
+## 8.0.0 - 2026-10-28
+
+**Margin Trading**
+
+### Added (4)
+
+#### REST API
+
+- `closeUserDataStreamV2()` (`DELETE /sapi/v2/margin/listen-key`)
+- `keepaliveUserDataStreamV2()` (`PUT /sapi/v2/margin/listen-key`)
+- `queryMarginAccountsOpenOtootocoOrderLists()` (`GET /sapi/v1/margin/oto/openOrderList`)
+- `startUserDataStreamV2()` (`POST /sapi/v2/margin/listen-key`)
+
+### Changed (10)
+
+#### REST API
+
+- Added response schema `startUserDataStreamV2Response`
+- Added response schema `queryMarginAccountsOpenOtootocoOrderListsResponse`
+#### WebSocket Streams
+
+- Modified response field `D`:
+  - type `string` → `integer`
+  - affected events:
+    - `TradeDataStreamEventsResponse`
+    - `executionReport`
+- Modified response field `J`:
+  - type `string` → `integer`
+  - affected events:
+    - `TradeDataStreamEventsResponse`
+    - `executionReport`
+- Modified response field `U`:
+  - type `string` → `integer`
+  - affected events:
+    - `TradeDataStreamEventsResponse`
+    - `executionReport`
+- Modified response field `a`:
+  - type `string` → `integer`
+  - affected events:
+    - `TradeDataStreamEventsResponse`
+    - `executionReport`
+- Modified response field `d`:
+  - type `string` → `integer`
+  - affected events:
+    - `TradeDataStreamEventsResponse`
+    - `executionReport`
+- Modified response field `j`:
+  - type `string` → `integer`
+  - affected events:
+    - `TradeDataStreamEventsResponse`
+    - `executionReport`
+- Modified response field `u`:
+  - type `string` → `integer`
+  - affected events:
+    - `TradeDataStreamEventsResponse`
+    - `executionReport`
+- Modified response field `v`:
+  - type `string` → `integer`
+  - affected events:
+    - `TradeDataStreamEventsResponse`
+    - `executionReport`
+
 ## 7.0.0 - 2026-09-24
 
 **Margin Trading**
