@@ -406,8 +406,8 @@ class NewAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
         if (null === $this->container['type']) {
             $invalidProperties[] = "'type' can't be null";
         }
-        if (!is_null($this->container['callbackRate']) && ($this->container['callbackRate'] > 10)) {
-            $invalidProperties[] = "invalid value for 'callbackRate', must be smaller than or equal to 10.";
+        if (!is_null($this->container['callbackRate']) && ($this->container['callbackRate'] > 20)) {
+            $invalidProperties[] = "invalid value for 'callbackRate', must be smaller than or equal to 20.";
         }
 
         if (!is_null($this->container['callbackRate']) && ($this->container['callbackRate'] < 0.1)) {
@@ -856,8 +856,8 @@ class NewAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable callbackRate cannot be null');
         }
 
-        if ($callbackRate > 10) {
-            throw new \InvalidArgumentException('invalid value for $callbackRate when calling NewAlgoOrderRequest., must be smaller than or equal to 10.');
+        if ($callbackRate > 20) {
+            throw new \InvalidArgumentException('invalid value for $callbackRate when calling NewAlgoOrderRequest., must be smaller than or equal to 20.');
         }
         if ($callbackRate < 0.1) {
             throw new \InvalidArgumentException('invalid value for $callbackRate when calling NewAlgoOrderRequest., must be bigger than or equal to 0.1.');

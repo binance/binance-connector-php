@@ -2807,7 +2807,6 @@ class AccountApi
      * @param null|IncomeType $incomeType incomeType (optional)
      * @param null|int        $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int        $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int        $page       page (optional)
      * @param null|int        $limit      Number of results returned. (optional)
      * @param null|int        $recvWindow recvWindow (optional)
      *
@@ -2816,9 +2815,9 @@ class AccountApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getCmIncomeHistory($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null): ApiResponse
+    public function getCmIncomeHistory($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
-        return $this->getCmIncomeHistoryWithHttpInfo($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
+        return $this->getCmIncomeHistoryWithHttpInfo($symbol, $incomeType, $startTime, $endTime, $limit, $recvWindow);
     }
 
     /**
@@ -2830,7 +2829,6 @@ class AccountApi
      * @param null|IncomeType $incomeType (optional)
      * @param null|int        $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int        $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int        $page       (optional)
      * @param null|int        $limit      Number of results returned. (optional)
      * @param null|int        $recvWindow (optional)
      *
@@ -2839,9 +2837,9 @@ class AccountApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getCmIncomeHistoryWithHttpInfo($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null): ApiResponse
+    public function getCmIncomeHistoryWithHttpInfo($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->getCmIncomeHistoryRequest($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
+        $request = $this->getCmIncomeHistoryRequest($symbol, $incomeType, $startTime, $endTime, $limit, $recvWindow);
 
         try {
             try {
@@ -2915,7 +2913,6 @@ class AccountApi
      * @param null|IncomeType $incomeType (optional)
      * @param null|int        $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int        $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int        $page       (optional)
      * @param null|int        $limit      Number of results returned. (optional)
      * @param null|int        $recvWindow (optional)
      *
@@ -2923,7 +2920,7 @@ class AccountApi
      *
      * @throws \InvalidArgumentException
      */
-    public function getCmIncomeHistoryRequest($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null)
+    public function getCmIncomeHistoryRequest($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['getCmIncomeHistory'][0];
 
@@ -2969,15 +2966,6 @@ class AccountApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $endTime,
             'endTime', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -4927,7 +4915,6 @@ class AccountApi
      * @param null|IncomeType $incomeType Income type. (optional)
      * @param null|int        $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int        $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int        $page       Page number. (optional)
      * @param null|int        $limit      Number of results returned. (optional)
      * @param null|int        $recvWindow recvWindow (optional)
      *
@@ -4936,9 +4923,9 @@ class AccountApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getUmIncomeHistory($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null): ApiResponse
+    public function getUmIncomeHistory($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
-        return $this->getUmIncomeHistoryWithHttpInfo($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
+        return $this->getUmIncomeHistoryWithHttpInfo($symbol, $incomeType, $startTime, $endTime, $limit, $recvWindow);
     }
 
     /**
@@ -4950,7 +4937,6 @@ class AccountApi
      * @param null|IncomeType $incomeType Income type. (optional)
      * @param null|int        $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int        $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int        $page       Page number. (optional)
      * @param null|int        $limit      Number of results returned. (optional)
      * @param null|int        $recvWindow (optional)
      *
@@ -4959,9 +4945,9 @@ class AccountApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getUmIncomeHistoryWithHttpInfo($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null): ApiResponse
+    public function getUmIncomeHistoryWithHttpInfo($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
-        $request = $this->getUmIncomeHistoryRequest($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
+        $request = $this->getUmIncomeHistoryRequest($symbol, $incomeType, $startTime, $endTime, $limit, $recvWindow);
 
         try {
             try {
@@ -5035,7 +5021,6 @@ class AccountApi
      * @param null|IncomeType $incomeType Income type. (optional)
      * @param null|int        $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int        $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int        $page       Page number. (optional)
      * @param null|int        $limit      Number of results returned. (optional)
      * @param null|int        $recvWindow (optional)
      *
@@ -5043,7 +5028,7 @@ class AccountApi
      *
      * @throws \InvalidArgumentException
      */
-    public function getUmIncomeHistoryRequest($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null)
+    public function getUmIncomeHistoryRequest($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null)
     {
         $contentType = self::contentTypes['getUmIncomeHistory'][0];
 
@@ -5089,15 +5074,6 @@ class AccountApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $endTime,
             'endTime', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode

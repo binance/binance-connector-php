@@ -620,7 +620,7 @@ class DepositHistoryResponseInner implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets completeTime.
      *
-     * @param null|int $completeTime completeTime
+     * @param null|int $completeTime represents deposit completion datetime, available for deposits after 6-Mar-2025
      *
      * @return self
      */
@@ -755,7 +755,7 @@ class DepositHistoryResponseInner implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets travelRuleStatus.
      *
-     * @param null|int $travelRuleStatus travelRuleStatus
+     * @param null|int $travelRuleStatus 0: travel rule not required OR info already provided and funds ready to use, 1: travel rule required to provide deposit info
      *
      * @return self
      */

@@ -400,7 +400,7 @@ class AccountApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/papi/v1/cm/income', $request->getUri()->getPath());
-        self::assertEquals('0868ff9957dea03c17eac59c32392aeda920e6059c5c5881528c4723bd7245a5', $queryMap['signature']);
+        self::assertEquals('b4c542af59829d20d927a9013786d71125d6c2bdd8df0d4e528488ebae128f38', $queryMap['signature']);
     }
 
     /**
@@ -619,7 +619,7 @@ class AccountApiTest extends TestCase
 
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/papi/v1/um/income', $request->getUri()->getPath());
-        self::assertEquals('e6776d8eacdda338dd199ae644427f9132e972981f3d36acd93b02dba1a8faf0', $queryMap['signature']);
+        self::assertEquals('7d341e52ffac3fcfa75921b48b90fef71a4dfef9659d2098f85df02a102ffbe0', $queryMap['signature']);
     }
 
     /**

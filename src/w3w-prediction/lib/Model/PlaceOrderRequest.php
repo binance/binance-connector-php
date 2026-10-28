@@ -373,7 +373,7 @@ class PlaceOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializab
     /**
      * Sets walletAddress.
      *
-     * @param string $walletAddress User's prediction wallet address
+     * @param string $walletAddress User's prediction wallet address. Must be a valid address owned by the calling UID — a well-formed address not owned by the UID and a malformed (non-address) value both return the same generic `-3026`. An empty string instead returns `-1102` naming the field.
      *
      * @return self
      */
@@ -570,7 +570,7 @@ class PlaceOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerializab
     /**
      * Sets priceLimit.
      *
-     * @param null|string $priceLimit Limit price. Required when `orderType=LIMIT`. Must be > 0
+     * @param null|string $priceLimit Limit price. Required when `orderType=LIMIT`, must be > 0. Omitting it when `orderType=LIMIT` returns a generic `-3026` (no field name in the message).
      *
      * @return self
      */

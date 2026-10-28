@@ -67,6 +67,8 @@ class ModifySubAccountApiKeyPermissionRequest implements ModelInterface, \ArrayA
         'canFuturesTrade' => 'bool',
         'canUniversalTransfer' => 'bool',
         'canVanillaOptions' => 'bool',
+        'canFixApiTrading' => 'bool',
+        'canFixApiReading' => 'bool',
         'recvWindow' => 'int',
     ];
 
@@ -87,6 +89,8 @@ class ModifySubAccountApiKeyPermissionRequest implements ModelInterface, \ArrayA
         'canFuturesTrade' => null,
         'canUniversalTransfer' => null,
         'canVanillaOptions' => null,
+        'canFixApiTrading' => null,
+        'canFixApiReading' => null,
         'recvWindow' => 'int64',
     ];
 
@@ -103,6 +107,8 @@ class ModifySubAccountApiKeyPermissionRequest implements ModelInterface, \ArrayA
         'canFuturesTrade' => false,
         'canUniversalTransfer' => false,
         'canVanillaOptions' => false,
+        'canFixApiTrading' => false,
+        'canFixApiReading' => false,
         'recvWindow' => false,
     ];
 
@@ -127,6 +133,8 @@ class ModifySubAccountApiKeyPermissionRequest implements ModelInterface, \ArrayA
         'canFuturesTrade' => 'canFuturesTrade',
         'canUniversalTransfer' => 'canUniversalTransfer',
         'canVanillaOptions' => 'canVanillaOptions',
+        'canFixApiTrading' => 'canFixApiTrading',
+        'canFixApiReading' => 'canFixApiReading',
         'recvWindow' => 'recvWindow',
     ];
 
@@ -143,6 +151,8 @@ class ModifySubAccountApiKeyPermissionRequest implements ModelInterface, \ArrayA
         'canFuturesTrade' => 'setCanFuturesTrade',
         'canUniversalTransfer' => 'setCanUniversalTransfer',
         'canVanillaOptions' => 'setCanVanillaOptions',
+        'canFixApiTrading' => 'setCanFixApiTrading',
+        'canFixApiReading' => 'setCanFixApiReading',
         'recvWindow' => 'setRecvWindow',
     ];
 
@@ -159,6 +169,8 @@ class ModifySubAccountApiKeyPermissionRequest implements ModelInterface, \ArrayA
         'canFuturesTrade' => 'getCanFuturesTrade',
         'canUniversalTransfer' => 'getCanUniversalTransfer',
         'canVanillaOptions' => 'getCanVanillaOptions',
+        'canFixApiTrading' => 'getCanFixApiTrading',
+        'canFixApiReading' => 'getCanFixApiReading',
         'recvWindow' => 'getRecvWindow',
     ];
 
@@ -184,6 +196,8 @@ class ModifySubAccountApiKeyPermissionRequest implements ModelInterface, \ArrayA
         $this->setIfExists('canFuturesTrade', $data ?? [], null);
         $this->setIfExists('canUniversalTransfer', $data ?? [], null);
         $this->setIfExists('canVanillaOptions', $data ?? [], null);
+        $this->setIfExists('canFixApiTrading', $data ?? [], null);
+        $this->setIfExists('canFixApiReading', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }
 
@@ -512,6 +526,60 @@ class ModifySubAccountApiKeyPermissionRequest implements ModelInterface, \ArrayA
             throw new \InvalidArgumentException('non-nullable canVanillaOptions cannot be null');
         }
         $this->container['canVanillaOptions'] = $canVanillaOptions;
+
+        return $this;
+    }
+
+    /**
+     * Gets canFixApiTrading.
+     *
+     * @return null|bool
+     */
+    public function getCanFixApiTrading()
+    {
+        return $this->container['canFixApiTrading'];
+    }
+
+    /**
+     * Sets canFixApiTrading.
+     *
+     * @param null|bool $canFixApiTrading FIX API Trading permission. If omitted, the existing value is unchanged. Only supported for API Keys using an Ed25519 public key. Setting it to `true` for any other key type returns `-9000` `Unsupported operation`
+     *
+     * @return self
+     */
+    public function setCanFixApiTrading($canFixApiTrading)
+    {
+        if (is_null($canFixApiTrading)) {
+            throw new \InvalidArgumentException('non-nullable canFixApiTrading cannot be null');
+        }
+        $this->container['canFixApiTrading'] = $canFixApiTrading;
+
+        return $this;
+    }
+
+    /**
+     * Gets canFixApiReading.
+     *
+     * @return null|bool
+     */
+    public function getCanFixApiReading()
+    {
+        return $this->container['canFixApiReading'];
+    }
+
+    /**
+     * Sets canFixApiReading.
+     *
+     * @param null|bool $canFixApiReading FIX API Reading permission. If omitted, the existing value is unchanged. Only supported for API Keys using an Ed25519 public key. Setting it to `true` for any other key type returns `-9000` `Unsupported operation`
+     *
+     * @return self
+     */
+    public function setCanFixApiReading($canFixApiReading)
+    {
+        if (is_null($canFixApiReading)) {
+            throw new \InvalidArgumentException('non-nullable canFixApiReading cannot be null');
+        }
+        $this->container['canFixApiReading'] = $canFixApiReading;
 
         return $this;
     }

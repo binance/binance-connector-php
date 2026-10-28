@@ -376,7 +376,7 @@ class GetFiatPaymentsHistoryResponseDataInner implements ModelInterface, \ArrayA
     /**
      * Sets sourceAmount.
      *
-     * @param null|string $sourceAmount sourceAmount
+     * @param null|string $sourceAmount Fiat trade amount
      *
      * @return self
      */
@@ -403,7 +403,7 @@ class GetFiatPaymentsHistoryResponseDataInner implements ModelInterface, \ArrayA
     /**
      * Sets fiatCurrency.
      *
-     * @param null|string $fiatCurrency fiatCurrency
+     * @param null|string $fiatCurrency Fiat token
      *
      * @return self
      */
@@ -430,7 +430,7 @@ class GetFiatPaymentsHistoryResponseDataInner implements ModelInterface, \ArrayA
     /**
      * Sets obtainAmount.
      *
-     * @param null|string $obtainAmount obtainAmount
+     * @param null|string $obtainAmount Crypto trade amount
      *
      * @return self
      */
@@ -457,7 +457,7 @@ class GetFiatPaymentsHistoryResponseDataInner implements ModelInterface, \ArrayA
     /**
      * Sets cryptoCurrency.
      *
-     * @param null|string $cryptoCurrency cryptoCurrency
+     * @param null|string $cryptoCurrency Crypto token
      *
      * @return self
      */
@@ -484,7 +484,7 @@ class GetFiatPaymentsHistoryResponseDataInner implements ModelInterface, \ArrayA
     /**
      * Sets totalFee.
      *
-     * @param null|string $totalFee totalFee
+     * @param null|string $totalFee Trade fee
      *
      * @return self
      */
@@ -511,7 +511,7 @@ class GetFiatPaymentsHistoryResponseDataInner implements ModelInterface, \ArrayA
     /**
      * Sets price.
      *
-     * @param null|string $price price
+     * @param null|string $price Price
      *
      * @return self
      */
@@ -538,7 +538,7 @@ class GetFiatPaymentsHistoryResponseDataInner implements ModelInterface, \ArrayA
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status Processing, Completed, Failed, Refunded
      *
      * @return self
      */
@@ -565,7 +565,7 @@ class GetFiatPaymentsHistoryResponseDataInner implements ModelInterface, \ArrayA
     /**
      * Sets paymentMethod.
      *
-     * @param null|string $paymentMethod paymentMethod
+     * @param null|string $paymentMethod Payment method
      *
      * @return self
      */
@@ -592,7 +592,7 @@ class GetFiatPaymentsHistoryResponseDataInner implements ModelInterface, \ArrayA
     /**
      * Sets createTime.
      *
-     * @param null|int $createTime createTime
+     * @param null|int $createTime Order create time
      *
      * @return self
      */
@@ -619,7 +619,7 @@ class GetFiatPaymentsHistoryResponseDataInner implements ModelInterface, \ArrayA
     /**
      * Sets updateTime.
      *
-     * @param null|int $updateTime updateTime
+     * @param null|int $updateTime Order update time
      *
      * @return self
      */

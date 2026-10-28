@@ -97,27 +97,6 @@ class TradeApiTest extends TestCase
     }
 
     /**
-     * Test case for changeAutoCompoundStatus.
-     *
-     * Change Auto-Compound status (USER_DATA).
-     */
-    public function testChangeAutoCompoundStatus()
-    {
-        $changeAutoCompoundStatusRequest = new ChangeAutoCompoundStatusRequest();
-        $changeAutoCompoundStatusRequest->setPositionId('741590');
-        $changeAutoCompoundStatusRequest->setAutoCompoundPlan(AutoCompoundPlan::NONE);
-
-        $response = $this->getApiMock($request)->changeAutoCompoundStatus($changeAutoCompoundStatusRequest);
-
-        parse_str($request->getUri(), $queryMap);
-
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/sapi/v1/dci/product/auto_compound/edit-status', $request->getUri()->getPath());
-        self::assertEquals('93fea845cd45645211f12b3b8a35263b7c1a9975e04d559355795be749d8974c', $queryMap['signature']);
-    }
-
-    /**
      * Test case for checkDualInvestmentAccounts.
      *
      * Check Dual Investment accounts (USER_DATA).
@@ -154,28 +133,5 @@ class TradeApiTest extends TestCase
         self::assertEquals(200, $response->getStatusCode());
         self::assertEquals('/sapi/v1/dci/product/positions', $request->getUri()->getPath());
         self::assertEquals('80e88e826b339ac8dbaaddc768a17b0f696bf4d702159e4cb583ce7ffbb8c5ee', $queryMap['signature']);
-    }
-
-    /**
-     * Test case for subscribeDualInvestmentProducts.
-     *
-     * Subscribe Dual Investment products (USER_DATA).
-     */
-    public function testSubscribeDualInvestmentProducts()
-    {
-        $subscribeDualInvestmentProductsRequest = new SubscribeDualInvestmentProductsRequest();
-        $subscribeDualInvestmentProductsRequest->setId('741590');
-        $subscribeDualInvestmentProductsRequest->setOrderId('8257205859');
-        $subscribeDualInvestmentProductsRequest->setDepositAmount(1);
-        $subscribeDualInvestmentProductsRequest->setAutoCompoundPlan(AutoCompoundPlan::NONE);
-
-        $response = $this->getApiMock($request)->subscribeDualInvestmentProducts($subscribeDualInvestmentProductsRequest);
-
-        parse_str($request->getUri(), $queryMap);
-
-
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('/sapi/v1/dci/product/subscribe', $request->getUri()->getPath());
-        self::assertEquals('01675bd76247198f3a7df0e590c43098d6bac9a4c9e5a824b9c35faa37e8a941', $queryMap['signature']);
     }
 }

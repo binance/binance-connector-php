@@ -545,7 +545,7 @@ class GetLockedSubscriptionRecordResponseRowsInner implements ModelInterface, \A
     /**
      * Sets type.
      *
-     * @param null|string $type type
+     * @param null|string $type NORMAL for normal subscription, AUTO for auto-subscription order, ACTIVITY for activity order, TRIAL for trial fund order, RESTAKE for restake order
      *
      * @return self
      */
@@ -572,7 +572,7 @@ class GetLockedSubscriptionRecordResponseRowsInner implements ModelInterface, \A
     /**
      * Sets sourceAccount.
      *
-     * @param null|string $sourceAccount sourceAccount
+     * @param null|string $sourceAccount SPOT, FUNDING, SPOTANDFUNDING
      *
      * @return self
      */
@@ -599,7 +599,7 @@ class GetLockedSubscriptionRecordResponseRowsInner implements ModelInterface, \A
     /**
      * Sets amtFromSpot.
      *
-     * @param null|string $amtFromSpot amtFromSpot
+     * @param null|string $amtFromSpot Display if sourceAccount is SPOTANDFUNDING
      *
      * @return self
      */
@@ -626,7 +626,7 @@ class GetLockedSubscriptionRecordResponseRowsInner implements ModelInterface, \A
     /**
      * Sets amtFromFunding.
      *
-     * @param null|string $amtFromFunding amtFromFunding
+     * @param null|string $amtFromFunding Display if sourceAccount is SPOTANDFUNDING
      *
      * @return self
      */
@@ -653,7 +653,7 @@ class GetLockedSubscriptionRecordResponseRowsInner implements ModelInterface, \A
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status PURCHASING/SUCCESS/FAILED
      *
      * @return self
      */

@@ -279,7 +279,7 @@ class GetBfusdQuotaDetailsResponseSubscriptionQuota implements ModelInterface, \
     /**
      * Sets leftQuota.
      *
-     * @param null|string $leftQuota leftQuota
+     * @param null|string $leftQuota Maximum purchase limit in USDT
      *
      * @return self
      */

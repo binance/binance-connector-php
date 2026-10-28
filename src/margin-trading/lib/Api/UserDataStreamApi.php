@@ -29,7 +29,9 @@
 namespace Binance\Client\MarginTrading\Api;
 
 use Binance\Client\MarginTrading\Model\KeepaliveUserDataStreamRequest;
+use Binance\Client\MarginTrading\Model\KeepaliveUserDataStreamV2Request;
 use Binance\Client\MarginTrading\Model\StartUserDataStreamResponse;
+use Binance\Client\MarginTrading\Model\StartUserDataStreamV2Response;
 use Binance\Common\ApiException;
 use Binance\Common\Auth\SignerFactory;
 use Binance\Common\Auth\SignerInterface;
@@ -62,8 +64,11 @@ class UserDataStreamApi
     /** @var string[] */
     public const contentTypes = [
         'closeUserDataStream' => ['application/x-www-form-urlencoded'],
+        'closeUserDataStreamV2' => ['application/x-www-form-urlencoded'],
         'keepaliveUserDataStream' => ['application/x-www-form-urlencoded'],
+        'keepaliveUserDataStreamV2' => ['application/x-www-form-urlencoded'],
         'startUserDataStream' => ['application/x-www-form-urlencoded'],
+        'startUserDataStreamV2' => ['application/x-www-form-urlencoded'],
     ];
     private const HAS_TIME_UNIT = false;
 
@@ -206,6 +211,112 @@ class UserDataStreamApi
 
         $operationHost = $this->clientConfig->getUrl();
 
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'DELETE',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation closeUserDataStreamV2.
+     *
+     * Close User Data Stream V2 (USER_STREAM)
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function closeUserDataStreamV2()
+    {
+        $this->closeUserDataStreamV2WithHttpInfo();
+    }
+
+    /**
+     * Operation closeUserDataStreamV2WithHttpInfo.
+     *
+     * Close User Data Stream V2 (USER_STREAM)
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function closeUserDataStreamV2WithHttpInfo()
+    {
+        $request = $this->closeUserDataStreamV2Request();
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'closeUserDataStreamV2'.
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function closeUserDataStreamV2Request()
+    {
+        $contentType = self::contentTypes['closeUserDataStreamV2'][0];
+
+        $resourcePath = '/sapi/v2/margin/listen-key';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
         $query = ObjectSerializer::buildQuery($queryParams);
 
         return new Request(
@@ -363,6 +474,165 @@ class UserDataStreamApi
 
         $operationHost = $this->clientConfig->getUrl();
 
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'PUT',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation keepaliveUserDataStreamV2.
+     *
+     * Keepalive User Data Stream V2 (USER_STREAM)
+     *
+     * @param KeepaliveUserDataStreamV2Request $keepaliveUserDataStreamV2Request keepaliveUserDataStreamV2Request (required)
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function keepaliveUserDataStreamV2($keepaliveUserDataStreamV2Request)
+    {
+        $this->keepaliveUserDataStreamV2WithHttpInfo($keepaliveUserDataStreamV2Request);
+    }
+
+    /**
+     * Operation keepaliveUserDataStreamV2WithHttpInfo.
+     *
+     * Keepalive User Data Stream V2 (USER_STREAM)
+     *
+     * @param KeepaliveUserDataStreamV2Request $keepaliveUserDataStreamV2Request (required)
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function keepaliveUserDataStreamV2WithHttpInfo($keepaliveUserDataStreamV2Request)
+    {
+        $request = $this->keepaliveUserDataStreamV2Request($keepaliveUserDataStreamV2Request);
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'keepaliveUserDataStreamV2'.
+     *
+     * @param KeepaliveUserDataStreamV2Request $keepaliveUserDataStreamV2Request (required)
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function keepaliveUserDataStreamV2Request($keepaliveUserDataStreamV2Request)
+    {
+        $contentType = self::contentTypes['keepaliveUserDataStreamV2'][0];
+
+        // verify the required parameter 'keepaliveUserDataStreamV2Request' is set
+        if (null === $keepaliveUserDataStreamV2Request || (is_array($keepaliveUserDataStreamV2Request) && 0 === count($keepaliveUserDataStreamV2Request))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $keepaliveUserDataStreamV2Request when calling keepaliveUserDataStreamV2'
+            );
+        }
+
+        $resourcePath = '/sapi/v2/margin/listen-key';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $getters = $keepaliveUserDataStreamV2Request::getters();
+        $formParams = [];
+        foreach ($getters as $property => $getter) {
+            $value = $keepaliveUserDataStreamV2Request->{$getter}();
+            if (!empty($value)) {
+                $formParams[$property] = $keepaliveUserDataStreamV2Request->{$getter}();
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        } elseif (isset($keepaliveUserDataStreamV2Request)) {
+            if (false !== stripos($headers['Content-Type'], 'application/json')) {
+                // if Content-Type contains "application/json", json_encode the body
+                $httpBody = Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($keepaliveUserDataStreamV2Request));
+            } else {
+                $httpBody = $keepaliveUserDataStreamV2Request;
+            }
+        }
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
         $query = ObjectSerializer::buildQuery($queryParams);
 
         return new Request(
@@ -506,6 +776,151 @@ class UserDataStreamApi
 
         $operationHost = $this->clientConfig->getUrl();
 
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
+        $query = ObjectSerializer::buildQuery($queryParams);
+
+        return new Request(
+            'POST',
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation startUserDataStreamV2.
+     *
+     * Start User Data Stream V2 (USER_STREAM)
+     *
+     * @return ApiResponse<StartUserDataStreamV2Response>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function startUserDataStreamV2(): ApiResponse
+    {
+        return $this->startUserDataStreamV2WithHttpInfo();
+    }
+
+    /**
+     * Operation startUserDataStreamV2WithHttpInfo.
+     *
+     * Start User Data Stream V2 (USER_STREAM)
+     *
+     * @return ApiResponse<StartUserDataStreamV2Response>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function startUserDataStreamV2WithHttpInfo(): ApiResponse
+    {
+        $request = $this->startUserDataStreamV2Request();
+
+        try {
+            try {
+                $response = $this->client->send($request, []);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch ($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Binance\Client\MarginTrading\Model\StartUserDataStreamV2Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Binance\Client\MarginTrading\Model\StartUserDataStreamV2Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Binance\Client\MarginTrading\Model\StartUserDataStreamV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+
+                    throw $e;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Create request for operation 'startUserDataStreamV2'.
+     *
+     * @return Request
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function startUserDataStreamV2Request()
+    {
+        $contentType = self::contentTypes['startUserDataStreamV2'][0];
+
+        $resourcePath = '/sapi/v2/margin/listen-key';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            $contentType,
+            $multipart
+        );
+
+        $defaultHeaders = [];
+        $defaultHeaders['User-Agent'] = $this->userAgent;
+
+        if (self::HAS_TIME_UNIT && !empty($this->clientConfig->getTimeUnit())) {
+            $defaultHeaders['X-MBX-TIME-UNIT'] = $this->clientConfig->getTimeUnit();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->clientConfig->getUrl();
+
+        $headers['X-MBX-APIKEY'] = $this->clientConfig->getSignatureConfiguration()->getApiKey();
         $query = ObjectSerializer::buildQuery($queryParams);
 
         return new Request(

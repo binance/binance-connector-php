@@ -293,7 +293,7 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets trId.
      *
-     * @param null|int $trId trId
+     * @param null|int $trId The travel rule record Id
      *
      * @return self
      */
@@ -320,7 +320,7 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets accepted.
      *
-     * @param null|bool $accepted accepted
+     * @param null|bool $accepted Whether the withdraw request is accepted
      *
      * @return self
      */
@@ -347,7 +347,7 @@ class WithdrawTravelRuleResponse implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets info.
      *
-     * @param null|string $info info
+     * @param null|string $info the detailed infomation of the withdrawal result
      *
      * @return self
      */

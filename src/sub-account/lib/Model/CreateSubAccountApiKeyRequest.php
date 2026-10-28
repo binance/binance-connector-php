@@ -68,6 +68,8 @@ class CreateSubAccountApiKeyRequest implements ModelInterface, \ArrayAccess, \Js
         'canFuturesTrade' => 'bool',
         'canUniversalTransfer' => 'bool',
         'canVanillaOptions' => 'bool',
+        'canFixApiTrading' => 'bool',
+        'canFixApiReading' => 'bool',
         'ipAddress' => 'string',
         'thirdPartyName' => 'string',
         'publicKey' => 'string',
@@ -92,6 +94,8 @@ class CreateSubAccountApiKeyRequest implements ModelInterface, \ArrayAccess, \Js
         'canFuturesTrade' => null,
         'canUniversalTransfer' => null,
         'canVanillaOptions' => null,
+        'canFixApiTrading' => null,
+        'canFixApiReading' => null,
         'ipAddress' => null,
         'thirdPartyName' => null,
         'publicKey' => null,
@@ -112,6 +116,8 @@ class CreateSubAccountApiKeyRequest implements ModelInterface, \ArrayAccess, \Js
         'canFuturesTrade' => false,
         'canUniversalTransfer' => false,
         'canVanillaOptions' => false,
+        'canFixApiTrading' => false,
+        'canFixApiReading' => false,
         'ipAddress' => false,
         'thirdPartyName' => false,
         'publicKey' => false,
@@ -140,6 +146,8 @@ class CreateSubAccountApiKeyRequest implements ModelInterface, \ArrayAccess, \Js
         'canFuturesTrade' => 'canFuturesTrade',
         'canUniversalTransfer' => 'canUniversalTransfer',
         'canVanillaOptions' => 'canVanillaOptions',
+        'canFixApiTrading' => 'canFixApiTrading',
+        'canFixApiReading' => 'canFixApiReading',
         'ipAddress' => 'ipAddress',
         'thirdPartyName' => 'thirdPartyName',
         'publicKey' => 'publicKey',
@@ -160,6 +168,8 @@ class CreateSubAccountApiKeyRequest implements ModelInterface, \ArrayAccess, \Js
         'canFuturesTrade' => 'setCanFuturesTrade',
         'canUniversalTransfer' => 'setCanUniversalTransfer',
         'canVanillaOptions' => 'setCanVanillaOptions',
+        'canFixApiTrading' => 'setCanFixApiTrading',
+        'canFixApiReading' => 'setCanFixApiReading',
         'ipAddress' => 'setIpAddress',
         'thirdPartyName' => 'setThirdPartyName',
         'publicKey' => 'setPublicKey',
@@ -180,6 +190,8 @@ class CreateSubAccountApiKeyRequest implements ModelInterface, \ArrayAccess, \Js
         'canFuturesTrade' => 'getCanFuturesTrade',
         'canUniversalTransfer' => 'getCanUniversalTransfer',
         'canVanillaOptions' => 'getCanVanillaOptions',
+        'canFixApiTrading' => 'getCanFixApiTrading',
+        'canFixApiReading' => 'getCanFixApiReading',
         'ipAddress' => 'getIpAddress',
         'thirdPartyName' => 'getThirdPartyName',
         'publicKey' => 'getPublicKey',
@@ -209,6 +221,8 @@ class CreateSubAccountApiKeyRequest implements ModelInterface, \ArrayAccess, \Js
         $this->setIfExists('canFuturesTrade', $data ?? [], null);
         $this->setIfExists('canUniversalTransfer', $data ?? [], null);
         $this->setIfExists('canVanillaOptions', $data ?? [], null);
+        $this->setIfExists('canFixApiTrading', $data ?? [], null);
+        $this->setIfExists('canFixApiReading', $data ?? [], null);
         $this->setIfExists('ipAddress', $data ?? [], null);
         $this->setIfExists('thirdPartyName', $data ?? [], null);
         $this->setIfExists('publicKey', $data ?? [], null);
@@ -570,6 +584,60 @@ class CreateSubAccountApiKeyRequest implements ModelInterface, \ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable canVanillaOptions cannot be null');
         }
         $this->container['canVanillaOptions'] = $canVanillaOptions;
+
+        return $this;
+    }
+
+    /**
+     * Gets canFixApiTrading.
+     *
+     * @return null|bool
+     */
+    public function getCanFixApiTrading()
+    {
+        return $this->container['canFixApiTrading'];
+    }
+
+    /**
+     * Sets canFixApiTrading.
+     *
+     * @param null|bool $canFixApiTrading FIX API Trading permission. Only supported for API Keys using an Ed25519 public key. Setting it to `true` for any other key type returns `-9000` `Unsupported operation`
+     *
+     * @return self
+     */
+    public function setCanFixApiTrading($canFixApiTrading)
+    {
+        if (is_null($canFixApiTrading)) {
+            throw new \InvalidArgumentException('non-nullable canFixApiTrading cannot be null');
+        }
+        $this->container['canFixApiTrading'] = $canFixApiTrading;
+
+        return $this;
+    }
+
+    /**
+     * Gets canFixApiReading.
+     *
+     * @return null|bool
+     */
+    public function getCanFixApiReading()
+    {
+        return $this->container['canFixApiReading'];
+    }
+
+    /**
+     * Sets canFixApiReading.
+     *
+     * @param null|bool $canFixApiReading FIX API Reading permission. Only supported for API Keys using an Ed25519 public key. Setting it to `true` for any other key type returns `-9000` `Unsupported operation`
+     *
+     * @return self
+     */
+    public function setCanFixApiReading($canFixApiReading)
+    {
+        if (is_null($canFixApiReading)) {
+            throw new \InvalidArgumentException('non-nullable canFixApiReading cannot be null');
+        }
+        $this->container['canFixApiReading'] = $canFixApiReading;
 
         return $this;
     }

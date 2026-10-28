@@ -320,7 +320,7 @@ class ClassicPortfolioMarginAccountInformationResponse implements ModelInterface
     /**
      * Sets asset.
      *
-     * @param null|string $asset asset
+     * @param null|string $asset asset name
      *
      * @return self
      */

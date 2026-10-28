@@ -293,7 +293,7 @@ class GetDetailOnSubAccountsMarginAccountResponseMarginTradeCoeffVo implements M
     /**
      * Sets forceLiquidationBar.
      *
-     * @param null|string $forceLiquidationBar forceLiquidationBar
+     * @param null|string $forceLiquidationBar Liquidation margin ratio
      *
      * @return self
      */
@@ -320,7 +320,7 @@ class GetDetailOnSubAccountsMarginAccountResponseMarginTradeCoeffVo implements M
     /**
      * Sets marginCallBar.
      *
-     * @param null|string $marginCallBar marginCallBar
+     * @param null|string $marginCallBar Margin call margin ratio
      *
      * @return self
      */
@@ -347,7 +347,7 @@ class GetDetailOnSubAccountsMarginAccountResponseMarginTradeCoeffVo implements M
     /**
      * Sets normalBar.
      *
-     * @param null|string $normalBar normalBar
+     * @param null|string $normalBar Initial margin ratio
      *
      * @return self
      */

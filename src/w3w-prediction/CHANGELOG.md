@@ -1,5 +1,27 @@
 # Changelog
 
+## 8.0.0 - 2026-10-28
+
+**W3W Prediction**
+
+### Changed (2)
+
+#### REST API
+
+- Modified response for `getMarketDetail()` (`GET /sapi/v1/w3w/wallet/prediction/market/detail`):
+  - `markets`.items.`outcomes`.items: property `winner` added
+  - `markets`.items.`outcomes`.items: item property `winner` added
+  - `markets`.items.`outcomes`.items: property `winner` added
+  - `markets`.items.`outcomes`.items: item property `winner` added
+
+- Modified response field `markets`:
+  - items.`outcomes`.items: property `winner` added
+  - items.`outcomes`.items: item property `winner` added
+  - items.`outcomes`.items: property `winner` added
+  - items.`outcomes`.items: item property `winner` added
+  - affected events:
+    - `getMarketDetailResponse`
+
 ## 1.1.0 - 2026-08-25
 
 **W3w Prediction**

@@ -60,7 +60,6 @@ class PortfolioMarginProBankruptcyLoanRepayRequest implements ModelInterface, \A
      * @var string[]
      */
     protected static $openAPITypes = [
-        'from' => '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\From',
         'recvWindow' => 'int',
     ];
 
@@ -74,7 +73,6 @@ class PortfolioMarginProBankruptcyLoanRepayRequest implements ModelInterface, \A
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'from' => null,
         'recvWindow' => 'int64',
     ];
 
@@ -84,7 +82,6 @@ class PortfolioMarginProBankruptcyLoanRepayRequest implements ModelInterface, \A
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'from' => false,
         'recvWindow' => false,
     ];
 
@@ -102,7 +99,6 @@ class PortfolioMarginProBankruptcyLoanRepayRequest implements ModelInterface, \A
      * @var string[]
      */
     protected static $attributeMap = [
-        'from' => 'from',
         'recvWindow' => 'recvWindow',
     ];
 
@@ -112,7 +108,6 @@ class PortfolioMarginProBankruptcyLoanRepayRequest implements ModelInterface, \A
      * @var string[]
      */
     protected static $setters = [
-        'from' => 'setFrom',
         'recvWindow' => 'setRecvWindow',
     ];
 
@@ -122,7 +117,6 @@ class PortfolioMarginProBankruptcyLoanRepayRequest implements ModelInterface, \A
      * @var string[]
      */
     protected static $getters = [
-        'from' => 'getFrom',
         'recvWindow' => 'getRecvWindow',
     ];
 
@@ -141,7 +135,6 @@ class PortfolioMarginProBankruptcyLoanRepayRequest implements ModelInterface, \A
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('from', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }
 
@@ -271,33 +264,6 @@ class PortfolioMarginProBankruptcyLoanRepayRequest implements ModelInterface, \A
     public function valid()
     {
         return 0 === count($this->listInvalidProperties());
-    }
-
-    /**
-     * Gets from.
-     *
-     * @return null|From
-     */
-    public function getFrom()
-    {
-        return $this->container['from'];
-    }
-
-    /**
-     * Sets from.
-     *
-     * @param null|From $from from
-     *
-     * @return self
-     */
-    public function setFrom($from)
-    {
-        if (is_null($from)) {
-            throw new \InvalidArgumentException('non-nullable from cannot be null');
-        }
-        $this->container['from'] = $from;
-
-        return $this;
     }
 
     /**

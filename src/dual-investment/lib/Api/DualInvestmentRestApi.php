@@ -2,8 +2,6 @@
 
 namespace Binance\Client\DualInvestment\Api;
 
-use Binance\Client\DualInvestment\Model\ChangeAutoCompoundStatusRequest;
-use Binance\Client\DualInvestment\Model\ChangeAutoCompoundStatusResponse;
 use Binance\Client\DualInvestment\Model\CheckDualInvestmentAccountsResponse;
 use Binance\Client\DualInvestment\Model\GetDualInvestmentPositionsResponse;
 use Binance\Client\DualInvestment\Model\GetDualInvestmentProductListResponse;
@@ -54,23 +52,6 @@ class DualInvestmentRestApi
     public function getDualInvestmentProductList($optionType, $exercisedCoin, $investCoin, $pageSize = null, $pageIndex = null, $recvWindow = null): ApiResponse
     {
         return $this->marketDataApi->getDualInvestmentProductList($optionType, $exercisedCoin, $investCoin, $pageSize, $pageIndex, $recvWindow);
-    }
-
-    /**
-     * Operation changeAutoCompoundStatus.
-     *
-     * Change Auto-Compound status (USER_DATA)
-     *
-     * @param ChangeAutoCompoundStatusRequest $changeAutoCompoundStatusRequest changeAutoCompoundStatusRequest (required)
-     *
-     * @return ApiResponse<ChangeAutoCompoundStatusResponse>
-     *
-     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     */
-    public function changeAutoCompoundStatus($changeAutoCompoundStatusRequest): ApiResponse
-    {
-        return $this->tradeApi->changeAutoCompoundStatus($changeAutoCompoundStatusRequest);
     }
 
     /**

@@ -449,7 +449,7 @@ class GetCountryListResponseCountriesInner implements ModelInterface, \ArrayAcce
     /**
      * Sets hasRegionRestrictions.
      *
-     * @param null|bool $hasRegionRestrictions whether this country has region-level restrictions
+     * @param null|bool $hasRegionRestrictions Whether this country has region-level restrictions. Always `false` for the BR entity, which does not collect region/city.
      *
      * @return self
      */

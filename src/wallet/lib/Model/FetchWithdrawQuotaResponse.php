@@ -286,7 +286,7 @@ class FetchWithdrawQuotaResponse implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets wdQuota.
      *
-     * @param null|string $wdQuota wdQuota
+     * @param null|string $wdQuota User's total withdrawal quota in the past 24 hours (including on-chain withdrawal and internal transfer), unit in USD
      *
      * @return self
      */
@@ -313,7 +313,7 @@ class FetchWithdrawQuotaResponse implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets usedWdQuota.
      *
-     * @param null|string $usedWdQuota usedWdQuota
+     * @param null|string $usedWdQuota User withdrawal quota usage in the past 24 hours, unit in USD
      *
      * @return self
      */

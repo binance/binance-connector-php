@@ -395,7 +395,7 @@ class ExchangeInfoResponse implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets exchangeFilters.
      *
-     * @param null|MyFiltersResponseExchangeFiltersInner[] $exchangeFilters exchangeFilters
+     * @param null|MyFiltersResponseExchangeFiltersInner[] $exchangeFilters exchange filters are explained on the \"Filters\" page: All exchange filters are optional
      *
      * @return self
      */
@@ -449,7 +449,7 @@ class ExchangeInfoResponse implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets sors.
      *
-     * @param null|ExchangeInfoResponseSorsInner[] $sors Optional. Present only when SOR is available.
+     * @param null|ExchangeInfoResponseSorsInner[] $sors Optional field. Present only when SOR is available.
      *
      * @return self
      */

@@ -286,7 +286,7 @@ class SystemStatusResponse implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets status.
      *
-     * @param null|int $status status
+     * @param null|int $status 0: normal，1：system maintenance
      *
      * @return self
      */
@@ -313,7 +313,7 @@ class SystemStatusResponse implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets msg.
      *
-     * @param null|string $msg msg
+     * @param null|string $msg \"normal\", \"system_maintenance\"
      *
      * @return self
      */

@@ -341,7 +341,7 @@ class FundingWalletResponseInner implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets free.
      *
-     * @param null|string $free free
+     * @param null|string $free avalible balance
      *
      * @return self
      */
@@ -368,7 +368,7 @@ class FundingWalletResponseInner implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets locked.
      *
-     * @param null|string $locked locked
+     * @param null|string $locked locked asset
      *
      * @return self
      */
@@ -395,7 +395,7 @@ class FundingWalletResponseInner implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets freeze.
      *
-     * @param null|string $freeze freeze
+     * @param null|string $freeze freeze asset
      *
      * @return self
      */

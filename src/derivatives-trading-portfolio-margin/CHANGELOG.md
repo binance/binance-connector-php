@@ -1,5 +1,36 @@
 # Changelog
 
+## 8.0.0 - 2026-10-28
+
+**Derivatives Trading Portfolio Margin**
+
+### Changed (7)
+
+#### REST API
+
+- Added parameter `amount`
+  - affected methods:
+    - `fundCollectionByAsset()` (`POST /papi/v1/asset-collection`)
+- Added parameter `futureType`
+  - affected methods:
+    - `fundCollectionByAsset()` (`POST /papi/v1/asset-collection`)
+- Deleted parameter `page`
+  - affected methods:
+    - `getCmIncomeHistory()` (`GET /papi/v1/cm/income`)
+    - `getUmIncomeHistory()` (`GET /papi/v1/um/income`)
+- Modified parameter `incomeType`:
+  - enum removed: `AUTO_EXCHANGE`
+  - affected methods:
+    - `getUmIncomeHistory()` (`GET /papi/v1/um/income`)
+- Modified parameter `selfTradePreventionMode`:
+  - enum removed: `NONE`
+  - affected methods:
+    - `newUmOrder()` (`POST /papi/v1/um/order`)
+#### WebSocket Streams
+
+- Modified response schema `UserDataStreamEventsResponse`:
+  - oneOf modified
+
 ## 7.0.0 - 2026-09-24
 
 **Derivatives Trading Portfolio Margin**

@@ -61,6 +61,8 @@ class FundCollectionByAssetRequest implements ModelInterface, \ArrayAccess, \Jso
      */
     protected static $openAPITypes = [
         'asset' => 'string',
+        'amount' => 'float',
+        'futureType' => '\Binance\Client\DerivativesTradingPortfolioMarginPro\Model\FutureType',
         'recvWindow' => 'int',
     ];
 
@@ -75,6 +77,8 @@ class FundCollectionByAssetRequest implements ModelInterface, \ArrayAccess, \Jso
      */
     protected static $openAPIFormats = [
         'asset' => null,
+        'amount' => 'float',
+        'futureType' => null,
         'recvWindow' => 'int64',
     ];
 
@@ -85,6 +89,8 @@ class FundCollectionByAssetRequest implements ModelInterface, \ArrayAccess, \Jso
      */
     protected static array $openAPINullables = [
         'asset' => false,
+        'amount' => false,
+        'futureType' => false,
         'recvWindow' => false,
     ];
 
@@ -103,6 +109,8 @@ class FundCollectionByAssetRequest implements ModelInterface, \ArrayAccess, \Jso
      */
     protected static $attributeMap = [
         'asset' => 'asset',
+        'amount' => 'amount',
+        'futureType' => 'futureType',
         'recvWindow' => 'recvWindow',
     ];
 
@@ -113,6 +121,8 @@ class FundCollectionByAssetRequest implements ModelInterface, \ArrayAccess, \Jso
      */
     protected static $setters = [
         'asset' => 'setAsset',
+        'amount' => 'setAmount',
+        'futureType' => 'setFutureType',
         'recvWindow' => 'setRecvWindow',
     ];
 
@@ -123,6 +133,8 @@ class FundCollectionByAssetRequest implements ModelInterface, \ArrayAccess, \Jso
      */
     protected static $getters = [
         'asset' => 'getAsset',
+        'amount' => 'getAmount',
+        'futureType' => 'getFutureType',
         'recvWindow' => 'getRecvWindow',
     ];
 
@@ -142,6 +154,8 @@ class FundCollectionByAssetRequest implements ModelInterface, \ArrayAccess, \Jso
     public function __construct(?array $data = null)
     {
         $this->setIfExists('asset', $data ?? [], null);
+        $this->setIfExists('amount', $data ?? [], null);
+        $this->setIfExists('futureType', $data ?? [], null);
         $this->setIfExists('recvWindow', $data ?? [], null);
     }
 
@@ -302,6 +316,60 @@ class FundCollectionByAssetRequest implements ModelInterface, \ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable asset cannot be null');
         }
         $this->container['asset'] = $asset;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount.
+     *
+     * @return null|float
+     */
+    public function getAmount()
+    {
+        return $this->container['amount'];
+    }
+
+    /**
+     * Sets amount.
+     *
+     * @param null|float $amount Amount to collect. When provided, `futureType` is required.
+     *
+     * @return self
+     */
+    public function setAmount($amount)
+    {
+        if (is_null($amount)) {
+            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+        }
+        $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets futureType.
+     *
+     * @return null|FutureType
+     */
+    public function getFutureType()
+    {
+        return $this->container['futureType'];
+    }
+
+    /**
+     * Sets futureType.
+     *
+     * @param null|FutureType $futureType futureType
+     *
+     * @return self
+     */
+    public function setFutureType($futureType)
+    {
+        if (is_null($futureType)) {
+            throw new \InvalidArgumentException('non-nullable futureType cannot be null');
+        }
+        $this->container['futureType'] = $futureType;
 
         return $this;
     }

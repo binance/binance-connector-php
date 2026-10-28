@@ -395,7 +395,7 @@ class QueryUserUniversalTransferHistoryResponseRowsInner implements ModelInterfa
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status status: CONFIRMED / FAILED / PENDING
      *
      * @return self
      */

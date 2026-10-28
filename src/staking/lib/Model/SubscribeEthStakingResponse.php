@@ -381,7 +381,7 @@ class SubscribeEthStakingResponse implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets conversionRatio.
      *
-     * @param null|string $conversionRatio conversionRatio
+     * @param null|string $conversionRatio ETH amount per 1 WBETH
      *
      * @return self
      */

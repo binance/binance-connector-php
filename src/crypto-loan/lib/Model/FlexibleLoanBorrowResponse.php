@@ -415,7 +415,7 @@ class FlexibleLoanBorrowResponse implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status Succeeds, Failed, Processing
      *
      * @return self
      */

@@ -114,6 +114,8 @@
 
 [/sapi/v1/margin/openOrders](https://developers.binance.com/en/docs/catalog/core-trading-margin-trading/api/rest-api/trade#query-margin-accounts-open-orders) - queryMarginAccountsOpenOrders - [QueryMarginAccountsOpenOrdersExample.php:17](/examples/margin-trading/trade/QueryMarginAccountsOpenOrdersExample.php#L17)
 
+[/sapi/v1/margin/oto/openOrderList](https://developers.binance.com/en/docs/catalog/core-trading-margin-trading/api/rest-api/trade#query-margin-accounts-open-otootoco-order-lists) - queryMarginAccountsOpenOtootocoOrderLists - [QueryMarginAccountsOpenOtootocoOrderListsExample.php:15](/examples/margin-trading/trade/QueryMarginAccountsOpenOtootocoOrderListsExample.php#L15)
+
 [/sapi/v1/margin/order](https://developers.binance.com/en/docs/catalog/core-trading-margin-trading/api/rest-api/trade#query-margin-accounts-order) - queryMarginAccountsOrder - [QueryMarginAccountsOrderExample.php:19](/examples/margin-trading/trade/QueryMarginAccountsOrderExample.php#L19)
 
 [/sapi/v1/margin/myTrades](https://developers.binance.com/en/docs/catalog/core-trading-margin-trading/api/rest-api/trade#query-margin-accounts-trade-list) - queryMarginAccountsTradeList - [QueryMarginAccountsTradeListExample.php:22](/examples/margin-trading/trade/QueryMarginAccountsTradeListExample.php#L22)
@@ -136,7 +138,13 @@
 
 [/sapi/v1/margin/listen-key](https://developers.binance.com/en/docs/catalog/core-trading-margin-trading/api/rest-api/user-data-stream#close-user-data-stream) - closeUserDataStream - [CloseUserDataStreamExample.php:12](/examples/margin-trading/userdatastream/CloseUserDataStreamExample.php#L12)
 
+[/sapi/v2/margin/listen-key](https://developers.binance.com/en/docs/catalog/core-trading-margin-trading/api/rest-api/user-data-stream#close-user-data-stream-v2) - closeUserDataStreamV2 - [CloseUserDataStreamV2Example.php:12](/examples/margin-trading/userdatastream/CloseUserDataStreamV2Example.php#L12)
+
 [/sapi/v1/margin/listen-key](https://developers.binance.com/en/docs/catalog/core-trading-margin-trading/api/rest-api/user-data-stream#keepalive-user-data-stream) - keepaliveUserDataStream - [KeepaliveUserDataStreamExample.php:15](/examples/margin-trading/userdatastream/KeepaliveUserDataStreamExample.php#L15)
 
+[/sapi/v2/margin/listen-key](https://developers.binance.com/en/docs/catalog/core-trading-margin-trading/api/rest-api/user-data-stream#keepalive-user-data-stream-v2) - keepaliveUserDataStreamV2 - [KeepaliveUserDataStreamV2Example.php:15](/examples/margin-trading/userdatastream/KeepaliveUserDataStreamV2Example.php#L15)
+
 [/sapi/v1/margin/listen-key](https://developers.binance.com/en/docs/catalog/core-trading-margin-trading/api/rest-api/user-data-stream#start-user-data-stream) - startUserDataStream - [StartUserDataStreamExample.php:12](/examples/margin-trading/userdatastream/StartUserDataStreamExample.php#L12)
+
+[/sapi/v2/margin/listen-key](https://developers.binance.com/en/docs/catalog/core-trading-margin-trading/api/rest-api/user-data-stream#start-user-data-stream-v2) - startUserDataStreamV2 - [StartUserDataStreamV2Example.php:12](/examples/margin-trading/userdatastream/StartUserDataStreamV2Example.php#L12)
 

@@ -483,7 +483,7 @@ class AssetDividendRecordResponseRowsInner implements ModelInterface, \ArrayAcce
     /**
      * Sets direction.
      *
-     * @param null|int $direction direction
+     * @param null|int $direction direction: 1 for Asset credited (inflow), -1 for Asset debited (outflow)
      *
      * @return self
      */

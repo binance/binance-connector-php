@@ -34,7 +34,7 @@ namespace Binance\Client\Spot\Model;
  *
  * @category Class
  *
- * @description Supported values: [Order Types](/products/spot/enums#ordertypes). Note that &#x60;MARKET&#x60; orders using &#x60;quoteOrderQty&#x60; are not supported.
+ * @description Supported values: Order Types. Note that &#x60;MARKET&#x60; orders using &#x60;quoteOrderQty&#x60; are not supported.
  *
  * @author   OpenAPI Generator team
  *

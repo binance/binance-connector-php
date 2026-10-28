@@ -65,6 +65,7 @@ class GetMarketDetailResponseMarketsInnerOutcomesInner implements ModelInterface
         'chance' => 'string',
         'index' => 'int',
         'tokenId' => 'string',
+        'winner' => 'bool',
     ];
 
     /**
@@ -82,6 +83,7 @@ class GetMarketDetailResponseMarketsInnerOutcomesInner implements ModelInterface
         'chance' => null,
         'index' => null,
         'tokenId' => null,
+        'winner' => null,
     ];
 
     /**
@@ -95,6 +97,7 @@ class GetMarketDetailResponseMarketsInnerOutcomesInner implements ModelInterface
         'chance' => false,
         'index' => false,
         'tokenId' => false,
+        'winner' => false,
     ];
 
     /**
@@ -116,6 +119,7 @@ class GetMarketDetailResponseMarketsInnerOutcomesInner implements ModelInterface
         'chance' => 'chance',
         'index' => 'index',
         'tokenId' => 'tokenId',
+        'winner' => 'winner',
     ];
 
     /**
@@ -129,6 +133,7 @@ class GetMarketDetailResponseMarketsInnerOutcomesInner implements ModelInterface
         'chance' => 'setChance',
         'index' => 'setIndex',
         'tokenId' => 'setTokenId',
+        'winner' => 'setWinner',
     ];
 
     /**
@@ -142,6 +147,7 @@ class GetMarketDetailResponseMarketsInnerOutcomesInner implements ModelInterface
         'chance' => 'getChance',
         'index' => 'getIndex',
         'tokenId' => 'getTokenId',
+        'winner' => 'getWinner',
     ];
 
     /**
@@ -164,6 +170,7 @@ class GetMarketDetailResponseMarketsInnerOutcomesInner implements ModelInterface
         $this->setIfExists('chance', $data ?? [], null);
         $this->setIfExists('index', $data ?? [], null);
         $this->setIfExists('tokenId', $data ?? [], null);
+        $this->setIfExists('winner', $data ?? [], null);
     }
 
     /**
@@ -425,6 +432,33 @@ class GetMarketDetailResponseMarketsInnerOutcomesInner implements ModelInterface
             throw new \InvalidArgumentException('non-nullable tokenId cannot be null');
         }
         $this->container['tokenId'] = $tokenId;
+
+        return $this;
+    }
+
+    /**
+     * Gets winner.
+     *
+     * @return null|bool
+     */
+    public function getWinner()
+    {
+        return $this->container['winner'];
+    }
+
+    /**
+     * Sets winner.
+     *
+     * @param null|bool $winner Whether this outcome won. Returned only after the market is resolved. More than one outcome can be `true` when the payout is split
+     *
+     * @return self
+     */
+    public function setWinner($winner)
+    {
+        if (is_null($winner)) {
+            throw new \InvalidArgumentException('non-nullable winner cannot be null');
+        }
+        $this->container['winner'] = $winner;
 
         return $this;
     }

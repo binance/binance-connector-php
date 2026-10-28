@@ -1,5 +1,21 @@
 # Changelog
 
+## 8.0.0 - 2026-10-28
+
+**Derivatives Trading Options**
+
+### Changed (4)
+
+#### REST API
+
+- Modified response for `accountFundingFlow()` (`GET /eapi/v1/bill`):
+  - items: property `symbol` added
+  - items: item property `symbol` added
+
+- Modified response schema `accountFundingFlowResponse`:
+  - items: property `symbol` added
+  - items: item property `symbol` added
+
 ## 7.0.0 - 2026-09-24
 
 **Derivatives Trading Options**

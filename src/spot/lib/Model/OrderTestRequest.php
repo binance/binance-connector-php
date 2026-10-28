@@ -424,7 +424,7 @@ class OrderTestRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Sets computeCommissionRates.
      *
-     * @param null|bool $computeCommissionRates default: `false` <br> See [Commissions FAQ](/products/spot/faqs/commission_faq#test-order-diferences) to learn more
+     * @param null|bool $computeCommissionRates default: `false` <br> See Commissions FAQ to learn more
      *
      * @return self
      */
@@ -748,7 +748,7 @@ class OrderTestRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Sets trailingDelta.
      *
-     * @param null|int $trailingDelta See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)
+     * @param null|int $trailingDelta See Trailing Stop order FAQ
      *
      * @return self
      */
@@ -883,7 +883,7 @@ class OrderTestRequest implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Sets pegOffsetValue.
      *
-     * @param null|int $pegOffsetValue Price level for pegging (max: 100). See [Pegged Orders](/products/spot/faqs/pegged_orders)
+     * @param null|int $pegOffsetValue Price level for pegging (max: 100). See Pegged Orders
      *
      * @return self
      */

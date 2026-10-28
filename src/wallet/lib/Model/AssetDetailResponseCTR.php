@@ -307,7 +307,7 @@ class AssetDetailResponseCTR implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets minWithdrawAmount.
      *
-     * @param null|string $minWithdrawAmount minWithdrawAmount
+     * @param null|string $minWithdrawAmount min withdraw amount
      *
      * @return self
      */
@@ -334,7 +334,7 @@ class AssetDetailResponseCTR implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets depositStatus.
      *
-     * @param null|bool $depositStatus depositStatus
+     * @param null|bool $depositStatus deposit status (false if ALL of networks' are false)
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class AssetDetailResponseCTR implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets withdrawFee.
      *
-     * @param null|int $withdrawFee withdrawFee
+     * @param null|int $withdrawFee withdraw fee
      *
      * @return self
      */
@@ -388,7 +388,7 @@ class AssetDetailResponseCTR implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets withdrawStatus.
      *
-     * @param null|bool $withdrawStatus withdrawStatus
+     * @param null|bool $withdrawStatus withdraw status (false if ALL of networks' are false)
      *
      * @return self
      */
@@ -415,7 +415,7 @@ class AssetDetailResponseCTR implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets depositTip.
      *
-     * @param null|string $depositTip depositTip
+     * @param null|string $depositTip reason
      *
      * @return self
      */

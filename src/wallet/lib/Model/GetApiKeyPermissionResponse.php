@@ -444,7 +444,7 @@ class GetApiKeyPermissionResponse implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets enableWithdrawals.
      *
-     * @param null|bool $enableWithdrawals enableWithdrawals
+     * @param null|bool $enableWithdrawals This option allows you to withdraw via API. You must apply the IP Access Restriction filter in order to enable withdrawals
      *
      * @return self
      */
@@ -471,7 +471,7 @@ class GetApiKeyPermissionResponse implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets enableInternalTransfer.
      *
-     * @param null|bool $enableInternalTransfer enableInternalTransfer
+     * @param null|bool $enableInternalTransfer This option authorizes this key to transfer funds between your master account and your sub account instantly
      *
      * @return self
      */
@@ -498,7 +498,7 @@ class GetApiKeyPermissionResponse implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets enableMargin.
      *
-     * @param null|bool $enableMargin enableMargin
+     * @param null|bool $enableMargin This option can be adjusted after the Cross Margin account transfer is completed
      *
      * @return self
      */
@@ -525,7 +525,7 @@ class GetApiKeyPermissionResponse implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets enableFutures.
      *
-     * @param null|bool $enableFutures enableFutures
+     * @param null|bool $enableFutures the Futures API cannot be used if the API key was created before the Futures account was opened, or if you have enabled portfolio margin
      *
      * @return self
      */
@@ -552,7 +552,7 @@ class GetApiKeyPermissionResponse implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets permitsUniversalTransfer.
      *
-     * @param null|bool $permitsUniversalTransfer permitsUniversalTransfer
+     * @param null|bool $permitsUniversalTransfer Authorizes this key to be used for a dedicated universal transfer API to transfer multiple supported currencies. Each business's own transfer API rights are not affected by this authorization
      *
      * @return self
      */
@@ -579,7 +579,7 @@ class GetApiKeyPermissionResponse implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets enableVanillaOptions.
      *
-     * @param null|bool $enableVanillaOptions enableVanillaOptions
+     * @param null|bool $enableVanillaOptions Authorizes this key to Vanilla options trading
      *
      * @return self
      */
@@ -660,7 +660,7 @@ class GetApiKeyPermissionResponse implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets enableSpotAndMarginTrading.
      *
-     * @param null|bool $enableSpotAndMarginTrading enableSpotAndMarginTrading
+     * @param null|bool $enableSpotAndMarginTrading Spot and margin trading
      *
      * @return self
      */
@@ -687,7 +687,7 @@ class GetApiKeyPermissionResponse implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets enablePortfolioMarginTrading.
      *
-     * @param null|bool $enablePortfolioMarginTrading enablePortfolioMarginTrading
+     * @param null|bool $enablePortfolioMarginTrading API Key created before your activate portfolio margin does not support portfolio margin API service
      *
      * @return self
      */

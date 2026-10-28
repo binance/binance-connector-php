@@ -505,7 +505,7 @@ class DepositHistoryV2ResponseInner implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets travelRuleReqStatus.
      *
-     * @param null|int $travelRuleReqStatus travelRuleReqStatus
+     * @param null|int $travelRuleReqStatus 0:PASS,2:REJECTED,3:PENDING,-1:FAILED
      *
      * @return self
      */
@@ -667,7 +667,7 @@ class DepositHistoryV2ResponseInner implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets requireQuestionnaire.
      *
-     * @param null|bool $requireQuestionnaire requireQuestionnaire
+     * @param null|bool $requireQuestionnaire true: This deposit require user to answer questionnaire to get it credited, false: This deposit doesn't require user to answer questionnaire as it's already completed or information has been verified
      *
      * @return self
      */

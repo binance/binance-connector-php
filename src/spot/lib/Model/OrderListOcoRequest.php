@@ -750,7 +750,7 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Sets aboveTrailingDelta.
      *
-     * @param null|int $aboveTrailingDelta See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)
+     * @param null|int $aboveTrailingDelta See Trailing Stop order FAQ
      *
      * @return self
      */
@@ -1074,7 +1074,7 @@ class OrderListOcoRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Sets belowTrailingDelta.
      *
-     * @param null|int $belowTrailingDelta See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)
+     * @param null|int $belowTrailingDelta See Trailing Stop order FAQ
      *
      * @return self
      */

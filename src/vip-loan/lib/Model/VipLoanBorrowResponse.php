@@ -490,7 +490,7 @@ class VipLoanBorrowResponse implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets collateralCoin.
      *
-     * @param null|string $collateralCoin collateralCoin
+     * @param null|string $collateralCoin includes `<ASSET>-Earn` entries when a Simple Earn Flexible position is pledged
      *
      * @return self
      */

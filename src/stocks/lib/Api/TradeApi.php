@@ -1359,7 +1359,7 @@ class TradeApi
      *
      * Place Equity Order (TRADE)
      *
-     * @param string              $symbol         US stock ticker, e.g. &#x60;AAPL&#x60;, &#x60;TSLA&#x60;. Must be a symbol with tokenization enabled — check via &#x60;/market/tokenized-assets&#x60;. (required)
+     * @param string              $symbol         US stock ticker, e.g. &#x60;AAPL&#x60;, &#x60;TSLA&#x60;. Must be a tradable US-equity symbol — verify via &#x60;/sapi/v1/equity/market/exchangeInfo&#x60;. Tokenization enablement (verifiable via &#x60;/sapi/v1/equity/market/tokenized-assets&#x60;) is *not* required; non-tokenized symbols are accepted and settle as traditional underlying-equity trades. The &#x60;tokenize&#x60; parameter only takes effect on tokenization-enabled symbols and is silently ignored otherwise. (required)
      * @param Side                $side           &#x60;BUY&#x60; / &#x60;SELL&#x60;. (required)
      * @param OrderType           $orderType      &#x60;MARKET&#x60; / &#x60;LIMIT&#x60;. (required)
      * @param null|string         $quoteAsset     Quote asset. Defaults to &#x60;USDC&#x60;; must be within the server&#39;s allowed set. (optional)
@@ -1370,7 +1370,7 @@ class TradeApi
      * @param null|TradingSession $tradingSession &#x60;RTH&#x60; / &#x60;EXTENDED&#x60; / &#x60;24H&#x60;. **Required** for &#x60;LIMIT&#x60;; **forbidden** for &#x60;MARKET&#x60;. (optional)
      * @param null|WalletType     $walletType     Payment wallet for &#x60;BUY&#x60; orders: &#x60;CARD&#x60; (default) / &#x60;MAIN&#x60;. &#x60;SELL&#x60; orders always settle to &#x60;CARD&#x60;. (optional)
      * @param null|string         $clientOrderId  Client-supplied order id. Format &#x60;^[a-zA-Z0-9-_]{32,36}$&#x60;. Auto-generated when omitted. (optional)
-     * @param null|bool           $tokenize       Whether to tokenize the purchased stock asset upon settlement. Default &#x60;true&#x60;. Set to &#x60;false&#x60; to receive the underlying equity directly instead of a tokenized asset. (optional)
+     * @param null|bool           $tokenize       Whether to tokenize the purchased stock asset upon settlement. Default &#x60;true&#x60;. Only takes effect when the symbol is tokenization-enabled (check via &#x60;/market/tokenized-assets&#x60;); silently ignored for non-tokenized symbols, which always settle as traditional underlying-equity trades. (optional)
      * @param null|int            $recvWindow     The value cannot be greater than &#x60;60000&#x60;. (optional)
      *
      * @return ApiResponse<PlaceEquityOrderResponse>
@@ -1388,7 +1388,7 @@ class TradeApi
      *
      * Place Equity Order (TRADE)
      *
-     * @param string              $symbol         US stock ticker, e.g. &#x60;AAPL&#x60;, &#x60;TSLA&#x60;. Must be a symbol with tokenization enabled — check via &#x60;/market/tokenized-assets&#x60;. (required)
+     * @param string              $symbol         US stock ticker, e.g. &#x60;AAPL&#x60;, &#x60;TSLA&#x60;. Must be a tradable US-equity symbol — verify via &#x60;/sapi/v1/equity/market/exchangeInfo&#x60;. Tokenization enablement (verifiable via &#x60;/sapi/v1/equity/market/tokenized-assets&#x60;) is *not* required; non-tokenized symbols are accepted and settle as traditional underlying-equity trades. The &#x60;tokenize&#x60; parameter only takes effect on tokenization-enabled symbols and is silently ignored otherwise. (required)
      * @param Side                $side           &#x60;BUY&#x60; / &#x60;SELL&#x60;. (required)
      * @param OrderType           $orderType      &#x60;MARKET&#x60; / &#x60;LIMIT&#x60;. (required)
      * @param null|string         $quoteAsset     Quote asset. Defaults to &#x60;USDC&#x60;; must be within the server&#39;s allowed set. (optional)
@@ -1399,7 +1399,7 @@ class TradeApi
      * @param null|TradingSession $tradingSession &#x60;RTH&#x60; / &#x60;EXTENDED&#x60; / &#x60;24H&#x60;. **Required** for &#x60;LIMIT&#x60;; **forbidden** for &#x60;MARKET&#x60;. (optional)
      * @param null|WalletType     $walletType     Payment wallet for &#x60;BUY&#x60; orders: &#x60;CARD&#x60; (default) / &#x60;MAIN&#x60;. &#x60;SELL&#x60; orders always settle to &#x60;CARD&#x60;. (optional)
      * @param null|string         $clientOrderId  Client-supplied order id. Format &#x60;^[a-zA-Z0-9-_]{32,36}$&#x60;. Auto-generated when omitted. (optional)
-     * @param null|bool           $tokenize       Whether to tokenize the purchased stock asset upon settlement. Default &#x60;true&#x60;. Set to &#x60;false&#x60; to receive the underlying equity directly instead of a tokenized asset. (optional)
+     * @param null|bool           $tokenize       Whether to tokenize the purchased stock asset upon settlement. Default &#x60;true&#x60;. Only takes effect when the symbol is tokenization-enabled (check via &#x60;/market/tokenized-assets&#x60;); silently ignored for non-tokenized symbols, which always settle as traditional underlying-equity trades. (optional)
      * @param null|int            $recvWindow     The value cannot be greater than &#x60;60000&#x60;. (optional)
      *
      * @return ApiResponse<PlaceEquityOrderResponse>
@@ -1479,7 +1479,7 @@ class TradeApi
     /**
      * Create request for operation 'placeEquityOrder'.
      *
-     * @param string              $symbol         US stock ticker, e.g. &#x60;AAPL&#x60;, &#x60;TSLA&#x60;. Must be a symbol with tokenization enabled — check via &#x60;/market/tokenized-assets&#x60;. (required)
+     * @param string              $symbol         US stock ticker, e.g. &#x60;AAPL&#x60;, &#x60;TSLA&#x60;. Must be a tradable US-equity symbol — verify via &#x60;/sapi/v1/equity/market/exchangeInfo&#x60;. Tokenization enablement (verifiable via &#x60;/sapi/v1/equity/market/tokenized-assets&#x60;) is *not* required; non-tokenized symbols are accepted and settle as traditional underlying-equity trades. The &#x60;tokenize&#x60; parameter only takes effect on tokenization-enabled symbols and is silently ignored otherwise. (required)
      * @param Side                $side           &#x60;BUY&#x60; / &#x60;SELL&#x60;. (required)
      * @param OrderType           $orderType      &#x60;MARKET&#x60; / &#x60;LIMIT&#x60;. (required)
      * @param null|string         $quoteAsset     Quote asset. Defaults to &#x60;USDC&#x60;; must be within the server&#39;s allowed set. (optional)
@@ -1490,7 +1490,7 @@ class TradeApi
      * @param null|TradingSession $tradingSession &#x60;RTH&#x60; / &#x60;EXTENDED&#x60; / &#x60;24H&#x60;. **Required** for &#x60;LIMIT&#x60;; **forbidden** for &#x60;MARKET&#x60;. (optional)
      * @param null|WalletType     $walletType     Payment wallet for &#x60;BUY&#x60; orders: &#x60;CARD&#x60; (default) / &#x60;MAIN&#x60;. &#x60;SELL&#x60; orders always settle to &#x60;CARD&#x60;. (optional)
      * @param null|string         $clientOrderId  Client-supplied order id. Format &#x60;^[a-zA-Z0-9-_]{32,36}$&#x60;. Auto-generated when omitted. (optional)
-     * @param null|bool           $tokenize       Whether to tokenize the purchased stock asset upon settlement. Default &#x60;true&#x60;. Set to &#x60;false&#x60; to receive the underlying equity directly instead of a tokenized asset. (optional)
+     * @param null|bool           $tokenize       Whether to tokenize the purchased stock asset upon settlement. Default &#x60;true&#x60;. Only takes effect when the symbol is tokenization-enabled (check via &#x60;/market/tokenized-assets&#x60;); silently ignored for non-tokenized symbols, which always settle as traditional underlying-equity trades. (optional)
      * @param null|int            $recvWindow     The value cannot be greater than &#x60;60000&#x60;. (optional)
      *
      * @return Request

@@ -15,10 +15,9 @@ function getIncomeHistoryExample()
     $incomeType = IncomeType::TRANSFER;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
-    $page = 1;
     $limit = 30;
     $recvWindow = 5000;
-    $response = $api->getIncomeHistory($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
+    $response = $api->getIncomeHistory($symbol, $incomeType, $startTime, $endTime, $limit, $recvWindow);
     print_r($response);
 }
 

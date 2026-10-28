@@ -362,7 +362,7 @@ class GetFiatDepositWithdrawHistoryResponseDataInner implements ModelInterface, 
     /**
      * Sets fiatCurrency.
      *
-     * @param null|string $fiatCurrency fiatCurrency
+     * @param null|string $fiatCurrency Fiat token
      *
      * @return self
      */
@@ -389,7 +389,7 @@ class GetFiatDepositWithdrawHistoryResponseDataInner implements ModelInterface, 
     /**
      * Sets indicatedAmount.
      *
-     * @param null|string $indicatedAmount indicatedAmount
+     * @param null|string $indicatedAmount Trade amount
      *
      * @return self
      */
@@ -416,7 +416,7 @@ class GetFiatDepositWithdrawHistoryResponseDataInner implements ModelInterface, 
     /**
      * Sets amount.
      *
-     * @param null|string $amount amount
+     * @param null|string $amount Actual amount (after fee deduction)
      *
      * @return self
      */
@@ -443,7 +443,7 @@ class GetFiatDepositWithdrawHistoryResponseDataInner implements ModelInterface, 
     /**
      * Sets totalFee.
      *
-     * @param null|string $totalFee totalFee
+     * @param null|string $totalFee Trade fee
      *
      * @return self
      */
@@ -470,7 +470,7 @@ class GetFiatDepositWithdrawHistoryResponseDataInner implements ModelInterface, 
     /**
      * Sets method.
      *
-     * @param null|string $method method
+     * @param null|string $method Trade method
      *
      * @return self
      */
@@ -524,7 +524,7 @@ class GetFiatDepositWithdrawHistoryResponseDataInner implements ModelInterface, 
     /**
      * Sets createTime.
      *
-     * @param null|int $createTime createTime
+     * @param null|int $createTime Order create time
      *
      * @return self
      */
@@ -551,7 +551,7 @@ class GetFiatDepositWithdrawHistoryResponseDataInner implements ModelInterface, 
     /**
      * Sets updateTime.
      *
-     * @param null|int $updateTime updateTime
+     * @param null|int $updateTime Order update time
      *
      * @return self
      */

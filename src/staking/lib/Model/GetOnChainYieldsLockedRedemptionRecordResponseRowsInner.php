@@ -559,7 +559,7 @@ class GetOnChainYieldsLockedRedemptionRecordResponseRowsInner implements ModelIn
     /**
      * Sets type.
      *
-     * @param null|string $type type
+     * @param null|string $type NORMAL for normal maturity redemption, EARLY for early redemption, CONVERT for redeem to simple earn flexible
      *
      * @return self
      */
@@ -586,7 +586,7 @@ class GetOnChainYieldsLockedRedemptionRecordResponseRowsInner implements ModelIn
     /**
      * Sets deliverDate.
      *
-     * @param null|string $deliverDate deliverDate
+     * @param null|string $deliverDate Redemption date
      *
      * @return self
      */
@@ -613,7 +613,7 @@ class GetOnChainYieldsLockedRedemptionRecordResponseRowsInner implements ModelIn
     /**
      * Sets lossAmount.
      *
-     * @param null|string $lossAmount lossAmount
+     * @param null|string $lossAmount Loss of profit on early redemption
      *
      * @return self
      */
@@ -721,7 +721,7 @@ class GetOnChainYieldsLockedRedemptionRecordResponseRowsInner implements ModelIn
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status CREATED/PAID
      *
      * @return self
      */

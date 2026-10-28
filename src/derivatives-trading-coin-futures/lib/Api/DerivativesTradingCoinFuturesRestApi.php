@@ -286,7 +286,6 @@ class DerivativesTradingCoinFuturesRestApi
      * @param null|IncomeType $incomeType Income type. (optional)
      * @param null|int        $startTime  Timestamp in ms to get funding from INCLUSIVE. (optional)
      * @param null|int        $endTime    Timestamp in ms to get funding until INCLUSIVE. (optional)
-     * @param null|int        $page       Page number (optional)
      * @param null|int        $limit      Maximum number of records to return. (optional)
      * @param null|int        $recvWindow recvWindow (optional)
      *
@@ -295,9 +294,9 @@ class DerivativesTradingCoinFuturesRestApi
      * @throws ApiException              on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      */
-    public function getIncomeHistory($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $page = null, $limit = null, $recvWindow = null): ApiResponse
+    public function getIncomeHistory($symbol = null, $incomeType = null, $startTime = null, $endTime = null, $limit = null, $recvWindow = null): ApiResponse
     {
-        return $this->accountApi->getIncomeHistory($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
+        return $this->accountApi->getIncomeHistory($symbol, $incomeType, $startTime, $endTime, $limit, $recvWindow);
     }
 
     /**

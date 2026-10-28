@@ -396,7 +396,7 @@ class SubAccountTransferHistoryResponseInner implements ModelInterface, \ArrayAc
     /**
      * Sets type.
      *
-     * @param null|int $type type
+     * @param null|int $type 1 for transfer in, 2 for transfer out
      *
      * @return self
      */
@@ -531,7 +531,7 @@ class SubAccountTransferHistoryResponseInner implements ModelInterface, \ArrayAc
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status status: PROCESS / SUCCESS / FAILURE
      *
      * @return self
      */

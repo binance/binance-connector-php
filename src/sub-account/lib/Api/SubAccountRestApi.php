@@ -8,6 +8,8 @@ use Binance\Client\SubAccount\Model\CreateAVirtualSubAccountRequest;
 use Binance\Client\SubAccount\Model\CreateAVirtualSubAccountResponse;
 use Binance\Client\SubAccount\Model\CreateSubAccountApiKeyRequest;
 use Binance\Client\SubAccount\Model\CreateSubAccountApiKeyResponse;
+use Binance\Client\SubAccount\Model\CreateSubAccountApiKeyV2Request;
+use Binance\Client\SubAccount\Model\CreateSubAccountApiKeyV2Response;
 use Binance\Client\SubAccount\Model\DeleteIpListForASubAccountApiKeyResponse;
 use Binance\Client\SubAccount\Model\DepositAssetsIntoTheManagedSubAccountRequest;
 use Binance\Client\SubAccount\Model\DepositAssetsIntoTheManagedSubAccountResponse;
@@ -280,6 +282,23 @@ class SubAccountRestApi
     public function createSubAccountApiKey($createSubAccountApiKeyRequest): ApiResponse
     {
         return $this->apiManagementApi->createSubAccountApiKey($createSubAccountApiKeyRequest);
+    }
+
+    /**
+     * Operation createSubAccountApiKeyV2.
+     *
+     * Create Sub-account API Key V2 (For Master Account) (USER_DATA)
+     *
+     * @param CreateSubAccountApiKeyV2Request $createSubAccountApiKeyV2Request createSubAccountApiKeyV2Request (required)
+     *
+     * @return ApiResponse<CreateSubAccountApiKeyV2Response>
+     *
+     * @throws ApiException              on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     */
+    public function createSubAccountApiKeyV2($createSubAccountApiKeyV2Request): ApiResponse
+    {
+        return $this->apiManagementApi->createSubAccountApiKeyV2($createSubAccountApiKeyV2Request);
     }
 
     /**

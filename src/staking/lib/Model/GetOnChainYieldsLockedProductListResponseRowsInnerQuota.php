@@ -286,7 +286,7 @@ class GetOnChainYieldsLockedProductListResponseRowsInnerQuota implements ModelIn
     /**
      * Sets totalPersonalQuota.
      *
-     * @param null|string $totalPersonalQuota totalPersonalQuota
+     * @param null|string $totalPersonalQuota Total Personal quota
      *
      * @return self
      */
@@ -313,7 +313,7 @@ class GetOnChainYieldsLockedProductListResponseRowsInnerQuota implements ModelIn
     /**
      * Sets minimum.
      *
-     * @param null|string $minimum minimum
+     * @param null|string $minimum Minimum amount per order
      *
      * @return self
      */

@@ -24,3 +24,5 @@
 
 [/sapi/v1/algo/spot/newOrderTwap](https://developers.binance.com/en/docs/catalog/advanced-trading-algo-trading/api/rest-api/spot-algo#time-weighted-average-price-spot-algo) - timeWeightedAveragePriceSpotAlgo - [TimeWeightedAveragePriceSpotAlgoExample.php:20](/examples/algo/spotalgo/TimeWeightedAveragePriceSpotAlgoExample.php#L20)
 
+[/sapi/v1/algo/spot/newOrderVp](https://developers.binance.com/en/docs/catalog/advanced-trading-algo-trading/api/rest-api/spot-algo#volume-participation) - volumeParticipation - [VolumeParticipationExample.php:21](/examples/algo/spotalgo/VolumeParticipationExample.php#L21)
+

@@ -449,7 +449,7 @@ class GetFlexibleLoanBorrowHistoryResponseRowsInner implements ModelInterface, \
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status SUCCESS, FAILED, PENDING
      *
      * @return self
      */

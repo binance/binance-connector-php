@@ -524,7 +524,7 @@ class GetSummaryOfSubAccountsFuturesAccountV2ResponseFutureAccountSummaryResp im
     /**
      * Sets asset.
      *
-     * @param null|string $asset asset
+     * @param null|string $asset The sum of BUSD and USDT
      *
      * @return self
      */

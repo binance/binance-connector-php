@@ -1,5 +1,25 @@
 # Changelog
 
+## 8.0.0 - 2026-10-28
+
+**VIP Loan**
+
+### Changed (2)
+
+- Modified response for `getVIPLoanRepaymentHistory()` (`GET /sapi/v1/loan/vip/repay/history`):
+  - `rows`.items: property `repayPrincipal` added
+  - `rows`.items: property `repayInterest` added
+  - `rows`.items: item property `repayPrincipal` added
+  - `rows`.items: item property `repayInterest` added
+
+- Modified response field `rows`:
+  - items: property `repayPrincipal` added
+  - items: property `repayInterest` added
+  - items: item property `repayPrincipal` added
+  - items: item property `repayInterest` added
+  - affected events:
+    - `getVIPLoanRepaymentHistoryResponse`
+
 ## 6.0.0 - 2026-07-28
 
 ### Added (1)

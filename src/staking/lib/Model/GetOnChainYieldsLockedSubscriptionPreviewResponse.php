@@ -335,7 +335,7 @@ class GetOnChainYieldsLockedSubscriptionPreviewResponse implements ModelInterfac
     /**
      * Sets rewardAsset.
      *
-     * @param null|string $rewardAsset rewardAsset
+     * @param null|string $rewardAsset Earned asset
      *
      * @return self
      */
@@ -362,7 +362,7 @@ class GetOnChainYieldsLockedSubscriptionPreviewResponse implements ModelInterfac
     /**
      * Sets totalRewardAmt.
      *
-     * @param null|string $totalRewardAmt totalRewardAmt
+     * @param null|string $totalRewardAmt Earned amount total in locked period
      *
      * @return self
      */
@@ -389,7 +389,7 @@ class GetOnChainYieldsLockedSubscriptionPreviewResponse implements ModelInterfac
     /**
      * Sets nextPay.
      *
-     * @param null|string $nextPay nextPay
+     * @param null|string $nextPay Next estimated rewards payment
      *
      * @return self
      */
@@ -416,7 +416,7 @@ class GetOnChainYieldsLockedSubscriptionPreviewResponse implements ModelInterfac
     /**
      * Sets nextPayDate.
      *
-     * @param null|string $nextPayDate nextPayDate
+     * @param null|string $nextPayDate Next rewards payment date
      *
      * @return self
      */
@@ -443,7 +443,7 @@ class GetOnChainYieldsLockedSubscriptionPreviewResponse implements ModelInterfac
     /**
      * Sets rewardsPayDate.
      *
-     * @param null|string $rewardsPayDate rewardsPayDate
+     * @param null|string $rewardsPayDate Rewards payment date
      *
      * @return self
      */
@@ -497,7 +497,7 @@ class GetOnChainYieldsLockedSubscriptionPreviewResponse implements ModelInterfac
     /**
      * Sets rewardsEndDate.
      *
-     * @param null|string $rewardsEndDate rewardsEndDate
+     * @param null|string $rewardsEndDate Rewards accrual end date
      *
      * @return self
      */
@@ -524,7 +524,7 @@ class GetOnChainYieldsLockedSubscriptionPreviewResponse implements ModelInterfac
     /**
      * Sets deliverDate.
      *
-     * @param null|string $deliverDate deliverDate
+     * @param null|string $deliverDate Redemption arrival time(if auto-subscribe is true, not response this one)
      *
      * @return self
      */
@@ -551,7 +551,7 @@ class GetOnChainYieldsLockedSubscriptionPreviewResponse implements ModelInterfac
     /**
      * Sets nextSubscriptionDate.
      *
-     * @param null|string $nextSubscriptionDate nextSubscriptionDate
+     * @param null|string $nextSubscriptionDate Response if autoSubscribe is true
      *
      * @return self
      */

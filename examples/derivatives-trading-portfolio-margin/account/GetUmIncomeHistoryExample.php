@@ -15,10 +15,9 @@ function getUmIncomeHistoryExample()
     $incomeType = IncomeType::TRANSFER;
     $startTime = 1623319461670;
     $endTime = 1641782889000;
-    $page = 1;
     $limit = 100;
     $recvWindow = 5000;
-    $response = $api->getUmIncomeHistory($symbol, $incomeType, $startTime, $endTime, $page, $limit, $recvWindow);
+    $response = $api->getUmIncomeHistory($symbol, $incomeType, $startTime, $endTime, $limit, $recvWindow);
     print_r($response);
 }
 

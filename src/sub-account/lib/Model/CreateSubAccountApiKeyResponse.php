@@ -68,6 +68,8 @@ class CreateSubAccountApiKeyResponse implements ModelInterface, \ArrayAccess, \J
         'canFuturesTrade' => 'bool',
         'canUniversalTransfer' => 'bool',
         'canVanillaOptions' => 'bool',
+        'canFixApiTrading' => 'bool',
+        'canFixApiReading' => 'bool',
         'status' => 'int',
         'ipList' => 'string[]',
     ];
@@ -90,6 +92,8 @@ class CreateSubAccountApiKeyResponse implements ModelInterface, \ArrayAccess, \J
         'canFuturesTrade' => null,
         'canUniversalTransfer' => null,
         'canVanillaOptions' => null,
+        'canFixApiTrading' => null,
+        'canFixApiReading' => null,
         'status' => 'int64',
         'ipList' => null,
     ];
@@ -108,6 +112,8 @@ class CreateSubAccountApiKeyResponse implements ModelInterface, \ArrayAccess, \J
         'canFuturesTrade' => false,
         'canUniversalTransfer' => false,
         'canVanillaOptions' => false,
+        'canFixApiTrading' => false,
+        'canFixApiReading' => false,
         'status' => false,
         'ipList' => false,
     ];
@@ -134,6 +140,8 @@ class CreateSubAccountApiKeyResponse implements ModelInterface, \ArrayAccess, \J
         'canFuturesTrade' => 'canFuturesTrade',
         'canUniversalTransfer' => 'canUniversalTransfer',
         'canVanillaOptions' => 'canVanillaOptions',
+        'canFixApiTrading' => 'canFixApiTrading',
+        'canFixApiReading' => 'canFixApiReading',
         'status' => 'status',
         'ipList' => 'ipList',
     ];
@@ -152,6 +160,8 @@ class CreateSubAccountApiKeyResponse implements ModelInterface, \ArrayAccess, \J
         'canFuturesTrade' => 'setCanFuturesTrade',
         'canUniversalTransfer' => 'setCanUniversalTransfer',
         'canVanillaOptions' => 'setCanVanillaOptions',
+        'canFixApiTrading' => 'setCanFixApiTrading',
+        'canFixApiReading' => 'setCanFixApiReading',
         'status' => 'setStatus',
         'ipList' => 'setIpList',
     ];
@@ -170,6 +180,8 @@ class CreateSubAccountApiKeyResponse implements ModelInterface, \ArrayAccess, \J
         'canFuturesTrade' => 'getCanFuturesTrade',
         'canUniversalTransfer' => 'getCanUniversalTransfer',
         'canVanillaOptions' => 'getCanVanillaOptions',
+        'canFixApiTrading' => 'getCanFixApiTrading',
+        'canFixApiReading' => 'getCanFixApiReading',
         'status' => 'getStatus',
         'ipList' => 'getIpList',
     ];
@@ -197,6 +209,8 @@ class CreateSubAccountApiKeyResponse implements ModelInterface, \ArrayAccess, \J
         $this->setIfExists('canFuturesTrade', $data ?? [], null);
         $this->setIfExists('canUniversalTransfer', $data ?? [], null);
         $this->setIfExists('canVanillaOptions', $data ?? [], null);
+        $this->setIfExists('canFixApiTrading', $data ?? [], null);
+        $this->setIfExists('canFixApiReading', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('ipList', $data ?? [], null);
     }
@@ -541,6 +555,60 @@ class CreateSubAccountApiKeyResponse implements ModelInterface, \ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable canVanillaOptions cannot be null');
         }
         $this->container['canVanillaOptions'] = $canVanillaOptions;
+
+        return $this;
+    }
+
+    /**
+     * Gets canFixApiTrading.
+     *
+     * @return null|bool
+     */
+    public function getCanFixApiTrading()
+    {
+        return $this->container['canFixApiTrading'];
+    }
+
+    /**
+     * Sets canFixApiTrading.
+     *
+     * @param null|bool $canFixApiTrading canFixApiTrading
+     *
+     * @return self
+     */
+    public function setCanFixApiTrading($canFixApiTrading)
+    {
+        if (is_null($canFixApiTrading)) {
+            throw new \InvalidArgumentException('non-nullable canFixApiTrading cannot be null');
+        }
+        $this->container['canFixApiTrading'] = $canFixApiTrading;
+
+        return $this;
+    }
+
+    /**
+     * Gets canFixApiReading.
+     *
+     * @return null|bool
+     */
+    public function getCanFixApiReading()
+    {
+        return $this->container['canFixApiReading'];
+    }
+
+    /**
+     * Sets canFixApiReading.
+     *
+     * @param null|bool $canFixApiReading canFixApiReading
+     *
+     * @return self
+     */
+    public function setCanFixApiReading($canFixApiReading)
+    {
+        if (is_null($canFixApiReading)) {
+            throw new \InvalidArgumentException('non-nullable canFixApiReading cannot be null');
+        }
+        $this->container['canFixApiReading'] = $canFixApiReading;
 
         return $this;
     }

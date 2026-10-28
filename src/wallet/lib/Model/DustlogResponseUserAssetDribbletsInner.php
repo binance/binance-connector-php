@@ -334,7 +334,7 @@ class DustlogResponseUserAssetDribbletsInner implements ModelInterface, \ArrayAc
     /**
      * Sets totalTransferedAmount.
      *
-     * @param null|string $totalTransferedAmount totalTransferedAmount
+     * @param null|string $totalTransferedAmount total transfered BNB amount for this exchange
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class DustlogResponseUserAssetDribbletsInner implements ModelInterface, \ArrayAc
     /**
      * Sets totalServiceChargeAmount.
      *
-     * @param null|string $totalServiceChargeAmount totalServiceChargeAmount
+     * @param null|string $totalServiceChargeAmount total service charge amount for this exchange
      *
      * @return self
      */

@@ -62,6 +62,8 @@ class GetVIPLoanRepaymentHistoryResponseRowsInner implements ModelInterface, \Ar
     protected static $openAPITypes = [
         'loanCoin' => 'string',
         'repayAmount' => 'string',
+        'repayPrincipal' => 'string',
+        'repayInterest' => 'string',
         'collateralCoin' => 'string',
         'repayStatus' => 'string',
         'loanDate' => 'string',
@@ -81,6 +83,8 @@ class GetVIPLoanRepaymentHistoryResponseRowsInner implements ModelInterface, \Ar
     protected static $openAPIFormats = [
         'loanCoin' => null,
         'repayAmount' => null,
+        'repayPrincipal' => null,
+        'repayInterest' => null,
         'collateralCoin' => null,
         'repayStatus' => null,
         'loanDate' => null,
@@ -96,6 +100,8 @@ class GetVIPLoanRepaymentHistoryResponseRowsInner implements ModelInterface, \Ar
     protected static array $openAPINullables = [
         'loanCoin' => false,
         'repayAmount' => false,
+        'repayPrincipal' => false,
+        'repayInterest' => false,
         'collateralCoin' => false,
         'repayStatus' => false,
         'loanDate' => false,
@@ -119,6 +125,8 @@ class GetVIPLoanRepaymentHistoryResponseRowsInner implements ModelInterface, \Ar
     protected static $attributeMap = [
         'loanCoin' => 'loanCoin',
         'repayAmount' => 'repayAmount',
+        'repayPrincipal' => 'repayPrincipal',
+        'repayInterest' => 'repayInterest',
         'collateralCoin' => 'collateralCoin',
         'repayStatus' => 'repayStatus',
         'loanDate' => 'loanDate',
@@ -134,6 +142,8 @@ class GetVIPLoanRepaymentHistoryResponseRowsInner implements ModelInterface, \Ar
     protected static $setters = [
         'loanCoin' => 'setLoanCoin',
         'repayAmount' => 'setRepayAmount',
+        'repayPrincipal' => 'setRepayPrincipal',
+        'repayInterest' => 'setRepayInterest',
         'collateralCoin' => 'setCollateralCoin',
         'repayStatus' => 'setRepayStatus',
         'loanDate' => 'setLoanDate',
@@ -149,6 +159,8 @@ class GetVIPLoanRepaymentHistoryResponseRowsInner implements ModelInterface, \Ar
     protected static $getters = [
         'loanCoin' => 'getLoanCoin',
         'repayAmount' => 'getRepayAmount',
+        'repayPrincipal' => 'getRepayPrincipal',
+        'repayInterest' => 'getRepayInterest',
         'collateralCoin' => 'getCollateralCoin',
         'repayStatus' => 'getRepayStatus',
         'loanDate' => 'getLoanDate',
@@ -173,6 +185,8 @@ class GetVIPLoanRepaymentHistoryResponseRowsInner implements ModelInterface, \Ar
     {
         $this->setIfExists('loanCoin', $data ?? [], null);
         $this->setIfExists('repayAmount', $data ?? [], null);
+        $this->setIfExists('repayPrincipal', $data ?? [], null);
+        $this->setIfExists('repayInterest', $data ?? [], null);
         $this->setIfExists('collateralCoin', $data ?? [], null);
         $this->setIfExists('repayStatus', $data ?? [], null);
         $this->setIfExists('loanDate', $data ?? [], null);
@@ -358,6 +372,60 @@ class GetVIPLoanRepaymentHistoryResponseRowsInner implements ModelInterface, \Ar
             throw new \InvalidArgumentException('non-nullable repayAmount cannot be null');
         }
         $this->container['repayAmount'] = $repayAmount;
+
+        return $this;
+    }
+
+    /**
+     * Gets repayPrincipal.
+     *
+     * @return null|string
+     */
+    public function getRepayPrincipal()
+    {
+        return $this->container['repayPrincipal'];
+    }
+
+    /**
+     * Sets repayPrincipal.
+     *
+     * @param null|string $repayPrincipal repayPrincipal
+     *
+     * @return self
+     */
+    public function setRepayPrincipal($repayPrincipal)
+    {
+        if (is_null($repayPrincipal)) {
+            throw new \InvalidArgumentException('non-nullable repayPrincipal cannot be null');
+        }
+        $this->container['repayPrincipal'] = $repayPrincipal;
+
+        return $this;
+    }
+
+    /**
+     * Gets repayInterest.
+     *
+     * @return null|string
+     */
+    public function getRepayInterest()
+    {
+        return $this->container['repayInterest'];
+    }
+
+    /**
+     * Sets repayInterest.
+     *
+     * @param null|string $repayInterest repayInterest
+     *
+     * @return self
+     */
+    public function setRepayInterest($repayInterest)
+    {
+        if (is_null($repayInterest)) {
+            throw new \InvalidArgumentException('non-nullable repayInterest cannot be null');
+        }
+        $this->container['repayInterest'] = $repayInterest;
 
         return $this;
     }

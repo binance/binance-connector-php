@@ -320,7 +320,7 @@ class VerifyBinanceGiftCardByGiftCardNumberResponseData implements ModelInterfac
     /**
      * Sets token.
      *
-     * @param null|string $token token
+     * @param null|string $token coin
      *
      * @return self
      */

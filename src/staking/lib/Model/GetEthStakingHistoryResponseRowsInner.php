@@ -483,7 +483,7 @@ class GetEthStakingHistoryResponseRowsInner implements ModelInterface, \ArrayAcc
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status PENDING,SUCCESS,FAILED
      *
      * @return self
      */

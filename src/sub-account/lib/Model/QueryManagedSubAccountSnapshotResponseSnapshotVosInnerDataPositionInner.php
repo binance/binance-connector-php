@@ -415,7 +415,7 @@ class QueryManagedSubAccountSnapshotResponseSnapshotVosInnerDataPositionInner im
     /**
      * Sets unRealizedProfit.
      *
-     * @param null|string $unRealizedProfit unRealizedProfit
+     * @param null|string $unRealizedProfit Only show the value at the time of opening the position
      *
      * @return self
      */

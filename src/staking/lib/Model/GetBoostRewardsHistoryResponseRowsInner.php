@@ -388,7 +388,7 @@ class GetBoostRewardsHistoryResponseRowsInner implements ModelInterface, \ArrayA
     /**
      * Sets bnsolHolding.
      *
-     * @param null|string $bnsolHolding bnsolHolding
+     * @param null|string $bnsolHolding Display if the type is \"DISTRIBUTE\"
      *
      * @return self
      */
@@ -415,7 +415,7 @@ class GetBoostRewardsHistoryResponseRowsInner implements ModelInterface, \ArrayA
     /**
      * Sets status.
      *
-     * @param null|string $status status
+     * @param null|string $status Display if the type is \"CLAIM\"
      *
      * @return self
      */

@@ -516,7 +516,7 @@ class OrderCancelReplaceResponseCancelResponse implements ModelInterface, \Array
     /**
      * Sets origClientOrderId.
      *
-     * @param null|string $origClientOrderId origClientOrderId
+     * @param null|string $origClientOrderId cancelOrigClientOrderId from request
      *
      * @return self
      */
@@ -597,7 +597,7 @@ class OrderCancelReplaceResponseCancelResponse implements ModelInterface, \Array
     /**
      * Sets clientOrderId.
      *
-     * @param null|string $clientOrderId clientOrderId
+     * @param null|string $clientOrderId cancelNewClientOrderId from request
      *
      * @return self
      */

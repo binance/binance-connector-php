@@ -842,7 +842,7 @@ class NewUmAlgoOrderRequest implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets callbackRate.
      *
-     * @param null|float $callbackRate Used with `TRAILING_STOP_MARKET`, min 0.1, max 10 (1 = 1%)
+     * @param null|float $callbackRate Used with `TRAILING_STOP_MARKET`, min 0.1, max 20 (1 = 1%)
      *
      * @return self
      */

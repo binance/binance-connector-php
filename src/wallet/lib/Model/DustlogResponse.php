@@ -286,7 +286,7 @@ class DustlogResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets total.
      *
-     * @param null|int $total total
+     * @param null|int $total Total counts of exchange
      *
      * @return self
      */

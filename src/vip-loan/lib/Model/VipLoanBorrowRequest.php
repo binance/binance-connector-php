@@ -460,7 +460,7 @@ class VipLoanBorrowRequest implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets collateralCoin.
      *
-     * @param string $collateralCoin collateralCoin
+     * @param string $collateralCoin Collateral coin(s), multiple separated by `,`. Use `<ASSET>-Earn` for a Simple Earn Flexible position; it must be sent together with its Spot asset, e.g. `USDT,USDT-Earn`.
      *
      * @return self
      */

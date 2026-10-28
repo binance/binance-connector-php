@@ -442,7 +442,7 @@ class VolumeParticipationFutureAlgoRequest implements ModelInterface, \ArrayAcce
     /**
      * Sets quantity.
      *
-     * @param float $quantity Quantity of base asset; The notional (`quantity` * `mark price(base asset)`) must be more than the equivalent of 10,000 USDT and less than the equivalent of 1,000,000 USDT
+     * @param float $quantity Quantity of base asset; The notional (`quantity` * `mark price(base asset)`) must be more than the equivalent of 10,000 USDT, and the maximum notional varies by symbol: up to 50,000,000 USDT for BTCUSDT perpetual, up to 25,000,000 USDT for ETHUSDT perpetual, and up to 5,000,000 USDT for other symbols
      *
      * @return self
      */
